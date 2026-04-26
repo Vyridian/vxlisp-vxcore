@@ -46,17 +46,17 @@ public final class En {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -84,14 +84,20 @@ public final class En {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = En.f_context_en(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist args = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist args = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = En.f_context_en(args);
       return output;
     }
@@ -113,15 +119,19 @@ public final class En {
       Core.t_context,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":session"),
-        Core.f_new(
-          Core.t_session,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":translation"),
-            En.f_translation_en()
+        // [
+          Core.vx_new_string(":session"),
+          Core.f_new(
+            Core.t_session,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":translation"),
+                En.f_translation_en()
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -166,17 +176,17 @@ public final class En {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -204,14 +214,20 @@ public final class En {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = En.f_context_test(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist args = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist args = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = En.f_context_test(args);
       return output;
     }
@@ -233,24 +249,30 @@ public final class En {
       Core.t_context,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":session"),
-        Core.f_new(
-          Core.t_session,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":translation"),
-            En.f_translation_en(),
-            Core.vx_new_string(":user"),
-            Core.f_new(
-              Core.t_user,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":security"),
-                En.f_securitydata_test()
-              )
+        // [
+          Core.vx_new_string(":session"),
+          Core.f_new(
+            Core.t_session,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":translation"),
+                En.f_translation_en(),
+                Core.vx_new_string(":user"),
+                Core.f_new(
+                  Core.t_user,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":security"),
+                      En.f_securitydata_test()
+                    // ]
+                  )
+                )
+              // ]
             )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -294,17 +316,17 @@ public final class En {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -346,17 +368,21 @@ public final class En {
       Core.t_security,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":allowfuncs"),
-        Core.f_new(
-          Core.t_funclist,
-          Core.vx_new(
-            Core.t_anylist,
-            File.t_boolean_write_from_file_any,
-            File.t_boolean_write_from_file_string,
-            File.t_file_read_from_file,
-            File.t_string_read_from_file
+        // [
+          Core.vx_new_string(":allowfuncs"),
+          Core.f_new(
+            Core.t_funclist,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                File.t_boolean_write_from_file_any,
+                File.t_boolean_write_from_file_string,
+                File.t_file_read_from_file,
+                File.t_string_read_from_file
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -400,17 +426,17 @@ public final class En {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -452,10 +478,12 @@ public final class En {
       Core.t_translation,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":name"),
-        Core.vx_new_string("en"),
-        Core.vx_new_string(":wordmap"),
-        En.f_words()
+        // [
+          Core.vx_new_string(":name"),
+          Core.vx_new_string("en"),
+          Core.vx_new_string(":wordmap"),
+          En.f_words()
+        // ]
       )
     );
     return output;
@@ -499,17 +527,22 @@ public final class En {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "stringmap", // name
-          ":map", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "stringmap",
+          ":map",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_string
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -551,16 +584,18 @@ public final class En {
       Core.t_stringmap,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string("Hello"),
-        Core.vx_new_string("Hello"),
-        Core.vx_new_string("World"),
-        Core.vx_new_string("World"),
-        Core.vx_new_string("!vx/core/func exception"),
-        Core.vx_new_string("Exception in Function"),
-        Core.vx_new_string("!vx/core/func permissiondenied"),
-        Core.vx_new_string("Permission Denied to Function"),
-        Core.vx_new_string("!vx/repl/repl/repl<-string-argmap repltypenotfound"),
-        Core.vx_new_string("Repl Type Not Found")
+        // [
+          Core.vx_new_string("Hello"),
+          Core.vx_new_string("Hello"),
+          Core.vx_new_string("World"),
+          Core.vx_new_string("World"),
+          Core.vx_new_string("!vx/core/func exception"),
+          Core.vx_new_string("Exception in Function"),
+          Core.vx_new_string("!vx/core/func permissiondenied"),
+          Core.vx_new_string("Permission Denied to Function"),
+          Core.vx_new_string("!vx/repl/repl/repl<-string-argmap repltypenotfound"),
+          Core.vx_new_string("Repl Type Not Found")
+        // ]
       )
     );
     return output;

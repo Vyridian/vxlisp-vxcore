@@ -16,7 +16,7 @@
         let code = ":loopmaximumexceeded"
         let details = Vx_Core.vx_new_int(icount)
         let msg = Vx_Core.vx_msg_from_error(path, code, details)
-        output = Vx_Core.vx_copy(output, msg)
+        output = Vx_Core.vx_copy(generic_any_1, output, [msg])
         iscontinue = false
       } else {
         icount += 1
@@ -46,7 +46,7 @@
         let code = ":loopmaximumexceeded"
         let details = Vx_Core.vx_new_int(icount)
         let msg = Vx_Core.vx_msg_from_error(path, code, details)
-        output = Vx_Core.vx_copy(output, msg)
+        output = Vx_Core.vx_copy(generic_any_1, output, [msg])
         iscontinue = false
       } else {
         icount += 1
@@ -117,7 +117,7 @@
         let code = ":loopmaximumexceeded"
         let details = Vx_Core.vx_new_int(icount)
         let msg = Vx_Core.vx_msg_from_error(path, code, details)
-        output = Vx_Core.vx_copy(output, msg)
+        output = Vx_Core.vx_copy(generic_list_1, output, [msg])
         iscontinue = false
       } else {
         let valwhile = fn_while.vx_boolean_from_any(work)

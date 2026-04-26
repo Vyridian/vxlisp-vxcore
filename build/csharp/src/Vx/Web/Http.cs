@@ -56,7 +56,10 @@ public static class Http {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Http.Type_response output = Vx.Core.vx_copy(Vx.Web.Http.e_response, vals);
+      Vx.Web.Http.Type_response output = Vx.Core.vx_copy(
+        Vx.Web.Http.e_response,
+        vals
+      );
       return output;
     }
 
@@ -78,9 +81,19 @@ public static class Http {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -96,10 +109,21 @@ public static class Http {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/http/response", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/http/response",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -110,8 +134,17 @@ public static class Http {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/http/response", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/http/response",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -123,7 +156,12 @@ public static class Http {
               vx_p_ok = valok;
             } else if (valsub is bool) {
               ischanged = true;
-              vx_p_ok = Vx.Core.vx_new(Vx.Core.t_boolean, valsub);
+              vx_p_ok = Vx.Core.vx_new(
+                Vx.Core.t_boolean,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -134,9 +172,20 @@ public static class Http {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("ok"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/http/response", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/http/response",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":status")) {
             if (valsub == vx_p_status) {
@@ -145,7 +194,12 @@ public static class Http {
               vx_p_status = valstatus;
             } else if (valsub is int) {
               ischanged = true;
-              vx_p_status = Vx.Core.vx_new(Vx.Core.t_int, valsub);
+              vx_p_status = Vx.Core.vx_new(
+                Vx.Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -156,14 +210,34 @@ public static class Http {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("status"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/http/response", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/http/response",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/http/response", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/http/response",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -192,17 +266,17 @@ public static class Http {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/http", // pkgname
-        "response", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/http",
+        "response",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -249,17 +323,17 @@ public static class Http {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/data/csv", // pkgname
-          "csv", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/csv",
+          "csv",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -280,7 +354,10 @@ public static class Http {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(Vx.Core.t_string, value);
+      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        value
+      );
       Task<Vx.Data.Csv.Type_csv> future = Vx.Web.Http.f_csv_from_httpget(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -288,9 +365,17 @@ public static class Http {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Core.Type_string url = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string url = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Data.Csv.Type_csv> future = Vx.Web.Http.f_csv_from_httpget(url);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -308,7 +393,8 @@ public static class Http {
     Task<Vx.Data.Csv.Type_csv> output = Vx.Core.vx_async_new_from_value(Vx.Data.Csv.e_csv);
     output = Vx.Core.f_let_async(
       Vx.Data.Csv.t_csv,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
         Task<Vx.Data.Textblock.Type_textblock> future_textblock = Vx.Web.Http.f_textblock_from_httpget(
           url,
           Vx.Core.vx_new_string("text/csv")
@@ -317,14 +403,13 @@ public static class Http {
           Vx.Core.t_any,
           future_textblock,
           (textblock) => {
-            Vx.Core.Type_any output_2 = Vx.Data.Csv.f_csv_from_textblock(
-              textblock
-            );
-            return output_2;
-          }
+            Vx.Core.Type_any output_2 = Vx.Data.Csv.f_csv_from_textblock(textblock);
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -366,17 +451,17 @@ public static class Http {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/web/http", // pkgname
-          "response", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/http",
+          "response",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -397,7 +482,10 @@ public static class Http {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(Vx.Core.t_string, value);
+      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        value
+      );
       Task<Vx.Web.Http.Type_response> future = Vx.Web.Http.f_json_from_httpget(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -405,9 +493,17 @@ public static class Http {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Core.Type_string url = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string url = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Web.Http.Type_response> future = Vx.Web.Http.f_json_from_httpget(url);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -425,7 +521,8 @@ public static class Http {
     Task<Vx.Web.Http.Type_response> output = Vx.Core.vx_async_new_from_value(Vx.Web.Http.e_response);
     output = Vx.Core.f_let_async(
       Vx.Web.Http.t_response,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
         Task<Vx.Web.Http.Type_response> future_response = Vx.Web.Http.f_response_from_httpget(
           url,
           Vx.Core.vx_new_string("application/json")
@@ -435,11 +532,12 @@ public static class Http {
           future_response,
           (response) => {
             Vx.Core.Type_any output_2 = response;
-            return output_2;
-          }
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -482,17 +580,17 @@ public static class Http {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/web/http", // pkgname
-          "response", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/http",
+          "response",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -510,10 +608,23 @@ public static class Http {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Core.Type_string url = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string contenttype = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_string url = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string contenttype = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       Task<Vx.Web.Http.Type_response> future = Vx.Web.Http.f_response_from_httpget(url, contenttype);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -569,17 +680,17 @@ public static class Http {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -600,7 +711,10 @@ public static class Http {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(Vx.Core.t_string, value);
+      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        value
+      );
       Task<Vx.Core.Type_string> future = Vx.Web.Http.f_text_from_httpget(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -608,9 +722,17 @@ public static class Http {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Core.Type_string url = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string url = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Core.Type_string> future = Vx.Web.Http.f_text_from_httpget(url);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -628,7 +750,8 @@ public static class Http {
     Task<Vx.Core.Type_string> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_string);
     output = Vx.Core.f_let_async(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
         Task<Vx.Web.Http.Type_response> future_response = Vx.Web.Http.f_response_from_httpget(
           url,
           Vx.Core.vx_new_string("text/plain")
@@ -637,14 +760,13 @@ public static class Http {
           Vx.Core.t_any,
           future_response,
           (response) => {
-            Vx.Core.Type_any output_2 = Vx.Web.Http.f_text_from_response(
-              response
-            );
-            return output_2;
-          }
+            Vx.Core.Type_any output_2 = Vx.Web.Http.f_text_from_response(response);
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -684,17 +806,17 @@ public static class Http {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -718,13 +840,21 @@ public static class Http {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Http.Type_response inputval = (Vx.Web.Http.Type_response)value;
       Vx.Core.Type_any outputval = Vx.Web.Http.f_text_from_response(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Http.Type_response response = Vx.Core.f_any_from_any(Vx.Web.Http.t_response, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Http.Type_response response = Vx.Core.f_any_from_any(
+        Vx.Web.Http.t_response,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Http.f_text_from_response(response);
       return output;
     }
@@ -782,17 +912,17 @@ public static class Http {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -810,10 +940,23 @@ public static class Http {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Core.Type_string url = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string contenttype = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_string url = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string contenttype = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       Task<Vx.Data.Textblock.Type_textblock> future = Vx.Web.Http.f_textblock_from_httpget(url, contenttype);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -831,23 +974,20 @@ public static class Http {
     Task<Vx.Data.Textblock.Type_textblock> output = Vx.Core.vx_async_new_from_value(Vx.Data.Textblock.e_textblock);
     output = Vx.Core.f_let_async(
       Vx.Data.Textblock.t_textblock,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
-        Task<Vx.Web.Http.Type_response> future_response = Vx.Web.Http.f_response_from_httpget(
-          url,
-          contenttype
-        );
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
+        Task<Vx.Web.Http.Type_response> future_response = Vx.Web.Http.f_response_from_httpget(url, contenttype);
         Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
           Vx.Core.t_any,
           future_response,
           (response) => {
-            Vx.Core.Type_any output_2 = Vx.Web.Http.f_textblock_from_response(
-              response
-            );
-            return output_2;
-          }
+            Vx.Core.Type_any output_2 = Vx.Web.Http.f_textblock_from_response(response);
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -887,17 +1027,17 @@ public static class Http {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -921,13 +1061,21 @@ public static class Http {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Http.Type_response inputval = (Vx.Web.Http.Type_response)value;
       Vx.Core.Type_any outputval = Vx.Web.Http.f_textblock_from_response(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Http.Type_response response = Vx.Core.f_any_from_any(Vx.Web.Http.t_response, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Http.Type_response response = Vx.Core.f_any_from_any(
+        Vx.Web.Http.t_response,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Http.f_textblock_from_response(response);
       return output;
     }
@@ -948,10 +1096,10 @@ public static class Http {
       Vx.Data.Textblock.t_textblock,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":text"),
-        Vx.Web.Http.f_text_from_response(
-          response
-        )
+        // [
+          Vx.Core.vx_new_string(":text"),
+          Vx.Web.Http.f_text_from_response(response)
+        // ]
       )
     );
     return output;
@@ -994,17 +1142,17 @@ public static class Http {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1025,7 +1173,10 @@ public static class Http {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(Vx.Core.t_string, value);
+      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        value
+      );
       Task<Vx.Data.Xml.Type_xml> future = Vx.Web.Http.f_xml_from_httpget(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -1033,9 +1184,17 @@ public static class Http {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Core.Type_string url = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string url = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Data.Xml.Type_xml> future = Vx.Web.Http.f_xml_from_httpget(url);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -1053,7 +1212,8 @@ public static class Http {
     Task<Vx.Data.Xml.Type_xml> output = Vx.Core.vx_async_new_from_value(Vx.Data.Xml.e_xml);
     output = Vx.Core.f_let_async(
       Vx.Data.Xml.t_xml,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
         Task<Vx.Data.Textblock.Type_textblock> future_textblock = Vx.Web.Http.f_textblock_from_httpget(
           url,
           Vx.Core.vx_new_string("text/xml")
@@ -1062,14 +1222,13 @@ public static class Http {
           Vx.Core.t_any,
           future_textblock,
           (textblock) => {
-            Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_from_textblock(
-              textblock
-            );
-            return output_2;
-          }
+            Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_from_textblock(textblock);
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }

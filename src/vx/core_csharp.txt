@@ -1150,7 +1150,11 @@
       }
     } else if (value is Vx.Core.Type_list vallist) {
       Vx.Core.Type_typedef typedef = vallist.vx_typedef();
-      Vx.Core.Type_string typedefname = typedef.name();
+      string typedefname = typedef.name().vx_string();
+      string pkgname = typedef.pkgname().vx_string();
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname;
+      }
       int indentint = indent;
       indentint += 1;
       List<Vx.Core.Type_any> listval = vallist.vx_list();
@@ -1162,10 +1166,14 @@
         string msgtext = Vx.Core.vx_string_from_any_indent(vallist.vx_msgblock(), indentint, linefeed);
         output += "\n" + indenttext + " :msgblock\n  " + indenttext + msgtext;
       }
-      output = "(" + typedefname.vx_string() + output + ")";
+      output = "(" + typedefname + output + ")";
     } else if (value is Vx.Core.Type_map valmap) {
       Vx.Core.Type_typedef typedef = valmap.vx_typedef();
-      Vx.Core.Type_string typedefname = typedef.name();
+      string typedefname = typedef.name().vx_string();
+      string pkgname = typedef.pkgname().vx_string();
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname;
+      }
       int indentint = indent;
       indentint += 2;
       Map<string, Vx.Core.Type_any> mapval = valmap.vx_map();
@@ -1188,11 +1196,14 @@
         string msgtext = Vx.Core.vx_string_from_any_indent(valmap.vx_msgblock(), indentint, linefeed);
         output += "\n" + indenttext + " :msgblock\n  " + indenttext + msgtext;
       }
-      output = "(" + typedefname.vx_string() + output + ")";
+      output = "(" + typedefname + output + ")";
     } else if (value is Vx.Core.Type_struct valstruct) {
       Vx.Core.Type_typedef typedef = valstruct.vx_typedef();
-      Vx.Core.Type_string typedefname = typedef.name();
-      string stypedefname = typedefname.vx_string();
+      string typedefname = typedef.name().vx_string();
+      string pkgname = typedef.pkgname().vx_string();
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname;
+      }
       int indentint2 = indent;
       indentint2 += 2;
       Map<string, Vx.Core.Type_any> mapval2 = valstruct.vx_map();
@@ -1213,17 +1224,16 @@
           output += "\n" + indenttext + " " + key + strval2;
         }
       }
-      if (stypedefname == "msg") {
-      } else if (stypedefname == "msgblock") {
+      if (typedefname == "msg") {
+      } else if (typedefname == "msgblock") {
       } else if (valstruct.vx_msgblock() != Vx.Core.e_msgblock) {
         string msgtext2 = Vx.Core.vx_string_from_any_indent(valstruct.vx_msgblock(), indentint2, linefeed);
         output += "\n" + indenttext + " :msgblock\n  " + indenttext + msgtext2;
       }
-      output = "(" + typedefname.vx_string() + output + ")";
+      output = "(" + typedefname + output + ")";
     } else if (value is Vx.Core.Type_func valfunc) {
       Vx.Core.Type_funcdef funcdef = valfunc.vx_funcdef();
-      Vx.Core.Type_string funcdefname = Vx.Core.f_funcname_from_funcdef(funcdef);
-      output = funcdefname.vx_string();
+      string funcdefname = Vx.Core.f_funcname_from_funcdef(funcdef).vx_string();
       if (valfunc.vx_msgblock() != Vx.Core.e_msgblock) {
         string msgtext = Vx.Core.vx_string_from_any_indent(valfunc.vx_msgblock(), indent, linefeed);
         output += "\n" + indenttext + " :msgblock\n  " + indenttext + msgtext;

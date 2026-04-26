@@ -37,17 +37,17 @@ public static class En {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -71,13 +71,21 @@ public static class En {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_anylist inputval = (Vx.Core.Type_anylist)value;
       Vx.Core.Type_any outputval = Vx.Translation.En.f_context_en(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_anylist args = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_anylist args = Vx.Core.f_any_from_any(
+        Vx.Core.t_anylist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Translation.En.f_context_en(args);
       return output;
     }
@@ -98,15 +106,19 @@ public static class En {
       Vx.Core.t_context,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":session"),
-        Vx.Core.f_new(
-          Vx.Core.t_session,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":translation"),
-            Vx.Translation.En.f_translation_en()
+        // [
+          Vx.Core.vx_new_string(":session"),
+          Vx.Core.f_new(
+            Vx.Core.t_session,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":translation"),
+                Vx.Translation.En.f_translation_en()
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -147,17 +159,17 @@ public static class En {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -181,13 +193,21 @@ public static class En {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_anylist inputval = (Vx.Core.Type_anylist)value;
       Vx.Core.Type_any outputval = Vx.Translation.En.f_context_test(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_anylist args = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_anylist args = Vx.Core.f_any_from_any(
+        Vx.Core.t_anylist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Translation.En.f_context_test(args);
       return output;
     }
@@ -208,24 +228,30 @@ public static class En {
       Vx.Core.t_context,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":session"),
-        Vx.Core.f_new(
-          Vx.Core.t_session,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":translation"),
-            Vx.Translation.En.f_translation_en(),
-            Vx.Core.vx_new_string(":user"),
-            Vx.Core.f_new(
-              Vx.Core.t_user,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":security"),
-                Vx.Translation.En.f_securitydata_test()
-              )
+        // [
+          Vx.Core.vx_new_string(":session"),
+          Vx.Core.f_new(
+            Vx.Core.t_session,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":translation"),
+                Vx.Translation.En.f_translation_en(),
+                Vx.Core.vx_new_string(":user"),
+                Vx.Core.f_new(
+                  Vx.Core.t_user,
+                  Vx.Core.vx_new(
+                    Vx.Core.t_anylist,
+                    // [
+                      Vx.Core.vx_new_string(":security"),
+                      Vx.Translation.En.f_securitydata_test()
+                    // ]
+                  )
+                )
+              // ]
             )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -265,17 +291,17 @@ public static class En {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -313,17 +339,21 @@ public static class En {
       Vx.Core.t_security,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":allowfuncs"),
-        Vx.Core.f_new(
-          Vx.Core.t_funclist,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Data.File.t_boolean_write_from_file_any,
-            Vx.Data.File.t_boolean_write_from_file_string,
-            Vx.Data.File.t_file_read_from_file,
-            Vx.Data.File.t_string_read_from_file
+        // [
+          Vx.Core.vx_new_string(":allowfuncs"),
+          Vx.Core.f_new(
+            Vx.Core.t_funclist,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Data.File.t_boolean_write_from_file_any,
+                Vx.Data.File.t_boolean_write_from_file_string,
+                Vx.Data.File.t_file_read_from_file,
+                Vx.Data.File.t_string_read_from_file
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -363,17 +393,17 @@ public static class En {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -411,10 +441,12 @@ public static class En {
       Vx.Core.t_translation,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":name"),
-        Vx.Core.vx_new_string("en"),
-        Vx.Core.vx_new_string(":wordmap"),
-        Vx.Translation.En.f_words()
+        // [
+          Vx.Core.vx_new_string(":name"),
+          Vx.Core.vx_new_string("en"),
+          Vx.Core.vx_new_string(":wordmap"),
+          Vx.Translation.En.f_words()
+        // ]
       )
     );
     return output;
@@ -454,17 +486,22 @@ public static class En {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "stringmap", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_string), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "stringmap",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_string
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -502,16 +539,18 @@ public static class En {
       Vx.Core.t_stringmap,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string("Hello"),
-        Vx.Core.vx_new_string("Hello"),
-        Vx.Core.vx_new_string("World"),
-        Vx.Core.vx_new_string("World"),
-        Vx.Core.vx_new_string("!vx/core/func exception"),
-        Vx.Core.vx_new_string("Exception in Function"),
-        Vx.Core.vx_new_string("!vx/core/func permissiondenied"),
-        Vx.Core.vx_new_string("Permission Denied to Function"),
-        Vx.Core.vx_new_string("!vx/repl/repl/repl<-string-argmap repltypenotfound"),
-        Vx.Core.vx_new_string("Repl Type Not Found")
+        // [
+          Vx.Core.vx_new_string("Hello"),
+          Vx.Core.vx_new_string("Hello"),
+          Vx.Core.vx_new_string("World"),
+          Vx.Core.vx_new_string("World"),
+          Vx.Core.vx_new_string("!vx/core/func exception"),
+          Vx.Core.vx_new_string("Exception in Function"),
+          Vx.Core.vx_new_string("!vx/core/func permissiondenied"),
+          Vx.Core.vx_new_string("Permission Denied to Function"),
+          Vx.Core.vx_new_string("!vx/repl/repl/repl<-string-argmap repltypenotfound"),
+          Vx.Core.vx_new_string("Repl Type Not Found")
+        // ]
       )
     );
     return output;

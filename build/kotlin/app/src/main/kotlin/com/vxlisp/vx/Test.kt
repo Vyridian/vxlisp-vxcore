@@ -92,7 +92,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testcase = vx_core.vx_copy(vx_test.e_testcase, *vals)
+      var output : vx_test.Type_testcase = vx_core.vx_copy(
+        vx_test.e_testcase,
+        *vals
+      )
       return output
     }
 
@@ -118,9 +121,19 @@ object vx_test {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -141,8 +154,17 @@ object vx_test {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testcase",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -153,8 +175,17 @@ object vx_test {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -167,7 +198,12 @@ object vx_test {
               vx_p_passfail = valpassfail
             } else if (valsub is Boolean) {
               ischanged = true
-              vx_p_passfail = vx_core.vx_new(vx_core.t_boolean, valsub)
+              vx_p_passfail = vx_core.vx_new(
+                vx_core.t_boolean,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -179,9 +215,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("passfail"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -191,7 +238,12 @@ object vx_test {
               vx_p_testpkg = valtestpkg
             } else if (valsub is String) {
               ischanged = true
-              vx_p_testpkg = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_testpkg = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -203,9 +255,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":casename")) {
             if (valsub == vx_p_casename) {
@@ -215,7 +278,12 @@ object vx_test {
               vx_p_casename = valcasename
             } else if (valsub is String) {
               ischanged = true
-              vx_p_casename = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_casename = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -227,9 +295,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("casename"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":describelist")) {
             if (valsub == vx_p_describelist) {
@@ -248,14 +327,34 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("describelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/test/testcase", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testcase",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -286,17 +385,17 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testcase", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testcase",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -352,7 +451,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testcaselist = vx_core.vx_copy(vx_test.e_testcaselist, *vals)
+      var output : vx_test.Type_testcaselist = vx_core.vx_copy(
+        vx_test.e_testcaselist,
+        *vals
+      )
       return output
     }
 
@@ -368,9 +470,19 @@ object vx_test {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_test.Type_testcaselist) {
           var multi : vx_test.Type_testcaselist = valsub as vx_test.Type_testcaselist
           ischanged = true
@@ -395,11 +507,29 @@ object vx_test {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/test/testcaselist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/test/testcaselist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/test/testcaselist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/test/testcaselist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -425,17 +555,22 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testcaselist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_test.t_testcase), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testcaselist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_test.t_testcase
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -531,7 +666,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testcoveragedetail = vx_core.vx_copy(vx_test.e_testcoveragedetail, *vals)
+      var output : vx_test.Type_testcoveragedetail = vx_core.vx_copy(
+        vx_test.e_testcoveragedetail,
+        *vals
+      )
       return output
     }
 
@@ -557,9 +695,19 @@ object vx_test {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -580,8 +728,17 @@ object vx_test {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testcoveragedetail",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -592,8 +749,17 @@ object vx_test {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -615,9 +781,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("constmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":funcmap")) {
             if (valsub == vx_p_funcmap) {
@@ -636,9 +813,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("funcmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -648,7 +836,12 @@ object vx_test {
               vx_p_testpkg = valtestpkg
             } else if (valsub is String) {
               ischanged = true
-              vx_p_testpkg = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_testpkg = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -660,9 +853,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":typemap")) {
             if (valsub == vx_p_typemap) {
@@ -681,14 +885,34 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("typemap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testcoveragedetail",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -719,17 +943,17 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragedetail", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testcoveragedetail",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -825,7 +1049,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testcoveragenums = vx_core.vx_copy(vx_test.e_testcoveragenums, *vals)
+      var output : vx_test.Type_testcoveragenums = vx_core.vx_copy(
+        vx_test.e_testcoveragenums,
+        *vals
+      )
       return output
     }
 
@@ -851,9 +1078,19 @@ object vx_test {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -874,8 +1111,17 @@ object vx_test {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testcoveragenums",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -886,8 +1132,17 @@ object vx_test {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -900,7 +1155,12 @@ object vx_test {
               vx_p_pct = valpct
             } else if (valsub is Int) {
               ischanged = true
-              vx_p_pct = vx_core.vx_new(vx_core.t_int, valsub)
+              vx_p_pct = vx_core.vx_new(
+                vx_core.t_int,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -912,9 +1172,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("pct"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -924,7 +1195,12 @@ object vx_test {
               vx_p_testpkg = valtestpkg
             } else if (valsub is String) {
               ischanged = true
-              vx_p_testpkg = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_testpkg = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -936,9 +1212,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":tests")) {
             if (valsub == vx_p_tests) {
@@ -948,7 +1235,12 @@ object vx_test {
               vx_p_tests = valtests
             } else if (valsub is Int) {
               ischanged = true
-              vx_p_tests = vx_core.vx_new(vx_core.t_int, valsub)
+              vx_p_tests = vx_core.vx_new(
+                vx_core.t_int,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -960,9 +1252,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("tests"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":total")) {
             if (valsub == vx_p_total) {
@@ -972,7 +1275,12 @@ object vx_test {
               vx_p_total = valtotal
             } else if (valsub is Int) {
               ischanged = true
-              vx_p_total = vx_core.vx_new(vx_core.t_int, valsub)
+              vx_p_total = vx_core.vx_new(
+                vx_core.t_int,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -984,14 +1292,34 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("total"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testcoveragenums",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -1022,17 +1350,17 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragenums", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testcoveragenums",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1188,7 +1516,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testcoveragesummary = vx_core.vx_copy(vx_test.e_testcoveragesummary, *vals)
+      var output : vx_test.Type_testcoveragesummary = vx_core.vx_copy(
+        vx_test.e_testcoveragesummary,
+        *vals
+      )
       return output
     }
 
@@ -1222,9 +1553,19 @@ object vx_test {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -1245,8 +1586,17 @@ object vx_test {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testcoveragesummary",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1257,8 +1607,17 @@ object vx_test {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -1280,9 +1639,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("bigospacenums"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":bigotimenums")) {
             if (valsub == vx_p_bigotimenums) {
@@ -1301,9 +1671,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("bigotimenums"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":constnums")) {
             if (valsub == vx_p_constnums) {
@@ -1322,9 +1703,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("constnums"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":docnums")) {
             if (valsub == vx_p_docnums) {
@@ -1343,9 +1735,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("docnums"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":funcnums")) {
             if (valsub == vx_p_funcnums) {
@@ -1364,9 +1767,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("funcnums"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -1376,7 +1790,12 @@ object vx_test {
               vx_p_testpkg = valtestpkg
             } else if (valsub is String) {
               ischanged = true
-              vx_p_testpkg = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_testpkg = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -1388,9 +1807,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":totalnums")) {
             if (valsub == vx_p_totalnums) {
@@ -1409,9 +1839,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("totalnums"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":typenums")) {
             if (valsub == vx_p_typenums) {
@@ -1430,14 +1871,34 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("typenums"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testcoveragesummary",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -1472,17 +1933,17 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragesummary", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testcoveragesummary",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1563,7 +2024,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testdescribe = vx_core.vx_copy(vx_test.e_testdescribe, *vals)
+      var output : vx_test.Type_testdescribe = vx_core.vx_copy(
+        vx_test.e_testdescribe,
+        *vals
+      )
       return output
     }
 
@@ -1587,9 +2051,19 @@ object vx_test {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -1610,8 +2084,17 @@ object vx_test {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/test/testdescribe", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testdescribe",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1622,8 +2105,17 @@ object vx_test {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/test/testdescribe", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -1636,7 +2128,12 @@ object vx_test {
               vx_p_describename = valdescribename
             } else if (valsub is String) {
               ischanged = true
-              vx_p_describename = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_describename = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -1648,9 +2145,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("describename"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -1660,7 +2168,12 @@ object vx_test {
               vx_p_testpkg = valtestpkg
             } else if (valsub is String) {
               ischanged = true
-              vx_p_testpkg = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_testpkg = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -1672,9 +2185,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":testresult")) {
             if (valsub == vx_p_testresult) {
@@ -1693,14 +2217,34 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("testresult"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/test/testdescribe", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testdescribe",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -1730,17 +2274,17 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testdescribe", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testdescribe",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1796,7 +2340,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testdescribelist = vx_core.vx_copy(vx_test.e_testdescribelist, *vals)
+      var output : vx_test.Type_testdescribelist = vx_core.vx_copy(
+        vx_test.e_testdescribelist,
+        *vals
+      )
       return output
     }
 
@@ -1812,9 +2359,19 @@ object vx_test {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_test.Type_testdescribelist) {
           var multi : vx_test.Type_testdescribelist = valsub as vx_test.Type_testdescribelist
           ischanged = true
@@ -1839,11 +2396,29 @@ object vx_test {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/test/testdescribelist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/test/testdescribelist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/test/testdescribelist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/test/testdescribelist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -1869,17 +2444,22 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testdescribelist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_test.t_testdescribe), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testdescribelist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_test.t_testdescribe
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1990,7 +2570,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testpackage = vx_core.vx_copy(vx_test.e_testpackage, *vals)
+      var output : vx_test.Type_testpackage = vx_core.vx_copy(
+        vx_test.e_testpackage,
+        *vals
+      )
       return output
     }
 
@@ -2018,9 +2601,19 @@ object vx_test {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -2041,8 +2634,17 @@ object vx_test {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testpackage",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2053,8 +2655,17 @@ object vx_test {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -2076,9 +2687,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("caselist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":coveragedetail")) {
             if (valsub == vx_p_coveragedetail) {
@@ -2097,9 +2719,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("coveragedetail"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":coveragesummary")) {
             if (valsub == vx_p_coveragesummary) {
@@ -2118,9 +2751,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("coveragesummary"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":passfail")) {
             if (valsub == vx_p_passfail) {
@@ -2130,7 +2774,12 @@ object vx_test {
               vx_p_passfail = valpassfail
             } else if (valsub is Boolean) {
               ischanged = true
-              vx_p_passfail = vx_core.vx_new(vx_core.t_boolean, valsub)
+              vx_p_passfail = vx_core.vx_new(
+                vx_core.t_boolean,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2142,9 +2791,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("passfail"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -2154,7 +2814,12 @@ object vx_test {
               vx_p_testpkg = valtestpkg
             } else if (valsub is String) {
               ischanged = true
-              vx_p_testpkg = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_testpkg = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2166,14 +2831,34 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/test/testpackage", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testpackage",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -2205,17 +2890,17 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testpackage", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testpackage",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2271,7 +2956,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testpackagelist = vx_core.vx_copy(vx_test.e_testpackagelist, *vals)
+      var output : vx_test.Type_testpackagelist = vx_core.vx_copy(
+        vx_test.e_testpackagelist,
+        *vals
+      )
       return output
     }
 
@@ -2287,9 +2975,19 @@ object vx_test {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_test.Type_testpackagelist) {
           var multi : vx_test.Type_testpackagelist = valsub as vx_test.Type_testpackagelist
           ischanged = true
@@ -2314,11 +3012,29 @@ object vx_test {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/test/testpackagelist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/test/testpackagelist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/test/testpackagelist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/test/testpackagelist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -2344,17 +3060,22 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testpackagelist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_test.t_testpackage), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testpackagelist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_test.t_testpackage
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2465,7 +3186,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testresult = vx_core.vx_copy(vx_test.e_testresult, *vals)
+      var output : vx_test.Type_testresult = vx_core.vx_copy(
+        vx_test.e_testresult,
+        *vals
+      )
       return output
     }
 
@@ -2493,9 +3217,19 @@ object vx_test {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -2516,8 +3250,17 @@ object vx_test {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testresult",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2528,8 +3271,17 @@ object vx_test {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -2542,7 +3294,12 @@ object vx_test {
               vx_p_code = valcode
             } else if (valsub is String) {
               ischanged = true
-              vx_p_code = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_code = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2554,9 +3311,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("code"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":passfail")) {
             if (valsub == vx_p_passfail) {
@@ -2566,7 +3334,12 @@ object vx_test {
               vx_p_passfail = valpassfail
             } else if (valsub is Boolean) {
               ischanged = true
-              vx_p_passfail = vx_core.vx_new(vx_core.t_boolean, valsub)
+              vx_p_passfail = vx_core.vx_new(
+                vx_core.t_boolean,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2578,9 +3351,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("passfail"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":expected")) {
             if (valsub == vx_p_expected) {
@@ -2599,9 +3383,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("expected"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":actual")) {
             if (valsub == vx_p_actual) {
@@ -2620,9 +3415,20 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("actual"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":fn-actual")) {
             if (valsub == vx_p_fn_actual) {
@@ -2641,14 +3447,34 @@ object vx_test {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fn-actual"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/test/testresult", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/test/testresult",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -2680,17 +3506,17 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testresult", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testresult",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2746,7 +3572,10 @@ object vx_test {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_test.Type_testresultlist = vx_core.vx_copy(vx_test.e_testresultlist, *vals)
+      var output : vx_test.Type_testresultlist = vx_core.vx_copy(
+        vx_test.e_testresultlist,
+        *vals
+      )
       return output
     }
 
@@ -2762,9 +3591,19 @@ object vx_test {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_test.Type_testresultlist) {
           var multi : vx_test.Type_testresultlist = valsub as vx_test.Type_testresultlist
           ischanged = true
@@ -2789,11 +3628,29 @@ object vx_test {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/test/testresultlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/test/testresultlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/test/testresultlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/test/testresultlist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -2819,17 +3676,22 @@ object vx_test {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/test", // pkgname
-        "testresultlist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_test.t_testresult), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/test",
+        "testresultlist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_test.t_testresult
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2865,381 +3727,457 @@ object vx_test {
           vx_web_html.t_stylesheet,
           vx_core.vx_new(
             vx_core.t_anylist,
-            vx_core.vx_new_string(":name"),
-            vx_core.vx_new_string("Test Suite"),
-            vx_core.vx_new_string(":styles"),
-            vx_core.f_new(
-              vx_web_html.t_stylelist,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string("body"),
-                    vx_core.vx_new_string(":props"),
+            // [
+              vx_core.vx_new_string(":name"),
+              vx_core.vx_new_string("Test Suite"),
+              vx_core.vx_new_string(":styles"),
+              vx_core.f_new(
+                vx_web_html.t_stylelist,
+                vx_core.vx_new(
+                  vx_core.t_anylist,
+                  // [
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("font-size"),
-                        vx_core.vx_new_string("0.9em"),
-                        vx_core.vx_new_string("font-family"),
-                        vx_core.vx_new_string("sans-serif")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string("body"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("font-size"),
+                                vx_core.vx_new_string("0.9em"),
+                                vx_core.vx_new_string("font-family"),
+                                vx_core.vx_new_string("sans-serif")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string("details summary"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("cursor"),
-                        vx_core.vx_new_string("pointer"),
-                        vx_core.vx_new_string("display"),
-                        vx_core.vx_new_string("inline-flex"),
-                        vx_core.vx_new_string("gap"),
-                        vx_core.vx_new_string("10px")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string("details summary"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("cursor"),
+                                vx_core.vx_new_string("pointer"),
+                                vx_core.vx_new_string("display"),
+                                vx_core.vx_new_string("inline-flex"),
+                                vx_core.vx_new_string("gap"),
+                                vx_core.vx_new_string("10px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string("table"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("vertical-align"),
-                        vx_core.vx_new_string("top"),
-                        vx_core.vx_new_string("border-collapse"),
-                        vx_core.vx_new_string("collapse"),
-                        vx_core.vx_new_string("margin"),
-                        vx_core.vx_new_string("25px 0"),
-                        vx_core.vx_new_string("min-width"),
-                        vx_core.vx_new_string("400px"),
-                        vx_core.vx_new_string("box-shadow"),
-                        vx_core.vx_new_string("0 0 20px rgba(0, 0, 0, 0.15)")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string("table"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("vertical-align"),
+                                vx_core.vx_new_string("top"),
+                                vx_core.vx_new_string("border-collapse"),
+                                vx_core.vx_new_string("collapse"),
+                                vx_core.vx_new_string("margin"),
+                                vx_core.vx_new_string("25px 0"),
+                                vx_core.vx_new_string("min-width"),
+                                vx_core.vx_new_string("400px"),
+                                vx_core.vx_new_string("box-shadow"),
+                                vx_core.vx_new_string("0 0 20px rgba(0, 0, 0, 0.15)")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string("thead tr"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("background-color"),
-                        vx_core.vx_new_string("#009879"),
-                        vx_core.vx_new_string("color"),
-                        vx_core.vx_new_string("#ffffff"),
-                        vx_core.vx_new_string("text-align"),
-                        vx_core.vx_new_string("left")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string("thead tr"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("background-color"),
+                                vx_core.vx_new_string("#009879"),
+                                vx_core.vx_new_string("color"),
+                                vx_core.vx_new_string("#ffffff"),
+                                vx_core.vx_new_string("text-align"),
+                                vx_core.vx_new_string("left")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string("td"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("padding"),
-                        vx_core.vx_new_string("10px 10px"),
-                        vx_core.vx_new_string("vertical-align"),
-                        vx_core.vx_new_string("top")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string("td"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("padding"),
+                                vx_core.vx_new_string("10px 10px"),
+                                vx_core.vx_new_string("vertical-align"),
+                                vx_core.vx_new_string("top")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string("tbody tr"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("border-bottom"),
-                        vx_core.vx_new_string("1px solid #dddddd")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string("tbody tr"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("border-bottom"),
+                                vx_core.vx_new_string("1px solid #dddddd")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string("tbody tr:nth-of-type(even)"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("background-color"),
-                        vx_core.vx_new_string("#f3f3f3")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string("tbody tr:nth-of-type(even)"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("background-color"),
+                                vx_core.vx_new_string("#f3f3f3")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string("tbody tr:last-of-type"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("border-bottom"),
-                        vx_core.vx_new_string("2px solid #009879")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string("tbody tr:last-of-type"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("border-bottom"),
+                                vx_core.vx_new_string("2px solid #009879")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string("tbody tr.active-row"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("font-weight"),
-                        vx_core.vx_new_string("bold"),
-                        vx_core.vx_new_string("color"),
-                        vx_core.vx_new_string("#009879")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string("tbody tr.active-row"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("font-weight"),
+                                vx_core.vx_new_string("bold"),
+                                vx_core.vx_new_string("color"),
+                                vx_core.vx_new_string("#009879")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string(".failflag"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("background-color"),
-                        vx_core.vx_new_string("red"),
-                        vx_core.vx_new_string("color"),
-                        vx_core.vx_new_string("white"),
-                        vx_core.vx_new_string("padding-left"),
-                        vx_core.vx_new_string("4px"),
-                        vx_core.vx_new_string("padding-right"),
-                        vx_core.vx_new_string("4px"),
-                        vx_core.vx_new_string("padding-top"),
-                        vx_core.vx_new_string("1px"),
-                        vx_core.vx_new_string("padding-bottom"),
-                        vx_core.vx_new_string("1px")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string(".failflag"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("background-color"),
+                                vx_core.vx_new_string("red"),
+                                vx_core.vx_new_string("color"),
+                                vx_core.vx_new_string("white"),
+                                vx_core.vx_new_string("padding-left"),
+                                vx_core.vx_new_string("4px"),
+                                vx_core.vx_new_string("padding-right"),
+                                vx_core.vx_new_string("4px"),
+                                vx_core.vx_new_string("padding-top"),
+                                vx_core.vx_new_string("1px"),
+                                vx_core.vx_new_string("padding-bottom"),
+                                vx_core.vx_new_string("1px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string(".passflag"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("background-color"),
-                        vx_core.vx_new_string("green"),
-                        vx_core.vx_new_string("color"),
-                        vx_core.vx_new_string("white"),
-                        vx_core.vx_new_string("padding-left"),
-                        vx_core.vx_new_string("4px"),
-                        vx_core.vx_new_string("padding-right"),
-                        vx_core.vx_new_string("4px"),
-                        vx_core.vx_new_string("padding-top"),
-                        vx_core.vx_new_string("1px"),
-                        vx_core.vx_new_string("padding-bottom"),
-                        vx_core.vx_new_string("1px")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string(".passflag"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("background-color"),
+                                vx_core.vx_new_string("green"),
+                                vx_core.vx_new_string("color"),
+                                vx_core.vx_new_string("white"),
+                                vx_core.vx_new_string("padding-left"),
+                                vx_core.vx_new_string("4px"),
+                                vx_core.vx_new_string("padding-right"),
+                                vx_core.vx_new_string("4px"),
+                                vx_core.vx_new_string("padding-top"),
+                                vx_core.vx_new_string("1px"),
+                                vx_core.vx_new_string("padding-bottom"),
+                                vx_core.vx_new_string("1px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string(".coveragenums"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("width"),
-                        vx_core.vx_new_string("90px")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string(".coveragenums"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("width"),
+                                vx_core.vx_new_string("90px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string(".coveragepct"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("text-align"),
-                        vx_core.vx_new_string("right")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string(".coveragepct"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("text-align"),
+                                vx_core.vx_new_string("right")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string(".coveragepctgreen"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("background-color"),
-                        vx_core.vx_new_string("green"),
-                        vx_core.vx_new_string("color"),
-                        vx_core.vx_new_string("white"),
-                        vx_core.vx_new_string("text-align"),
-                        vx_core.vx_new_string("right")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string(".coveragepctgreen"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("background-color"),
+                                vx_core.vx_new_string("green"),
+                                vx_core.vx_new_string("color"),
+                                vx_core.vx_new_string("white"),
+                                vx_core.vx_new_string("text-align"),
+                                vx_core.vx_new_string("right")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string(".coveragepctred"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("background-color"),
-                        vx_core.vx_new_string("red"),
-                        vx_core.vx_new_string("color"),
-                        vx_core.vx_new_string("white"),
-                        vx_core.vx_new_string("text-align"),
-                        vx_core.vx_new_string("right")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string(".coveragepctred"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("background-color"),
+                                vx_core.vx_new_string("red"),
+                                vx_core.vx_new_string("color"),
+                                vx_core.vx_new_string("white"),
+                                vx_core.vx_new_string("text-align"),
+                                vx_core.vx_new_string("right")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string(".pkgheader"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("display"),
-                        vx_core.vx_new_string("inline-flex"),
-                        vx_core.vx_new_string("gap"),
-                        vx_core.vx_new_string("10px")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string(".pkgheader"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("display"),
+                                vx_core.vx_new_string("inline-flex"),
+                                vx_core.vx_new_string("gap"),
+                                vx_core.vx_new_string("10px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string(".pkgname"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("font-weight"),
-                        vx_core.vx_new_string("bold"),
-                        vx_core.vx_new_string("width"),
-                        vx_core.vx_new_string("180px")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string(".pkgname"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("font-weight"),
+                                vx_core.vx_new_string("bold"),
+                                vx_core.vx_new_string("width"),
+                                vx_core.vx_new_string("180px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_style,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":name"),
-                    vx_core.vx_new_string(".preformatted"),
-                    vx_core.vx_new_string(":props"),
+                    ),
                     vx_core.f_new(
-                      vx_web_html.t_propmap,
+                      vx_web_html.t_style,
                       vx_core.vx_new(
                         vx_core.t_anylist,
-                        vx_core.vx_new_string("display"),
-                        vx_core.vx_new_string("block"),
-                        vx_core.vx_new_string("unicode-bidi"),
-                        vx_core.vx_new_string("embed"),
-                        vx_core.vx_new_string("font-family"),
-                        vx_core.vx_new_string("monospace"),
-                        vx_core.vx_new_string("white-space"),
-                        vx_core.vx_new_string("pre")
+                        // [
+                          vx_core.vx_new_string(":name"),
+                          vx_core.vx_new_string(".preformatted"),
+                          vx_core.vx_new_string(":props"),
+                          vx_core.f_new(
+                            vx_web_html.t_propmap,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string("display"),
+                                vx_core.vx_new_string("block"),
+                                vx_core.vx_new_string("unicode-bidi"),
+                                vx_core.vx_new_string("embed"),
+                                vx_core.vx_new_string("font-family"),
+                                vx_core.vx_new_string("monospace"),
+                                vx_core.vx_new_string("white-space"),
+                                vx_core.vx_new_string("pre")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
                     )
-                  )
+                  // ]
                 )
               )
-            )
+            // ]
           )
         )
       )
@@ -3294,17 +4232,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -3328,13 +4266,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
       val outputval : vx_core.Type_any = vx_test.f_context_test(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val args : vx_core.Type_anylist = vx_core.f_any_from_any(
+        vx_core.t_anylist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_context_test(args)
       return output
     }
@@ -3355,22 +4301,28 @@ object vx_test {
       vx_core.t_context,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":session"),
-        vx_core.f_new(
-          vx_core.t_session,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string(":user"),
-            vx_core.f_new(
-              vx_core.t_user,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_core.vx_new_string(":security"),
-                vx_test.f_security_test()
-              )
+        // [
+          vx_core.vx_new_string(":session"),
+          vx_core.f_new(
+            vx_core.t_session,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string(":user"),
+                vx_core.f_new(
+                  vx_core.t_user,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    // [
+                      vx_core.vx_new_string(":security"),
+                      vx_test.f_security_test()
+                    // ]
+                  )
+                )
+              // ]
             )
           )
-        )
+        // ]
       )
     )
     return output
@@ -3411,17 +4363,23 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_node,
+              vx_web_html.t_divchild
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -3445,13 +4403,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_test.Type_testcaselist = value as vx_test.Type_testcaselist
       val outputval : vx_core.Type_any = vx_test.f_div_from_testcaselist(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val testcaselist : vx_test.Type_testcaselist = vx_core.f_any_from_any(vx_test.t_testcaselist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testcaselist : vx_test.Type_testcaselist = vx_core.f_any_from_any(
+        vx_test.t_testcaselist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_div_from_testcaselist(testcaselist)
       return output
     }
@@ -3472,105 +4438,133 @@ object vx_test {
       vx_web_html.t_div,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.f_new(
-          vx_web_html.t_table,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string(":thead"),
-            vx_core.f_new(
-              vx_web_html.t_thead,
-              vx_core.vx_new(
-                vx_core.t_anylist,
+        // [
+          vx_core.f_new(
+            vx_web_html.t_table,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string(":thead"),
                 vx_core.f_new(
-                  vx_web_html.t_tr,
+                  vx_web_html.t_thead,
                   vx_core.vx_new(
                     vx_core.t_anylist,
-                    vx_core.f_new(
-                      vx_web_html.t_td,
-                      vx_core.vx_new(
-                        vx_core.t_anylist,
-                        vx_core.f_new(
-                          vx_web_html.t_p,
-                          vx_core.vx_new(
-                            vx_core.t_anylist,
-                            vx_core.vx_new_string(":text"),
-                            vx_core.vx_new_string("Pass?")
-                          )
+                    // [
+                      vx_core.f_new(
+                        vx_web_html.t_tr,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.f_new(
+                              vx_web_html.t_td,
+                              vx_core.vx_new(
+                                vx_core.t_anylist,
+                                // [
+                                  vx_core.f_new(
+                                    vx_web_html.t_p,
+                                    vx_core.vx_new(
+                                      vx_core.t_anylist,
+                                      // [
+                                        vx_core.vx_new_string(":text"),
+                                        vx_core.vx_new_string("Pass?")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            vx_core.f_new(
+                              vx_web_html.t_td,
+                              vx_core.vx_new(
+                                vx_core.t_anylist,
+                                // [
+                                  vx_core.f_new(
+                                    vx_web_html.t_p,
+                                    vx_core.vx_new(
+                                      vx_core.t_anylist,
+                                      // [
+                                        vx_core.vx_new_string(":text"),
+                                        vx_core.vx_new_string("Name")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            vx_core.f_new(
+                              vx_web_html.t_td,
+                              vx_core.vx_new(
+                                vx_core.t_anylist,
+                                // [
+                                  vx_core.f_new(
+                                    vx_web_html.t_p,
+                                    vx_core.vx_new(
+                                      vx_core.t_anylist,
+                                      // [
+                                        vx_core.vx_new_string(":text"),
+                                        vx_core.vx_new_string("Test")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            vx_core.f_new(
+                              vx_web_html.t_td,
+                              vx_core.vx_new(
+                                vx_core.t_anylist,
+                                // [
+                                  vx_core.f_new(
+                                    vx_web_html.t_p,
+                                    vx_core.vx_new(
+                                      vx_core.t_anylist,
+                                      // [
+                                        vx_core.vx_new_string(":text"),
+                                        vx_core.vx_new_string("Expected")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            vx_core.f_new(
+                              vx_web_html.t_td,
+                              vx_core.vx_new(
+                                vx_core.t_anylist,
+                                // [
+                                  vx_core.f_new(
+                                    vx_web_html.t_p,
+                                    vx_core.vx_new(
+                                      vx_core.t_anylist,
+                                      // [
+                                        vx_core.vx_new_string(":text"),
+                                        vx_core.vx_new_string("Actual")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            )
+                          // ]
                         )
                       )
-                    ),
-                    vx_core.f_new(
-                      vx_web_html.t_td,
-                      vx_core.vx_new(
-                        vx_core.t_anylist,
-                        vx_core.f_new(
-                          vx_web_html.t_p,
-                          vx_core.vx_new(
-                            vx_core.t_anylist,
-                            vx_core.vx_new_string(":text"),
-                            vx_core.vx_new_string("Name")
-                          )
-                        )
-                      )
-                    ),
-                    vx_core.f_new(
-                      vx_web_html.t_td,
-                      vx_core.vx_new(
-                        vx_core.t_anylist,
-                        vx_core.f_new(
-                          vx_web_html.t_p,
-                          vx_core.vx_new(
-                            vx_core.t_anylist,
-                            vx_core.vx_new_string(":text"),
-                            vx_core.vx_new_string("Test")
-                          )
-                        )
-                      )
-                    ),
-                    vx_core.f_new(
-                      vx_web_html.t_td,
-                      vx_core.vx_new(
-                        vx_core.t_anylist,
-                        vx_core.f_new(
-                          vx_web_html.t_p,
-                          vx_core.vx_new(
-                            vx_core.t_anylist,
-                            vx_core.vx_new_string(":text"),
-                            vx_core.vx_new_string("Expected")
-                          )
-                        )
-                      )
-                    ),
-                    vx_core.f_new(
-                      vx_web_html.t_td,
-                      vx_core.vx_new(
-                        vx_core.t_anylist,
-                        vx_core.f_new(
-                          vx_web_html.t_p,
-                          vx_core.vx_new(
-                            vx_core.t_anylist,
-                            vx_core.vx_new_string(":text"),
-                            vx_core.vx_new_string("Actual")
-                          )
-                        )
-                      )
-                    )
+                    // ]
+                  )
+                ),
+                vx_core.vx_new_string(":tbody"),
+                vx_core.f_new(
+                  vx_web_html.t_tbody,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    // [
+                      vx_test.f_trlist_from_testcaselist(testcaselist)
+                    // ]
                   )
                 )
-              )
-            ),
-            vx_core.vx_new_string(":tbody"),
-            vx_core.f_new(
-              vx_web_html.t_tbody,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_test.f_trlist_from_testcaselist(
-                  testcaselist
-                )
-              )
+              // ]
             )
           )
-        )
+        // ]
       )
     )
     return output
@@ -3612,17 +4606,23 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_node,
+              vx_web_html.t_divchild
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -3646,13 +4646,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_test.Type_testpackage = value as vx_test.Type_testpackage
       val outputval : vx_core.Type_any = vx_test.f_div_from_testpackage(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val testpackage : vx_test.Type_testpackage = vx_core.f_any_from_any(vx_test.t_testpackage, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testpackage : vx_test.Type_testpackage = vx_core.f_any_from_any(
+        vx_test.t_testpackage,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_div_from_testpackage(testpackage)
       return output
     }
@@ -3671,93 +4679,101 @@ object vx_test {
     var output : vx_web_html.Type_div = vx_web_html.e_div
     output = vx_core.f_let(
       vx_web_html.t_div,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val testcoveragesummary : vx_test.Type_testcoveragesummary = testpackage.coveragesummary()
-        val pkgname : vx_core.Type_string = testpackage.testpkg()
-        val caselist : vx_test.Type_testcaselist = testpackage.caselist()
-        val passfail : vx_core.Type_boolean = testpackage.passfail()
-        val pkgnamestyle : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
-          vx_test.c_stylesheet_test,
-          vx_core.vx_new_string(".pkgname")
-        )
-        val node : vx_web_html.Type_div = vx_test.f_div_from_testcaselist(
-          caselist
-        )
-        val nodes : vx_web_html.Type_divchildlist = vx_core.f_new(
-          vx_web_html.t_divchildlist,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            node
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val testcoveragesummary : vx_test.Type_testcoveragesummary = testpackage.coveragesummary()
+          val pkgname : vx_core.Type_string = testpackage.testpkg()
+          val caselist : vx_test.Type_testcaselist = testpackage.caselist()
+          val passfail : vx_core.Type_boolean = testpackage.passfail()
+          val pkgnamestyle : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
+            vx_test.c_stylesheet_test,
+            vx_core.vx_new_string(".pkgname")
           )
-        )
-        val p_passfail : vx_web_html.Type_p = vx_test.f_p_from_passfail(
-          passfail
-        )
-        val p_pkgname : vx_web_html.Type_p = vx_core.f_new(
-          vx_web_html.t_p,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string(":style"),
-            pkgnamestyle,
-            vx_core.vx_new_string(":text"),
-            pkgname
+          val node : vx_web_html.Type_div = vx_test.f_div_from_testcaselist(caselist)
+          val nodes : vx_web_html.Type_divchildlist = vx_core.f_new(
+            vx_web_html.t_divchildlist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                node
+              // ]
+            )
           )
-        )
-        val p_totalnums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
-          testcoveragesummary.totalnums()
-        )
-        val p_coveragenums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
-          testcoveragesummary.typenums()
-        )
-        val p_constnums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
-          testcoveragesummary.constnums()
-        )
-        val p_funcnums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
-          testcoveragesummary.funcnums()
-        )
-        val p_docnums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
-          testcoveragesummary.docnums()
-        )
-        val p_bigospacenums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
-          testcoveragesummary.bigospacenums()
-        )
-        val p_bigotimenums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
-          testcoveragesummary.bigotimenums()
-        )
-        val summary : vx_web_html.Type_divchildlist = vx_core.f_new(
-          vx_web_html.t_divchildlist,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            p_passfail,
-            p_pkgname,
-            p_totalnums,
-            p_coveragenums,
-            p_constnums,
-            p_funcnums,
-            p_docnums,
-            p_bigospacenums,
-            p_bigotimenums
+          val p_passfail : vx_web_html.Type_p = vx_test.f_p_from_passfail(passfail)
+          val p_pkgname : vx_web_html.Type_p = vx_core.f_new(
+            vx_web_html.t_p,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string(":style"),
+                pkgnamestyle,
+                vx_core.vx_new_string(":text"),
+                pkgname
+              // ]
+            )
           )
-        )
-        val details : vx_web_html.Type_details = vx_core.f_new(
-          vx_web_html.t_details,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string(":summary"),
-            summary,
-            vx_core.vx_new_string(":nodes"),
-            nodes
+          val p_totalnums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
+            testcoveragesummary.totalnums()
           )
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_web_html.t_div,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            details
+          val p_coveragenums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
+            testcoveragesummary.typenums()
           )
-        )
-        output_1
-      })
+          val p_constnums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
+            testcoveragesummary.constnums()
+          )
+          val p_funcnums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
+            testcoveragesummary.funcnums()
+          )
+          val p_docnums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
+            testcoveragesummary.docnums()
+          )
+          val p_bigospacenums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
+            testcoveragesummary.bigospacenums()
+          )
+          val p_bigotimenums : vx_web_html.Type_p = vx_test.f_p_from_testcoveragenums(
+            testcoveragesummary.bigotimenums()
+          )
+          val summary : vx_web_html.Type_divchildlist = vx_core.f_new(
+            vx_web_html.t_divchildlist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                p_passfail,
+                p_pkgname,
+                p_totalnums,
+                p_coveragenums,
+                p_constnums,
+                p_funcnums,
+                p_docnums,
+                p_bigospacenums,
+                p_bigotimenums
+              // ]
+            )
+          )
+          val details : vx_web_html.Type_details = vx_core.f_new(
+            vx_web_html.t_details,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string(":summary"),
+                summary,
+                vx_core.vx_new_string(":nodes"),
+                nodes
+              // ]
+            )
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_web_html.t_div,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                details
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -3797,17 +4813,23 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_node,
+              vx_web_html.t_divchild
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -3831,13 +4853,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_test.Type_testpackagelist = value as vx_test.Type_testpackagelist
       val outputval : vx_core.Type_any = vx_test.f_div_from_testpackagelist(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val testpackagelist : vx_test.Type_testpackagelist = vx_core.f_any_from_any(vx_test.t_testpackagelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testpackagelist : vx_test.Type_testpackagelist = vx_core.f_any_from_any(
+        vx_test.t_testpackagelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_div_from_testpackagelist(testpackagelist)
       return output
     }
@@ -3856,138 +4886,162 @@ object vx_test {
     var output : vx_web_html.Type_div = vx_web_html.e_div
     output = vx_core.f_let(
       vx_web_html.t_div,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val stylepassfail : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
-          vx_test.c_stylesheet_test,
-          vx_core.vx_new_string(".passfail")
-        )
-        val stylepkgname : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
-          vx_test.c_stylesheet_test,
-          vx_core.vx_new_string(".pkgname")
-        )
-        val stylepkgheader : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
-          vx_test.c_stylesheet_test,
-          vx_core.vx_new_string(".pkgheader")
-        )
-        val stylecoveragenum : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
-          vx_test.c_stylesheet_test,
-          vx_core.vx_new_string(".coveragenums")
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_web_html.t_div,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.f_new(
-              vx_web_html.t_div,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_core.vx_new_string(":style"),
-                stylepkgheader,
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val stylepassfail : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
+            vx_test.c_stylesheet_test,
+            vx_core.vx_new_string(".passfail")
+          )
+          val stylepkgname : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
+            vx_test.c_stylesheet_test,
+            vx_core.vx_new_string(".pkgname")
+          )
+          val stylepkgheader : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
+            vx_test.c_stylesheet_test,
+            vx_core.vx_new_string(".pkgheader")
+          )
+          val stylecoveragenum : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
+            vx_test.c_stylesheet_test,
+            vx_core.vx_new_string(".coveragenums")
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_web_html.t_div,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
                 vx_core.f_new(
-                  vx_web_html.t_p,
+                  vx_web_html.t_div,
                   vx_core.vx_new(
                     vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    stylepassfail,
-                    vx_core.vx_new_string(":text"),
-                    vx_core.vx_new_string("Pass?")
+                    // [
+                      vx_core.vx_new_string(":style"),
+                      stylepkgheader,
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            stylepassfail,
+                            vx_core.vx_new_string(":text"),
+                            vx_core.vx_new_string("Pass?")
+                          // ]
+                        )
+                      ),
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            stylepkgname,
+                            vx_core.vx_new_string(":text"),
+                            vx_core.vx_new_string("Package Name")
+                          // ]
+                        )
+                      ),
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            vx_core.vx_new_string(":text"),
+                            vx_core.vx_new_string("Coverage")
+                          // ]
+                        )
+                      ),
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            vx_core.vx_new_string(":text"),
+                            vx_core.vx_new_string("(type)")
+                          // ]
+                        )
+                      ),
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            vx_core.vx_new_string(":text"),
+                            vx_core.vx_new_string("(const)")
+                          // ]
+                        )
+                      ),
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            vx_core.vx_new_string(":text"),
+                            vx_core.vx_new_string("(func)")
+                          // ]
+                        )
+                      ),
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            vx_core.vx_new_string(":text"),
+                            vx_core.vx_new_string(":doc")
+                          // ]
+                        )
+                      ),
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            vx_core.vx_new_string(":text"),
+                            vx_core.vx_new_string(":bigospace")
+                          // ]
+                        )
+                      ),
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            vx_core.vx_new_string(":text"),
+                            vx_core.vx_new_string(":bigotime")
+                          // ]
+                        )
+                      )
+                    // ]
                   )
                 ),
                 vx_core.f_new(
-                  vx_web_html.t_p,
+                  vx_web_html.t_div,
                   vx_core.vx_new(
                     vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    stylepkgname,
-                    vx_core.vx_new_string(":text"),
-                    vx_core.vx_new_string("Package Name")
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_p,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    vx_core.vx_new_string(":text"),
-                    vx_core.vx_new_string("Coverage")
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_p,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    vx_core.vx_new_string(":text"),
-                    vx_core.vx_new_string("(type)")
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_p,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    vx_core.vx_new_string(":text"),
-                    vx_core.vx_new_string("(const)")
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_p,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    vx_core.vx_new_string(":text"),
-                    vx_core.vx_new_string("(func)")
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_p,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    vx_core.vx_new_string(":text"),
-                    vx_core.vx_new_string(":doc")
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_p,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    vx_core.vx_new_string(":text"),
-                    vx_core.vx_new_string(":bigospace")
-                  )
-                ),
-                vx_core.f_new(
-                  vx_web_html.t_p,
-                  vx_core.vx_new(
-                    vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    vx_core.vx_new_string(":text"),
-                    vx_core.vx_new_string(":bigotime")
+                    // [
+                      vx_test.f_divchildlist_from_testpackagelist(testpackagelist)
+                    // ]
                   )
                 )
-              )
-            ),
-            vx_core.f_new(
-              vx_web_html.t_div,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_test.f_divchildlist_from_testpackagelist(
-                  testpackagelist
-                )
-              )
+              // ]
             )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -4028,17 +5082,22 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "divchildlist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_divchild), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "divchildlist",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_divchild
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -4062,13 +5121,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_test.Type_testpackagelist = value as vx_test.Type_testpackagelist
       val outputval : vx_core.Type_any = vx_test.f_divchildlist_from_testpackagelist(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val testpackagelist : vx_test.Type_testpackagelist = vx_core.f_any_from_any(vx_test.t_testpackagelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testpackagelist : vx_test.Type_testpackagelist = vx_core.f_any_from_any(
+        vx_test.t_testpackagelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_divchildlist_from_testpackagelist(testpackagelist)
       return output
     }
@@ -4128,17 +5195,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -4176,10 +5243,12 @@ object vx_test {
       vx_data_file.t_file,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":name"),
-        vx_core.vx_new_string("testsuite.vxlisp"),
-        vx_core.vx_new_string(":path"),
-        vx_core.c_path_test_resources
+        // [
+          vx_core.vx_new_string(":name"),
+          vx_core.vx_new_string("testsuite.vxlisp"),
+          vx_core.vx_new_string(":path"),
+          vx_core.c_path_test_resources
+        // ]
       )
     )
     return output
@@ -4220,17 +5289,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -4268,10 +5337,12 @@ object vx_test {
       vx_data_file.t_file,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":name"),
-        vx_core.vx_new_string("testsuite.html"),
-        vx_core.vx_new_string(":path"),
-        vx_core.c_path_test_resources
+        // [
+          vx_core.vx_new_string(":name"),
+          vx_core.vx_new_string("testsuite.html"),
+          vx_core.vx_new_string(":path"),
+          vx_core.c_path_test_resources
+        // ]
       )
     )
     return output
@@ -4312,17 +5383,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -4360,10 +5431,12 @@ object vx_test {
       vx_data_file.t_file,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":name"),
-        vx_core.vx_new_string("testsuitenode.vxlisp"),
-        vx_core.vx_new_string(":path"),
-        vx_core.c_path_test_resources
+        // [
+          vx_core.vx_new_string(":name"),
+          vx_core.vx_new_string("testsuitenode.vxlisp"),
+          vx_core.vx_new_string(":path"),
+          vx_core.c_path_test_resources
+        // ]
       )
     )
     return output
@@ -4405,17 +5478,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "html", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "html",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -4439,13 +5512,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_div = value as vx_web_html.Type_div
       val outputval : vx_core.Type_any = vx_test.f_html_from_divtest(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val divtest : vx_web_html.Type_div = vx_core.f_any_from_any(vx_web_html.t_div, arglist.vx_any(vx_core.vx_new_int(0)))
+      val divtest : vx_web_html.Type_div = vx_core.f_any_from_any(
+        vx_web_html.t_div,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_html_from_divtest(divtest)
       return output
     }
@@ -4466,63 +5547,79 @@ object vx_test {
       vx_web_html.t_html,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":lang"),
-        vx_core.vx_new_string("en"),
-        vx_core.vx_new_string(":head"),
-        vx_core.f_new(
-          vx_web_html.t_head,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.f_new(
-              vx_web_html.t_meta,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_core.vx_new_string(":charset"),
-                vx_core.vx_new_string("utf-8")
-              )
-            ),
-            vx_core.f_new(
-              vx_web_html.t_meta,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_core.vx_new_string(":name"),
-                vx_core.vx_new_string("viewport"),
-                vx_core.vx_new_string(":content"),
-                vx_core.vx_new_string("width=device-width, initial-scale=1.0")
-              )
-            ),
-            vx_core.f_new(
-              vx_web_html.t_title,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_core.vx_new_string(":text"),
-                vx_core.vx_new_string("Test Suite")
-              )
-            ),
-            vx_test.c_stylesheet_test
-          )
-        ),
-        vx_core.vx_new_string(":body"),
-        vx_core.f_new(
-          vx_web_html.t_body,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.f_new(
-              vx_web_html.t_div,
-              vx_core.vx_new(
-                vx_core.t_anylist,
+        // [
+          vx_core.vx_new_string(":lang"),
+          vx_core.vx_new_string("en"),
+          vx_core.vx_new_string(":head"),
+          vx_core.f_new(
+            vx_web_html.t_head,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
                 vx_core.f_new(
-                  vx_web_html.t_h1,
+                  vx_web_html.t_meta,
                   vx_core.vx_new(
                     vx_core.t_anylist,
-                    vx_core.vx_new_string("Test Suite")
+                    // [
+                      vx_core.vx_new_string(":charset"),
+                      vx_core.vx_new_string("utf-8")
+                    // ]
                   )
-                )
-              )
-            ),
-            divtest
+                ),
+                vx_core.f_new(
+                  vx_web_html.t_meta,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    // [
+                      vx_core.vx_new_string(":name"),
+                      vx_core.vx_new_string("viewport"),
+                      vx_core.vx_new_string(":content"),
+                      vx_core.vx_new_string("width=device-width, initial-scale=1.0")
+                    // ]
+                  )
+                ),
+                vx_core.f_new(
+                  vx_web_html.t_title,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    // [
+                      vx_core.vx_new_string(":text"),
+                      vx_core.vx_new_string("Test Suite")
+                    // ]
+                  )
+                ),
+                vx_test.c_stylesheet_test
+              // ]
+            )
+          ),
+          vx_core.vx_new_string(":body"),
+          vx_core.f_new(
+            vx_web_html.t_body,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.f_new(
+                  vx_web_html.t_div,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    // [
+                      vx_core.f_new(
+                        vx_web_html.t_h1,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string("Test Suite")
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                ),
+                divtest
+              // ]
+            )
           )
-        )
+        // ]
       )
     )
     return output
@@ -4564,17 +5661,23 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "p", // name
-          ":struct", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "p",
+          ":struct",
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_node,
+              vx_web_html.t_divchild
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -4598,13 +5701,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_boolean = value as vx_core.Type_boolean
       val outputval : vx_core.Type_any = vx_test.f_p_from_passfail(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val passfail : vx_core.Type_boolean = vx_core.f_any_from_any(vx_core.t_boolean, arglist.vx_any(vx_core.vx_new_int(0)))
+      val passfail : vx_core.Type_boolean = vx_core.f_any_from_any(
+        vx_core.t_boolean,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_p_from_passfail(passfail)
       return output
     }
@@ -4623,35 +5734,39 @@ object vx_test {
     var output : vx_web_html.Type_p = vx_web_html.e_p
     output = vx_core.f_let(
       vx_web_html.t_p,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val text : vx_core.Type_string = vx_core.f_if_1(
-          vx_core.t_string,
-          passfail,
-          vx_core.vx_new_string("Pass"),
-          vx_core.vx_new_string("Fail")
-        )
-        val stylename : vx_core.Type_string = vx_core.f_if_1(
-          vx_core.t_string,
-          passfail,
-          vx_core.vx_new_string(".passflag"),
-          vx_core.vx_new_string(".failflag")
-        )
-        val style : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
-          vx_test.c_stylesheet_test,
-          stylename
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_web_html.t_p,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string(":style"),
-            style,
-            vx_core.vx_new_string(":text"),
-            text
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val text : vx_core.Type_string = vx_core.f_if_1(
+            vx_core.t_string,
+            passfail,
+            vx_core.vx_new_string("Pass"),
+            vx_core.vx_new_string("Fail")
           )
-        )
-        output_1
-      })
+          val stylename : vx_core.Type_string = vx_core.f_if_1(
+            vx_core.t_string,
+            passfail,
+            vx_core.vx_new_string(".passflag"),
+            vx_core.vx_new_string(".failflag")
+          )
+          val style : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
+            vx_test.c_stylesheet_test,
+            stylename
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_web_html.t_p,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string(":style"),
+                style,
+                vx_core.vx_new_string(":text"),
+                text
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -4692,17 +5807,23 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "p", // name
-          ":struct", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "p",
+          ":struct",
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_node,
+              vx_web_html.t_divchild
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -4726,13 +5847,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_test.Type_testcoveragenums = value as vx_test.Type_testcoveragenums
       val outputval : vx_core.Type_any = vx_test.f_p_from_testcoveragenums(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val nums : vx_test.Type_testcoveragenums = vx_core.f_any_from_any(vx_test.t_testcoveragenums, arglist.vx_any(vx_core.vx_new_int(0)))
+      val nums : vx_test.Type_testcoveragenums = vx_core.f_any_from_any(
+        vx_test.t_testcoveragenums,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_p_from_testcoveragenums(nums)
       return output
     }
@@ -4753,23 +5882,27 @@ object vx_test {
       vx_web_html.t_p,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":style"),
-        vx_web_html.f_style_from_stylesheet_name(
-          vx_test.c_stylesheet_test,
-          vx_core.vx_new_string(".coveragenums")
-        ),
-        vx_core.vx_new_string(":text"),
-        vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            nums.pct(),
-            vx_core.vx_new_string("% "),
-            nums.tests(),
-            vx_core.vx_new_string("/"),
-            nums.total()
+        // [
+          vx_core.vx_new_string(":style"),
+          vx_web_html.f_style_from_stylesheet_name(
+            vx_test.c_stylesheet_test,
+            vx_core.vx_new_string(".coveragenums")
+          ),
+          vx_core.vx_new_string(":text"),
+          vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                nums.pct(),
+                vx_core.vx_new_string("% "),
+                nums.tests(),
+                vx_core.vx_new_string("/"),
+                nums.total()
+              // ]
+            )
           )
-        )
+        // ]
       )
     )
     return output
@@ -4813,17 +5946,17 @@ object vx_test {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testcase", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testcase",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -4844,7 +5977,10 @@ object vx_test {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      val inputval : vx_test.Type_testcase = vx_core.f_any_from_any(vx_test.t_testcase, value)
+      val inputval : vx_test.Type_testcase = vx_core.f_any_from_any(
+        vx_test.t_testcase,
+        value
+      )
       val future : CompletableFuture<vx_test.Type_testcase> = vx_test.f_resolve_testcase(inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -4852,9 +5988,17 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val testcase : vx_test.Type_testcase = vx_core.f_any_from_any(vx_test.t_testcase, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testcase : vx_test.Type_testcase = vx_core.f_any_from_any(
+        vx_test.t_testcase,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       var future : CompletableFuture<vx_test.Type_testcase> = vx_test.f_resolve_testcase(testcase)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -4872,49 +6016,56 @@ object vx_test {
     var output : CompletableFuture<vx_test.Type_testcase> = vx_core.vx_async_new_from_value(vx_test.e_testcase)
     output = vx_core.f_let_async(
       vx_test.t_testcase,
-      vx_core.t_any_from_func_async.vx_fn_new({ ->
-        val describelist : vx_test.Type_testdescribelist = testcase.describelist()
-        val future_resolvedlist : CompletableFuture<vx_test.Type_testdescribelist> = vx_test.f_resolve_testdescribelist(
-          describelist
-        )
+      vx_core.t_any_from_func_async.vx_fn_new(
+        { ->
+          val describelist : vx_test.Type_testdescribelist = testcase.describelist()
+        val future_resolvedlist : CompletableFuture<vx_test.Type_testdescribelist> = vx_test.f_resolve_testdescribelist(describelist)
         val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
           vx_core.t_any,
           future_resolvedlist,
           {resolvedlist ->
-            val passfaillist : vx_core.Type_booleanlist = vx_core.f_list_from_list_1(
-              vx_core.t_booleanlist,
-              resolvedlist,
-              vx_core.t_any_from_any.vx_fn_new({testdescribe_any : vx_core.Type_any ->
-                val testdescribe : vx_test.Type_testdescribe = vx_core.f_any_from_any(vx_test.t_testdescribe, testdescribe_any)
-                var output_3 : vx_core.Type_any = vx_core.f_let(
-                  vx_core.t_boolean,
-                  vx_core.t_any_from_func.vx_fn_new({ ->
-                    val testresult : vx_test.Type_testresult = testdescribe.testresult()
-                    val output_4 : vx_core.Type_any = testresult.passfail()
-                    output_4
-                  })
+              val passfaillist : vx_core.Type_booleanlist = vx_core.f_list_from_list_1(
+                vx_core.t_booleanlist,
+                resolvedlist,
+                vx_core.t_any_from_any.vx_fn_new(
+                  {testdescribe_any : vx_core.Type_any ->
+                    val testdescribe : vx_test.Type_testdescribe = vx_core.f_any_from_any(
+                      vx_test.t_testdescribe,
+                      testdescribe_any
+                    )
+                    var output_3 : vx_core.Type_any = vx_core.f_let(
+                      vx_core.t_boolean,
+                      vx_core.t_any_from_func.vx_fn_new(
+                        { ->
+                          val testresult : vx_test.Type_testresult = testdescribe.testresult()
+                          val output_4 : vx_core.Type_any = testresult.passfail()
+                          output_4
+                        }
+                      )
+                    )
+                    output_3
+                  }
                 )
-                output_3
-              })
-            )
-            val passfail : vx_core.Type_boolean = vx_core.f_and_1(
-              passfaillist
-            )
+              )
+              val passfail : vx_core.Type_boolean = vx_core.f_and_1(passfaillist)
             val output_2 : vx_core.Type_any = vx_core.f_copy(
               testcase,
               vx_core.vx_new(
                 vx_core.t_anylist,
-                vx_core.vx_new_string(":passfail"),
-                passfail,
-                vx_core.vx_new_string(":describelist"),
-                resolvedlist
+                // [
+                  vx_core.vx_new_string(":passfail"),
+                  passfail,
+                  vx_core.vx_new_string(":describelist"),
+                  resolvedlist
+                // ]
               )
             )
-            output_2
-          }
+              output_2
+            }
         )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -4957,17 +6108,22 @@ object vx_test {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testcaselist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_test.t_testcase), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testcaselist",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_test.t_testcase
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -4988,7 +6144,10 @@ object vx_test {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      val inputval : vx_test.Type_testcaselist = vx_core.f_any_from_any(vx_test.t_testcaselist, value)
+      val inputval : vx_test.Type_testcaselist = vx_core.f_any_from_any(
+        vx_test.t_testcaselist,
+        value
+      )
       val future : CompletableFuture<vx_test.Type_testcaselist> = vx_test.f_resolve_testcaselist(inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -4996,9 +6155,17 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val testcaselist : vx_test.Type_testcaselist = vx_core.f_any_from_any(vx_test.t_testcaselist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testcaselist : vx_test.Type_testcaselist = vx_core.f_any_from_any(
+        vx_test.t_testcaselist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       var future : CompletableFuture<vx_test.Type_testcaselist> = vx_test.f_resolve_testcaselist(testcaselist)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -5060,17 +6227,17 @@ object vx_test {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testdescribe", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testdescribe",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -5091,7 +6258,10 @@ object vx_test {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      val inputval : vx_test.Type_testdescribe = vx_core.f_any_from_any(vx_test.t_testdescribe, value)
+      val inputval : vx_test.Type_testdescribe = vx_core.f_any_from_any(
+        vx_test.t_testdescribe,
+        value
+      )
       val future : CompletableFuture<vx_test.Type_testdescribe> = vx_test.f_resolve_testdescribe(inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -5099,9 +6269,17 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val testdescribe : vx_test.Type_testdescribe = vx_core.f_any_from_any(vx_test.t_testdescribe, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testdescribe : vx_test.Type_testdescribe = vx_core.f_any_from_any(
+        vx_test.t_testdescribe,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       var future : CompletableFuture<vx_test.Type_testdescribe> = vx_test.f_resolve_testdescribe(testdescribe)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -5119,11 +6297,10 @@ object vx_test {
     var output : CompletableFuture<vx_test.Type_testdescribe> = vx_core.vx_async_new_from_value(vx_test.e_testdescribe)
     output = vx_core.f_let_async(
       vx_test.t_testdescribe,
-      vx_core.t_any_from_func_async.vx_fn_new({ ->
-        val testresult : vx_test.Type_testresult = testdescribe.testresult()
-        val future_resolved : CompletableFuture<vx_test.Type_testresult> = vx_test.f_resolve_testresult(
-          testresult
-        )
+      vx_core.t_any_from_func_async.vx_fn_new(
+        { ->
+          val testresult : vx_test.Type_testresult = testdescribe.testresult()
+        val future_resolved : CompletableFuture<vx_test.Type_testresult> = vx_test.f_resolve_testresult(testresult)
         val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
           vx_core.t_any,
           future_resolved,
@@ -5132,15 +6309,18 @@ object vx_test {
               testdescribe,
               vx_core.vx_new(
                 vx_core.t_anylist,
-                vx_core.vx_new_string(":testresult"),
-                resolved
+                // [
+                  vx_core.vx_new_string(":testresult"),
+                  resolved
+                // ]
               )
             )
-            output_2
-          }
+              output_2
+            }
         )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -5183,17 +6363,22 @@ object vx_test {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testdescribelist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_test.t_testdescribe), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testdescribelist",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_test.t_testdescribe
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -5214,7 +6399,10 @@ object vx_test {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      val inputval : vx_test.Type_testdescribelist = vx_core.f_any_from_any(vx_test.t_testdescribelist, value)
+      val inputval : vx_test.Type_testdescribelist = vx_core.f_any_from_any(
+        vx_test.t_testdescribelist,
+        value
+      )
       val future : CompletableFuture<vx_test.Type_testdescribelist> = vx_test.f_resolve_testdescribelist(inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -5222,9 +6410,17 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val testdescribelist : vx_test.Type_testdescribelist = vx_core.f_any_from_any(vx_test.t_testdescribelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testdescribelist : vx_test.Type_testdescribelist = vx_core.f_any_from_any(
+        vx_test.t_testdescribelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       var future : CompletableFuture<vx_test.Type_testdescribelist> = vx_test.f_resolve_testdescribelist(testdescribelist)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -5286,17 +6482,17 @@ object vx_test {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testpackage", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testpackage",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -5317,7 +6513,10 @@ object vx_test {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      val inputval : vx_test.Type_testpackage = vx_core.f_any_from_any(vx_test.t_testpackage, value)
+      val inputval : vx_test.Type_testpackage = vx_core.f_any_from_any(
+        vx_test.t_testpackage,
+        value
+      )
       val future : CompletableFuture<vx_test.Type_testpackage> = vx_test.f_resolve_testpackage(inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -5325,9 +6524,17 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val testpackage : vx_test.Type_testpackage = vx_core.f_any_from_any(vx_test.t_testpackage, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testpackage : vx_test.Type_testpackage = vx_core.f_any_from_any(
+        vx_test.t_testpackage,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       var future : CompletableFuture<vx_test.Type_testpackage> = vx_test.f_resolve_testpackage(testpackage)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -5345,42 +6552,47 @@ object vx_test {
     var output : CompletableFuture<vx_test.Type_testpackage> = vx_core.vx_async_new_from_value(vx_test.e_testpackage)
     output = vx_core.f_let_async(
       vx_test.t_testpackage,
-      vx_core.t_any_from_func_async.vx_fn_new({ ->
-        val testcaselist : vx_test.Type_testcaselist = testpackage.caselist()
-        val future_resolvedlist : CompletableFuture<vx_test.Type_testcaselist> = vx_test.f_resolve_testcaselist(
-          testcaselist
-        )
+      vx_core.t_any_from_func_async.vx_fn_new(
+        { ->
+          val testcaselist : vx_test.Type_testcaselist = testpackage.caselist()
+        val future_resolvedlist : CompletableFuture<vx_test.Type_testcaselist> = vx_test.f_resolve_testcaselist(testcaselist)
         val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
           vx_core.t_any,
           future_resolvedlist,
           {resolvedlist ->
-            val passfaillist : vx_core.Type_booleanlist = vx_core.f_list_from_list_1(
-              vx_core.t_booleanlist,
-              resolvedlist,
-              vx_core.t_any_from_any.vx_fn_new({testcase_any : vx_core.Type_any ->
-                val testcase : vx_test.Type_testcase = vx_core.f_any_from_any(vx_test.t_testcase, testcase_any)
-                var output_3 : vx_core.Type_any = testcase.passfail()
-                output_3
-              })
-            )
-            val passfail : vx_core.Type_boolean = vx_core.f_and_1(
-              passfaillist
-            )
+              val passfaillist : vx_core.Type_booleanlist = vx_core.f_list_from_list_1(
+                vx_core.t_booleanlist,
+                resolvedlist,
+                vx_core.t_any_from_any.vx_fn_new(
+                  {testcase_any : vx_core.Type_any ->
+                    val testcase : vx_test.Type_testcase = vx_core.f_any_from_any(
+                      vx_test.t_testcase,
+                      testcase_any
+                    )
+                    var output_3 : vx_core.Type_any = testcase.passfail()
+                    output_3
+                  }
+                )
+              )
+              val passfail : vx_core.Type_boolean = vx_core.f_and_1(passfaillist)
             val output_2 : vx_core.Type_any = vx_core.f_copy(
               testpackage,
               vx_core.vx_new(
                 vx_core.t_anylist,
-                vx_core.vx_new_string(":passfail"),
-                passfail,
-                vx_core.vx_new_string(":caselist"),
-                resolvedlist
+                // [
+                  vx_core.vx_new_string(":passfail"),
+                  passfail,
+                  vx_core.vx_new_string(":caselist"),
+                  resolvedlist
+                // ]
               )
             )
-            output_2
-          }
+              output_2
+            }
         )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -5423,17 +6635,22 @@ object vx_test {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testpackagelist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_test.t_testpackage), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testpackagelist",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_test.t_testpackage
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -5454,7 +6671,10 @@ object vx_test {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      val inputval : vx_test.Type_testpackagelist = vx_core.f_any_from_any(vx_test.t_testpackagelist, value)
+      val inputval : vx_test.Type_testpackagelist = vx_core.f_any_from_any(
+        vx_test.t_testpackagelist,
+        value
+      )
       val future : CompletableFuture<vx_test.Type_testpackagelist> = vx_test.f_resolve_testpackagelist(inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -5462,9 +6682,17 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val testpackagelist : vx_test.Type_testpackagelist = vx_core.f_any_from_any(vx_test.t_testpackagelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testpackagelist : vx_test.Type_testpackagelist = vx_core.f_any_from_any(
+        vx_test.t_testpackagelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       var future : CompletableFuture<vx_test.Type_testpackagelist> = vx_test.f_resolve_testpackagelist(testpackagelist)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -5526,17 +6754,17 @@ object vx_test {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -5557,7 +6785,10 @@ object vx_test {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      val inputval : vx_test.Type_testresult = vx_core.f_any_from_any(vx_test.t_testresult, value)
+      val inputval : vx_test.Type_testresult = vx_core.f_any_from_any(
+        vx_test.t_testresult,
+        value
+      )
       val future : CompletableFuture<vx_test.Type_testresult> = vx_test.f_resolve_testresult(inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -5565,9 +6796,17 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val testresult : vx_test.Type_testresult = vx_core.f_any_from_any(vx_test.t_testresult, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testresult : vx_test.Type_testresult = vx_core.f_any_from_any(
+        vx_test.t_testresult,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       var future : CompletableFuture<vx_test.Type_testresult> = vx_test.f_resolve_testresult(testresult)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -5585,9 +6824,10 @@ object vx_test {
     var output : CompletableFuture<vx_test.Type_testresult> = vx_core.vx_async_new_from_value(vx_test.e_testresult)
     output = vx_core.f_let_async(
       vx_test.t_testresult,
-      vx_core.t_any_from_func_async.vx_fn_new({ ->
-        val fn_actual : vx_core.Func_any_from_func_async = testresult.fn_actual()
-        val expected : vx_core.Type_any = testresult.expected()
+      vx_core.t_any_from_func_async.vx_fn_new(
+        { ->
+          val fn_actual : vx_core.Func_any_from_func_async = testresult.fn_actual()
+          val expected : vx_core.Type_any = testresult.expected()
         val future_actual : CompletableFuture<vx_core.Type_any> = vx_core.f_resolve_async(
           vx_core.t_any,
           fn_actual
@@ -5600,50 +6840,58 @@ object vx_test {
               vx_test.t_testresult,
               vx_core.vx_new(
                 vx_core.t_thenelselist,
-                vx_core.f_then(
-                  vx_core.t_boolean_from_func.vx_fn_new({ ->
-                    var output_2 : vx_core.Type_any = vx_core.f_is_empty_1(
-                      fn_actual
+                // [
+                  vx_core.f_then(
+                    vx_core.t_boolean_from_func.vx_fn_new(
+                      { ->
+                        var output_2 : vx_core.Type_any = vx_core.f_is_empty_1(fn_actual)
+                          output_2
+                        }
+                    ),
+                    vx_core.t_any_from_func.vx_fn_new(
+                      { ->
+      val output_3 : vx_core.Type_any = testresult
+                          output_3
+                        }
                     )
-                    output_2
-                  }),
-                  vx_core.t_any_from_func.vx_fn_new({ ->
-                    val output_3 : vx_core.Type_any = testresult
-                    output_3
-                  })
-                ),
-                vx_core.f_else(
-                  vx_core.t_any_from_func.vx_fn_new({ ->
-                    var output_4 : vx_core.Type_any = vx_core.f_let(
-                      vx_test.t_testresult,
-                      vx_core.t_any_from_func.vx_fn_new({ ->
-                        val passfail : vx_core.Type_boolean = vx_core.f_eq(
-                          expected,
-                          actual
-                        )
-                        val output_5 : vx_core.Type_any = vx_core.f_copy(
-                          testresult,
-                          vx_core.vx_new(
-                            vx_core.t_anylist,
-                            vx_core.vx_new_string(":passfail"),
-                            passfail,
-                            vx_core.vx_new_string(":actual"),
-                            actual
+                  ),
+                  vx_core.f_else(
+                    vx_core.t_any_from_func.vx_fn_new(
+                      { ->
+                        var output_4 : vx_core.Type_any = vx_core.f_let(
+                            vx_test.t_testresult,
+                            vx_core.t_any_from_func.vx_fn_new(
+                              { ->
+                                val passfail : vx_core.Type_boolean = vx_core.f_eq(expected, actual)
+                                val output_5 : vx_core.Type_any = vx_core.f_copy(
+                                  testresult,
+                                  vx_core.vx_new(
+                                    vx_core.t_anylist,
+                                    // [
+                                      vx_core.vx_new_string(":passfail"),
+                                      passfail,
+                                      vx_core.vx_new_string(":actual"),
+                                      actual
+                                    // ]
+                                  )
+                                )
+                                output_5
+                              }
+                            )
                           )
-                        )
-                        output_5
-                      })
+                          output_4
+                        }
                     )
-                    output_4
-                  })
-                )
+                  )
+                // ]
               )
             )
-            output_6
-          }
+              output_6
+            }
         )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -5683,17 +6931,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -5731,17 +6979,21 @@ object vx_test {
       vx_core.t_security,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":allowfuncs"),
-        vx_core.f_new(
-          vx_core.t_funclist,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_data_file.t_boolean_write_from_file_any,
-            vx_data_file.t_boolean_write_from_file_string,
-            vx_data_file.t_file_read_from_file,
-            vx_data_file.t_string_read_from_file
+        // [
+          vx_core.vx_new_string(":allowfuncs"),
+          vx_core.f_new(
+            vx_core.t_funclist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_data_file.t_boolean_write_from_file_any,
+                vx_data_file.t_boolean_write_from_file_string,
+                vx_data_file.t_file_read_from_file,
+                vx_data_file.t_string_read_from_file
+              // ]
+            )
           )
-        )
+        // ]
       )
     )
     return output
@@ -5784,17 +7036,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -5812,9 +7064,24 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val expected : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val actual : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val expected : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val actual : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_test.f_test(context, expected, actual)
       return output
     }
@@ -5836,22 +7103,26 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":eq"),
-          vx_core.vx_new_string(":passfail"),
-          vx_core.f_eq(
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":eq"),
+            vx_core.vx_new_string(":passfail"),
+            vx_core.f_eq(expected, actual),
+            vx_core.vx_new_string(":expected"),
             expected,
+            vx_core.vx_new_string(":actual"),
             actual
-          ),
-          vx_core.vx_new_string(":expected"),
-          expected,
-          vx_core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       )
     } catch (err : Exception) {
       var msg : vx_core.Type_msg = vx_core.vx_msg_from_exception("vx/test/test", err)
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -5893,17 +7164,17 @@ object vx_test {
         1, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -5921,9 +7192,24 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val expected : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(vx_core.t_any_from_func_async, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val expected : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(
+        vx_core.t_any_from_func_async,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_test.f_test_1(context, expected, fn_actual)
       return output
     }
@@ -5945,17 +7231,24 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":eq"),
-          vx_core.vx_new_string(":expected"),
-          expected,
-          vx_core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":eq"),
+            vx_core.vx_new_string(":expected"),
+            expected,
+            vx_core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       )
     } catch (err : Exception) {
       var msg : vx_core.Type_msg = vx_core.vx_msg_from_exception("vx/test/test", err)
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -5996,17 +7289,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -6030,14 +7323,27 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_any = value as vx_core.Type_any
       val outputval : vx_core.Type_any = vx_test.f_test_false(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val actual : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val actual : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_test.f_test_false(context, actual)
       return output
     }
@@ -6059,17 +7365,19 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":false"),
-          vx_core.vx_new_string(":passfail"),
-          vx_core.f_eq(
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":false"),
+            vx_core.vx_new_string(":passfail"),
+            vx_core.f_eq(
+              vx_core.vx_new_boolean(false),
+              actual
+            ),
+            vx_core.vx_new_string(":expected"),
             vx_core.vx_new_boolean(false),
+            vx_core.vx_new_string(":actual"),
             actual
-          ),
-          vx_core.vx_new_string(":expected"),
-          vx_core.vx_new_boolean(false),
-          vx_core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -6077,7 +7385,12 @@ object vx_test {
         "vx/test/test-false",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -6118,17 +7431,17 @@ object vx_test {
         1, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -6152,14 +7465,27 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Func_any_from_func_async = value as vx_core.Func_any_from_func_async
       val outputval : vx_core.Type_any = vx_test.f_test_false_1(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(vx_core.t_any_from_func_async, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(
+        vx_core.t_any_from_func_async,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_test.f_test_false_1(context, fn_actual)
       return output
     }
@@ -6181,12 +7507,14 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":false"),
-          vx_core.vx_new_string(":expected"),
-          vx_core.vx_new_boolean(false),
-          vx_core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":false"),
+            vx_core.vx_new_string(":expected"),
+            vx_core.vx_new_boolean(false),
+            vx_core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -6194,7 +7522,12 @@ object vx_test {
         "vx/test/test-false",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -6236,17 +7569,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -6264,9 +7597,24 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val expected : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val actual : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val expected : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val actual : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_test.f_test_gt(context, expected, actual)
       return output
     }
@@ -6288,17 +7636,16 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":gt"),
-          vx_core.vx_new_string(":passfail"),
-          vx_core.f_gt(
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":gt"),
+            vx_core.vx_new_string(":passfail"),
+            vx_core.f_gt(expected, actual),
+            vx_core.vx_new_string(":expected"),
             expected,
+            vx_core.vx_new_string(":actual"),
             actual
-          ),
-          vx_core.vx_new_string(":expected"),
-          expected,
-          vx_core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -6306,7 +7653,12 @@ object vx_test {
         "vx/test/test-gt",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -6348,17 +7700,17 @@ object vx_test {
         1, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -6376,9 +7728,24 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val expected : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(vx_core.t_any_from_func_async, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val expected : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(
+        vx_core.t_any_from_func_async,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_test.f_test_gt_1(context, expected, fn_actual)
       return output
     }
@@ -6400,12 +7767,14 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":gt"),
-          vx_core.vx_new_string(":expected"),
-          expected,
-          vx_core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":gt"),
+            vx_core.vx_new_string(":expected"),
+            expected,
+            vx_core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -6413,7 +7782,12 @@ object vx_test {
         "vx/test/test-gt",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -6455,17 +7829,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -6483,9 +7857,24 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val expected : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val actual : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val expected : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val actual : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_test.f_test_ne(context, expected, actual)
       return output
     }
@@ -6507,17 +7896,16 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":ne"),
-          vx_core.vx_new_string(":passfail"),
-          vx_core.f_ne(
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":ne"),
+            vx_core.vx_new_string(":passfail"),
+            vx_core.f_ne(expected, actual),
+            vx_core.vx_new_string(":expected"),
             expected,
+            vx_core.vx_new_string(":actual"),
             actual
-          ),
-          vx_core.vx_new_string(":expected"),
-          expected,
-          vx_core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -6525,7 +7913,12 @@ object vx_test {
         "vx/test/test-ne",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -6567,17 +7960,17 @@ object vx_test {
         1, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -6595,9 +7988,24 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val expected : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(vx_core.t_any_from_func_async, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val expected : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(
+        vx_core.t_any_from_func_async,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_test.f_test_ne_1(context, expected, fn_actual)
       return output
     }
@@ -6619,12 +8027,14 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":ne"),
-          vx_core.vx_new_string(":expected"),
-          expected,
-          vx_core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":ne"),
+            vx_core.vx_new_string(":expected"),
+            expected,
+            vx_core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -6632,7 +8042,12 @@ object vx_test {
         "vx/test/test-ne",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -6674,17 +8089,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -6702,9 +8117,24 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val expected : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val actual : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val expected : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val actual : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_test.f_test_string(context, expected, actual)
       return output
     }
@@ -6726,19 +8156,17 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":passfail"),
-          vx_core.f_eq(
-            vx_core.f_string_from_any(
-              expected
+          // [
+            vx_core.vx_new_string(":passfail"),
+            vx_core.f_eq(
+              vx_core.f_string_from_any(expected),
+              vx_core.f_string_from_any(actual)
             ),
-            vx_core.f_string_from_any(
-              actual
-            )
-          ),
-          vx_core.vx_new_string(":expected"),
-          expected,
-          vx_core.vx_new_string(":actual"),
-          actual
+            vx_core.vx_new_string(":expected"),
+            expected,
+            vx_core.vx_new_string(":actual"),
+            actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -6746,7 +8174,12 @@ object vx_test {
         "vx/test/test-string",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -6788,17 +8221,17 @@ object vx_test {
         1, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -6816,9 +8249,24 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val expected : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(vx_core.t_any_from_func_async, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val expected : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(
+        vx_core.t_any_from_func_async,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_test.f_test_string_1(context, expected, fn_actual)
       return output
     }
@@ -6840,12 +8288,14 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":string"),
-          vx_core.vx_new_string(":expected"),
-          expected,
-          vx_core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":string"),
+            vx_core.vx_new_string(":expected"),
+            expected,
+            vx_core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -6853,7 +8303,12 @@ object vx_test {
         "vx/test/test-string",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -6894,17 +8349,17 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -6928,14 +8383,27 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_any = value as vx_core.Type_any
       val outputval : vx_core.Type_any = vx_test.f_test_true(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val actual : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val actual : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_test.f_test_true(context, actual)
       return output
     }
@@ -6957,17 +8425,19 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":true"),
-          vx_core.vx_new_string(":passfail"),
-          vx_core.f_eq(
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":true"),
+            vx_core.vx_new_string(":passfail"),
+            vx_core.f_eq(
+              vx_core.vx_new_boolean(true),
+              actual
+            ),
+            vx_core.vx_new_string(":expected"),
             vx_core.vx_new_boolean(true),
+            vx_core.vx_new_string(":actual"),
             actual
-          ),
-          vx_core.vx_new_string(":expected"),
-          vx_core.vx_new_boolean(true),
-          vx_core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -6975,7 +8445,12 @@ object vx_test {
         "vx/test/test-true",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -7016,17 +8491,17 @@ object vx_test {
         1, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -7050,14 +8525,27 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Func_any_from_func_async = value as vx_core.Func_any_from_func_async
       val outputval : vx_core.Type_any = vx_test.f_test_true_1(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(vx_core.t_any_from_func_async, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_actual : vx_core.Func_any_from_func_async = vx_core.f_any_from_any(
+        vx_core.t_any_from_func_async,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_test.f_test_true_1(context, fn_actual)
       return output
     }
@@ -7079,12 +8567,14 @@ object vx_test {
         vx_test.t_testresult,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":code"),
-          vx_core.vx_new_string(":true"),
-          vx_core.vx_new_string(":expected"),
-          vx_core.vx_new_boolean(true),
-          vx_core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            vx_core.vx_new_string(":code"),
+            vx_core.vx_new_string(":true"),
+            vx_core.vx_new_string(":expected"),
+            vx_core.vx_new_boolean(true),
+            vx_core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       )
     } catch (err : Exception) {
@@ -7092,7 +8582,12 @@ object vx_test {
         "vx/test/test-true",
         err
       )
-      output = vx_core.vx_copy(output, msg)
+      output = vx_core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      )
     }
     return output
   }
@@ -7134,17 +8629,22 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "tr", // name
-          ":struct", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "tr",
+          ":struct",
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_node
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -7162,8 +8662,18 @@ object vx_test {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val testdescribe : vx_test.Type_testdescribe = vx_core.f_any_from_any(vx_test.t_testdescribe, arglist.vx_any(vx_core.vx_new_int(0)))
-      val casename : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val testdescribe : vx_test.Type_testdescribe = vx_core.f_any_from_any(
+        vx_test.t_testdescribe,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val casename : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_test.f_tr_from_testdescribe_casename(testdescribe, casename)
       return output
     }
@@ -7182,101 +8692,117 @@ object vx_test {
     var output : vx_web_html.Type_tr = vx_web_html.e_tr
     output = vx_core.f_let(
       vx_web_html.t_tr,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val describename : vx_core.Type_string = testdescribe.describename()
-        val result : vx_test.Type_testresult = testdescribe.testresult()
-        val passfail : vx_core.Type_boolean = result.passfail()
-        val expected : vx_core.Type_string = vx_core.f_string_from_any(
-          result.expected()
-        )
-        val actual : vx_core.Type_string = vx_core.f_string_from_any(
-          result.actual()
-        )
-        val prestyle : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
-          vx_test.c_stylesheet_test,
-          vx_core.vx_new_string(".preformatted")
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_web_html.t_tr,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_test.f_p_from_passfail(
-                  passfail
-                )
-              )
-            ),
-            vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.vx_new(
-                vx_core.t_anylist,
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val describename : vx_core.Type_string = testdescribe.describename()
+          val result : vx_test.Type_testresult = testdescribe.testresult()
+          val passfail : vx_core.Type_boolean = result.passfail()
+          val expected : vx_core.Type_string = vx_core.f_string_from_any(result.expected())
+          val actual : vx_core.Type_string = vx_core.f_string_from_any(result.actual())
+          val prestyle : vx_web_html.Type_style = vx_web_html.f_style_from_stylesheet_name(
+            vx_test.c_stylesheet_test,
+            vx_core.vx_new_string(".preformatted")
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_web_html.t_tr,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
                 vx_core.f_new(
-                  vx_web_html.t_p,
+                  vx_web_html.t_td,
                   vx_core.vx_new(
                     vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    prestyle,
-                    vx_core.vx_new_string(":text"),
-                    casename
+                    // [
+                      vx_test.f_p_from_passfail(passfail)
+                    // ]
                   )
-                )
-              )
-            ),
-            vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.vx_new(
-                vx_core.t_anylist,
+                ),
                 vx_core.f_new(
-                  vx_web_html.t_p,
+                  vx_web_html.t_td,
                   vx_core.vx_new(
                     vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    prestyle,
-                    vx_core.vx_new_string(":text"),
-                    describename
+                    // [
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            prestyle,
+                            vx_core.vx_new_string(":text"),
+                            casename
+                          // ]
+                        )
+                      )
+                    // ]
                   )
-                )
-              )
-            ),
-            vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.vx_new(
-                vx_core.t_anylist,
+                ),
                 vx_core.f_new(
-                  vx_web_html.t_p,
+                  vx_web_html.t_td,
                   vx_core.vx_new(
                     vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    prestyle,
-                    vx_core.vx_new_string(":text"),
-                    expected
+                    // [
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            prestyle,
+                            vx_core.vx_new_string(":text"),
+                            describename
+                          // ]
+                        )
+                      )
+                    // ]
                   )
-                )
-              )
-            ),
-            vx_core.f_new(
-              vx_web_html.t_td,
-              vx_core.vx_new(
-                vx_core.t_anylist,
+                ),
                 vx_core.f_new(
-                  vx_web_html.t_p,
+                  vx_web_html.t_td,
                   vx_core.vx_new(
                     vx_core.t_anylist,
-                    vx_core.vx_new_string(":style"),
-                    prestyle,
-                    vx_core.vx_new_string(":text"),
-                    actual
+                    // [
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            prestyle,
+                            vx_core.vx_new_string(":text"),
+                            expected
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                ),
+                vx_core.f_new(
+                  vx_web_html.t_td,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    // [
+                      vx_core.f_new(
+                        vx_web_html.t_p,
+                        vx_core.vx_new(
+                          vx_core.t_anylist,
+                          // [
+                            vx_core.vx_new_string(":style"),
+                            prestyle,
+                            vx_core.vx_new_string(":text"),
+                            actual
+                          // ]
+                        )
+                      )
+                    // ]
                   )
                 )
-              )
+              // ]
             )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -7316,17 +8842,22 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "trlist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_tr), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "trlist",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_tr
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -7350,13 +8881,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_test.Type_testcase = value as vx_test.Type_testcase
       val outputval : vx_core.Type_any = vx_test.f_trlist_from_testcase(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val testcase : vx_test.Type_testcase = vx_core.f_any_from_any(vx_test.t_testcase, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testcase : vx_test.Type_testcase = vx_core.f_any_from_any(
+        vx_test.t_testcase,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_trlist_from_testcase(testcase)
       return output
     }
@@ -7375,23 +8914,30 @@ object vx_test {
     var output : vx_web_html.Type_trlist = vx_web_html.e_trlist
     output = vx_core.f_let(
       vx_web_html.t_trlist,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val describelist : vx_test.Type_testdescribelist = testcase.describelist()
-        val casename : vx_core.Type_string = testcase.casename()
-        val output_1 : vx_core.Type_any = vx_core.f_list_from_list_1(
-          vx_web_html.t_trlist,
-          describelist,
-          vx_core.t_any_from_any.vx_fn_new({testdescribe_any : vx_core.Type_any ->
-            val testdescribe : vx_test.Type_testdescribe = vx_core.f_any_from_any(vx_test.t_testdescribe, testdescribe_any)
-            var output_2 : vx_core.Type_any = vx_test.f_tr_from_testdescribe_casename(
-              testdescribe,
-              casename
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val describelist : vx_test.Type_testdescribelist = testcase.describelist()
+          val casename : vx_core.Type_string = testcase.casename()
+          val output_1 : vx_core.Type_any = vx_core.f_list_from_list_1(
+            vx_web_html.t_trlist,
+            describelist,
+            vx_core.t_any_from_any.vx_fn_new(
+              {testdescribe_any : vx_core.Type_any ->
+                val testdescribe : vx_test.Type_testdescribe = vx_core.f_any_from_any(
+                  vx_test.t_testdescribe,
+                  testdescribe_any
+                )
+                var output_2 : vx_core.Type_any = vx_test.f_tr_from_testdescribe_casename(
+                  testdescribe,
+                  casename
+                )
+                output_2
+              }
             )
-            output_2
-          })
-        )
-        output_1
-      })
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -7432,17 +8978,22 @@ object vx_test {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "trlist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_tr), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "trlist",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_tr
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -7466,13 +9017,21 @@ object vx_test {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_test.Type_testcaselist = value as vx_test.Type_testcaselist
       val outputval : vx_core.Type_any = vx_test.f_trlist_from_testcaselist(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val testcaselist : vx_test.Type_testcaselist = vx_core.f_any_from_any(vx_test.t_testcaselist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val testcaselist : vx_test.Type_testcaselist = vx_core.f_any_from_any(
+        vx_test.t_testcaselist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_test.f_trlist_from_testcaselist(testcaselist)
       return output
     }

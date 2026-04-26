@@ -117,7 +117,10 @@ public static class Event {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Event.Type_event output = Vx.Core.vx_copy(Vx.Event.e_event, vals);
+      Vx.Event.Type_event output = Vx.Core.vx_copy(
+        Vx.Event.e_event,
+        vals
+      );
       return output;
     }
 
@@ -147,9 +150,19 @@ public static class Event {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -165,10 +178,21 @@ public static class Event {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/event/event",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -179,8 +203,17 @@ public static class Event {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -192,7 +225,12 @@ public static class Event {
               vx_p_name = valname;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_name = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_name = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -203,9 +241,20 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":from")) {
             if (valsub == vx_p_from) {
@@ -214,7 +263,12 @@ public static class Event {
               vx_p_from = valfrom;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_from = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_from = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -225,9 +279,20 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("from"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":to")) {
             if (valsub == vx_p_to) {
@@ -236,7 +301,12 @@ public static class Event {
               vx_p_to = valto;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_to = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_to = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -247,9 +317,20 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("to"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":datamap")) {
             if (valsub == vx_p_datamap) {
@@ -266,9 +347,20 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("datamap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":event<-event")) {
             if (valsub == vx_p_event_from_event) {
@@ -285,9 +377,20 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("event<-event"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":event<-event-async")) {
             if (valsub == vx_p_event_from_event_async) {
@@ -304,14 +407,34 @@ public static class Event {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("event<-event-async"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/event/event", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/event/event",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -344,17 +467,17 @@ public static class Event {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/event", // pkgname
-        "event", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/event",
+        "event",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -409,7 +532,10 @@ public static class Event {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Event.Type_eventlist output = Vx.Core.vx_copy(Vx.Event.e_eventlist, vals);
+      Vx.Event.Type_eventlist output = Vx.Core.vx_copy(
+        Vx.Event.e_eventlist,
+        vals
+      );
       return output;
     }
 
@@ -425,9 +551,19 @@ public static class Event {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Event.Type_eventlist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listevent());
@@ -447,11 +583,31 @@ public static class Event {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/event/eventlist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/event/eventlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/event/eventlist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/event/eventlist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -477,17 +633,22 @@ public static class Event {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/event", // pkgname
-        "eventlist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Event.t_event), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/event",
+        "eventlist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Event.t_event
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -509,7 +670,9 @@ public static class Event {
 
   public class Class_eventmap : Vx.Core.Class_base, Type_eventmap {
 
-    public Vx.Core.Map<string, Vx.Event.Type_event> vx_p_map = Vx.Core.vx_mapimmutable(new Vx.Core.LinkedHashMap<string, Vx.Event.Type_event>());
+    public Vx.Core.Map<string, Vx.Event.Type_event> vx_p_map = Vx.Core.vx_mapimmutable(
+      new Vx.Core.LinkedHashMap<string, Vx.Event.Type_event>()
+    );
 
     public Vx.Core.Map<string, Vx.Core.Type_any> vx_map() {
       Vx.Core.Map<string, Vx.Core.Type_any> anymap = Vx.Core.vx_map_from_map<Vx.Core.Type_any, Vx.Event.Type_event>(this.vx_p_map);
@@ -572,8 +735,17 @@ public static class Event {
         } else if (value is Vx.Event.Type_event castval) {
           map.put(key, castval);
         } else {
-          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error("vx/event/eventmap", ":invalidvalue", value);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error(
+            "vx/event/eventmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Vx.Core.vx_mapimmutable(map);
@@ -584,7 +756,10 @@ public static class Event {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Event.Type_eventmap output = Vx.Core.vx_copy(Vx.Event.e_eventmap, vals);
+      Vx.Event.Type_eventmap output = Vx.Core.vx_copy(
+        Vx.Event.e_eventmap,
+        vals
+      );
       return output;
     }
 
@@ -602,9 +777,19 @@ public static class Event {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           if (false) {
           } else if (valsub is Vx.Core.Type_string valstring) {
@@ -616,10 +801,21 @@ public static class Event {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/event/eventmap", ":keyexpected", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/event/eventmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Vx.Event.Type_event valany = Vx.Event.e_event;
@@ -633,14 +829,27 @@ public static class Event {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                  Vx.Core.vx_string_from_object(valsub)
+                );
             }
             Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
             mapany.put("key", Vx.Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-            msg = Vx.Core.vx_msg_from_error("vx/event/eventmap", ":invalidkeyvalue", msgmap);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+              Vx.Core.vx_mapimmutable(mapany)
+            );
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/event/eventmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Vx.Core.e_any) {
             ischanged = true;
@@ -675,17 +884,22 @@ public static class Event {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/event", // pkgname
-        "eventmap", // name
-        ":map", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Event.t_event), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/event",
+        "eventmap",
+        ":map",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Event.t_event
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -717,8 +931,10 @@ public static class Event {
         Vx.Event.t_event,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("change")
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("change")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -755,8 +971,10 @@ public static class Event {
         Vx.Event.t_event,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("click")
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("click")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -793,8 +1011,10 @@ public static class Event {
         Vx.Event.t_event,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("move")
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("move")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -831,8 +1051,10 @@ public static class Event {
         Vx.Event.t_event,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("move")
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("move")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -881,17 +1103,17 @@ public static class Event {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -914,15 +1136,31 @@ public static class Event {
     public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Event.Type_event inputval = (Vx.Event.Type_event)value;
-      Vx.Core.Type_any outputval = Vx.Event.f_any_from_from_event(Vx.Core.t_any, inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      Vx.Core.Type_any outputval = Vx.Event.f_any_from_from_event(
+        Vx.Core.t_any,
+        inputval
+      );
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(
+        Vx.Event.t_event,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Event.f_any_from_from_event(generic_any_1, evt);
       return output;
     }
@@ -941,14 +1179,13 @@ public static class Event {
     T output = Vx.Core.f_empty(generic_any_1);
     output = Vx.Core.f_let(
       generic_any_1,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_any value = evt.from();
-        Vx.Core.Type_any output_1 = Vx.Core.f_any_from_any(
-          generic_any_1,
-          value
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_any value = evt.from();
+          Vx.Core.Type_any output_1 = Vx.Core.f_any_from_any(generic_any_1, value);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -988,17 +1225,17 @@ public static class Event {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/event",
+          "event",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1022,14 +1259,27 @@ public static class Event {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Event.Type_event inputval = (Vx.Event.Type_event)value;
       Vx.Core.Type_any outputval = Vx.Event.f_event_from_event(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(
+        Vx.Event.t_event,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Event.f_event_from_event(context, evt);
       return output;
     }
@@ -1087,17 +1337,17 @@ public static class Event {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/event",
+          "event",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1118,7 +1368,10 @@ public static class Event {
     }
 
     public Task<T> vx_any_from_any_context_async<T, U>(T generic_any_1, Vx.Core.Type_context context, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Event.Type_event inputval = Vx.Core.f_any_from_any(Vx.Event.t_event, value);
+      Vx.Event.Type_event inputval = Vx.Core.f_any_from_any(
+        Vx.Event.t_event,
+        value
+      );
       Task<Vx.Event.Type_event> future = Vx.Event.f_event_from_event_async(context, inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -1126,10 +1379,23 @@ public static class Event {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Event.Type_event evt = Vx.Core.f_any_from_any(
+        Vx.Event.t_event,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       Task<Vx.Event.Type_event> future = Vx.Event.f_event_from_event_async(context, evt);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -1183,17 +1449,22 @@ public static class Event {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/event", // pkgname
-          "eventmap", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Event.t_event), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/event",
+          "eventmap",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Event.t_event
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1217,13 +1488,21 @@ public static class Event {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Event.Type_eventlist inputval = (Vx.Event.Type_eventlist)value;
       Vx.Core.Type_any outputval = Vx.Event.f_eventmap_from_eventlist(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Event.Type_eventlist eventlist = Vx.Core.f_any_from_any(Vx.Event.t_eventlist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Event.Type_eventlist eventlist = Vx.Core.f_any_from_any(
+        Vx.Event.t_eventlist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Event.f_eventmap_from_eventlist(eventlist);
       return output;
     }
@@ -1243,11 +1522,16 @@ public static class Event {
     output = Vx.Core.f_map_from_list(
       Vx.Event.t_eventmap,
       eventlist,
-      Vx.Core.t_any_from_any.vx_fn_new((evt_any) => {
-        Vx.Event.Type_event evt = Vx.Core.f_any_from_any(Vx.Event.t_event, evt_any);
-        Vx.Core.Type_any output_1 = evt.name();
-        return output_1;
-      })
+      Vx.Core.t_any_from_any.vx_fn_new(
+        (evt_any) => {
+          Vx.Event.Type_event evt = Vx.Core.f_any_from_any(
+            Vx.Event.t_event,
+            evt_any
+          );
+          Vx.Core.Type_any output_1 = evt.name();
+          return output_1;
+        }
+      )
     );
     return output;
   }

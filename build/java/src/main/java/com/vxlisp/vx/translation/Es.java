@@ -44,17 +44,17 @@ public final class Es {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -96,10 +96,12 @@ public final class Es {
       Core.t_translation,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":name"),
-        Core.vx_new_string("es"),
-        Core.vx_new_string(":wordmap"),
-        Es.f_words()
+        // [
+          Core.vx_new_string(":name"),
+          Core.vx_new_string("es"),
+          Core.vx_new_string(":wordmap"),
+          Es.f_words()
+        // ]
       )
     );
     return output;
@@ -143,17 +145,22 @@ public final class Es {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "stringmap", // name
-          ":map", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "stringmap",
+          ":map",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_string
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -195,10 +202,12 @@ public final class Es {
       Core.t_stringmap,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string("Hello"),
-        Core.vx_new_string("Hola"),
-        Core.vx_new_string("World"),
-        Core.vx_new_string("Mundo")
+        // [
+          Core.vx_new_string("Hello"),
+          Core.vx_new_string("Hola"),
+          Core.vx_new_string("World"),
+          Core.vx_new_string("Mundo")
+        // ]
       )
     );
     return output;

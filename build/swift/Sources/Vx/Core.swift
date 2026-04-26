@@ -488,21 +488,6 @@ public enum Vx_Core {
     return output
   }
 
-  public static func vx_arrayany_from_anylist(
-    _ list : Vx_Core.Type_anylist
-  ) -> [any Vx_Core.Type_any] {
-    let listany : [any Vx_Core.Type_any] = list.vx_list()
-    let output : [any Vx_Core.Type_any] = listany
-    return output
-  }
-
-  public static func arraylist_from_array(
-    _ items : Vx_Core.Type_any...
-  ) -> [Vx_Core.Type_any] {
-    let output: [Vx_Core.Type_any] = items
-    return output
-  }
-
   public static func arraylist_from_arraylist(
     _ generic_any_1 : any Vx_Core.Type_any,
     _ listval : [any Vx_Core.Type_any]
@@ -654,33 +639,14 @@ public enum Vx_Core {
     return output
   }
 
-  // vx_new(generic_any_1, args...)
-  public static func vx_new<T : Vx_Core.Type_any>(
+  // vx_copy(generic_any_1, args...)
+  public static func vx_copy<T : Vx_Core.Type_any>(
     _ generic_any_1 : T,
-    _ vals : Any...
+    _ value : any Vx_Core.Type_any,
+    _ values : [Any]
   ) -> T {
-    let val : any Vx_Core.Type_any = generic_any_1.vx_new(vals)
+    let val : any Vx_Core.Type_any = value.vx_copy(values)
     let output : T = Vx_Core.vx_any_from_any(generic_any_1, val)
-    return output
-  }
-
-  // vx_copy(generic_any_1, args...)
-  public static func vx_copy<T : Vx_Core.Type_any>(
-    _ copyval : T,
-    _ vals : [Any]
-  ) -> T {
-    let val : any Vx_Core.Type_any = copyval.vx_copy(vals)
-    let output : T = Vx_Core.vx_any_from_any(copyval, val)
-    return output
-  }
-
-  // vx_copy(generic_any_1, args...)
-  public static func vx_copy<T : Vx_Core.Type_any>(
-    _ copyval : T,
-    _ vals : Any...
-  ) -> T {
-    let val : any Vx_Core.Type_any = copyval.vx_copy(vals)
-    let output : T = Vx_Core.vx_any_from_any(copyval, val)
     return output
   }
 
@@ -689,7 +655,7 @@ public enum Vx_Core {
     _ value : any Vx_Core.Type_any,
     _ values : any Vx_Core.Type_anylist
   ) -> T {
-    let anyoutput = Vx_Core.vx_copy(value, values)
+    let anyoutput = Vx_Core.vx_copy(generic_any_1, value, [values])
     let output = Vx_Core.vx_any_from_any(generic_any_1, anyoutput)
     return output
   }
@@ -698,15 +664,16 @@ public enum Vx_Core {
   public static func vx_empty<T : Vx_Core.Type_any>(
     _ type : T
   ) -> T {
-    let val : Vx_Core.Type_any = type.vx_empty()
+    let val : any Vx_Core.Type_any = type.vx_empty()
     let output : T = Vx_Core.vx_any_from_any(type, val)
     return output
   }
 
   // vx_type(generic_any_1)
   public static func vx_type<T : Vx_Core.Type_any>(
-    _ type : T) -> T {
-    let val : Vx_Core.Type_any = type.vx_type()
+    _ type : T
+  ) -> T {
+    let val : any Vx_Core.Type_any = type.vx_type()
     let output : T = Vx_Core.vx_any_from_any(type, val)
     return output
   }
@@ -734,7 +701,8 @@ public enum Vx_Core {
     _ value : any Vx_Core.Type_any
   ) -> T {
     guard let output = value as? T else {
-      fatalError("Type mismatch: expected \(T.self), got \(type(of: value))")
+      print("Type mismatch: expected \(T.self), got \(type(of: value))")
+      return generic_any_1.vx_empty() as! T
     }
     return output
   }
@@ -745,7 +713,8 @@ public enum Vx_Core {
     _ value : any Vx_Core.Type_any
   ) -> T {
     guard let output = value as? T else {
-      fatalError("Type mismatch: expected \(T.self), got \(type(of: value))")
+      print("Type mismatch: expected \(T.self), got \(type(of: value))")
+      return generic_any_1.vx_empty() as! T
     }
     return output
   }
@@ -755,11 +724,19 @@ public enum Vx_Core {
     _ future : Vx_Core.Future
   ) -> Vx_Core.Future {
     let output : Vx_Core.Future = future.map(generic_any_1, { value in
-      guard let anyvalue = value as? T else {
-        fatalError("Type mismatch: expected \(T.self), got \(type(of: value))")
-      }
-      return Vx_Core.vx_any_from_any(generic_any_1, anyvalue)
+      return Vx_Core.vx_any_from_any(generic_any_1, value)
     })
+    return output
+  }
+
+  // vx_any_from_func(generic_any_1, func, args...)
+  public static func vx_any_from_func<T : Vx_Core.Type_any>(
+    _ generic_any_1 : T,
+    _ fnc : any Vx_Core.Type_replfunc,
+    _ anylist : any Vx_Core.Type_anylist
+  ) -> T {
+    let val : any Vx_Core.Type_any = fnc.vx_repl(anylist)
+    let output : T = Vx_Core.f_any_from_any(generic_any_1, val)
     return output
   }
 
@@ -914,36 +891,32 @@ public enum Vx_Core {
     return Vx_Core.f_any_from_any(generic_any_1, raw)
   }
 
-  // vx_any_from_func(generic_any_1, func, args...)
-  public static func vx_any_from_func<T : Vx_Core.Type_any>(
-    _ generic_any_1 : T,
-    _ fnc : any Vx_Core.Type_replfunc,
-    _ args : any Vx_Core.Type_any...
-  ) -> T {
-    let anylist : any Vx_Core.Type_anylist = Vx_Core.vx_new_anylist(args)
-    let val : any Vx_Core.Type_any = fnc.vx_repl(anylist)
-    let output : T = Vx_Core.f_any_from_any(generic_any_1, val)
-    return output
-  }
-
-  public static func vx_anylist_from_arraystring(
-    _ arraystring : String...
-  ) -> any Vx_Core.Type_anylist {
-    return Vx_Core.vx_anylist_from_arraystring(arraystring)
-  }
-
   public static func vx_anylist_from_arraystring(
     _ arraystring : [String]
   ) -> any Vx_Core.Type_anylist {
-    var listany : [Any] = []
+    var listany : [any Vx_Core.Type_any] = []
     for svalue : String in arraystring {
-      let value: Vx_Core.Type_string = Vx_Core.vx_new_string(svalue)
+      let value : any Vx_Core.Type_string = Vx_Core.vx_new_string(svalue)
       listany.append(value)
     }
-    let output : Vx_Core.Type_anylist = Vx_Core.vx_new(
-      Vx_Core.t_anylist,
+    let output : any Vx_Core.Type_anylist = Vx_Core.vx_new_anylist(
       listany
     )
+    return output
+  }
+
+  public static func vx_arrayany_from_anylist(
+    _ list : any Vx_Core.Type_anylist
+  ) -> [any Vx_Core.Type_any] {
+    let listany : [any Vx_Core.Type_any] = list.vx_list()
+    let output : [any Vx_Core.Type_any] = listany
+    return output
+  }
+
+  public static func vx_arraylist_from_array(
+    _ items : [any Vx_Core.Type_any]
+  ) -> [any Vx_Core.Type_any] {
+    let output : [any Vx_Core.Type_any] = items
     return output
   }
 
@@ -957,7 +930,10 @@ public enum Vx_Core {
   public static func vx_async_empty(
     _ generic_any_1 : any Vx_Core.Type_any
   ) -> Vx_Core.Future {
-    Vx_Core.Future.resolved(generic_any_1, generic_any_1.vx_empty())
+    Vx_Core.Future.resolved(
+      generic_any_1,
+      generic_any_1.vx_empty()
+    )
   }
 
   public static func vx_async_from_async(
@@ -1037,8 +1013,8 @@ public enum Vx_Core {
     var intResult = 0
     if let num1 = val1 as? Vx_Core.Type_number,
       let num2 = val2 as? Vx_Core.Type_number {
-      let float1 = Vx_Core.vx_new(Vx_Core.t_float, num1).vx_float()
-      let float2 = Vx_Core.vx_new(Vx_Core.t_float, num2).vx_float()
+      let float1 = Vx_Core.vx_new(Vx_Core.t_float, [num1]).vx_float()
+      let float2 = Vx_Core.vx_new(Vx_Core.t_float, [num2]).vx_float()
       if float1 < float2 {
         intResult = -1
       } else if float1 > float2 {
@@ -1255,7 +1231,7 @@ public enum Vx_Core {
     funcmap.vx_p_map = mapfunc
     let global = Vx_Core.c_global as! Vx_Core.Class_project
     var packagemap = global.packagemap() as! Vx_Core.Class_packagemap
-    if packagemap === Vx_Core.e_packagemap {
+    if Vx_Core.vx_issame(packagemap, Vx_Core.e_packagemap) {
       packagemap = Vx_Core.Class_packagemap()
       global.vx_p_packagemap = packagemap
     }
@@ -1911,29 +1887,23 @@ public enum Vx_Core {
   }
 
   public static func vx_new_anylist(
-    _ listany : any Vx_Core.Type_any...
-  ) -> Vx_Core.Type_anylist {
-    return Vx_Core.vx_new_anylist(listany)
-  }
-
-  public static func vx_new_anylist(
     _ listany : [any Vx_Core.Type_any]
-  ) -> Vx_Core.Type_anylist {
-    var output : Vx_Core.Class_anylist = Vx_Core.Class_anylist()
+  ) -> any Vx_Core.Type_anylist {
+    var output : any Vx_Core.Class_anylist = Vx_Core.Class_anylist()
     output.vx_p_list = Vx_Core.vx_listimmutable(listany)
     return output
   }
 
   public static func vx_new_boolean(
     _ isval : Bool
-  ) -> Vx_Core.Type_boolean {
+  ) -> any Vx_Core.Type_boolean {
     return isval ? Vx_Core.c_true : Vx_Core.c_false
   }
 
   public static func vx_new_decimal(
     _ text: String
-  ) -> Vx_Core.Type_decimal {
-    var output : Vx_Core.Type_decimal = Vx_Core.e_decimal
+  ) -> any Vx_Core.Type_decimal {
+    var output : any Vx_Core.Type_decimal = Vx_Core.e_decimal
     if text == "0" || text == "0.0" {
     } else {
       var work = Vx_Core.Class_decimal()
@@ -1945,8 +1915,8 @@ public enum Vx_Core {
 
   public static func vx_new_float(
     _ fval: Float
-  ) -> Vx_Core.Type_float {
-    var output : Vx_Core.Type_float = Vx_Core.e_float
+  ) -> any Vx_Core.Type_float {
+    var output : any Vx_Core.Type_float = Vx_Core.e_float
     if fval != 0 {
       var work = Vx_Core.Class_float()
       work.vxfloat = fval
@@ -1957,7 +1927,7 @@ public enum Vx_Core {
 
   public static func vx_new_from_type<T : Vx_Core.Type_any>(
     _ type : T,
-    _ values : Vx_Core.Type_anylist
+    _ values : any Vx_Core.Type_anylist
   ) -> T {
     let arrayany : [any Vx_Core.Type_any] = Vx_Core.vx_arrayany_from_anylist(
       values
@@ -1969,8 +1939,8 @@ public enum Vx_Core {
 
   public static func vx_new_int(
     _ ival: Int
-  ) -> Vx_Core.Type_int {
-    var output : Vx_Core.Type_int = Vx_Core.e_int
+  ) -> any Vx_Core.Type_int {
+    var output : any Vx_Core.Type_int = Vx_Core.e_int
     if ival != 0 {
       var work = Vx_Core.Class_int()
       work.vxint = ival
@@ -2000,8 +1970,8 @@ public enum Vx_Core {
 
   public static func vx_new_string(
     _ text : String
-  ) -> Vx_Core.Type_string {
-    var output : Vx_Core.Type_string = Vx_Core.e_string
+  ) -> any Vx_Core.Type_string {
+    var output : any Vx_Core.Type_string = Vx_Core.e_string
     if !text.isEmpty {
       var work = Vx_Core.Class_string()
       work.vxstring = text
@@ -2012,7 +1982,7 @@ public enum Vx_Core {
 
   public static func vx_not(
     _ value : any Vx_Core.Type_boolean
-  ) -> Vx_Core.Type_boolean {
+  ) -> any Vx_Core.Type_boolean {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.vx_new_boolean(!value.vx_boolean())
     return output
@@ -2021,7 +1991,7 @@ public enum Vx_Core {
   public static func vx_or(
     _ val1 : Vx_Core.Type_boolean,
     _ val2 : Vx_Core.Type_boolean
-  ) -> Vx_Core.Type_boolean {
+  ) -> any Vx_Core.Type_boolean {
     var output : Vx_Core.Type_boolean = Vx_Core.c_false
     if (val1.vx_boolean() || val2.vx_boolean()) {
       output = Vx_Core.c_true
@@ -2032,7 +2002,7 @@ public enum Vx_Core {
   public static func vx_plus(
     _ num1 : any Vx_Core.Type_int,
     _ num2 : any Vx_Core.Type_int
-  ) -> Vx_Core.Type_int {
+  ) -> any Vx_Core.Type_int {
     var output : any Vx_Core.Type_int = Vx_Core.e_int
     let result : Int = num1.vx_int() + num2.vx_int()
     output = Vx_Core.vx_new_int(result)
@@ -2104,7 +2074,7 @@ public enum Vx_Core {
     var output : String = ""
     if indent > 50 {
       output = "Error: Max Depth Exceeded"
-    } else if value === value.vx_type() {
+    } else if Vx_Core.vx_issame(value, value.vx_type()) {
       if let valuefunc = value as? Vx_Core.Type_func {
         let funcdef = valuefunc.vx_funcdef()
         output =
@@ -2112,9 +2082,12 @@ public enum Vx_Core {
           funcdef.name().vx_string()
       } else {
         let typedef = value.vx_typedef()
-        output =
-          typedef.pkgname().vx_string() + "/" +
-          typedef.name().vx_string()
+        var typedefname : String = typedef.name().vx_string()
+        let pkgname = typedef.pkgname().vx_string()
+        if (pkgname != "vx/core") {
+          typedefname = pkgname + "/" + typedefname
+        }
+        output = typedefname
       }
     } else if let valbool = value as? Vx_Core.Type_boolean {
       output = valbool.vx_boolean() ? "true" : "false"
@@ -2126,11 +2099,11 @@ public enum Vx_Core {
         output.removeLast(2)
       }
     } else if let valint = value as? Vx_Core.Type_int {
-      if value === Vx_Core.c_notanumber {
+      if Vx_Core.vx_issame(value, Vx_Core.c_notanumber) {
         output = "notanumber"
-      } else if value === Vx_Core.c_infinity {
+      } else if Vx_Core.vx_issame(value, Vx_Core.c_infinity) {
         output = "infinity"
-      } else if value === Vx_Core.c_neginfinity {
+      } else if Vx_Core.vx_issame(value, Vx_Core.c_neginfinity) {
         output = "neginfinity"
       } else {
         output = String(valint.vx_int())
@@ -2157,7 +2130,12 @@ public enum Vx_Core {
       let name = constdef.name().vx_string()
       output = (pkg == "vx/core") ? name : "\(pkg)/\(name)"
     } else if let vallist = value as? Vx_Core.Type_list {
-      let typedefname = vallist.vx_typedef().name().vx_string()
+      let typedef = value.vx_typedef()
+      var typedefname : String = typedef.name().vx_string()
+      let pkgname = typedef.pkgname().vx_string()
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname
+      }
       let indent2 = indent + 1
       for valsub in vallist.vx_list() {
         let valtext = Vx_Core.vx_string_from_any_indent(valsub, indent2, linefeed)
@@ -2170,7 +2148,12 @@ public enum Vx_Core {
       }
       output = "(\(typedefname)\(output))"
     } else if let valmap = value as? Vx_Core.Type_map {
-      let typedefname = valmap.vx_typedef().name().vx_string()
+      let typedef = value.vx_typedef()
+      var typedefname : String = typedef.name().vx_string()
+      let pkgname = typedef.pkgname().vx_string()
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname
+      }
       let indent2 = indent + 2
       for skey in valmap.vx_map().keys() {
         var key = skey
@@ -2192,6 +2175,44 @@ public enum Vx_Core {
         output += "\n\(indenttext) :msgblock\n  \(indenttext)\(msgtext)"
       }
       output = "(\(typedefname)\(output))"
+    } else if let valstruct = value as? Vx_Core.Type_struct {
+      let typedef = value.vx_typedef()
+      var typedefname : String = typedef.name().vx_string()
+      let pkgname = typedef.pkgname().vx_string()
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname
+      }
+      var indentint2 = indent
+      indentint2 += 2
+      let mapval2 = valstruct.vx_map()
+      let keys2 : [String] = mapval2.keys()
+      for skey in keys2 {
+        var key : String = skey
+        let valsub2 = mapval2.getOrElse(
+          key, Vx_Core.e_any
+        )
+        if !Vx_Core.f_is_empty_1(valsub2).vx_boolean() {
+          if !key.starts(with: ":") {
+            key = ":" + key
+          }
+          var strval2 : String = Vx_Core.vx_string_from_any_indent(
+            valsub2, indentint2, linefeed
+          )
+          if strval2.contains("\n") {
+            strval2 = "\n  " + indenttext + strval2
+          } else {
+            strval2 = " " + strval2
+          }
+          output += "\n" + indenttext + " " + key + strval2
+        }
+      }
+      if !Vx_Core.vx_issame(valstruct.vx_msgblock(), Vx_Core.e_msgblock) {
+        let msgtext2 : String = Vx_Core.vx_string_from_any_indent(
+          valstruct.vx_msgblock(), indentint2, linefeed
+        )
+        output += "\n" + indenttext + " :msgblock\n  " + indenttext + msgtext2
+      }
+      output = "(" + typedefname + output + ")"
     } else if let valfunc = value as? Vx_Core.Type_func {
       let funcname = Vx_Core.f_funcname_from_funcdef(
         valfunc.vx_funcdef()
@@ -2212,7 +2233,7 @@ public enum Vx_Core {
     _ value : any Vx_Core.Type_any,
     _ indent : any Vx_Core.Type_int,
     _ linefeed : any Vx_Core.Type_boolean
-  ) -> Vx_Core.Type_string {
+  ) -> any Vx_Core.Type_string {
     let soutput = Vx_Core.vx_string_from_any_indent(
       value,
       indent.vx_int(),
@@ -2252,7 +2273,7 @@ public enum Vx_Core {
     _ text : Vx_Core.Type_string,
     _ find : Vx_Core.Type_string,
     _ replace : Vx_Core.Type_string
-  ) -> Vx_Core.Type_string {
+  ) -> any Vx_Core.Type_string {
     let stext = vx_string_from_string_find_replace(
       text.vx_string(),
       find.vx_string(),
@@ -2288,7 +2309,7 @@ public enum Vx_Core {
   public static func vx_string_repeat(
     _ text : Vx_Core.Type_string,
     _ num : Vx_Core.Type_int
-  ) -> Vx_Core.Type_string {
+  ) -> any Vx_Core.Type_string {
     return Vx_Core.vx_new_string(
       Vx_Core.vx_string_repeat(
         text.vx_string(),
@@ -2351,7 +2372,7 @@ public enum Vx_Core {
 
   public static func vx_typedef_from_type(
     _ value : any Vx_Core.Type_any
-  ) -> Vx_Core.Type_typedef {
+  ) -> any Vx_Core.Type_typedef {
     return value.vx_typedef()
   }
 
@@ -2378,7 +2399,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_any = Vx_Core.vx_copy(Vx_Core.e_any, vals)
+      var output : any Vx_Core.Type_any = Vx_Core.vx_copy(
+        Vx_Core.t_any,
+        Vx_Core.e_any,
+        vals
+      )
       return output
     }
 
@@ -2394,9 +2419,21 @@ public enum Vx_Core {
       }
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -2421,17 +2458,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "any", // name
-        "", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "any",
+        "",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2450,7 +2487,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_any_async_from_func = Vx_Core.vx_copy(Vx_Core.e_any_async_from_func, vals)
+      var output : any Vx_Core.Type_any_async_from_func = Vx_Core.vx_copy(
+        Vx_Core.t_any_async_from_func,
+        Vx_Core.e_any_async_from_func,
+        vals
+      )
       return output
     }
 
@@ -2486,17 +2527,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "any-async<-func", // name
-        ":func", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "any-async<-func",
+        ":func",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2553,7 +2594,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_any_from_anylist = Vx_Core.vx_copy(Vx_Core.e_any_from_anylist, vals)
+      var output : any Vx_Core.Type_any_from_anylist = Vx_Core.vx_copy(
+        Vx_Core.t_any_from_anylist,
+        Vx_Core.e_any_from_anylist,
+        vals
+      )
       return output
     }
 
@@ -2571,9 +2616,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_any_from_anylist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listany_from_any())
@@ -2589,11 +2646,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/any<-anylist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/any<-anylist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/any<-anylist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/any<-anylist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -2619,17 +2698,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "any<-anylist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "any<-anylist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2670,7 +2749,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_anylist = Vx_Core.vx_copy(Vx_Core.e_anylist, vals)
+      var output : any Vx_Core.Type_anylist = Vx_Core.vx_copy(
+        Vx_Core.t_anylist,
+        Vx_Core.e_anylist,
+        vals
+      )
       return output
     }
 
@@ -2703,8 +2786,20 @@ public enum Vx_Core {
             }
           }
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/anylist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/anylist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -2730,17 +2825,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "anylist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "anylist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_any
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2756,7 +2856,7 @@ public enum Vx_Core {
 
   public class Class_anymap : Vx_Core.Class_base, Type_anymap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.Map<any Vx_Core.Type_any>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.Map<any Vx_Core.Type_any>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let output : Vx_Core.Map<any Vx_Core.Type_any> = self.vx_p_map
@@ -2813,8 +2913,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_any {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/anymap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/anymap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -2827,7 +2937,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_anymap = Vx_Core.vx_copy(Vx_Core.e_anymap, vals)
+      var output : any Vx_Core.Type_anymap = Vx_Core.vx_copy(
+        Vx_Core.t_anymap,
+        Vx_Core.e_anymap,
+        vals
+      )
       return output
     }
 
@@ -2847,9 +2961,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -2861,10 +2987,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/anymap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/anymap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_any = Vx_Core.e_any
@@ -2878,14 +3016,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/anymap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/anymap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -2920,17 +3072,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "anymap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "anymap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_any
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2949,7 +3106,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_anytype = Vx_Core.vx_copy(Vx_Core.e_anytype, vals)
+      var output : any Vx_Core.Type_anytype = Vx_Core.vx_copy(
+        Vx_Core.t_anytype,
+        Vx_Core.e_anytype,
+        vals
+      )
       return output
     }
 
@@ -2985,17 +3146,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "anytype", // name
-        ":type", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "anytype",
+        ":type",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3086,7 +3247,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_arg = Vx_Core.vx_copy(Vx_Core.e_arg, vals)
+      var output : any Vx_Core.Type_arg = Vx_Core.vx_copy(
+        Vx_Core.t_arg,
+        Vx_Core.e_arg,
+        vals
+      )
       return output
     }
 
@@ -3114,9 +3279,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -3132,10 +3309,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/arg", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/arg",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -3146,8 +3335,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/arg", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -3159,7 +3358,12 @@ public enum Vx_Core {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -3170,9 +3374,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":argtype" {
             if Vx_Core.vx_issame(valsub, vx_p_argtype) {
@@ -3189,9 +3405,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("argtype"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":fn-any" {
             if Vx_Core.vx_issame(valsub, vx_p_fn_any) {
@@ -3208,9 +3436,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("fn-any"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":doc" {
             if Vx_Core.vx_issame(valsub, vx_p_doc) {
@@ -3219,7 +3459,12 @@ public enum Vx_Core {
               vx_p_doc = valdoc
             } else if valsub is String {
               ischanged = true
-              vx_p_doc = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_doc = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -3230,14 +3475,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("doc"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/arg", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/arg",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -3268,17 +3535,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "arg", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "arg",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3335,7 +3602,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_arglist = Vx_Core.vx_copy(Vx_Core.e_arglist, vals)
+      var output : any Vx_Core.Type_arglist = Vx_Core.vx_copy(
+        Vx_Core.t_arglist,
+        Vx_Core.e_arglist,
+        vals
+      )
       return output
     }
 
@@ -3353,9 +3624,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_arglist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listarg())
@@ -3375,11 +3658,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/arglist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/arglist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/arglist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/arglist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -3405,17 +3710,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "arglist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_arg), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "arglist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_arg
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3435,7 +3745,7 @@ public enum Vx_Core {
 
   public class Class_argmap : Vx_Core.Class_base, Type_argmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_arg> = Vx_Core.Map<any Vx_Core.Type_arg>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_arg> = Vx_Core.Map<any Vx_Core.Type_arg>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -3506,8 +3816,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_arg {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/argmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/argmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -3520,7 +3840,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_argmap = Vx_Core.vx_copy(Vx_Core.e_argmap, vals)
+      var output : any Vx_Core.Type_argmap = Vx_Core.vx_copy(
+        Vx_Core.t_argmap,
+        Vx_Core.e_argmap,
+        vals
+      )
       return output
     }
 
@@ -3540,9 +3864,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -3554,10 +3890,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/argmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/argmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_arg = Vx_Core.e_arg
@@ -3571,14 +3919,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/argmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/argmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -3613,17 +3975,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "argmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_arg), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "argmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_arg
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3650,7 +4017,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_boolean = Vx_Core.vx_copy(Vx_Core.e_boolean, vals)
+      var output : any Vx_Core.Type_boolean = Vx_Core.vx_copy(
+        Vx_Core.t_boolean,
+        Vx_Core.e_boolean,
+        vals
+      )
       return output
     }
 
@@ -3667,9 +4038,21 @@ public enum Vx_Core {
       var booleanval : Bool = value.vx_boolean()
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let valboolean = valsub as? any Vx_Core.Type_boolean {
           booleanval = booleanval || valboolean.vx_boolean()
         } else if let issubval = valsub as? Bool {
@@ -3703,17 +4086,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "boolean", // name
-        "", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "boolean",
+        "",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3769,7 +4152,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_booleanlist = Vx_Core.vx_copy(Vx_Core.e_booleanlist, vals)
+      var output : any Vx_Core.Type_booleanlist = Vx_Core.vx_copy(
+        Vx_Core.t_booleanlist,
+        Vx_Core.e_booleanlist,
+        vals
+      )
       return output
     }
 
@@ -3787,9 +4174,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_booleanlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listboolean())
@@ -3797,7 +4196,12 @@ public enum Vx_Core {
           ischanged = true
           listval.append(allowsub)
         } else if valsub is Bool {
-          var subitem : any Vx_Core.Type_boolean = Vx_Core.vx_new(Vx_Core.t_boolean, valsub)
+          var subitem : any Vx_Core.Type_boolean = Vx_Core.vx_new(
+            Vx_Core.t_boolean,
+            [
+              valsub
+            ]
+          )
           ischanged = true
           listval.append(subitem)
         } else if let listany = valsub as? [any Vx_Core.Type_any] {
@@ -3809,11 +4213,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/booleanlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/booleanlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/booleanlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/booleanlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -3839,17 +4265,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "booleanlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_boolean), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "booleanlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_boolean
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3868,7 +4299,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_collection = Vx_Core.vx_copy(Vx_Core.e_collection, vals)
+      var output : any Vx_Core.Type_collection = Vx_Core.vx_copy(
+        Vx_Core.t_collection,
+        Vx_Core.e_collection,
+        vals
+      )
       return output
     }
 
@@ -3904,17 +4339,23 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "collection", // name
-        "", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_list, Vx_Core.t_map), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "collection",
+        "",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_list,
+            Vx_Core.t_map
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3933,7 +4374,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_compilelanguages = Vx_Core.vx_copy(Vx_Core.e_compilelanguages, vals)
+      var output : any Vx_Core.Type_compilelanguages = Vx_Core.vx_copy(
+        Vx_Core.t_compilelanguages,
+        Vx_Core.e_compilelanguages,
+        vals
+      )
       return output
     }
 
@@ -3969,17 +4414,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "compilelanguages", // name
-        "", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "compilelanguages",
+        "",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3998,7 +4443,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_connect = Vx_Core.vx_copy(Vx_Core.e_connect, vals)
+      var output : any Vx_Core.Type_connect = Vx_Core.vx_copy(
+        Vx_Core.t_connect,
+        Vx_Core.e_connect,
+        vals
+      )
       return output
     }
 
@@ -4034,17 +4483,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "connect", // name
-        "", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "connect",
+        "",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4101,7 +4550,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_connectlist = Vx_Core.vx_copy(Vx_Core.e_connectlist, vals)
+      var output : any Vx_Core.Type_connectlist = Vx_Core.vx_copy(
+        Vx_Core.t_connectlist,
+        Vx_Core.e_connectlist,
+        vals
+      )
       return output
     }
 
@@ -4119,9 +4572,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_connectlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listconnect())
@@ -4141,11 +4606,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/connectlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/connectlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/connectlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/connectlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -4171,17 +4658,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "connectlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_connect), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "connectlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_connect
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4201,7 +4693,7 @@ public enum Vx_Core {
 
   public class Class_connectmap : Vx_Core.Class_base, Type_connectmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_connect> = Vx_Core.Map<any Vx_Core.Type_connect>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_connect> = Vx_Core.Map<any Vx_Core.Type_connect>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -4272,8 +4764,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_connect {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/connectmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/connectmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -4286,7 +4788,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_connectmap = Vx_Core.vx_copy(Vx_Core.e_connectmap, vals)
+      var output : any Vx_Core.Type_connectmap = Vx_Core.vx_copy(
+        Vx_Core.t_connectmap,
+        Vx_Core.e_connectmap,
+        vals
+      )
       return output
     }
 
@@ -4308,9 +4814,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -4322,10 +4840,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/connectmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/connectmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_connect = Vx_Core.e_connect
@@ -4339,14 +4869,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/connectmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/connectmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -4381,17 +4925,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "connectmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_connect), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "connectmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_connect
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4410,7 +4959,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_const = Vx_Core.vx_copy(Vx_Core.e_const, vals)
+      var output : any Vx_Core.Type_const = Vx_Core.vx_copy(
+        Vx_Core.t_const,
+        Vx_Core.e_const,
+        vals
+      )
       return output
     }
 
@@ -4446,17 +4999,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "const", // name
-        ":const", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "const",
+        ":const",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4533,7 +5086,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_constdef = Vx_Core.vx_copy(Vx_Core.e_constdef, vals)
+      var output : any Vx_Core.Type_constdef = Vx_Core.vx_copy(
+        Vx_Core.t_constdef,
+        Vx_Core.e_constdef,
+        vals
+      )
       return output
     }
 
@@ -4559,9 +5116,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -4577,10 +5146,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/constdef", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/constdef",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -4591,8 +5172,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/constdef", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/constdef",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -4604,7 +5195,12 @@ public enum Vx_Core {
               vx_p_pkgname = valpkgname
             } else if valsub is String {
               ischanged = true
-              vx_p_pkgname = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_pkgname = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -4615,9 +5211,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("pkgname"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/constdef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/constdef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":name" {
             if Vx_Core.vx_issame(valsub, vx_p_name) {
@@ -4626,7 +5234,12 @@ public enum Vx_Core {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -4637,9 +5250,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/constdef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/constdef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":type" {
             if Vx_Core.vx_issame(valsub, vx_p_type) {
@@ -4656,14 +5281,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("type"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/constdef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/constdef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/constdef", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/constdef",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -4693,17 +5340,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "constdef", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "constdef",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4744,7 +5391,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_constlist = Vx_Core.vx_copy(Vx_Core.e_constlist, vals)
+      var output : any Vx_Core.Type_constlist = Vx_Core.vx_copy(
+        Vx_Core.t_constlist,
+        Vx_Core.e_constlist,
+        vals
+      )
       return output
     }
 
@@ -4762,9 +5413,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_constlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_list())
@@ -4780,8 +5443,20 @@ public enum Vx_Core {
             }
           }
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/constlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/constlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -4807,17 +5482,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "constlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "constlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_any
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4833,7 +5513,7 @@ public enum Vx_Core {
 
   public class Class_constmap : Vx_Core.Class_base, Type_constmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.Map<any Vx_Core.Type_any>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.Map<any Vx_Core.Type_any>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let output : Vx_Core.Map<any Vx_Core.Type_any> = self.vx_p_map
@@ -4890,8 +5570,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_any {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/constmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/constmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -4904,7 +5594,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_constmap = Vx_Core.vx_copy(Vx_Core.e_constmap, vals)
+      var output : any Vx_Core.Type_constmap = Vx_Core.vx_copy(
+        Vx_Core.t_constmap,
+        Vx_Core.e_constmap,
+        vals
+      )
       return output
     }
 
@@ -4924,9 +5618,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -4938,10 +5644,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/constmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/constmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_any = Vx_Core.e_any
@@ -4955,14 +5673,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/constmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/constmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -4997,17 +5729,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "constmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "constmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_any
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5098,7 +5835,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_context = Vx_Core.vx_copy(Vx_Core.e_context, vals)
+      var output : any Vx_Core.Type_context = Vx_Core.vx_copy(
+        Vx_Core.t_context,
+        Vx_Core.e_context,
+        vals
+      )
       return output
     }
 
@@ -5126,9 +5867,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -5144,10 +5897,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/context", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/context",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -5158,8 +5923,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/context", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -5171,7 +5946,12 @@ public enum Vx_Core {
               vx_p_code = valcode
             } else if valsub is String {
               ischanged = true
-              vx_p_code = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_code = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -5182,9 +5962,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("code"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":session" {
             if Vx_Core.vx_issame(valsub, vx_p_session) {
@@ -5201,9 +5993,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("session"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":setting" {
             if Vx_Core.vx_issame(valsub, vx_p_setting) {
@@ -5220,9 +6024,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("setting"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":state" {
             if Vx_Core.vx_issame(valsub, vx_p_state) {
@@ -5239,14 +6055,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("state"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/context", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/context",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -5277,17 +6115,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "context", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "context",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5306,7 +6144,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_date = Vx_Core.vx_copy(Vx_Core.e_date, vals)
+      var output : any Vx_Core.Type_date = Vx_Core.vx_copy(
+        Vx_Core.t_date,
+        Vx_Core.e_date,
+        vals
+      )
       return output
     }
 
@@ -5342,17 +6184,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "date", // name
-        ":string", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "date",
+        ":string",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5385,7 +6227,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_decimal = Vx_Core.vx_copy(Vx_Core.e_decimal, vals)
+      var output : any Vx_Core.Type_decimal = Vx_Core.vx_copy(
+        Vx_Core.t_decimal,
+        Vx_Core.e_decimal,
+        vals
+      )
       return output
     }
 
@@ -5402,9 +6248,21 @@ public enum Vx_Core {
       var sval : String = value.vx_string()
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let valstring = valsub as? any Vx_Core.Type_string {
           ischanged = true
           sval = valstring.vx_string()
@@ -5436,17 +6294,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "decimal", // name
-        "", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "decimal",
+        "",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_number
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5465,7 +6328,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_error = Vx_Core.vx_copy(Vx_Core.e_error, vals)
+      var output : any Vx_Core.Type_error = Vx_Core.vx_copy(
+        Vx_Core.t_error,
+        Vx_Core.e_error,
+        vals
+      )
       return output
     }
 
@@ -5501,17 +6368,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "error", // name
-        "", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "error",
+        "",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5538,7 +6405,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_float = Vx_Core.vx_copy(Vx_Core.e_float, vals)
+      var output : any Vx_Core.Type_float = Vx_Core.vx_copy(
+        Vx_Core.t_float,
+        Vx_Core.e_float,
+        vals
+      )
       return output
     }
 
@@ -5555,9 +6426,21 @@ public enum Vx_Core {
       var floatval : Float = value.vx_float()
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let valdecimal = valsub as? any Vx_Core.Type_decimal {
           ischanged = true
           floatval += valdecimal.vx_float()
@@ -5604,17 +6487,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "float", // name
-        "", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "float",
+        "",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_number
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5639,7 +6527,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_func = Vx_Core.vx_copy(Vx_Core.e_func, vals)
+      var output : any Vx_Core.Type_func = Vx_Core.vx_copy(
+        Vx_Core.t_func,
+        Vx_Core.e_func,
+        vals
+      )
       return output
     }
 
@@ -5675,17 +6567,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "func", // name
-        ":func", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "func",
+        ":func",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5790,7 +6682,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_funcdef = Vx_Core.vx_copy(Vx_Core.e_funcdef, vals)
+      var output : any Vx_Core.Type_funcdef = Vx_Core.vx_copy(
+        Vx_Core.t_funcdef,
+        Vx_Core.e_funcdef,
+        vals
+      )
       return output
     }
 
@@ -5820,9 +6716,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -5838,10 +6746,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/funcdef", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/funcdef",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -5852,8 +6772,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/funcdef", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -5865,7 +6795,12 @@ public enum Vx_Core {
               vx_p_pkgname = valpkgname
             } else if valsub is String {
               ischanged = true
-              vx_p_pkgname = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_pkgname = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -5876,9 +6811,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("pkgname"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":name" {
             if Vx_Core.vx_issame(valsub, vx_p_name) {
@@ -5887,7 +6834,12 @@ public enum Vx_Core {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -5898,9 +6850,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":idx" {
             if Vx_Core.vx_issame(valsub, vx_p_idx) {
@@ -5909,7 +6873,12 @@ public enum Vx_Core {
               vx_p_idx = validx
             } else if valsub is Int {
               ischanged = true
-              vx_p_idx = Vx_Core.vx_new(Vx_Core.t_int, valsub)
+              vx_p_idx = Vx_Core.vx_new(
+                Vx_Core.t_int,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -5920,9 +6889,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("idx"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":type" {
             if Vx_Core.vx_issame(valsub, vx_p_type) {
@@ -5939,9 +6920,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("type"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":async" {
             if Vx_Core.vx_issame(valsub, vx_p_async) {
@@ -5950,7 +6943,12 @@ public enum Vx_Core {
               vx_p_async = valasync
             } else if valsub is Bool {
               ischanged = true
-              vx_p_async = Vx_Core.vx_new(Vx_Core.t_boolean, valsub)
+              vx_p_async = Vx_Core.vx_new(
+                Vx_Core.t_boolean,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -5961,14 +6959,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("async"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/funcdef", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/funcdef",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -6000,17 +7020,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "funcdef", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "funcdef",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6067,7 +7087,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_funclist = Vx_Core.vx_copy(Vx_Core.e_funclist, vals)
+      var output : any Vx_Core.Type_funclist = Vx_Core.vx_copy(
+        Vx_Core.t_funclist,
+        Vx_Core.e_funclist,
+        vals
+      )
       return output
     }
 
@@ -6085,9 +7109,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_funclist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listfunc())
@@ -6107,11 +7143,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/funclist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/funclist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/funclist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/funclist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -6137,17 +7195,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "funclist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_func), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "funclist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_func
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6167,7 +7230,7 @@ public enum Vx_Core {
 
   public class Class_funcmap : Vx_Core.Class_base, Type_funcmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_func> = Vx_Core.Map<any Vx_Core.Type_func>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_func> = Vx_Core.Map<any Vx_Core.Type_func>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -6238,8 +7301,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_func {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/funcmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/funcmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -6252,7 +7325,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_funcmap = Vx_Core.vx_copy(Vx_Core.e_funcmap, vals)
+      var output : any Vx_Core.Type_funcmap = Vx_Core.vx_copy(
+        Vx_Core.t_funcmap,
+        Vx_Core.e_funcmap,
+        vals
+      )
       return output
     }
 
@@ -6272,9 +7349,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -6286,10 +7375,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/funcmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/funcmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_func = Vx_Core.e_func
@@ -6303,14 +7404,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/funcmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/funcmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -6345,17 +7460,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "funcmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_func), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "funcmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_func
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6382,7 +7502,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_int = Vx_Core.vx_copy(Vx_Core.e_int, vals)
+      var output : any Vx_Core.Type_int = Vx_Core.vx_copy(
+        Vx_Core.t_int,
+        Vx_Core.e_int,
+        vals
+      )
       return output
     }
 
@@ -6399,9 +7523,21 @@ public enum Vx_Core {
       var intval : Int = value.vx_int()
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let valint = valsub as? any Vx_Core.Type_int {
           ischanged = true
           intval += valint.vx_int()
@@ -6436,17 +7572,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "int", // name
-        "", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "int",
+        "",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_number
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6503,7 +7644,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_intlist = Vx_Core.vx_copy(Vx_Core.e_intlist, vals)
+      var output : any Vx_Core.Type_intlist = Vx_Core.vx_copy(
+        Vx_Core.t_intlist,
+        Vx_Core.e_intlist,
+        vals
+      )
       return output
     }
 
@@ -6521,9 +7666,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_intlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listint())
@@ -6531,7 +7688,12 @@ public enum Vx_Core {
           ischanged = true
           listval.append(allowsub)
         } else if valsub is Int {
-          var subitem : any Vx_Core.Type_int = Vx_Core.vx_new(Vx_Core.t_int, valsub)
+          var subitem : any Vx_Core.Type_int = Vx_Core.vx_new(
+            Vx_Core.t_int,
+            [
+              valsub
+            ]
+          )
           ischanged = true
           listval.append(subitem)
         } else if let listany = valsub as? [any Vx_Core.Type_any] {
@@ -6543,11 +7705,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/intlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/intlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/intlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/intlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -6573,17 +7757,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "intlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "intlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_int
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6603,7 +7792,7 @@ public enum Vx_Core {
 
   public class Class_intmap : Vx_Core.Class_base, Type_intmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_int> = Vx_Core.Map<any Vx_Core.Type_int>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_int> = Vx_Core.Map<any Vx_Core.Type_int>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -6674,8 +7863,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_int {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/intmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/intmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -6688,7 +7887,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_intmap = Vx_Core.vx_copy(Vx_Core.e_intmap, vals)
+      var output : any Vx_Core.Type_intmap = Vx_Core.vx_copy(
+        Vx_Core.t_intmap,
+        Vx_Core.e_intmap,
+        vals
+      )
       return output
     }
 
@@ -6708,9 +7911,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -6722,10 +7937,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/intmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/intmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_int = Vx_Core.e_int
@@ -6733,20 +7960,39 @@ public enum Vx_Core {
           } else if let valallowed = valsub as? any Vx_Core.Type_int {
             valany = valallowed
           } else if valsub is Int {
-            valany = Vx_Core.vx_new(Vx_Core.t_int, valsub)
+            valany = Vx_Core.vx_new(
+              Vx_Core.t_int,
+              [
+                valsub
+              ]
+            )
           } else {
             if false {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/intmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/intmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -6781,17 +8027,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "intmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "intmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_int
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6836,7 +8087,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_list = Vx_Core.vx_copy(Vx_Core.e_list, vals)
+      var output : any Vx_Core.Type_list = Vx_Core.vx_copy(
+        Vx_Core.t_list,
+        Vx_Core.e_list,
+        vals
+      )
       return output
     }
 
@@ -6854,9 +8109,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_list {
           ischanged = true
           listval.append(contentsOf: multi.vx_list())
@@ -6872,8 +8139,20 @@ public enum Vx_Core {
             }
           }
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/list", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/list",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -6899,17 +8178,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "list", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "list",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_any
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6928,7 +8212,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_listtype = Vx_Core.vx_copy(Vx_Core.e_listtype, vals)
+      var output : any Vx_Core.Type_listtype = Vx_Core.vx_copy(
+        Vx_Core.t_listtype,
+        Vx_Core.e_listtype,
+        vals
+      )
       return output
     }
 
@@ -6964,17 +8252,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "listtype", // name
-        ":type", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "listtype",
+        ":type",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7006,7 +8294,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_locale = Vx_Core.vx_copy(Vx_Core.e_locale, vals)
+      var output : any Vx_Core.Type_locale = Vx_Core.vx_copy(
+        Vx_Core.t_locale,
+        Vx_Core.e_locale,
+        vals
+      )
       return output
     }
 
@@ -7042,17 +8334,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "locale", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "locale",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7079,7 +8371,7 @@ public enum Vx_Core {
 
   public class Class_map : Vx_Core.Class_base, Type_map {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.Map<any Vx_Core.Type_any>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.Map<any Vx_Core.Type_any>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let output : Vx_Core.Map<any Vx_Core.Type_any> = self.vx_p_map
@@ -7136,8 +8428,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_any {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/map", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/map",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -7150,7 +8452,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_map = Vx_Core.vx_copy(Vx_Core.e_map, vals)
+      var output : any Vx_Core.Type_map = Vx_Core.vx_copy(
+        Vx_Core.t_map,
+        Vx_Core.e_map,
+        vals
+      )
       return output
     }
 
@@ -7170,9 +8476,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -7184,10 +8502,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/map", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/map",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_any = Vx_Core.e_any
@@ -7201,14 +8531,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/map", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/map",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -7243,17 +8587,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "map", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "map",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_any
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7272,7 +8621,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_maptype = Vx_Core.vx_copy(Vx_Core.e_maptype, vals)
+      var output : any Vx_Core.Type_maptype = Vx_Core.vx_copy(
+        Vx_Core.t_maptype,
+        Vx_Core.e_maptype,
+        vals
+      )
       return output
     }
 
@@ -7308,17 +8661,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "maptype", // name
-        ":type", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "maptype",
+        ":type",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7367,7 +8720,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_mempool = Vx_Core.vx_copy(Vx_Core.e_mempool, vals)
+      var output : any Vx_Core.Type_mempool = Vx_Core.vx_copy(
+        Vx_Core.t_mempool,
+        Vx_Core.e_mempool,
+        vals
+      )
       return output
     }
 
@@ -7389,9 +8746,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -7407,10 +8776,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/mempool", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/mempool",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -7421,8 +8802,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/mempool", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/mempool",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -7442,14 +8833,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("valuepool"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/mempool", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/mempool",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/mempool", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/mempool",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -7477,17 +8890,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "mempool", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "mempool",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7594,7 +9007,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_msg = Vx_Core.vx_copy(Vx_Core.e_msg, vals)
+      var output : any Vx_Core.Type_msg = Vx_Core.vx_copy(
+        Vx_Core.t_msg,
+        Vx_Core.e_msg,
+        vals
+      )
       return output
     }
 
@@ -7630,7 +9047,12 @@ public enum Vx_Core {
               vx_p_code = valcode
             } else if valsub is String {
               ischanged = true
-              vx_p_code = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_code = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             }
           } else if key == ":detail" {
             if Vx_Core.vx_issame(valsub, vx_p_detail) {
@@ -7645,7 +9067,12 @@ public enum Vx_Core {
               vx_p_path = valpath
             } else if valsub is String {
               ischanged = true
-              vx_p_path = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_path = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             }
           } else if key == ":severity" {
             if Vx_Core.vx_issame(valsub, vx_p_severity) {
@@ -7654,7 +9081,12 @@ public enum Vx_Core {
               vx_p_severity = valseverity
             } else if valsub is Int {
               ischanged = true
-              vx_p_severity = Vx_Core.vx_new(Vx_Core.t_int, valsub)
+              vx_p_severity = Vx_Core.vx_new(
+                Vx_Core.t_int,
+                [
+                  valsub
+                ]
+              )
             }
           } else if key == ":text" {
             if Vx_Core.vx_issame(valsub, vx_p_text) {
@@ -7663,7 +9095,12 @@ public enum Vx_Core {
               vx_p_text = valtext
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             }
           }
           key = ""
@@ -7693,17 +9130,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "msg", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "msg",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7766,7 +9203,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_msgblock = Vx_Core.vx_copy(Vx_Core.e_msgblock, vals)
+      var output : any Vx_Core.Type_msgblock = Vx_Core.vx_copy(
+        Vx_Core.t_msgblock,
+        Vx_Core.e_msgblock,
+        vals
+      )
       return output
     }
 
@@ -7790,19 +9231,43 @@ public enum Vx_Core {
           if Vx_Core.vx_issame(valsub, Vx_Core.e_msgblock) {
           } else if Vx_Core.vx_issame(valsub, msgblock) {
           } else {
-            vx_p_msgblocks = Vx_Core.vx_copy(vx_p_msgblocks, valsub)
+            vx_p_msgblocks = Vx_Core.vx_copy(
+              Vx_Core.t_msgblocklist,
+              vx_p_msgblocks,
+              [
+                valsub
+              ]
+            )
           }
         } else if valsub is any Vx_Core.Type_msgblocklist {
           if !Vx_Core.vx_issame(valsub, Vx_Core.e_msgblocklist) {
-            vx_p_msgblocks = Vx_Core.vx_copy(vx_p_msgblocks, valsub)
+            vx_p_msgblocks = Vx_Core.vx_copy(
+              Vx_Core.t_msgblocklist,
+              vx_p_msgblocks,
+              [
+                valsub
+              ]
+            )
           }
         } else if valsub is any Vx_Core.Type_msg {
           if !Vx_Core.vx_issame(valsub, Vx_Core.e_msg) {
-            vx_p_msgs = Vx_Core.vx_copy(vx_p_msgs, valsub)
+            vx_p_msgs = Vx_Core.vx_copy(
+              Vx_Core.t_msglist,
+              vx_p_msgs,
+              [
+                valsub
+              ]
+            )
           }
         } else if valsub is any Vx_Core.Type_msglist {
           if !Vx_Core.vx_issame(valsub, Vx_Core.e_msglist) {
-            vx_p_msgs = Vx_Core.vx_copy(vx_p_msgs, valsub)
+            vx_p_msgs = Vx_Core.vx_copy(
+              Vx_Core.t_msglist,
+              vx_p_msgs,
+              [
+                valsub
+              ]
+            )
           }
         } else if key == "" {
           if false {
@@ -7828,9 +9293,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("msgs"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/msgblock", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/msgblock",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":msgblocks" {
             if Vx_Core.vx_issame(valsub, vx_p_msgblocks) {
@@ -7847,9 +9324,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("msgblocks"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/msgblock", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/msgblock",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
           key = ""
@@ -7883,17 +9372,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "msgblock", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "msgblock",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7950,7 +9439,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_msgblocklist = Vx_Core.vx_copy(Vx_Core.e_msgblocklist, vals)
+      var output : any Vx_Core.Type_msgblocklist = Vx_Core.vx_copy(
+        Vx_Core.t_msgblocklist,
+        Vx_Core.e_msgblocklist,
+        vals
+      )
       return output
     }
 
@@ -7968,7 +9461,13 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_msgblocklist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listmsgblock())
@@ -7987,11 +9486,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/msgblocklist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/msgblocklist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/msgblocklist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/msgblocklist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -8017,17 +9538,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "msgblocklist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_msgblock), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "msgblocklist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_msgblock
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8084,7 +9610,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_msglist = Vx_Core.vx_copy(Vx_Core.e_msglist, vals)
+      var output : any Vx_Core.Type_msglist = Vx_Core.vx_copy(
+        Vx_Core.t_msglist,
+        Vx_Core.e_msglist,
+        vals
+      )
       return output
     }
 
@@ -8102,7 +9632,13 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_msglist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listmsg())
@@ -8121,11 +9657,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/msglist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/msglist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/msglist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/msglist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -8151,17 +9709,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "msglist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_msg), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "msglist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_msg
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8180,7 +9743,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_none = Vx_Core.vx_copy(Vx_Core.e_none, vals)
+      var output : any Vx_Core.Type_none = Vx_Core.vx_copy(
+        Vx_Core.t_none,
+        Vx_Core.e_none,
+        vals
+      )
       return output
     }
 
@@ -8216,17 +9783,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "none", // name
-        "", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "none",
+        "",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8245,7 +9812,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_notype = Vx_Core.vx_copy(Vx_Core.e_notype, vals)
+      var output : any Vx_Core.Type_notype = Vx_Core.vx_copy(
+        Vx_Core.t_notype,
+        Vx_Core.e_notype,
+        vals
+      )
       return output
     }
 
@@ -8281,17 +9852,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "notype", // name
-        "", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "notype",
+        "",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8310,7 +9881,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_number = Vx_Core.vx_copy(Vx_Core.e_number, vals)
+      var output : any Vx_Core.Type_number = Vx_Core.vx_copy(
+        Vx_Core.t_number,
+        Vx_Core.e_number,
+        vals
+      )
       return output
     }
 
@@ -8346,17 +9921,24 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "number", // name
-        "", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int, Vx_Core.t_float, Vx_Core.t_decimal), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "number",
+        "",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_int,
+            Vx_Core.t_float,
+            Vx_Core.t_decimal
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8413,7 +9995,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_numberlist = Vx_Core.vx_copy(Vx_Core.e_numberlist, vals)
+      var output : any Vx_Core.Type_numberlist = Vx_Core.vx_copy(
+        Vx_Core.t_numberlist,
+        Vx_Core.e_numberlist,
+        vals
+      )
       return output
     }
 
@@ -8431,9 +10017,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_numberlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listnumber())
@@ -8453,11 +10051,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/numberlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/numberlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/numberlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/numberlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -8483,17 +10103,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "numberlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "numberlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_number
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8513,7 +10138,7 @@ public enum Vx_Core {
 
   public class Class_numbermap : Vx_Core.Class_base, Type_numbermap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_number> = Vx_Core.Map<any Vx_Core.Type_number>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_number> = Vx_Core.Map<any Vx_Core.Type_number>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -8584,8 +10209,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_number {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/numbermap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/numbermap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -8598,7 +10233,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_numbermap = Vx_Core.vx_copy(Vx_Core.e_numbermap, vals)
+      var output : any Vx_Core.Type_numbermap = Vx_Core.vx_copy(
+        Vx_Core.t_numbermap,
+        Vx_Core.e_numbermap,
+        vals
+      )
       return output
     }
 
@@ -8618,9 +10257,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -8632,10 +10283,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/numbermap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/numbermap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_number = Vx_Core.e_number
@@ -8649,14 +10312,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/numbermap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/numbermap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -8691,17 +10368,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "numbermap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "numbermap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_number
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8806,7 +10488,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_package = Vx_Core.vx_copy(Vx_Core.e_package, vals)
+      var output : any Vx_Core.Type_package = Vx_Core.vx_copy(
+        Vx_Core.t_package,
+        Vx_Core.e_package,
+        vals
+      )
       return output
     }
 
@@ -8836,9 +10522,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -8854,10 +10552,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/package", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/package",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -8868,8 +10578,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/package", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -8881,7 +10601,12 @@ public enum Vx_Core {
               vx_p_pkgname = valpkgname
             } else if valsub is String {
               ischanged = true
-              vx_p_pkgname = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_pkgname = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -8892,9 +10617,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("pkgname"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":constmap" {
             if Vx_Core.vx_issame(valsub, vx_p_constmap) {
@@ -8911,9 +10648,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("constmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":funcmap" {
             if Vx_Core.vx_issame(valsub, vx_p_funcmap) {
@@ -8930,9 +10679,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("funcmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":typemap" {
             if Vx_Core.vx_issame(valsub, vx_p_typemap) {
@@ -8949,9 +10710,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("typemap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":emptymap" {
             if Vx_Core.vx_issame(valsub, vx_p_emptymap) {
@@ -8968,14 +10741,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("emptymap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/package", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/package",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -9007,17 +10802,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "package", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "package",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -9037,7 +10832,7 @@ public enum Vx_Core {
 
   public class Class_packagemap : Vx_Core.Class_base, Type_packagemap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_package> = Vx_Core.Map<any Vx_Core.Type_package>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_package> = Vx_Core.Map<any Vx_Core.Type_package>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -9108,8 +10903,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_package {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/packagemap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/packagemap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -9122,7 +10927,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_packagemap = Vx_Core.vx_copy(Vx_Core.e_packagemap, vals)
+      var output : any Vx_Core.Type_packagemap = Vx_Core.vx_copy(
+        Vx_Core.t_packagemap,
+        Vx_Core.e_packagemap,
+        vals
+      )
       return output
     }
 
@@ -9144,9 +10953,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -9158,10 +10979,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/packagemap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/packagemap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_package = Vx_Core.e_package
@@ -9175,14 +11008,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/packagemap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/packagemap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -9217,17 +11064,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "packagemap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_package), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "packagemap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_package
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -9276,7 +11128,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_permission = Vx_Core.vx_copy(Vx_Core.e_permission, vals)
+      var output : any Vx_Core.Type_permission = Vx_Core.vx_copy(
+        Vx_Core.t_permission,
+        Vx_Core.e_permission,
+        vals
+      )
       return output
     }
 
@@ -9298,9 +11154,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -9316,10 +11184,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/permission", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/permission",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -9330,8 +11210,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/permission", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/permission",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -9343,7 +11233,12 @@ public enum Vx_Core {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -9354,14 +11249,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/permission", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/permission",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/permission", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/permission",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -9389,17 +11306,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "permission", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "permission",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -9456,7 +11373,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_permissionlist = Vx_Core.vx_copy(Vx_Core.e_permissionlist, vals)
+      var output : any Vx_Core.Type_permissionlist = Vx_Core.vx_copy(
+        Vx_Core.t_permissionlist,
+        Vx_Core.e_permissionlist,
+        vals
+      )
       return output
     }
 
@@ -9474,9 +11395,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_permissionlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listpermission())
@@ -9496,11 +11429,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/permissionlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/permissionlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/permissionlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/permissionlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -9526,17 +11481,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "permissionlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_permission), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "permissionlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_permission
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -9556,7 +11516,7 @@ public enum Vx_Core {
 
   public class Class_permissionmap : Vx_Core.Class_base, Type_permissionmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_permission> = Vx_Core.Map<any Vx_Core.Type_permission>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_permission> = Vx_Core.Map<any Vx_Core.Type_permission>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -9627,8 +11587,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_permission {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/permissionmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/permissionmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -9641,7 +11611,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_permissionmap = Vx_Core.vx_copy(Vx_Core.e_permissionmap, vals)
+      var output : any Vx_Core.Type_permissionmap = Vx_Core.vx_copy(
+        Vx_Core.t_permissionmap,
+        Vx_Core.e_permissionmap,
+        vals
+      )
       return output
     }
 
@@ -9663,9 +11637,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -9677,10 +11663,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/permissionmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/permissionmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_permission = Vx_Core.e_permission
@@ -9694,14 +11692,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/permissionmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/permissionmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -9736,17 +11748,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "permissionmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_permission), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "permissionmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_permission
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -9795,7 +11812,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_project = Vx_Core.vx_copy(Vx_Core.e_project, vals)
+      var output : any Vx_Core.Type_project = Vx_Core.vx_copy(
+        Vx_Core.t_project,
+        Vx_Core.e_project,
+        vals
+      )
       return output
     }
 
@@ -9817,9 +11838,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -9835,10 +11868,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/project", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/project",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -9849,8 +11894,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/project", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/project",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -9870,14 +11925,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("packagemap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/project", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/project",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/project", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/project",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -9905,17 +11982,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "project", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "project",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -9992,7 +12069,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_security = Vx_Core.vx_copy(Vx_Core.e_security, vals)
+      var output : any Vx_Core.Type_security = Vx_Core.vx_copy(
+        Vx_Core.t_security,
+        Vx_Core.e_security,
+        vals
+      )
       return output
     }
 
@@ -10018,9 +12099,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -10036,10 +12129,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/security", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/security",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -10050,8 +12155,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/security", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/security",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -10071,9 +12186,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("allowfuncs"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/security", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/security",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":permissions" {
             if Vx_Core.vx_issame(valsub, vx_p_permissions) {
@@ -10090,9 +12217,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("permissions"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/security", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/security",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":permissionmap" {
             if Vx_Core.vx_issame(valsub, vx_p_permissionmap) {
@@ -10109,14 +12248,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("permissionmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/security", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/security",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/security", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/security",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -10146,17 +12307,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "security", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "security",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -10275,7 +12436,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_session = Vx_Core.vx_copy(Vx_Core.e_session, vals)
+      var output : any Vx_Core.Type_session = Vx_Core.vx_copy(
+        Vx_Core.t_session,
+        Vx_Core.e_session,
+        vals
+      )
       return output
     }
 
@@ -10307,9 +12472,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -10325,10 +12502,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/session", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/session",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -10339,8 +12528,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/session", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -10360,9 +12559,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("user"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":connectlist" {
             if Vx_Core.vx_issame(valsub, vx_p_connectlist) {
@@ -10379,9 +12590,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("connectlist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":connectmap" {
             if Vx_Core.vx_issame(valsub, vx_p_connectmap) {
@@ -10398,9 +12621,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("connectmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":locale" {
             if Vx_Core.vx_issame(valsub, vx_p_locale) {
@@ -10417,9 +12652,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("locale"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":translation" {
             if Vx_Core.vx_issame(valsub, vx_p_translation) {
@@ -10436,9 +12683,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("translation"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":translationmap" {
             if Vx_Core.vx_issame(valsub, vx_p_translationmap) {
@@ -10455,14 +12714,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("translationmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/session", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/session",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -10495,17 +12776,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "session", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "session",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -10554,7 +12835,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_setting = Vx_Core.vx_copy(Vx_Core.e_setting, vals)
+      var output : any Vx_Core.Type_setting = Vx_Core.vx_copy(
+        Vx_Core.t_setting,
+        Vx_Core.e_setting,
+        vals
+      )
       return output
     }
 
@@ -10576,9 +12861,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -10594,10 +12891,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/setting", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/setting",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -10608,8 +12917,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/setting", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/setting",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -10629,14 +12948,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("pathmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/setting", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/setting",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/setting", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/setting",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -10664,17 +13005,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "setting", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "setting",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -10723,7 +13064,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_state = Vx_Core.vx_copy(Vx_Core.e_state, vals)
+      var output : any Vx_Core.Type_state = Vx_Core.vx_copy(
+        Vx_Core.t_state,
+        Vx_Core.e_state,
+        vals
+      )
       return output
     }
 
@@ -10745,9 +13090,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -10763,10 +13120,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/state", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/state",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -10777,8 +13146,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/state", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/state",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -10798,14 +13177,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("statelistenermap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/state", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/state",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/state", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/state",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -10833,17 +13234,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "state", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "state",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -10920,7 +13321,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_statelistener = Vx_Core.vx_copy(Vx_Core.e_statelistener, vals)
+      var output : any Vx_Core.Type_statelistener = Vx_Core.vx_copy(
+        Vx_Core.t_statelistener,
+        Vx_Core.e_statelistener,
+        vals
+      )
       return output
     }
 
@@ -10946,9 +13351,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -10964,10 +13381,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/statelistener", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/statelistener",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -10978,8 +13407,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/statelistener", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/statelistener",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -10991,7 +13430,12 @@ public enum Vx_Core {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -11002,9 +13446,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/statelistener", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/statelistener",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":value" {
             if Vx_Core.vx_issame(valsub, vx_p_value) {
@@ -11021,9 +13477,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("value"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/statelistener", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/statelistener",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":fn-boolean" {
             if Vx_Core.vx_issame(valsub, vx_p_fn_boolean) {
@@ -11040,14 +13508,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("fn-boolean"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/statelistener", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/statelistener",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/statelistener", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/statelistener",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -11077,17 +13567,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "statelistener", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "statelistener",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -11107,7 +13597,7 @@ public enum Vx_Core {
 
   public class Class_statelistenermap : Vx_Core.Class_base, Type_statelistenermap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_statelistener> = Vx_Core.Map<any Vx_Core.Type_statelistener>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_statelistener> = Vx_Core.Map<any Vx_Core.Type_statelistener>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -11178,8 +13668,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_statelistener {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/statelistenermap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/statelistenermap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -11192,7 +13692,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_statelistenermap = Vx_Core.vx_copy(Vx_Core.e_statelistenermap, vals)
+      var output : any Vx_Core.Type_statelistenermap = Vx_Core.vx_copy(
+        Vx_Core.t_statelistenermap,
+        Vx_Core.e_statelistenermap,
+        vals
+      )
       return output
     }
 
@@ -11214,9 +13718,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -11228,10 +13744,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/statelistenermap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/statelistenermap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_statelistener = Vx_Core.e_statelistener
@@ -11245,14 +13773,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/statelistenermap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/statelistenermap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -11287,17 +13829,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "statelistenermap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_statelistener), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "statelistenermap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_statelistener
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -11324,7 +13871,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_string = Vx_Core.vx_copy(Vx_Core.e_string, vals)
+      var output : any Vx_Core.Type_string = Vx_Core.vx_copy(
+        Vx_Core.t_string,
+        Vx_Core.e_string,
+        vals
+      )
       return output
     }
 
@@ -11342,9 +13893,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let valstring = valsub as? any Vx_Core.Type_string {
           var ssub : String = valstring.vx_string()
           if ssub == "" {
@@ -11374,11 +13937,33 @@ public enum Vx_Core {
           ischanged = true
           sb += Vx_Core.vx_string_from_float(fval)
         } else if let anysub = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/string", ":invalidtype", anysub)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/string",
+            ":invalidtype",
+            anysub
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/string", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/string",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+            Vx_Core.vx_string_from_object(valsub)
+          )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -11405,17 +13990,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "string", // name
-        ":string", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "string",
+        ":string",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -11472,7 +14057,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_stringlist = Vx_Core.vx_copy(Vx_Core.e_stringlist, vals)
+      var output : any Vx_Core.Type_stringlist = Vx_Core.vx_copy(
+        Vx_Core.t_stringlist,
+        Vx_Core.e_stringlist,
+        vals
+      )
       return output
     }
 
@@ -11490,9 +14079,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_stringlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_liststring())
@@ -11500,7 +14101,12 @@ public enum Vx_Core {
           ischanged = true
           listval.append(allowsub)
         } else if valsub is String {
-          var subitem : any Vx_Core.Type_string = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+          var subitem : any Vx_Core.Type_string = Vx_Core.vx_new(
+            Vx_Core.t_string,
+            [
+              valsub
+            ]
+          )
           ischanged = true
           listval.append(subitem)
         } else if let listany = valsub as? [any Vx_Core.Type_any] {
@@ -11512,11 +14118,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/stringlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/stringlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/stringlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/stringlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -11542,17 +14170,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "stringlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "stringlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_string
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -11609,7 +14242,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_stringlistlist = Vx_Core.vx_copy(Vx_Core.e_stringlistlist, vals)
+      var output : any Vx_Core.Type_stringlistlist = Vx_Core.vx_copy(
+        Vx_Core.t_stringlistlist,
+        Vx_Core.e_stringlistlist,
+        vals
+      )
       return output
     }
 
@@ -11627,9 +14264,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_stringlistlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_liststringlist())
@@ -11649,11 +14298,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/stringlistlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/stringlistlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/stringlistlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/stringlistlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -11679,17 +14350,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "stringlistlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_stringlist), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "stringlistlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_stringlist
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -11709,7 +14385,7 @@ public enum Vx_Core {
 
   public class Class_stringmap : Vx_Core.Class_base, Type_stringmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_string> = Vx_Core.Map<any Vx_Core.Type_string>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_string> = Vx_Core.Map<any Vx_Core.Type_string>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -11780,8 +14456,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_string {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/stringmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/stringmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -11794,7 +14480,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_stringmap = Vx_Core.vx_copy(Vx_Core.e_stringmap, vals)
+      var output : any Vx_Core.Type_stringmap = Vx_Core.vx_copy(
+        Vx_Core.t_stringmap,
+        Vx_Core.e_stringmap,
+        vals
+      )
       return output
     }
 
@@ -11814,9 +14504,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -11828,10 +14530,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/stringmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/stringmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_string = Vx_Core.e_string
@@ -11839,20 +14553,39 @@ public enum Vx_Core {
           } else if let valallowed = valsub as? any Vx_Core.Type_string {
             valany = valallowed
           } else if valsub is String {
-            valany = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+            valany = Vx_Core.vx_new(
+              Vx_Core.t_string,
+              [
+                valsub
+              ]
+            )
           } else {
             if false {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/stringmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/stringmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -11887,17 +14620,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "stringmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "stringmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_string
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -11917,7 +14655,7 @@ public enum Vx_Core {
 
   public class Class_stringmutablemap : Vx_Core.Class_base, Type_stringmutablemap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_string> = Vx_Core.Map<any Vx_Core.Type_string>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_string> = Vx_Core.Map<any Vx_Core.Type_string>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -11988,8 +14726,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_string {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/stringmutablemap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/stringmutablemap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -12002,7 +14750,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_stringmutablemap = Vx_Core.vx_copy(Vx_Core.e_stringmutablemap, vals)
+      var output : any Vx_Core.Type_stringmutablemap = Vx_Core.vx_copy(
+        Vx_Core.t_stringmutablemap,
+        Vx_Core.e_stringmutablemap,
+        vals
+      )
       return output
     }
 
@@ -12022,9 +14774,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -12036,10 +14800,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/stringmutablemap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/stringmutablemap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_string = Vx_Core.e_string
@@ -12047,20 +14823,39 @@ public enum Vx_Core {
           } else if let valallowed = valsub as? any Vx_Core.Type_string {
             valany = valallowed
           } else if valsub is String {
-            valany = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+            valany = Vx_Core.vx_new(
+              Vx_Core.t_string,
+              [
+                valsub
+              ]
+            )
           } else {
             if false {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/stringmutablemap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/stringmutablemap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -12095,17 +14890,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "stringmutablemap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "stringmutablemap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_string
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -12141,7 +14941,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_struct = Vx_Core.vx_copy(Vx_Core.e_struct, vals)
+      var output : any Vx_Core.Type_struct = Vx_Core.vx_copy(
+        Vx_Core.t_struct,
+        Vx_Core.e_struct,
+        vals
+      )
       return output
     }
 
@@ -12177,17 +14981,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "struct", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "struct",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -12292,7 +15096,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_thenelse = Vx_Core.vx_copy(Vx_Core.e_thenelse, vals)
+      var output : any Vx_Core.Type_thenelse = Vx_Core.vx_copy(
+        Vx_Core.t_thenelse,
+        Vx_Core.e_thenelse,
+        vals
+      )
       return output
     }
 
@@ -12322,9 +15130,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -12340,10 +15160,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/thenelse", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/thenelse",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -12354,8 +15186,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/thenelse", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -12367,7 +15209,12 @@ public enum Vx_Core {
               vx_p_code = valcode
             } else if valsub is String {
               ischanged = true
-              vx_p_code = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_code = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -12378,9 +15225,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("code"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":value" {
             if Vx_Core.vx_issame(valsub, vx_p_value) {
@@ -12397,9 +15256,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("value"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":values" {
             if Vx_Core.vx_issame(valsub, vx_p_values) {
@@ -12416,9 +15287,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("values"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":fn-cond" {
             if Vx_Core.vx_issame(valsub, vx_p_fn_cond) {
@@ -12435,9 +15318,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("fn-cond"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":fn-any" {
             if Vx_Core.vx_issame(valsub, vx_p_fn_any) {
@@ -12454,14 +15349,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("fn-any"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/thenelse", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/thenelse",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -12493,17 +15410,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "thenelse", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "thenelse",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -12560,7 +15477,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_thenelselist = Vx_Core.vx_copy(Vx_Core.e_thenelselist, vals)
+      var output : any Vx_Core.Type_thenelselist = Vx_Core.vx_copy(
+        Vx_Core.t_thenelselist,
+        Vx_Core.e_thenelselist,
+        vals
+      )
       return output
     }
 
@@ -12578,9 +15499,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_thenelselist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listthenelse())
@@ -12600,11 +15533,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/thenelselist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/thenelselist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/thenelselist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/thenelselist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -12630,17 +15585,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "thenelselist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_thenelse), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "thenelselist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_thenelse
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -12703,7 +15663,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_translation = Vx_Core.vx_copy(Vx_Core.e_translation, vals)
+      var output : any Vx_Core.Type_translation = Vx_Core.vx_copy(
+        Vx_Core.t_translation,
+        Vx_Core.e_translation,
+        vals
+      )
       return output
     }
 
@@ -12727,9 +15691,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -12745,10 +15721,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/translation", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/translation",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -12759,8 +15747,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/translation", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/translation",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -12772,7 +15770,12 @@ public enum Vx_Core {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -12783,9 +15786,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/translation", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/translation",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":wordmap" {
             if Vx_Core.vx_issame(valsub, vx_p_wordmap) {
@@ -12802,14 +15817,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("wordmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/translation", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/translation",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/translation", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/translation",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -12838,17 +15875,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "translation", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "translation",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -12905,7 +15942,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_translationlist = Vx_Core.vx_copy(Vx_Core.e_translationlist, vals)
+      var output : any Vx_Core.Type_translationlist = Vx_Core.vx_copy(
+        Vx_Core.t_translationlist,
+        Vx_Core.e_translationlist,
+        vals
+      )
       return output
     }
 
@@ -12923,9 +15964,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_translationlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listtranslation())
@@ -12945,11 +15998,33 @@ public enum Vx_Core {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/core/translationlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/translationlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/translationlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/translationlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -12975,17 +16050,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "translationlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_translation), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "translationlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_translation
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -13005,7 +16085,7 @@ public enum Vx_Core {
 
   public class Class_translationmap : Vx_Core.Class_base, Type_translationmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_translation> = Vx_Core.Map<any Vx_Core.Type_translation>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_translation> = Vx_Core.Map<any Vx_Core.Type_translation>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -13076,8 +16156,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_translation {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/translationmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/translationmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -13090,7 +16180,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_translationmap = Vx_Core.vx_copy(Vx_Core.e_translationmap, vals)
+      var output : any Vx_Core.Type_translationmap = Vx_Core.vx_copy(
+        Vx_Core.t_translationmap,
+        Vx_Core.e_translationmap,
+        vals
+      )
       return output
     }
 
@@ -13112,9 +16206,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -13126,10 +16232,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/translationmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/translationmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_translation = Vx_Core.e_translation
@@ -13143,14 +16261,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/translationmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/translationmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -13185,17 +16317,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "translationmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_translation), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "translationmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_translation
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -13214,7 +16351,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_type = Vx_Core.vx_copy(Vx_Core.e_type, vals)
+      var output : any Vx_Core.Type_type = Vx_Core.vx_copy(
+        Vx_Core.t_type,
+        Vx_Core.e_type,
+        vals
+      )
       return output
     }
 
@@ -13250,17 +16391,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "type", // name
-        ":type", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "type",
+        ":type",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -13463,7 +16604,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_typedef = Vx_Core.vx_copy(Vx_Core.e_typedef, vals)
+      var output : any Vx_Core.Type_typedef = Vx_Core.vx_copy(
+        Vx_Core.t_typedef,
+        Vx_Core.e_typedef,
+        vals
+      )
       return output
     }
 
@@ -13507,9 +16652,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -13525,10 +16682,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/typedef",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -13539,8 +16708,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -13552,7 +16731,12 @@ public enum Vx_Core {
               vx_p_pkgname = valpkgname
             } else if valsub is String {
               ischanged = true
-              vx_p_pkgname = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_pkgname = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -13563,9 +16747,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("pkgname"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":name" {
             if Vx_Core.vx_issame(valsub, vx_p_name) {
@@ -13574,7 +16770,12 @@ public enum Vx_Core {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -13585,9 +16786,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":extends" {
             if Vx_Core.vx_issame(valsub, vx_p_extend) {
@@ -13596,7 +16809,12 @@ public enum Vx_Core {
               vx_p_extend = valextend
             } else if valsub is String {
               ischanged = true
-              vx_p_extend = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_extend = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -13607,9 +16825,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("extends"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":allowfuncs" {
             if Vx_Core.vx_issame(valsub, vx_p_allowfuncs) {
@@ -13626,9 +16856,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("allowfuncs"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":allowtypes" {
             if Vx_Core.vx_issame(valsub, vx_p_allowtypes) {
@@ -13645,9 +16887,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("allowtypes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":allowvalues" {
             if Vx_Core.vx_issame(valsub, vx_p_allowvalues) {
@@ -13664,9 +16918,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("allowvalues"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":disallowfuncs" {
             if Vx_Core.vx_issame(valsub, vx_p_disallowfuncs) {
@@ -13683,9 +16949,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("disallowfuncs"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":disallowtypes" {
             if Vx_Core.vx_issame(valsub, vx_p_disallowtypes) {
@@ -13702,9 +16980,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("disallowtypes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":disallowvalues" {
             if Vx_Core.vx_issame(valsub, vx_p_disallowvalues) {
@@ -13721,9 +17011,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("disallowvalues"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":properties" {
             if Vx_Core.vx_issame(valsub, vx_p_properties) {
@@ -13740,9 +17042,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("properties"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":proplast" {
             if Vx_Core.vx_issame(valsub, vx_p_proplast) {
@@ -13759,9 +17073,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("proplast"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":traits" {
             if Vx_Core.vx_issame(valsub, vx_p_traits) {
@@ -13778,14 +17104,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("traits"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/typedef", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/typedef",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -13824,17 +17172,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "typedef", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "typedef",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -13875,7 +17223,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_typelist = Vx_Core.vx_copy(Vx_Core.e_typelist, vals)
+      var output : any Vx_Core.Type_typelist = Vx_Core.vx_copy(
+        Vx_Core.t_typelist,
+        Vx_Core.e_typelist,
+        vals
+      )
       return output
     }
 
@@ -13893,9 +17245,21 @@ public enum Vx_Core {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Core.Type_typelist {
           ischanged = true
           listval.append(contentsOf: multi.vx_list())
@@ -13911,8 +17275,20 @@ public enum Vx_Core {
             }
           }
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/core/typelist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/core/typelist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -13938,17 +17314,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "typelist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "typelist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_any
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -13964,7 +17345,7 @@ public enum Vx_Core {
 
   public class Class_typemap : Vx_Core.Class_base, Type_typemap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.Map<any Vx_Core.Type_any>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.Map<any Vx_Core.Type_any>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let output : Vx_Core.Map<any Vx_Core.Type_any> = self.vx_p_map
@@ -14021,8 +17402,18 @@ public enum Vx_Core {
         } else if let castval = value as? any Vx_Core.Type_any {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/core/typemap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/core/typemap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -14035,7 +17426,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_typemap = Vx_Core.vx_copy(Vx_Core.e_typemap, vals)
+      var output : any Vx_Core.Type_typemap = Vx_Core.vx_copy(
+        Vx_Core.t_typemap,
+        Vx_Core.e_typemap,
+        vals
+      )
       return output
     }
 
@@ -14055,9 +17450,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -14069,10 +17476,22 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/typemap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/typemap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_any = Vx_Core.e_any
@@ -14086,14 +17505,28 @@ public enum Vx_Core {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/core/typemap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/typemap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -14128,17 +17561,22 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "typemap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "typemap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_any
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -14215,7 +17653,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_user = Vx_Core.vx_copy(Vx_Core.e_user, vals)
+      var output : any Vx_Core.Type_user = Vx_Core.vx_copy(
+        Vx_Core.t_user,
+        Vx_Core.e_user,
+        vals
+      )
       return output
     }
 
@@ -14241,9 +17683,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -14259,10 +17713,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/user", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/user",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -14273,8 +17739,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/user", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/user",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -14294,9 +17770,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("security"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/user", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/user",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":username" {
             if Vx_Core.vx_issame(valsub, vx_p_username) {
@@ -14305,7 +17793,12 @@ public enum Vx_Core {
               vx_p_username = valusername
             } else if valsub is String {
               ischanged = true
-              vx_p_username = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_username = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -14316,9 +17809,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("username"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/user", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/user",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":token" {
             if Vx_Core.vx_issame(valsub, vx_p_token) {
@@ -14327,7 +17832,12 @@ public enum Vx_Core {
               vx_p_token = valtoken
             } else if valsub is String {
               ischanged = true
-              vx_p_token = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_token = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -14338,14 +17848,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("token"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/user", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/user",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/user", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/user",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -14375,17 +17907,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "user", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "user",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -14448,7 +17980,11 @@ public enum Vx_Core {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Core.Type_value = Vx_Core.vx_copy(Vx_Core.e_value, vals)
+      var output : any Vx_Core.Type_value = Vx_Core.vx_copy(
+        Vx_Core.t_value,
+        Vx_Core.e_value,
+        vals
+      )
       return output
     }
 
@@ -14472,9 +18008,21 @@ public enum Vx_Core {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -14490,10 +18038,22 @@ public enum Vx_Core {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/core/value", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/value",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -14504,8 +18064,18 @@ public enum Vx_Core {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/core/value", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/value",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -14525,9 +18095,21 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("next"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/value", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/value",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":refs" {
             if Vx_Core.vx_issame(valsub, vx_p_refs) {
@@ -14536,7 +18118,12 @@ public enum Vx_Core {
               vx_p_refs = valrefs
             } else if valsub is Int {
               ischanged = true
-              vx_p_refs = Vx_Core.vx_new(Vx_Core.t_int, valsub)
+              vx_p_refs = Vx_Core.vx_new(
+                Vx_Core.t_int,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -14547,14 +18134,36 @@ public enum Vx_Core {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("refs"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/core/value", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/core/value",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/core/value", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/core/value",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -14583,17 +18192,17 @@ public enum Vx_Core {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/core", // pkgname
-        "value", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/core",
+        "value",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -14983,17 +18592,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15020,7 +18629,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_boolean = value as! any Vx_Core.Type_boolean
       let outputval : any Vx_Core.Type_any = Vx_Core.f_not(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -15028,7 +18640,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_not(value)
       return output
     }
@@ -15088,17 +18705,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15125,7 +18742,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_notempty(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -15133,7 +18753,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_notempty(text)
       return output
     }
@@ -15155,9 +18780,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_boolean {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_not(
-      Vx_Core.f_is_empty(
-        text
-      )
+      Vx_Core.f_is_empty(text)
     )
     return output
   }
@@ -15197,17 +18820,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15234,7 +18857,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_notempty_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -15242,7 +18868,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_notempty_1(value)
       return output
     }
@@ -15264,9 +18895,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_boolean {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_not(
-      Vx_Core.f_is_empty_1(
-        value
-      )
+      Vx_Core.f_is_empty_1(value)
     )
     return output
   }
@@ -15307,17 +18936,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15337,8 +18966,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_ne(val1, val2)
       return output
     }
@@ -15362,10 +19001,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_boolean {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_not(
-      Vx_Core.f_eq(
-        val1,
-        val2
-      )
+      Vx_Core.f_eq(val1, val2)
     )
     return output
   }
@@ -15406,17 +19042,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15436,8 +19072,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_neqeq(val1, val2)
       return output
     }
@@ -15461,10 +19107,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_boolean {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_not(
-      Vx_Core.f_eqeq(
-        val1,
-        val2
-      )
+      Vx_Core.f_eqeq(val1, val2)
     )
     return output
   }
@@ -15505,17 +19148,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15535,8 +19183,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let num1 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let num2 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let num1 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let num2 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_multiply(num1, num2)
       return output
     }
@@ -15599,17 +19257,24 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int, Vx_Core.t_float, Vx_Core.t_decimal), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_int,
+              Vx_Core.t_float,
+              Vx_Core.t_decimal
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15629,8 +19294,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let num1 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let num2 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let num1 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+        Vx_Core.t_number,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let num2 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+        Vx_Core.t_number,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_multiply_1(num1, num2)
       return output
     }
@@ -15692,17 +19367,22 @@ public enum Vx_Core {
         2, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15729,7 +19409,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_intlist = value as! any Vx_Core.Type_intlist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_multiply_2(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -15737,7 +19420,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let nums : any Vx_Core.Type_intlist = Vx_Core.f_any_from_any(Vx_Core.t_intlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let nums : any Vx_Core.Type_intlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_intlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_multiply_2(nums)
       return output
     }
@@ -15762,15 +19450,20 @@ public enum Vx_Core {
       Vx_Core.t_int,
       nums,
       Vx_Core.vx_new_int(1),
-      Vx_Core.t_any_from_reduce.vx_fn_new({(total_any, num_any) in
-        let total : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, total_any)
-        let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, num_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_multiply(
-          total,
-          num
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_reduce.vx_fn_new(
+        {(total_any, num_any) in
+          let total : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+            Vx_Core.t_int,
+            total_any
+          )
+          let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+            Vx_Core.t_int,
+            num_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_multiply(total, num)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -15810,17 +19503,24 @@ public enum Vx_Core {
         3, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int, Vx_Core.t_float, Vx_Core.t_decimal), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_int,
+              Vx_Core.t_float,
+              Vx_Core.t_decimal
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15847,7 +19547,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_numberlist = value as! any Vx_Core.Type_numberlist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_multiply_3(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -15855,7 +19558,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let nums : any Vx_Core.Type_numberlist = Vx_Core.f_any_from_any(Vx_Core.t_numberlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let nums : any Vx_Core.Type_numberlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_numberlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_multiply_3(nums)
       return output
     }
@@ -15880,15 +19588,20 @@ public enum Vx_Core {
       Vx_Core.t_number,
       nums,
       Vx_Core.vx_new_int(1),
-      Vx_Core.t_any_from_reduce.vx_fn_new({(total_any, num_any) in
-        let total : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, total_any)
-        let num : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, num_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_multiply_1(
-          total,
-          num
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_reduce.vx_fn_new(
+        {(total_any, num_any) in
+          let total : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+            Vx_Core.t_number,
+            total_any
+          )
+          let num : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+            Vx_Core.t_number,
+            num_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_multiply_1(total, num)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -15929,17 +19642,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -15959,8 +19677,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let num1 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let num2 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let num1 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let num2 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_plus(num1, num2)
       return output
     }
@@ -16023,17 +19751,24 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int, Vx_Core.t_float, Vx_Core.t_decimal), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_int,
+              Vx_Core.t_float,
+              Vx_Core.t_decimal
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -16053,8 +19788,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let num1 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let num2 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let num1 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+        Vx_Core.t_number,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let num2 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+        Vx_Core.t_number,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_plus_1(num1, num2)
       return output
     }
@@ -16116,17 +19861,22 @@ public enum Vx_Core {
         2, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -16153,7 +19903,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_intlist = value as! any Vx_Core.Type_intlist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_plus_2(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -16161,7 +19914,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let nums : any Vx_Core.Type_intlist = Vx_Core.f_any_from_any(Vx_Core.t_intlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let nums : any Vx_Core.Type_intlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_intlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_plus_2(nums)
       return output
     }
@@ -16186,15 +19944,20 @@ public enum Vx_Core {
       Vx_Core.t_int,
       nums,
       Vx_Core.vx_new_int(0),
-      Vx_Core.t_any_from_reduce.vx_fn_new({(total_any, num_any) in
-        let total : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, total_any)
-        let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, num_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_plus(
-          total,
-          num
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_reduce.vx_fn_new(
+        {(total_any, num_any) in
+          let total : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+            Vx_Core.t_int,
+            total_any
+          )
+          let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+            Vx_Core.t_int,
+            num_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_plus(total, num)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -16234,17 +19997,24 @@ public enum Vx_Core {
         3, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int, Vx_Core.t_float, Vx_Core.t_decimal), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_int,
+              Vx_Core.t_float,
+              Vx_Core.t_decimal
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -16271,7 +20041,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_numberlist = value as! any Vx_Core.Type_numberlist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_plus_3(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -16279,7 +20052,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let nums : any Vx_Core.Type_numberlist = Vx_Core.f_any_from_any(Vx_Core.t_numberlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let nums : any Vx_Core.Type_numberlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_numberlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_plus_3(nums)
       return output
     }
@@ -16304,15 +20082,20 @@ public enum Vx_Core {
       Vx_Core.t_number,
       nums,
       Vx_Core.vx_new_int(0),
-      Vx_Core.t_any_from_reduce.vx_fn_new({(total_any, num_any) in
-        let total : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, total_any)
-        let num : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, num_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_plus_1(
-          total,
-          num
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_reduce.vx_fn_new(
+        {(total_any, num_any) in
+          let total : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+            Vx_Core.t_number,
+            total_any
+          )
+          let num : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+            Vx_Core.t_number,
+            num_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_plus_1(total, num)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -16352,17 +20135,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -16389,7 +20177,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_int = value as! any Vx_Core.Type_int
       let outputval : any Vx_Core.Type_any = Vx_Core.f_plus1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -16397,7 +20188,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_plus1(num)
       return output
     }
@@ -16461,17 +20257,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -16491,8 +20292,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let num1 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let num2 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let num1 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let num2 : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_minus(num1, num2)
       return output
     }
@@ -16555,17 +20366,24 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int, Vx_Core.t_float, Vx_Core.t_decimal), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_int,
+              Vx_Core.t_float,
+              Vx_Core.t_decimal
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -16585,8 +20403,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let num1 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let num2 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let num1 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+        Vx_Core.t_number,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let num2 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+        Vx_Core.t_number,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_minus_1(num1, num2)
       return output
     }
@@ -16648,17 +20476,22 @@ public enum Vx_Core {
         2, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -16685,7 +20518,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_intlist = value as! any Vx_Core.Type_intlist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_minus_2(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -16693,7 +20529,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let nums : any Vx_Core.Type_intlist = Vx_Core.f_any_from_any(Vx_Core.t_intlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let nums : any Vx_Core.Type_intlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_intlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_minus_2(nums)
       return output
     }
@@ -16718,15 +20559,20 @@ public enum Vx_Core {
       Vx_Core.t_int,
       nums,
       Vx_Core.vx_new_int(0),
-      Vx_Core.t_any_from_reduce.vx_fn_new({(total_any, num_any) in
-        let total : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, total_any)
-        let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, num_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_minus(
-          total,
-          num
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_reduce.vx_fn_new(
+        {(total_any, num_any) in
+          let total : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+            Vx_Core.t_int,
+            total_any
+          )
+          let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+            Vx_Core.t_int,
+            num_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_minus(total, num)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -16766,17 +20612,24 @@ public enum Vx_Core {
         3, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int, Vx_Core.t_float, Vx_Core.t_decimal), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_int,
+              Vx_Core.t_float,
+              Vx_Core.t_decimal
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -16803,7 +20656,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_numberlist = value as! any Vx_Core.Type_numberlist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_minus_3(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -16811,7 +20667,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let nums : any Vx_Core.Type_numberlist = Vx_Core.f_any_from_any(Vx_Core.t_numberlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let nums : any Vx_Core.Type_numberlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_numberlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_minus_3(nums)
       return output
     }
@@ -16836,15 +20697,20 @@ public enum Vx_Core {
       Vx_Core.t_number,
       nums,
       Vx_Core.vx_new_int(0),
-      Vx_Core.t_any_from_reduce.vx_fn_new({(total_any, num_any) in
-        let total : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, total_any)
-        let num : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, num_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_minus_1(
-          total,
-          num
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_reduce.vx_fn_new(
+        {(total_any, num_any) in
+          let total : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+            Vx_Core.t_number,
+            total_any
+          )
+          let num : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+            Vx_Core.t_number,
+            num_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_minus_1(total, num)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -16884,17 +20750,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -16921,7 +20792,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_int = value as! any Vx_Core.Type_int
       let outputval : any Vx_Core.Type_any = Vx_Core.f_minus1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -16929,7 +20803,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_minus1(num)
       return output
     }
@@ -16994,17 +20873,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17024,9 +20903,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let target : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let method : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let parameters : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let target : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let method : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let parameters : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_dotmethod(target, method, parameters)
       return output
     }
@@ -17090,17 +20984,24 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int, Vx_Core.t_float, Vx_Core.t_decimal), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_int,
+              Vx_Core.t_float,
+              Vx_Core.t_decimal
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17120,8 +21021,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let num1 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let num2 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(Vx_Core.t_number, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let num1 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+        Vx_Core.t_number,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let num2 : any Vx_Core.Type_number = Vx_Core.f_any_from_any(
+        Vx_Core.t_number,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_divide(num1, num2)
       return output
     }
@@ -17184,17 +21095,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17214,8 +21125,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_lt(val1, val2)
       return output
     }
@@ -17240,25 +21161,28 @@ public enum Vx_Core {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_switch(
       Vx_Core.t_boolean,
-      Vx_Core.f_compare(
-        val1,
-        val2
-      ),
+      Vx_Core.f_compare(val1, val2),
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_case_1(
-          Vx_Core.vx_new_int(-1),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
-            return output_1
-          })
-        ),
-        Vx_Core.f_else(
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(false)
-            return output_2
-          })
-        )
+        [
+          Vx_Core.f_case_1(
+            Vx_Core.vx_new_int(-1),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
+                  return output_1
+                }
+            )
+          ),
+          Vx_Core.f_else(
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(false)
+                  return output_2
+                }
+            )
+          )
+        ]
       )
     )
     return output
@@ -17299,17 +21223,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17336,7 +21260,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_lt_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -17344,7 +21271,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_lt_1(values)
       return output
     }
@@ -17369,19 +21301,27 @@ public enum Vx_Core {
       Vx_Core.t_boolean,
       values,
       Vx_Core.vx_new_boolean(true),
-      Vx_Core.t_any_from_reduce_next.vx_fn_new({(reduce_any, current_any, next_any) in
-        let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, reduce_any)
-        let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, current_any)
-        let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, next_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_and(
-          reduce,
-          Vx_Core.f_lt(
-            current,
-            next
+      Vx_Core.t_any_from_reduce_next.vx_fn_new(
+        {(reduce_any, current_any, next_any) in
+          let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+            Vx_Core.t_boolean,
+            reduce_any
           )
-        )
-        return output_1
-      })
+          let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            current_any
+          )
+          let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            next_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_and(
+            reduce,
+            Vx_Core.f_lt(current, next)
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -17423,17 +21363,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17453,9 +21393,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fnlist : any Vx_Core.Type_any_from_anylist = Vx_Core.f_any_from_any(Vx_Core.t_any_from_anylist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fnlist : any Vx_Core.Type_any_from_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_chainfirst(generic_any_1, value, fnlist)
       return output
     }
@@ -17522,17 +21477,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17552,9 +21507,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fnlist : any Vx_Core.Type_any_from_anylist = Vx_Core.f_any_from_any(Vx_Core.t_any_from_anylist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fnlist : any Vx_Core.Type_any_from_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_chainlast(generic_any_1, value, fnlist)
       return output
     }
@@ -17620,17 +21590,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17650,8 +21620,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_le(val1, val2)
       return output
     }
@@ -17675,10 +21655,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_boolean {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_not(
-      Vx_Core.f_gt(
-        val1,
-        val2
-      )
+      Vx_Core.f_gt(val1, val2)
     )
     return output
   }
@@ -17718,17 +21695,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17755,7 +21732,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_le_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -17763,7 +21743,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_le_1(args)
       return output
     }
@@ -17784,11 +21769,7 @@ public enum Vx_Core {
     _ args : any Vx_Core.Type_anylist
   ) -> any Vx_Core.Type_boolean {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
-    output = Vx_Core.f_not(
-      Vx_Core.f_gt_1(
-        args
-      )
-    )
+    output = Vx_Core.f_not(Vx_Core.f_gt_1(args))
     return output
   }
 
@@ -17828,17 +21809,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17858,8 +21839,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_eq(val1, val2)
       return output
     }
@@ -17921,17 +21912,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -17958,7 +21949,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_eq_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -17966,7 +21960,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_eq_1(values)
       return output
     }
@@ -17991,19 +21990,27 @@ public enum Vx_Core {
       Vx_Core.t_boolean,
       values,
       Vx_Core.vx_new_boolean(false),
-      Vx_Core.t_any_from_reduce_next.vx_fn_new({(reduce_any, current_any, next_any) in
-        let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, reduce_any)
-        let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, current_any)
-        let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, next_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_and(
-          reduce,
-          Vx_Core.f_eq(
-            current,
-            next
+      Vx_Core.t_any_from_reduce_next.vx_fn_new(
+        {(reduce_any, current_any, next_any) in
+          let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+            Vx_Core.t_boolean,
+            reduce_any
           )
-        )
-        return output_1
-      })
+          let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            current_any
+          )
+          let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            next_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_and(
+            reduce,
+            Vx_Core.f_eq(current, next)
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -18044,17 +22051,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -18074,8 +22081,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_eqeq(val1, val2)
       return output
     }
@@ -18138,17 +22155,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -18168,8 +22185,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_gt(val1, val2)
       return output
     }
@@ -18194,25 +22221,28 @@ public enum Vx_Core {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_switch(
       Vx_Core.t_boolean,
-      Vx_Core.f_compare(
-        val1,
-        val2
-      ),
+      Vx_Core.f_compare(val1, val2),
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_case_1(
-          Vx_Core.vx_new_int(1),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
-            return output_1
-          })
-        ),
-        Vx_Core.f_else(
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(false)
-            return output_2
-          })
-        )
+        [
+          Vx_Core.f_case_1(
+            Vx_Core.vx_new_int(1),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
+                  return output_1
+                }
+            )
+          ),
+          Vx_Core.f_else(
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(false)
+                  return output_2
+                }
+            )
+          )
+        ]
       )
     )
     return output
@@ -18253,17 +22283,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -18290,7 +22320,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_gt_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -18298,7 +22331,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_gt_1(values)
       return output
     }
@@ -18323,19 +22361,27 @@ public enum Vx_Core {
       Vx_Core.t_boolean,
       values,
       Vx_Core.vx_new_boolean(true),
-      Vx_Core.t_any_from_reduce_next.vx_fn_new({(reduce_any, current_any, next_any) in
-        let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, reduce_any)
-        let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, current_any)
-        let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, next_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_and(
-          reduce,
-          Vx_Core.f_gt(
-            current,
-            next
+      Vx_Core.t_any_from_reduce_next.vx_fn_new(
+        {(reduce_any, current_any, next_any) in
+          let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+            Vx_Core.t_boolean,
+            reduce_any
           )
-        )
-        return output_1
-      })
+          let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            current_any
+          )
+          let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            next_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_and(
+            reduce,
+            Vx_Core.f_gt(current, next)
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -18376,17 +22422,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -18406,8 +22452,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_ge(val1, val2)
       return output
     }
@@ -18431,10 +22487,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_boolean {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_not(
-      Vx_Core.f_lt(
-        val1,
-        val2
-      )
+      Vx_Core.f_lt(val1, val2)
     )
     return output
   }
@@ -18474,17 +22527,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -18511,7 +22564,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_ge_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -18519,7 +22575,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_ge_1(args)
       return output
     }
@@ -18540,11 +22601,7 @@ public enum Vx_Core {
     _ args : any Vx_Core.Type_anylist
   ) -> any Vx_Core.Type_boolean {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
-    output = Vx_Core.f_not(
-      Vx_Core.f_lt_1(
-        args
-      )
-    )
+    output = Vx_Core.f_not(Vx_Core.f_lt_1(args))
     return output
   }
 
@@ -18583,17 +22640,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "funclist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_func), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "funclist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_func
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -18620,7 +22682,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_security = value as! any Vx_Core.Type_security
       let outputval : any Vx_Core.Type_any = Vx_Core.f_allowfuncs_from_security(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -18628,7 +22693,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let security : any Vx_Core.Type_security = Vx_Core.f_any_from_any(Vx_Core.t_security, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let security : any Vx_Core.Type_security = Vx_Core.f_any_from_any(
+        Vx_Core.t_security,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_allowfuncs_from_security(security)
       return output
     }
@@ -18688,17 +22758,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_string
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -18725,7 +22800,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typedef = value as! any Vx_Core.Type_typedef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_allowtypenames_from_typedef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -18733,7 +22811,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(Vx_Core.t_typedef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(
+        Vx_Core.t_typedef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_allowtypenames_from_typedef(vtypedef)
       return output
     }
@@ -18755,9 +22838,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_stringlist {
     var output : any Vx_Core.Type_stringlist = Vx_Core.e_stringlist
     output = Vx_Core.f_typenames_from_typelist(
-      Vx_Core.f_allowtypes_from_typedef(
-        vtypedef
-      )
+      Vx_Core.f_allowtypes_from_typedef(vtypedef)
     )
     return output
   }
@@ -18797,17 +22878,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "typelist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "typelist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -18834,7 +22920,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typedef = value as! any Vx_Core.Type_typedef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_allowtypes_from_typedef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -18842,7 +22931,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(Vx_Core.t_typedef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(
+        Vx_Core.t_typedef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_allowtypes_from_typedef(vtypedef)
       return output
     }
@@ -18903,17 +22997,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -18933,8 +23027,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_and(val1, val2)
       return output
     }
@@ -18996,17 +23100,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -19033,7 +23137,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_booleanlist = value as! any Vx_Core.Type_booleanlist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_and_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -19041,7 +23148,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let values : any Vx_Core.Type_booleanlist = Vx_Core.f_any_from_any(Vx_Core.t_booleanlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let values : any Vx_Core.Type_booleanlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_booleanlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_and_1(values)
       return output
     }
@@ -19064,52 +23176,66 @@ public enum Vx_Core {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_switch(
       Vx_Core.t_boolean,
-      Vx_Core.f_length_1(
-        values
-      ),
+      Vx_Core.f_length_1(values),
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_case_1(
-          Vx_Core.vx_new_int(0),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
-            return output_1
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Core.vx_new_int(1),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Core.f_any_from_list(
-              Vx_Core.t_boolean,
-              values,
-              Vx_Core.vx_new_int(1)
+        [
+          Vx_Core.f_case_1(
+            Vx_Core.vx_new_int(0),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
+                  return output_1
+                }
             )
-            return output_2
-          })
-        ),
-        Vx_Core.f_else(
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_3 : any Vx_Core.Type_any = Vx_Core.f_any_from_list_start_reduce_next(
-              Vx_Core.t_boolean,
-              values,
-              Vx_Core.vx_new_boolean(true),
-              Vx_Core.t_any_from_reduce_next.vx_fn_new({(reduce_any, current_any, next_any) in
-                let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, reduce_any)
-                let current : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, current_any)
-                let next : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, next_any)
-                var output_4 : any Vx_Core.Type_any = Vx_Core.f_and(
-                  reduce,
-                  Vx_Core.f_and(
-                    current,
-                    next
+          ),
+          Vx_Core.f_case_1(
+            Vx_Core.vx_new_int(1),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Core.f_any_from_list(
+                    Vx_Core.t_boolean,
+                    values,
+                    Vx_Core.vx_new_int(1)
                   )
-                )
-                return output_4
-              })
+                  return output_2
+                }
             )
-            return output_3
-          })
-        )
+          ),
+          Vx_Core.f_else(
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_3 : any Vx_Core.Type_any = Vx_Core.f_any_from_list_start_reduce_next(
+                    Vx_Core.t_boolean,
+                    values,
+                    Vx_Core.vx_new_boolean(true),
+                    Vx_Core.t_any_from_reduce_next.vx_fn_new(
+                      {(reduce_any, current_any, next_any) in
+                        let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+                          Vx_Core.t_boolean,
+                          reduce_any
+                        )
+                        let current : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+                          Vx_Core.t_boolean,
+                          current_any
+                        )
+                        let next : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+                          Vx_Core.t_boolean,
+                          next_any
+                        )
+                        var output_4 : any Vx_Core.Type_any = Vx_Core.f_and(
+                          reduce,
+                          Vx_Core.f_and(current, next)
+                        )
+                        return output_4
+                      }
+                    )
+                  )
+                  return output_3
+                }
+            )
+          )
+        ]
       )
     )
     return output
@@ -19152,17 +23278,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -19192,8 +23318,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_any_from_any(generic_any_1, value)
       return output
     }
@@ -19205,7 +23341,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal(value)
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -19260,17 +23399,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -19300,10 +23439,23 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_any_from_any_async(generic_any_1, value)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -19371,17 +23523,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -19411,9 +23563,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_any_from_any_context(generic_any_1, context, value)
       return output
     }
@@ -19426,7 +23593,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal(context, value)
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -19483,17 +23653,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -19523,11 +23693,29 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_any_from_any_context_async(generic_any_1, context, value)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -19598,17 +23786,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -19638,10 +23826,30 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_any_from_any_key_value(generic_any_1, current, key, value)
       return output
     }
@@ -19656,7 +23864,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal(current, key, value)
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -19713,17 +23924,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -19753,7 +23964,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_any_from_func(generic_any_1)
       return output
     }
@@ -19764,7 +23980,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal()
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -19817,17 +24036,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -19857,9 +24076,17 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_any_from_func_async(generic_any_1)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -19924,17 +24151,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -19964,8 +24191,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_any_from_int(generic_any_1, value)
       return output
     }
@@ -19977,7 +24214,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal(value)
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -20033,17 +24273,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -20073,9 +24313,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_any_from_int_any(generic_any_1, num, value)
       return output
     }
@@ -20088,7 +24343,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal(num, value)
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -20145,17 +24403,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -20185,9 +24443,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_any_from_key_value(generic_any_1, key, value)
       return output
     }
@@ -20200,7 +24473,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal(key, value)
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -20257,17 +24533,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -20297,11 +24573,29 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_any_from_key_value_async(generic_any_1, key, value)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -20370,17 +24664,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -20400,9 +24694,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let index : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let index : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_any_from_list(generic_any_1, values, index)
       return output
     }
@@ -20468,17 +24777,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -20498,10 +24807,30 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let list : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valstart : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_reduce : any Vx_Core.Func_any_from_reduce = Vx_Core.f_any_from_any(Vx_Core.t_any_from_reduce, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let list : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valstart : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_reduce : any Vx_Core.Func_any_from_reduce = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_reduce,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_any_from_list_start_reduce(generic_any_1, list, valstart, fn_reduce)
       return output
     }
@@ -20571,17 +24900,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -20601,10 +24930,30 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let list : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valstart : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_reduce_next : any Vx_Core.Func_any_from_reduce_next = Vx_Core.f_any_from_any(Vx_Core.t_any_from_reduce_next, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let list : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valstart : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_reduce_next : any Vx_Core.Func_any_from_reduce_next = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_reduce_next,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_any_from_list_start_reduce_next(generic_any_1, list, valstart, fn_reduce_next)
       return output
     }
@@ -20673,17 +25022,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -20703,9 +25052,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_any_from_map(generic_any_1, valuemap, key)
       return output
     }
@@ -20771,17 +25135,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -20801,10 +25165,30 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let map : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_reduce : any Vx_Core.Func_any_from_any_key_value = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any_key_value, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let map : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_reduce : any Vx_Core.Func_any_from_any_key_value = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any_key_value,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_any_from_map_start_reduce(generic_any_1, map, start, fn_reduce)
       return output
     }
@@ -20872,17 +25256,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -20912,7 +25296,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_any_from_none(generic_any_1)
       return output
     }
@@ -20923,7 +25312,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal()
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -20976,17 +25368,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -21016,9 +25408,17 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_any_from_none_async(generic_any_1)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -21084,17 +25484,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -21124,9 +25524,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let result : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let item : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let result : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let item : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_any_from_reduce(generic_any_1, result, item)
       return output
     }
@@ -21140,7 +25555,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal(result, item)
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -21198,17 +25616,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -21238,11 +25656,29 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let result : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let item : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let result : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let item : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_any_from_reduce_async(generic_any_1, result, item)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -21315,17 +25751,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -21355,10 +25791,30 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let result : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let result : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_any_from_reduce_next(generic_any_1, result, current, next)
       return output
     }
@@ -21373,7 +25829,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal(result, current, next)
-        output = Vx_Core.f_any_from_any(generic_any_1, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        )
       }
       return output
     }
@@ -21433,17 +25892,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -21473,12 +25932,35 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let result : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let result : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let current : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let next : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_any_from_reduce_next_async(generic_any_1, result, current, next)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -21551,17 +26033,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -21581,9 +26063,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let vstruct : any Vx_Core.Type_struct = Vx_Core.f_any_from_any(Vx_Core.t_struct, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let vstruct : any Vx_Core.Type_struct = Vx_Core.f_any_from_any(
+        Vx_Core.t_struct,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_any_from_struct(generic_any_1, vstruct, key)
       return output
     }
@@ -21647,17 +26144,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -21682,7 +26179,10 @@ public enum Vx_Core {
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
       let inputval : T = Vx_Core.f_any_from_any(generic_any_1, value)
-      let output : Vx_Core.Future = Vx_Core.f_async(generic_any_1, inputval)
+      let output : Vx_Core.Future = Vx_Core.f_async(
+        generic_any_1,
+        inputval
+      )
       return output
     }
 
@@ -21690,10 +26190,23 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_async(generic_any_1, value)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -21756,17 +26269,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -21794,7 +26307,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_func = value as! any Vx_Core.Type_func
       let outputval : any Vx_Core.Type_any = Vx_Core.f_boolean_permission_from_func(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -21802,8 +26318,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fnc : any Vx_Core.Type_func = Vx_Core.f_any_from_any(Vx_Core.t_func, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fnc : any Vx_Core.Type_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_boolean_permission_from_func(context, fnc)
       return output
     }
@@ -21828,9 +26354,7 @@ public enum Vx_Core {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_contains_1(
       Vx_Core.f_allowfuncs_from_security(
-        Vx_Core.f_security_from_context(
-          context
-        )
+        Vx_Core.f_security_from_context(context)
       ),
       fnc
     )
@@ -21874,17 +26398,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -21904,9 +26428,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_boolean_write_from_map_name_value(valuemap, name, value)
       return output
     }
@@ -21971,17 +26510,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22011,7 +26550,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_boolean_from_any(value)
       return output
     }
@@ -22022,7 +26566,10 @@ public enum Vx_Core {
       var output : any Vx_Core.Type_boolean = Vx_Core.c_false
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal(value)
-        output = Vx_Core.f_any_from_any(Vx_Core.t_boolean, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          Vx_Core.t_boolean,
+          anyoutput
+        )
       }
       return output
     }
@@ -22073,17 +26620,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22121,7 +26668,10 @@ public enum Vx_Core {
       var output : any Vx_Core.Type_boolean = Vx_Core.c_false
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal()
-        output = Vx_Core.f_any_from_any(Vx_Core.t_boolean, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          Vx_Core.t_boolean,
+          anyoutput
+        )
       }
       return output
     }
@@ -22170,17 +26720,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22218,7 +26768,10 @@ public enum Vx_Core {
       var output : any Vx_Core.Type_boolean = Vx_Core.c_false
       if let fnlocal = self.fn {
         let anyoutput : any Vx_Core.Type_any = fnlocal()
-        output = Vx_Core.f_any_from_any(Vx_Core.t_boolean, anyoutput)
+        output = Vx_Core.f_any_from_any(
+          Vx_Core.t_boolean,
+          anyoutput
+        )
       }
       return output
     }
@@ -22269,17 +26822,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "thenelse", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "thenelse",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22299,8 +26852,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_case(values, fn_any)
       return output
     }
@@ -22327,12 +26890,14 @@ public enum Vx_Core {
       Vx_Core.t_thenelse,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":code"),
-        Vx_Core.vx_new_string(":casemany"),
-        Vx_Core.vx_new_string(":values"),
-        values,
-        Vx_Core.vx_new_string(":fn-any"),
-        fn_any
+        [
+          Vx_Core.vx_new_string(":code"),
+          Vx_Core.vx_new_string(":casemany"),
+          Vx_Core.vx_new_string(":values"),
+          values,
+          Vx_Core.vx_new_string(":fn-any"),
+          fn_any
+        ]
       )
     )
     return output
@@ -22374,17 +26939,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "thenelse", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "thenelse",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22404,8 +26969,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_case_1(value, fn_any)
       return output
     }
@@ -22432,12 +27007,14 @@ public enum Vx_Core {
       Vx_Core.t_thenelse,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":code"),
-        Vx_Core.vx_new_string(":case"),
-        Vx_Core.vx_new_string(":value"),
-        value,
-        Vx_Core.vx_new_string(":fn-any"),
-        fn_any
+        [
+          Vx_Core.vx_new_string(":code"),
+          Vx_Core.vx_new_string(":case"),
+          Vx_Core.vx_new_string(":value"),
+          value,
+          Vx_Core.vx_new_string(":fn-any"),
+          fn_any
+        ]
       )
     )
     return output
@@ -22479,17 +27056,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22509,8 +27091,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_compare(val1, val2)
       return output
     }
@@ -22572,17 +27164,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "constdef", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "constdef",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22609,7 +27201,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_constdef_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -22617,7 +27212,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_constdef_from_any(value)
       return output
     }
@@ -22677,17 +27277,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22714,7 +27314,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_constname_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -22722,7 +27325,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_constname_from_any(value)
       return output
     }
@@ -22745,44 +27353,52 @@ public enum Vx_Core {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let cnstdef : any Vx_Core.Type_constdef = Vx_Core.f_constdef_from_any(
-          value
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_thenelselist,
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_2 : any Vx_Core.Type_any = Vx_Core.f_is_empty_1(
-                  cnstdef
-                )
-                return output_2
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_3 : any Vx_Core.Type_any = Vx_Core.vx_new_string("")
-                return output_3
-              })
-            ),
-            Vx_Core.f_else(
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_4 : any Vx_Core.Type_any = Vx_Core.f_new(
-                  Vx_Core.t_string,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    cnstdef.pkgname(),
-                    Vx_Core.vx_new_string("/"),
-                    cnstdef.name()
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let cnstdef : any Vx_Core.Type_constdef = Vx_Core.f_constdef_from_any(value)
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_thenelselist,
+              [
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_2 : any Vx_Core.Type_any = Vx_Core.f_is_empty_1(cnstdef)
+                        return output_2
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_3 : any Vx_Core.Type_any = Vx_Core.vx_new_string("")
+                        return output_3
+                      }
+                  )
+                ),
+                Vx_Core.f_else(
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_4 : any Vx_Core.Type_any = Vx_Core.f_new(
+                          Vx_Core.t_string,
+                          Vx_Core.vx_new(
+                            Vx_Core.t_anylist,
+                            [
+                              cnstdef.pkgname(),
+                              Vx_Core.vx_new_string("/"),
+                              cnstdef.name()
+                            ]
+                          )
+                        )
+                        return output_4
+                      }
                   )
                 )
-                return output_4
-              })
+              ]
             )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -22823,17 +27439,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22853,8 +27469,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_contains(text, find)
       return output
     }
@@ -22917,17 +27543,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -22947,8 +27573,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let find : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let find : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_contains_1(values, find)
       return output
     }
@@ -23010,17 +27646,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23047,7 +27683,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_context_main(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -23055,7 +27694,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_context_main(args)
       return output
     }
@@ -23076,9 +27720,7 @@ public enum Vx_Core {
     _ args : any Vx_Core.Type_anylist
   ) -> any Vx_Core.Type_context {
     var output : any Vx_Core.Type_context = Vx_Core.e_context
-    output = Vx_Core.f_empty(
-      Vx_Core.t_context
-    )
+    output = Vx_Core.f_empty(Vx_Core.t_context)
     return output
   }
 
@@ -23119,17 +27761,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23149,9 +27791,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_copy(generic_any_1, value, values)
       return output
     }
@@ -23216,17 +27873,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "thenelse", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "thenelse",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23253,7 +27910,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Func_any_from_func = value as! any Vx_Core.Func_any_from_func
       let outputval : any Vx_Core.Type_any = Vx_Core.f_else(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -23261,7 +27921,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_else(fn_any)
       return output
     }
@@ -23286,10 +27951,12 @@ public enum Vx_Core {
       Vx_Core.t_thenelse,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":code"),
-        Vx_Core.vx_new_string(":else"),
-        Vx_Core.vx_new_string(":fn-any"),
-        fn_any
+        [
+          Vx_Core.vx_new_string(":code"),
+          Vx_Core.vx_new_string(":else"),
+          Vx_Core.vx_new_string(":fn-any"),
+          fn_any
+        ]
       )
     )
     return output
@@ -23330,17 +27997,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23367,7 +28034,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_empty(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -23375,7 +28045,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_empty(type)
       return output
     }
@@ -23434,17 +28109,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23471,7 +28146,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_extends_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -23479,7 +28157,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_extends_from_any(value)
       return output
     }
@@ -23501,9 +28184,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_string {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_extends_from_typedef(
-      Vx_Core.f_typedef_from_any(
-        value
-      )
+      Vx_Core.f_typedef_from_any(value)
     )
     return output
   }
@@ -23543,17 +28224,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23580,7 +28261,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typedef = value as! any Vx_Core.Type_typedef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_extends_from_typedef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -23588,7 +28272,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(Vx_Core.t_typedef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(
+        Vx_Core.t_typedef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_extends_from_typedef(vtypedef)
       return output
     }
@@ -23649,17 +28338,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23685,8 +28374,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_list = value as! any Vx_Core.Type_list
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_first_from_list(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_first_from_list(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -23694,8 +28389,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_first_from_list(generic_any_1, values)
       return output
     }
@@ -23763,17 +28468,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23793,9 +28498,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_first_from_list_any_from_any(generic_any_1, values, fn_any_from_any)
       return output
     }
@@ -23858,17 +28578,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "float", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "float",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23895,7 +28620,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_float_from_string(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -23903,7 +28631,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_float_from_string(text)
       return output
     }
@@ -23965,17 +28698,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -23995,9 +28728,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let parameters : any Vx_Core.Type_arglist = Vx_Core.f_any_from_any(Vx_Core.t_arglist, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let parameters : any Vx_Core.Type_arglist = Vx_Core.f_any_from_any(
+        Vx_Core.t_arglist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_fn(generic_any_1, parameters, fn_any)
       return output
     }
@@ -24060,17 +28808,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "funcdef", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "funcdef",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -24097,7 +28845,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_func = value as! any Vx_Core.Type_func
       let outputval : any Vx_Core.Type_any = Vx_Core.f_funcdef_from_func(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -24105,7 +28856,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_func = Vx_Core.f_any_from_any(Vx_Core.t_func, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_funcdef_from_func(value)
       return output
     }
@@ -24165,17 +28921,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -24202,7 +28958,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_funcdef = value as! any Vx_Core.Type_funcdef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_funcname_from_funcdef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -24210,7 +28969,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let funcdef : any Vx_Core.Type_funcdef = Vx_Core.f_any_from_any(Vx_Core.t_funcdef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let funcdef : any Vx_Core.Type_funcdef = Vx_Core.f_any_from_any(
+        Vx_Core.t_funcdef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_funcname_from_funcdef(funcdef)
       return output
     }
@@ -24235,9 +28999,11 @@ public enum Vx_Core {
       Vx_Core.t_string,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        funcdef.pkgname(),
-        Vx_Core.vx_new_string("/"),
-        funcdef.name()
+        [
+          funcdef.pkgname(),
+          Vx_Core.vx_new_string("/"),
+          funcdef.name()
+        ]
       )
     )
     return output
@@ -24280,17 +29046,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -24310,9 +29076,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let clause : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let then : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let clause : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let then : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_if(generic_any_1, clause, then)
       return output
     }
@@ -24380,17 +29161,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -24410,10 +29191,30 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let clause : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let thenval : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let elseval : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let clause : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let thenval : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let elseval : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_if_1(generic_any_1, clause, thenval, elseval)
       return output
     }
@@ -24483,17 +29284,17 @@ public enum Vx_Core {
         2, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -24519,8 +29320,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_thenelselist = value as! any Vx_Core.Type_thenelselist
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_if_2(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_if_2(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -24528,8 +29335,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let thenelselist : any Vx_Core.Type_thenelselist = Vx_Core.f_any_from_any(Vx_Core.t_thenelselist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let thenelselist : any Vx_Core.Type_thenelselist = Vx_Core.f_any_from_any(
+        Vx_Core.t_thenelselist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_if_2(generic_any_1, thenelselist)
       return output
     }
@@ -24589,17 +29406,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -24681,17 +29503,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -24718,7 +29545,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_int_from_string(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -24726,7 +29556,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_int_from_string(value)
       return output
     }
@@ -24786,17 +29621,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -24823,7 +29658,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_is_empty(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -24831,7 +29669,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_is_empty(text)
       return output
     }
@@ -24891,17 +29734,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -24928,7 +29771,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_is_empty_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -24936,7 +29782,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_is_empty_1(value)
       return output
     }
@@ -24997,17 +29848,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -25027,8 +29878,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_is_endswith(text, find)
       return output
     }
@@ -25090,17 +29951,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -25127,7 +29988,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_is_error(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -25135,7 +29999,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_is_error(value)
       return output
     }
@@ -25158,30 +30027,34 @@ public enum Vx_Core {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_let(
       Vx_Core.t_boolean,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let msgblock : any Vx_Core.Type_msgblock = Vx_Core.f_msgblock_from_any(
-          value
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
-          Vx_Core.t_boolean,
-          Vx_Core.vx_new(
-            Vx_Core.t_thenelselist,
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_2 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(
-                  msgblock
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let msgblock : any Vx_Core.Type_msgblock = Vx_Core.f_msgblock_from_any(value)
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
+            Vx_Core.t_boolean,
+            Vx_Core.vx_new(
+              Vx_Core.t_thenelselist,
+              [
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_2 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(msgblock)
+                        return output_2
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_3 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
+                        return output_3
+                      }
+                  )
                 )
-                return output_2
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_3 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
-                return output_3
-              })
+              ]
             )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -25221,17 +30094,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -25258,7 +30131,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_is_float(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -25266,7 +30142,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_is_float(value)
       return output
     }
@@ -25326,17 +30207,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -25363,7 +30244,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_is_func(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -25371,7 +30255,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_is_func(value)
       return output
     }
@@ -25431,17 +30320,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -25468,7 +30357,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_is_int(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -25476,7 +30368,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_is_int(value)
       return output
     }
@@ -25536,17 +30433,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -25573,7 +30470,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_is_number(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -25581,7 +30481,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_is_number(value)
       return output
     }
@@ -25604,33 +30509,39 @@ public enum Vx_Core {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_switch(
       Vx_Core.t_boolean,
-      Vx_Core.f_typename_from_any(
-        value
-      ),
+      Vx_Core.f_typename_from_any(value),
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_case(
-          Vx_Core.f_new(
-            Vx_Core.t_list,
-            Vx_Core.vx_new(
-              Vx_Core.t_anylist,
-              Vx_Core.vx_new_string("vx/core/decimal"),
-              Vx_Core.vx_new_string("vx/core/float"),
-              Vx_Core.vx_new_string("vx/core/int"),
-              Vx_Core.vx_new_string("vx/core/number")
+        [
+          Vx_Core.f_case(
+            Vx_Core.f_new(
+              Vx_Core.t_list,
+              Vx_Core.vx_new(
+                Vx_Core.t_anylist,
+                [
+                  Vx_Core.vx_new_string("vx/core/decimal"),
+                  Vx_Core.vx_new_string("vx/core/float"),
+                  Vx_Core.vx_new_string("vx/core/int"),
+                  Vx_Core.vx_new_string("vx/core/number")
+                ]
+              )
+            ),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
+                  return output_1
+                }
             )
           ),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(true)
-            return output_1
-          })
-        ),
-        Vx_Core.f_else(
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(false)
-            return output_2
-          })
-        )
+          Vx_Core.f_else(
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Core.vx_new_boolean(false)
+                  return output_2
+                }
+            )
+          )
+        ]
       )
     )
     return output
@@ -25672,17 +30583,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -25710,7 +30621,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_permission = value as! any Vx_Core.Type_permission
       let outputval : any Vx_Core.Type_any = Vx_Core.f_is_pass_from_permission(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -25718,8 +30632,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let permission : any Vx_Core.Type_permission = Vx_Core.f_any_from_any(Vx_Core.t_permission, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let permission : any Vx_Core.Type_permission = Vx_Core.f_any_from_any(
+        Vx_Core.t_permission,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_is_pass_from_permission(context, permission)
       return output
     }
@@ -25744,18 +30668,14 @@ public enum Vx_Core {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_let(
       Vx_Core.t_boolean,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let id : any Vx_Core.Type_string = permission.id()
-        let lookup : any Vx_Core.Type_permission = Vx_Core.f_permission_from_id_context(
-          context,
-          id
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_eq(
-          lookup,
-          permission
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let id : any Vx_Core.Type_string = permission.id()
+          let lookup : any Vx_Core.Type_permission = Vx_Core.f_permission_from_id_context(context, id)
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_eq(lookup, permission)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -25796,17 +30716,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -25832,8 +30752,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_list = value as! any Vx_Core.Type_list
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_last_from_list(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_last_from_list(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -25841,8 +30767,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_last_from_list(generic_any_1, values)
       return output
     }
@@ -25867,17 +30803,17 @@ public enum Vx_Core {
     var output : T = Vx_Core.f_empty(generic_any_1)
     output = Vx_Core.f_let(
       generic_any_1,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let len : any Vx_Core.Type_int = Vx_Core.f_length_1(
-          values
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_list(
-          generic_any_1,
-          values,
-          len
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let len : any Vx_Core.Type_int = Vx_Core.f_length_1(values)
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_list(
+            generic_any_1,
+            values,
+            len
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -25917,17 +30853,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -25954,7 +30895,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_length(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -25962,7 +30906,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_length(text)
       return output
     }
@@ -26022,17 +30971,22 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26059,7 +31013,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_list = value as! any Vx_Core.Type_list
       let outputval : any Vx_Core.Type_any = Vx_Core.f_length_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -26067,7 +31024,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_length_1(values)
       return output
     }
@@ -26127,17 +31089,22 @@ public enum Vx_Core {
         2, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26164,7 +31131,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_map = value as! any Vx_Core.Type_map
       let outputval : any Vx_Core.Type_any = Vx_Core.f_length_2(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -26172,7 +31142,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_length_2(valuemap)
       return output
     }
@@ -26194,9 +31169,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_int {
     var output : any Vx_Core.Type_int = Vx_Core.e_int
     output = Vx_Core.f_length_1(
-      Vx_Core.f_stringlist_from_map(
-        valuemap
-      )
+      Vx_Core.f_stringlist_from_map(valuemap)
     )
     return output
   }
@@ -26237,17 +31210,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26267,8 +31240,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_let(generic_any_1, fn_any)
       return output
     }
@@ -26330,17 +31313,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26360,10 +31343,23 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_async : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func_async, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_async : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_let_async(generic_any_1, fn_any_async)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -26424,17 +31420,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26460,8 +31461,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_list = value as! any Vx_Core.Type_list
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_list_from_list(Vx_Core.t_list, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_list_from_list(
+        Vx_Core.t_list,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -26469,8 +31476,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_list_from_list(generic_list_1, values)
       return output
     }
@@ -26496,11 +31513,16 @@ public enum Vx_Core {
     output = Vx_Core.f_list_from_list_1(
       generic_list_1,
       values,
-      Vx_Core.t_any_from_any.vx_fn_new({(value_any) in
-        let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, value_any)
-        var output_1 : any Vx_Core.Type_any = value
-        return output_1
-      })
+      Vx_Core.t_any_from_any.vx_fn_new(
+        {(value_any) in
+          let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            value_any
+          )
+          var output_1 : any Vx_Core.Type_any = value
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -26542,17 +31564,22 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26572,9 +31599,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_list_from_list_1(generic_list_1, values, fn_any_from_any)
       return output
     }
@@ -26639,17 +31681,22 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26669,11 +31716,29 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_any_async : any Vx_Core.Func_any_from_any_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any_async, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_any_async : any Vx_Core.Func_any_from_any_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_list_from_list_async(generic_list_1, values, fn_any_from_any_async)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -26737,17 +31802,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26767,9 +31837,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_int_any : any Vx_Core.Func_any_from_int_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_int_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_int_any : any Vx_Core.Func_any_from_int_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_int_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_list_from_list_intany(generic_list_1, values, fn_any_from_int_any)
       return output
     }
@@ -26833,17 +31918,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26869,8 +31959,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_map = value as! any Vx_Core.Type_map
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_list_from_map(Vx_Core.t_list, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_list_from_map(
+        Vx_Core.t_list,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -26878,8 +31974,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_list_from_map(generic_list_1, valuemap)
       return output
     }
@@ -26905,12 +32011,20 @@ public enum Vx_Core {
     output = Vx_Core.f_list_from_map_1(
       generic_list_1,
       valuemap,
-      Vx_Core.t_any_from_key_value.vx_fn_new({(key_any, value_any) in
-        let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, key_any)
-        let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, value_any)
-        var output_1 : any Vx_Core.Type_any = value
-        return output_1
-      })
+      Vx_Core.t_any_from_key_value.vx_fn_new(
+        {(key_any, value_any) in
+          let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+            Vx_Core.t_string,
+            key_any
+          )
+          let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            value_any
+          )
+          var output_1 : any Vx_Core.Type_any = value
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -26952,17 +32066,22 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -26982,9 +32101,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_key_value : any Vx_Core.Func_any_from_key_value = Vx_Core.f_any_from_any(Vx_Core.t_any_from_key_value, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_key_value : any Vx_Core.Func_any_from_key_value = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_key_value,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_list_from_map_1(generic_list_1, valuemap, fn_any_from_key_value)
       return output
     }
@@ -27049,17 +32183,22 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -27079,11 +32218,29 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_key_value_async : any Vx_Core.Func_any_from_key_value_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_key_value_async, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_key_value_async : any Vx_Core.Func_any_from_key_value_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_key_value_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_list_from_map_async(generic_list_1, valuemap, fn_any_from_key_value_async)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -27145,17 +32302,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -27182,7 +32339,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_list_from_type(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -27190,7 +32350,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_list_from_type(type)
       return output
     }
@@ -27249,17 +32414,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -27286,7 +32451,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_log(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -27294,7 +32462,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_log(value)
       return output
     }
@@ -27356,17 +32529,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -27386,9 +32559,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_log_1(generic_any_1, text, value)
       return output
     }
@@ -27454,17 +32642,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -27490,8 +32678,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_log_error(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_log_error(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -27499,8 +32693,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_log_error(generic_any_1, value)
       return output
     }
@@ -27529,26 +32733,30 @@ public enum Vx_Core {
       generic_any_1,
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_then(
-          Vx_Core.t_boolean_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.f_is_error(
-              value
+        [
+          Vx_Core.f_then(
+            Vx_Core.t_boolean_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.f_is_error(value)
+                  return output_1
+                }
+            ),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Core.f_log(value)
+                  return output_2
+                }
             )
-            return output_1
-          }),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Core.f_log(
-              value
+          ),
+          Vx_Core.f_else(
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+      let output_3 : any Vx_Core.Type_any = value
+                  return output_3
+                }
             )
-            return output_2
-          })
-        ),
-        Vx_Core.f_else(
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            let output_3 : any Vx_Core.Type_any = value
-            return output_3
-          })
-        )
+          )
+        ]
       )
     )
     return output
@@ -27589,17 +32797,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -27626,7 +32834,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_main(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -27634,7 +32845,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_main(args)
       return output
     }
@@ -27699,17 +32915,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -27729,9 +32950,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let vallist : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let vallist : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_map_from_list(generic_map_1, vallist, fn_any_from_any)
       return output
     }
@@ -27795,17 +33031,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -27831,8 +33072,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_map = value as! any Vx_Core.Type_map
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_map_from_map(Vx_Core.t_map, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_map_from_map(
+        Vx_Core.t_map,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -27840,8 +33087,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_map_from_map(generic_map_1, valuemap)
       return output
     }
@@ -27867,12 +33124,20 @@ public enum Vx_Core {
     output = Vx_Core.f_map_from_map_1(
       generic_map_1,
       valuemap,
-      Vx_Core.t_any_from_key_value.vx_fn_new({(key_any, value_any) in
-        let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, key_any)
-        let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, value_any)
-        var output_1 : any Vx_Core.Type_any = value
-        return output_1
-      })
+      Vx_Core.t_any_from_key_value.vx_fn_new(
+        {(key_any, value_any) in
+          let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+            Vx_Core.t_string,
+            key_any
+          )
+          let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            value_any
+          )
+          var output_1 : any Vx_Core.Type_any = value
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -27914,17 +33179,22 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -27944,9 +33214,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_key_value : any Vx_Core.Func_any_from_key_value = Vx_Core.f_any_from_any(Vx_Core.t_any_from_key_value, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_key_value : any Vx_Core.Func_any_from_key_value = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_key_value,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_map_from_map_1(generic_map_1, valuemap, fn_any_from_key_value)
       return output
     }
@@ -28009,17 +33294,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "msg", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "msg",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -28046,7 +33331,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_msg_from_error(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -28054,7 +33342,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let error : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let error : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_msg_from_error(error)
       return output
     }
@@ -28079,10 +33372,12 @@ public enum Vx_Core {
       Vx_Core.t_msg,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":severity"),
-        Vx_Core.c_msg_error,
-        Vx_Core.vx_new_string(":text"),
-        error
+        [
+          Vx_Core.vx_new_string(":severity"),
+          Vx_Core.c_msg_error,
+          Vx_Core.vx_new_string(":text"),
+          error
+        ]
       )
     )
     return output
@@ -28124,17 +33419,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "msg", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "msg",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -28154,8 +33449,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let code : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let detail : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let code : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let detail : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_msg_from_error_1(code, detail)
       return output
     }
@@ -28182,12 +33487,14 @@ public enum Vx_Core {
       Vx_Core.t_msg,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":code"),
-        code,
-        Vx_Core.vx_new_string(":detail"),
-        detail,
-        Vx_Core.vx_new_string(":severity"),
-        Vx_Core.c_msg_error
+        [
+          Vx_Core.vx_new_string(":code"),
+          code,
+          Vx_Core.vx_new_string(":detail"),
+          detail,
+          Vx_Core.vx_new_string(":severity"),
+          Vx_Core.c_msg_error
+        ]
       )
     )
     return output
@@ -28230,17 +33537,17 @@ public enum Vx_Core {
         2, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "msg", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "msg",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -28260,9 +33567,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let path : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let code : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let detail : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let path : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let code : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let detail : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_msg_from_error_2(path, code, detail)
       return output
     }
@@ -28291,14 +33613,16 @@ public enum Vx_Core {
       Vx_Core.t_msg,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":code"),
-        code,
-        Vx_Core.vx_new_string(":path"),
-        path,
-        Vx_Core.vx_new_string(":severity"),
-        Vx_Core.c_msg_error,
-        Vx_Core.vx_new_string(":detail"),
-        detail
+        [
+          Vx_Core.vx_new_string(":code"),
+          code,
+          Vx_Core.vx_new_string(":path"),
+          path,
+          Vx_Core.vx_new_string(":severity"),
+          Vx_Core.c_msg_error,
+          Vx_Core.vx_new_string(":detail"),
+          detail
+        ]
       )
     )
     return output
@@ -28339,17 +33663,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "msg", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "msg",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -28376,7 +33700,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_msg_from_warning(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -28384,7 +33711,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let warning : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let warning : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_msg_from_warning(warning)
       return output
     }
@@ -28409,10 +33741,12 @@ public enum Vx_Core {
       Vx_Core.t_msg,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":severity"),
-        Vx_Core.c_msg_warning,
-        Vx_Core.vx_new_string(":text"),
-        warning
+        [
+          Vx_Core.vx_new_string(":severity"),
+          Vx_Core.c_msg_warning,
+          Vx_Core.vx_new_string(":text"),
+          warning
+        ]
       )
     )
     return output
@@ -28453,17 +33787,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "msgblock", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "msgblock",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -28490,7 +33824,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_msgblock_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -28498,7 +33835,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_msgblock_from_any(value)
       return output
     }
@@ -28559,17 +33901,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "msgblock", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "msgblock",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -28589,8 +33931,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let origblock : any Vx_Core.Type_msgblock = Vx_Core.f_any_from_any(Vx_Core.t_msgblock, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let addmsg : any Vx_Core.Type_msg = Vx_Core.f_any_from_any(Vx_Core.t_msg, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let origblock : any Vx_Core.Type_msgblock = Vx_Core.f_any_from_any(
+        Vx_Core.t_msgblock,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let addmsg : any Vx_Core.Type_msg = Vx_Core.f_any_from_any(
+        Vx_Core.t_msg,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_msgblock_from_msgblock_msg(origblock, addmsg)
       return output
     }
@@ -28618,7 +33970,9 @@ public enum Vx_Core {
       origblock,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        addmsg
+        [
+          addmsg
+        ]
       )
     )
     return output
@@ -28660,17 +34014,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "msgblock", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "msgblock",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -28690,8 +34044,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let origblock : any Vx_Core.Type_msgblock = Vx_Core.f_any_from_any(Vx_Core.t_msgblock, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let addblock : any Vx_Core.Type_msgblock = Vx_Core.f_any_from_any(Vx_Core.t_msgblock, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let origblock : any Vx_Core.Type_msgblock = Vx_Core.f_any_from_any(
+        Vx_Core.t_msgblock,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let addblock : any Vx_Core.Type_msgblock = Vx_Core.f_any_from_any(
+        Vx_Core.t_msgblock,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_msgblock_from_msgblock_msgblock(origblock, addblock)
       return output
     }
@@ -28718,8 +34082,10 @@ public enum Vx_Core {
       Vx_Core.t_msgblock,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        origblock,
-        addblock
+        [
+          origblock,
+          addblock
+        ]
       )
     )
     return output
@@ -28760,17 +34126,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -28797,7 +34163,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typedef = value as! any Vx_Core.Type_typedef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_name_from_typedef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -28805,7 +34174,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(Vx_Core.t_typedef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(
+        Vx_Core.t_typedef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_name_from_typedef(vtypedef)
       return output
     }
@@ -28866,17 +34240,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -28902,8 +34276,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_native(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_native(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -28911,8 +34291,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let clauses : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let clauses : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_native(generic_any_1, clauses)
       return output
     }
@@ -28973,17 +34363,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29010,7 +34400,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_native_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -29018,7 +34411,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_native_from_any(value)
       return output
     }
@@ -29078,17 +34476,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29114,8 +34512,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_new(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_new(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -29123,8 +34527,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_new(generic_any_1, values)
       return output
     }
@@ -29186,17 +34600,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29216,8 +34630,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_new_from_type(type, values)
       return output
     }
@@ -29276,17 +34700,24 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_int, Vx_Core.t_float, Vx_Core.t_decimal), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_int,
+              Vx_Core.t_float,
+              Vx_Core.t_decimal
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29361,17 +34792,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29391,8 +34822,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let val1 : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let val2 : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let val1 : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let val2 : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_or(val1, val2)
       return output
     }
@@ -29454,17 +34895,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29491,7 +34932,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_booleanlist = value as! any Vx_Core.Type_booleanlist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_or_1(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -29499,7 +34943,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let values : any Vx_Core.Type_booleanlist = Vx_Core.f_any_from_any(Vx_Core.t_booleanlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let values : any Vx_Core.Type_booleanlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_booleanlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_or_1(values)
       return output
     }
@@ -29524,19 +34973,27 @@ public enum Vx_Core {
       Vx_Core.t_boolean,
       values,
       Vx_Core.vx_new_boolean(false),
-      Vx_Core.t_any_from_reduce_next.vx_fn_new({(reduce_any, current_any, next_any) in
-        let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, reduce_any)
-        let current : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, current_any)
-        let next : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, next_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_or(
-          reduce,
-          Vx_Core.f_or(
-            current,
-            next
+      Vx_Core.t_any_from_reduce_next.vx_fn_new(
+        {(reduce_any, current_any, next_any) in
+          let reduce : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+            Vx_Core.t_boolean,
+            reduce_any
           )
-        )
-        return output_1
-      })
+          let current : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+            Vx_Core.t_boolean,
+            current_any
+          )
+          let next : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+            Vx_Core.t_boolean,
+            next_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_or(
+            reduce,
+            Vx_Core.f_or(current, next)
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -29576,17 +35033,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "package", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "package",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29613,7 +35070,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_package_global_from_name(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -29621,7 +35081,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_package_global_from_name(name)
       return output
     }
@@ -29685,17 +35150,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29722,7 +35187,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typedef = value as! any Vx_Core.Type_typedef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_packagename_from_typedef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -29730,7 +35198,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(Vx_Core.t_typedef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(
+        Vx_Core.t_typedef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_packagename_from_typedef(vtypedef)
       return output
     }
@@ -29791,17 +35264,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29829,7 +35302,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_path_from_context_path(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -29837,8 +35313,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let path : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let path : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_path_from_context_path(context, path)
       return output
     }
@@ -29862,9 +35348,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_string {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_path_from_setting_path(
-      Vx_Core.f_setting_from_context(
-        context
-      ),
+      Vx_Core.f_setting_from_context(context),
       path
     )
     return output
@@ -29906,17 +35390,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -29936,8 +35420,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let session : any Vx_Core.Type_setting = Vx_Core.f_any_from_any(Vx_Core.t_setting, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let path : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let session : any Vx_Core.Type_setting = Vx_Core.f_any_from_any(
+        Vx_Core.t_setting,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let path : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_path_from_setting_path(session, path)
       return output
     }
@@ -29999,17 +35493,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "permission", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "permission",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -30037,7 +35531,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Core.f_permission_from_id_context(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -30045,8 +35542,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let id : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let id : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_permission_from_id_context(context, id)
       return output
     }
@@ -30071,19 +35578,19 @@ public enum Vx_Core {
     var output : any Vx_Core.Type_permission = Vx_Core.e_permission
     output = Vx_Core.f_let(
       Vx_Core.t_permission,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let user : any Vx_Core.Type_user = Vx_Core.f_user_from_context(
-          context
-        )
-        let security : any Vx_Core.Type_security = user.security()
-        let permissionmap : any Vx_Core.Type_permissionmap = security.permissionmap()
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_map(
-          Vx_Core.t_permission,
-          permissionmap,
-          Vx_Core.vx_new_string(":id")
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let user : any Vx_Core.Type_user = Vx_Core.f_user_from_context(context)
+          let security : any Vx_Core.Type_security = user.security()
+          let permissionmap : any Vx_Core.Type_permissionmap = security.permissionmap()
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_map(
+            Vx_Core.t_permission,
+            permissionmap,
+            Vx_Core.vx_new_string(":id")
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -30123,17 +35630,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "argmap", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_arg), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "argmap",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_arg
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -30160,7 +35672,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typedef = value as! any Vx_Core.Type_typedef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_properties_from_typedef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -30168,7 +35683,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(Vx_Core.t_typedef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(
+        Vx_Core.t_typedef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_properties_from_typedef(vtypedef)
       return output
     }
@@ -30228,17 +35748,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "arg", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "arg",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -30265,7 +35785,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typedef = value as! any Vx_Core.Type_typedef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_proplast_from_typedef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -30273,7 +35796,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(Vx_Core.t_typedef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(
+        Vx_Core.t_typedef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_proplast_from_typedef(vtypedef)
       return output
     }
@@ -30334,17 +35862,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -30370,8 +35898,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_resolve(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_resolve(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -30379,8 +35913,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_resolve(generic_any_1, value)
       return output
     }
@@ -30445,17 +35989,17 @@ public enum Vx_Core {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -30481,8 +36025,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Func_any_from_func = value as! any Vx_Core.Func_any_from_func
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_resolve_1(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_resolve_1(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -30490,8 +36040,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_resolve_1(generic_any_1, fn_any)
       return output
     }
@@ -30553,17 +36113,17 @@ public enum Vx_Core {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -30588,7 +36148,10 @@ public enum Vx_Core {
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
       let inputval : T = Vx_Core.f_any_from_any(generic_any_1, value)
-      let output : Vx_Core.Future = Vx_Core.f_async(generic_any_1, inputval)
+      let output : Vx_Core.Future = Vx_Core.f_async(
+        generic_any_1,
+        inputval
+      )
       return output
     }
 
@@ -30596,10 +36159,23 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func_async, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Core.f_resolve_async(generic_any_1, fn_any)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -30660,17 +36236,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -30696,8 +36272,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_list = value as! any Vx_Core.Type_list
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_resolve_first(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_resolve_first(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -30705,8 +36287,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let clauses : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let clauses : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_resolve_first(generic_any_1, clauses)
       return output
     }
@@ -30773,17 +36365,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -30809,8 +36406,14 @@ public enum Vx_Core {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_list = value as! any Vx_Core.Type_list
-      let outputval : any Vx_Core.Type_any = Vx_Core.f_resolve_list(Vx_Core.t_list, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Core.f_resolve_list(
+        Vx_Core.t_list,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -30818,8 +36421,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let clauses : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let clauses : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_resolve_list(generic_list_1, clauses)
       return output
     }
@@ -30887,17 +36500,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -30917,7 +36530,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_security_from_context(context)
       return output
     }
@@ -30939,9 +36557,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_security {
     var output : any Vx_Core.Type_security = Vx_Core.e_security
     output = Vx_Core.f_security_from_user(
-      Vx_Core.f_user_from_context(
-        context
-      )
+      Vx_Core.f_user_from_context(context)
     )
     return output
   }
@@ -30981,17 +36597,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31018,7 +36634,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_user = value as! any Vx_Core.Type_user
       let outputval : any Vx_Core.Type_any = Vx_Core.f_security_from_user(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -31026,7 +36645,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let user : any Vx_Core.Type_user = Vx_Core.f_any_from_any(Vx_Core.t_user, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let user : any Vx_Core.Type_user = Vx_Core.f_any_from_any(
+        Vx_Core.t_user,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_security_from_user(user)
       return output
     }
@@ -31086,17 +36710,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "session", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "session",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31116,7 +36740,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_session_from_context(context)
       return output
     }
@@ -31176,17 +36805,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "setting", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "setting",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31206,7 +36835,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_setting_from_context(context)
       return output
     }
@@ -31267,17 +36901,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31297,8 +36931,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let num : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_string_repeat(text, num)
       return output
     }
@@ -31360,17 +37004,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31397,7 +37041,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_string_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -31405,7 +37052,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_string_from_any(value)
       return output
     }
@@ -31471,17 +37123,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31501,9 +37153,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let linefeed : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let linefeed : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_string_from_any_indent(value, indent, linefeed)
       return output
     }
@@ -31566,17 +37233,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31660,17 +37327,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31690,9 +37357,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let replace : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let replace : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Core.f_string_from_string_find_replace(text, find, replace)
       return output
     }
@@ -31756,17 +37438,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_string
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31793,7 +37480,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_map = value as! any Vx_Core.Type_map
       let outputval : any Vx_Core.Type_any = Vx_Core.f_stringlist_from_map(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -31801,7 +37491,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let map : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let map : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_stringlist_from_map(map)
       return output
     }
@@ -31825,12 +37520,20 @@ public enum Vx_Core {
     output = Vx_Core.f_list_from_map_1(
       Vx_Core.t_stringlist,
       map,
-      Vx_Core.t_any_from_key_value.vx_fn_new({(key_any, value_any) in
-        let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, key_any)
-        let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, value_any)
-        var output_1 : any Vx_Core.Type_any = key
-        return output_1
-      })
+      Vx_Core.t_any_from_key_value.vx_fn_new(
+        {(key_any, value_any) in
+          let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+            Vx_Core.t_string,
+            key_any
+          )
+          let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            value_any
+          )
+          var output_1 : any Vx_Core.Type_any = key
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -31872,17 +37575,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31902,9 +37605,24 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let thenelselist : any Vx_Core.Type_thenelselist = Vx_Core.f_any_from_any(Vx_Core.t_thenelselist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let thenelselist : any Vx_Core.Type_thenelselist = Vx_Core.f_any_from_any(
+        Vx_Core.t_thenelselist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_switch(generic_any_1, value, thenelselist)
       return output
     }
@@ -31968,17 +37686,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "thenelse", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "thenelse",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -31998,8 +37716,18 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let fn_cond : any Vx_Core.Func_boolean_from_func = Vx_Core.f_any_from_any(Vx_Core.t_boolean_from_func, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let fn_cond : any Vx_Core.Func_boolean_from_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean_from_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any : any Vx_Core.Func_any_from_func = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Core.f_then(fn_cond, fn_any)
       return output
     }
@@ -32026,12 +37754,14 @@ public enum Vx_Core {
       Vx_Core.t_thenelse,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":code"),
-        Vx_Core.vx_new_string(":then"),
-        Vx_Core.vx_new_string(":fn-cond"),
-        fn_cond,
-        Vx_Core.vx_new_string(":fn-any"),
-        fn_any
+        [
+          Vx_Core.vx_new_string(":code"),
+          Vx_Core.vx_new_string(":then"),
+          Vx_Core.vx_new_string(":fn-cond"),
+          fn_cond,
+          Vx_Core.vx_new_string(":fn-any"),
+          fn_any
+        ]
       )
     )
     return output
@@ -32072,17 +37802,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "typelist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "typelist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -32109,7 +37844,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typedef = value as! any Vx_Core.Type_typedef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_traits_from_typedef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -32117,7 +37855,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(Vx_Core.t_typedef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(
+        Vx_Core.t_typedef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_traits_from_typedef(vtypedef)
       return output
     }
@@ -32177,17 +37920,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -32214,7 +37957,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_type_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -32222,7 +37968,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_type_from_any(value)
       return output
     }
@@ -32282,17 +38033,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "typedef", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "typedef",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -32319,7 +38070,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_typedef_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -32327,7 +38081,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_typedef_from_any(value)
       return output
     }
@@ -32349,9 +38108,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_typedef {
     var output : any Vx_Core.Type_typedef = Vx_Core.e_typedef
     output = Vx_Core.f_typedef_from_type(
-      Vx_Core.f_type_from_any(
-        value
-      )
+      Vx_Core.f_type_from_any(value)
     )
     return output
   }
@@ -32391,17 +38148,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "typedef", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "typedef",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -32428,7 +38185,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_typedef_from_type(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -32436,7 +38196,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_typedef_from_type(value)
       return output
     }
@@ -32496,17 +38261,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -32533,7 +38298,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_typename_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -32541,7 +38309,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_typename_from_any(value)
       return output
     }
@@ -32563,9 +38336,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_string {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_typename_from_type(
-      Vx_Core.f_type_from_any(
-        value
-      )
+      Vx_Core.f_type_from_any(value)
     )
     return output
   }
@@ -32605,17 +38376,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -32642,7 +38413,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Core.f_typename_from_type(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -32650,7 +38424,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_typename_from_type(type)
       return output
     }
@@ -32672,9 +38451,7 @@ public enum Vx_Core {
   ) -> any Vx_Core.Type_string {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_typename_from_typedef(
-      Vx_Core.f_typedef_from_type(
-        type
-      )
+      Vx_Core.f_typedef_from_type(type)
     )
     return output
   }
@@ -32714,17 +38491,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -32751,7 +38528,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typedef = value as! any Vx_Core.Type_typedef
       let outputval : any Vx_Core.Type_any = Vx_Core.f_typename_from_typedef(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -32759,7 +38539,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(Vx_Core.t_typedef, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let vtypedef : any Vx_Core.Type_typedef = Vx_Core.f_any_from_any(
+        Vx_Core.t_typedef,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_typename_from_typedef(vtypedef)
       return output
     }
@@ -32784,9 +38569,11 @@ public enum Vx_Core {
       Vx_Core.t_string,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        vtypedef.pkgname(),
-        Vx_Core.vx_new_string("/"),
-        vtypedef.name()
+        [
+          vtypedef.pkgname(),
+          Vx_Core.vx_new_string("/"),
+          vtypedef.name()
+        ]
       )
     )
     return output
@@ -32827,17 +38614,22 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_string
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -32864,7 +38656,10 @@ public enum Vx_Core {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_typelist = value as! any Vx_Core.Type_typelist
       let outputval : any Vx_Core.Type_any = Vx_Core.f_typenames_from_typelist(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -32872,7 +38667,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let typelist : any Vx_Core.Type_typelist = Vx_Core.f_any_from_any(Vx_Core.t_typelist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let typelist : any Vx_Core.Type_typelist = Vx_Core.f_any_from_any(
+        Vx_Core.t_typelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_typenames_from_typelist(typelist)
       return output
     }
@@ -32896,13 +38696,16 @@ public enum Vx_Core {
     output = Vx_Core.f_list_from_list_1(
       Vx_Core.t_stringlist,
       typelist,
-      Vx_Core.t_any_from_any.vx_fn_new({(type_any) in
-        let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, type_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_typename_from_type(
-          type
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_any.vx_fn_new(
+        {(type_any) in
+          let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            type_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_typename_from_type(type)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -32942,17 +38745,17 @@ public enum Vx_Core {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "user", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "user",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -32972,7 +38775,12 @@ public enum Vx_Core {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Core.f_user_from_context(context)
       return output
     }
@@ -32993,9 +38801,7 @@ public enum Vx_Core {
     _ context : any Vx_Core.Type_context
   ) -> any Vx_Core.Type_user {
     var output : any Vx_Core.Type_user = Vx_Core.e_user
-    output = Vx_Core.f_session_from_context(
-      context
-    ).user()
+    output = Vx_Core.f_session_from_context(context).user()
     return output
   }
 

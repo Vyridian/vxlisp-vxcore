@@ -38,17 +38,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -66,8 +66,18 @@ public static class Htmldoc {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string stylesheettext = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_string id = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string stylesheettext = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Htmldoc.f_boolean_print_from_id_stylesheettext(id, stylesheettext);
       return output;
     }
@@ -122,17 +132,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -156,13 +166,21 @@ public static class Htmldoc {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Web.Htmldoc.f_boolean_remove_from_id(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string id = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Htmldoc.f_boolean_remove_from_id(id);
       return output;
     }
@@ -218,17 +236,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -246,8 +264,18 @@ public static class Htmldoc {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string htmltext = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_string id = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string htmltext = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Htmldoc.f_boolean_replace_from_id_htmltext(id, htmltext);
       return output;
     }
@@ -304,17 +332,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -332,9 +360,24 @@ public static class Htmldoc {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string parent = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_string htmltext = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_string id = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string parent = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_string htmltext = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Web.Htmldoc.f_boolean_replace_from_id_parent_htmltext(id, parent, htmltext);
       return output;
     }
@@ -391,17 +434,17 @@ public static class Htmldoc {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -422,7 +465,10 @@ public static class Htmldoc {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(Vx.Core.t_string, value);
+      Vx.Core.Type_string inputval = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        value
+      );
       Task<Vx.Core.Type_boolean> future = Vx.Web.Htmldoc.f_boolean_write_stylesheet_from_string(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -430,9 +476,17 @@ public static class Htmldoc {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Core.Type_boolean> future = Vx.Web.Htmldoc.f_boolean_write_stylesheet_from_string(text);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -488,17 +542,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -516,9 +570,24 @@ public static class Htmldoc {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string attribute = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_string value = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_string id = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string attribute = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_string value = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Web.Htmldoc.f_boolean_write_from_id_attribute_value(id, attribute, value);
       return output;
     }
@@ -574,17 +643,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -602,8 +671,18 @@ public static class Htmldoc {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string htmltext = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_string id = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string htmltext = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Htmldoc.f_boolean_write_from_id_htmltext(id, htmltext);
       return output;
     }
@@ -659,17 +738,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -687,8 +766,18 @@ public static class Htmldoc {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_boolean visible = Vx.Core.f_any_from_any(Vx.Core.t_boolean, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_string id = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_boolean visible = Vx.Core.f_any_from_any(
+        Vx.Core.t_boolean,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Htmldoc.f_boolean_write_from_id_visible(id, visible);
       return output;
     }
@@ -745,17 +834,17 @@ public static class Htmldoc {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -776,7 +865,10 @@ public static class Htmldoc {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Web.Html.Type_stylesheet inputval = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylesheet, value);
+      Vx.Web.Html.Type_stylesheet inputval = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylesheet,
+        value
+      );
       Task<Vx.Core.Type_boolean> future = Vx.Web.Htmldoc.f_boolean_write_from_stylesheet(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -784,9 +876,17 @@ public static class Htmldoc {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylesheet, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylesheet,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Core.Type_boolean> future = Vx.Web.Htmldoc.f_boolean_write_from_stylesheet(stylesheet);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -804,23 +904,21 @@ public static class Htmldoc {
     Task<Vx.Core.Type_boolean> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_boolean);
     output = Vx.Core.f_let_async(
       Vx.Core.t_boolean,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
-        Vx.Core.Type_string text = Vx.Web.Htmldoc.f_string_from_stylesheet(
-          stylesheet
-        );
-        Task<Vx.Core.Type_boolean> future_iswrite = Vx.Web.Htmldoc.f_boolean_write_stylesheet_from_string(
-          text
-        );
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
+          Vx.Core.Type_string text = Vx.Web.Htmldoc.f_string_from_stylesheet(stylesheet);
+        Task<Vx.Core.Type_boolean> future_iswrite = Vx.Web.Htmldoc.f_boolean_write_stylesheet_from_string(text);
         Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
           Vx.Core.t_any,
           future_iswrite,
           (iswrite) => {
             Vx.Core.Type_any output_2 = iswrite;
-            return output_2;
-          }
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -860,17 +958,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -894,13 +992,21 @@ public static class Htmldoc {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Ui.Ui.Type_ui inputval = (Vx.Ui.Ui.Type_ui)value;
       Vx.Core.Type_any outputval = Vx.Web.Htmldoc.f_boolean_writeevents_from_ui(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(Vx.Ui.Ui.t_ui, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Ui.Ui.Type_ui ui = Vx.Core.f_any_from_any(
+        Vx.Ui.Ui.t_ui,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Htmldoc.f_boolean_writeevents_from_ui(ui);
       return output;
     }
@@ -954,17 +1060,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1035,17 +1141,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1063,7 +1169,12 @@ public static class Htmldoc {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Htmldoc.f_context_write(context);
       return output;
     }
@@ -1118,17 +1229,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1152,13 +1263,21 @@ public static class Htmldoc {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Web.Htmldoc.f_string_from_id(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string id = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string id = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Htmldoc.f_string_from_id(id);
       return output;
     }
@@ -1213,17 +1332,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1247,13 +1366,21 @@ public static class Htmldoc {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_stylesheet inputval = (Vx.Web.Html.Type_stylesheet)value;
       Vx.Core.Type_any outputval = Vx.Web.Htmldoc.f_string_from_stylesheet(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylesheet, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylesheet,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Htmldoc.f_string_from_stylesheet(stylesheet);
       return output;
     }
@@ -1272,17 +1399,17 @@ public static class Htmldoc {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_stylelist stylelist = Vx.Web.Html.f_styles_from_stylesheet(
-          stylesheet
-        );
-        Vx.Core.Type_string text = Vx.Web.Html.f_string_from_stylelist_indent(
-          stylelist,
-          Vx.Core.vx_new_int(0)
-        );
-        Vx.Core.Type_any output_1 = text;
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_stylelist stylelist = Vx.Web.Html.f_styles_from_stylesheet(stylesheet);
+          Vx.Core.Type_string text = Vx.Web.Html.f_string_from_stylelist_indent(
+            stylelist,
+            Vx.Core.vx_new_int(0)
+          );
+          Vx.Core.Type_any output_1 = text;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1322,17 +1449,17 @@ public static class Htmldoc {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1356,13 +1483,21 @@ public static class Htmldoc {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Web.Htmldoc.f_ui_readstate_from_uid(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string uid = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string uid = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Htmldoc.f_ui_readstate_from_uid(uid);
       return output;
     }

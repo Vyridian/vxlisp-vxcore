@@ -1647,7 +1647,7 @@
                                (vx/web/html/p
                                 :text
                                  "(test-true
- (< 2 3))")))
+ (< 2 3 5))")))
                             (vx/web/html/td
                              :nodes
                               (vx/web/html/divchildlist

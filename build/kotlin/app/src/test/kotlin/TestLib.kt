@@ -13,34 +13,120 @@ object TestLib {
   fun file_test(file : vx_data_file.Type_file) : vx_data_file.Type_file {
     val output : vx_data_file.Type_file = vx_core.vx_copy(
       file,
-      vx_core.vx_new_string(":path"),
-      vx_core.vx_new_string(spath)
+      // [
+        vx_core.vx_new_string(":path"),
+        vx_core.vx_new_string(spath)
+      // ]
     )
     return output
   }
 
-  fun read_test_file(path : String, filename : String) : String {
+  fun read_test_file(context : vx_core.Type_context, path : String, filename : String) : String {
     var file : vx_data_file.Type_file = vx_core.vx_new(
       vx_data_file.t_file,
-      vx_core.vx_new_string(":path"),
-      vx_core.vx_new_string(path),
-      vx_core.vx_new_string(":name"),
-      vx_core.vx_new_string(filename)
+      // [
+        vx_core.vx_new_string(":path"),
+        vx_core.vx_new_string(path),
+        vx_core.vx_new_string(":name"),
+        vx_core.vx_new_string(filename)
+      // ]
     )
     var string_file : vx_core.Type_string = vx_data_file.vx_string_read_from_file(file)
     val output : String = string_file.vx_string()
     return output
   }
 
+  fun sample_testcase1(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      // [
+        vx_core.vx_new_string(":passfail"),
+        vx_core.e_boolean,
+        vx_core.vx_new_string(":testpkg"),
+        vx_core.vx_new_string("vx/core"),
+        vx_core.vx_new_string(":casename"),
+        vx_core.vx_new_string("boolean"),
+        vx_core.vx_new_string(":describelist"),
+        TestLib.sample_testdescribelist(context)
+      // ]
+    )
+    return output
+  }
+
+  fun sample_testcase2(context : vx_core.Type_context) : vx_test.Type_testcase {
+    var output : vx_test.Type_testcase = vx_core.vx_new(
+      vx_test.t_testcase,
+      // [
+        vx_core.vx_new_string(":passfail"),
+        vx_core.e_boolean,
+        vx_core.vx_new_string(":testpkg"),
+        vx_core.vx_new_string("vx/core"),
+        vx_core.vx_new_string(":casename"),
+        vx_core.vx_new_string("float"),
+        vx_core.vx_new_string(":describelist"),
+        vx_core.vx_any_from_any(
+          vx_test.t_testdescribelist,
+          vx_core.vx_new(
+            vx_test.t_testdescribelist,
+            // [
+              vx_core.vx_new(
+                vx_test.t_testdescribe,
+                // [
+                  vx_core.vx_new_string(":describename"),
+                  vx_core.vx_new_string(
+                    "(test 4.5 (float 4.5))"
+                  ),
+                  vx_core.vx_new_string(":testpkg"),
+                  vx_core.vx_new_string("vx/core"),
+                  vx_core.vx_new_string(":testresult"),
+                  vx_test.f_test(
+                    context,
+                    vx_core.vx_new_decimal("4.5"),
+                    vx_core.f_new_from_type(
+                      vx_core.t_float,
+                      vx_core.vx_new(
+                        vx_core.t_anylist,
+                        // [
+                          vx_core.vx_new_decimal("4.5")
+                        // ]
+                      )
+                    )
+                  )
+                // ]
+              )
+            // ]
+          )
+        )
+      // ]
+    )
+    return output
+  }
+
+  fun sample_testcaselist(context : vx_core.Type_context) : vx_test.Type_testcaselist {
+    var output : vx_test.Type_testcaselist = vx_core.vx_any_from_any(
+      vx_test.t_testcaselist,
+      vx_core.vx_new(
+        vx_test.t_testcaselist,
+        // [
+          TestLib.sample_testcase1(context),
+          TestLib.sample_testcase2(context)
+        // ]
+      )
+    )
+    return output
+  }
+
   fun sample_testdescribe1(context : vx_core.Type_context) : vx_test.Type_testdescribe {
     var output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
-      vx_core.vx_new_string(":describename"),
-      vx_core.vx_new_string("(test-true true)"),
-      vx_core.vx_new_string(":testpkg"),
-      vx_core.vx_new_string("vx/core"),
-      vx_core.vx_new_string(":testresult"),
-      TestLib.sample_testresult1(context)
+      // [
+        vx_core.vx_new_string(":describename"),
+        vx_core.vx_new_string("(test-true true)"),
+        vx_core.vx_new_string(":testpkg"),
+        vx_core.vx_new_string("vx/core"),
+        vx_core.vx_new_string(":testresult"),
+        TestLib.sample_testresult1(context)
+      // ]
     )
     return output
   }
@@ -48,12 +134,14 @@ object TestLib {
   fun sample_testdescribe2(context : vx_core.Type_context) : vx_test.Type_testdescribe {
     var output : vx_test.Type_testdescribe = vx_core.vx_new(
       vx_test.t_testdescribe,
-      vx_core.vx_new_string(":describename"),
-      vx_core.vx_new_string("(test-false false)"),
-      vx_core.vx_new_string(":testpkg"),
-      vx_core.vx_new_string("vx/core"),
-      vx_core.vx_new_string(":testresult"),
-      TestLib.sample_testresult2(context)
+      // [
+        vx_core.vx_new_string(":describename"),
+        vx_core.vx_new_string("(test-false false)"),
+        vx_core.vx_new_string(":testpkg"),
+        vx_core.vx_new_string("vx/core"),
+        vx_core.vx_new_string(":testresult"),
+        TestLib.sample_testresult2(context)
+      // ]
     )
     return output
   }
@@ -61,10 +149,34 @@ object TestLib {
   fun sample_testdescribelist(context : vx_core.Type_context) : vx_test.Type_testdescribelist {
     var output : vx_test.Type_testdescribelist = vx_core.vx_any_from_any(
       vx_test.t_testdescribelist,
-      vx_test.t_testdescribelist.vx_new(
-        TestLib.sample_testdescribe1(context),
-        TestLib.sample_testdescribe2(context)
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        // [
+          TestLib.sample_testdescribe1(context),
+          TestLib.sample_testdescribe2(context)
+        // ]
       )
+    )
+    return output
+  }
+
+  fun sample_testpackage(context : vx_core.Type_context) : vx_test.Type_testpackage {
+    var output : vx_test.Type_testpackage = vx_core.vx_new(
+      vx_test.t_testpackage,
+      // [
+        vx_core.vx_new_string(":testpkg"),
+        vx_core.vx_new_string("vx/core"),
+        vx_core.vx_new_string(":caselist"),
+        TestLib.sample_testcaselist(context)
+      // ]
+    )
+    return output
+  }
+
+  fun sample_testpackagelist(context : vx_core.Type_context) : vx_test.Type_testpackagelist {
+    var output : vx_test.Type_testpackagelist = vx_core.vx_any_from_any(
+      vx_test.t_testpackagelist,
+      TestLib.sample_testpackage(context)
     )
     return output
   }
@@ -151,8 +263,16 @@ object TestLib {
 
   fun test_list_from_list_async() : Boolean {
     val testname : String = "test_list_from_list_async"
-    val sparams : vx_core.Type_anylist = vx_core.vx_anylist_from_arraystring("hello", "world")
-    val slist : vx_core.Type_stringlist = vx_core.f_new_from_type(vx_core.t_stringlist, sparams)
+    val sparams : vx_core.Type_anylist = vx_core.vx_anylist_from_arraystring(
+      // [
+        "hello",
+        "world"
+      // ]
+    )
+    val slist : vx_core.Type_stringlist = vx_core.f_new_from_type(
+      vx_core.t_stringlist,
+      sparams
+    )
     val fn_async : vx_core.Func_any_from_any_async = vx_core.t_any_from_any_async.vx_fn_new({
       anyval ->
       val stringval : vx_core.Type_string = anyval as vx_core.Type_string
@@ -161,8 +281,15 @@ object TestLib {
       val output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(outval)
       output
     });
-    val asynclist : CompletableFuture<vx_core.Type_stringlist> = vx_core.vx_list_from_list_async(vx_core.t_stringlist, slist, fn_async)
-    val sync : vx_core.Type_stringlist = vx_core.vx_sync_from_async(vx_core.t_stringlist, asynclist)
+    val asynclist : CompletableFuture<vx_core.Type_stringlist> = vx_core.vx_list_from_list_async(
+      vx_core.t_stringlist,
+      slist,
+      fn_async
+    )
+    val sync : vx_core.Type_stringlist = vx_core.vx_sync_from_async(
+      vx_core.t_stringlist,
+      asynclist
+    )
     val expected : String = "(stringlist\n \"hello!\"\n \"world!\")"
     val actual : String = vx_core.vx_string_from_any(sync)
     val output : Boolean = TestLib.test(
@@ -175,14 +302,15 @@ object TestLib {
 
   fun test_run_testresult(context : vx_core.Type_context) : Boolean {
     val testname : String = "test_run_testresult"
-    var testresult : vx_test.Type_testresult = TestLib.sample_testresult1(context)
-    var testresult_resolved : vx_test.Type_testresult = TestLib.run_testresult(
+    val testresult : vx_test.Type_testresult = TestLib.sample_testresult1(context)
+    val testresult_resolved : vx_test.Type_testresult = TestLib.run_testresult(
       "vx/core",
       "boolean",
       "",
       testresult
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testresult.txt"
     )
@@ -204,6 +332,7 @@ object TestLib {
       testdescribe
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribe.txt"
     )
@@ -220,18 +349,94 @@ object TestLib {
 
   fun test_run_testdescribelist(context : vx_core.Type_context) : Boolean {
     val testname : String = "test_run_testdescribelist"
-    var testresult : vx_test.Type_testresult = TestLib.sample_testresult1(context)
-    var testresult_resolved : vx_test.Type_testresult = TestLib.run_testresult(
+    val testdescribelist : vx_test.Type_testdescribelist = TestLib.sample_testdescribelist(context)
+    val testdescribelist_resolved : vx_test.Type_testdescribelist = TestLib.run_testdescribelist(
       "vx/core",
       "boolean",
-      "",
-      testresult
+      testdescribelist
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribelist.txt"
     )
-    var actual : String = vx_core.vx_string_from_any(testresult_resolved)
+    var actual : String = vx_core.vx_string_from_any(
+      testdescribelist_resolved
+    )
+    val output : Boolean = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
+  fun test_run_testcase(context : vx_core.Type_context) : Boolean {
+    val testname : String = "test_run_testcase"
+    val testcase : vx_test.Type_testcase = TestLib.sample_testcase1(context)
+    val testcase_resolved : vx_test.Type_testcase = TestLib.run_testcase(testcase)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcase.txt"
+    )
+    var actual : String = vx_core.vx_string_from_any(testcase_resolved)
+    val output : Boolean = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
+  fun test_run_testcaselist(context : vx_core.Type_context) : Boolean {
+    val testname : String = "test_run_testcaselist"
+    val testcase : vx_test.Type_testcase = TestLib.sample_testcase1(context)
+    val testcase_resolved : vx_test.Type_testcase = TestLib.run_testcase(testcase)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcaselist.txt"
+    )
+    var actual : String = vx_core.vx_string_from_any(testcase_resolved)
+    val output : Boolean = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
+  fun test_run_testpackage(context : vx_core.Type_context) : Boolean {
+    val testname : String = "test_run_testpackage"
+    val testpackage : vx_test.Type_testpackage = TestLib.sample_testpackage(context)
+    val testpackage_resolved : vx_test.Type_testpackage = TestLib.run_testpackage(testpackage)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testpackage.txt"
+    )
+    var actual : String = vx_core.vx_string_from_any(testpackage_resolved)
+    val output : Boolean = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
+  fun test_run_testpackagelist(context : vx_core.Type_context) : Boolean {
+    val testname : String = "test_run_testpackagelist"
+    val testpackagelist : vx_test.Type_testpackagelist = TestLib.sample_testpackagelist(context)
+    val testpackagelist_resolved : vx_test.Type_testpackagelist = TestLib.run_testpackagelist(testpackagelist)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testpackagelist.txt"
+    )
+    var actual : String = vx_core.vx_string_from_any(
+      testpackagelist_resolved
+    )
     val output : Boolean = TestLib.test(
       testname,
       expected,
@@ -242,14 +447,15 @@ object TestLib {
 
   fun test_run_testresult_async(context : vx_core.Type_context) : Boolean {
     val testname : String = "test_run_testresult_async"
-    var testresult : vx_test.Type_testresult = TestLib.sample_testresult1(context)
-    var testresult_resolved : vx_test.Type_testresult = TestLib.run_testresult(
+    val testresult : vx_test.Type_testresult = TestLib.sample_testresult1(context)
+    val testresult_resolved : vx_test.Type_testresult = TestLib.run_testresult(
       "vx/core",
       "boolean",
       "",
       testresult
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testresult_async.txt"
     )
@@ -262,15 +468,40 @@ object TestLib {
     return output
   }
 
+  fun test_run_testdescribe_async(context : vx_core.Type_context) : Boolean {
+    val testname : String = "test_run_testdescribe_async"
+    val testdescribe : vx_test.Type_testdescribe = TestLib.sample_testdescribe1(context)
+    val testdescribe_resolved : vx_test.Type_testdescribe = TestLib.run_testdescribe(
+      "vx/core",
+      "boolean",
+      testdescribe
+    )
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testdescribe_async.txt"
+    )
+    var actual : String = vx_core.vx_string_from_any(
+      testdescribe_resolved
+    )
+    val output : Boolean = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
   fun test_run_testdescribelist_async(context : vx_core.Type_context) : Boolean {
     val testname : String = "test_run_testdescribelist_async"
-    var testdescribelist : vx_test.Type_testdescribelist = TestLib.sample_testdescribelist(context)
-    var testdescribelist_resolved : vx_test.Type_testdescribelist = TestLib.run_testdescribelist(
+    val testdescribelist : vx_test.Type_testdescribelist = TestLib.sample_testdescribelist(context)
+    val testdescribelist_resolved : vx_test.Type_testdescribelist = TestLib.run_testdescribelist(
       "vx/core",
       "boolean",
       testdescribelist
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribelist_async.txt"
     )
@@ -285,12 +516,37 @@ object TestLib {
     return output
   }
 
+  fun test_run_testcase_async(context : vx_core.Type_context) : Boolean {
+    val testname : String = "test_run_testcase_async"
+    var testcase : vx_test.Type_testcase = TestLib.sample_testcase1(context)
+    var testcase_resolved : vx_test.Type_testcase = TestLib.run_testcase(testcase)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcase_async.txt"
+    )
+    var actual : String = vx_core.vx_string_from_any(testcase_resolved)
+    val output : Boolean = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
   fun test_pathfull_from_file() : Boolean {
     val testname : String = "test_pathfull_from_file"
     var file : vx_data_file.Type_file = vx_core.vx_new(
       vx_data_file.t_file,
-      vx_core.vx_new_string(":path"), vx_core.vx_new_string(spath + "/vx"),
-      vx_core.vx_new_string(":name"), vx_core.vx_new_string("string_read_from_file.txt"))
+      // [
+        vx_core.vx_new_string(":path"),
+        vx_core.vx_new_string(spath + "/vx"),
+        vx_core.vx_new_string(":name"),
+        vx_core.vx_new_string(
+          "string_read_from_file.txt"
+        )
+      // ]
+    )
     var string_path : vx_core.Type_string = vx_data_file.f_pathfull_from_file(file)
     var expected : String = spath + "/vx/string_read_from_file.txt"
     var actual : String = string_path.vx_string()
@@ -302,10 +558,14 @@ object TestLib {
     return output
   }
 
-  fun test_read_file() : Boolean {
+  fun test_read_file(context : vx_core.Type_context) : Boolean {
     val testname : String = "test_read_file"
     var expected : String = "testdata"
-    var actual : String = read_test_file(spath + "/vx", "string_read_from_file.txt")
+    var actual : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "string_read_from_file.txt"
+    )
     val output : Boolean = TestLib.test(
       testname,
       expected,
@@ -314,16 +574,27 @@ object TestLib {
     return output
   }
 
-  fun test_write_file() : Boolean {
+  fun test_write_file(context : vx_core.Type_context) : Boolean {
     val testname : String = "test_write_file"
-    var file : vx_data_file.Type_file = vx_core.vx_new(
-      vx_data_file.t_file, 
-      vx_core.vx_new_string(":path"), vx_core.vx_new_string(spath + "/vx"),
-      vx_core.vx_new_string(":name"), vx_core.vx_new_string("string_read_from_file.txt")
+    val file : vx_data_file.Type_file = vx_core.vx_new(
+      vx_data_file.t_file,
+      // [
+        vx_core.vx_new_string(":path"),
+        vx_core.vx_new_string(spath + "/vx"),
+        vx_core.vx_new_string(":name"),
+        vx_core.vx_new_string(
+          "boolean_write_from_file_string"
+        )
+      // ]
     )
-    var string_path : vx_core.Type_string = vx_data_file.f_pathfull_from_file(file)
-    var expected : String = spath + "/vx/string_read_from_file.txt"
-    var actual : String = string_path.vx_string()
+    var string_file : vx_core.Type_string = vx_core.vx_new_string("writetext")
+    var boolean_write : vx_core.Type_boolean = vx_data_file.vx_boolean_write_from_file_string(
+      context,
+      file,
+      string_file
+    )
+    var expected : String = "true"
+    var actual : String = vx_core.vx_string_from_any(boolean_write)
     val output : Boolean = TestLib.test(
       testname,
       expected,
@@ -345,8 +616,10 @@ object TestLib {
     )
     val output : vx_test.Type_testcase = vx_core.vx_copy(
       testcase,
-      vx_core.vx_new_string(":describelist"),
-      testdescribelist_resolved
+      // [
+        vx_core.vx_new_string(":describelist"),
+        testdescribelist_resolved
+      // ]
     )
     return output
   }
@@ -372,9 +645,13 @@ object TestLib {
     }
     val output : vx_test.Type_testcaselist = vx_core.vx_any_from_any(
       vx_test.t_testcaselist,
-      testcaselist.vx_new(
+      vx_core.vx_new(
+      vx_test.t_testcaselist,
+      // [
+        testcaselist,
         listtestcase_resolved
-      )
+      // ]
+    )
     )
     return output
   }
@@ -385,20 +662,22 @@ object TestLib {
     val testresult : vx_test.Type_testresult = describe.testresult()
     val output : vx_test.Type_testdescribe = vx_core.vx_copy(
       describe,
-      ":testresult",
-      TestLib.run_testresult(
+      // [
+        ":testresult",
+        TestLib.run_testresult(
         testpkg,
         casename,
         message,
         testresult
       )
+      // ]
     )
     return output
   }
 
   fun run_testdescribelist(testpkg : String, casename : String, testdescribelist : vx_test.Type_testdescribelist) : vx_test.Type_testdescribelist {
     val listtestdescribe : List<vx_test.Type_testdescribe> = testdescribelist.vx_listtestdescribe()
-    var listtestdescribe_resolved : MutableList<vx_test.Type_testdescribe> = ArrayList<vx_test.Type_testdescribe>()
+    var listtestdescribe_resolved : MutableList<vx_core.Type_any> = ArrayList<vx_core.Type_any>()
     for (testdescribe : vx_test.Type_testdescribe in listtestdescribe) {
       val testdescribe_resolved : vx_test.Type_testdescribe = TestLib.run_testdescribe(
         testpkg,
@@ -409,8 +688,11 @@ object TestLib {
     }
     val output : vx_test.Type_testdescribelist = vx_core.vx_any_from_any(
       vx_test.t_testdescribelist,
-      testdescribelist.vx_new(
-        listtestdescribe_resolved
+      vx_core.vx_new(
+        vx_test.t_testdescribelist,
+        // [
+          listtestdescribe_resolved
+        // ]
       )
     )
     return output
@@ -421,8 +703,10 @@ object TestLib {
     val testcaselist_resolved : vx_test.Type_testcaselist = TestLib.run_testcaselist(testcaselist)
     val output : vx_test.Type_testpackage = vx_core.vx_copy(
       testpackage,
-      vx_core.vx_new_string(":caselist"),
-      testcaselist_resolved
+      // [
+        vx_core.vx_new_string(":caselist"),
+        testcaselist_resolved
+      // ]
     )
     return output
   }
@@ -436,13 +720,33 @@ object TestLib {
     return output
   }
 
+  fun run_testpackagelist(testpackagelist : vx_test.Type_testpackagelist) : vx_test.Type_testpackagelist {
+    val listtestpackage : List<vx_test.Type_testpackage> = testpackagelist.vx_listtestpackage()
+    var listtestpackage_resolved : MutableList<vx_test.Type_testpackage> = ArrayList<vx_test.Type_testpackage>()
+    for (testpackage : vx_test.Type_testpackage in listtestpackage) {
+      val testpackage_resolved : vx_test.Type_testpackage = TestLib.run_testpackage(testpackage)
+      listtestpackage_resolved.add(testpackage_resolved)
+    }
+    val output : vx_test.Type_testpackagelist = vx_core.vx_any_from_any(
+      vx_test.t_testpackagelist,
+      vx_core.vx_new(
+      vx_test.t_testpackagelist,
+      // [
+        testpackagelist,
+        listtestpackage_resolved
+      // ]
+    )
+    )
+    return output
+  }
+
   fun run_testresult(testpkg : String, testname : String, message : String, testresult : vx_test.Type_testresult) : vx_test.Type_testresult {
     var valexpected : vx_core.Type_any = testresult.expected()
     var valactual : vx_core.Type_any = testresult.actual()
     var passfail : Boolean = testresult.passfail().vx_boolean()
     var code : String = testresult.code().vx_string()
-    var expected : String = vx_core.f_string_from_any(valexpected).vx_string()
-    var actual : String = vx_core.f_string_from_any(valactual).vx_string()
+    var expected : String = vx_core.vx_string_from_any(valexpected)
+    var actual : String = vx_core.vx_string_from_any(valactual)
     var msg : String = testpkg + "/" + testname + " " + message
     if ((!passfail)) {
       println(msg)

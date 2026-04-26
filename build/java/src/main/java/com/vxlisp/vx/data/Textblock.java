@@ -116,7 +116,10 @@ public final class Textblock {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Textblock.Type_delim output = Core.vx_copy(Textblock.e_delim, vals);
+      Textblock.Type_delim output = Core.vx_copy(
+        Textblock.e_delim,
+        vals
+      );
       return output;
     }
 
@@ -145,9 +148,19 @@ public final class Textblock {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -168,8 +181,17 @@ public final class Textblock {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/data/textblock/delim", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/textblock/delim",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -180,8 +202,17 @@ public final class Textblock {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/data/textblock/delim", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/delim",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -194,7 +225,12 @@ public final class Textblock {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -206,9 +242,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/delim",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":starttext"))) {
             if (valsub == vx_p_starttext) {
@@ -218,7 +265,12 @@ public final class Textblock {
               vx_p_starttext = valstarttext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_starttext = Core.vx_new(Core.t_string, valsub);
+              vx_p_starttext = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -230,9 +282,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("starttext"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/delim",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":endtext"))) {
             if (valsub == vx_p_endtext) {
@@ -242,7 +305,12 @@ public final class Textblock {
               vx_p_endtext = valendtext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_endtext = Core.vx_new(Core.t_string, valsub);
+              vx_p_endtext = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -254,9 +322,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("endtext"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/delim",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":pos"))) {
             if (valsub == vx_p_pos) {
@@ -266,7 +345,12 @@ public final class Textblock {
               vx_p_pos = valpos;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_pos = Core.vx_new(Core.t_int, valsub);
+              vx_p_pos = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -278,9 +362,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pos"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/delim",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":delimlist"))) {
             if (valsub == vx_p_delimlist) {
@@ -299,14 +394,34 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("delimlist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/delim", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/delim",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/data/textblock/delim", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/textblock/delim",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -341,17 +456,17 @@ public final class Textblock {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/textblock", // pkgname
-        "delim", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/textblock",
+        "delim",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -411,7 +526,10 @@ public final class Textblock {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Textblock.Type_delimlist output = Core.vx_copy(Textblock.e_delimlist, vals);
+      Textblock.Type_delimlist output = Core.vx_copy(
+        Textblock.e_delimlist,
+        vals
+      );
       return output;
     }
 
@@ -428,9 +546,19 @@ public final class Textblock {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Textblock.Type_delimlist) {
           Textblock.Type_delimlist multi = (Textblock.Type_delimlist)valsub;
           ischanged = true;
@@ -455,11 +583,29 @@ public final class Textblock {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/data/textblock/delimlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/textblock/delimlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/data/textblock/delimlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/textblock/delimlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -488,17 +634,22 @@ public final class Textblock {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/textblock", // pkgname
-        "delimlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Textblock.t_delim), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/textblock",
+        "delimlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Textblock.t_delim
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -712,7 +863,10 @@ public final class Textblock {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Textblock.Type_textblock output = Core.vx_copy(Textblock.e_textblock, vals);
+      Textblock.Type_textblock output = Core.vx_copy(
+        Textblock.e_textblock,
+        vals
+      );
       return output;
     }
 
@@ -753,9 +907,19 @@ public final class Textblock {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -776,8 +940,17 @@ public final class Textblock {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/textblock/textblock",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -788,8 +961,17 @@ public final class Textblock {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -802,7 +984,12 @@ public final class Textblock {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -814,9 +1001,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":text"))) {
             if (valsub == vx_p_text) {
@@ -826,7 +1024,12 @@ public final class Textblock {
               vx_p_text = valtext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -838,9 +1041,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":startpos"))) {
             if (valsub == vx_p_startpos) {
@@ -850,7 +1064,12 @@ public final class Textblock {
               vx_p_startpos = valstartpos;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_startpos = Core.vx_new(Core.t_int, valsub);
+              vx_p_startpos = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -862,9 +1081,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("startpos"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":endpos"))) {
             if (valsub == vx_p_endpos) {
@@ -874,7 +1104,12 @@ public final class Textblock {
               vx_p_endpos = valendpos;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_endpos = Core.vx_new(Core.t_int, valsub);
+              vx_p_endpos = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -886,9 +1121,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("endpos"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":curpos"))) {
             if (valsub == vx_p_curpos) {
@@ -898,7 +1144,12 @@ public final class Textblock {
               vx_p_curpos = valcurpos;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_curpos = Core.vx_new(Core.t_int, valsub);
+              vx_p_curpos = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -910,9 +1161,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("curpos"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":line"))) {
             if (valsub == vx_p_line) {
@@ -922,7 +1184,12 @@ public final class Textblock {
               vx_p_line = valline;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_line = Core.vx_new(Core.t_int, valsub);
+              vx_p_line = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -934,9 +1201,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("line"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":column"))) {
             if (valsub == vx_p_column) {
@@ -946,7 +1224,12 @@ public final class Textblock {
               vx_p_column = valcolumn;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_column = Core.vx_new(Core.t_int, valsub);
+              vx_p_column = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -958,9 +1241,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("column"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":delim"))) {
             if (valsub == vx_p_delim) {
@@ -979,9 +1273,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("delim"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":close"))) {
             if (valsub == vx_p_close) {
@@ -1000,9 +1305,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("close"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":parent"))) {
             if (valsub == vx_p_parent) {
@@ -1021,9 +1337,20 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("parent"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":children"))) {
             if (valsub == vx_p_children) {
@@ -1042,14 +1369,34 @@ public final class Textblock {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("children"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/textblock/textblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/data/textblock/textblock", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/textblock/textblock",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1090,17 +1437,17 @@ public final class Textblock {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/textblock", // pkgname
-        "textblock", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/textblock",
+        "textblock",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1160,7 +1507,10 @@ public final class Textblock {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Textblock.Type_textblocklist output = Core.vx_copy(Textblock.e_textblocklist, vals);
+      Textblock.Type_textblocklist output = Core.vx_copy(
+        Textblock.e_textblocklist,
+        vals
+      );
       return output;
     }
 
@@ -1177,9 +1527,19 @@ public final class Textblock {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Textblock.Type_textblocklist) {
           Textblock.Type_textblocklist multi = (Textblock.Type_textblocklist)valsub;
           ischanged = true;
@@ -1204,11 +1564,29 @@ public final class Textblock {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/data/textblock/textblocklist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/textblock/textblocklist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/data/textblock/textblocklist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/textblock/textblocklist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -1237,17 +1615,22 @@ public final class Textblock {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/textblock", // pkgname
-        "textblocklist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Textblock.t_textblock), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/textblock",
+        "textblocklist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Textblock.t_textblock
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1279,12 +1662,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimbracketangle"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string("<"),
-          Core.vx_new_string(":endtext"),
-          Core.vx_new_string(">")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimbracketangle"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string("<"),
+            Core.vx_new_string(":endtext"),
+            Core.vx_new_string(">")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1320,12 +1705,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimbracketcurly"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string("{"),
-          Core.vx_new_string(":endtext"),
-          Core.vx_new_string("}")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimbracketcurly"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string("{"),
+            Core.vx_new_string(":endtext"),
+            Core.vx_new_string("}")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1361,12 +1748,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimbracketsquare"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string("["),
-          Core.vx_new_string(":endtext"),
-          Core.vx_new_string("]")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimbracketsquare"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string("["),
+            Core.vx_new_string(":endtext"),
+            Core.vx_new_string("]")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1402,8 +1791,10 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimclose")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimclose")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1439,8 +1830,10 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimclosing")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimclosing")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1476,10 +1869,12 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimcomma"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string(",")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimcomma"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string(",")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1515,12 +1910,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimcomment"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string("//"),
-          Core.vx_new_string(":endtext"),
-          Core.vx_new_string("\n")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimcomment"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string("//"),
+            Core.vx_new_string(":endtext"),
+            Core.vx_new_string("\n")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1556,12 +1953,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimcommentblock"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string("/*"),
-          Core.vx_new_string(":endtext"),
-          Core.vx_new_string("*/")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimcommentblock"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string("/*"),
+            Core.vx_new_string(":endtext"),
+            Core.vx_new_string("*/")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1597,10 +1996,12 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimline"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string("\n")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimline"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string("\n")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1636,7 +2037,9 @@ public final class Textblock {
         Textblock.t_delimlist,
         Core.vx_new(
           Core.t_anylist,
-          Textblock.c_delimtest2
+          // [
+            Textblock.c_delimtest2
+          // ]
         )
       );
       outval.vx_p_list = value.vx_listdelim();
@@ -1668,8 +2071,10 @@ public final class Textblock {
         Textblock.t_delimlist,
         Core.vx_new(
           Core.t_anylist,
-          Textblock.c_delimcomma,
-          Textblock.c_delimtest3
+          // [
+            Textblock.c_delimcomma,
+            Textblock.c_delimtest3
+          // ]
         )
       );
       outval.vx_p_list = value.vx_listdelim();
@@ -1701,8 +2106,10 @@ public final class Textblock {
         Textblock.t_delimlist,
         Core.vx_new(
           Core.t_anylist,
-          Textblock.c_delimcomma,
-          Textblock.c_delimwhitespace
+          // [
+            Textblock.c_delimcomma,
+            Textblock.c_delimwhitespace
+          // ]
         )
       );
       outval.vx_p_list = value.vx_listdelim();
@@ -1734,12 +2141,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimnonwhitespace"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string(":nonwhitespace"),
-          Core.vx_new_string(":endtext"),
-          Core.vx_new_string(":whitespace")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimnonwhitespace"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string(":nonwhitespace"),
+            Core.vx_new_string(":endtext"),
+            Core.vx_new_string(":whitespace")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1775,12 +2184,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimparen"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string("("),
-          Core.vx_new_string(":endtext"),
-          Core.vx_new_string(")")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimparen"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string("("),
+            Core.vx_new_string(":endtext"),
+            Core.vx_new_string(")")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1816,12 +2227,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimquote"),
-          Core.vx_new_string(":starttext"),
-          Core.c_quote,
-          Core.vx_new_string(":endtext"),
-          Core.c_quote
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimquote"),
+            Core.vx_new_string(":starttext"),
+            Core.c_quote,
+            Core.vx_new_string(":endtext"),
+            Core.c_quote
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1857,12 +2270,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimquoteblock"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string("`"),
-          Core.vx_new_string(":endtext"),
-          Core.vx_new_string("`")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimquoteblock"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string("`"),
+            Core.vx_new_string(":endtext"),
+            Core.vx_new_string("`")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1898,12 +2313,14 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimspace"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string(" "),
-          Core.vx_new_string(":endtext"),
-          Core.vx_new_string(" ")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimspace"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string(" "),
+            Core.vx_new_string(":endtext"),
+            Core.vx_new_string(" ")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1939,8 +2356,10 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":delimlist"),
-          Textblock.c_delimlisttest1
+          // [
+            Core.vx_new_string(":delimlist"),
+            Textblock.c_delimlisttest1
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1976,8 +2395,10 @@ public final class Textblock {
         Textblock.c_delimbracketangle,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":delimlist"),
-          Textblock.c_delimlisttest2
+          // [
+            Core.vx_new_string(":delimlist"),
+            Textblock.c_delimlisttest2
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -2013,8 +2434,10 @@ public final class Textblock {
         Textblock.c_delimbracketcurly,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":delimlist"),
-          Textblock.c_delimlisttest3
+          // [
+            Core.vx_new_string(":delimlist"),
+            Textblock.c_delimlisttest3
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -2050,8 +2473,10 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimtext")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimtext")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -2087,10 +2512,12 @@ public final class Textblock {
         Textblock.t_delim,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":name"),
-          Core.vx_new_string("delimwhitespace"),
-          Core.vx_new_string(":starttext"),
-          Core.vx_new_string(":whitespace")
+          // [
+            Core.vx_new_string(":name"),
+            Core.vx_new_string("delimwhitespace"),
+            Core.vx_new_string(":starttext"),
+            Core.vx_new_string(":whitespace")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -2143,17 +2570,22 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblocklist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Textblock.t_textblock), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblocklist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Textblock.t_textblock
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2181,14 +2613,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_textblock inputval = (Textblock.Type_textblock)value;
       final Core.Type_any outputval = Textblock.f_children_from_textblock(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock textblock = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_textblock textblock = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_children_from_textblock(textblock);
       return output;
     }
@@ -2250,17 +2688,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "delim",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2281,8 +2719,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_delim delim1 = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delim delim2 = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(1)));
+      final Textblock.Type_delim delim1 = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delim delim2 = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_delim_first_from_delim_delim(delim1, delim2);
       return output;
     }
@@ -2302,86 +2746,105 @@ public final class Textblock {
     Textblock.Type_delim output = Textblock.e_delim;
     output = Core.f_let(
       Textblock.t_delim,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_int pos1 = delim1.pos();
-        final Core.Type_int pos2 = delim2.pos();
-        final Core.Type_any output_1 = Core.f_if_2(
-          Textblock.t_delim,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_eq(
-                  Core.vx_new_int(0),
-                  pos2
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_3 = delim1;
-                return output_3;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_eq(
-                  Core.vx_new_int(0),
-                  pos1
-                );
-                return output_4;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_5 = delim2;
-                return output_5;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_6 = Core.f_is_empty_1(
-                  delim2
-                );
-                return output_6;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_7 = delim1;
-                return output_7;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_8 = Core.f_is_empty_1(
-                  delim1
-                );
-                return output_8;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_9 = delim2;
-                return output_9;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_10 = Core.f_lt(
-                  pos2,
-                  pos1
-                );
-                return output_10;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_11 = delim2;
-                return output_11;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_12 = delim1;
-                return output_12;
-              })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_int pos1 = delim1.pos();
+          final Core.Type_int pos2 = delim2.pos();
+          final Core.Type_any output_1 = Core.f_if_2(
+            Textblock.t_delim,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_eq(
+                          Core.vx_new_int(0),
+                          pos2
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_3 = delim1;
+                        return output_3;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_eq(
+                          Core.vx_new_int(0),
+                          pos1
+                        );
+                        return output_4;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_5 = delim2;
+                        return output_5;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_6 = Core.f_is_empty_1(delim2);
+                        return output_6;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_7 = delim1;
+                        return output_7;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_8 = Core.f_is_empty_1(delim1);
+                        return output_8;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_9 = delim2;
+                        return output_9;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_10 = Core.f_lt(pos2, pos1);
+                        return output_10;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_11 = delim2;
+                        return output_11;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_12 = delim1;
+                        return output_12;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2426,17 +2889,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "delim",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2457,8 +2920,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delimlist delimlist = Core.f_any_from_any(Textblock.t_delimlist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delimlist delimlist = Core.f_any_from_any(
+        Textblock.t_delimlist,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_delim_first_from_string_delimlist(text, delimlist);
       return output;
     }
@@ -2480,48 +2949,59 @@ public final class Textblock {
       Textblock.t_delim,
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.f_is_empty_1(
-              delimlist
-            );
-            return output_1;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.f_empty(
-              Textblock.t_delim
-            );
-            return output_2;
-          })
-        ),
-        Core.f_else(
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_3 = Core.f_let(
-              Textblock.t_delim,
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Textblock.Type_delimlist resolvedlist = Textblock.f_delimlist_pos_from_string_delimlist(
-                  text,
-                  delimlist
-                );
-                final Core.Type_any output_4 = Core.f_any_from_list_start_reduce(
-                  Textblock.t_delim,
-                  resolvedlist,
-                  Core.f_empty(
-                    Textblock.t_delim
-                  ),
-                  Core.t_any_from_reduce.vx_fn_new((Core.Type_any delim1_lmb_any, Core.Type_any delim2_lmb_any) -> {
-                    final Textblock.Type_delim delim1_lmb = Core.f_any_from_any(Textblock.t_delim, delim1_lmb_any);
-                    final Textblock.Type_delim delim2_lmb = Core.f_any_from_any(Textblock.t_delim, delim2_lmb_any);
-                    Core.Type_any output_5 = Textblock.f_delim_first_from_delim_delim(delim1_lmb, delim2_lmb);
-                    return output_5;
-                  })
-                );
-                return output_4;
-              })
-            );
-            return output_3;
-          })
-        )
+        // [
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.f_is_empty_1(delimlist);
+                  return output_1;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.f_empty(Textblock.t_delim);
+                  return output_2;
+                }
+            )
+          ),
+          Core.f_else(
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_3 = Core.f_let(
+                    Textblock.t_delim,
+                    Core.t_any_from_func.vx_fn_new(
+                      () -> {
+                        final Textblock.Type_delimlist resolvedlist = Textblock.f_delimlist_pos_from_string_delimlist(text, delimlist);
+                        final Core.Type_any output_4 = Core.f_any_from_list_start_reduce(
+                          Textblock.t_delim,
+                          resolvedlist,
+                          Core.f_empty(Textblock.t_delim),
+                          Core.t_any_from_reduce.vx_fn_new(
+                            (Core.Type_any delim1_lmb_any, Core.Type_any delim2_lmb_any) -> {
+      final Textblock.Type_delim delim1_lmb = Core.f_any_from_any(
+        Textblock.t_delim,
+        delim1_lmb_any
+      );
+      final Textblock.Type_delim delim2_lmb = Core.f_any_from_any(
+        Textblock.t_delim,
+        delim2_lmb_any
+      );
+                              Core.Type_any output_5 = Textblock.f_delim_first_from_delim_delim(
+                                  delim1_lmb, delim2_lmb
+                                );
+                                return output_5;
+                              }
+                          )
+                        );
+                        return output_4;
+                      }
+                    )
+                  );
+                  return output_3;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -2567,17 +3047,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delim", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "delim",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2598,8 +3078,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delim delim = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delim delim = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_delim_pos_from_string_delim(text, delim);
       return output;
     }
@@ -2619,46 +3105,55 @@ public final class Textblock {
     Textblock.Type_delim output = Textblock.e_delim;
     output = Core.f_let(
       Textblock.t_delim,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string find = delim.starttext();
-        final Core.Type_int pos = Type.f_int_from_string_findkeyword(
-          text,
-          find
-        );
-        final Core.Type_any output_1 = Core.f_if_2(
-          Textblock.t_delim,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_eq(
-                  pos,
-                  Core.vx_new_int(0)
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_3 = delim;
-                return output_3;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_copy(
-                  delim,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":pos"),
-                    pos
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string find = delim.starttext();
+          final Core.Type_int pos = Type.f_int_from_string_findkeyword(text, find);
+          final Core.Type_any output_1 = Core.f_if_2(
+            Textblock.t_delim,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_eq(
+                          pos,
+                          Core.vx_new_int(0)
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_3 = delim;
+                        return output_3;
+                      }
                   )
-                );
-                return output_4;
-              })
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_copy(
+                          delim,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              pos
+                            // ]
+                          )
+                        );
+                        return output_4;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2703,17 +3198,22 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "delimlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Textblock.t_delim), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "delimlist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Textblock.t_delim
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2734,8 +3234,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delimlist delimlist = Core.f_any_from_any(Textblock.t_delimlist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delimlist delimlist = Core.f_any_from_any(
+        Textblock.t_delimlist,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_delimlist_pos_from_string_delimlist(text, delimlist);
       return output;
     }
@@ -2756,14 +3262,16 @@ public final class Textblock {
     output = Core.f_list_from_list_1(
       Textblock.t_delimlist,
       delimlist,
-      Core.t_any_from_any.vx_fn_new((delim_any) -> {
-        final Textblock.Type_delim delim = Core.f_any_from_any(Textblock.t_delim, delim_any);
-        Core.Type_any output_1 = Textblock.f_delim_pos_from_string_delim(
-          text,
-          delim
-        );
-        return output_1;
-      })
+      Core.t_any_from_any.vx_fn_new(
+        (delim_any) -> {
+          final Textblock.Type_delim delim = Core.f_any_from_any(
+            Textblock.t_delim,
+            delim_any
+          );
+          Core.Type_any output_1 = Textblock.f_delim_pos_from_string_delim(text, delim);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2807,17 +3315,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2845,14 +3353,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_delim inputval = (Textblock.Type_delim)value;
       final Core.Type_any outputval = Textblock.f_is_close(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_delim delimarg = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_delim delimarg = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_is_close(delimarg);
       return output;
     }
@@ -2916,17 +3430,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2954,14 +3468,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_delim inputval = (Textblock.Type_delim)value;
       final Core.Type_any outputval = Textblock.f_is_single(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_delim delimarg = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_delim delimarg = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_is_single(delimarg);
       return output;
     }
@@ -3031,17 +3551,22 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_string
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3069,14 +3594,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_textblocklist inputval = (Textblock.Type_textblocklist)value;
       final Core.Type_any outputval = Textblock.f_stringlist_from_textblocklist(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblocklist textblocklist = Core.f_any_from_any(Textblock.t_textblocklist, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_textblocklist textblocklist = Core.f_any_from_any(
+        Textblock.t_textblocklist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_stringlist_from_textblocklist(textblocklist);
       return output;
     }
@@ -3141,17 +3672,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3179,14 +3710,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_textblock inputval = (Textblock.Type_textblock)value;
       final Core.Type_any outputval = Textblock.f_text_from_textblock(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock block = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_textblock block = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_text_from_textblock(block);
       return output;
     }
@@ -3249,17 +3786,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3280,9 +3817,18 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_textblock find = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(1)));
-      final Textblock.Type_textblock child = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(2)));
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_textblock find = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Textblock.Type_textblock child = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Textblock.f_textblock_addchild_from_textblock_find_child(textblockarg, find, child);
       return output;
     }
@@ -3304,68 +3850,83 @@ public final class Textblock {
       Textblock.t_textblock,
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.f_is_empty_1(
-              textblockarg
-            );
-            return output_1;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.f_empty(
-              Textblock.t_textblock
-            );
-            return output_2;
-          })
-        ),
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_3 = Core.f_and_1(
-              Core.vx_new(
-                Core.t_booleanlist,
-                Core.f_eqeq(
-                  find,
-                  textblockarg
-                )
-              )
-            );
-            return output_3;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_4 = Core.f_copy(
-              textblockarg,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":children"),
-                Core.f_copy(
-                  textblockarg.children(),
-                  Core.vx_new(
-                    Core.t_anylist,
-                    child
-                  )
-                )
-              )
-            );
-            return output_4;
-          })
-        ),
-        Core.f_else(
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_5 = Core.f_copy(
-              textblockarg,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":parent"),
-                Textblock.f_textblock_addchild_from_textblock_find_child(
-                  textblockarg.parent(),
-                  find,
-                  child
-                )
-              )
-            );
-            return output_5;
-          })
-        )
+        // [
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.f_is_empty_1(textblockarg);
+                  return output_1;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.f_empty(
+                    Textblock.t_textblock
+                  );
+                  return output_2;
+                }
+            )
+          ),
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_3 = Core.f_and_1(
+                    Core.vx_new(
+                      Core.t_booleanlist,
+                      // [
+                        Core.f_eqeq(find, textblockarg)
+                      // ]
+                    )
+                  );
+                  return output_3;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_4 = Core.f_copy(
+                    textblockarg,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":children"),
+                        Core.f_copy(
+                          textblockarg.children(),
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              child
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  );
+                  return output_4;
+                }
+            )
+          ),
+          Core.f_else(
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_5 = Core.f_copy(
+                    textblockarg,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":parent"),
+                        Textblock.f_textblock_addchild_from_textblock_find_child(
+                          textblockarg.parent(),
+                          find,
+                          child
+                        )
+                      // ]
+                    )
+                  );
+                  return output_5;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -3410,17 +3971,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3448,14 +4009,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_textblock inputval = (Textblock.Type_textblock)value;
       final Core.Type_any outputval = Textblock.f_textblock_delimnotfound(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_textblock_delimnotfound(textblockarg);
       return output;
     }
@@ -3475,345 +4042,387 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string text = textblockarg.text();
-        final Textblock.Type_delim delima = textblockarg.delim();
-        final Textblock.Type_delim close = textblockarg.close();
-        final Textblock.Type_textblock parent = textblockarg.parent();
-        final Textblock.Type_textblocklist childp = parent.children();
-        final Textblock.Type_delim delimp = parent.delim();
-        final Textblock.Type_delimlist delims = delimp.delimlist();
-        final Core.Type_any output_1 = Core.f_if_2(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_not(
-                  Core.f_is_empty_1(
-                    close
-                  )
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Core.f_let(
-                  Textblock.t_textblock,
-                  Core.t_any_from_func.vx_fn_new(() -> {
-                    final Core.Type_msg msgerr = Core.f_msg_from_error_1(
-                      Core.vx_new_string("closedelimmissing"),
-                      close
-                    );
-                    final Textblock.Type_textblock child = Core.f_copy(
-                      textblockarg,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":delim"),
-                        Core.f_empty(
-                          Textblock.t_delim
-                        ),
-                        Core.vx_new_string(":close"),
-                        Core.f_empty(
-                          Textblock.t_delim
-                        ),
-                        Core.vx_new_string(":parent"),
-                        Core.f_empty(
-                          Textblock.t_textblock
-                        )
-                      )
-                    );
-                    final Textblock.Type_textblock find = Textblock.f_textblock_findparent_from_textblock(
-                      parent
-                    );
-                    final Textblock.Type_textblocklist childrenf = find.children();
-                    final Textblock.Type_textblocklist childrenr = Core.f_copy(
-                      childrenf,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        child
-                      )
-                    );
-                    final Textblock.Type_textblock replace = Core.f_copy(
-                      find,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        msgerr,
-                        Core.vx_new_string(":children"),
-                        childrenr
-                      )
-                    );
-                    final Textblock.Type_textblock parent2 = Textblock.f_textblock_replace_from_textblock_find_replace(
-                      parent,
-                      find,
-                      replace
-                    );
-                    final Textblock.Type_textblock gparent = parent2.parent();
-                    final Textblock.Type_textblock parent3 = Core.f_copy(
-                      parent2,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":parent"),
-                        Core.f_empty(
-                          Textblock.t_textblock
-                        )
-                      )
-                    );
-                    final Textblock.Type_textblocklist childreng = gparent.children();
-                    final Textblock.Type_textblocklist childrenc = Core.f_copy(
-                      childreng,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        parent3
-                      )
-                    );
-                    final Core.Type_any output_4 = Core.f_copy(
-                      gparent,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":children"),
-                        childrenc,
-                        msgerr
-                      )
-                    );
-                    return output_4;
-                  })
-                );
-                return output_3;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_5 = Core.f_is_empty_1(
-                  parent
-                );
-                return output_5;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_6 = textblockarg;
-                return output_6;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_7 = Core.f_let(
-                  Textblock.t_textblock,
-                  Core.t_any_from_func.vx_fn_new(() -> {
-                    final Textblock.Type_delim delimchg = Core.f_if_1(
-                      Textblock.t_delim,
-                      Core.f_is_empty_1(
-                        delima.delimlist()
-                      ),
-                      delima,
-                      Core.f_copy(
-                        delima,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":delimlist"),
-                          Core.f_empty(
-                            Textblock.t_delimlist
-                          )
-                        )
-                      )
-                    );
-                    final Textblock.Type_textblock child = Core.f_if_1(
-                      Textblock.t_textblock,
-                      Core.f_eq(
-                        Core.vx_new_string(""),
-                        text
-                      ),
-                      Core.f_empty(
-                        Textblock.t_textblock
-                      ),
-                      Core.f_copy(
-                        textblockarg,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":delim"),
-                          delimchg,
-                          Core.vx_new_string(":parent"),
-                          Core.f_empty(
-                            Textblock.t_textblock
-                          )
-                        )
-                      )
-                    );
-                    final Textblock.Type_textblock find = Textblock.f_textblock_findparent_from_textblock(
-                      parent
-                    );
-                    final Textblock.Type_delim closef = find.close();
-                    final Core.Type_boolean closing = Core.f_if(
-                      Core.t_boolean,
-                      Core.f_eqeq(
-                        closef,
-                        Textblock.c_delimclosing
-                      ),
-                      Core.vx_new_boolean(true)
-                    );
-                    final Core.Type_any output_8 = Core.f_if_2(
-                      Textblock.t_textblock,
-                      Core.vx_new(
-                        Core.t_thenelselist,
-                        Core.f_then(
-                          Core.t_boolean_from_func.vx_fn_new(() -> {
-                            final Core.Type_any output_9 = closing;
-                            return output_9;
-                          }),
-                          Core.t_any_from_func.vx_fn_new(() -> {
-                            Core.Type_any output_10 = Core.f_let(
-                              Textblock.t_textblock,
-                              Core.t_any_from_func.vx_fn_new(() -> {
-                                final Textblock.Type_textblock parent2 = find.parent();
-                                final Textblock.Type_textblock find2 = Textblock.f_textblock_findparent_from_textblock(
-                                  parent2
-                                );
-                                final Textblock.Type_textblocklist children1 = Core.f_if_1(
-                                  Textblock.t_textblocklist,
-                                  Core.f_is_empty_1(
-                                    child
-                                  ),
-                                  find.children(),
-                                  Core.f_copy(
-                                    find.children(),
-                                    Core.vx_new(
-                                      Core.t_anylist,
-                                      child
-                                    )
-                                  )
-                                );
-                                final Textblock.Type_textblock replace1 = Core.f_copy(
-                                  find,
-                                  Core.vx_new(
-                                    Core.t_anylist,
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string text = textblockarg.text();
+          final Textblock.Type_delim delima = textblockarg.delim();
+          final Textblock.Type_delim close = textblockarg.close();
+          final Textblock.Type_textblock parent = textblockarg.parent();
+          final Textblock.Type_textblocklist childp = parent.children();
+          final Textblock.Type_delim delimp = parent.delim();
+          final Textblock.Type_delimlist delims = delimp.delimlist();
+          final Core.Type_any output_1 = Core.f_if_2(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_not(
+                          Core.f_is_empty_1(close)
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Core.f_let(
+                          Textblock.t_textblock,
+                          Core.t_any_from_func.vx_fn_new(
+                            () -> {
+                              final Core.Type_msg msgerr = Core.f_msg_from_error_1(
+                                Core.vx_new_string("closedelimmissing"),
+                                close
+                              );
+                              final Textblock.Type_textblock child = Core.f_copy(
+                                textblockarg,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":delim"),
+                                    Core.f_empty(Textblock.t_delim),
                                     Core.vx_new_string(":close"),
-                                    Core.f_empty(
-                                      Textblock.t_delim
-                                    ),
+                                    Core.f_empty(Textblock.t_delim),
                                     Core.vx_new_string(":parent"),
                                     Core.f_empty(
                                       Textblock.t_textblock
-                                    ),
+                                    )
+                                  // ]
+                                )
+                              );
+                              final Textblock.Type_textblock find = Textblock.f_textblock_findparent_from_textblock(parent);
+                              final Textblock.Type_textblocklist childrenf = find.children();
+                              final Textblock.Type_textblocklist childrenr = Core.f_copy(
+                                childrenf,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    child
+                                  // ]
+                                )
+                              );
+                              final Textblock.Type_textblock replace = Core.f_copy(
+                                find,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    msgerr,
                                     Core.vx_new_string(":children"),
-                                    children1
-                                  )
-                                );
-                                final Core.Type_any output_11 = Core.f_if_2(
-                                  Textblock.t_textblock,
+                                    childrenr
+                                  // ]
+                                )
+                              );
+                              final Textblock.Type_textblock parent2 = Textblock.f_textblock_replace_from_textblock_find_replace(
+                                parent,
+                                find,
+                                replace
+                              );
+                              final Textblock.Type_textblock gparent = parent2.parent();
+                              final Textblock.Type_textblock parent3 = Core.f_copy(
+                                parent2,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":parent"),
+                                    Core.f_empty(
+                                      Textblock.t_textblock
+                                    )
+                                  // ]
+                                )
+                              );
+                              final Textblock.Type_textblocklist childreng = gparent.children();
+                              final Textblock.Type_textblocklist childrenc = Core.f_copy(
+                                childreng,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    parent3
+                                  // ]
+                                )
+                              );
+                              final Core.Type_any output_4 = Core.f_copy(
+                                gparent,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":children"),
+                                    childrenc,
+                                    msgerr
+                                  // ]
+                                )
+                              );
+                              return output_4;
+                            }
+                          )
+                        );
+                        return output_3;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_5 = Core.f_is_empty_1(parent);
+                        return output_5;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_6 = textblockarg;
+                        return output_6;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_7 = Core.f_let(
+                          Textblock.t_textblock,
+                          Core.t_any_from_func.vx_fn_new(
+                            () -> {
+                              final Textblock.Type_delim delimchg = Core.f_if_1(
+                                Textblock.t_delim,
+                                Core.f_is_empty_1(delima.delimlist()),
+                                delima,
+                                Core.f_copy(
+                                  delima,
                                   Core.vx_new(
-                                    Core.t_thenelselist,
+                                    Core.t_anylist,
+                                    // [
+                                      Core.vx_new_string(":delimlist"),
+                                      Core.f_empty(
+                                        Textblock.t_delimlist
+                                      )
+                                    // ]
+                                  )
+                                )
+                              );
+                              final Textblock.Type_textblock child = Core.f_if_1(
+                                Textblock.t_textblock,
+                                Core.f_eq(
+                                  Core.vx_new_string(""),
+                                  text
+                                ),
+                                Core.f_empty(
+                                  Textblock.t_textblock
+                                ),
+                                Core.f_copy(
+                                  textblockarg,
+                                  Core.vx_new(
+                                    Core.t_anylist,
+                                    // [
+                                      Core.vx_new_string(":delim"),
+                                      delimchg,
+                                      Core.vx_new_string(":parent"),
+                                      Core.f_empty(
+                                        Textblock.t_textblock
+                                      )
+                                    // ]
+                                  )
+                                )
+                              );
+                              final Textblock.Type_textblock find = Textblock.f_textblock_findparent_from_textblock(parent);
+                              final Textblock.Type_delim closef = find.close();
+                              final Core.Type_boolean closing = Core.f_if(
+                                Core.t_boolean,
+                                Core.f_eqeq(
+                                  closef,
+                                  Textblock.c_delimclosing
+                                ),
+                                Core.vx_new_boolean(true)
+                              );
+                              final Core.Type_any output_8 = Core.f_if_2(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_thenelselist,
+                                  // [
                                     Core.f_then(
-                                      Core.t_boolean_from_func.vx_fn_new(() -> {
-                                        Core.Type_any output_12 = Core.f_is_empty_1(
-                                          find2
-                                        );
-                                        return output_12;
-                                      }),
-                                      Core.t_any_from_func.vx_fn_new(() -> {
-                                        Core.Type_any output_13 = Core.f_copy(
-                                          parent,
-                                          Core.vx_new(
-                                            Core.t_anylist,
-                                            Core.vx_new_string(":parent"),
-                                            Core.f_copy(
-                                              parent2,
-                                              Core.vx_new(
-                                                Core.t_anylist,
-                                                Core.vx_new_string(":children"),
-                                                Core.f_new(
-                                                  Textblock.t_textblocklist,
-                                                  Core.vx_new(
-                                                    Core.t_anylist,
-                                                    replace1
-                                                  )
-                                                )
+                                      Core.t_boolean_from_func.vx_fn_new(
+                                        () -> {
+      final Core.Type_any output_9 = closing;
+                                            return output_9;
+                                          }
+                                      ),
+                                      Core.t_any_from_func.vx_fn_new(
+                                        () -> {
+                                          Core.Type_any output_10 = Core.f_let(
+                                              Textblock.t_textblock,
+                                              Core.t_any_from_func.vx_fn_new(
+                                                () -> {
+                                                  final Textblock.Type_textblock parent2 = find.parent();
+                                                  final Textblock.Type_textblock find2 = Textblock.f_textblock_findparent_from_textblock(parent2);
+                                                  final Textblock.Type_textblocklist children1 = Core.f_if_1(
+                                                    Textblock.t_textblocklist,
+                                                    Core.f_is_empty_1(child),
+                                                    find.children(),
+                                                    Core.f_copy(
+                                                      find.children(),
+                                                      Core.vx_new(
+                                                        Core.t_anylist,
+                                                        // [
+                                                          child
+                                                        // ]
+                                                      )
+                                                    )
+                                                  );
+                                                  final Textblock.Type_textblock replace1 = Core.f_copy(
+                                                    find,
+                                                    Core.vx_new(
+                                                      Core.t_anylist,
+                                                      // [
+                                                        Core.vx_new_string(":close"),
+                                                        Core.f_empty(Textblock.t_delim),
+                                                        Core.vx_new_string(":parent"),
+                                                        Core.f_empty(
+                                                          Textblock.t_textblock
+                                                        ),
+                                                        Core.vx_new_string(":children"),
+                                                        children1
+                                                      // ]
+                                                    )
+                                                  );
+                                                  final Core.Type_any output_11 = Core.f_if_2(
+                                                    Textblock.t_textblock,
+                                                    Core.vx_new(
+                                                      Core.t_thenelselist,
+                                                      // [
+                                                        Core.f_then(
+                                                          Core.t_boolean_from_func.vx_fn_new(
+                                                            () -> {
+                                                              Core.Type_any output_12 = Core.f_is_empty_1(find2);
+                                                                return output_12;
+                                                              }
+                                                          ),
+                                                          Core.t_any_from_func.vx_fn_new(
+                                                            () -> {
+                                                              Core.Type_any output_13 = Core.f_copy(
+                                                                  parent,
+                                                                  Core.vx_new(
+                                                                    Core.t_anylist,
+                                                                    // [
+                                                                      Core.vx_new_string(":parent"),
+                                                                      Core.f_copy(
+                                                                        parent2,
+                                                                        Core.vx_new(
+                                                                          Core.t_anylist,
+                                                                          // [
+                                                                            Core.vx_new_string(":children"),
+                                                                            Core.f_new(
+                                                                              Textblock.t_textblocklist,
+                                                                              Core.vx_new(
+                                                                                Core.t_anylist,
+                                                                                // [
+                                                                                  replace1
+                                                                                // ]
+                                                                              )
+                                                                            )
+                                                                          // ]
+                                                                        )
+                                                                      )
+                                                                    // ]
+                                                                  )
+                                                                );
+                                                                return output_13;
+                                                              }
+                                                          )
+                                                        ),
+                                                        Core.f_else(
+                                                          Core.t_any_from_func.vx_fn_new(
+                                                            () -> {
+                                                              Core.Type_any output_14 = Core.f_let(
+                                                                  Textblock.t_textblock,
+                                                                  Core.t_any_from_func.vx_fn_new(
+                                                                    () -> {
+                                                                      final Textblock.Type_textblocklist children2 = Core.f_copy(
+                                                                        find2.children(),
+                                                                        Core.vx_new(
+                                                                          Core.t_anylist,
+                                                                          // [
+                                                                            replace1
+                                                                          // ]
+                                                                        )
+                                                                      );
+                                                                      final Textblock.Type_textblock replace2 = Core.f_copy(
+                                                                        find2,
+                                                                        Core.vx_new(
+                                                                          Core.t_anylist,
+                                                                          // [
+                                                                            Core.vx_new_string(":close"),
+                                                                            Core.f_empty(Textblock.t_delim),
+                                                                            Core.vx_new_string(":children"),
+                                                                            children2
+                                                                          // ]
+                                                                        )
+                                                                      );
+                                                                      final Textblock.Type_textblock replace = Textblock.f_textblock_replace_from_textblock_find_replace(
+                                                                        parent2,
+                                                                        find2,
+                                                                        replace2
+                                                                      );
+                                                                      final Core.Type_any output_15 = Textblock.f_textblock_replace_from_textblock_find_replace(
+                                                                        parent,
+                                                                        find,
+                                                                        replace
+                                                                      );
+                                                                      return output_15;
+                                                                    }
+                                                                  )
+                                                                );
+                                                                return output_14;
+                                                              }
+                                                          )
+                                                        )
+                                                      // ]
+                                                    )
+                                                  );
+                                                  return output_11;
+                                                }
                                               )
-                                            )
-                                          )
-                                        );
-                                        return output_13;
-                                      })
+                                            );
+                                            return output_10;
+                                          }
+                                      )
+                                    ),
+                                    Core.f_then(
+                                      Core.t_boolean_from_func.vx_fn_new(
+                                        () -> {
+                                          Core.Type_any output_16 = Core.f_is_empty_1(child);
+                                            return output_16;
+                                          }
+                                      ),
+                                      Core.t_any_from_func.vx_fn_new(
+                                        () -> {
+      final Core.Type_any output_17 = parent;
+                                            return output_17;
+                                          }
+                                      )
                                     ),
                                     Core.f_else(
-                                      Core.t_any_from_func.vx_fn_new(() -> {
-                                        Core.Type_any output_14 = Core.f_let(
-                                          Textblock.t_textblock,
-                                          Core.t_any_from_func.vx_fn_new(() -> {
-                                            final Textblock.Type_textblocklist children2 = Core.f_copy(
-                                              find2.children(),
-                                              Core.vx_new(
-                                                Core.t_anylist,
-                                                replace1
-                                              )
-                                            );
-                                            final Textblock.Type_textblock replace2 = Core.f_copy(
-                                              find2,
-                                              Core.vx_new(
-                                                Core.t_anylist,
-                                                Core.vx_new_string(":close"),
-                                                Core.f_empty(
-                                                  Textblock.t_delim
-                                                ),
-                                                Core.vx_new_string(":children"),
-                                                children2
-                                              )
-                                            );
-                                            final Textblock.Type_textblock replace = Textblock.f_textblock_replace_from_textblock_find_replace(
-                                              parent2,
-                                              find2,
-                                              replace2
-                                            );
-                                            final Core.Type_any output_15 = Textblock.f_textblock_replace_from_textblock_find_replace(
-                                              parent,
-                                              find,
-                                              replace
-                                            );
-                                            return output_15;
-                                          })
-                                        );
-                                        return output_14;
-                                      })
+                                      Core.t_any_from_func.vx_fn_new(
+                                        () -> {
+                                          Core.Type_any output_18 = Textblock.f_textblock_addchild_from_textblock_find_child(parent, find, child);
+                                            return output_18;
+                                          }
+                                      )
                                     )
-                                  )
-                                );
-                                return output_11;
-                              })
-                            );
-                            return output_10;
-                          })
-                        ),
-                        Core.f_then(
-                          Core.t_boolean_from_func.vx_fn_new(() -> {
-                            Core.Type_any output_16 = Core.f_is_empty_1(
-                              child
-                            );
-                            return output_16;
-                          }),
-                          Core.t_any_from_func.vx_fn_new(() -> {
-                            final Core.Type_any output_17 = parent;
-                            return output_17;
-                          })
-                        ),
-                        Core.f_else(
-                          Core.t_any_from_func.vx_fn_new(() -> {
-                            Core.Type_any output_18 = Textblock.f_textblock_addchild_from_textblock_find_child(
-                              parent,
-                              find,
-                              child
-                            );
-                            return output_18;
-                          })
-                        )
-                      )
-                    );
-                    return output_8;
-                  })
-                );
-                return output_7;
-              })
+                                  // ]
+                                )
+                              );
+                              return output_8;
+                            }
+                          )
+                        );
+                        return output_7;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -3857,17 +4466,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3895,14 +4504,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_textblock inputval = (Textblock.Type_textblock)value;
       final Core.Type_any outputval = Textblock.f_textblock_findparent_from_textblock(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_textblock_findparent_from_textblock(textblockarg);
       return output;
     }
@@ -3922,66 +4537,74 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Textblock.Type_delim delimcurr = textblockarg.delim();
-        final Textblock.Type_textblock parent = textblockarg.parent();
-        final Textblock.Type_textblocklist children = textblockarg.children();
-        final Core.Type_string starttext = delimcurr.starttext();
-        final Core.Type_string endtext = delimcurr.endtext();
-        final Core.Type_any output_1 = Core.f_if_2(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_is_empty_1(
-                  textblockarg
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Core.f_empty(
-                  Textblock.t_textblock
-                );
-                return output_3;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_or(
-                  Core.f_is_empty_1(
-                    parent
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Textblock.Type_delim delimcurr = textblockarg.delim();
+          final Textblock.Type_textblock parent = textblockarg.parent();
+          final Textblock.Type_textblocklist children = textblockarg.children();
+          final Core.Type_string starttext = delimcurr.starttext();
+          final Core.Type_string endtext = delimcurr.endtext();
+          final Core.Type_any output_1 = Core.f_if_2(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_is_empty_1(textblockarg);
+                        return output_2;
+                      }
                   ),
-                  Core.f_and(
-                    Core.f_ne(
-                      Core.vx_new_string(""),
-                      starttext
-                    ),
-                    Core.f_ne(
-                      Core.vx_new_string(""),
-                      endtext
-                    )
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Core.f_empty(
+                          Textblock.t_textblock
+                        );
+                        return output_3;
+                      }
                   )
-                );
-                return output_4;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_5 = textblockarg;
-                return output_5;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_6 = Textblock.f_textblock_findparent_from_textblock(
-                  parent
-                );
-                return output_6;
-              })
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_or(
+                          Core.f_is_empty_1(parent),
+                          Core.f_and(
+                            Core.f_ne(
+                              Core.vx_new_string(""),
+                              starttext
+                            ),
+                            Core.f_ne(
+                              Core.vx_new_string(""),
+                              endtext
+                            )
+                          )
+                        );
+                        return output_4;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_5 = textblockarg;
+                        return output_5;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_6 = Textblock.f_textblock_findparent_from_textblock(parent);
+                        return output_6;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -4025,17 +4648,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4063,14 +4686,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_textblock inputval = (Textblock.Type_textblock)value;
       final Core.Type_any outputval = Textblock.f_textblock_init(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_textblock_init(textblockarg);
       return output;
     }
@@ -4090,55 +4719,57 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string text = textblockarg.text();
-        final Core.Type_int startpos = Core.f_if_1(
-          Core.t_int,
-          Core.f_eq(
-            Core.vx_new_string(""),
-            text
-          ),
-          Core.vx_new_int(0),
-          Core.vx_new_int(1)
-        );
-        final Core.Type_int endpos = Core.f_if_1(
-          Core.t_int,
-          Core.f_eq(
-            Core.vx_new_string(""),
-            text
-          ),
-          Core.vx_new_int(0),
-          Core.f_length(
-            text
-          )
-        );
-        final Core.Type_any output_1 = Core.f_copy(
-          textblockarg,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":startpos"),
-            startpos,
-            Core.vx_new_string(":endpos"),
-            endpos,
-            Core.vx_new_string(":parent"),
-            Core.f_copy(
-              textblockarg,
-              Core.vx_new(
-                Core.t_anylist,
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string text = textblockarg.text();
+          final Core.Type_int startpos = Core.f_if_1(
+            Core.t_int,
+            Core.f_eq(
+              Core.vx_new_string(""),
+              text
+            ),
+            Core.vx_new_int(0),
+            Core.vx_new_int(1)
+          );
+          final Core.Type_int endpos = Core.f_if_1(
+            Core.t_int,
+            Core.f_eq(
+              Core.vx_new_string(""),
+              text
+            ),
+            Core.vx_new_int(0),
+            Core.f_length(text)
+          );
+          final Core.Type_any output_1 = Core.f_copy(
+            textblockarg,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
                 Core.vx_new_string(":startpos"),
                 startpos,
                 Core.vx_new_string(":endpos"),
                 endpos,
-                Core.vx_new_string(":delim"),
-                Core.f_empty(
-                  Textblock.t_delim
+                Core.vx_new_string(":parent"),
+                Core.f_copy(
+                  textblockarg,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":startpos"),
+                      startpos,
+                      Core.vx_new_string(":endpos"),
+                      endpos,
+                      Core.vx_new_string(":delim"),
+                      Core.f_empty(Textblock.t_delim)
+                    // ]
+                  )
                 )
-              )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -4182,17 +4813,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4220,14 +4851,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_textblock inputval = (Textblock.Type_textblock)value;
       final Core.Type_any outputval = Textblock.f_textblock_parse(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock textblock = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_textblock textblock = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_textblock_parse(textblock);
       return output;
     }
@@ -4248,20 +4885,26 @@ public final class Textblock {
     output = Collection.f_any_from_for_until_loop_max(
       Textblock.t_textblock,
       textblock,
-      Core.t_boolean_from_any.vx_fn_new((current_any) -> {
-        final Textblock.Type_textblock current = Core.f_any_from_any(Textblock.t_textblock, current_any);
-        Core.Type_any output_1 = Core.f_is_empty_1(
-          current.parent()
-        );
-        return output_1;
-      }),
-      Core.t_any_from_any.vx_fn_new((current_any) -> {
-        final Textblock.Type_textblock current = Core.f_any_from_any(Textblock.t_textblock, current_any);
-        Core.Type_any output_2 = Textblock.f_textblock_parse_one(
-          current
-        );
-        return output_2;
-      }),
+      Core.t_boolean_from_any.vx_fn_new(
+        (current_any) -> {
+          final Textblock.Type_textblock current = Core.f_any_from_any(
+            Textblock.t_textblock,
+            current_any
+          );
+          Core.Type_any output_1 = Core.f_is_empty_1(current.parent());
+          return output_1;
+        }
+      ),
+      Core.t_any_from_any.vx_fn_new(
+        (current_any) -> {
+          final Textblock.Type_textblock current = Core.f_any_from_any(
+            Textblock.t_textblock,
+            current_any
+          );
+          Core.Type_any output_2 = Textblock.f_textblock_parse_one(current);
+          return output_2;
+        }
+      ),
       Core.vx_new_int(100000)
     );
     return output;
@@ -4306,17 +4949,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4344,14 +4987,20 @@ public final class Textblock {
       T output = Core.f_empty(generic_any_1);
       final Textblock.Type_textblock inputval = (Textblock.Type_textblock)value;
       final Core.Type_any outputval = Textblock.f_textblock_parse_one(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Textblock.f_textblock_parse_one(textblockarg);
       return output;
     }
@@ -4371,165 +5020,186 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Textblock.Type_delim delimarg = textblockarg.delim();
-        final Textblock.Type_delim close = textblockarg.close();
-        final Core.Type_int startpos = textblockarg.startpos();
-        final Core.Type_string textarg = textblockarg.text();
-        final Textblock.Type_textblock parent = textblockarg.parent();
-        final Core.Type_boolean is_init = Core.f_and(
-          Core.f_is_empty_1(
-            parent
-          ),
-          Core.f_eq(
-            startpos,
-            Core.vx_new_int(0)
-          )
-        );
-        final Core.Type_string starttext = delimarg.starttext();
-        final Core.Type_string endtext = delimarg.endtext();
-        final Textblock.Type_delimlist delimlistarg = delimarg.delimlist();
-        final Core.Type_int startposchg = Core.f_if_2(
-          Core.t_int,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_13 = Core.f_eq(
-                  Core.vx_new_string(""),
-                  textarg
-                );
-                return output_13;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_14 = startpos;
-                return output_14;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_15 = Core.f_eq(
-                  Core.vx_new_int(0),
-                  startpos
-                );
-                return output_15;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_16 = Core.vx_new_int(1);
-                return output_16;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_17 = startpos;
-                return output_17;
-              })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Textblock.Type_delim delimarg = textblockarg.delim();
+          final Textblock.Type_delim close = textblockarg.close();
+          final Core.Type_int startpos = textblockarg.startpos();
+          final Core.Type_string textarg = textblockarg.text();
+          final Textblock.Type_textblock parent = textblockarg.parent();
+          final Core.Type_boolean is_init = Core.f_and(
+            Core.f_is_empty_1(parent),
+            Core.f_eq(
+              startpos,
+              Core.vx_new_int(0)
             )
-          )
-        );
-        final Textblock.Type_delimlist delimlistcl = Core.f_if_1(
-          Textblock.t_delimlist,
-          Core.f_is_empty_1(
-            close
-          ),
-          delimlistarg,
-          Core.f_copy(
-            delimlistarg,
+          );
+          final Core.Type_string starttext = delimarg.starttext();
+          final Core.Type_string endtext = delimarg.endtext();
+          final Textblock.Type_delimlist delimlistarg = delimarg.delimlist();
+          final Core.Type_int startposchg = Core.f_if_2(
+            Core.t_int,
             Core.vx_new(
-              Core.t_anylist,
-              close
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_13 = Core.f_eq(
+                          Core.vx_new_string(""),
+                          textarg
+                        );
+                        return output_13;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_14 = startpos;
+                        return output_14;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_15 = Core.f_eq(
+                          Core.vx_new_int(0),
+                          startpos
+                        );
+                        return output_15;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_16 = Core.vx_new_int(1);
+                        return output_16;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_17 = startpos;
+                        return output_17;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        final Textblock.Type_delim delimfirst = Textblock.f_delim_first_from_string_delimlist(
-          textarg,
-          delimlistcl
-        );
-        final Core.Type_any output_1 = Core.f_if_2(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_2 = is_init;
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Textblock.f_textblock_init(
-                  textblockarg
-                );
-                return output_3;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_is_empty_1(
-                  parent
-                );
-                return output_4;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_5 = textblockarg;
-                return output_5;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_6 = Core.f_is_empty_1(
-                  delimfirst
-                );
-                return output_6;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_7 = Textblock.f_textblock_delimnotfound(
-                  textblockarg
-                );
-                return output_7;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_8 = Textblock.f_is_close(
-                  delimfirst
-                );
-                return output_8;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_9 = Textblock.f_textblock_from_close_textblock(
-                  delimfirst,
-                  textblockarg
-                );
-                return output_9;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_10 = Textblock.f_is_single(
-                  delimfirst
-                );
-                return output_10;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_11 = Textblock.f_textblock_from_single_textblock(
-                  delimfirst,
-                  textblockarg
-                );
-                return output_11;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_12 = Textblock.f_textblock_from_open_textblock(
-                  delimfirst,
-                  textblockarg
-                );
-                return output_12;
-              })
+          );
+          final Textblock.Type_delimlist delimlistcl = Core.f_if_1(
+            Textblock.t_delimlist,
+            Core.f_is_empty_1(close),
+            delimlistarg,
+            Core.f_copy(
+              delimlistarg,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  close
+                // ]
+              )
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          final Textblock.Type_delim delimfirst = Textblock.f_delim_first_from_string_delimlist(textarg, delimlistcl);
+          final Core.Type_any output_1 = Core.f_if_2(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_2 = is_init;
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Textblock.f_textblock_init(textblockarg);
+                        return output_3;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_is_empty_1(parent);
+                        return output_4;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_5 = textblockarg;
+                        return output_5;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_6 = Core.f_is_empty_1(delimfirst);
+                        return output_6;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_7 = Textblock.f_textblock_delimnotfound(textblockarg);
+                        return output_7;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_8 = Textblock.f_is_close(delimfirst);
+                        return output_8;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_9 = Textblock.f_textblock_from_close_textblock(
+                          delimfirst,
+                          textblockarg
+                        );
+                        return output_9;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_10 = Textblock.f_is_single(delimfirst);
+                        return output_10;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_11 = Textblock.f_textblock_from_single_textblock(
+                          delimfirst,
+                          textblockarg
+                        );
+                        return output_11;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_12 = Textblock.f_textblock_from_open_textblock(
+                          delimfirst,
+                          textblockarg
+                        );
+                        return output_12;
+                      }
+                  )
+                )
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -4574,17 +5244,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4605,8 +5275,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delim delim = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delim delim = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_textblock_parse_from_string_delim(text, delim);
       return output;
     }
@@ -4626,16 +5302,13 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Textblock.Type_textblock textblockinit = Textblock.f_textblock_from_string_delim(
-          text,
-          delim
-        );
-        final Core.Type_any output_1 = Textblock.f_textblock_parse(
-          textblockinit
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Textblock.Type_textblock textblockinit = Textblock.f_textblock_from_string_delim(text, delim);
+          final Core.Type_any output_1 = Textblock.f_textblock_parse(textblockinit);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -4681,17 +5354,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4712,9 +5385,18 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_textblock find = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(1)));
-      final Textblock.Type_textblock replace = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(2)));
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_textblock find = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Textblock.Type_textblock replace = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Textblock.f_textblock_replace_from_textblock_find_replace(textblockarg, find, replace);
       return output;
     }
@@ -4736,55 +5418,66 @@ public final class Textblock {
       Textblock.t_textblock,
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.f_is_empty_1(
-              textblockarg
-            );
-            return output_1;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.f_empty(
-              Textblock.t_textblock
-            );
-            return output_2;
-          })
-        ),
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_3 = Core.f_and_1(
-              Core.vx_new(
-                Core.t_booleanlist,
-                Core.f_eqeq(
-                  find,
-                  textblockarg
-                )
-              )
-            );
-            return output_3;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            final Core.Type_any output_4 = replace;
-            return output_4;
-          })
-        ),
-        Core.f_else(
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_5 = Core.f_copy(
-              textblockarg,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":parent"),
-                Textblock.f_textblock_replace_from_textblock_find_replace(
-                  textblockarg.parent(),
-                  find,
-                  replace
-                )
-              )
-            );
-            return output_5;
-          })
-        )
+        // [
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.f_is_empty_1(textblockarg);
+                  return output_1;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.f_empty(
+                    Textblock.t_textblock
+                  );
+                  return output_2;
+                }
+            )
+          ),
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_3 = Core.f_and_1(
+                    Core.vx_new(
+                      Core.t_booleanlist,
+                      // [
+                        Core.f_eqeq(find, textblockarg)
+                      // ]
+                    )
+                  );
+                  return output_3;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+      final Core.Type_any output_4 = replace;
+                  return output_4;
+                }
+            )
+          ),
+          Core.f_else(
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_5 = Core.f_copy(
+                    textblockarg,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":parent"),
+                        Textblock.f_textblock_replace_from_textblock_find_replace(
+                          textblockarg.parent(),
+                          find,
+                          replace
+                        )
+                      // ]
+                    )
+                  );
+                  return output_5;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -4831,17 +5524,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4862,9 +5555,18 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delim delim = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_int offset = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delim delim = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_int offset = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Textblock.f_textblock_startleft_from_string_delim_offset(text, delim, offset);
       return output;
     }
@@ -4884,80 +5586,86 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_int pos = delim.pos();
-        final Core.Type_int start = Core.vx_new_int(1);
-        final Core.Type_int end = Core.f_minus(
-          pos,
-          Core.vx_new_int(1)
-        );
-        final Core.Type_any output_1 = Core.f_if_2(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_eq(
-                  Core.vx_new_string(""),
-                  text
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Core.f_empty(
-                  Textblock.t_textblock
-                );
-                return output_3;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_eq(
-                  Core.vx_new_int(0),
-                  pos
-                );
-                return output_4;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_5 = Core.f_empty(
-                  Textblock.t_textblock
-                );
-                return output_5;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_6 = Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Type.f_string_from_string_start_end(
-                      text,
-                      start,
-                      end
-                    ),
-                    Core.vx_new_string(":startpos"),
-                    Core.f_plus(
-                      offset,
-                      start
-                    ),
-                    Core.vx_new_string(":endpos"),
-                    Core.f_plus(
-                      offset,
-                      end
-                    ),
-                    Core.vx_new_string(":curpos"),
-                    Core.vx_new_int(0)
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_int pos = delim.pos();
+          final Core.Type_int start = Core.vx_new_int(1);
+          final Core.Type_int end = Core.f_minus(
+            pos,
+            Core.vx_new_int(1)
+          );
+          final Core.Type_any output_1 = Core.f_if_2(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_eq(
+                          Core.vx_new_string(""),
+                          text
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Core.f_empty(
+                          Textblock.t_textblock
+                        );
+                        return output_3;
+                      }
                   )
-                );
-                return output_6;
-              })
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_eq(
+                          Core.vx_new_int(0),
+                          pos
+                        );
+                        return output_4;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_5 = Core.f_empty(
+                          Textblock.t_textblock
+                        );
+                        return output_5;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_6 = Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Type.f_string_from_string_start_end(text, start, end),
+                              Core.vx_new_string(":startpos"),
+                              Core.f_plus(offset, start),
+                              Core.vx_new_string(":endpos"),
+                              Core.f_plus(offset, end),
+                              Core.vx_new_string(":curpos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        );
+                        return output_6;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5003,17 +5711,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5034,9 +5742,18 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delim delimin = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_int offset = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delim delimin = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_int offset = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Textblock.f_textblock_startright_from_string_delim_offset(text, delimin, offset);
       return output;
     }
@@ -5056,140 +5773,164 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_int startpos = delimin.pos();
-        final Core.Type_string starttext = delimin.starttext();
-        final Core.Type_string endtext = delimin.endtext();
-        final Textblock.Type_delimlist delimlist = delimin.delimlist();
-        final Textblock.Type_delim close = Core.f_if_2(
-          Textblock.t_delim,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_7 = Core.f_eq(
-                  endtext,
-                  Core.vx_new_string("")
-                );
-                return output_7;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_8 = Core.f_empty(
-                  Textblock.t_delim
-                );
-                return output_8;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_9 = Core.f_copy(
-                  Textblock.c_delimclose,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":starttext"),
-                    endtext
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_int startpos = delimin.pos();
+          final Core.Type_string starttext = delimin.starttext();
+          final Core.Type_string endtext = delimin.endtext();
+          final Textblock.Type_delimlist delimlist = delimin.delimlist();
+          final Textblock.Type_delim close = Core.f_if_2(
+            Textblock.t_delim,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_7 = Core.f_eq(
+                          endtext,
+                          Core.vx_new_string("")
+                        );
+                        return output_7;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_8 = Core.f_empty(Textblock.t_delim);
+                        return output_8;
+                      }
                   )
-                );
-                return output_9;
-              })
-            )
-          )
-        );
-        final Core.Type_int delimlen = Core.f_switch(
-          Core.t_int,
-          starttext,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_case_1(
-              Core.vx_new_string(":nonwhitespace"),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_10 = Core.vx_new_int(0);
-                return output_10;
-              })
-            ),
-            Core.f_case_1(
-              Core.vx_new_string(":whitespace"),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_11 = Core.vx_new_int(0);
-                return output_11;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_12 = Core.f_length(
-                  starttext
-                );
-                return output_12;
-              })
-            )
-          )
-        );
-        final Core.Type_int curpos = Core.vx_new_int(0);
-        final Core.Type_any output_1 = Core.f_if_2(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_eq(
-                  text,
-                  Core.vx_new_string("")
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Core.f_empty(
-                  Textblock.t_textblock
-                );
-                return output_3;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_lt(
-                  startpos,
-                  Core.vx_new_int(0)
-                );
-                return output_4;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_5 = Core.f_empty(
-                  Textblock.t_textblock
-                );
-                return output_5;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_6 = Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Type.f_string_from_string_start(
-                      text,
-                      startpos
-                    ),
-                    Core.vx_new_string(":startpos"),
-                    Core.f_plus(
-                      offset,
-                      startpos
-                    ),
-                    Core.vx_new_string(":curpos"),
-                    curpos,
-                    Core.vx_new_string(":delim"),
-                    delimin,
-                    Core.vx_new_string(":close"),
-                    close
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_9 = Core.f_copy(
+                          Textblock.c_delimclose,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":starttext"),
+                              endtext
+                            // ]
+                          )
+                        );
+                        return output_9;
+                      }
                   )
-                );
-                return output_6;
-              })
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          final Core.Type_int delimlen = Core.f_switch(
+            Core.t_int,
+            starttext,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_case_1(
+                  Core.vx_new_string(":nonwhitespace"),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_10 = Core.vx_new_int(0);
+                        return output_10;
+                      }
+                  )
+                ),
+                Core.f_case_1(
+                  Core.vx_new_string(":whitespace"),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_11 = Core.vx_new_int(0);
+                        return output_11;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_12 = Core.f_length(starttext);
+                        return output_12;
+                      }
+                  )
+                )
+              // ]
+            )
+          );
+          final Core.Type_int curpos = Core.vx_new_int(0);
+          final Core.Type_any output_1 = Core.f_if_2(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_eq(
+                          text,
+                          Core.vx_new_string("")
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Core.f_empty(
+                          Textblock.t_textblock
+                        );
+                        return output_3;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_lt(
+                          startpos,
+                          Core.vx_new_int(0)
+                        );
+                        return output_4;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_5 = Core.f_empty(
+                          Textblock.t_textblock
+                        );
+                        return output_5;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_6 = Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Type.f_string_from_string_start(text, startpos),
+                              Core.vx_new_string(":startpos"),
+                              Core.f_plus(offset, startpos),
+                              Core.vx_new_string(":curpos"),
+                              curpos,
+                              Core.vx_new_string(":delim"),
+                              delimin,
+                              Core.vx_new_string(":close"),
+                              close
+                            // ]
+                          )
+                        );
+                        return output_6;
+                      }
+                  )
+                )
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5234,17 +5975,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5265,8 +6006,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_delim close = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(1)));
+      final Textblock.Type_delim close = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_textblock_from_close_textblock(close, textblockarg);
       return output;
     }
@@ -5286,172 +6033,161 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string text = textblockarg.text();
-        final Textblock.Type_textblock parent = textblockarg.parent();
-        final Core.Type_int startpos = textblockarg.startpos();
-        final Core.Type_int endpos = textblockarg.endpos();
-        final Core.Type_int pos = close.pos();
-        final Core.Type_string textclose = close.starttext();
-        final Core.Type_int lenclose = Core.f_length(
-          textclose
-        );
-        final Core.Type_int posminus = Core.f_minus1(
-          pos
-        );
-        final Core.Type_int startleft = startpos;
-        final Core.Type_int startclose = Core.f_plus(
-          startpos,
-          posminus
-        );
-        final Core.Type_int endclose = Core.f_switch(
-          Core.t_int,
-          textclose,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_case_1(
-              Core.vx_new_string(":whitespace"),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Type.f_int_from_string_findkeyword(
-                  text,
-                  Core.vx_new_string(":nonwhitespace")
-                );
-                return output_2;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Core.f_plus(
-                  Core.f_minus1(
-                    startclose
-                  ),
-                  lenclose
-                );
-                return output_3;
-              })
-            )
-          )
-        );
-        final Core.Type_int endleft = Core.f_if_1(
-          Core.t_int,
-          Core.f_eq(
-            Core.vx_new_int(1),
-            pos
-          ),
-          startclose,
-          Core.f_minus1(
-            startclose
-          )
-        );
-        final Core.Type_int startright = Core.f_plus1(
-          endclose
-        );
-        final Core.Type_int endright = Core.f_if_1(
-          Core.t_int,
-          Core.f_lt(
-            endpos,
-            startright
-          ),
-          startright,
-          endpos
-        );
-        final Core.Type_string textleft = Type.f_string_from_string_end(
-          text,
-          posminus
-        );
-        final Core.Type_string textright = Type.f_string_from_string_start(
-          text,
-          Core.f_plus(
-            pos,
-            lenclose
-          )
-        );
-        final Textblock.Type_textblock find = Textblock.f_textblock_findparent_from_textblock(
-          parent
-        );
-        final Textblock.Type_delim closefind = find.close();
-        final Core.Type_string textfind = find.text();
-        final Core.Type_int startfind = find.startpos();
-        final Textblock.Type_delim delimfind = find.delim();
-        final Textblock.Type_delim delimright = Core.f_new(
-          Textblock.t_delim,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":delimlist"),
-            delimfind.delimlist()
-          )
-        );
-        final Core.Type_int lenfind = Core.f_minus(
-          Core.f_plus1(
-            endclose
-          ),
-          startfind
-        );
-        final Core.Type_string textreplace = Type.f_string_from_string_end(
-          textfind,
-          lenfind
-        );
-        final Textblock.Type_textblock replace = Core.f_copy(
-          find,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":text"),
-            textreplace,
-            Core.vx_new_string(":endpos"),
-            endclose,
-            Core.vx_new_string(":delim"),
-            Core.f_copy(
-              delimfind,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":delimlist"),
-                Core.f_empty(
-                  Textblock.t_delimlist
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string text = textblockarg.text();
+          final Textblock.Type_textblock parent = textblockarg.parent();
+          final Core.Type_int startpos = textblockarg.startpos();
+          final Core.Type_int endpos = textblockarg.endpos();
+          final Core.Type_int pos = close.pos();
+          final Core.Type_string textclose = close.starttext();
+          final Core.Type_int lenclose = Core.f_length(textclose);
+          final Core.Type_int posminus = Core.f_minus1(pos);
+          final Core.Type_int startleft = startpos;
+          final Core.Type_int startclose = Core.f_plus(startpos, posminus);
+          final Core.Type_int endclose = Core.f_switch(
+            Core.t_int,
+            textclose,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_case_1(
+                  Core.vx_new_string(":whitespace"),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Type.f_int_from_string_findkeyword(
+                          text,
+                          Core.vx_new_string(":nonwhitespace")
+                        );
+                        return output_2;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Core.f_plus(
+                          Core.f_minus1(startclose),
+                          lenclose
+                        );
+                        return output_3;
+                      }
+                  )
                 )
-              )
-            ),
-            Core.vx_new_string(":close"),
-            Textblock.c_delimclosing
-          )
-        );
-        final Textblock.Type_textblock parentchg = Textblock.f_textblock_replace_from_textblock_find_replace(
-          parent,
-          find,
-          replace
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":text"),
-            textleft,
-            Core.vx_new_string(":startpos"),
-            startleft,
-            Core.vx_new_string(":endpos"),
-            endleft,
-            Core.vx_new_string(":parent"),
-            Core.f_copy(
-              textblockarg,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":text"),
-                textright,
-                Core.vx_new_string(":startpos"),
-                startright,
-                Core.vx_new_string(":endpos"),
-                endright,
-                Core.vx_new_string(":delim"),
-                delimright,
-                Core.vx_new_string(":close"),
-                closefind,
-                Core.vx_new_string(":parent"),
-                parentchg
-              )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          final Core.Type_int endleft = Core.f_if_1(
+            Core.t_int,
+            Core.f_eq(
+              Core.vx_new_int(1),
+              pos
+            ),
+            startclose,
+            Core.f_minus1(startclose)
+          );
+          final Core.Type_int startright = Core.f_plus1(endclose);
+          final Core.Type_int endright = Core.f_if_1(
+            Core.t_int,
+            Core.f_lt(endpos, startright),
+            startright,
+            endpos
+          );
+          final Core.Type_string textleft = Type.f_string_from_string_end(text, posminus);
+          final Core.Type_string textright = Type.f_string_from_string_start(
+            text,
+            Core.f_plus(pos, lenclose)
+          );
+          final Textblock.Type_textblock find = Textblock.f_textblock_findparent_from_textblock(parent);
+          final Textblock.Type_delim closefind = find.close();
+          final Core.Type_string textfind = find.text();
+          final Core.Type_int startfind = find.startpos();
+          final Textblock.Type_delim delimfind = find.delim();
+          final Textblock.Type_delim delimright = Core.f_new(
+            Textblock.t_delim,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":delimlist"),
+                delimfind.delimlist()
+              // ]
+            )
+          );
+          final Core.Type_int lenfind = Core.f_minus(
+            Core.f_plus1(endclose),
+            startfind
+          );
+          final Core.Type_string textreplace = Type.f_string_from_string_end(textfind, lenfind);
+          final Textblock.Type_textblock replace = Core.f_copy(
+            find,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":text"),
+                textreplace,
+                Core.vx_new_string(":endpos"),
+                endclose,
+                Core.vx_new_string(":delim"),
+                Core.f_copy(
+                  delimfind,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":delimlist"),
+                      Core.f_empty(
+                        Textblock.t_delimlist
+                      )
+                    // ]
+                  )
+                ),
+                Core.vx_new_string(":close"),
+                Textblock.c_delimclosing
+              // ]
+            )
+          );
+          final Textblock.Type_textblock parentchg = Textblock.f_textblock_replace_from_textblock_find_replace(
+            parent,
+            find,
+            replace
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":text"),
+                textleft,
+                Core.vx_new_string(":startpos"),
+                startleft,
+                Core.vx_new_string(":endpos"),
+                endleft,
+                Core.vx_new_string(":parent"),
+                Core.f_copy(
+                  textblockarg,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":text"),
+                      textright,
+                      Core.vx_new_string(":startpos"),
+                      startright,
+                      Core.vx_new_string(":endpos"),
+                      endright,
+                      Core.vx_new_string(":delim"),
+                      delimright,
+                      Core.vx_new_string(":close"),
+                      closefind,
+                      Core.vx_new_string(":parent"),
+                      parentchg
+                    // ]
+                  )
+                )
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5496,17 +6232,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5527,8 +6263,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_delim empty = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(1)));
+      final Textblock.Type_delim empty = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_textblock_from_empty_textblock(empty, textblockarg);
       return output;
     }
@@ -5589,17 +6331,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5620,8 +6362,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_delim open = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(1)));
+      final Textblock.Type_delim open = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_textblock_from_open_textblock(open, textblockarg);
       return output;
     }
@@ -5641,229 +6389,243 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string text = textblockarg.text();
-        final Textblock.Type_textblock parent = textblockarg.parent();
-        final Core.Type_int startpos = textblockarg.startpos();
-        final Core.Type_int endpos = textblockarg.endpos();
-        final Textblock.Type_delim delima = textblockarg.delim();
-        final Core.Type_int pos = open.pos();
-        final Core.Type_string textopen = open.starttext();
-        final Core.Type_string textclose = open.endtext();
-        final Textblock.Type_delimlist delimlistl = open.delimlist();
-        final Core.Type_int lenopen = Core.f_length(
-          textopen
-        );
-        final Core.Type_int posminus = Core.f_minus1(
-          pos
-        );
-        final Core.Type_int startleft = Core.f_if_1(
-          Core.t_int,
-          Core.f_eq(
-            pos,
-            Core.vx_new_int(1)
-          ),
-          Core.f_minus1(
-            startpos
-          ),
-          startpos
-        );
-        final Core.Type_int endleft = Core.f_if_1(
-          Core.t_int,
-          Core.f_eq(
-            pos,
-            Core.vx_new_int(1)
-          ),
-          Core.f_minus1(
-            startpos
-          ),
-          Core.f_plus(
-            Core.f_minus1(
-              startleft
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string text = textblockarg.text();
+          final Textblock.Type_textblock parent = textblockarg.parent();
+          final Core.Type_int startpos = textblockarg.startpos();
+          final Core.Type_int endpos = textblockarg.endpos();
+          final Textblock.Type_delim delima = textblockarg.delim();
+          final Core.Type_int pos = open.pos();
+          final Core.Type_string textopen = open.starttext();
+          final Core.Type_string textclose = open.endtext();
+          final Textblock.Type_delimlist delimlistl = open.delimlist();
+          final Core.Type_int lenopen = Core.f_length(textopen);
+          final Core.Type_int posminus = Core.f_minus1(pos);
+          final Core.Type_int startleft = Core.f_if_1(
+            Core.t_int,
+            Core.f_eq(
+              pos,
+              Core.vx_new_int(1)
             ),
-            posminus
-          )
-        );
-        final Core.Type_int startright = Core.f_plus_2(
-          Core.vx_new(
-            Core.t_intlist,
-            startpos,
-            posminus,
-            lenopen
-          )
-        );
-        final Core.Type_int startopen = Core.f_plus(
-          startpos,
-          posminus
-        );
-        final Core.Type_string textleft = Type.f_string_from_string_end(
-          text,
-          posminus
-        );
-        final Core.Type_string textpar = Type.f_string_from_string_start(
-          text,
-          pos
-        );
-        final Core.Type_string textright = Type.f_string_from_string_start(
-          text,
-          Core.f_plus(
-            pos,
-            lenopen
-          )
-        );
-        final Textblock.Type_delim close = Core.f_copy(
-          Textblock.c_delimclose,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":starttext"),
-            textclose
-          )
-        );
-        final Textblock.Type_textblock tbleft = Core.f_if_2(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_eq(
-                  Core.vx_new_string(""),
-                  textleft
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Core.f_empty(
-                  Textblock.t_textblock
-                );
-                return output_3;
-              })
+            Core.f_minus1(startpos),
+            startpos
+          );
+          final Core.Type_int endleft = Core.f_if_1(
+            Core.t_int,
+            Core.f_eq(
+              pos,
+              Core.vx_new_int(1)
             ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_new(
-                  Textblock.t_textblock,
+            Core.f_minus1(startpos),
+            Core.f_plus(
+              Core.f_minus1(startleft),
+              posminus
+            )
+          );
+          final Core.Type_int startright = Core.f_plus_2(
+            Core.vx_new(
+              Core.t_intlist,
+              // [
+                startpos,
+                posminus,
+                lenopen
+              // ]
+            )
+          );
+          final Core.Type_int startopen = Core.f_plus(startpos, posminus);
+          final Core.Type_string textleft = Type.f_string_from_string_end(text, posminus);
+          final Core.Type_string textpar = Type.f_string_from_string_start(text, pos);
+          final Core.Type_string textright = Type.f_string_from_string_start(
+            text,
+            Core.f_plus(pos, lenopen)
+          );
+          final Textblock.Type_delim close = Core.f_copy(
+            Textblock.c_delimclose,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":starttext"),
+                textclose
+              // ]
+            )
+          );
+          final Textblock.Type_textblock tbleft = Core.f_if_2(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_eq(
+                          Core.vx_new_string(""),
+                          textleft
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Core.f_empty(
+                          Textblock.t_textblock
+                        );
+                        return output_3;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              textleft,
+                              Core.vx_new_string(":startpos"),
+                              startleft,
+                              Core.vx_new_string(":endpos"),
+                              endleft
+                            // ]
+                          )
+                        );
+                        return output_4;
+                      }
+                  )
+                )
+              // ]
+            )
+          );
+          final Textblock.Type_textblock tbpar1 = Core.f_copy(
+            textblockarg,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":text"),
+                textpar,
+                Core.vx_new_string(":startpos"),
+                startopen,
+                Core.vx_new_string(":delim"),
+                Core.f_copy(
+                  open,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    textleft,
-                    Core.vx_new_string(":startpos"),
-                    startleft,
-                    Core.vx_new_string(":endpos"),
-                    endleft
+                    // [
+                      Core.vx_new_string(":pos"),
+                      Core.vx_new_int(0),
+                      Core.vx_new_string(":delimlist"),
+                      delima.delimlist()
+                    // ]
                   )
-                );
-                return output_4;
-              })
+                ),
+                Core.vx_new_string(":parent"),
+                parent
+              // ]
             )
-          )
-        );
-        final Textblock.Type_textblock tbpar1 = Core.f_copy(
-          textblockarg,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":text"),
-            textpar,
-            Core.vx_new_string(":startpos"),
-            startopen,
-            Core.vx_new_string(":delim"),
-            Core.f_copy(
-              open,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":pos"),
-                Core.vx_new_int(0),
-                Core.vx_new_string(":delimlist"),
-                delima.delimlist()
-              )
-            ),
-            Core.vx_new_string(":parent"),
-            parent
-          )
-        );
-        final Textblock.Type_textblock tbfind = Core.f_if_2(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_5 = Core.f_eq(
-                  Core.vx_new_string(""),
-                  textleft
-                );
-                return output_5;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_6 = Core.f_empty(
-                  Textblock.t_textblock
-                );
-                return output_6;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_7 = Textblock.f_textblock_findparent_from_textblock(
-                  parent
-                );
-                return output_7;
-              })
+          );
+          final Textblock.Type_textblock tbfind = Core.f_if_2(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_5 = Core.f_eq(
+                          Core.vx_new_string(""),
+                          textleft
+                        );
+                        return output_5;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_6 = Core.f_empty(
+                          Textblock.t_textblock
+                        );
+                        return output_6;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_7 = Textblock.f_textblock_findparent_from_textblock(parent);
+                        return output_7;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        final Textblock.Type_textblock tbparent = Core.f_if_2(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_8 = Core.f_is_empty_1(
-                  tbfind
-                );
-                return output_8;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_9 = tbpar1;
-                return output_9;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_10 = Textblock.f_textblock_addchild_from_textblock_find_child(
-                  tbpar1,
-                  tbfind,
-                  tbleft
-                );
-                return output_10;
-              })
+          );
+          final Textblock.Type_textblock tbparent = Core.f_if_2(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_8 = Core.f_is_empty_1(tbfind);
+                        return output_8;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_9 = tbpar1;
+                        return output_9;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_10 = Textblock.f_textblock_addchild_from_textblock_find_child(
+                          tbpar1,
+                          tbfind,
+                          tbleft
+                        );
+                        return output_10;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":text"),
-            textright,
-            Core.vx_new_string(":startpos"),
-            startright,
-            Core.vx_new_string(":endpos"),
-            endpos,
-            Core.vx_new_string(":delim"),
-            Core.f_new(
-              Textblock.t_delim,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":delimlist"),
-                delimlistl
-              )
-            ),
-            Core.vx_new_string(":close"),
-            close,
-            Core.vx_new_string(":parent"),
-            tbparent
-          )
-        );
-        return output_1;
-      })
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":text"),
+                textright,
+                Core.vx_new_string(":startpos"),
+                startright,
+                Core.vx_new_string(":endpos"),
+                endpos,
+                Core.vx_new_string(":delim"),
+                Core.f_new(
+                  Textblock.t_delim,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":delimlist"),
+                      delimlistl
+                    // ]
+                  )
+                ),
+                Core.vx_new_string(":close"),
+                close,
+                Core.vx_new_string(":parent"),
+                tbparent
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5908,17 +6670,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5939,8 +6701,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_delim single = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(1)));
+      final Textblock.Type_delim single = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_textblock textblockarg = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_textblock_from_single_textblock(single, textblockarg);
       return output;
     }
@@ -5960,224 +6728,226 @@ public final class Textblock {
     Textblock.Type_textblock output = Textblock.e_textblock;
     output = Core.f_let(
       Textblock.t_textblock,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string text = textblockarg.text();
-        final Textblock.Type_textblock parent = textblockarg.parent();
-        final Core.Type_int startpos = textblockarg.startpos();
-        final Core.Type_int endpos = textblockarg.endpos();
-        final Core.Type_int pos = single.pos();
-        final Core.Type_string origsingle = single.starttext();
-        final Core.Type_string textsingle = Core.f_switch(
-          Core.t_string,
-          origsingle,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_case_1(
-              Core.vx_new_string(":whitespace"),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_let(
-                  Core.t_string,
-                  Core.t_any_from_func.vx_fn_new(() -> {
-                    final Core.Type_string text2 = Type.f_string_from_string_start(
-                      text,
-                      pos
-                    );
-                    final Core.Type_int pos2 = Type.f_int_from_string_findkeyword(
-                      text2,
-                      Core.vx_new_string(":nonwhitespace")
-                    );
-                    final Core.Type_int pos3 = Core.f_if_2(
-                      Core.t_int,
-                      Core.vx_new(
-                        Core.t_thenelselist,
-                        Core.f_then(
-                          Core.t_boolean_from_func.vx_fn_new(() -> {
-                            Core.Type_any output_4 = Core.f_eq(
-                              Core.vx_new_int(0),
-                              pos2
-                            );
-                            return output_4;
-                          }),
-                          Core.t_any_from_func.vx_fn_new(() -> {
-                            Core.Type_any output_5 = Core.f_length(
-                              text2
-                            );
-                            return output_5;
-                          })
-                        ),
-                        Core.f_then(
-                          Core.t_boolean_from_func.vx_fn_new(() -> {
-                            Core.Type_any output_6 = Core.f_eq(
-                              pos2,
-                              pos
-                            );
-                            return output_6;
-                          }),
-                          Core.t_any_from_func.vx_fn_new(() -> {
-                            final Core.Type_any output_7 = pos2;
-                            return output_7;
-                          })
-                        ),
-                        Core.f_else(
-                          Core.t_any_from_func.vx_fn_new(() -> {
-                            Core.Type_any output_8 = Core.f_minus1(
-                              pos2
-                            );
-                            return output_8;
-                          })
-                        )
-                      )
-                    );
-                    final Core.Type_any output_3 = Type.f_string_from_string_start_end(
-                      text,
-                      pos,
-                      pos3
-                    );
-                    return output_3;
-                  })
-                );
-                return output_2;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_9 = origsingle;
-                return output_9;
-              })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string text = textblockarg.text();
+          final Textblock.Type_textblock parent = textblockarg.parent();
+          final Core.Type_int startpos = textblockarg.startpos();
+          final Core.Type_int endpos = textblockarg.endpos();
+          final Core.Type_int pos = single.pos();
+          final Core.Type_string origsingle = single.starttext();
+          final Core.Type_string textsingle = Core.f_switch(
+            Core.t_string,
+            origsingle,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_case_1(
+                  Core.vx_new_string(":whitespace"),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_let(
+                          Core.t_string,
+                          Core.t_any_from_func.vx_fn_new(
+                            () -> {
+                              final Core.Type_string text2 = Type.f_string_from_string_start(text, pos);
+                              final Core.Type_int pos2 = Type.f_int_from_string_findkeyword(
+                                text2,
+                                Core.vx_new_string(":nonwhitespace")
+                              );
+                              final Core.Type_int pos3 = Core.f_if_2(
+                                Core.t_int,
+                                Core.vx_new(
+                                  Core.t_thenelselist,
+                                  // [
+                                    Core.f_then(
+                                      Core.t_boolean_from_func.vx_fn_new(
+                                        () -> {
+                                          Core.Type_any output_4 = Core.f_eq(
+                                              Core.vx_new_int(0),
+                                              pos2
+                                            );
+                                            return output_4;
+                                          }
+                                      ),
+                                      Core.t_any_from_func.vx_fn_new(
+                                        () -> {
+                                          Core.Type_any output_5 = Core.f_length(text2);
+                                            return output_5;
+                                          }
+                                      )
+                                    ),
+                                    Core.f_then(
+                                      Core.t_boolean_from_func.vx_fn_new(
+                                        () -> {
+                                          Core.Type_any output_6 = Core.f_eq(pos2, pos);
+                                            return output_6;
+                                          }
+                                      ),
+                                      Core.t_any_from_func.vx_fn_new(
+                                        () -> {
+      final Core.Type_any output_7 = pos2;
+                                            return output_7;
+                                          }
+                                      )
+                                    ),
+                                    Core.f_else(
+                                      Core.t_any_from_func.vx_fn_new(
+                                        () -> {
+                                          Core.Type_any output_8 = Core.f_minus1(pos2);
+                                            return output_8;
+                                          }
+                                      )
+                                    )
+                                  // ]
+                                )
+                              );
+                              final Core.Type_any output_3 = Type.f_string_from_string_start_end(text, pos, pos3);
+                              return output_3;
+                            }
+                          )
+                        );
+                        return output_2;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_9 = origsingle;
+                        return output_9;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        final Textblock.Type_delimlist delimlistl = single.delimlist();
-        final Core.Type_int lensingle = Core.f_length(
-          textsingle
-        );
-        final Core.Type_int posminus = Core.f_minus1(
-          pos
-        );
-        final Core.Type_int startleft = startpos;
-        final Core.Type_int startsingle = Core.f_plus(
-          startpos,
-          posminus
-        );
-        final Core.Type_int endsingle = Core.f_switch(
-          Core.t_int,
-          textsingle,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_case_1(
-              Core.vx_new_string(":whitespace"),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_10 = Type.f_int_from_string_findkeyword(
-                  text,
-                  Core.vx_new_string(":nonwhitespace")
-                );
-                return output_10;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_11 = Core.f_plus(
-                  Core.f_minus1(
-                    startsingle
-                  ),
-                  lensingle
-                );
-                return output_11;
-              })
+          );
+          final Textblock.Type_delimlist delimlistl = single.delimlist();
+          final Core.Type_int lensingle = Core.f_length(textsingle);
+          final Core.Type_int posminus = Core.f_minus1(pos);
+          final Core.Type_int startleft = startpos;
+          final Core.Type_int startsingle = Core.f_plus(startpos, posminus);
+          final Core.Type_int endsingle = Core.f_switch(
+            Core.t_int,
+            textsingle,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_case_1(
+                  Core.vx_new_string(":whitespace"),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_10 = Type.f_int_from_string_findkeyword(
+                          text,
+                          Core.vx_new_string(":nonwhitespace")
+                        );
+                        return output_10;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_11 = Core.f_plus(
+                          Core.f_minus1(startsingle),
+                          lensingle
+                        );
+                        return output_11;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        final Core.Type_int endleft = Core.f_if_1(
-          Core.t_int,
-          Core.f_eq(
+          );
+          final Core.Type_int endleft = Core.f_if_1(
+            Core.t_int,
+            Core.f_eq(
+              startsingle,
+              startpos
+            ),
             startsingle,
-            startpos
-          ),
-          startsingle,
-          Core.f_minus1(
-            startsingle
-          )
-        );
-        final Core.Type_int startright = Core.f_plus1(
-          endsingle
-        );
-        final Core.Type_string textleft = Type.f_string_from_string_end(
-          text,
-          posminus
-        );
-        final Core.Type_string textpar = Type.f_string_from_string_start(
-          text,
-          pos
-        );
-        final Core.Type_string textright = Type.f_string_from_string_start(
-          text,
-          Core.f_plus(
-            pos,
-            lensingle
-          )
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":text"),
-            textleft,
-            Core.vx_new_string(":startpos"),
-            startleft,
-            Core.vx_new_string(":endpos"),
-            endleft,
-            Core.vx_new_string(":delim"),
-            Core.f_new(
-              Textblock.t_delim,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":delimlist"),
-                delimlistl
-              )
-            ),
-            Core.vx_new_string(":parent"),
-            Core.f_new(
-              Textblock.t_textblock,
-              Core.vx_new(
-                Core.t_anylist,
+            Core.f_minus1(startsingle)
+          );
+          final Core.Type_int startright = Core.f_plus1(endsingle);
+          final Core.Type_string textleft = Type.f_string_from_string_end(text, posminus);
+          final Core.Type_string textpar = Type.f_string_from_string_start(text, pos);
+          final Core.Type_string textright = Type.f_string_from_string_start(
+            text,
+            Core.f_plus(pos, lensingle)
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
                 Core.vx_new_string(":text"),
-                textsingle,
+                textleft,
                 Core.vx_new_string(":startpos"),
-                startsingle,
+                startleft,
                 Core.vx_new_string(":endpos"),
-                endsingle,
+                endleft,
                 Core.vx_new_string(":delim"),
-                Core.f_copy(
-                  single,
+                Core.f_new(
+                  Textblock.t_delim,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":pos"),
-                    Core.vx_new_int(0),
-                    Core.vx_new_string(":delimlist"),
-                    Core.f_empty(
-                      Textblock.t_delimlist
-                    )
+                    // [
+                      Core.vx_new_string(":delimlist"),
+                      delimlistl
+                    // ]
                   )
                 ),
                 Core.vx_new_string(":parent"),
-                Core.f_copy(
-                  textblockarg,
+                Core.f_new(
+                  Textblock.t_textblock,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    textright,
-                    Core.vx_new_string(":startpos"),
-                    startright,
-                    Core.vx_new_string(":endpos"),
-                    endpos
+                    // [
+                      Core.vx_new_string(":text"),
+                      textsingle,
+                      Core.vx_new_string(":startpos"),
+                      startsingle,
+                      Core.vx_new_string(":endpos"),
+                      endsingle,
+                      Core.vx_new_string(":delim"),
+                      Core.f_copy(
+                        single,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":pos"),
+                            Core.vx_new_int(0),
+                            Core.vx_new_string(":delimlist"),
+                            Core.f_empty(
+                              Textblock.t_delimlist
+                            )
+                          // ]
+                        )
+                      ),
+                      Core.vx_new_string(":parent"),
+                      Core.f_copy(
+                        textblockarg,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":text"),
+                            textright,
+                            Core.vx_new_string(":startpos"),
+                            startright,
+                            Core.vx_new_string(":endpos"),
+                            endpos
+                          // ]
+                        )
+                      )
+                    // ]
                   )
                 )
-              )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -6222,17 +6992,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6253,8 +7023,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delim delim = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delim delim = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_textblock_from_string_delim(text, delim);
       return output;
     }
@@ -6276,16 +7052,16 @@ public final class Textblock {
       Textblock.t_textblock,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":text"),
-        text,
-        Core.vx_new_string(":delim"),
-        delim,
-        Core.vx_new_string(":startpos"),
-        Core.vx_new_int(0),
-        Core.vx_new_string(":endpos"),
-        Core.f_length(
-          text
-        )
+        // [
+          Core.vx_new_string(":text"),
+          text,
+          Core.vx_new_string(":delim"),
+          delim,
+          Core.vx_new_string(":startpos"),
+          Core.vx_new_int(0),
+          Core.vx_new_string(":endpos"),
+          Core.f_length(text)
+        // ]
       )
     );
     return output;
@@ -6331,17 +7107,17 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6362,8 +7138,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblock textblock = Core.f_any_from_any(Textblock.t_textblock, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delim delim = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(1)));
+      final Textblock.Type_textblock textblock = Core.f_any_from_any(
+        Textblock.t_textblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delim delim = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_textblock_from_textblock_delim(textblock, delim);
       return output;
     }
@@ -6424,17 +7206,22 @@ public final class Textblock {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblocklist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Textblock.t_textblock), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblocklist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Textblock.t_textblock
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6455,8 +7242,14 @@ public final class Textblock {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Textblock.Type_textblocklist tblist = Core.f_any_from_any(Textblock.t_textblocklist, arglist.vx_any(Core.vx_new_int(0)));
-      final Textblock.Type_delim remove = Core.f_any_from_any(Textblock.t_delim, arglist.vx_any(Core.vx_new_int(1)));
+      final Textblock.Type_textblocklist tblist = Core.f_any_from_any(
+        Textblock.t_textblocklist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Textblock.Type_delim remove = Core.f_any_from_any(
+        Textblock.t_delim,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Textblock.f_textblocklist_from_textblocklist_remove(tblist, remove);
       return output;
     }
@@ -6477,27 +7270,31 @@ public final class Textblock {
     output = Collection.f_list_from_list_filter(
       Textblock.t_textblocklist,
       tblist,
-      Core.t_any_from_any.vx_fn_new((textblock_any) -> {
-        final Textblock.Type_textblock textblock = Core.f_any_from_any(Textblock.t_textblock, textblock_any);
-        Core.Type_any output_1 = Core.f_let(
-          Textblock.t_textblock,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            final Textblock.Type_delim delimcurr = textblock.delim();
-            final Core.Type_string namecurr = delimcurr.name();
-            final Core.Type_string nameremove = remove.name();
-            final Core.Type_any output_2 = Core.f_if(
-              Textblock.t_textblock,
-              Core.f_ne(
-                namecurr,
-                nameremove
-              ),
-              textblock
-            );
-            return output_2;
-          })
-        );
-        return output_1;
-      })
+      Core.t_any_from_any.vx_fn_new(
+        (textblock_any) -> {
+          final Textblock.Type_textblock textblock = Core.f_any_from_any(
+            Textblock.t_textblock,
+            textblock_any
+          );
+          Core.Type_any output_1 = Core.f_let(
+            Textblock.t_textblock,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                final Textblock.Type_delim delimcurr = textblock.delim();
+                final Core.Type_string namecurr = delimcurr.name();
+                final Core.Type_string nameremove = remove.name();
+                final Core.Type_any output_2 = Core.f_if(
+                  Textblock.t_textblock,
+                  Core.f_ne(namecurr, nameremove),
+                  textblock
+                );
+                return output_2;
+              }
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }

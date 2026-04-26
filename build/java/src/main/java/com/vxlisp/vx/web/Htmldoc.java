@@ -48,17 +48,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -79,8 +79,14 @@ public final class Htmldoc {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string stylesheettext = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string id = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string stylesheettext = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Htmldoc.f_boolean_print_from_id_stylesheettext(id, stylesheettext);
       return output;
     }
@@ -140,17 +146,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -178,14 +184,20 @@ public final class Htmldoc {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Htmldoc.f_boolean_remove_from_id(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string id = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Htmldoc.f_boolean_remove_from_id(id);
       return output;
     }
@@ -246,17 +258,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -277,8 +289,14 @@ public final class Htmldoc {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string htmltext = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string id = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string htmltext = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Htmldoc.f_boolean_replace_from_id_htmltext(id, htmltext);
       return output;
     }
@@ -340,17 +358,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -371,9 +389,18 @@ public final class Htmldoc {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string parent = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_string htmltext = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_string id = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string parent = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_string htmltext = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Htmldoc.f_boolean_replace_from_id_parent_htmltext(id, parent, htmltext);
       return output;
     }
@@ -435,17 +462,17 @@ public final class Htmldoc {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -480,7 +507,10 @@ public final class Htmldoc {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Core.Type_boolean> future = Htmldoc.f_boolean_write_stylesheet_from_string(text);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -543,17 +573,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -574,9 +604,18 @@ public final class Htmldoc {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string attribute = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_string value = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_string id = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string attribute = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_string value = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Htmldoc.f_boolean_write_from_id_attribute_value(id, attribute, value);
       return output;
     }
@@ -637,17 +676,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -668,8 +707,14 @@ public final class Htmldoc {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string htmltext = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string id = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string htmltext = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Htmldoc.f_boolean_write_from_id_htmltext(id, htmltext);
       return output;
     }
@@ -730,17 +775,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -761,8 +806,14 @@ public final class Htmldoc {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_boolean visible = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string id = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_boolean visible = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Htmldoc.f_boolean_write_from_id_visible(id, visible);
       return output;
     }
@@ -824,17 +875,17 @@ public final class Htmldoc {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -859,7 +910,10 @@ public final class Htmldoc {
 
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
-      final Html.Type_stylesheet inputval = Core.f_any_from_any(Html.t_stylesheet, value);
+      final Html.Type_stylesheet inputval = Core.f_any_from_any(
+        Html.t_stylesheet,
+        value
+      );
       final CompletableFuture<Core.Type_boolean> future = Htmldoc.f_boolean_write_from_stylesheet(inputval);
       @SuppressWarnings("unchecked")
       final CompletableFuture<T> output = (CompletableFuture<T>)future;
@@ -869,7 +923,10 @@ public final class Htmldoc {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(Html.t_stylesheet, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(
+        Html.t_stylesheet,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Core.Type_boolean> future = Htmldoc.f_boolean_write_from_stylesheet(stylesheet);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -890,23 +947,21 @@ public final class Htmldoc {
     CompletableFuture<Core.Type_boolean> output = Core.vx_async_new_from_value(Core.e_boolean);
     output = Core.f_let_async(
       Core.t_boolean,
-      Core.t_any_from_func_async.vx_fn_new(() -> {
-        final Core.Type_string text = Htmldoc.f_string_from_stylesheet(
-          stylesheet
-        );
-        final CompletableFuture<Core.Type_boolean> future_iswrite = Htmldoc.f_boolean_write_stylesheet_from_string(
-          text
-        );
+      Core.t_any_from_func_async.vx_fn_new(
+        () -> {
+          final Core.Type_string text = Htmldoc.f_string_from_stylesheet(stylesheet);
+        final CompletableFuture<Core.Type_boolean> future_iswrite = Htmldoc.f_boolean_write_stylesheet_from_string(text);
         final CompletableFuture<Core.Type_any> output_1 = Core.vx_async_from_async_fn(
           Core.t_any,
           future_iswrite,
           (iswrite) -> {
             final Core.Type_any output_2 = iswrite;
-            return output_2;
-          }
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -950,17 +1005,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -988,14 +1043,20 @@ public final class Htmldoc {
       T output = Core.f_empty(generic_any_1);
       final Ui.Type_ui inputval = (Ui.Type_ui)value;
       final Core.Type_any outputval = Htmldoc.f_boolean_writeevents_from_ui(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Ui.Type_ui ui = Core.f_any_from_any(Ui.t_ui, arglist.vx_any(Core.vx_new_int(0)));
+      final Ui.Type_ui ui = Core.f_any_from_any(
+        Ui.t_ui,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Htmldoc.f_boolean_writeevents_from_ui(ui);
       return output;
     }
@@ -1054,17 +1115,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1143,17 +1204,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1174,7 +1235,10 @@ public final class Htmldoc {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Htmldoc.f_context_write(context);
       return output;
     }
@@ -1234,17 +1298,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1272,14 +1336,20 @@ public final class Htmldoc {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Htmldoc.f_string_from_id(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string id = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Htmldoc.f_string_from_id(id);
       return output;
     }
@@ -1339,17 +1409,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1377,14 +1447,20 @@ public final class Htmldoc {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_stylesheet inputval = (Html.Type_stylesheet)value;
       final Core.Type_any outputval = Htmldoc.f_string_from_stylesheet(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(Html.t_stylesheet, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(
+        Html.t_stylesheet,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Htmldoc.f_string_from_stylesheet(stylesheet);
       return output;
     }
@@ -1404,17 +1480,17 @@ public final class Htmldoc {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_stylelist stylelist = Html.f_styles_from_stylesheet(
-          stylesheet
-        );
-        final Core.Type_string text = Html.f_string_from_stylelist_indent(
-          stylelist,
-          Core.vx_new_int(0)
-        );
-        final Core.Type_any output_1 = text;
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_stylelist stylelist = Html.f_styles_from_stylesheet(stylesheet);
+          final Core.Type_string text = Html.f_string_from_stylelist_indent(
+            stylelist,
+            Core.vx_new_int(0)
+          );
+          final Core.Type_any output_1 = text;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1458,17 +1534,17 @@ public final class Htmldoc {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1496,14 +1572,20 @@ public final class Htmldoc {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Htmldoc.f_ui_readstate_from_uid(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string uid = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string uid = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Htmldoc.f_ui_readstate_from_uid(uid);
       return output;
     }

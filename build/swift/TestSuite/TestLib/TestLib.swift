@@ -10,25 +10,116 @@ public enum TestLib {
     let output : any Vx_Data_File.Type_file = Vx_Core.vx_copy(
       Vx_Data_File.t_file,
       file,
-      Vx_Core.vx_new_string(":path"),
-      Vx_Core.vx_new_string(spath)
+      [
+        Vx_Core.vx_new_string(":path"),
+        Vx_Core.vx_new_string(spath)
+      ]
     )
     return output
   }
 
   public static func read_test_file(
+    _ context : any Vx_Core.Type_context,
     _ path : String,
     _ filename : String
   ) -> String {
     var file : any Vx_Data_File.Type_file = Vx_Core.vx_new(
       Vx_Data_File.t_file,
-      Vx_Core.vx_new_string(":path"),
-      Vx_Core.vx_new_string(path),
-      Vx_Core.vx_new_string(":name"),
-      Vx_Core.vx_new_string(filename)
+      [
+        Vx_Core.vx_new_string(":path"),
+        Vx_Core.vx_new_string(path),
+        Vx_Core.vx_new_string(":name"),
+        Vx_Core.vx_new_string(filename)
+      ]
     )
     var string_file : any Vx_Core.Type_string = Vx_Data_File.vx_string_read_from_file(file)
     let output : String = string_file.vx_string()
+    return output
+  }
+
+  public static func sample_testcase1(
+    _ context : any Vx_Core.Type_context
+  ) -> any Vx_Test.Type_testcase {
+    var output : any Vx_Test.Type_testcase = Vx_Core.vx_new(
+      Vx_Test.t_testcase,
+      [
+        Vx_Core.vx_new_string(":passfail"),
+        Vx_Core.e_boolean,
+        Vx_Core.vx_new_string(":testpkg"),
+        Vx_Core.vx_new_string("vx/core"),
+        Vx_Core.vx_new_string(":casename"),
+        Vx_Core.vx_new_string("boolean"),
+        Vx_Core.vx_new_string(":describelist"),
+        TestLib.sample_testdescribelist(context)
+      ]
+    )
+    return output
+  }
+
+  public static func sample_testcase2(
+    _ context : any Vx_Core.Type_context
+  ) -> any Vx_Test.Type_testcase {
+    var output : any Vx_Test.Type_testcase = Vx_Core.vx_new(
+      Vx_Test.t_testcase,
+      [
+        Vx_Core.vx_new_string(":passfail"),
+        Vx_Core.e_boolean,
+        Vx_Core.vx_new_string(":testpkg"),
+        Vx_Core.vx_new_string("vx/core"),
+        Vx_Core.vx_new_string(":casename"),
+        Vx_Core.vx_new_string("float"),
+        Vx_Core.vx_new_string(":describelist"),
+        Vx_Core.vx_any_from_any(
+          Vx_Test.t_testdescribelist,
+          Vx_Core.vx_new(
+            Vx_Test.t_testdescribelist,
+            [
+              Vx_Core.vx_new(
+                Vx_Test.t_testdescribe,
+                [
+                  Vx_Core.vx_new_string(":describename"),
+                  Vx_Core.vx_new_string(
+                    "(test 4.5 (float 4.5))"
+                  ),
+                  Vx_Core.vx_new_string(":testpkg"),
+                  Vx_Core.vx_new_string("vx/core"),
+                  Vx_Core.vx_new_string(":testresult"),
+                  Vx_Test.f_test(
+                    context,
+                    Vx_Core.vx_new_decimal("4.5"),
+                    Vx_Core.f_new_from_type(
+                      Vx_Core.t_float,
+                      Vx_Core.vx_new(
+                        Vx_Core.t_anylist,
+                        [
+                          Vx_Core.vx_new_decimal("4.5")
+                        ]
+                      )
+                    )
+                  )
+                ]
+              )
+            ]
+          )
+        )
+      ]
+    )
+    return output
+  }
+
+  public static func sample_testcaselist(
+    _ context : any Vx_Core.Type_context
+  ) -> any Vx_Test.Type_testcaselist {
+    var output : any Vx_Test.Type_testcaselist = Vx_Core.vx_any_from_any(
+      Vx_Test.t_testcaselist,
+      Vx_Core.vx_new(
+        Vx_Test.t_testcaselist,
+        [
+          TestLib.sample_testcase1(context),
+          TestLib.sample_testcase2(context)
+        ]
+      )
+    )
     return output
   }
 
@@ -37,12 +128,14 @@ public enum TestLib {
   ) -> any Vx_Test.Type_testdescribe {
     var output : any Vx_Test.Type_testdescribe = Vx_Core.vx_new(
       Vx_Test.t_testdescribe,
-      Vx_Core.vx_new_string(":describename"),
-      Vx_Core.vx_new_string("(test-true true)"),
-      Vx_Core.vx_new_string(":testpkg"),
-      Vx_Core.vx_new_string("vx/core"),
-      Vx_Core.vx_new_string(":testresult"),
-      TestLib.sample_testresult1(context)
+      [
+        Vx_Core.vx_new_string(":describename"),
+        Vx_Core.vx_new_string("(test-true true)"),
+        Vx_Core.vx_new_string(":testpkg"),
+        Vx_Core.vx_new_string("vx/core"),
+        Vx_Core.vx_new_string(":testresult"),
+        TestLib.sample_testresult1(context)
+      ]
     )
     return output
   }
@@ -52,12 +145,14 @@ public enum TestLib {
   ) -> any Vx_Test.Type_testdescribe {
     var output : any Vx_Test.Type_testdescribe = Vx_Core.vx_new(
       Vx_Test.t_testdescribe,
-      Vx_Core.vx_new_string(":describename"),
-      Vx_Core.vx_new_string("(test-false false)"),
-      Vx_Core.vx_new_string(":testpkg"),
-      Vx_Core.vx_new_string("vx/core"),
-      Vx_Core.vx_new_string(":testresult"),
-      TestLib.sample_testresult2(context)
+      [
+        Vx_Core.vx_new_string(":describename"),
+        Vx_Core.vx_new_string("(test-false false)"),
+        Vx_Core.vx_new_string(":testpkg"),
+        Vx_Core.vx_new_string("vx/core"),
+        Vx_Core.vx_new_string(":testresult"),
+        TestLib.sample_testresult2(context)
+      ]
     )
     return output
   }
@@ -67,10 +162,38 @@ public enum TestLib {
   ) -> any Vx_Test.Type_testdescribelist {
     var output : any Vx_Test.Type_testdescribelist = Vx_Core.vx_any_from_any(
       Vx_Test.t_testdescribelist,
-      Vx_Test.t_testdescribelist.vx_new(
-        TestLib.sample_testdescribe1(context),
-        TestLib.sample_testdescribe2(context)
+      Vx_Core.vx_new(
+        Vx_Test.t_testdescribelist,
+        [
+          TestLib.sample_testdescribe1(context),
+          TestLib.sample_testdescribe2(context)
+        ]
       )
+    )
+    return output
+  }
+
+  public static func sample_testpackage(
+    _ context : any Vx_Core.Type_context
+  ) -> any Vx_Test.Type_testpackage {
+    var output : any Vx_Test.Type_testpackage = Vx_Core.vx_new(
+      Vx_Test.t_testpackage,
+      [
+        Vx_Core.vx_new_string(":testpkg"),
+        Vx_Core.vx_new_string("vx/core"),
+        Vx_Core.vx_new_string(":caselist"),
+        TestLib.sample_testcaselist(context)
+      ]
+    )
+    return output
+  }
+
+  public static func sample_testpackagelist(
+    _ context : any Vx_Core.Type_context
+  ) -> any Vx_Test.Type_testpackagelist {
+    var output : any Vx_Test.Type_testpackagelist = Vx_Core.vx_any_from_any(
+      Vx_Test.t_testpackagelist,
+      TestLib.sample_testpackage(context)
     )
     return output
   }
@@ -164,8 +287,16 @@ public enum TestLib {
 
   public static func test_list_from_list_async() -> Bool {
     let testname : String = "test_list_from_list_async"
-    let sparams : any Vx_Core.Type_anylist = Vx_Core.vx_anylist_from_arraystring("hello", "world")
-    let slist : any Vx_Core.Type_stringlist = Vx_Core.f_new_from_type(Vx_Core.t_stringlist, sparams)
+    let sparams : any Vx_Core.Type_anylist = Vx_Core.vx_anylist_from_arraystring(
+      [
+        "hello",
+        "world"
+      ]
+    )
+    let slist : any Vx_Core.Type_stringlist = Vx_Core.f_new_from_type(
+      Vx_Core.t_stringlist,
+      sparams
+    )
     let fn_async : Vx_Core.Func_any_from_any_async = Vx_Core.t_any_from_any_async.vx_fn_new({
       anyval in
       let stringval : any Vx_Core.Type_string = anyval as! Vx_Core.Type_string
@@ -174,8 +305,15 @@ public enum TestLib {
       let output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(outval)
       return output
     });
-    let asynclist : Vx_Core.Future = Vx_Core.vx_list_from_list_async(Vx_Core.t_stringlist, slist, fn_async)
-    let sync : any Vx_Core.Type_stringlist = Vx_Core.vx_sync_from_async(Vx_Core.t_stringlist, asynclist)
+    let asynclist : Vx_Core.Future = Vx_Core.vx_list_from_list_async(
+      Vx_Core.t_stringlist,
+      slist,
+      fn_async
+    )
+    let sync : any Vx_Core.Type_stringlist = Vx_Core.vx_sync_from_async(
+      Vx_Core.t_stringlist,
+      asynclist
+    )
     let expected : String = "(stringlist\n \"hello!\"\n \"world!\")"
     let actual : String = Vx_Core.vx_string_from_any(sync)
     let output : Bool = TestLib.test(
@@ -190,14 +328,15 @@ public enum TestLib {
     _ context : any Vx_Core.Type_context
   ) -> Bool {
     let testname : String = "test_run_testresult"
-    var testresult : any Vx_Test.Type_testresult = TestLib.sample_testresult1(context)
-    var testresult_resolved : any Vx_Test.Type_testresult = TestLib.run_testresult(
+    let testresult : any Vx_Test.Type_testresult = TestLib.sample_testresult1(context)
+    let testresult_resolved : any Vx_Test.Type_testresult = TestLib.run_testresult(
       "vx/core",
       "boolean",
       "",
       testresult
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testresult.txt"
     )
@@ -221,6 +360,7 @@ public enum TestLib {
       testdescribe
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribe.txt"
     )
@@ -239,18 +379,102 @@ public enum TestLib {
     _ context : any Vx_Core.Type_context
   ) -> Bool {
     let testname : String = "test_run_testdescribelist"
-    var testresult : any Vx_Test.Type_testresult = TestLib.sample_testresult1(context)
-    var testresult_resolved : any Vx_Test.Type_testresult = TestLib.run_testresult(
+    let testdescribelist : any Vx_Test.Type_testdescribelist = TestLib.sample_testdescribelist(context)
+    let testdescribelist_resolved : any Vx_Test.Type_testdescribelist = TestLib.run_testdescribelist(
       "vx/core",
       "boolean",
-      "",
-      testresult
+      testdescribelist
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribelist.txt"
     )
-    var actual : String = Vx_Core.vx_string_from_any(testresult_resolved)
+    var actual : String = Vx_Core.vx_string_from_any(
+      testdescribelist_resolved
+    )
+    let output : Bool = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
+  public static func test_run_testcase(
+    _ context : any Vx_Core.Type_context
+  ) -> Bool {
+    let testname : String = "test_run_testcase"
+    let testcase : any Vx_Test.Type_testcase = TestLib.sample_testcase1(context)
+    let testcase_resolved : any Vx_Test.Type_testcase = TestLib.run_testcase(testcase)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcase.txt"
+    )
+    var actual : String = Vx_Core.vx_string_from_any(testcase_resolved)
+    let output : Bool = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
+  public static func test_run_testcaselist(
+    _ context : any Vx_Core.Type_context
+  ) -> Bool {
+    let testname : String = "test_run_testcaselist"
+    let testcase : any Vx_Test.Type_testcase = TestLib.sample_testcase1(context)
+    let testcase_resolved : any Vx_Test.Type_testcase = TestLib.run_testcase(testcase)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcaselist.txt"
+    )
+    var actual : String = Vx_Core.vx_string_from_any(testcase_resolved)
+    let output : Bool = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
+  public static func test_run_testpackage(
+    _ context : any Vx_Core.Type_context
+  ) -> Bool {
+    let testname : String = "test_run_testpackage"
+    let testpackage : any Vx_Test.Type_testpackage = TestLib.sample_testpackage(context)
+    let testpackage_resolved : any Vx_Test.Type_testpackage = TestLib.run_testpackage(testpackage)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testpackage.txt"
+    )
+    var actual : String = Vx_Core.vx_string_from_any(testpackage_resolved)
+    let output : Bool = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
+  public static func test_run_testpackagelist(
+    _ context : any Vx_Core.Type_context
+  ) -> Bool {
+    let testname : String = "test_run_testpackagelist"
+    let testpackagelist : any Vx_Test.Type_testpackagelist = TestLib.sample_testpackagelist(context)
+    let testpackagelist_resolved : any Vx_Test.Type_testpackagelist = TestLib.run_testpackagelist(testpackagelist)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testpackagelist.txt"
+    )
+    var actual : String = Vx_Core.vx_string_from_any(
+      testpackagelist_resolved
+    )
     let output : Bool = TestLib.test(
       testname,
       expected,
@@ -263,14 +487,15 @@ public enum TestLib {
     _ context : any Vx_Core.Type_context
   ) -> Bool {
     let testname : String = "test_run_testresult_async"
-    var testresult : any Vx_Test.Type_testresult = TestLib.sample_testresult1(context)
-    var testresult_resolved : any Vx_Test.Type_testresult = TestLib.run_testresult(
+    let testresult : any Vx_Test.Type_testresult = TestLib.sample_testresult1(context)
+    let testresult_resolved : any Vx_Test.Type_testresult = TestLib.run_testresult(
       "vx/core",
       "boolean",
       "",
       testresult
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testresult_async.txt"
     )
@@ -283,17 +508,44 @@ public enum TestLib {
     return output
   }
 
+  public static func test_run_testdescribe_async(
+    _ context : any Vx_Core.Type_context
+  ) -> Bool {
+    let testname : String = "test_run_testdescribe_async"
+    let testdescribe : any Vx_Test.Type_testdescribe = TestLib.sample_testdescribe1(context)
+    let testdescribe_resolved : any Vx_Test.Type_testdescribe = TestLib.run_testdescribe(
+      "vx/core",
+      "boolean",
+      testdescribe
+    )
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testdescribe_async.txt"
+    )
+    var actual : String = Vx_Core.vx_string_from_any(
+      testdescribe_resolved
+    )
+    let output : Bool = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
   public static func test_run_testdescribelist_async(
     _ context : any Vx_Core.Type_context
   ) -> Bool {
     let testname : String = "test_run_testdescribelist_async"
-    var testdescribelist : any Vx_Test.Type_testdescribelist = TestLib.sample_testdescribelist(context)
-    var testdescribelist_resolved : any Vx_Test.Type_testdescribelist = TestLib.run_testdescribelist(
+    let testdescribelist : any Vx_Test.Type_testdescribelist = TestLib.sample_testdescribelist(context)
+    let testdescribelist_resolved : any Vx_Test.Type_testdescribelist = TestLib.run_testdescribelist(
       "vx/core",
       "boolean",
       testdescribelist
     )
     var expected : String = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribelist_async.txt"
     )
@@ -308,12 +560,39 @@ public enum TestLib {
     return output
   }
 
+  public static func test_run_testcase_async(
+    _ context : any Vx_Core.Type_context
+  ) -> Bool {
+    let testname : String = "test_run_testcase_async"
+    var testcase : any Vx_Test.Type_testcase = TestLib.sample_testcase1(context)
+    var testcase_resolved : any Vx_Test.Type_testcase = TestLib.run_testcase(testcase)
+    var expected : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcase_async.txt"
+    )
+    var actual : String = Vx_Core.vx_string_from_any(testcase_resolved)
+    let output : Bool = TestLib.test(
+      testname,
+      expected,
+      actual
+    )
+    return output
+  }
+
   public static func test_pathfull_from_file() -> Bool {
     let testname : String = "test_pathfull_from_file"
     var file : any Vx_Data_File.Type_file = Vx_Core.vx_new(
       Vx_Data_File.t_file,
-      Vx_Core.vx_new_string(":path"), Vx_Core.vx_new_string(spath + "/vx"),
-      Vx_Core.vx_new_string(":name"), Vx_Core.vx_new_string("string_read_from_file.txt"))
+      [
+        Vx_Core.vx_new_string(":path"),
+        Vx_Core.vx_new_string(spath + "/vx"),
+        Vx_Core.vx_new_string(":name"),
+        Vx_Core.vx_new_string(
+          "string_read_from_file.txt"
+        )
+      ]
+    )
     var string_path : any Vx_Core.Type_string = Vx_Data_File.f_pathfull_from_file(file)
     var expected : String = spath + "/vx/string_read_from_file.txt"
     var actual : String = string_path.vx_string()
@@ -325,10 +604,16 @@ public enum TestLib {
     return output
   }
 
-  public static func test_read_file() -> Bool {
+  public static func test_read_file(
+    _ context : any Vx_Core.Type_context
+  ) -> Bool {
     let testname : String = "test_read_file"
     var expected : String = "testdata"
-    var actual : String = read_test_file(spath + "/vx", "string_read_from_file.txt")
+    var actual : String = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "string_read_from_file.txt"
+    )
     let output : Bool = TestLib.test(
       testname,
       expected,
@@ -337,16 +622,29 @@ public enum TestLib {
     return output
   }
 
-  public static func test_write_file() -> Bool {
+  public static func test_write_file(
+    _ context : any Vx_Core.Type_context
+  ) -> Bool {
     let testname : String = "test_write_file"
-    var file : any Vx_Data_File.Type_file = Vx_Core.vx_new(
-      Vx_Data_File.t_file, 
-      Vx_Core.vx_new_string(":path"), Vx_Core.vx_new_string(spath + "/vx"),
-      Vx_Core.vx_new_string(":name"), Vx_Core.vx_new_string("string_read_from_file.txt")
+    let file : any Vx_Data_File.Type_file = Vx_Core.vx_new(
+      Vx_Data_File.t_file,
+      [
+        Vx_Core.vx_new_string(":path"),
+        Vx_Core.vx_new_string(spath + "/vx"),
+        Vx_Core.vx_new_string(":name"),
+        Vx_Core.vx_new_string(
+          "boolean_write_from_file_string"
+        )
+      ]
     )
-    var string_path : any Vx_Core.Type_string = Vx_Data_File.f_pathfull_from_file(file)
-    var expected : String = spath + "/vx/string_read_from_file.txt"
-    var actual : String = string_path.vx_string()
+    var string_file : any Vx_Core.Type_string = Vx_Core.vx_new_string("writetext")
+    var boolean_write : any Vx_Core.Type_boolean = Vx_Data_File.vx_boolean_write_from_file_string(
+      context,
+      file,
+      string_file
+    )
+    var expected : String = "true"
+    var actual : String = Vx_Core.vx_string_from_any(boolean_write)
     let output : Bool = TestLib.test(
       testname,
       expected,
@@ -371,8 +669,10 @@ public enum TestLib {
     let output : any Vx_Test.Type_testcase = Vx_Core.vx_copy(
       Vx_Test.t_testcase,
       testcase,
-      Vx_Core.vx_new_string(":describelist"),
-      testdescribelist_resolved
+      [
+        Vx_Core.vx_new_string(":describelist"),
+        testdescribelist_resolved
+      ]
     )
     return output
   }
@@ -402,9 +702,13 @@ public enum TestLib {
     }
     let output : any Vx_Test.Type_testcaselist = Vx_Core.vx_any_from_any(
       Vx_Test.t_testcaselist,
-      testcaselist.vx_new(
+      Vx_Core.vx_new(
+      Vx_Test.t_testcaselist,
+      [
+        testcaselist,
         listtestcase_resolved
-      )
+      ]
+    )
     )
     return output
   }
@@ -420,13 +724,15 @@ public enum TestLib {
     let output : any Vx_Test.Type_testdescribe = Vx_Core.vx_copy(
       Vx_Test.t_testdescribe,
       describe,
-      ":testresult",
-      TestLib.run_testresult(
+      [
+        ":testresult",
+        TestLib.run_testresult(
         testpkg,
         casename,
         message,
         testresult
       )
+      ]
     )
     return output
   }
@@ -448,8 +754,11 @@ public enum TestLib {
     }
     let output : any Vx_Test.Type_testdescribelist = Vx_Core.vx_any_from_any(
       Vx_Test.t_testdescribelist,
-      testdescribelist.vx_new(
-        listtestdescribe_resolved
+      Vx_Core.vx_new(
+        Vx_Test.t_testdescribelist,
+        [
+          listtestdescribe_resolved
+        ]
       )
     )
     return output
@@ -463,8 +772,10 @@ public enum TestLib {
     let output : any Vx_Test.Type_testpackage = Vx_Core.vx_copy(
       Vx_Test.t_testpackage,
       testpackage,
-      Vx_Core.vx_new_string(":caselist"),
-      testcaselist_resolved
+      [
+        Vx_Core.vx_new_string(":caselist"),
+        testcaselist_resolved
+      ]
     )
     return output
   }
@@ -480,6 +791,28 @@ public enum TestLib {
     return output
   }
 
+  public static func run_testpackagelist(
+    _ testpackagelist : any Vx_Test.Type_testpackagelist
+  ) -> any Vx_Test.Type_testpackagelist {
+    let listtestpackage : [any Vx_Test.Type_testpackage] = testpackagelist.vx_listtestpackage()
+    var listtestpackage_resolved : [any Vx_Test.Type_testpackage] = []
+    for testpackage in listtestpackage {
+      let testpackage_resolved : any Vx_Test.Type_testpackage = TestLib.run_testpackage(testpackage)
+      listtestpackage_resolved.append(testpackage_resolved)
+    }
+    let output : any Vx_Test.Type_testpackagelist = Vx_Core.vx_any_from_any(
+      Vx_Test.t_testpackagelist,
+      Vx_Core.vx_new(
+      Vx_Test.t_testpackagelist,
+      [
+        testpackagelist,
+        listtestpackage_resolved
+      ]
+    )
+    )
+    return output
+  }
+
   public static func run_testresult(
     _ testpkg : String,
     _ testname : String,
@@ -490,8 +823,8 @@ public enum TestLib {
     var valactual : any Vx_Core.Type_any = testresult.actual()
     var passfail : Bool = testresult.passfail().vx_boolean()
     var code : String = testresult.code().vx_string()
-    var expected : String = Vx_Core.f_string_from_any(valexpected).vx_string()
-    var actual : String = Vx_Core.f_string_from_any(valactual).vx_string()
+    var expected : String = Vx_Core.vx_string_from_any(valexpected)
+    var actual : String = Vx_Core.vx_string_from_any(valactual)
     var msg : String = testpkg + "/" + testname + " " + message
     if (!passfail) {
       print(msg)

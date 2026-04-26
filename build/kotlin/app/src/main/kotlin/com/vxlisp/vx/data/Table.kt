@@ -59,7 +59,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_cell = vx_core.vx_copy(vx_data_table.e_cell, *vals)
+      var output : vx_data_table.Type_cell = vx_core.vx_copy(
+        vx_data_table.e_cell,
+        *vals
+      )
       return output
     }
 
@@ -81,9 +84,19 @@ object vx_data_table {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -104,8 +117,17 @@ object vx_data_table {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/data/table/cell", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/cell",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -116,8 +138,17 @@ object vx_data_table {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/data/table/cell", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/cell",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -130,7 +161,12 @@ object vx_data_table {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -142,9 +178,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/cell", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/cell",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":value")) {
             if (valsub == vx_p_value) {
@@ -163,14 +210,34 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("value"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/cell", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/cell",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/data/table/cell", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/cell",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -199,17 +266,17 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "cell", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "cell",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -264,7 +331,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_celllist = vx_core.vx_copy(vx_data_table.e_celllist, *vals)
+      var output : vx_data_table.Type_celllist = vx_core.vx_copy(
+        vx_data_table.e_celllist,
+        *vals
+      )
       return output
     }
 
@@ -280,9 +350,19 @@ object vx_data_table {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_data_table.Type_celllist) {
           var multi : vx_data_table.Type_celllist = valsub as vx_data_table.Type_celllist
           ischanged = true
@@ -307,11 +387,29 @@ object vx_data_table {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/data/table/celllist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/data/table/celllist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/data/table/celllist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/data/table/celllist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -337,17 +435,22 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "celllist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_data_table.t_cell), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "celllist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_data_table.t_cell
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -369,7 +472,9 @@ object vx_data_table {
   class Class_cellmap : vx_core.Class_base, Type_cellmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_data_table.Type_cell> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_data_table.Type_cell>())
+    var vx_p_map : Map<String, vx_data_table.Type_cell> = vx_core.vx_mapimmutable(
+      LinkedHashMap<String, vx_data_table.Type_cell>()
+    )
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
@@ -433,8 +538,17 @@ object vx_data_table {
           var castval : vx_data_table.Type_cell = value as vx_data_table.Type_cell
           map.put(key, castval)
         } else {
-          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error("vx/data/table/cellmap", ":invalidvalue", value)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error(
+            "vx/data/table/cellmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       output.vx_p_map = vx_core.vx_mapimmutable(map)
@@ -445,7 +559,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_cellmap = vx_core.vx_copy(vx_data_table.e_cellmap, *vals)
+      var output : vx_data_table.Type_cellmap = vx_core.vx_copy(
+        vx_data_table.e_cellmap,
+        *vals
+      )
       return output
     }
 
@@ -463,9 +580,19 @@ object vx_data_table {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub is vx_core.Type_string) {
@@ -482,8 +609,17 @@ object vx_data_table {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/data/table/cellmap", ":keyexpected", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/cellmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
         } else {
           var valany : vx_data_table.Type_cell = vx_data_table.e_cell
@@ -504,9 +640,20 @@ object vx_data_table {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-            msg = vx_core.vx_msg_from_error("vx/data/table/cellmap", ":invalidkeyvalue", msgmap)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+              vx_core.vx_mapimmutable(mapany)
+            )
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/cellmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (valany != vx_core.e_any) {
             ischanged = true
@@ -541,17 +688,22 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "cellmap", // name
-        ":map", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_data_table.t_cell), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "cellmap",
+        ":map",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_data_table.t_cell
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -631,7 +783,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_field = vx_core.vx_copy(vx_data_table.e_field, *vals)
+      var output : vx_data_table.Type_field = vx_core.vx_copy(
+        vx_data_table.e_field,
+        *vals
+      )
       return output
     }
 
@@ -655,9 +810,19 @@ object vx_data_table {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -678,8 +843,17 @@ object vx_data_table {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/field",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -690,8 +864,17 @@ object vx_data_table {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/field",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -704,7 +887,12 @@ object vx_data_table {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -716,9 +904,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/field",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
@@ -728,7 +927,12 @@ object vx_data_table {
               vx_p_name = valname
             } else if (valsub is String) {
               ischanged = true
-              vx_p_name = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_name = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -740,9 +944,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/field",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":fldtype")) {
             if (valsub == vx_p_fldtype) {
@@ -761,14 +976,34 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fldtype"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/field",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/data/table/field", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/field",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -798,17 +1033,17 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "field", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "field",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -863,7 +1098,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_fieldlist = vx_core.vx_copy(vx_data_table.e_fieldlist, *vals)
+      var output : vx_data_table.Type_fieldlist = vx_core.vx_copy(
+        vx_data_table.e_fieldlist,
+        *vals
+      )
       return output
     }
 
@@ -879,9 +1117,19 @@ object vx_data_table {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_data_table.Type_fieldlist) {
           var multi : vx_data_table.Type_fieldlist = valsub as vx_data_table.Type_fieldlist
           ischanged = true
@@ -906,11 +1154,29 @@ object vx_data_table {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/data/table/fieldlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/data/table/fieldlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/data/table/fieldlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/data/table/fieldlist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -936,17 +1202,22 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "fieldlist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_data_table.t_field), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "fieldlist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_data_table.t_field
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1001,7 +1272,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_fieldmap = vx_core.vx_copy(vx_data_table.e_fieldmap, *vals)
+      var output : vx_data_table.Type_fieldmap = vx_core.vx_copy(
+        vx_data_table.e_fieldmap,
+        *vals
+      )
       return output
     }
 
@@ -1017,9 +1291,19 @@ object vx_data_table {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_data_table.Type_fieldmap) {
           var multi : vx_data_table.Type_fieldmap = valsub as vx_data_table.Type_fieldmap
           ischanged = true
@@ -1044,11 +1328,29 @@ object vx_data_table {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/data/table/fieldmap", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/data/table/fieldmap",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/data/table/fieldmap", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/data/table/fieldmap",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -1074,17 +1376,22 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "fieldmap", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_data_table.t_field), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "fieldmap",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_data_table.t_field
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1164,7 +1471,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_filter = vx_core.vx_copy(vx_data_table.e_filter, *vals)
+      var output : vx_data_table.Type_filter = vx_core.vx_copy(
+        vx_data_table.e_filter,
+        *vals
+      )
       return output
     }
 
@@ -1188,9 +1498,19 @@ object vx_data_table {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -1211,8 +1531,17 @@ object vx_data_table {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/filter",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1223,8 +1552,17 @@ object vx_data_table {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/filter",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -1237,7 +1575,12 @@ object vx_data_table {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -1249,9 +1592,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/filter",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
@@ -1261,7 +1615,12 @@ object vx_data_table {
               vx_p_name = valname
             } else if (valsub is String) {
               ischanged = true
-              vx_p_name = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_name = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -1273,9 +1632,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/filter",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":idlist")) {
             if (valsub == vx_p_idlist) {
@@ -1294,14 +1664,34 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("idlist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/filter",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/data/table/filter", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/filter",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -1331,17 +1721,17 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "filter", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "filter",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1421,7 +1811,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_row = vx_core.vx_copy(vx_data_table.e_row, *vals)
+      var output : vx_data_table.Type_row = vx_core.vx_copy(
+        vx_data_table.e_row,
+        *vals
+      )
       return output
     }
 
@@ -1445,9 +1838,19 @@ object vx_data_table {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -1468,8 +1871,17 @@ object vx_data_table {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/row",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1480,8 +1892,17 @@ object vx_data_table {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/row",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -1494,7 +1915,12 @@ object vx_data_table {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -1506,9 +1932,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/row",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":cellmap")) {
             if (valsub == vx_p_cellmap) {
@@ -1527,9 +1964,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("cellmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/row",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":cellsort")) {
             if (valsub == vx_p_cellsort) {
@@ -1548,14 +1996,34 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("cellsort"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/row",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/data/table/row", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/row",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -1585,17 +2053,17 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "row", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "row",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1650,7 +2118,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_rowlist = vx_core.vx_copy(vx_data_table.e_rowlist, *vals)
+      var output : vx_data_table.Type_rowlist = vx_core.vx_copy(
+        vx_data_table.e_rowlist,
+        *vals
+      )
       return output
     }
 
@@ -1666,9 +2137,19 @@ object vx_data_table {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_data_table.Type_rowlist) {
           var multi : vx_data_table.Type_rowlist = valsub as vx_data_table.Type_rowlist
           ischanged = true
@@ -1693,11 +2174,29 @@ object vx_data_table {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/data/table/rowlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/data/table/rowlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/data/table/rowlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/data/table/rowlist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -1723,17 +2222,22 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "rowlist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_data_table.t_row), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "rowlist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_data_table.t_row
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1755,7 +2259,9 @@ object vx_data_table {
   class Class_rowmap : vx_core.Class_base, Type_rowmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_data_table.Type_row> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_data_table.Type_row>())
+    var vx_p_map : Map<String, vx_data_table.Type_row> = vx_core.vx_mapimmutable(
+      LinkedHashMap<String, vx_data_table.Type_row>()
+    )
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
@@ -1819,8 +2325,17 @@ object vx_data_table {
           var castval : vx_data_table.Type_row = value as vx_data_table.Type_row
           map.put(key, castval)
         } else {
-          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error("vx/data/table/rowmap", ":invalidvalue", value)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error(
+            "vx/data/table/rowmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       output.vx_p_map = vx_core.vx_mapimmutable(map)
@@ -1831,7 +2346,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_rowmap = vx_core.vx_copy(vx_data_table.e_rowmap, *vals)
+      var output : vx_data_table.Type_rowmap = vx_core.vx_copy(
+        vx_data_table.e_rowmap,
+        *vals
+      )
       return output
     }
 
@@ -1849,9 +2367,19 @@ object vx_data_table {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub is vx_core.Type_string) {
@@ -1868,8 +2396,17 @@ object vx_data_table {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/data/table/rowmap", ":keyexpected", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/rowmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
         } else {
           var valany : vx_data_table.Type_row = vx_data_table.e_row
@@ -1890,9 +2427,20 @@ object vx_data_table {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-            msg = vx_core.vx_msg_from_error("vx/data/table/rowmap", ":invalidkeyvalue", msgmap)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+              vx_core.vx_mapimmutable(mapany)
+            )
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/rowmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (valany != vx_core.e_any) {
             ischanged = true
@@ -1927,17 +2475,22 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "rowmap", // name
-        ":map", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_data_table.t_row), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "rowmap",
+        ":map",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_data_table.t_row
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2017,7 +2570,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_sort = vx_core.vx_copy(vx_data_table.e_sort, *vals)
+      var output : vx_data_table.Type_sort = vx_core.vx_copy(
+        vx_data_table.e_sort,
+        *vals
+      )
       return output
     }
 
@@ -2041,9 +2597,19 @@ object vx_data_table {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -2064,8 +2630,17 @@ object vx_data_table {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/sort",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2076,8 +2651,17 @@ object vx_data_table {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/sort",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -2090,7 +2674,12 @@ object vx_data_table {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2102,9 +2691,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/sort",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
@@ -2114,7 +2714,12 @@ object vx_data_table {
               vx_p_name = valname
             } else if (valsub is String) {
               ischanged = true
-              vx_p_name = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_name = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2126,9 +2731,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/sort",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":idlist")) {
             if (valsub == vx_p_idlist) {
@@ -2147,14 +2763,34 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("idlist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/sort",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/data/table/sort", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/sort",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -2184,17 +2820,17 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "sort", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "sort",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2334,7 +2970,10 @@ object vx_data_table {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_data_table.Type_table = vx_core.vx_copy(vx_data_table.e_table, *vals)
+      var output : vx_data_table.Type_table = vx_core.vx_copy(
+        vx_data_table.e_table,
+        *vals
+      )
       return output
     }
 
@@ -2366,9 +3005,19 @@ object vx_data_table {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -2389,8 +3038,17 @@ object vx_data_table {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/table",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2401,8 +3059,17 @@ object vx_data_table {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/table",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -2415,7 +3082,12 @@ object vx_data_table {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2427,9 +3099,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
@@ -2439,7 +3122,12 @@ object vx_data_table {
               vx_p_name = valname
             } else if (valsub is String) {
               ischanged = true
-              vx_p_name = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_name = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2451,9 +3139,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":fieldmap")) {
             if (valsub == vx_p_fieldmap) {
@@ -2472,9 +3171,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fieldmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":fieldsort")) {
             if (valsub == vx_p_fieldsort) {
@@ -2493,9 +3203,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("fieldsort"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":rowmap")) {
             if (valsub == vx_p_rowmap) {
@@ -2514,9 +3235,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("rowmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":rowfilter")) {
             if (valsub == vx_p_rowfilter) {
@@ -2535,9 +3267,20 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("rowfilter"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":rowsort")) {
             if (valsub == vx_p_rowsort) {
@@ -2556,14 +3299,34 @@ object vx_data_table {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("rowsort"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/data/table/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/data/table/table", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/data/table/table",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -2597,17 +3360,17 @@ object vx_data_table {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/data/table", // pkgname
-        "table", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/data/table",
+        "table",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }

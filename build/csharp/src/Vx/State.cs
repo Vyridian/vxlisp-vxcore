@@ -11,7 +11,9 @@ public static class State {
 
   public class Class_valuemap : Vx.Core.Class_base, Type_valuemap {
 
-    public Vx.Core.Map<string, Vx.Core.Type_any> vx_p_map = Vx.Core.vx_mapimmutable(new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>());
+    public Vx.Core.Map<string, Vx.Core.Type_any> vx_p_map = Vx.Core.vx_mapimmutable(
+      new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>()
+    );
 
     public Vx.Core.Map<string, Vx.Core.Type_any> vx_map() {
       Vx.Core.Map<string, Vx.Core.Type_any> anymap = this.vx_p_map;
@@ -63,8 +65,17 @@ public static class State {
         } else if (value is Vx.Core.Type_any castval) {
           map.put(key, castval);
         } else {
-          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error("vx/state/valuemap", ":invalidvalue", value);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error(
+            "vx/state/valuemap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Vx.Core.vx_mapimmutable(map);
@@ -75,7 +86,10 @@ public static class State {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.State.Type_valuemap output = Vx.Core.vx_copy(Vx.State.e_valuemap, vals);
+      Vx.State.Type_valuemap output = Vx.Core.vx_copy(
+        Vx.State.e_valuemap,
+        vals
+      );
       return output;
     }
 
@@ -93,9 +107,19 @@ public static class State {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           if (false) {
           } else if (valsub is Vx.Core.Type_string valstring) {
@@ -107,10 +131,21 @@ public static class State {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/state/valuemap", ":keyexpected", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/state/valuemap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Vx.Core.Type_any valany = Vx.Core.e_any;
@@ -124,14 +159,27 @@ public static class State {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                  Vx.Core.vx_string_from_object(valsub)
+                );
             }
             Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
             mapany.put("key", Vx.Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-            msg = Vx.Core.vx_msg_from_error("vx/state/valuemap", ":invalidkeyvalue", msgmap);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+              Vx.Core.vx_mapimmutable(mapany)
+            );
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/state/valuemap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Vx.Core.e_any) {
             ischanged = true;
@@ -166,17 +214,22 @@ public static class State {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/state", // pkgname
-        "valuemap", // name
-        ":map", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/state",
+        "valuemap",
+        ":map",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Core.t_any
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -222,17 +275,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -250,10 +303,30 @@ public static class State {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string mapname = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_string name = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string mapname = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_string name = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.State.f_any_readstate_from_mapname_name(generic_any_1, context, mapname, name);
       return output;
     }
@@ -272,18 +345,17 @@ public static class State {
     T output = Vx.Core.f_empty(generic_any_1);
     output = Vx.Core.f_let(
       generic_any_1,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.State.Type_valuemap submap = Vx.State.f_valuemap_readstate_from_mapname(
-          context,
-          mapname
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_any_from_map(
-          generic_any_1,
-          submap,
-          name
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.State.Type_valuemap submap = Vx.State.f_valuemap_readstate_from_mapname(context, mapname);
+          Vx.Core.Type_any output_1 = Vx.Core.f_any_from_map(
+            generic_any_1,
+            submap,
+            name
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -323,17 +395,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -356,16 +428,38 @@ public static class State {
     public T vx_any_from_any_context<T, U>(T generic_any_1, Vx.Core.Type_context context, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
-      Vx.Core.Type_any outputval = Vx.State.f_any_readstate_from_name(Vx.Core.t_any, context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      Vx.Core.Type_any outputval = Vx.State.f_any_readstate_from_name(
+        Vx.Core.t_any,
+        context,
+        inputval
+      );
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string name = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string name = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.State.f_any_readstate_from_name(generic_any_1, context, name);
       return output;
     }
@@ -384,10 +478,7 @@ public static class State {
     T output = Vx.Core.f_empty(generic_any_1);
     output = Vx.Core.f_any_from_any(
       generic_any_1,
-      Vx.State.f_value_readstate_from_name(
-        context,
-        name
-      )
+      Vx.State.f_value_readstate_from_name(context, name)
     );
     return output;
   }
@@ -427,17 +518,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -461,14 +552,27 @@ public static class State {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.State.f_boolean_removestate_from_name(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string name = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string name = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.State.f_boolean_removestate_from_name(context, name);
       return output;
     }
@@ -487,19 +591,19 @@ public static class State {
     Vx.Core.Type_boolean output = Vx.Core.e_boolean;
     output = Vx.Core.f_let(
       Vx.Core.t_boolean,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_statelistenermap statelistenermap = Vx.State.f_statelistenermap_readstate(
-          context
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_boolean_write_from_map_name_value(
-          statelistenermap,
-          name,
-          Vx.Core.f_empty(
-            Vx.Core.t_statelistener
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_statelistenermap statelistenermap = Vx.State.f_statelistenermap_readstate(context);
+          Vx.Core.Type_any output_1 = Vx.Core.f_boolean_write_from_map_name_value(
+            statelistenermap,
+            name,
+            Vx.Core.f_empty(
+              Vx.Core.t_statelistener
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -541,17 +645,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -569,10 +673,30 @@ public static class State {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string mapname = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_string name = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(2)));
-      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(3)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string mapname = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_string name = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(3)
+        )
+      );
       output = Vx.State.f_boolean_writestate_from_mapname_name_value(context, mapname, name, value);
       return output;
     }
@@ -591,69 +715,76 @@ public static class State {
     Vx.Core.Type_boolean output = Vx.Core.e_boolean;
     output = Vx.Core.f_let(
       Vx.Core.t_boolean,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.State.Type_valuemap valmap = Vx.State.f_any_readstate_from_name(
-          Vx.State.t_valuemap,
-          context,
-          mapname
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
-          Vx.Core.t_boolean,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.f_is_empty_1(
-                  valmap
-                );
-                return output_2;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = Vx.Core.f_let(
-                  Vx.Core.t_boolean,
-                  Vx.Core.t_any_from_func.vx_fn_new(() => {
-                    Vx.State.Type_valuemap valmap2 = Vx.Core.f_new(
-                      Vx.State.t_valuemap,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        name,
-                        value
-                      )
-                    );
-                    Vx.Core.Type_statelistener listener = Vx.Core.f_new(
-                      Vx.Core.t_statelistener,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string(":name"),
-                        mapname,
-                        Vx.Core.vx_new_string(":value"),
-                        valmap2
-                      )
-                    );
-                    Vx.Core.Type_any output_4 = Vx.State.f_boolean_writestate_from_statelistener(
-                      context,
-                      listener
-                    );
-                    return output_4;
-                  })
-                );
-                return output_3;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_5 = Vx.Core.f_boolean_write_from_map_name_value(
-                  valmap,
-                  name,
-                  value
-                );
-                return output_5;
-              })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.State.Type_valuemap valmap = Vx.State.f_any_readstate_from_name(
+            Vx.State.t_valuemap,
+            context,
+            mapname
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
+            Vx.Core.t_boolean,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.f_is_empty_1(valmap);
+                        return output_2;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_3 = Vx.Core.f_let(
+                          Vx.Core.t_boolean,
+                          Vx.Core.t_any_from_func.vx_fn_new(
+                            () => {
+                              Vx.State.Type_valuemap valmap2 = Vx.Core.f_new(
+                                Vx.State.t_valuemap,
+                                Vx.Core.vx_new(
+                                  Vx.Core.t_anylist,
+                                  // [
+                                    name,
+                                    value
+                                  // ]
+                                )
+                              );
+                              Vx.Core.Type_statelistener listener = Vx.Core.f_new(
+                                Vx.Core.t_statelistener,
+                                Vx.Core.vx_new(
+                                  Vx.Core.t_anylist,
+                                  // [
+                                    Vx.Core.vx_new_string(":name"),
+                                    mapname,
+                                    Vx.Core.vx_new_string(":value"),
+                                    valmap2
+                                  // ]
+                                )
+                              );
+                              Vx.Core.Type_any output_4 = Vx.State.f_boolean_writestate_from_statelistener(context, listener);
+                              return output_4;
+                            }
+                          )
+                        );
+                        return output_3;
+                      }
+                  )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_5 = Vx.Core.f_boolean_write_from_map_name_value(valmap, name, value);
+                        return output_5;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -694,17 +825,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -722,9 +853,24 @@ public static class State {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string name = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string name = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.State.f_boolean_writestate_from_name_value(context, name, value);
       return output;
     }
@@ -743,27 +889,25 @@ public static class State {
     Vx.Core.Type_boolean output = Vx.Core.e_boolean;
     output = Vx.Core.f_let(
       Vx.Core.t_boolean,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_statelistener listenercur = Vx.State.f_statelistener_readstate_from_name(
-          context,
-          name
-        );
-        Vx.Core.Type_statelistener listenerchg = Vx.Core.f_copy(
-          listenercur,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":name"),
-            name,
-            Vx.Core.vx_new_string(":value"),
-            value
-          )
-        );
-        Vx.Core.Type_any output_1 = Vx.State.f_boolean_writestate_from_statelistener(
-          context,
-          listenerchg
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_statelistener listenercur = Vx.State.f_statelistener_readstate_from_name(context, name);
+          Vx.Core.Type_statelistener listenerchg = Vx.Core.f_copy(
+            listenercur,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":name"),
+                name,
+                Vx.Core.vx_new_string(":value"),
+                value
+              // ]
+            )
+          );
+          Vx.Core.Type_any output_1 = Vx.State.f_boolean_writestate_from_statelistener(context, listenerchg);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -803,17 +947,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -837,14 +981,27 @@ public static class State {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_statelistener inputval = (Vx.Core.Type_statelistener)value;
       Vx.Core.Type_any outputval = Vx.State.f_boolean_writestate_from_statelistener(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_statelistener statelistener = Vx.Core.f_any_from_any(Vx.Core.t_statelistener, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_statelistener statelistener = Vx.Core.f_any_from_any(
+        Vx.Core.t_statelistener,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.State.f_boolean_writestate_from_statelistener(context, statelistener);
       return output;
     }
@@ -863,18 +1020,18 @@ public static class State {
     Vx.Core.Type_boolean output = Vx.Core.e_boolean;
     output = Vx.Core.f_let(
       Vx.Core.t_boolean,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_statelistenermap statelistenermap = Vx.State.f_statelistenermap_readstate(
-          context
-        );
-        Vx.Core.Type_string name = statelistener.name();
-        Vx.Core.Type_any output_1 = Vx.Core.f_boolean_write_from_map_name_value(
-          statelistenermap,
-          name,
-          statelistener
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_statelistenermap statelistenermap = Vx.State.f_statelistenermap_readstate(context);
+          Vx.Core.Type_string name = statelistener.name();
+          Vx.Core.Type_any output_1 = Vx.Core.f_boolean_write_from_map_name_value(
+            statelistenermap,
+            name,
+            statelistener
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -914,17 +1071,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -948,13 +1105,21 @@ public static class State {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.State.Type_valuemap inputval = (Vx.State.Type_valuemap)value;
       Vx.Core.Type_any outputval = Vx.State.f_change(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.State.Type_valuemap valuemap = Vx.Core.f_any_from_any(Vx.State.t_valuemap, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.State.Type_valuemap valuemap = Vx.Core.f_any_from_any(
+        Vx.State.t_valuemap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.State.f_change(valuemap);
       return output;
     }
@@ -1008,17 +1173,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1042,13 +1207,21 @@ public static class State {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_statelistener inputval = (Vx.Core.Type_statelistener)value;
       Vx.Core.Type_any outputval = Vx.State.f_register(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_statelistener listener = Vx.Core.f_any_from_any(Vx.Core.t_statelistener, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_statelistener listener = Vx.Core.f_any_from_any(
+        Vx.Core.t_statelistener,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.State.f_register(listener);
       return output;
     }
@@ -1102,17 +1275,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "state", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "state",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1130,7 +1303,12 @@ public static class State {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.State.f_state_from_context(context);
       return output;
     }
@@ -1186,17 +1364,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "statelistener", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "statelistener",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1220,14 +1398,27 @@ public static class State {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.State.f_statelistener_readstate_from_name(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string name = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string name = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.State.f_statelistener_readstate_from_name(context, name);
       return output;
     }
@@ -1246,17 +1437,17 @@ public static class State {
     Vx.Core.Type_statelistener output = Vx.Core.e_statelistener;
     output = Vx.Core.f_let(
       Vx.Core.t_statelistener,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_statelistenermap statelistenermap = Vx.State.f_statelistenermap_readstate(
-          context
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_any_from_map(
-          Vx.Core.t_statelistener,
-          statelistenermap,
-          name
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_statelistenermap statelistenermap = Vx.State.f_statelistenermap_readstate(context);
+          Vx.Core.Type_any output_1 = Vx.Core.f_any_from_map(
+            Vx.Core.t_statelistener,
+            statelistenermap,
+            name
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1295,17 +1486,22 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "statelistenermap", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_statelistener), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "statelistenermap",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_statelistener
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1323,7 +1519,12 @@ public static class State {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.State.f_statelistenermap_readstate(context);
       return output;
     }
@@ -1342,13 +1543,13 @@ public static class State {
     Vx.Core.Type_statelistenermap output = Vx.Core.e_statelistenermap;
     output = Vx.Core.f_let(
       Vx.Core.t_statelistenermap,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_state state = Vx.State.f_state_from_context(
-          context
-        );
-        Vx.Core.Type_any output_1 = state.statelistenermap();
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_state state = Vx.State.f_state_from_context(context);
+          Vx.Core.Type_any output_1 = state.statelistenermap();
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1388,17 +1589,17 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1422,14 +1623,27 @@ public static class State {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.State.f_value_readstate_from_name(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string name = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string name = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.State.f_value_readstate_from_name(context, name);
       return output;
     }
@@ -1448,14 +1662,13 @@ public static class State {
     Vx.Core.Type_any output = Vx.Core.e_any;
     output = Vx.Core.f_let(
       Vx.Core.t_any,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_statelistener statelistener = Vx.State.f_statelistener_readstate_from_name(
-          context,
-          name
-        );
-        Vx.Core.Type_any output_1 = statelistener.value();
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_statelistener statelistener = Vx.State.f_statelistener_readstate_from_name(context, name);
+          Vx.Core.Type_any output_1 = statelistener.value();
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1495,17 +1708,22 @@ public static class State {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/state", // pkgname
-          "valuemap", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/state",
+          "valuemap",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1529,14 +1747,27 @@ public static class State {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.State.f_valuemap_readstate_from_mapname(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string mapname = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string mapname = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.State.f_valuemap_readstate_from_mapname(context, mapname);
       return output;
     }
@@ -1555,18 +1786,17 @@ public static class State {
     Vx.State.Type_valuemap output = Vx.State.e_valuemap;
     output = Vx.Core.f_let(
       Vx.State.t_valuemap,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_any value = Vx.State.f_value_readstate_from_name(
-          context,
-          mapname
-        );
-        Vx.State.Type_valuemap valmap = Vx.Core.f_any_from_any(
-          Vx.State.t_valuemap,
-          value
-        );
-        Vx.Core.Type_any output_1 = valmap;
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_any value = Vx.State.f_value_readstate_from_name(context, mapname);
+          Vx.State.Type_valuemap valmap = Vx.Core.f_any_from_any(
+            Vx.State.t_valuemap,
+            value
+          );
+          Vx.Core.Type_any output_1 = valmap;
+          return output_1;
+        }
+      )
     );
     return output;
   }

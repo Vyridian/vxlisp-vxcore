@@ -25,8 +25,12 @@ object AppTest {
     TestLib.test_async_from_async_fn()
     TestLib.test_list_from_list_async()
     TestLib.test_pathfull_from_file()
-    TestLib.test_read_file()
-    TestLib.test_write_file()
+    TestLib.test_read_file(context)
+    TestLib.test_write_file(context)
+    TestLib.test_run_testresult(context)
+    TestLib.test_run_testdescribe(context)
+    TestLib.test_run_testdescribelist(context)
+    TestLib.test_run_testresult_async(context)
   }
 
   @Test
@@ -200,33 +204,38 @@ object AppTest {
   @Test
   @DisplayName("writetestsuite")
   fun test_writetestsuite() {
-    val testpackagelist : vx_test.Type_testpackagelist = vx_core.vx_new(
+    var testpackagelist : vx_test.Type_testpackagelist = vx_core.vx_new(
       vx_test.t_testpackagelist,
-      vx_coreTest.test_package(context),
-      vx_data_tableTest.test_package(context),
-      vx_data_treeTest.test_package(context),
-      vx_eventTest.test_package(context),
-      vx_sampleTest.test_package(context),
-      vx_stateTest.test_package(context),
-      vx_typeTest.test_package(context),
-      vx_web_htmlTest.test_package(context),
-      vx_collectionTest.test_package(context),
-      vx_data_textblockTest.test_package(context),
-      vx_replTest.test_package(context),
-      vx_data_fileTest.test_package(context),
-      vx_data_xmlTest.test_package(context),
-      vx_testTest.test_package(context),
-      vx_ui_uiTest.test_package(context),
-      vx_web_htmldocTest.test_package(context),
-      vx_data_csvTest.test_package(context),
-      vx_translateTest.test_package(context),
-      vx_translation_enTest.test_package(context),
-      vx_translation_esTest.test_package(context),
-      vx_ui_html_uihtmlTest.test_package(context),
-      vx_ui_svg_uisvgTest.test_package(context),
-      vx_web_httpTest.test_package(context),
-      vx_translation_allTest.test_package(context)
+      // [
+        vx_coreTest.test_package(context),
+        vx_data_tableTest.test_package(context),
+        vx_data_treeTest.test_package(context),
+        vx_eventTest.test_package(context),
+        vx_sampleTest.test_package(context),
+        vx_stateTest.test_package(context),
+        vx_typeTest.test_package(context),
+        vx_web_htmlTest.test_package(context),
+        vx_collectionTest.test_package(context),
+        vx_data_textblockTest.test_package(context),
+        vx_replTest.test_package(context),
+        vx_data_fileTest.test_package(context),
+        vx_data_xmlTest.test_package(context),
+        vx_testTest.test_package(context),
+        vx_ui_uiTest.test_package(context),
+        vx_web_htmldocTest.test_package(context),
+        vx_data_csvTest.test_package(context),
+        vx_translateTest.test_package(context),
+        vx_translation_enTest.test_package(context),
+        vx_translation_esTest.test_package(context),
+        vx_ui_html_uihtmlTest.test_package(context),
+        vx_ui_svg_uisvgTest.test_package(context),
+        vx_web_httpTest.test_package(context),
+        vx_translation_allTest.test_package(context)
+      // ]
     )
-    TestLib.write_testpackagelist_async(context, testpackagelist)
+    TestLib.write_testpackagelist_async(
+      context,
+      testpackagelist
+    )
   }
 }

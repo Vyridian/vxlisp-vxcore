@@ -162,9 +162,19 @@ public final class Tree {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -185,8 +195,17 @@ public final class Tree {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/tree/branch",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -197,8 +216,17 @@ public final class Tree {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/branch",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -211,7 +239,12 @@ public final class Tree {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -223,9 +256,20 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/branch",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":brancharrow"))) {
             if (valsub == vx_p_brancharrow) {
@@ -244,9 +288,20 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("brancharrow"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/branch",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":branchlist"))) {
             if (valsub == vx_p_branchlist) {
@@ -265,9 +320,20 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("branchlist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/branch",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":leaflist"))) {
             if (valsub == vx_p_leaflist) {
@@ -286,9 +352,20 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("leaflist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/branch",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":parentbranch"))) {
             if (valsub == vx_p_parentbranch) {
@@ -307,9 +384,20 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("parentbranch"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/branch",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":tree"))) {
             if (valsub == vx_p_tree) {
@@ -328,14 +416,34 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("tree"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/branch",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/data/tree/branch", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/tree/branch",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -371,17 +479,17 @@ public final class Tree {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/tree", // pkgname
-        "branch", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/tree",
+        "branch",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -402,7 +510,10 @@ public final class Tree {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Tree.Type_brancharrow output = Core.vx_copy(Tree.e_brancharrow, vals);
+      Tree.Type_brancharrow output = Core.vx_copy(
+        Tree.e_brancharrow,
+        vals
+      );
       return output;
     }
 
@@ -440,17 +551,17 @@ public final class Tree {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/tree", // pkgname
-        "brancharrow", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/tree",
+        "brancharrow",
+        "",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -509,7 +620,10 @@ public final class Tree {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Tree.Type_branchlist output = Core.vx_copy(Tree.e_branchlist, vals);
+      Tree.Type_branchlist output = Core.vx_copy(
+        Tree.e_branchlist,
+        vals
+      );
       return output;
     }
 
@@ -526,9 +640,19 @@ public final class Tree {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Tree.Type_branchlist) {
           Tree.Type_branchlist multi = (Tree.Type_branchlist)valsub;
           ischanged = true;
@@ -553,11 +677,29 @@ public final class Tree {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/data/tree/branchlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/tree/branchlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/data/tree/branchlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/tree/branchlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -586,17 +728,22 @@ public final class Tree {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/tree", // pkgname
-        "branchlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Tree.t_branch), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/tree",
+        "branchlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Tree.t_branch
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -706,9 +853,19 @@ public final class Tree {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -729,8 +886,17 @@ public final class Tree {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/data/tree/leaf", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/tree/leaf",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -741,8 +907,17 @@ public final class Tree {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/data/tree/leaf", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/leaf",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -755,7 +930,12 @@ public final class Tree {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -767,9 +947,20 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/leaf", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/leaf",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":name"))) {
             if (valsub == vx_p_name) {
@@ -779,7 +970,12 @@ public final class Tree {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -791,9 +987,20 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/leaf", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/leaf",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":value"))) {
             if (valsub == vx_p_value) {
@@ -812,14 +1019,34 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("value"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/leaf", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/leaf",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/data/tree/leaf", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/tree/leaf",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -852,17 +1079,17 @@ public final class Tree {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/tree", // pkgname
-        "leaf", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/tree",
+        "leaf",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -921,7 +1148,10 @@ public final class Tree {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Tree.Type_leaflist output = Core.vx_copy(Tree.e_leaflist, vals);
+      Tree.Type_leaflist output = Core.vx_copy(
+        Tree.e_leaflist,
+        vals
+      );
       return output;
     }
 
@@ -938,9 +1168,19 @@ public final class Tree {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Tree.Type_leaflist) {
           Tree.Type_leaflist multi = (Tree.Type_leaflist)valsub;
           ischanged = true;
@@ -965,11 +1205,29 @@ public final class Tree {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/data/tree/leaflist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/tree/leaflist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/data/tree/leaflist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/tree/leaflist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -998,17 +1256,22 @@ public final class Tree {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/tree", // pkgname
-        "leaflist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Tree.t_leaf), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/tree",
+        "leaflist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Tree.t_leaf
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1118,9 +1381,19 @@ public final class Tree {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -1141,8 +1414,17 @@ public final class Tree {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/data/tree/tree", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/tree/tree",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1153,8 +1435,17 @@ public final class Tree {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/data/tree/tree", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/tree",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1167,7 +1458,12 @@ public final class Tree {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -1179,9 +1475,20 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/tree", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/tree",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":name"))) {
             if (valsub == vx_p_name) {
@@ -1191,7 +1498,12 @@ public final class Tree {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -1203,9 +1515,20 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/tree", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/tree",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":branch"))) {
             if (valsub == vx_p_branch) {
@@ -1224,14 +1547,34 @@ public final class Tree {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("branch"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/tree/tree", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/tree/tree",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/data/tree/tree", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/tree/tree",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1264,17 +1607,17 @@ public final class Tree {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/tree", // pkgname
-        "tree", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/tree",
+        "tree",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }

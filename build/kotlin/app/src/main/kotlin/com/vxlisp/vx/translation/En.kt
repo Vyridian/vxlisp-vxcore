@@ -41,17 +41,17 @@ object vx_translation_en {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -75,13 +75,21 @@ object vx_translation_en {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
       val outputval : vx_core.Type_any = vx_translation_en.f_context_en(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val args : vx_core.Type_anylist = vx_core.f_any_from_any(
+        vx_core.t_anylist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_translation_en.f_context_en(args)
       return output
     }
@@ -102,15 +110,19 @@ object vx_translation_en {
       vx_core.t_context,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":session"),
-        vx_core.f_new(
-          vx_core.t_session,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string(":translation"),
-            vx_translation_en.f_translation_en()
+        // [
+          vx_core.vx_new_string(":session"),
+          vx_core.f_new(
+            vx_core.t_session,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string(":translation"),
+                vx_translation_en.f_translation_en()
+              // ]
+            )
           )
-        )
+        // ]
       )
     )
     return output
@@ -152,17 +164,17 @@ object vx_translation_en {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -186,13 +198,21 @@ object vx_translation_en {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
       val outputval : vx_core.Type_any = vx_translation_en.f_context_test(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val args : vx_core.Type_anylist = vx_core.f_any_from_any(
+        vx_core.t_anylist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_translation_en.f_context_test(args)
       return output
     }
@@ -213,24 +233,30 @@ object vx_translation_en {
       vx_core.t_context,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":session"),
-        vx_core.f_new(
-          vx_core.t_session,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string(":translation"),
-            vx_translation_en.f_translation_en(),
-            vx_core.vx_new_string(":user"),
-            vx_core.f_new(
-              vx_core.t_user,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_core.vx_new_string(":security"),
-                vx_translation_en.f_securitydata_test()
-              )
+        // [
+          vx_core.vx_new_string(":session"),
+          vx_core.f_new(
+            vx_core.t_session,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string(":translation"),
+                vx_translation_en.f_translation_en(),
+                vx_core.vx_new_string(":user"),
+                vx_core.f_new(
+                  vx_core.t_user,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    // [
+                      vx_core.vx_new_string(":security"),
+                      vx_translation_en.f_securitydata_test()
+                    // ]
+                  )
+                )
+              // ]
             )
           )
-        )
+        // ]
       )
     )
     return output
@@ -271,17 +297,17 @@ object vx_translation_en {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -319,17 +345,21 @@ object vx_translation_en {
       vx_core.t_security,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":allowfuncs"),
-        vx_core.f_new(
-          vx_core.t_funclist,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_data_file.t_boolean_write_from_file_any,
-            vx_data_file.t_boolean_write_from_file_string,
-            vx_data_file.t_file_read_from_file,
-            vx_data_file.t_string_read_from_file
+        // [
+          vx_core.vx_new_string(":allowfuncs"),
+          vx_core.f_new(
+            vx_core.t_funclist,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_data_file.t_boolean_write_from_file_any,
+                vx_data_file.t_boolean_write_from_file_string,
+                vx_data_file.t_file_read_from_file,
+                vx_data_file.t_string_read_from_file
+              // ]
+            )
           )
-        )
+        // ]
       )
     )
     return output
@@ -370,17 +400,17 @@ object vx_translation_en {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -418,10 +448,12 @@ object vx_translation_en {
       vx_core.t_translation,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":name"),
-        vx_core.vx_new_string("en"),
-        vx_core.vx_new_string(":wordmap"),
-        vx_translation_en.f_words()
+        // [
+          vx_core.vx_new_string(":name"),
+          vx_core.vx_new_string("en"),
+          vx_core.vx_new_string(":wordmap"),
+          vx_translation_en.f_words()
+        // ]
       )
     )
     return output
@@ -462,17 +494,22 @@ object vx_translation_en {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "stringmap", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_string), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "stringmap",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_string
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -510,16 +547,18 @@ object vx_translation_en {
       vx_core.t_stringmap,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string("Hello"),
-        vx_core.vx_new_string("Hello"),
-        vx_core.vx_new_string("World"),
-        vx_core.vx_new_string("World"),
-        vx_core.vx_new_string("!vx/core/func exception"),
-        vx_core.vx_new_string("Exception in Function"),
-        vx_core.vx_new_string("!vx/core/func permissiondenied"),
-        vx_core.vx_new_string("Permission Denied to Function"),
-        vx_core.vx_new_string("!vx/repl/repl/repl<-string-argmap repltypenotfound"),
-        vx_core.vx_new_string("Repl Type Not Found")
+        // [
+          vx_core.vx_new_string("Hello"),
+          vx_core.vx_new_string("Hello"),
+          vx_core.vx_new_string("World"),
+          vx_core.vx_new_string("World"),
+          vx_core.vx_new_string("!vx/core/func exception"),
+          vx_core.vx_new_string("Exception in Function"),
+          vx_core.vx_new_string("!vx/core/func permissiondenied"),
+          vx_core.vx_new_string("Permission Denied to Function"),
+          vx_core.vx_new_string("!vx/repl/repl/repl<-string-argmap repltypenotfound"),
+          vx_core.vx_new_string("Repl Type Not Found")
+        // ]
       )
     )
     return output

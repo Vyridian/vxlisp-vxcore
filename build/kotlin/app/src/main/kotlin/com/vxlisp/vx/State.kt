@@ -12,7 +12,9 @@ object vx_state {
   class Class_valuemap : vx_core.Class_base, Type_valuemap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_core.Type_any>())
+    var vx_p_map : Map<String, vx_core.Type_any> = vx_core.vx_mapimmutable(
+      LinkedHashMap<String, vx_core.Type_any>()
+    )
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
@@ -65,8 +67,17 @@ object vx_state {
           var castval : vx_core.Type_any = value as vx_core.Type_any
           map.put(key, castval)
         } else {
-          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error("vx/state/valuemap", ":invalidvalue", value)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error(
+            "vx/state/valuemap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       output.vx_p_map = vx_core.vx_mapimmutable(map)
@@ -77,7 +88,10 @@ object vx_state {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_state.Type_valuemap = vx_core.vx_copy(vx_state.e_valuemap, *vals)
+      var output : vx_state.Type_valuemap = vx_core.vx_copy(
+        vx_state.e_valuemap,
+        *vals
+      )
       return output
     }
 
@@ -95,9 +109,19 @@ object vx_state {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub is vx_core.Type_string) {
@@ -114,8 +138,17 @@ object vx_state {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/state/valuemap", ":keyexpected", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/state/valuemap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
         } else {
           var valany : vx_core.Type_any = vx_core.e_any
@@ -136,9 +169,20 @@ object vx_state {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-            msg = vx_core.vx_msg_from_error("vx/state/valuemap", ":invalidkeyvalue", msgmap)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+              vx_core.vx_mapimmutable(mapany)
+            )
+            msg = vx_core.vx_msg_from_error(
+              "vx/state/valuemap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (valany != vx_core.e_any) {
             ischanged = true
@@ -173,17 +217,22 @@ object vx_state {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/state", // pkgname
-        "valuemap", // name
-        ":map", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/state",
+        "valuemap",
+        ":map",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_core.t_any
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -230,17 +279,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -258,10 +307,30 @@ object vx_state {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val mapname : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
-      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
+      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val mapname : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val name : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_state.f_any_readstate_from_mapname_name(generic_any_1, context, mapname, name)
       return output
     }
@@ -280,18 +349,17 @@ object vx_state {
     var output : T = vx_core.f_empty(generic_any_1)
     output = vx_core.f_let(
       generic_any_1,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val submap : vx_state.Type_valuemap = vx_state.f_valuemap_readstate_from_mapname(
-          context,
-          mapname
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_any_from_map(
-          generic_any_1,
-          submap,
-          name
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val submap : vx_state.Type_valuemap = vx_state.f_valuemap_readstate_from_mapname(context, mapname)
+          val output_1 : vx_core.Type_any = vx_core.f_any_from_map(
+            generic_any_1,
+            submap,
+            name
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -332,17 +400,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -365,16 +433,38 @@ object vx_state {
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context(generic_any_1 : T, context : vx_core.Type_context, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
-      val outputval : vx_core.Type_any = vx_state.f_any_readstate_from_name(vx_core.t_any, context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      val outputval : vx_core.Type_any = vx_state.f_any_readstate_from_name(
+        vx_core.t_any,
+        context,
+        inputval
+      )
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val name : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_state.f_any_readstate_from_name(generic_any_1, context, name)
       return output
     }
@@ -393,10 +483,7 @@ object vx_state {
     var output : T = vx_core.f_empty(generic_any_1)
     output = vx_core.f_any_from_any(
       generic_any_1,
-      vx_state.f_value_readstate_from_name(
-        context,
-        name
-      )
+      vx_state.f_value_readstate_from_name(context, name)
     )
     return output
   }
@@ -437,17 +524,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -471,14 +558,27 @@ object vx_state {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_state.f_boolean_removestate_from_name(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val name : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_state.f_boolean_removestate_from_name(context, name)
       return output
     }
@@ -497,19 +597,19 @@ object vx_state {
     var output : vx_core.Type_boolean = vx_core.e_boolean
     output = vx_core.f_let(
       vx_core.t_boolean,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val statelistenermap : vx_core.Type_statelistenermap = vx_state.f_statelistenermap_readstate(
-          context
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(
-          statelistenermap,
-          name,
-          vx_core.f_empty(
-            vx_core.t_statelistener
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val statelistenermap : vx_core.Type_statelistenermap = vx_state.f_statelistenermap_readstate(context)
+          val output_1 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(
+            statelistenermap,
+            name,
+            vx_core.f_empty(
+              vx_core.t_statelistener
+            )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -552,17 +652,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -580,10 +680,30 @@ object vx_state {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val mapname : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
-      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
-      val value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(3)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val mapname : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val name : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
+      val value : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(3)
+        )
+      )
       output = vx_state.f_boolean_writestate_from_mapname_name_value(context, mapname, name, value)
       return output
     }
@@ -602,69 +722,76 @@ object vx_state {
     var output : vx_core.Type_boolean = vx_core.e_boolean
     output = vx_core.f_let(
       vx_core.t_boolean,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val valmap : vx_state.Type_valuemap = vx_state.f_any_readstate_from_name(
-          vx_state.t_valuemap,
-          context,
-          mapname
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_if_2(
-          vx_core.t_boolean,
-          vx_core.vx_new(
-            vx_core.t_thenelselist,
-            vx_core.f_then(
-              vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_2 : vx_core.Type_any = vx_core.f_is_empty_1(
-                  valmap
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val valmap : vx_state.Type_valuemap = vx_state.f_any_readstate_from_name(
+            vx_state.t_valuemap,
+            context,
+            mapname
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_if_2(
+            vx_core.t_boolean,
+            vx_core.vx_new(
+              vx_core.t_thenelselist,
+              // [
+                vx_core.f_then(
+                  vx_core.t_boolean_from_func.vx_fn_new(
+                    { ->
+                      var output_2 : vx_core.Type_any = vx_core.f_is_empty_1(valmap)
+                        output_2
+                      }
+                  ),
+                  vx_core.t_any_from_func.vx_fn_new(
+                    { ->
+                      var output_3 : vx_core.Type_any = vx_core.f_let(
+                          vx_core.t_boolean,
+                          vx_core.t_any_from_func.vx_fn_new(
+                            { ->
+                              val valmap2 : vx_state.Type_valuemap = vx_core.f_new(
+                                vx_state.t_valuemap,
+                                vx_core.vx_new(
+                                  vx_core.t_anylist,
+                                  // [
+                                    name,
+                                    value
+                                  // ]
+                                )
+                              )
+                              val listener : vx_core.Type_statelistener = vx_core.f_new(
+                                vx_core.t_statelistener,
+                                vx_core.vx_new(
+                                  vx_core.t_anylist,
+                                  // [
+                                    vx_core.vx_new_string(":name"),
+                                    mapname,
+                                    vx_core.vx_new_string(":value"),
+                                    valmap2
+                                  // ]
+                                )
+                              )
+                              val output_4 : vx_core.Type_any = vx_state.f_boolean_writestate_from_statelistener(context, listener)
+                              output_4
+                            }
+                          )
+                        )
+                        output_3
+                      }
+                  )
+                ),
+                vx_core.f_else(
+                  vx_core.t_any_from_func.vx_fn_new(
+                    { ->
+                      var output_5 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(valmap, name, value)
+                        output_5
+                      }
+                  )
                 )
-                output_2
-              }),
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_3 : vx_core.Type_any = vx_core.f_let(
-                  vx_core.t_boolean,
-                  vx_core.t_any_from_func.vx_fn_new({ ->
-                    val valmap2 : vx_state.Type_valuemap = vx_core.f_new(
-                      vx_state.t_valuemap,
-                      vx_core.vx_new(
-                        vx_core.t_anylist,
-                        name,
-                        value
-                      )
-                    )
-                    val listener : vx_core.Type_statelistener = vx_core.f_new(
-                      vx_core.t_statelistener,
-                      vx_core.vx_new(
-                        vx_core.t_anylist,
-                        vx_core.vx_new_string(":name"),
-                        mapname,
-                        vx_core.vx_new_string(":value"),
-                        valmap2
-                      )
-                    )
-                    val output_4 : vx_core.Type_any = vx_state.f_boolean_writestate_from_statelistener(
-                      context,
-                      listener
-                    )
-                    output_4
-                  })
-                )
-                output_3
-              })
-            ),
-            vx_core.f_else(
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_5 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(
-                  valmap,
-                  name,
-                  value
-                )
-                output_5
-              })
+              // ]
             )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -706,17 +833,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -734,9 +861,24 @@ object vx_state {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
-      val value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(2)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val name : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val value : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_state.f_boolean_writestate_from_name_value(context, name, value)
       return output
     }
@@ -755,27 +897,25 @@ object vx_state {
     var output : vx_core.Type_boolean = vx_core.e_boolean
     output = vx_core.f_let(
       vx_core.t_boolean,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val listenercur : vx_core.Type_statelistener = vx_state.f_statelistener_readstate_from_name(
-          context,
-          name
-        )
-        val listenerchg : vx_core.Type_statelistener = vx_core.f_copy(
-          listenercur,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string(":name"),
-            name,
-            vx_core.vx_new_string(":value"),
-            value
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val listenercur : vx_core.Type_statelistener = vx_state.f_statelistener_readstate_from_name(context, name)
+          val listenerchg : vx_core.Type_statelistener = vx_core.f_copy(
+            listenercur,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string(":name"),
+                name,
+                vx_core.vx_new_string(":value"),
+                value
+              // ]
+            )
           )
-        )
-        val output_1 : vx_core.Type_any = vx_state.f_boolean_writestate_from_statelistener(
-          context,
-          listenerchg
-        )
-        output_1
-      })
+          val output_1 : vx_core.Type_any = vx_state.f_boolean_writestate_from_statelistener(context, listenerchg)
+          output_1
+        }
+      )
     )
     return output
   }
@@ -816,17 +956,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -850,14 +990,27 @@ object vx_state {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_statelistener = value as vx_core.Type_statelistener
       val outputval : vx_core.Type_any = vx_state.f_boolean_writestate_from_statelistener(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val statelistener : vx_core.Type_statelistener = vx_core.f_any_from_any(vx_core.t_statelistener, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val statelistener : vx_core.Type_statelistener = vx_core.f_any_from_any(
+        vx_core.t_statelistener,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_state.f_boolean_writestate_from_statelistener(context, statelistener)
       return output
     }
@@ -876,18 +1029,18 @@ object vx_state {
     var output : vx_core.Type_boolean = vx_core.e_boolean
     output = vx_core.f_let(
       vx_core.t_boolean,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val statelistenermap : vx_core.Type_statelistenermap = vx_state.f_statelistenermap_readstate(
-          context
-        )
-        val name : vx_core.Type_string = statelistener.name()
-        val output_1 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(
-          statelistenermap,
-          name,
-          statelistener
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val statelistenermap : vx_core.Type_statelistenermap = vx_state.f_statelistenermap_readstate(context)
+          val name : vx_core.Type_string = statelistener.name()
+          val output_1 : vx_core.Type_any = vx_core.f_boolean_write_from_map_name_value(
+            statelistenermap,
+            name,
+            statelistener
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -928,17 +1081,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -962,13 +1115,21 @@ object vx_state {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_state.Type_valuemap = value as vx_state.Type_valuemap
       val outputval : vx_core.Type_any = vx_state.f_change(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val valuemap : vx_state.Type_valuemap = vx_core.f_any_from_any(vx_state.t_valuemap, arglist.vx_any(vx_core.vx_new_int(0)))
+      val valuemap : vx_state.Type_valuemap = vx_core.f_any_from_any(
+        vx_state.t_valuemap,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_state.f_change(valuemap)
       return output
     }
@@ -1023,17 +1184,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1057,13 +1218,21 @@ object vx_state {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_statelistener = value as vx_core.Type_statelistener
       val outputval : vx_core.Type_any = vx_state.f_register(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val listener : vx_core.Type_statelistener = vx_core.f_any_from_any(vx_core.t_statelistener, arglist.vx_any(vx_core.vx_new_int(0)))
+      val listener : vx_core.Type_statelistener = vx_core.f_any_from_any(
+        vx_core.t_statelistener,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_state.f_register(listener)
       return output
     }
@@ -1118,17 +1287,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "state", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "state",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1146,7 +1315,12 @@ object vx_state {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_state.f_state_from_context(context)
       return output
     }
@@ -1203,17 +1377,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "statelistener", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "statelistener",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1237,14 +1411,27 @@ object vx_state {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_state.f_statelistener_readstate_from_name(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val name : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_state.f_statelistener_readstate_from_name(context, name)
       return output
     }
@@ -1263,17 +1450,17 @@ object vx_state {
     var output : vx_core.Type_statelistener = vx_core.e_statelistener
     output = vx_core.f_let(
       vx_core.t_statelistener,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val statelistenermap : vx_core.Type_statelistenermap = vx_state.f_statelistenermap_readstate(
-          context
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_any_from_map(
-          vx_core.t_statelistener,
-          statelistenermap,
-          name
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val statelistenermap : vx_core.Type_statelistenermap = vx_state.f_statelistenermap_readstate(context)
+          val output_1 : vx_core.Type_any = vx_core.f_any_from_map(
+            vx_core.t_statelistener,
+            statelistenermap,
+            name
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -1313,17 +1500,22 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "statelistenermap", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_statelistener), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "statelistenermap",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_statelistener
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1341,7 +1533,12 @@ object vx_state {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_state.f_statelistenermap_readstate(context)
       return output
     }
@@ -1360,13 +1557,13 @@ object vx_state {
     var output : vx_core.Type_statelistenermap = vx_core.e_statelistenermap
     output = vx_core.f_let(
       vx_core.t_statelistenermap,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val state : vx_core.Type_state = vx_state.f_state_from_context(
-          context
-        )
-        val output_1 : vx_core.Type_any = state.statelistenermap()
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val state : vx_core.Type_state = vx_state.f_state_from_context(context)
+          val output_1 : vx_core.Type_any = state.statelistenermap()
+          output_1
+        }
+      )
     )
     return output
   }
@@ -1407,17 +1604,17 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1441,14 +1638,27 @@ object vx_state {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_state.f_value_readstate_from_name(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val name : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_state.f_value_readstate_from_name(context, name)
       return output
     }
@@ -1467,14 +1677,13 @@ object vx_state {
     var output : vx_core.Type_any = vx_core.e_any
     output = vx_core.f_let(
       vx_core.t_any,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val statelistener : vx_core.Type_statelistener = vx_state.f_statelistener_readstate_from_name(
-          context,
-          name
-        )
-        val output_1 : vx_core.Type_any = statelistener.value()
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val statelistener : vx_core.Type_statelistener = vx_state.f_statelistener_readstate_from_name(context, name)
+          val output_1 : vx_core.Type_any = statelistener.value()
+          output_1
+        }
+      )
     )
     return output
   }
@@ -1515,17 +1724,22 @@ object vx_state {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/state", // pkgname
-          "valuemap", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/state",
+          "valuemap",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1549,14 +1763,27 @@ object vx_state {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_state.f_valuemap_readstate_from_mapname(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val mapname : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val mapname : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_state.f_valuemap_readstate_from_mapname(context, mapname)
       return output
     }
@@ -1575,18 +1802,17 @@ object vx_state {
     var output : vx_state.Type_valuemap = vx_state.e_valuemap
     output = vx_core.f_let(
       vx_state.t_valuemap,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val value : vx_core.Type_any = vx_state.f_value_readstate_from_name(
-          context,
-          mapname
-        )
-        val valmap : vx_state.Type_valuemap = vx_core.f_any_from_any(
-          vx_state.t_valuemap,
-          value
-        )
-        val output_1 : vx_core.Type_any = valmap
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val value : vx_core.Type_any = vx_state.f_value_readstate_from_name(context, mapname)
+          val valmap : vx_state.Type_valuemap = vx_core.f_any_from_any(
+            vx_state.t_valuemap,
+            value
+          )
+          val output_1 : vx_core.Type_any = valmap
+          output_1
+        }
+      )
     )
     return output
   }

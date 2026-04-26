@@ -116,7 +116,10 @@ public static class Xml {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Data.Xml.Type_xml output = Vx.Core.vx_copy(Vx.Data.Xml.e_xml, vals);
+      Vx.Data.Xml.Type_xml output = Vx.Core.vx_copy(
+        Vx.Data.Xml.e_xml,
+        vals
+      );
       return output;
     }
 
@@ -146,9 +149,19 @@ public static class Xml {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -164,10 +177,21 @@ public static class Xml {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/data/xml/xml", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/data/xml/xml",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -178,8 +202,17 @@ public static class Xml {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/data/xml/xml", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/data/xml/xml",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -191,7 +224,12 @@ public static class Xml {
               vx_p_tag = valtag;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_tag = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_tag = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -202,9 +240,20 @@ public static class Xml {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("tag"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/data/xml/xml",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -213,7 +262,12 @@ public static class Xml {
               vx_p_text = valtext;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -224,9 +278,20 @@ public static class Xml {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/data/xml/xml",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":prop")) {
             if (valsub == vx_p_prop) {
@@ -235,7 +300,12 @@ public static class Xml {
               vx_p_prop = valprop;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_prop = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_prop = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -246,9 +316,20 @@ public static class Xml {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("prop"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/data/xml/xml",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":propmap")) {
             if (valsub == vx_p_propmap) {
@@ -265,9 +346,20 @@ public static class Xml {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("propmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/data/xml/xml",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":children")) {
             if (valsub == vx_p_children) {
@@ -284,9 +376,20 @@ public static class Xml {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("children"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/data/xml/xml",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":parent")) {
             if (valsub == vx_p_parent) {
@@ -303,14 +406,34 @@ public static class Xml {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("parent"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/data/xml/xml", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/data/xml/xml",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/data/xml/xml", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/data/xml/xml",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -343,17 +466,17 @@ public static class Xml {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/data/xml", // pkgname
-        "xml", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/data/xml",
+        "xml",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -407,7 +530,10 @@ public static class Xml {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Data.Xml.Type_xmllist output = Vx.Core.vx_copy(Vx.Data.Xml.e_xmllist, vals);
+      Vx.Data.Xml.Type_xmllist output = Vx.Core.vx_copy(
+        Vx.Data.Xml.e_xmllist,
+        vals
+      );
       return output;
     }
 
@@ -423,9 +549,19 @@ public static class Xml {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Data.Xml.Type_xmllist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listxml());
@@ -445,11 +581,31 @@ public static class Xml {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/data/xml/xmllist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/data/xml/xmllist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/data/xml/xmllist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/data/xml/xmllist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -475,17 +631,22 @@ public static class Xml {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/data/xml", // pkgname
-        "xmllist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Data.Xml.t_xml), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/data/xml",
+        "xmllist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Data.Xml.t_xml
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -506,7 +667,9 @@ public static class Xml {
 
   public class Class_xmlpropmap : Vx.Core.Class_base, Type_xmlpropmap {
 
-    public Vx.Core.Map<string, Vx.Core.Type_string> vx_p_map = Vx.Core.vx_mapimmutable(new Vx.Core.LinkedHashMap<string, Vx.Core.Type_string>());
+    public Vx.Core.Map<string, Vx.Core.Type_string> vx_p_map = Vx.Core.vx_mapimmutable(
+      new Vx.Core.LinkedHashMap<string, Vx.Core.Type_string>()
+    );
 
     public Vx.Core.Map<string, Vx.Core.Type_any> vx_map() {
       Vx.Core.Map<string, Vx.Core.Type_any> anymap = Vx.Core.vx_map_from_map<Vx.Core.Type_any, Vx.Core.Type_string>(this.vx_p_map);
@@ -569,8 +732,17 @@ public static class Xml {
         } else if (value is Vx.Core.Type_string castval) {
           map.put(key, castval);
         } else {
-          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error("vx/data/xml/xmlpropmap", ":invalidvalue", value);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error(
+            "vx/data/xml/xmlpropmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Vx.Core.vx_mapimmutable(map);
@@ -581,7 +753,10 @@ public static class Xml {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Data.Xml.Type_xmlpropmap output = Vx.Core.vx_copy(Vx.Data.Xml.e_xmlpropmap, vals);
+      Vx.Data.Xml.Type_xmlpropmap output = Vx.Core.vx_copy(
+        Vx.Data.Xml.e_xmlpropmap,
+        vals
+      );
       return output;
     }
 
@@ -599,9 +774,19 @@ public static class Xml {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           if (false) {
           } else if (valsub is Vx.Core.Type_string valstring) {
@@ -613,10 +798,21 @@ public static class Xml {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/data/xml/xmlpropmap", ":keyexpected", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/data/xml/xmlpropmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Vx.Core.Type_string valany = Vx.Core.e_string;
@@ -624,20 +820,38 @@ public static class Xml {
           } else if (valsub is Vx.Core.Type_string valallowed) {
             valany = valallowed;
           } else if (valsub is string) {
-            valany = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+            valany = Vx.Core.vx_new(
+              Vx.Core.t_string,
+              // [
+                valsub
+              // ]
+            );
           } else {
             if (false) {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                  Vx.Core.vx_string_from_object(valsub)
+                );
             }
             Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
             mapany.put("key", Vx.Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-            msg = Vx.Core.vx_msg_from_error("vx/data/xml/xmlpropmap", ":invalidkeyvalue", msgmap);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+              Vx.Core.vx_mapimmutable(mapany)
+            );
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/data/xml/xmlpropmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Vx.Core.e_any) {
             ischanged = true;
@@ -672,17 +886,22 @@ public static class Xml {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/data/xml", // pkgname
-        "xmlpropmap", // name
-        ":map", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_string), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/data/xml",
+        "xmlpropmap",
+        ":map",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Core.t_string
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -713,31 +932,39 @@ public static class Xml {
         Vx.Data.Textblock.t_delim,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":delimlist"),
-          Vx.Core.f_new(
-            Vx.Data.Textblock.t_delimlist,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              Vx.Data.Xml.c_delimxmlcomment,
-              Vx.Data.Xml.c_delimxmlcdata,
-              Vx.Core.f_copy(
-                Vx.Data.Textblock.c_delimbracketangle,
-                Vx.Core.vx_new(
-                  Vx.Core.t_anylist,
-                  Vx.Core.vx_new_string(":delimlist"),
-                  Vx.Core.f_new(
-                    Vx.Data.Textblock.t_delimlist,
+          // [
+            Vx.Core.vx_new_string(":delimlist"),
+            Vx.Core.f_new(
+              Vx.Data.Textblock.t_delimlist,
+              Vx.Core.vx_new(
+                Vx.Core.t_anylist,
+                // [
+                  Vx.Data.Xml.c_delimxmlcomment,
+                  Vx.Data.Xml.c_delimxmlcdata,
+                  Vx.Core.f_copy(
+                    Vx.Data.Textblock.c_delimbracketangle,
                     Vx.Core.vx_new(
                       Vx.Core.t_anylist,
-                      Vx.Data.Xml.c_delimxmlequal,
-                      Vx.Data.Textblock.c_delimwhitespace,
-                      Vx.Data.Textblock.c_delimquote
+                      // [
+                        Vx.Core.vx_new_string(":delimlist"),
+                        Vx.Core.f_new(
+                          Vx.Data.Textblock.t_delimlist,
+                          Vx.Core.vx_new(
+                            Vx.Core.t_anylist,
+                            // [
+                              Vx.Data.Xml.c_delimxmlequal,
+                              Vx.Data.Textblock.c_delimwhitespace,
+                              Vx.Data.Textblock.c_delimquote
+                            // ]
+                          )
+                        )
+                      // ]
                     )
                   )
-                )
+                // ]
               )
             )
-          )
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -772,12 +999,14 @@ public static class Xml {
         Vx.Data.Textblock.t_delim,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("delimxmlcomment"),
-          Vx.Core.vx_new_string(":starttext"),
-          Vx.Core.vx_new_string("<![CDATA["),
-          Vx.Core.vx_new_string(":endtext"),
-          Vx.Core.vx_new_string("]]>")
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("delimxmlcomment"),
+            Vx.Core.vx_new_string(":starttext"),
+            Vx.Core.vx_new_string("<![CDATA["),
+            Vx.Core.vx_new_string(":endtext"),
+            Vx.Core.vx_new_string("]]>")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -812,12 +1041,14 @@ public static class Xml {
         Vx.Data.Textblock.t_delim,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("delimxmlcomment"),
-          Vx.Core.vx_new_string(":starttext"),
-          Vx.Core.vx_new_string("<!--"),
-          Vx.Core.vx_new_string(":endtext"),
-          Vx.Core.vx_new_string("-->")
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("delimxmlcomment"),
+            Vx.Core.vx_new_string(":starttext"),
+            Vx.Core.vx_new_string("<!--"),
+            Vx.Core.vx_new_string(":endtext"),
+            Vx.Core.vx_new_string("-->")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -852,10 +1083,12 @@ public static class Xml {
         Vx.Data.Textblock.t_delim,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("delimxmlequal"),
-          Vx.Core.vx_new_string(":starttext"),
-          Vx.Core.vx_new_string("=")
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("delimxmlequal"),
+            Vx.Core.vx_new_string(":starttext"),
+            Vx.Core.vx_new_string("=")
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -904,17 +1137,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -938,13 +1171,21 @@ public static class Xml {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Data.Xml.f_string_decodexml_from_string(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Data.Xml.f_string_decodexml_from_string(text);
       return output;
     }
@@ -963,30 +1204,32 @@ public static class Xml {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string lt = Vx.Core.f_string_from_string_find_replace(
-          text,
-          Vx.Core.vx_new_string("&lt;"),
-          Vx.Core.vx_new_string("<")
-        );
-        Vx.Core.Type_string gt = Vx.Core.f_string_from_string_find_replace(
-          text,
-          Vx.Core.vx_new_string("&gt;"),
-          Vx.Core.vx_new_string(">")
-        );
-        Vx.Core.Type_string amp = Vx.Core.f_string_from_string_find_replace(
-          gt,
-          Vx.Core.vx_new_string("&amp;"),
-          Vx.Core.vx_new_string("&")
-        );
-        Vx.Core.Type_string result = Vx.Core.f_string_from_string_find_replace(
-          text,
-          Vx.Core.c_quote,
-          Vx.Core.vx_new_string("\\\"")
-        );
-        Vx.Core.Type_any output_1 = result;
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string lt = Vx.Core.f_string_from_string_find_replace(
+            text,
+            Vx.Core.vx_new_string("&lt;"),
+            Vx.Core.vx_new_string("<")
+          );
+          Vx.Core.Type_string gt = Vx.Core.f_string_from_string_find_replace(
+            text,
+            Vx.Core.vx_new_string("&gt;"),
+            Vx.Core.vx_new_string(">")
+          );
+          Vx.Core.Type_string amp = Vx.Core.f_string_from_string_find_replace(
+            gt,
+            Vx.Core.vx_new_string("&amp;"),
+            Vx.Core.vx_new_string("&")
+          );
+          Vx.Core.Type_string result = Vx.Core.f_string_from_string_find_replace(
+            text,
+            Vx.Core.c_quote,
+            Vx.Core.vx_new_string("\\\"")
+          );
+          Vx.Core.Type_any output_1 = result;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1026,17 +1269,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1060,13 +1303,21 @@ public static class Xml {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Data.Xml.Type_xml inputval = (Vx.Data.Xml.Type_xml)value;
       Vx.Core.Type_any outputval = Vx.Data.Xml.f_string_first_from_xml(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Xml.Type_xml xml = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Data.Xml.Type_xml xml = Vx.Core.f_any_from_any(
+        Vx.Data.Xml.t_xml,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Data.Xml.f_string_first_from_xml(xml);
       return output;
     }
@@ -1085,26 +1336,22 @@ public static class Xml {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Xml.Type_xmllist children = xml.children();
-        Vx.Data.Xml.Type_xml first = Vx.Core.f_any_from_list(
-          Vx.Data.Xml.t_xml,
-          children,
-          Vx.Core.vx_new_int(1)
-        );
-        Vx.Core.Type_string text = first.text();
-        Vx.Core.Type_string decode = Vx.Data.Xml.f_string_decodexml_from_string(
-          text
-        );
-        Vx.Core.Type_string outdent = Vx.Type.f_string_outdent(
-          decode
-        );
-        Vx.Core.Type_string trim = Vx.Type.f_string_trim(
-          outdent
-        );
-        Vx.Core.Type_any output_1 = trim;
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Xml.Type_xmllist children = xml.children();
+          Vx.Data.Xml.Type_xml first = Vx.Core.f_any_from_list(
+            Vx.Data.Xml.t_xml,
+            children,
+            Vx.Core.vx_new_int(1)
+          );
+          Vx.Core.Type_string text = first.text();
+          Vx.Core.Type_string decode = Vx.Data.Xml.f_string_decodexml_from_string(text);
+          Vx.Core.Type_string outdent = Vx.Type.f_string_outdent(decode);
+          Vx.Core.Type_string trim = Vx.Type.f_string_trim(outdent);
+          Vx.Core.Type_any output_1 = trim;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1144,17 +1391,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1178,13 +1425,21 @@ public static class Xml {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Data.Xml.f_textblock_xml_from_string(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Data.Xml.f_textblock_xml_from_string(text);
       return output;
     }
@@ -1244,17 +1499,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1272,8 +1527,18 @@ public static class Xml {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(
+        Vx.Data.Xml.t_xml,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Data.Xml.f_xml_angle_from_xml_textblock(xmlarg, tb);
       return output;
     }
@@ -1294,56 +1559,64 @@ public static class Xml {
       Vx.Data.Xml.t_xml,
       Vx.Core.vx_new(
         Vx.Core.t_thenelselist,
-        Vx.Core.f_then(
-          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_1 = Vx.Core.f_eq(
-              tb.text(),
-              Vx.Core.f_new(
-                Vx.Core.t_string,
-                Vx.Core.vx_new(
-                  Vx.Core.t_anylist,
-                  Vx.Core.vx_new_string("</"),
-                  xmlarg.tag(),
-                  Vx.Core.vx_new_string(">")
-                )
-              )
-            );
-            return output_1;
-          }),
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_close_from_xml_textblock(
-              xmlarg,
-              tb
-            );
-            return output_2;
-          })
-        ),
-        Vx.Core.f_else(
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_3 = Vx.Core.f_let(
-              Vx.Data.Xml.t_xml,
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Data.Textblock.Type_textblocklist children = tb.children();
-                Vx.Data.Xml.Type_xml xmlchg = Vx.Core.f_new(
-                  Vx.Data.Xml.t_xml,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":tag"),
-                    Vx.Core.vx_new_string(":notag"),
-                    Vx.Core.vx_new_string(":parent"),
-                    xmlarg
-                  )
-                );
-                Vx.Core.Type_any output_4 = Vx.Data.Xml.f_xml_properties_from_xml_textblocklist(
-                  xmlchg,
-                  children
-                );
-                return output_4;
-              })
-            );
-            return output_3;
-          })
-        )
+        // [
+          Vx.Core.f_then(
+            Vx.Core.t_boolean_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_1 = Vx.Core.f_eq(
+                    tb.text(),
+                    Vx.Core.f_new(
+                      Vx.Core.t_string,
+                      Vx.Core.vx_new(
+                        Vx.Core.t_anylist,
+                        // [
+                          Vx.Core.vx_new_string("</"),
+                          xmlarg.tag(),
+                          Vx.Core.vx_new_string(">")
+                        // ]
+                      )
+                    )
+                  );
+                  return output_1;
+                }
+            ),
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_close_from_xml_textblock(xmlarg, tb);
+                  return output_2;
+                }
+            )
+          ),
+          Vx.Core.f_else(
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_3 = Vx.Core.f_let(
+                    Vx.Data.Xml.t_xml,
+                    Vx.Core.t_any_from_func.vx_fn_new(
+                      () => {
+                        Vx.Data.Textblock.Type_textblocklist children = tb.children();
+                        Vx.Data.Xml.Type_xml xmlchg = Vx.Core.f_new(
+                          Vx.Data.Xml.t_xml,
+                          Vx.Core.vx_new(
+                            Vx.Core.t_anylist,
+                            // [
+                              Vx.Core.vx_new_string(":tag"),
+                              Vx.Core.vx_new_string(":notag"),
+                              Vx.Core.vx_new_string(":parent"),
+                              xmlarg
+                            // ]
+                          )
+                        );
+                        Vx.Core.Type_any output_4 = Vx.Data.Xml.f_xml_properties_from_xml_textblocklist(xmlchg, children);
+                        return output_4;
+                      }
+                    )
+                  );
+                  return output_3;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -1385,17 +1658,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1413,8 +1686,18 @@ public static class Xml {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(
+        Vx.Data.Xml.t_xml,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Data.Xml.f_xml_close_from_xml_textblock(xmlarg, tb);
       return output;
     }
@@ -1433,122 +1716,148 @@ public static class Xml {
     Vx.Data.Xml.Type_xml output = Vx.Data.Xml.e_xml;
     output = Vx.Core.f_let(
       Vx.Data.Xml.t_xml,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string tag = xmlarg.tag();
-        Vx.Core.Type_string text = tb.text();
-        Vx.Data.Xml.Type_xml parent = xmlarg.parent();
-        Vx.Core.Type_boolean isnoparent = Vx.Core.f_is_empty_1(
-          parent
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
-          Vx.Data.Xml.t_xml,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.f_or(
-                  Vx.Core.f_eq(
-                    Vx.Core.vx_new_string("/"),
-                    text
-                  ),
-                  Vx.Core.f_eq(
-                    text,
-                    Vx.Core.f_new(
-                      Vx.Core.t_string,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("</"),
-                        tag,
-                        Vx.Core.vx_new_string(">")
-                      )
-                    )
-                  )
-                );
-                return output_2;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = Vx.Core.f_if_2(
-                  Vx.Data.Xml.t_xml,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_thenelselist,
-                    Vx.Core.f_then(
-                      Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_4 = isnoparent;
-                        return output_4;
-                      }),
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_5 = xmlarg;
-                        return output_5;
-                      })
-                    ),
-                    Vx.Core.f_else(
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_6 = Vx.Core.f_copy(
-                          parent,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":children"),
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string tag = xmlarg.tag();
+          Vx.Core.Type_string text = tb.text();
+          Vx.Data.Xml.Type_xml parent = xmlarg.parent();
+          Vx.Core.Type_boolean isnoparent = Vx.Core.f_is_empty_1(parent);
+          Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
+            Vx.Data.Xml.t_xml,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.f_or(
+                          Vx.Core.f_eq(
+                            Vx.Core.vx_new_string("/"),
+                            text
+                          ),
+                          Vx.Core.f_eq(
+                            text,
                             Vx.Core.f_new(
-                              Vx.Data.Xml.t_xmllist,
+                              Vx.Core.t_string,
                               Vx.Core.vx_new(
                                 Vx.Core.t_anylist,
-                                parent.children(),
-                                Vx.Core.f_copy(
-                                  xmlarg,
-                                  Vx.Core.vx_new(
-                                    Vx.Core.t_anylist,
-                                    Vx.Core.vx_new_string(":parent"),
-                                    Vx.Core.f_empty(
-                                      Vx.Data.Xml.t_xml
-                                    )
-                                  )
-                                )
+                                // [
+                                  Vx.Core.vx_new_string("</"),
+                                  tag,
+                                  Vx.Core.vx_new_string(">")
+                                // ]
                               )
                             )
                           )
                         );
-                        return output_6;
-                      })
-                    )
+                        return output_2;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_3 = Vx.Core.f_if_2(
+                          Vx.Data.Xml.t_xml,
+                          Vx.Core.vx_new(
+                            Vx.Core.t_thenelselist,
+                            // [
+                              Vx.Core.f_then(
+                                Vx.Core.t_boolean_from_func.vx_fn_new(
+                                  () => {
+      Vx.Core.Type_any output_4 = isnoparent;
+                                      return output_4;
+                                    }
+                                ),
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+      Vx.Core.Type_any output_5 = xmlarg;
+                                      return output_5;
+                                    }
+                                )
+                              ),
+                              Vx.Core.f_else(
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_6 = Vx.Core.f_copy(
+                                        parent,
+                                        Vx.Core.vx_new(
+                                          Vx.Core.t_anylist,
+                                          // [
+                                            Vx.Core.vx_new_string(":children"),
+                                            Vx.Core.f_new(
+                                              Vx.Data.Xml.t_xmllist,
+                                              Vx.Core.vx_new(
+                                                Vx.Core.t_anylist,
+                                                // [
+                                                  parent.children(),
+                                                  Vx.Core.f_copy(
+                                                    xmlarg,
+                                                    Vx.Core.vx_new(
+                                                      Vx.Core.t_anylist,
+                                                      // [
+                                                        Vx.Core.vx_new_string(":parent"),
+                                                        Vx.Core.f_empty(Vx.Data.Xml.t_xml)
+                                                      // ]
+                                                    )
+                                                  )
+                                                // ]
+                                              )
+                                            )
+                                          // ]
+                                        )
+                                      );
+                                      return output_6;
+                                    }
+                                )
+                              )
+                            // ]
+                          )
+                        );
+                        return output_3;
+                      }
                   )
-                );
-                return output_3;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_7 = Vx.Core.f_copy(
-                  xmlarg,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.f_msg_from_error_1(
-                      Vx.Core.vx_new_string(":invalidxmlclosetag"),
-                      Vx.Core.f_new(
-                        Vx.Core.t_anymap,
-                        Vx.Core.vx_new(
-                          Vx.Core.t_anylist,
-                          Vx.Core.vx_new_string(":tag"),
-                          text,
-                          Vx.Core.vx_new_string(":startpos"),
-                          tb.startpos(),
-                          Vx.Core.vx_new_string(":endpos"),
-                          tb.endpos(),
-                          Vx.Core.vx_new_string(":line"),
-                          tb.line(),
-                          Vx.Core.vx_new_string(":column"),
-                          tb.column()
-                        )
-                      )
-                    )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_7 = Vx.Core.f_copy(
+                          xmlarg,
+                          Vx.Core.vx_new(
+                            Vx.Core.t_anylist,
+                            // [
+                              Vx.Core.f_msg_from_error_1(
+                                Vx.Core.vx_new_string(":invalidxmlclosetag"),
+                                Vx.Core.f_new(
+                                  Vx.Core.t_anymap,
+                                  Vx.Core.vx_new(
+                                    Vx.Core.t_anylist,
+                                    // [
+                                      Vx.Core.vx_new_string(":tag"),
+                                      text,
+                                      Vx.Core.vx_new_string(":startpos"),
+                                      tb.startpos(),
+                                      Vx.Core.vx_new_string(":endpos"),
+                                      tb.endpos(),
+                                      Vx.Core.vx_new_string(":line"),
+                                      tb.line(),
+                                      Vx.Core.vx_new_string(":column"),
+                                      tb.column()
+                                    // ]
+                                  )
+                                )
+                              )
+                            // ]
+                          )
+                        );
+                        return output_7;
+                      }
                   )
-                );
-                return output_7;
-              })
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1589,17 +1898,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1617,8 +1926,18 @@ public static class Xml {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(
+        Vx.Data.Xml.t_xml,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Data.Xml.f_xml_parse_from_xml_textblock(xmlarg, tb);
       return output;
     }
@@ -1637,60 +1956,68 @@ public static class Xml {
     Vx.Data.Xml.Type_xml output = Vx.Data.Xml.e_xml;
     output = Vx.Core.f_let(
       Vx.Data.Xml.t_xml,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Textblock.Type_delim delim = tb.delim();
-        Vx.Core.Type_string text = tb.text();
-        Vx.Core.Type_string starttext = delim.starttext();
-        Vx.Core.Type_any output_1 = Vx.Core.f_switch(
-          Vx.Data.Xml.t_xml,
-          starttext,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_case_1(
-              Vx.Core.vx_new_string(""),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_text_from_xml_textblock(
-                  xmlarg,
-                  tb
-                );
-                return output_2;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Data.Textblock.c_delimbracketangle.starttext(),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = Vx.Data.Xml.f_xml_angle_from_xml_textblock(
-                  xmlarg,
-                  tb
-                );
-                return output_3;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Data.Textblock.c_delimwhitespace.starttext(),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_4 = xmlarg;
-                return output_4;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Data.Xml.c_delimxmlcomment.starttext(),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_5 = xmlarg;
-                return output_5;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Data.Xml.c_delimxmlcdata.starttext(),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_6 = xmlarg;
-                return output_6;
-              })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Textblock.Type_delim delim = tb.delim();
+          Vx.Core.Type_string text = tb.text();
+          Vx.Core.Type_string starttext = delim.starttext();
+          Vx.Core.Type_any output_1 = Vx.Core.f_switch(
+            Vx.Data.Xml.t_xml,
+            starttext,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_case_1(
+                  Vx.Core.vx_new_string(""),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_text_from_xml_textblock(xmlarg, tb);
+                        return output_2;
+                      }
+                  )
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Data.Textblock.c_delimbracketangle.starttext(),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_3 = Vx.Data.Xml.f_xml_angle_from_xml_textblock(xmlarg, tb);
+                        return output_3;
+                      }
+                  )
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Data.Textblock.c_delimwhitespace.starttext(),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_4 = xmlarg;
+                        return output_4;
+                      }
+                  )
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Data.Xml.c_delimxmlcomment.starttext(),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_5 = xmlarg;
+                        return output_5;
+                      }
+                  )
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Data.Xml.c_delimxmlcdata.starttext(),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_6 = xmlarg;
+                        return output_6;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1731,17 +2058,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1759,8 +2086,18 @@ public static class Xml {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.Textblock.Type_textblocklist textblocklist = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblocklist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(
+        Vx.Data.Xml.t_xml,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Data.Textblock.Type_textblocklist textblocklist = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblocklist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Data.Xml.f_xml_parse_from_xml_textblocklist(xmlarg, textblocklist);
       return output;
     }
@@ -1781,12 +2118,20 @@ public static class Xml {
       Vx.Data.Xml.t_xml,
       textblocklist,
       xmlarg,
-      Vx.Core.t_any_from_reduce.vx_fn_new((Vx.Core.Type_any xmlarg_lmb_any, Vx.Core.Type_any tb_lmb_any) => {
-        Vx.Data.Xml.Type_xml xmlarg_lmb = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, xmlarg_lmb_any);
-        Vx.Data.Textblock.Type_textblock tb_lmb = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, tb_lmb_any);
-        Vx.Core.Type_any output_1 = Vx.Data.Xml.f_xml_parse_from_xml_textblock(xmlarg_lmb, tb_lmb);
-        return output_1;
-      })
+      Vx.Core.t_any_from_reduce.vx_fn_new(
+        (Vx.Core.Type_any xmlarg_lmb_any, Vx.Core.Type_any tb_lmb_any) => {
+      Vx.Data.Xml.Type_xml xmlarg_lmb = Vx.Core.f_any_from_any(
+        Vx.Data.Xml.t_xml,
+        xmlarg_lmb_any
+      );
+      Vx.Data.Textblock.Type_textblock tb_lmb = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        tb_lmb_any
+      );
+          Vx.Core.Type_any output_1 = Vx.Data.Xml.f_xml_parse_from_xml_textblock(xmlarg_lmb, tb_lmb);
+            return output_1;
+          }
+      )
     );
     return output;
   }
@@ -1827,17 +2172,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1855,8 +2200,18 @@ public static class Xml {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.Textblock.Type_textblocklist textblocklist = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblocklist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(
+        Vx.Data.Xml.t_xml,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Data.Textblock.Type_textblocklist textblocklist = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblocklist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Data.Xml.f_xml_properties_from_xml_textblocklist(xmlarg, textblocklist);
       return output;
     }
@@ -1875,24 +2230,31 @@ public static class Xml {
     Vx.Data.Xml.Type_xml output = Vx.Data.Xml.e_xml;
     output = Vx.Core.f_let(
       Vx.Data.Xml.t_xml,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Xml.Type_xml xmlchg = Vx.Core.f_any_from_list_start_reduce(
-          Vx.Data.Xml.t_xml,
-          textblocklist,
-          xmlarg,
-          Vx.Core.t_any_from_reduce.vx_fn_new((reduce_any, current_any) => {
-            Vx.Data.Xml.Type_xml reduce = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, reduce_any);
-            Vx.Data.Textblock.Type_textblock current = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, current_any);
-            Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_property_from_xml_textblock(
-              reduce,
-              current
-            );
-            return output_2;
-          })
-        );
-        Vx.Core.Type_any output_1 = xmlchg;
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Xml.Type_xml xmlchg = Vx.Core.f_any_from_list_start_reduce(
+            Vx.Data.Xml.t_xml,
+            textblocklist,
+            xmlarg,
+            Vx.Core.t_any_from_reduce.vx_fn_new(
+              (reduce_any, current_any) => {
+                Vx.Data.Xml.Type_xml reduce = Vx.Core.f_any_from_any(
+                  Vx.Data.Xml.t_xml,
+                  reduce_any
+                );
+                Vx.Data.Textblock.Type_textblock current = Vx.Core.f_any_from_any(
+                  Vx.Data.Textblock.t_textblock,
+                  current_any
+                );
+                Vx.Core.Type_any output_2 = Vx.Data.Xml.f_xml_property_from_xml_textblock(reduce, current);
+                return output_2;
+              }
+            )
+          );
+          Vx.Core.Type_any output_1 = xmlchg;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1933,17 +2295,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1961,8 +2323,18 @@ public static class Xml {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.Textblock.Type_textblock tbarg = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(
+        Vx.Data.Xml.t_xml,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Data.Textblock.Type_textblock tbarg = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Data.Xml.f_xml_property_from_xml_textblock(xmlarg, tbarg);
       return output;
     }
@@ -1981,139 +2353,170 @@ public static class Xml {
     Vx.Data.Xml.Type_xml output = Vx.Data.Xml.e_xml;
     output = Vx.Core.f_let(
       Vx.Data.Xml.t_xml,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Textblock.Type_delim delim = tbarg.delim();
-        Vx.Core.Type_string text = tbarg.text();
-        Vx.Core.Type_string delimname = delim.name();
-        Vx.Core.Type_string tag = xmlarg.tag();
-        Vx.Core.Type_string prop = xmlarg.prop();
-        Vx.Core.Type_stringmap propmap = xmlarg.propmap();
-        Vx.Core.Type_any output_1 = Vx.Core.f_switch(
-          Vx.Data.Xml.t_xml,
-          delimname,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_case_1(
-              Vx.Core.vx_new_string(""),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.f_if_2(
-                  Vx.Data.Xml.t_xml,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_thenelselist,
-                    Vx.Core.f_then(
-                      Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_3 = Vx.Type.f_boolean_from_string_starts(
-                          text,
-                          Vx.Core.vx_new_string("/")
-                        );
-                        return output_3;
-                      }),
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_4 = Vx.Data.Xml.f_xml_close_from_xml_textblock(
-                          xmlarg,
-                          tbarg
-                        );
-                        return output_4;
-                      })
-                    ),
-                    Vx.Core.f_then(
-                      Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_5 = Vx.Core.f_eq(
-                          Vx.Core.vx_new_string(":notag"),
-                          tag
-                        );
-                        return output_5;
-                      }),
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_6 = Vx.Core.f_copy(
-                          xmlarg,
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Textblock.Type_delim delim = tbarg.delim();
+          Vx.Core.Type_string text = tbarg.text();
+          Vx.Core.Type_string delimname = delim.name();
+          Vx.Core.Type_string tag = xmlarg.tag();
+          Vx.Core.Type_string prop = xmlarg.prop();
+          Vx.Core.Type_stringmap propmap = xmlarg.propmap();
+          Vx.Core.Type_any output_1 = Vx.Core.f_switch(
+            Vx.Data.Xml.t_xml,
+            delimname,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_case_1(
+                  Vx.Core.vx_new_string(""),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.f_if_2(
+                          Vx.Data.Xml.t_xml,
                           Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":tag"),
-                            text
+                            Vx.Core.t_thenelselist,
+                            // [
+                              Vx.Core.f_then(
+                                Vx.Core.t_boolean_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_3 = Vx.Type.f_boolean_from_string_starts(
+                                        text,
+                                        Vx.Core.vx_new_string("/")
+                                      );
+                                      return output_3;
+                                    }
+                                ),
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_4 = Vx.Data.Xml.f_xml_close_from_xml_textblock(xmlarg, tbarg);
+                                      return output_4;
+                                    }
+                                )
+                              ),
+                              Vx.Core.f_then(
+                                Vx.Core.t_boolean_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_5 = Vx.Core.f_eq(
+                                        Vx.Core.vx_new_string(":notag"),
+                                        tag
+                                      );
+                                      return output_5;
+                                    }
+                                ),
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_6 = Vx.Core.f_copy(
+                                        xmlarg,
+                                        Vx.Core.vx_new(
+                                          Vx.Core.t_anylist,
+                                          // [
+                                            Vx.Core.vx_new_string(":tag"),
+                                            text
+                                          // ]
+                                        )
+                                      );
+                                      return output_6;
+                                    }
+                                )
+                              ),
+                              Vx.Core.f_then(
+                                Vx.Core.t_boolean_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_7 = Vx.Core.f_eq(
+                                        Vx.Core.vx_new_string(""),
+                                        prop
+                                      );
+                                      return output_7;
+                                    }
+                                ),
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_8 = Vx.Core.f_copy(
+                                        xmlarg,
+                                        Vx.Core.vx_new(
+                                          Vx.Core.t_anylist,
+                                          // [
+                                            Vx.Core.vx_new_string(":prop"),
+                                            text
+                                          // ]
+                                        )
+                                      );
+                                      return output_8;
+                                    }
+                                )
+                              )
+                            // ]
                           )
                         );
-                        return output_6;
-                      })
-                    ),
-                    Vx.Core.f_then(
-                      Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_7 = Vx.Core.f_eq(
-                          Vx.Core.vx_new_string(""),
-                          prop
-                        );
-                        return output_7;
-                      }),
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_8 = Vx.Core.f_copy(
-                          xmlarg,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":prop"),
-                            text
+                        return output_2;
+                      }
+                  )
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Core.vx_new_string("delimquote"),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_9 = Vx.Core.f_if_1(
+                          Vx.Data.Xml.t_xml,
+                          Vx.Core.f_eq(
+                            Vx.Core.vx_new_string(""),
+                            prop
+                          ),
+                          Vx.Core.f_copy(
+                            xmlarg,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.f_msg_from_error(
+                                  Vx.Core.vx_new_string("Found quoted text with no matching attribute.")
+                                )
+                              // ]
+                            )
+                          ),
+                          Vx.Core.f_copy(
+                            xmlarg,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string(":prop"),
+                                Vx.Core.vx_new_string(""),
+                                Vx.Core.vx_new_string(":propmap"),
+                                Vx.Core.f_copy(
+                                  propmap,
+                                  Vx.Core.vx_new(
+                                    Vx.Core.t_anylist,
+                                    // [
+                                      prop,
+                                      Vx.Core.f_any_from_list(
+      Vx.Data.Textblock.t_textblock,
+      tbarg.children(),
+      Vx.Core.vx_new_int(1)
+    ).text()
+                                    // ]
+                                  )
+                                )
+                              // ]
+                            )
                           )
                         );
-                        return output_8;
-                      })
-                    )
+                        return output_9;
+                      }
                   )
-                );
-                return output_2;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Core.vx_new_string("delimquote"),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_9 = Vx.Core.f_if_1(
-                  Vx.Data.Xml.t_xml,
-                  Vx.Core.f_eq(
-                    Vx.Core.vx_new_string(""),
-                    prop
-                  ),
-                  Vx.Core.f_copy(
-                    xmlarg,
-                    Vx.Core.vx_new(
-                      Vx.Core.t_anylist,
-                      Vx.Core.f_msg_from_error(
-                        Vx.Core.vx_new_string("Found quoted text with no matching attribute.")
-                      )
-                    )
-                  ),
-                  Vx.Core.f_copy(
-                    xmlarg,
-                    Vx.Core.vx_new(
-                      Vx.Core.t_anylist,
-                      Vx.Core.vx_new_string(":prop"),
-                      Vx.Core.vx_new_string(""),
-                      Vx.Core.vx_new_string(":propmap"),
-                      Vx.Core.f_copy(
-                        propmap,
-                        Vx.Core.vx_new(
-                          Vx.Core.t_anylist,
-                          prop,
-                          Vx.Core.f_any_from_list(
-                            Vx.Data.Textblock.t_textblock,
-                            tbarg.children(),
-                            Vx.Core.vx_new_int(1)
-                          ).text()
-                        )
-                      )
-                    )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_10 = xmlarg;
+                        return output_10;
+                      }
                   )
-                );
-                return output_9;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_10 = xmlarg;
-                return output_10;
-              })
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2153,17 +2556,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2187,14 +2590,27 @@ public static class Xml {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Data.File.Type_file inputval = (Vx.Data.File.Type_file)value;
       Vx.Core.Type_any outputval = Vx.Data.Xml.f_xml_read_from_file(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.File.Type_file file = Vx.Core.f_any_from_any(Vx.Data.File.t_file, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Data.File.Type_file file = Vx.Core.f_any_from_any(
+        Vx.Data.File.t_file,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Data.Xml.f_xml_read_from_file(context, file);
       return output;
     }
@@ -2213,16 +2629,13 @@ public static class Xml {
     Vx.Data.Xml.Type_xml output = Vx.Data.Xml.e_xml;
     output = Vx.Core.f_let(
       Vx.Data.Xml.t_xml,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.File.Type_file loaded = Vx.Data.File.f_file_read_from_file(
-          context,
-          file
-        );
-        Vx.Core.Type_any output_1 = Vx.Data.Xml.f_xml_from_file(
-          loaded
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.File.Type_file loaded = Vx.Data.File.f_file_read_from_file(context, file);
+          Vx.Core.Type_any output_1 = Vx.Data.Xml.f_xml_from_file(loaded);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2263,17 +2676,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2291,8 +2704,18 @@ public static class Xml {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(Vx.Data.Xml.t_xml, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Xml.Type_xml xmlarg = Vx.Core.f_any_from_any(
+        Vx.Data.Xml.t_xml,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Data.Xml.f_xml_text_from_xml_textblock(xmlarg, tb);
       return output;
     }
@@ -2311,56 +2734,70 @@ public static class Xml {
     Vx.Data.Xml.Type_xml output = Vx.Data.Xml.e_xml;
     output = Vx.Core.f_let(
       Vx.Data.Xml.t_xml,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string text = tb.text();
-        Vx.Data.Xml.Type_xml xmlchg = Vx.Core.f_new(
-          Vx.Data.Xml.t_xml,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":text"),
-            text
-          )
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
-          Vx.Data.Xml.t_xml,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.f_is_empty_1(
-                  xmlarg
-                );
-                return output_2;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = xmlchg;
-                return output_3;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_4 = Vx.Core.f_copy(
-                  xmlarg,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":children"),
-                    Vx.Core.f_new(
-                      Vx.Data.Xml.t_xmllist,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        xmlarg.children(),
-                        xmlchg
-                      )
-                    )
-                  )
-                );
-                return output_4;
-              })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string text = tb.text();
+          Vx.Data.Xml.Type_xml xmlchg = Vx.Core.f_new(
+            Vx.Data.Xml.t_xml,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":text"),
+                text
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
+            Vx.Data.Xml.t_xml,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.f_is_empty_1(xmlarg);
+                        return output_2;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_3 = xmlchg;
+                        return output_3;
+                      }
+                  )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_4 = Vx.Core.f_copy(
+                          xmlarg,
+                          Vx.Core.vx_new(
+                            Vx.Core.t_anylist,
+                            // [
+                              Vx.Core.vx_new_string(":children"),
+                              Vx.Core.f_new(
+                                Vx.Data.Xml.t_xmllist,
+                                Vx.Core.vx_new(
+                                  Vx.Core.t_anylist,
+                                  // [
+                                    xmlarg.children(),
+                                    xmlchg
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        );
+                        return output_4;
+                      }
+                  )
+                )
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2400,17 +2837,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2434,13 +2871,21 @@ public static class Xml {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Data.File.Type_file inputval = (Vx.Data.File.Type_file)value;
       Vx.Core.Type_any outputval = Vx.Data.Xml.f_xml_from_file(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.File.Type_file file = Vx.Core.f_any_from_any(Vx.Data.File.t_file, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Data.File.Type_file file = Vx.Core.f_any_from_any(
+        Vx.Data.File.t_file,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Data.Xml.f_xml_from_file(file);
       return output;
     }
@@ -2459,13 +2904,13 @@ public static class Xml {
     Vx.Data.Xml.Type_xml output = Vx.Data.Xml.e_xml;
     output = Vx.Core.f_let(
       Vx.Data.Xml.t_xml,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string text = file.text();
-        Vx.Core.Type_any output_1 = Vx.Data.Xml.f_xml_from_string(
-          text
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string text = file.text();
+          Vx.Core.Type_any output_1 = Vx.Data.Xml.f_xml_from_string(text);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2505,17 +2950,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2539,13 +2984,21 @@ public static class Xml {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Data.Xml.f_xml_from_string(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Data.Xml.f_xml_from_string(text);
       return output;
     }
@@ -2564,15 +3017,13 @@ public static class Xml {
     Vx.Data.Xml.Type_xml output = Vx.Data.Xml.e_xml;
     output = Vx.Core.f_let(
       Vx.Data.Xml.t_xml,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Textblock.Type_textblock tb = Vx.Data.Xml.f_textblock_xml_from_string(
-          text
-        );
-        Vx.Core.Type_any output_1 = Vx.Data.Xml.f_xml_from_textblock(
-          tb
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Textblock.Type_textblock tb = Vx.Data.Xml.f_textblock_xml_from_string(text);
+          Vx.Core.Type_any output_1 = Vx.Data.Xml.f_xml_from_textblock(tb);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2612,17 +3063,17 @@ public static class Xml {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/xml", // pkgname
-          "xml", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/xml",
+          "xml",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2646,13 +3097,21 @@ public static class Xml {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Data.Textblock.Type_textblock inputval = (Vx.Data.Textblock.Type_textblock)value;
       Vx.Core.Type_any outputval = Vx.Data.Xml.f_xml_from_textblock(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Data.Xml.f_xml_from_textblock(textblock);
       return output;
     }
@@ -2670,9 +3129,7 @@ public static class Xml {
   public static Vx.Data.Xml.Type_xml f_xml_from_textblock(Vx.Data.Textblock.Type_textblock textblock) {
     Vx.Data.Xml.Type_xml output = Vx.Data.Xml.e_xml;
     output = Vx.Data.Xml.f_xml_parse_from_xml_textblocklist(
-      Vx.Core.f_empty(
-        Vx.Data.Xml.t_xml
-      ),
+      Vx.Core.f_empty(Vx.Data.Xml.t_xml),
       textblock.children()
     );
     return output;

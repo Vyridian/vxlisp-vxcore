@@ -21,7 +21,7 @@ public enum Vx_Collection {
         let code = ":loopmaximumexceeded"
         let details = Vx_Core.vx_new_int(icount)
         let msg = Vx_Core.vx_msg_from_error(path, code, details)
-        output = Vx_Core.vx_copy(output, msg)
+        output = Vx_Core.vx_copy(generic_any_1, output, [msg])
         iscontinue = false
       } else {
         icount += 1
@@ -51,7 +51,7 @@ public enum Vx_Collection {
         let code = ":loopmaximumexceeded"
         let details = Vx_Core.vx_new_int(icount)
         let msg = Vx_Core.vx_msg_from_error(path, code, details)
-        output = Vx_Core.vx_copy(output, msg)
+        output = Vx_Core.vx_copy(generic_any_1, output, [msg])
         iscontinue = false
       } else {
         icount += 1
@@ -122,7 +122,7 @@ public enum Vx_Collection {
         let code = ":loopmaximumexceeded"
         let details = Vx_Core.vx_new_int(icount)
         let msg = Vx_Core.vx_msg_from_error(path, code, details)
-        output = Vx_Core.vx_copy(output, msg)
+        output = Vx_Core.vx_copy(generic_list_1, output, [msg])
         iscontinue = false
       } else {
         let valwhile = fn_while.vx_boolean_from_any(work)
@@ -265,17 +265,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -295,9 +300,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let listmain : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let listremove : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let listmain : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let listremove : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_minus(generic_list_1, listmain, listremove)
       return output
     }
@@ -329,31 +349,39 @@ public enum Vx_Collection {
     output = Vx_Collection.f_list_from_list_filter(
       generic_list_1,
       listmain,
-      Vx_Core.t_any_from_any.vx_fn_new({(item_any) in
-        let item : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, item_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
-          Vx_Core.t_any,
-          Vx_Core.vx_new(
-            Vx_Core.t_thenelselist,
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_2 : any Vx_Core.Type_any = Vx_Core.f_not(
-                  Vx_Core.f_contains_1(
-                    listremove,
-                    item
+      Vx_Core.t_any_from_any.vx_fn_new(
+        {(item_any) in
+          let item : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            item_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
+            Vx_Core.t_any,
+            Vx_Core.vx_new(
+              Vx_Core.t_thenelselist,
+              [
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_2 : any Vx_Core.Type_any = Vx_Core.f_not(
+                          Vx_Core.f_contains_1(listremove, item)
+                        )
+                        return output_2
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+      let output_3 : any Vx_Core.Type_any = item
+                        return output_3
+                      }
                   )
                 )
-                return output_2
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                let output_3 : any Vx_Core.Type_any = item
-                return output_3
-              })
+              ]
             )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -395,17 +423,22 @@ public enum Vx_Collection {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -425,9 +458,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let mapmain : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let mapremove : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let mapmain : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let mapremove : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_minus_1(generic_map_1, mapmain, mapremove)
       return output
     }
@@ -458,25 +506,23 @@ public enum Vx_Collection {
     var output : N = Vx_Core.f_empty(generic_map_1)
     output = Vx_Core.f_let(
       generic_map_1,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let keysmain : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(
-          mapmain
-        )
-        let keysremove : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(
-          mapremove
-        )
-        let keysremain : any Vx_Core.Type_stringlist = Vx_Collection.f_minus(
-          Vx_Core.t_stringlist,
-          keysmain,
-          keysremove
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Collection.f_map_from_map_keys(
-          generic_map_1,
-          mapmain,
-          keysremain
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let keysmain : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(mapmain)
+          let keysremove : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(mapremove)
+          let keysremain : any Vx_Core.Type_stringlist = Vx_Collection.f_minus(
+            Vx_Core.t_stringlist,
+            keysmain,
+            keysremove
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Collection.f_map_from_map_keys(
+            generic_map_1,
+            mapmain,
+            keysremain
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -519,17 +565,17 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -549,10 +595,30 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_until : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(Vx_Core.t_boolean_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_until : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Collection.f_any_from_for_until_loop(generic_any_1, start, fn_until, fn_loop)
       return output
     }
@@ -630,17 +696,17 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -660,11 +726,36 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_until : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(Vx_Core.t_boolean_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
-      let max : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(3)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_until : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
+      let max : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(3)
+        )
+      )
       output = Vx_Collection.f_any_from_for_until_loop_max(generic_any_1, start, fn_until, fn_loop, max)
       return output
     }
@@ -736,17 +827,17 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -766,10 +857,30 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_while : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(Vx_Core.t_boolean_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_while : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Collection.f_any_from_for_while_loop(generic_any_1, start, fn_while, fn_loop)
       return output
     }
@@ -847,17 +958,17 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -877,11 +988,36 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_while : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(Vx_Core.t_boolean_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
-      let max : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(3)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_while : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
+      let max : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(3)
+        )
+      )
       output = Vx_Collection.f_any_from_for_while_loop_max(generic_any_1, start, fn_while, fn_loop, max)
       return output
     }
@@ -952,17 +1088,17 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -982,9 +1118,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let map : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let pos : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let map : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let pos : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_any_from_map_pos(generic_any_1, map, pos)
       return output
     }
@@ -1011,22 +1162,22 @@ public enum Vx_Collection {
     var output : T = Vx_Core.f_empty(generic_any_1)
     output = Vx_Core.f_let(
       generic_any_1,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let keys : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(
-          map
-        )
-        let key : any Vx_Core.Type_string = Vx_Core.f_any_from_list(
-          Vx_Core.t_string,
-          keys,
-          pos
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_map(
-          generic_any_1,
-          map,
-          key
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let keys : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(map)
+          let key : any Vx_Core.Type_string = Vx_Core.f_any_from_list(
+            Vx_Core.t_string,
+            keys,
+            pos
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_map(
+            generic_any_1,
+            map,
+            key
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1066,17 +1217,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "anymap", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "anymap",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1103,7 +1259,10 @@ public enum Vx_Collection {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_struct = value as! any Vx_Core.Type_struct
       let outputval : any Vx_Core.Type_any = Vx_Collection.f_anymap_from_struct(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1111,7 +1270,12 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let structure : any Vx_Core.Type_struct = Vx_Core.f_any_from_any(Vx_Core.t_struct, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let structure : any Vx_Core.Type_struct = Vx_Core.f_any_from_any(
+        Vx_Core.t_struct,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Collection.f_anymap_from_struct(structure)
       return output
     }
@@ -1172,17 +1336,17 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1202,8 +1366,18 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_boolean_write_from_map_removekey(valuemap, key)
       return output
     }
@@ -1229,9 +1403,7 @@ public enum Vx_Collection {
     output = Vx_Core.f_boolean_write_from_map_name_value(
       valuemap,
       key,
-      Vx_Core.f_empty(
-        Vx_Core.t_any
-      )
+      Vx_Core.f_empty(Vx_Core.t_any)
     )
     return output
   }
@@ -1272,17 +1444,17 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1302,8 +1474,18 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let keys : any Vx_Core.Type_stringlist = Vx_Core.f_any_from_any(Vx_Core.t_stringlist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let keys : any Vx_Core.Type_stringlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_stringlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_boolean_write_from_map_removekeys(valuemap, keys)
       return output
     }
@@ -1328,24 +1510,26 @@ public enum Vx_Collection {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_let(
       Vx_Core.t_boolean,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let writelist : any Vx_Core.Type_booleanlist = Vx_Core.f_list_from_list_1(
-          Vx_Core.t_booleanlist,
-          keys,
-          Vx_Core.t_any_from_any.vx_fn_new({(key_any) in
-            let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, key_any)
-            var output_2 : any Vx_Core.Type_any = Vx_Collection.f_boolean_write_from_map_removekey(
-              valuemap,
-              key
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let writelist : any Vx_Core.Type_booleanlist = Vx_Core.f_list_from_list_1(
+            Vx_Core.t_booleanlist,
+            keys,
+            Vx_Core.t_any_from_any.vx_fn_new(
+              {(key_any) in
+                let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+                  Vx_Core.t_string,
+                  key_any
+                )
+                var output_2 : any Vx_Core.Type_any = Vx_Collection.f_boolean_write_from_map_removekey(valuemap, key)
+                return output_2
+              }
             )
-            return output_2
-          })
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_and_1(
-          writelist
-        )
-        return output_1
-      })
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_and_1(writelist)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1386,17 +1570,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1416,8 +1605,18 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let map : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let map : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_int_from_map_key(map, key)
       return output
     }
@@ -1442,16 +1641,13 @@ public enum Vx_Collection {
     var output : any Vx_Core.Type_int = Vx_Core.e_int
     output = Vx_Core.f_let(
       Vx_Core.t_int,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let keys : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(
-          map
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Collection.f_int_from_stringlist_find(
-          keys,
-          key
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let keys : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(map)
+          let output_1 : any Vx_Core.Type_any = Vx_Collection.f_int_from_stringlist_find(keys, key)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1492,17 +1688,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1522,8 +1723,18 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stringlist : any Vx_Core.Type_stringlist = Vx_Core.f_any_from_any(Vx_Core.t_stringlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let stringlist : any Vx_Core.Type_stringlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_stringlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_int_from_stringlist_find(stringlist, find)
       return output
     }
@@ -1548,40 +1759,52 @@ public enum Vx_Collection {
     var output : any Vx_Core.Type_int = Vx_Core.e_int
     output = Vx_Core.f_let(
       Vx_Core.t_int,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let poslist : any Vx_Core.Type_intlist = Vx_Core.f_list_from_list_intany(
-          Vx_Core.t_intlist,
-          stringlist,
-          Vx_Core.t_any_from_int_any.vx_fn_new({(pos_any, value_any) in
-            let pos : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, pos_any)
-            let value : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, value_any)
-            var output_2 : any Vx_Core.Type_any = Vx_Core.f_if_1(
-              Vx_Core.t_int,
-              Vx_Core.f_eq(
-                find,
-                value
-              ),
-              pos,
-              Vx_Core.vx_new_int(0)
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let poslist : any Vx_Core.Type_intlist = Vx_Core.f_list_from_list_intany(
+            Vx_Core.t_intlist,
+            stringlist,
+            Vx_Core.t_any_from_int_any.vx_fn_new(
+              {(pos_any, value_any) in
+                let pos : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+                  Vx_Core.t_int,
+                  pos_any
+                )
+                let value : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+                  Vx_Core.t_string,
+                  value_any
+                )
+                var output_2 : any Vx_Core.Type_any = Vx_Core.f_if_1(
+                  Vx_Core.t_int,
+                  Vx_Core.f_eq(find, value),
+                  pos,
+                  Vx_Core.vx_new_int(0)
+                )
+                return output_2
+              }
             )
-            return output_2
-          })
-        )
-        let gt0list : any Vx_Core.Type_intlist = Vx_Collection.f_list_from_list_filter(
-          Vx_Core.t_intlist,
-          poslist,
-          Vx_Core.t_any_from_any.vx_fn_new({(item_any) in
-            let item : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, item_any)
-            var output_3 : any Vx_Core.Type_any = item
-            return output_3
-          })
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_first_from_list(
-          Vx_Core.t_int,
-          gt0list
-        )
-        return output_1
-      })
+          )
+          let gt0list : any Vx_Core.Type_intlist = Vx_Collection.f_list_from_list_filter(
+            Vx_Core.t_intlist,
+            poslist,
+            Vx_Core.t_any_from_any.vx_fn_new(
+              {(item_any) in
+                let item : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+                  Vx_Core.t_int,
+                  item_any
+                )
+                var output_3 : any Vx_Core.Type_any = item
+                return output_3
+              }
+            )
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_first_from_list(
+            Vx_Core.t_int,
+            gt0list
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1621,17 +1844,17 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1658,7 +1881,10 @@ public enum Vx_Collection {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Collection.f_is_list(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1666,7 +1892,12 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Collection.f_is_list(value)
       return output
     }
@@ -1689,9 +1920,7 @@ public enum Vx_Collection {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_eq(
       Vx_Core.vx_new_string(":list"),
-      Vx_Core.f_extends_from_any(
-        value
-      )
+      Vx_Core.f_extends_from_any(value)
     )
     return output
   }
@@ -1731,17 +1960,17 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1768,7 +1997,10 @@ public enum Vx_Collection {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Collection.f_is_map(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1776,7 +2008,12 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Collection.f_is_map(value)
       return output
     }
@@ -1799,9 +2036,7 @@ public enum Vx_Collection {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_eq(
       Vx_Core.vx_new_string(":map"),
-      Vx_Core.f_extends_from_any(
-        value
-      )
+      Vx_Core.f_extends_from_any(value)
     )
     return output
   }
@@ -1844,17 +2079,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1874,10 +2114,30 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_loop : any Vx_Core.Func_any_from_int = Vx_Core.f_any_from_any(Vx_Core.t_any_from_int, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_loop : any Vx_Core.Func_any_from_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Collection.f_list_from_for_end_loop(generic_list_1, start, end, fn_loop)
       return output
     }
@@ -1945,17 +2205,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1975,10 +2240,30 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_while : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(Vx_Core.t_boolean_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_while : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Collection.f_list_from_for_while_loop(generic_list_1, start, fn_while, fn_loop)
       return output
     }
@@ -2054,17 +2339,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2084,11 +2374,36 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_while : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(Vx_Core.t_boolean_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
-      let max : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(3)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_while : any Vx_Core.Func_boolean_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_loop : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
+      let max : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(3)
+        )
+      )
       output = Vx_Collection.f_list_from_for_while_loop_max(generic_list_1, start, fn_while, fn_loop, max)
       return output
     }
@@ -2157,17 +2472,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2187,9 +2507,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_list_from_list_end(generic_list_1, values, end)
       return output
     }
@@ -2262,17 +2597,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2292,9 +2632,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let vallist : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_filter : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let vallist : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_filter : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_list_from_list_filter(generic_list_1, vallist, fn_filter)
       return output
     }
@@ -2359,17 +2714,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2389,9 +2749,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let vallist : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let filtertypes : any Vx_Core.Type_typelist = Vx_Core.f_any_from_any(Vx_Core.t_typelist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let vallist : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let filtertypes : any Vx_Core.Type_typelist = Vx_Core.f_any_from_any(
+        Vx_Core.t_typelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_list_from_list_filtertypes(generic_list_1, vallist, filtertypes)
       return output
     }
@@ -2419,18 +2794,20 @@ public enum Vx_Collection {
     output = Vx_Collection.f_list_from_list_filter(
       generic_list_1,
       vallist,
-      Vx_Core.t_any_from_any.vx_fn_new({(value_any) in
-        let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, value_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_if(
-          Vx_Core.t_any,
-          Vx_Type.f_is_type_from_any_typelist(
-            value,
-            filtertypes
-          ),
-          value
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_any.vx_fn_new(
+        {(value_any) in
+          let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            value_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_if(
+            Vx_Core.t_any,
+            Vx_Type.f_is_type_from_any_typelist(value, filtertypes),
+            value
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -2472,17 +2849,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2502,9 +2884,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let listsrc : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let listsrc : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_list_from_list_flatten(generic_list_1, listsrc, fn_any_from_any)
       return output
     }
@@ -2531,18 +2928,20 @@ public enum Vx_Collection {
     var output : X = Vx_Core.f_empty(generic_list_1)
     output = Vx_Core.f_let(
       generic_list_1,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let listany : any Vx_Core.Type_anylist = Vx_Core.f_list_from_list_1(
-          Vx_Core.t_anylist,
-          listsrc,
-          fn_any_from_any
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          generic_list_1,
-          listany
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let listany : any Vx_Core.Type_anylist = Vx_Core.f_list_from_list_1(
+            Vx_Core.t_anylist,
+            listsrc,
+            fn_any_from_any
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            generic_list_1,
+            listany
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -2583,17 +2982,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2619,8 +3023,14 @@ public enum Vx_Collection {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_list = value as! any Vx_Core.Type_list
-      let outputval : any Vx_Core.Type_any = Vx_Collection.f_list_from_list_join(Vx_Core.t_list, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Collection.f_list_from_list_join(
+        Vx_Core.t_list,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -2628,8 +3038,18 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Collection.f_list_from_list_join(generic_list_1, values)
       return output
     }
@@ -2655,11 +3075,16 @@ public enum Vx_Collection {
     output = Vx_Collection.f_list_from_list_join_1(
       generic_list_1,
       values,
-      Vx_Core.t_any_from_any.vx_fn_new({(value_any) in
-        let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, value_any)
-        var output_1 : any Vx_Core.Type_any = value
-        return output_1
-      })
+      Vx_Core.t_any_from_any.vx_fn_new(
+        {(value_any) in
+          let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            value_any
+          )
+          var output_1 : any Vx_Core.Type_any = value
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -2701,17 +3126,22 @@ public enum Vx_Collection {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2731,9 +3161,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(Vx_Core.t_any_from_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_any_from_any : any Vx_Core.Func_any_from_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_list_from_list_join_1(generic_list_1, values, fn_any_from_any)
       return output
     }
@@ -2798,17 +3243,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2828,9 +3278,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_list_from_list_start(generic_list_1, values, start)
       return output
     }
@@ -2861,9 +3326,7 @@ public enum Vx_Collection {
       generic_list_1,
       values,
       start,
-      Vx_Core.f_length_1(
-        values
-      )
+      Vx_Core.f_length_1(values)
     )
     return output
   }
@@ -2906,17 +3369,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2936,10 +3404,30 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_list_1 : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let values : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Collection.f_list_from_list_start_end(generic_list_1, values, start, end)
       return output
     }
@@ -3008,17 +3496,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3038,9 +3531,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_map_from_map_end(generic_map_1, valuemap, end)
       return output
     }
@@ -3113,17 +3621,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3143,9 +3656,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let keys : any Vx_Core.Type_stringlist = Vx_Core.f_any_from_any(Vx_Core.t_stringlist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let keys : any Vx_Core.Type_stringlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_stringlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_map_from_map_keys(generic_map_1, valuemap, keys)
       return output
     }
@@ -3212,17 +3740,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3242,9 +3775,24 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Collection.f_map_from_map_start(generic_map_1, valuemap, start)
       return output
     }
@@ -3275,9 +3823,7 @@ public enum Vx_Collection {
       generic_map_1,
       valuemap,
       start,
-      Vx_Core.f_length_2(
-        valuemap
-      )
+      Vx_Core.f_length_2(valuemap)
     )
     return output
   }
@@ -3320,17 +3866,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3350,10 +3901,30 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let valuemap : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Collection.f_map_from_map_start_end(generic_map_1, valuemap, start, end)
       return output
     }
@@ -3384,23 +3955,23 @@ public enum Vx_Collection {
     var output : N = Vx_Core.f_empty(generic_map_1)
     output = Vx_Core.f_let(
       generic_map_1,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let keys1 : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(
-          valuemap
-        )
-        let keys2 : any Vx_Core.Type_stringlist = Vx_Collection.f_list_from_list_start_end(
-          Vx_Core.t_stringlist,
-          keys1,
-          start,
-          end
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Collection.f_map_from_map_keys(
-          generic_map_1,
-          valuemap,
-          keys2
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let keys1 : any Vx_Core.Type_stringlist = Vx_Core.f_stringlist_from_map(valuemap)
+          let keys2 : any Vx_Core.Type_stringlist = Vx_Collection.f_list_from_list_start_end(
+            Vx_Core.t_stringlist,
+            keys1,
+            start,
+            end
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Collection.f_map_from_map_keys(
+            generic_map_1,
+            valuemap,
+            keys2
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -3441,17 +4012,22 @@ public enum Vx_Collection {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3477,8 +4053,14 @@ public enum Vx_Collection {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_struct = value as! any Vx_Core.Type_struct
-      let outputval : any Vx_Core.Type_any = Vx_Collection.f_map_from_struct(Vx_Core.t_map, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Collection.f_map_from_struct(
+        Vx_Core.t_map,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -3486,8 +4068,18 @@ public enum Vx_Collection {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(Vx_Core.t_map, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let structure : any Vx_Core.Type_struct = Vx_Core.f_any_from_any(Vx_Core.t_struct, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_map_1 : any Vx_Core.Type_map = Vx_Core.f_any_from_any(
+        Vx_Core.t_map,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let structure : any Vx_Core.Type_struct = Vx_Core.f_any_from_any(
+        Vx_Core.t_struct,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Collection.f_map_from_struct(generic_map_1, structure)
       return output
     }
@@ -3512,16 +4104,16 @@ public enum Vx_Collection {
     var output : N = Vx_Core.f_empty(generic_map_1)
     output = Vx_Core.f_let(
       generic_map_1,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let anymap : any Vx_Core.Type_anymap = Vx_Collection.f_anymap_from_struct(
-          structure
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_map_from_map(
-          generic_map_1,
-          anymap
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let anymap : any Vx_Core.Type_anymap = Vx_Collection.f_anymap_from_struct(structure)
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_map_from_map(
+            generic_map_1,
+            anymap
+          )
+          return output_1
+        }
+      )
     )
     return output
   }

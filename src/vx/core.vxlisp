@@ -1290,7 +1290,7 @@
    (and reduce (< current next))))
  :alias "lt"
  :test (test-true
-        (< 2 3))
+        (< 2 3 5))
        (test-true
         (< "b" "d" "z"))
  :doc "Returns true if the first arg is less than all of the other args")
@@ -1422,12 +1422,6 @@
       output = vx_core::c_false;
     }"
   :csharp
-   "if (val1.vx_boolean() && val2.vx_boolean()) {
-      output = Core.c_true;
-    } else {
-      output = Core.c_false;
-    }"
-  :java
    "if (val1.vx_boolean() && val2.vx_boolean()) {
       output = Core.c_true;
     } else {

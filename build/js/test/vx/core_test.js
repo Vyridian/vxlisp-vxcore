@@ -1253,11 +1253,11 @@ export default class vx_core_test {
           vx_test.t_testdescribelist,
           vx_core.f_new_from_type(
             vx_test.t_testdescribe,
-            ":describename", "(test-true\n (< 2 3))",
+            ":describename", "(test-true\n (< 2 3 5))",
             ":testresult",
             vx_test.f_test_true(
               context,
-              vx_core.f_lt(2, 3)
+              vx_core.f_lt_1(2, 3, 5)
             )
           ),
           vx_core.f_new_from_type(

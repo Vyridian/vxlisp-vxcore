@@ -38,17 +38,17 @@ public enum Vx_Translation_En {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -75,7 +75,10 @@ public enum Vx_Translation_En {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Translation_En.f_context_en(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -83,7 +86,12 @@ public enum Vx_Translation_En {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Translation_En.f_context_en(args)
       return output
     }
@@ -108,15 +116,19 @@ public enum Vx_Translation_En {
       Vx_Core.t_context,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":session"),
-        Vx_Core.f_new(
-          Vx_Core.t_session,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string(":translation"),
-            Vx_Translation_En.f_translation_en()
+        [
+          Vx_Core.vx_new_string(":session"),
+          Vx_Core.f_new(
+            Vx_Core.t_session,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string(":translation"),
+                Vx_Translation_En.f_translation_en()
+              ]
+            )
           )
-        )
+        ]
       )
     )
     return output
@@ -157,17 +169,17 @@ public enum Vx_Translation_En {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -194,7 +206,10 @@ public enum Vx_Translation_En {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Translation_En.f_context_test(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -202,7 +217,12 @@ public enum Vx_Translation_En {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Translation_En.f_context_test(args)
       return output
     }
@@ -227,24 +247,30 @@ public enum Vx_Translation_En {
       Vx_Core.t_context,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":session"),
-        Vx_Core.f_new(
-          Vx_Core.t_session,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string(":translation"),
-            Vx_Translation_En.f_translation_en(),
-            Vx_Core.vx_new_string(":user"),
-            Vx_Core.f_new(
-              Vx_Core.t_user,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(":security"),
-                Vx_Translation_En.f_securitydata_test()
-              )
+        [
+          Vx_Core.vx_new_string(":session"),
+          Vx_Core.f_new(
+            Vx_Core.t_session,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string(":translation"),
+                Vx_Translation_En.f_translation_en(),
+                Vx_Core.vx_new_string(":user"),
+                Vx_Core.f_new(
+                  Vx_Core.t_user,
+                  Vx_Core.vx_new(
+                    Vx_Core.t_anylist,
+                    [
+                      Vx_Core.vx_new_string(":security"),
+                      Vx_Translation_En.f_securitydata_test()
+                    ]
+                  )
+                )
+              ]
             )
           )
-        )
+        ]
       )
     )
     return output
@@ -283,17 +309,17 @@ public enum Vx_Translation_En {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -333,17 +359,21 @@ public enum Vx_Translation_En {
       Vx_Core.t_security,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":allowfuncs"),
-        Vx_Core.f_new(
-          Vx_Core.t_funclist,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Data_File.t_boolean_write_from_file_any,
-            Vx_Data_File.t_boolean_write_from_file_string,
-            Vx_Data_File.t_file_read_from_file,
-            Vx_Data_File.t_string_read_from_file
+        [
+          Vx_Core.vx_new_string(":allowfuncs"),
+          Vx_Core.f_new(
+            Vx_Core.t_funclist,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Data_File.t_boolean_write_from_file_any,
+                Vx_Data_File.t_boolean_write_from_file_string,
+                Vx_Data_File.t_file_read_from_file,
+                Vx_Data_File.t_string_read_from_file
+              ]
+            )
           )
-        )
+        ]
       )
     )
     return output
@@ -382,17 +412,17 @@ public enum Vx_Translation_En {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -432,10 +462,12 @@ public enum Vx_Translation_En {
       Vx_Core.t_translation,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":name"),
-        Vx_Core.vx_new_string("en"),
-        Vx_Core.vx_new_string(":wordmap"),
-        Vx_Translation_En.f_words()
+        [
+          Vx_Core.vx_new_string(":name"),
+          Vx_Core.vx_new_string("en"),
+          Vx_Core.vx_new_string(":wordmap"),
+          Vx_Translation_En.f_words()
+        ]
       )
     )
     return output
@@ -474,17 +506,22 @@ public enum Vx_Translation_En {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "stringmap", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "stringmap",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_string
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -524,16 +561,18 @@ public enum Vx_Translation_En {
       Vx_Core.t_stringmap,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string("Hello"),
-        Vx_Core.vx_new_string("Hello"),
-        Vx_Core.vx_new_string("World"),
-        Vx_Core.vx_new_string("World"),
-        Vx_Core.vx_new_string("!vx/core/func exception"),
-        Vx_Core.vx_new_string("Exception in Function"),
-        Vx_Core.vx_new_string("!vx/core/func permissiondenied"),
-        Vx_Core.vx_new_string("Permission Denied to Function"),
-        Vx_Core.vx_new_string("!vx/repl/repl/repl<-string-argmap repltypenotfound"),
-        Vx_Core.vx_new_string("Repl Type Not Found")
+        [
+          Vx_Core.vx_new_string("Hello"),
+          Vx_Core.vx_new_string("Hello"),
+          Vx_Core.vx_new_string("World"),
+          Vx_Core.vx_new_string("World"),
+          Vx_Core.vx_new_string("!vx/core/func exception"),
+          Vx_Core.vx_new_string("Exception in Function"),
+          Vx_Core.vx_new_string("!vx/core/func permissiondenied"),
+          Vx_Core.vx_new_string("Permission Denied to Function"),
+          Vx_Core.vx_new_string("!vx/repl/repl/repl<-string-argmap repltypenotfound"),
+          Vx_Core.vx_new_string("Repl Type Not Found")
+        ]
       )
     )
     return output

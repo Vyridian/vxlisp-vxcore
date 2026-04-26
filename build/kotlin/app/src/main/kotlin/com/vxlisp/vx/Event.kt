@@ -120,7 +120,10 @@ object vx_event {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_event.Type_event = vx_core.vx_copy(vx_event.e_event, *vals)
+      var output : vx_event.Type_event = vx_core.vx_copy(
+        vx_event.e_event,
+        *vals
+      )
       return output
     }
 
@@ -150,9 +153,19 @@ object vx_event {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -173,8 +186,17 @@ object vx_event {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/event/event",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -185,8 +207,17 @@ object vx_event {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -199,7 +230,12 @@ object vx_event {
               vx_p_name = valname
             } else if (valsub is String) {
               ischanged = true
-              vx_p_name = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_name = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -211,9 +247,20 @@ object vx_event {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":from")) {
             if (valsub == vx_p_from) {
@@ -223,7 +270,12 @@ object vx_event {
               vx_p_from = valfrom
             } else if (valsub is String) {
               ischanged = true
-              vx_p_from = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_from = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -235,9 +287,20 @@ object vx_event {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("from"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":to")) {
             if (valsub == vx_p_to) {
@@ -247,7 +310,12 @@ object vx_event {
               vx_p_to = valto
             } else if (valsub is String) {
               ischanged = true
-              vx_p_to = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_to = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -259,9 +327,20 @@ object vx_event {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("to"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":datamap")) {
             if (valsub == vx_p_datamap) {
@@ -280,9 +359,20 @@ object vx_event {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("datamap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":event<-event")) {
             if (valsub == vx_p_event_from_event) {
@@ -301,9 +391,20 @@ object vx_event {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("event<-event"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":event<-event-async")) {
             if (valsub == vx_p_event_from_event_async) {
@@ -322,14 +423,34 @@ object vx_event {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("event<-event-async"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/event/event", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/event/event",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -362,17 +483,17 @@ object vx_event {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/event", // pkgname
-        "event", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/event",
+        "event",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -428,7 +549,10 @@ object vx_event {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_event.Type_eventlist = vx_core.vx_copy(vx_event.e_eventlist, *vals)
+      var output : vx_event.Type_eventlist = vx_core.vx_copy(
+        vx_event.e_eventlist,
+        *vals
+      )
       return output
     }
 
@@ -444,9 +568,19 @@ object vx_event {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_event.Type_eventlist) {
           var multi : vx_event.Type_eventlist = valsub as vx_event.Type_eventlist
           ischanged = true
@@ -471,11 +605,29 @@ object vx_event {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/event/eventlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/event/eventlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/event/eventlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/event/eventlist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -501,17 +653,22 @@ object vx_event {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/event", // pkgname
-        "eventlist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_event.t_event), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/event",
+        "eventlist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_event.t_event
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -534,7 +691,9 @@ object vx_event {
   class Class_eventmap : vx_core.Class_base, Type_eventmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_event.Type_event> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_event.Type_event>())
+    var vx_p_map : Map<String, vx_event.Type_event> = vx_core.vx_mapimmutable(
+      LinkedHashMap<String, vx_event.Type_event>()
+    )
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
@@ -598,8 +757,17 @@ object vx_event {
           var castval : vx_event.Type_event = value as vx_event.Type_event
           map.put(key, castval)
         } else {
-          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error("vx/event/eventmap", ":invalidvalue", value)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error(
+            "vx/event/eventmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       output.vx_p_map = vx_core.vx_mapimmutable(map)
@@ -610,7 +778,10 @@ object vx_event {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_event.Type_eventmap = vx_core.vx_copy(vx_event.e_eventmap, *vals)
+      var output : vx_event.Type_eventmap = vx_core.vx_copy(
+        vx_event.e_eventmap,
+        *vals
+      )
       return output
     }
 
@@ -628,9 +799,19 @@ object vx_event {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub is vx_core.Type_string) {
@@ -647,8 +828,17 @@ object vx_event {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/event/eventmap", ":keyexpected", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/event/eventmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
         } else {
           var valany : vx_event.Type_event = vx_event.e_event
@@ -669,9 +859,20 @@ object vx_event {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-            msg = vx_core.vx_msg_from_error("vx/event/eventmap", ":invalidkeyvalue", msgmap)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+              vx_core.vx_mapimmutable(mapany)
+            )
+            msg = vx_core.vx_msg_from_error(
+              "vx/event/eventmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (valany != vx_core.e_any) {
             ischanged = true
@@ -706,17 +907,22 @@ object vx_event {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/event", // pkgname
-        "eventmap", // name
-        ":map", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_event.t_event), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/event",
+        "eventmap",
+        ":map",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_event.t_event
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -751,8 +957,10 @@ object vx_event {
         vx_event.t_event,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":name"),
-          vx_core.vx_new_string("change")
+          // [
+            vx_core.vx_new_string(":name"),
+            vx_core.vx_new_string("change")
+          // ]
         )
       )
       outval.vx_p_name = value.name()
@@ -793,8 +1001,10 @@ object vx_event {
         vx_event.t_event,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":name"),
-          vx_core.vx_new_string("click")
+          // [
+            vx_core.vx_new_string(":name"),
+            vx_core.vx_new_string("click")
+          // ]
         )
       )
       outval.vx_p_name = value.name()
@@ -835,8 +1045,10 @@ object vx_event {
         vx_event.t_event,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":name"),
-          vx_core.vx_new_string("move")
+          // [
+            vx_core.vx_new_string(":name"),
+            vx_core.vx_new_string("move")
+          // ]
         )
       )
       outval.vx_p_name = value.name()
@@ -877,8 +1089,10 @@ object vx_event {
         vx_event.t_event,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(":name"),
-          vx_core.vx_new_string("move")
+          // [
+            vx_core.vx_new_string(":name"),
+            vx_core.vx_new_string("move")
+          // ]
         )
       )
       outval.vx_p_name = value.name()
@@ -929,17 +1143,17 @@ object vx_event {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -962,15 +1176,31 @@ object vx_event {
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_event.Type_event = value as vx_event.Type_event
-      val outputval : vx_core.Type_any = vx_event.f_any_from_from_event(vx_core.t_any, inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      val outputval : vx_core.Type_any = vx_event.f_any_from_from_event(
+        vx_core.t_any,
+        inputval
+      )
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, arglist.vx_any(vx_core.vx_new_int(0)))
+      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val evt : vx_event.Type_event = vx_core.f_any_from_any(
+        vx_event.t_event,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_event.f_any_from_from_event(generic_any_1, evt)
       return output
     }
@@ -989,14 +1219,13 @@ object vx_event {
     var output : T = vx_core.f_empty(generic_any_1)
     output = vx_core.f_let(
       generic_any_1,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val value : vx_core.Type_any = evt.from()
-        val output_1 : vx_core.Type_any = vx_core.f_any_from_any(
-          generic_any_1,
-          value
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val value : vx_core.Type_any = evt.from()
+          val output_1 : vx_core.Type_any = vx_core.f_any_from_any(generic_any_1, value)
+          output_1
+        }
+      )
     )
     return output
   }
@@ -1037,17 +1266,17 @@ object vx_event {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/event",
+          "event",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1071,14 +1300,27 @@ object vx_event {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_event.Type_event = value as vx_event.Type_event
       val outputval : vx_core.Type_any = vx_event.f_event_from_event(context, inputval)
-      output = vx_core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val evt : vx_event.Type_event = vx_core.f_any_from_any(
+        vx_event.t_event,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_event.f_event_from_event(context, evt)
       return output
     }
@@ -1137,17 +1379,17 @@ object vx_event {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/event",
+          "event",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1168,7 +1410,10 @@ object vx_event {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_context_async(generic_any_1 : T, context : vx_core.Type_context, value : U) : CompletableFuture<T> {
-      val inputval : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, value)
+      val inputval : vx_event.Type_event = vx_core.f_any_from_any(
+        vx_event.t_event,
+        value
+      )
       val future : CompletableFuture<vx_event.Type_event> = vx_event.f_event_from_event_async(context, inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -1176,10 +1421,23 @@ object vx_event {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
-      val evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, arglist.vx_any(vx_core.vx_new_int(1)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val evt : vx_event.Type_event = vx_core.f_any_from_any(
+        vx_event.t_event,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       var future : CompletableFuture<vx_event.Type_event> = vx_event.f_event_from_event_async(context, evt)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -1234,17 +1492,22 @@ object vx_event {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/event", // pkgname
-          "eventmap", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_event.t_event), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/event",
+          "eventmap",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_event.t_event
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1268,13 +1531,21 @@ object vx_event {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_event.Type_eventlist = value as vx_event.Type_eventlist
       val outputval : vx_core.Type_any = vx_event.f_eventmap_from_eventlist(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val eventlist : vx_event.Type_eventlist = vx_core.f_any_from_any(vx_event.t_eventlist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val eventlist : vx_event.Type_eventlist = vx_core.f_any_from_any(
+        vx_event.t_eventlist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_event.f_eventmap_from_eventlist(eventlist)
       return output
     }
@@ -1294,11 +1565,16 @@ object vx_event {
     output = vx_core.f_map_from_list(
       vx_event.t_eventmap,
       eventlist,
-      vx_core.t_any_from_any.vx_fn_new({evt_any : vx_core.Type_any ->
-        val evt : vx_event.Type_event = vx_core.f_any_from_any(vx_event.t_event, evt_any)
-        var output_1 : vx_core.Type_any = evt.name()
-        output_1
-      })
+      vx_core.t_any_from_any.vx_fn_new(
+        {evt_any : vx_core.Type_any ->
+          val evt : vx_event.Type_event = vx_core.f_any_from_any(
+            vx_event.t_event,
+            evt_any
+          )
+          var output_1 : vx_core.Type_any = evt.name()
+          output_1
+        }
+      )
     )
     return output
   }

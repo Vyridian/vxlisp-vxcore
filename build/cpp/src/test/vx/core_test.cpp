@@ -1323,10 +1323,16 @@ namespace vx_core_test {
     // testdescribe_1
     vx_test::Type_testresult testresult_1 = vx_test::f_test_true(
       context,
-      vx_core::f_lt(vx_core::vx_new_int(2), vx_core::vx_new_int(3))
+      vx_core::f_lt_1(
+        vx_core::vx_new(vx_core::t_anylist, {
+          vx_core::vx_new_int(2),
+          vx_core::vx_new_int(3),
+          vx_core::vx_new_int(5)
+        })
+      )
     );
     vx_test::Type_testdescribe testdescribe_1 = vx_core::vx_new(vx_test::t_testdescribe, {
-      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test-true\n (< 2 3))"),
+      vx_core::vx_new_string(":describename"), vx_core::vx_new_string("(test-true\n (< 2 3 5))"),
       vx_core::vx_new_string(":testpkg"), vx_core::vx_new_string("vx/core"),
       vx_core::vx_new_string(":testresult"), testresult_1
     });

@@ -102,7 +102,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testcase output = Core.vx_copy(Test.e_testcase, vals);
+      Test.Type_testcase output = Core.vx_copy(
+        Test.e_testcase,
+        vals
+      );
       return output;
     }
 
@@ -129,9 +132,19 @@ public final class Test {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -152,8 +165,17 @@ public final class Test {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/test/testcase", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testcase",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -164,8 +186,17 @@ public final class Test {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/test/testcase", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -178,7 +209,12 @@ public final class Test {
               vx_p_passfail = valpassfail;
             } else if (valsub instanceof Boolean) {
               ischanged = true;
-              vx_p_passfail = Core.vx_new(Core.t_boolean, valsub);
+              vx_p_passfail = Core.vx_new(
+                Core.t_boolean,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -190,9 +226,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("passfail"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":testpkg"))) {
             if (valsub == vx_p_testpkg) {
@@ -202,7 +249,12 @@ public final class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_testpkg = Core.vx_new(Core.t_string, valsub);
+              vx_p_testpkg = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -214,9 +266,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":casename"))) {
             if (valsub == vx_p_casename) {
@@ -226,7 +289,12 @@ public final class Test {
               vx_p_casename = valcasename;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_casename = Core.vx_new(Core.t_string, valsub);
+              vx_p_casename = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -238,9 +306,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("casename"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":describelist"))) {
             if (valsub == vx_p_describelist) {
@@ -259,14 +338,34 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("describelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/test/testcase", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testcase",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -300,17 +399,17 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testcase", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testcase",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -370,7 +469,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testcaselist output = Core.vx_copy(Test.e_testcaselist, vals);
+      Test.Type_testcaselist output = Core.vx_copy(
+        Test.e_testcaselist,
+        vals
+      );
       return output;
     }
 
@@ -387,9 +489,19 @@ public final class Test {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Test.Type_testcaselist) {
           Test.Type_testcaselist multi = (Test.Type_testcaselist)valsub;
           ischanged = true;
@@ -414,11 +526,29 @@ public final class Test {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/test/testcaselist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/test/testcaselist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/test/testcaselist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/test/testcaselist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -447,17 +577,22 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testcaselist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Test.t_testcase), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testcaselist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Test.t_testcase
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -559,7 +694,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testcoveragedetail output = Core.vx_copy(Test.e_testcoveragedetail, vals);
+      Test.Type_testcoveragedetail output = Core.vx_copy(
+        Test.e_testcoveragedetail,
+        vals
+      );
       return output;
     }
 
@@ -586,9 +724,19 @@ public final class Test {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -609,8 +757,17 @@ public final class Test {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testcoveragedetail",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -621,8 +778,17 @@ public final class Test {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -644,9 +810,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("constmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":funcmap"))) {
             if (valsub == vx_p_funcmap) {
@@ -665,9 +842,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("funcmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":testpkg"))) {
             if (valsub == vx_p_testpkg) {
@@ -677,7 +865,12 @@ public final class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_testpkg = Core.vx_new(Core.t_string, valsub);
+              vx_p_testpkg = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -689,9 +882,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":typemap"))) {
             if (valsub == vx_p_typemap) {
@@ -710,14 +914,34 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("typemap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testcoveragedetail",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -751,17 +975,17 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragedetail", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testcoveragedetail",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -863,7 +1087,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testcoveragenums output = Core.vx_copy(Test.e_testcoveragenums, vals);
+      Test.Type_testcoveragenums output = Core.vx_copy(
+        Test.e_testcoveragenums,
+        vals
+      );
       return output;
     }
 
@@ -890,9 +1117,19 @@ public final class Test {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -913,8 +1150,17 @@ public final class Test {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testcoveragenums",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -925,8 +1171,17 @@ public final class Test {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -939,7 +1194,12 @@ public final class Test {
               vx_p_pct = valpct;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_pct = Core.vx_new(Core.t_int, valsub);
+              vx_p_pct = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -951,9 +1211,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pct"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":testpkg"))) {
             if (valsub == vx_p_testpkg) {
@@ -963,7 +1234,12 @@ public final class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_testpkg = Core.vx_new(Core.t_string, valsub);
+              vx_p_testpkg = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -975,9 +1251,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":tests"))) {
             if (valsub == vx_p_tests) {
@@ -987,7 +1274,12 @@ public final class Test {
               vx_p_tests = valtests;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_tests = Core.vx_new(Core.t_int, valsub);
+              vx_p_tests = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -999,9 +1291,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("tests"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":total"))) {
             if (valsub == vx_p_total) {
@@ -1011,7 +1314,12 @@ public final class Test {
               vx_p_total = valtotal;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_total = Core.vx_new(Core.t_int, valsub);
+              vx_p_total = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -1023,14 +1331,34 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("total"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testcoveragenums",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1064,17 +1392,17 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragenums", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testcoveragenums",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1240,7 +1568,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testcoveragesummary output = Core.vx_copy(Test.e_testcoveragesummary, vals);
+      Test.Type_testcoveragesummary output = Core.vx_copy(
+        Test.e_testcoveragesummary,
+        vals
+      );
       return output;
     }
 
@@ -1275,9 +1606,19 @@ public final class Test {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -1298,8 +1639,17 @@ public final class Test {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testcoveragesummary",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1310,8 +1660,17 @@ public final class Test {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1333,9 +1692,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("bigospacenums"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":bigotimenums"))) {
             if (valsub == vx_p_bigotimenums) {
@@ -1354,9 +1724,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("bigotimenums"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":constnums"))) {
             if (valsub == vx_p_constnums) {
@@ -1375,9 +1756,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("constnums"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":docnums"))) {
             if (valsub == vx_p_docnums) {
@@ -1396,9 +1788,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("docnums"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":funcnums"))) {
             if (valsub == vx_p_funcnums) {
@@ -1417,9 +1820,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("funcnums"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":testpkg"))) {
             if (valsub == vx_p_testpkg) {
@@ -1429,7 +1843,12 @@ public final class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_testpkg = Core.vx_new(Core.t_string, valsub);
+              vx_p_testpkg = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -1441,9 +1860,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":totalnums"))) {
             if (valsub == vx_p_totalnums) {
@@ -1462,9 +1892,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("totalnums"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":typenums"))) {
             if (valsub == vx_p_typenums) {
@@ -1483,14 +1924,34 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("typenums"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testcoveragesummary",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1528,17 +1989,17 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragesummary", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testcoveragesummary",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1624,7 +2085,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testdescribe output = Core.vx_copy(Test.e_testdescribe, vals);
+      Test.Type_testdescribe output = Core.vx_copy(
+        Test.e_testdescribe,
+        vals
+      );
       return output;
     }
 
@@ -1649,9 +2113,19 @@ public final class Test {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -1672,8 +2146,17 @@ public final class Test {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/test/testdescribe", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testdescribe",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1684,8 +2167,17 @@ public final class Test {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/test/testdescribe", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1698,7 +2190,12 @@ public final class Test {
               vx_p_describename = valdescribename;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_describename = Core.vx_new(Core.t_string, valsub);
+              vx_p_describename = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -1710,9 +2207,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("describename"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":testpkg"))) {
             if (valsub == vx_p_testpkg) {
@@ -1722,7 +2230,12 @@ public final class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_testpkg = Core.vx_new(Core.t_string, valsub);
+              vx_p_testpkg = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -1734,9 +2247,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":testresult"))) {
             if (valsub == vx_p_testresult) {
@@ -1755,14 +2279,34 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("testresult"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/test/testdescribe", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testdescribe",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1795,17 +2339,17 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testdescribe", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testdescribe",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1865,7 +2409,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testdescribelist output = Core.vx_copy(Test.e_testdescribelist, vals);
+      Test.Type_testdescribelist output = Core.vx_copy(
+        Test.e_testdescribelist,
+        vals
+      );
       return output;
     }
 
@@ -1882,9 +2429,19 @@ public final class Test {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Test.Type_testdescribelist) {
           Test.Type_testdescribelist multi = (Test.Type_testdescribelist)valsub;
           ischanged = true;
@@ -1909,11 +2466,29 @@ public final class Test {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/test/testdescribelist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/test/testdescribelist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/test/testdescribelist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/test/testdescribelist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -1942,17 +2517,22 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testdescribelist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Test.t_testdescribe), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testdescribelist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Test.t_testdescribe
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2070,7 +2650,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testpackage output = Core.vx_copy(Test.e_testpackage, vals);
+      Test.Type_testpackage output = Core.vx_copy(
+        Test.e_testpackage,
+        vals
+      );
       return output;
     }
 
@@ -2099,9 +2682,19 @@ public final class Test {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -2122,8 +2715,17 @@ public final class Test {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/test/testpackage", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testpackage",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2134,8 +2736,17 @@ public final class Test {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/test/testpackage", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2157,9 +2768,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("caselist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":coveragedetail"))) {
             if (valsub == vx_p_coveragedetail) {
@@ -2178,9 +2800,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("coveragedetail"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":coveragesummary"))) {
             if (valsub == vx_p_coveragesummary) {
@@ -2199,9 +2832,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("coveragesummary"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":passfail"))) {
             if (valsub == vx_p_passfail) {
@@ -2211,7 +2855,12 @@ public final class Test {
               vx_p_passfail = valpassfail;
             } else if (valsub instanceof Boolean) {
               ischanged = true;
-              vx_p_passfail = Core.vx_new(Core.t_boolean, valsub);
+              vx_p_passfail = Core.vx_new(
+                Core.t_boolean,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2223,9 +2872,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("passfail"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":testpkg"))) {
             if (valsub == vx_p_testpkg) {
@@ -2235,7 +2895,12 @@ public final class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_testpkg = Core.vx_new(Core.t_string, valsub);
+              vx_p_testpkg = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2247,14 +2912,34 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/test/testpackage", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testpackage",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2289,17 +2974,17 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testpackage", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testpackage",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2359,7 +3044,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testpackagelist output = Core.vx_copy(Test.e_testpackagelist, vals);
+      Test.Type_testpackagelist output = Core.vx_copy(
+        Test.e_testpackagelist,
+        vals
+      );
       return output;
     }
 
@@ -2376,9 +3064,19 @@ public final class Test {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Test.Type_testpackagelist) {
           Test.Type_testpackagelist multi = (Test.Type_testpackagelist)valsub;
           ischanged = true;
@@ -2403,11 +3101,29 @@ public final class Test {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/test/testpackagelist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/test/testpackagelist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/test/testpackagelist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/test/testpackagelist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -2436,17 +3152,22 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testpackagelist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Test.t_testpackage), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testpackagelist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Test.t_testpackage
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2564,7 +3285,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testresult output = Core.vx_copy(Test.e_testresult, vals);
+      Test.Type_testresult output = Core.vx_copy(
+        Test.e_testresult,
+        vals
+      );
       return output;
     }
 
@@ -2593,9 +3317,19 @@ public final class Test {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -2616,8 +3350,17 @@ public final class Test {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/test/testresult", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testresult",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2628,8 +3371,17 @@ public final class Test {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/test/testresult", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2642,7 +3394,12 @@ public final class Test {
               vx_p_code = valcode;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_code = Core.vx_new(Core.t_string, valsub);
+              vx_p_code = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2654,9 +3411,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("code"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":passfail"))) {
             if (valsub == vx_p_passfail) {
@@ -2666,7 +3434,12 @@ public final class Test {
               vx_p_passfail = valpassfail;
             } else if (valsub instanceof Boolean) {
               ischanged = true;
-              vx_p_passfail = Core.vx_new(Core.t_boolean, valsub);
+              vx_p_passfail = Core.vx_new(
+                Core.t_boolean,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2678,9 +3451,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("passfail"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":expected"))) {
             if (valsub == vx_p_expected) {
@@ -2699,9 +3483,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("expected"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":actual"))) {
             if (valsub == vx_p_actual) {
@@ -2720,9 +3515,20 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("actual"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":fn-actual"))) {
             if (valsub == vx_p_fn_actual) {
@@ -2741,14 +3547,34 @@ public final class Test {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fn-actual"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/test/testresult", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/test/testresult",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2783,17 +3609,17 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testresult", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testresult",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2853,7 +3679,10 @@ public final class Test {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Test.Type_testresultlist output = Core.vx_copy(Test.e_testresultlist, vals);
+      Test.Type_testresultlist output = Core.vx_copy(
+        Test.e_testresultlist,
+        vals
+      );
       return output;
     }
 
@@ -2870,9 +3699,19 @@ public final class Test {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Test.Type_testresultlist) {
           Test.Type_testresultlist multi = (Test.Type_testresultlist)valsub;
           ischanged = true;
@@ -2897,11 +3736,29 @@ public final class Test {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/test/testresultlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/test/testresultlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/test/testresultlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/test/testresultlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -2930,17 +3787,22 @@ public final class Test {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/test", // pkgname
-        "testresultlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Test.t_testresult), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/test",
+        "testresultlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Test.t_testresult
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2973,381 +3835,457 @@ public final class Test {
           Html.t_stylesheet,
           Core.vx_new(
             Core.t_anylist,
-            Core.vx_new_string(":name"),
-            Core.vx_new_string("Test Suite"),
-            Core.vx_new_string(":styles"),
-            Core.f_new(
-              Html.t_stylelist,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string("body"),
-                    Core.vx_new_string(":props"),
+            // [
+              Core.vx_new_string(":name"),
+              Core.vx_new_string("Test Suite"),
+              Core.vx_new_string(":styles"),
+              Core.f_new(
+                Html.t_stylelist,
+                Core.vx_new(
+                  Core.t_anylist,
+                  // [
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("font-size"),
-                        Core.vx_new_string("0.9em"),
-                        Core.vx_new_string("font-family"),
-                        Core.vx_new_string("sans-serif")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string("body"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("font-size"),
+                                Core.vx_new_string("0.9em"),
+                                Core.vx_new_string("font-family"),
+                                Core.vx_new_string("sans-serif")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string("details summary"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("cursor"),
-                        Core.vx_new_string("pointer"),
-                        Core.vx_new_string("display"),
-                        Core.vx_new_string("inline-flex"),
-                        Core.vx_new_string("gap"),
-                        Core.vx_new_string("10px")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string("details summary"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("cursor"),
+                                Core.vx_new_string("pointer"),
+                                Core.vx_new_string("display"),
+                                Core.vx_new_string("inline-flex"),
+                                Core.vx_new_string("gap"),
+                                Core.vx_new_string("10px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string("table"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("vertical-align"),
-                        Core.vx_new_string("top"),
-                        Core.vx_new_string("border-collapse"),
-                        Core.vx_new_string("collapse"),
-                        Core.vx_new_string("margin"),
-                        Core.vx_new_string("25px 0"),
-                        Core.vx_new_string("min-width"),
-                        Core.vx_new_string("400px"),
-                        Core.vx_new_string("box-shadow"),
-                        Core.vx_new_string("0 0 20px rgba(0, 0, 0, 0.15)")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string("table"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("vertical-align"),
+                                Core.vx_new_string("top"),
+                                Core.vx_new_string("border-collapse"),
+                                Core.vx_new_string("collapse"),
+                                Core.vx_new_string("margin"),
+                                Core.vx_new_string("25px 0"),
+                                Core.vx_new_string("min-width"),
+                                Core.vx_new_string("400px"),
+                                Core.vx_new_string("box-shadow"),
+                                Core.vx_new_string("0 0 20px rgba(0, 0, 0, 0.15)")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string("thead tr"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("background-color"),
-                        Core.vx_new_string("#009879"),
-                        Core.vx_new_string("color"),
-                        Core.vx_new_string("#ffffff"),
-                        Core.vx_new_string("text-align"),
-                        Core.vx_new_string("left")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string("thead tr"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("background-color"),
+                                Core.vx_new_string("#009879"),
+                                Core.vx_new_string("color"),
+                                Core.vx_new_string("#ffffff"),
+                                Core.vx_new_string("text-align"),
+                                Core.vx_new_string("left")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string("td"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("padding"),
-                        Core.vx_new_string("10px 10px"),
-                        Core.vx_new_string("vertical-align"),
-                        Core.vx_new_string("top")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string("td"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("padding"),
+                                Core.vx_new_string("10px 10px"),
+                                Core.vx_new_string("vertical-align"),
+                                Core.vx_new_string("top")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string("tbody tr"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("border-bottom"),
-                        Core.vx_new_string("1px solid #dddddd")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string("tbody tr"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("border-bottom"),
+                                Core.vx_new_string("1px solid #dddddd")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string("tbody tr:nth-of-type(even)"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("background-color"),
-                        Core.vx_new_string("#f3f3f3")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string("tbody tr:nth-of-type(even)"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("background-color"),
+                                Core.vx_new_string("#f3f3f3")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string("tbody tr:last-of-type"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("border-bottom"),
-                        Core.vx_new_string("2px solid #009879")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string("tbody tr:last-of-type"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("border-bottom"),
+                                Core.vx_new_string("2px solid #009879")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string("tbody tr.active-row"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("font-weight"),
-                        Core.vx_new_string("bold"),
-                        Core.vx_new_string("color"),
-                        Core.vx_new_string("#009879")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string("tbody tr.active-row"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("font-weight"),
+                                Core.vx_new_string("bold"),
+                                Core.vx_new_string("color"),
+                                Core.vx_new_string("#009879")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string(".failflag"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("background-color"),
-                        Core.vx_new_string("red"),
-                        Core.vx_new_string("color"),
-                        Core.vx_new_string("white"),
-                        Core.vx_new_string("padding-left"),
-                        Core.vx_new_string("4px"),
-                        Core.vx_new_string("padding-right"),
-                        Core.vx_new_string("4px"),
-                        Core.vx_new_string("padding-top"),
-                        Core.vx_new_string("1px"),
-                        Core.vx_new_string("padding-bottom"),
-                        Core.vx_new_string("1px")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string(".failflag"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("background-color"),
+                                Core.vx_new_string("red"),
+                                Core.vx_new_string("color"),
+                                Core.vx_new_string("white"),
+                                Core.vx_new_string("padding-left"),
+                                Core.vx_new_string("4px"),
+                                Core.vx_new_string("padding-right"),
+                                Core.vx_new_string("4px"),
+                                Core.vx_new_string("padding-top"),
+                                Core.vx_new_string("1px"),
+                                Core.vx_new_string("padding-bottom"),
+                                Core.vx_new_string("1px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string(".passflag"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("background-color"),
-                        Core.vx_new_string("green"),
-                        Core.vx_new_string("color"),
-                        Core.vx_new_string("white"),
-                        Core.vx_new_string("padding-left"),
-                        Core.vx_new_string("4px"),
-                        Core.vx_new_string("padding-right"),
-                        Core.vx_new_string("4px"),
-                        Core.vx_new_string("padding-top"),
-                        Core.vx_new_string("1px"),
-                        Core.vx_new_string("padding-bottom"),
-                        Core.vx_new_string("1px")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string(".passflag"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("background-color"),
+                                Core.vx_new_string("green"),
+                                Core.vx_new_string("color"),
+                                Core.vx_new_string("white"),
+                                Core.vx_new_string("padding-left"),
+                                Core.vx_new_string("4px"),
+                                Core.vx_new_string("padding-right"),
+                                Core.vx_new_string("4px"),
+                                Core.vx_new_string("padding-top"),
+                                Core.vx_new_string("1px"),
+                                Core.vx_new_string("padding-bottom"),
+                                Core.vx_new_string("1px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string(".coveragenums"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("width"),
-                        Core.vx_new_string("90px")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string(".coveragenums"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("width"),
+                                Core.vx_new_string("90px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string(".coveragepct"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("text-align"),
-                        Core.vx_new_string("right")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string(".coveragepct"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("text-align"),
+                                Core.vx_new_string("right")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string(".coveragepctgreen"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("background-color"),
-                        Core.vx_new_string("green"),
-                        Core.vx_new_string("color"),
-                        Core.vx_new_string("white"),
-                        Core.vx_new_string("text-align"),
-                        Core.vx_new_string("right")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string(".coveragepctgreen"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("background-color"),
+                                Core.vx_new_string("green"),
+                                Core.vx_new_string("color"),
+                                Core.vx_new_string("white"),
+                                Core.vx_new_string("text-align"),
+                                Core.vx_new_string("right")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string(".coveragepctred"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("background-color"),
-                        Core.vx_new_string("red"),
-                        Core.vx_new_string("color"),
-                        Core.vx_new_string("white"),
-                        Core.vx_new_string("text-align"),
-                        Core.vx_new_string("right")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string(".coveragepctred"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("background-color"),
+                                Core.vx_new_string("red"),
+                                Core.vx_new_string("color"),
+                                Core.vx_new_string("white"),
+                                Core.vx_new_string("text-align"),
+                                Core.vx_new_string("right")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string(".pkgheader"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("display"),
-                        Core.vx_new_string("inline-flex"),
-                        Core.vx_new_string("gap"),
-                        Core.vx_new_string("10px")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string(".pkgheader"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("display"),
+                                Core.vx_new_string("inline-flex"),
+                                Core.vx_new_string("gap"),
+                                Core.vx_new_string("10px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string(".pkgname"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("font-weight"),
-                        Core.vx_new_string("bold"),
-                        Core.vx_new_string("width"),
-                        Core.vx_new_string("180px")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string(".pkgname"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("font-weight"),
+                                Core.vx_new_string("bold"),
+                                Core.vx_new_string("width"),
+                                Core.vx_new_string("180px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Html.t_style,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":name"),
-                    Core.vx_new_string(".preformatted"),
-                    Core.vx_new_string(":props"),
+                    ),
                     Core.f_new(
-                      Html.t_propmap,
+                      Html.t_style,
                       Core.vx_new(
                         Core.t_anylist,
-                        Core.vx_new_string("display"),
-                        Core.vx_new_string("block"),
-                        Core.vx_new_string("unicode-bidi"),
-                        Core.vx_new_string("embed"),
-                        Core.vx_new_string("font-family"),
-                        Core.vx_new_string("monospace"),
-                        Core.vx_new_string("white-space"),
-                        Core.vx_new_string("pre")
+                        // [
+                          Core.vx_new_string(":name"),
+                          Core.vx_new_string(".preformatted"),
+                          Core.vx_new_string(":props"),
+                          Core.f_new(
+                            Html.t_propmap,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string("display"),
+                                Core.vx_new_string("block"),
+                                Core.vx_new_string("unicode-bidi"),
+                                Core.vx_new_string("embed"),
+                                Core.vx_new_string("font-family"),
+                                Core.vx_new_string("monospace"),
+                                Core.vx_new_string("white-space"),
+                                Core.vx_new_string("pre")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
                     )
-                  )
+                  // ]
                 )
               )
-            )
+            // ]
           )
         )
       );
@@ -3404,17 +4342,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3442,14 +4380,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Test.f_context_test(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist args = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist args = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_context_test(args);
       return output;
     }
@@ -3471,22 +4415,28 @@ public final class Test {
       Core.t_context,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":session"),
-        Core.f_new(
-          Core.t_session,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":user"),
-            Core.f_new(
-              Core.t_user,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":security"),
-                Test.f_security_test()
-              )
+        // [
+          Core.vx_new_string(":session"),
+          Core.f_new(
+            Core.t_session,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":user"),
+                Core.f_new(
+                  Core.t_user,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":security"),
+                      Test.f_security_test()
+                    // ]
+                  )
+                )
+              // ]
             )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -3530,17 +4480,23 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_node,
+              Html.t_divchild
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3568,14 +4524,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Test.Type_testcaselist inputval = (Test.Type_testcaselist)value;
       final Core.Type_any outputval = Test.f_div_from_testcaselist(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Test.Type_testcaselist testcaselist = Core.f_any_from_any(Test.t_testcaselist, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testcaselist testcaselist = Core.f_any_from_any(
+        Test.t_testcaselist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_div_from_testcaselist(testcaselist);
       return output;
     }
@@ -3597,105 +4559,133 @@ public final class Test {
       Html.t_div,
       Core.vx_new(
         Core.t_anylist,
-        Core.f_new(
-          Html.t_table,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":thead"),
-            Core.f_new(
-              Html.t_thead,
-              Core.vx_new(
-                Core.t_anylist,
+        // [
+          Core.f_new(
+            Html.t_table,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":thead"),
                 Core.f_new(
-                  Html.t_tr,
+                  Html.t_thead,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.f_new(
-                      Html.t_td,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Html.t_p,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("Pass?")
-                          )
+                    // [
+                      Core.f_new(
+                        Html.t_tr,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.f_new(
+                              Html.t_td,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Html.t_p,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("Pass?")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            Core.f_new(
+                              Html.t_td,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Html.t_p,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("Name")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            Core.f_new(
+                              Html.t_td,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Html.t_p,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("Test")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            Core.f_new(
+                              Html.t_td,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Html.t_p,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("Expected")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            Core.f_new(
+                              Html.t_td,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Html.t_p,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("Actual")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            )
+                          // ]
                         )
                       )
-                    ),
-                    Core.f_new(
-                      Html.t_td,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Html.t_p,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("Name")
-                          )
-                        )
-                      )
-                    ),
-                    Core.f_new(
-                      Html.t_td,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Html.t_p,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("Test")
-                          )
-                        )
-                      )
-                    ),
-                    Core.f_new(
-                      Html.t_td,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Html.t_p,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("Expected")
-                          )
-                        )
-                      )
-                    ),
-                    Core.f_new(
-                      Html.t_td,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Html.t_p,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("Actual")
-                          )
-                        )
-                      )
-                    )
+                    // ]
+                  )
+                ),
+                Core.vx_new_string(":tbody"),
+                Core.f_new(
+                  Html.t_tbody,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Test.f_trlist_from_testcaselist(testcaselist)
+                    // ]
                   )
                 )
-              )
-            ),
-            Core.vx_new_string(":tbody"),
-            Core.f_new(
-              Html.t_tbody,
-              Core.vx_new(
-                Core.t_anylist,
-                Test.f_trlist_from_testcaselist(
-                  testcaselist
-                )
-              )
+              // ]
             )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -3740,17 +4730,23 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_node,
+              Html.t_divchild
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3778,14 +4774,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Test.Type_testpackage inputval = (Test.Type_testpackage)value;
       final Core.Type_any outputval = Test.f_div_from_testpackage(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Test.Type_testpackage testpackage = Core.f_any_from_any(Test.t_testpackage, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testpackage testpackage = Core.f_any_from_any(
+        Test.t_testpackage,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_div_from_testpackage(testpackage);
       return output;
     }
@@ -3805,93 +4807,101 @@ public final class Test {
     Html.Type_div output = Html.e_div;
     output = Core.f_let(
       Html.t_div,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Test.Type_testcoveragesummary testcoveragesummary = testpackage.coveragesummary();
-        final Core.Type_string pkgname = testpackage.testpkg();
-        final Test.Type_testcaselist caselist = testpackage.caselist();
-        final Core.Type_boolean passfail = testpackage.passfail();
-        final Html.Type_style pkgnamestyle = Html.f_style_from_stylesheet_name(
-          Test.c_stylesheet_test,
-          Core.vx_new_string(".pkgname")
-        );
-        final Html.Type_div node = Test.f_div_from_testcaselist(
-          caselist
-        );
-        final Html.Type_divchildlist nodes = Core.f_new(
-          Html.t_divchildlist,
-          Core.vx_new(
-            Core.t_anylist,
-            node
-          )
-        );
-        final Html.Type_p p_passfail = Test.f_p_from_passfail(
-          passfail
-        );
-        final Html.Type_p p_pkgname = Core.f_new(
-          Html.t_p,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":style"),
-            pkgnamestyle,
-            Core.vx_new_string(":text"),
-            pkgname
-          )
-        );
-        final Html.Type_p p_totalnums = Test.f_p_from_testcoveragenums(
-          testcoveragesummary.totalnums()
-        );
-        final Html.Type_p p_coveragenums = Test.f_p_from_testcoveragenums(
-          testcoveragesummary.typenums()
-        );
-        final Html.Type_p p_constnums = Test.f_p_from_testcoveragenums(
-          testcoveragesummary.constnums()
-        );
-        final Html.Type_p p_funcnums = Test.f_p_from_testcoveragenums(
-          testcoveragesummary.funcnums()
-        );
-        final Html.Type_p p_docnums = Test.f_p_from_testcoveragenums(
-          testcoveragesummary.docnums()
-        );
-        final Html.Type_p p_bigospacenums = Test.f_p_from_testcoveragenums(
-          testcoveragesummary.bigospacenums()
-        );
-        final Html.Type_p p_bigotimenums = Test.f_p_from_testcoveragenums(
-          testcoveragesummary.bigotimenums()
-        );
-        final Html.Type_divchildlist summary = Core.f_new(
-          Html.t_divchildlist,
-          Core.vx_new(
-            Core.t_anylist,
-            p_passfail,
-            p_pkgname,
-            p_totalnums,
-            p_coveragenums,
-            p_constnums,
-            p_funcnums,
-            p_docnums,
-            p_bigospacenums,
-            p_bigotimenums
-          )
-        );
-        final Html.Type_details details = Core.f_new(
-          Html.t_details,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":summary"),
-            summary,
-            Core.vx_new_string(":nodes"),
-            nodes
-          )
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Html.t_div,
-          Core.vx_new(
-            Core.t_anylist,
-            details
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Test.Type_testcoveragesummary testcoveragesummary = testpackage.coveragesummary();
+          final Core.Type_string pkgname = testpackage.testpkg();
+          final Test.Type_testcaselist caselist = testpackage.caselist();
+          final Core.Type_boolean passfail = testpackage.passfail();
+          final Html.Type_style pkgnamestyle = Html.f_style_from_stylesheet_name(
+            Test.c_stylesheet_test,
+            Core.vx_new_string(".pkgname")
+          );
+          final Html.Type_div node = Test.f_div_from_testcaselist(caselist);
+          final Html.Type_divchildlist nodes = Core.f_new(
+            Html.t_divchildlist,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                node
+              // ]
+            )
+          );
+          final Html.Type_p p_passfail = Test.f_p_from_passfail(passfail);
+          final Html.Type_p p_pkgname = Core.f_new(
+            Html.t_p,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":style"),
+                pkgnamestyle,
+                Core.vx_new_string(":text"),
+                pkgname
+              // ]
+            )
+          );
+          final Html.Type_p p_totalnums = Test.f_p_from_testcoveragenums(
+            testcoveragesummary.totalnums()
+          );
+          final Html.Type_p p_coveragenums = Test.f_p_from_testcoveragenums(
+            testcoveragesummary.typenums()
+          );
+          final Html.Type_p p_constnums = Test.f_p_from_testcoveragenums(
+            testcoveragesummary.constnums()
+          );
+          final Html.Type_p p_funcnums = Test.f_p_from_testcoveragenums(
+            testcoveragesummary.funcnums()
+          );
+          final Html.Type_p p_docnums = Test.f_p_from_testcoveragenums(
+            testcoveragesummary.docnums()
+          );
+          final Html.Type_p p_bigospacenums = Test.f_p_from_testcoveragenums(
+            testcoveragesummary.bigospacenums()
+          );
+          final Html.Type_p p_bigotimenums = Test.f_p_from_testcoveragenums(
+            testcoveragesummary.bigotimenums()
+          );
+          final Html.Type_divchildlist summary = Core.f_new(
+            Html.t_divchildlist,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                p_passfail,
+                p_pkgname,
+                p_totalnums,
+                p_coveragenums,
+                p_constnums,
+                p_funcnums,
+                p_docnums,
+                p_bigospacenums,
+                p_bigotimenums
+              // ]
+            )
+          );
+          final Html.Type_details details = Core.f_new(
+            Html.t_details,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":summary"),
+                summary,
+                Core.vx_new_string(":nodes"),
+                nodes
+              // ]
+            )
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Html.t_div,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                details
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -3934,17 +4944,23 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_node,
+              Html.t_divchild
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3972,14 +4988,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Test.Type_testpackagelist inputval = (Test.Type_testpackagelist)value;
       final Core.Type_any outputval = Test.f_div_from_testpackagelist(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Test.Type_testpackagelist testpackagelist = Core.f_any_from_any(Test.t_testpackagelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testpackagelist testpackagelist = Core.f_any_from_any(
+        Test.t_testpackagelist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_div_from_testpackagelist(testpackagelist);
       return output;
     }
@@ -3999,138 +5021,162 @@ public final class Test {
     Html.Type_div output = Html.e_div;
     output = Core.f_let(
       Html.t_div,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_style stylepassfail = Html.f_style_from_stylesheet_name(
-          Test.c_stylesheet_test,
-          Core.vx_new_string(".passfail")
-        );
-        final Html.Type_style stylepkgname = Html.f_style_from_stylesheet_name(
-          Test.c_stylesheet_test,
-          Core.vx_new_string(".pkgname")
-        );
-        final Html.Type_style stylepkgheader = Html.f_style_from_stylesheet_name(
-          Test.c_stylesheet_test,
-          Core.vx_new_string(".pkgheader")
-        );
-        final Html.Type_style stylecoveragenum = Html.f_style_from_stylesheet_name(
-          Test.c_stylesheet_test,
-          Core.vx_new_string(".coveragenums")
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Html.t_div,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.f_new(
-              Html.t_div,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":style"),
-                stylepkgheader,
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_style stylepassfail = Html.f_style_from_stylesheet_name(
+            Test.c_stylesheet_test,
+            Core.vx_new_string(".passfail")
+          );
+          final Html.Type_style stylepkgname = Html.f_style_from_stylesheet_name(
+            Test.c_stylesheet_test,
+            Core.vx_new_string(".pkgname")
+          );
+          final Html.Type_style stylepkgheader = Html.f_style_from_stylesheet_name(
+            Test.c_stylesheet_test,
+            Core.vx_new_string(".pkgheader")
+          );
+          final Html.Type_style stylecoveragenum = Html.f_style_from_stylesheet_name(
+            Test.c_stylesheet_test,
+            Core.vx_new_string(".coveragenums")
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Html.t_div,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
                 Core.f_new(
-                  Html.t_p,
+                  Html.t_div,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    stylepassfail,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("Pass?")
+                    // [
+                      Core.vx_new_string(":style"),
+                      stylepkgheader,
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            stylepassfail,
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("Pass?")
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            stylepkgname,
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("Package Name")
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("Coverage")
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("(type)")
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("(const)")
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("(func)")
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string(":doc")
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string(":bigospace")
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string(":bigotime")
+                          // ]
+                        )
+                      )
+                    // ]
                   )
                 ),
                 Core.f_new(
-                  Html.t_p,
+                  Html.t_div,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    stylepkgname,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("Package Name")
-                  )
-                ),
-                Core.f_new(
-                  Html.t_p,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("Coverage")
-                  )
-                ),
-                Core.f_new(
-                  Html.t_p,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("(type)")
-                  )
-                ),
-                Core.f_new(
-                  Html.t_p,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("(const)")
-                  )
-                ),
-                Core.f_new(
-                  Html.t_p,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("(func)")
-                  )
-                ),
-                Core.f_new(
-                  Html.t_p,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string(":doc")
-                  )
-                ),
-                Core.f_new(
-                  Html.t_p,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string(":bigospace")
-                  )
-                ),
-                Core.f_new(
-                  Html.t_p,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string(":bigotime")
+                    // [
+                      Test.f_divchildlist_from_testpackagelist(testpackagelist)
+                    // ]
                   )
                 )
-              )
-            ),
-            Core.f_new(
-              Html.t_div,
-              Core.vx_new(
-                Core.t_anylist,
-                Test.f_divchildlist_from_testpackagelist(
-                  testpackagelist
-                )
-              )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -4174,17 +5220,22 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "divchildlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Html.t_divchild), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "divchildlist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_divchild
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4212,14 +5263,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Test.Type_testpackagelist inputval = (Test.Type_testpackagelist)value;
       final Core.Type_any outputval = Test.f_divchildlist_from_testpackagelist(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Test.Type_testpackagelist testpackagelist = Core.f_any_from_any(Test.t_testpackagelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testpackagelist testpackagelist = Core.f_any_from_any(
+        Test.t_testpackagelist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_divchildlist_from_testpackagelist(testpackagelist);
       return output;
     }
@@ -4283,17 +5340,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4335,10 +5392,12 @@ public final class Test {
       File.t_file,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":name"),
-        Core.vx_new_string("testsuite.vxlisp"),
-        Core.vx_new_string(":path"),
-        Core.c_path_test_resources
+        // [
+          Core.vx_new_string(":name"),
+          Core.vx_new_string("testsuite.vxlisp"),
+          Core.vx_new_string(":path"),
+          Core.c_path_test_resources
+        // ]
       )
     );
     return output;
@@ -4382,17 +5441,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4434,10 +5493,12 @@ public final class Test {
       File.t_file,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":name"),
-        Core.vx_new_string("testsuite.html"),
-        Core.vx_new_string(":path"),
-        Core.c_path_test_resources
+        // [
+          Core.vx_new_string(":name"),
+          Core.vx_new_string("testsuite.html"),
+          Core.vx_new_string(":path"),
+          Core.c_path_test_resources
+        // ]
       )
     );
     return output;
@@ -4481,17 +5542,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4533,10 +5594,12 @@ public final class Test {
       File.t_file,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":name"),
-        Core.vx_new_string("testsuitenode.vxlisp"),
-        Core.vx_new_string(":path"),
-        Core.c_path_test_resources
+        // [
+          Core.vx_new_string(":name"),
+          Core.vx_new_string("testsuitenode.vxlisp"),
+          Core.vx_new_string(":path"),
+          Core.c_path_test_resources
+        // ]
       )
     );
     return output;
@@ -4581,17 +5644,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "html", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "html",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4619,14 +5682,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_div inputval = (Html.Type_div)value;
       final Core.Type_any outputval = Test.f_html_from_divtest(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_div divtest = Core.f_any_from_any(Html.t_div, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_div divtest = Core.f_any_from_any(
+        Html.t_div,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_html_from_divtest(divtest);
       return output;
     }
@@ -4648,63 +5717,79 @@ public final class Test {
       Html.t_html,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":lang"),
-        Core.vx_new_string("en"),
-        Core.vx_new_string(":head"),
-        Core.f_new(
-          Html.t_head,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.f_new(
-              Html.t_meta,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":charset"),
-                Core.vx_new_string("utf-8")
-              )
-            ),
-            Core.f_new(
-              Html.t_meta,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":name"),
-                Core.vx_new_string("viewport"),
-                Core.vx_new_string(":content"),
-                Core.vx_new_string("width=device-width, initial-scale=1.0")
-              )
-            ),
-            Core.f_new(
-              Html.t_title,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":text"),
-                Core.vx_new_string("Test Suite")
-              )
-            ),
-            Test.c_stylesheet_test
-          )
-        ),
-        Core.vx_new_string(":body"),
-        Core.f_new(
-          Html.t_body,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.f_new(
-              Html.t_div,
-              Core.vx_new(
-                Core.t_anylist,
+        // [
+          Core.vx_new_string(":lang"),
+          Core.vx_new_string("en"),
+          Core.vx_new_string(":head"),
+          Core.f_new(
+            Html.t_head,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
                 Core.f_new(
-                  Html.t_h1,
+                  Html.t_meta,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string("Test Suite")
+                    // [
+                      Core.vx_new_string(":charset"),
+                      Core.vx_new_string("utf-8")
+                    // ]
                   )
-                )
-              )
-            ),
-            divtest
+                ),
+                Core.f_new(
+                  Html.t_meta,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":name"),
+                      Core.vx_new_string("viewport"),
+                      Core.vx_new_string(":content"),
+                      Core.vx_new_string("width=device-width, initial-scale=1.0")
+                    // ]
+                  )
+                ),
+                Core.f_new(
+                  Html.t_title,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":text"),
+                      Core.vx_new_string("Test Suite")
+                    // ]
+                  )
+                ),
+                Test.c_stylesheet_test
+              // ]
+            )
+          ),
+          Core.vx_new_string(":body"),
+          Core.f_new(
+            Html.t_body,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.f_new(
+                  Html.t_div,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Html.t_h1,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string("Test Suite")
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                ),
+                divtest
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -4749,17 +5834,23 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "p", // name
-          ":struct", // extends
-          Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "p",
+          ":struct",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_node,
+              Html.t_divchild
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4787,14 +5878,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_boolean inputval = (Core.Type_boolean)value;
       final Core.Type_any outputval = Test.f_p_from_passfail(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_boolean passfail = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_boolean passfail = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_p_from_passfail(passfail);
       return output;
     }
@@ -4814,35 +5911,39 @@ public final class Test {
     Html.Type_p output = Html.e_p;
     output = Core.f_let(
       Html.t_p,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string text = Core.f_if_1(
-          Core.t_string,
-          passfail,
-          Core.vx_new_string("Pass"),
-          Core.vx_new_string("Fail")
-        );
-        final Core.Type_string stylename = Core.f_if_1(
-          Core.t_string,
-          passfail,
-          Core.vx_new_string(".passflag"),
-          Core.vx_new_string(".failflag")
-        );
-        final Html.Type_style style = Html.f_style_from_stylesheet_name(
-          Test.c_stylesheet_test,
-          stylename
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Html.t_p,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":style"),
-            style,
-            Core.vx_new_string(":text"),
-            text
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string text = Core.f_if_1(
+            Core.t_string,
+            passfail,
+            Core.vx_new_string("Pass"),
+            Core.vx_new_string("Fail")
+          );
+          final Core.Type_string stylename = Core.f_if_1(
+            Core.t_string,
+            passfail,
+            Core.vx_new_string(".passflag"),
+            Core.vx_new_string(".failflag")
+          );
+          final Html.Type_style style = Html.f_style_from_stylesheet_name(
+            Test.c_stylesheet_test,
+            stylename
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Html.t_p,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":style"),
+                style,
+                Core.vx_new_string(":text"),
+                text
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -4886,17 +5987,23 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "p", // name
-          ":struct", // extends
-          Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "p",
+          ":struct",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_node,
+              Html.t_divchild
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4924,14 +6031,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Test.Type_testcoveragenums inputval = (Test.Type_testcoveragenums)value;
       final Core.Type_any outputval = Test.f_p_from_testcoveragenums(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Test.Type_testcoveragenums nums = Core.f_any_from_any(Test.t_testcoveragenums, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testcoveragenums nums = Core.f_any_from_any(
+        Test.t_testcoveragenums,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_p_from_testcoveragenums(nums);
       return output;
     }
@@ -4953,23 +6066,27 @@ public final class Test {
       Html.t_p,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":style"),
-        Html.f_style_from_stylesheet_name(
-          Test.c_stylesheet_test,
-          Core.vx_new_string(".coveragenums")
-        ),
-        Core.vx_new_string(":text"),
-        Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            nums.pct(),
-            Core.vx_new_string("% "),
-            nums.tests(),
-            Core.vx_new_string("/"),
-            nums.total()
+        // [
+          Core.vx_new_string(":style"),
+          Html.f_style_from_stylesheet_name(
+            Test.c_stylesheet_test,
+            Core.vx_new_string(".coveragenums")
+          ),
+          Core.vx_new_string(":text"),
+          Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                nums.pct(),
+                Core.vx_new_string("% "),
+                nums.tests(),
+                Core.vx_new_string("/"),
+                nums.total()
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -5016,17 +6133,17 @@ public final class Test {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testcase", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testcase",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5051,7 +6168,10 @@ public final class Test {
 
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
-      final Test.Type_testcase inputval = Core.f_any_from_any(Test.t_testcase, value);
+      final Test.Type_testcase inputval = Core.f_any_from_any(
+        Test.t_testcase,
+        value
+      );
       final CompletableFuture<Test.Type_testcase> future = Test.f_resolve_testcase(inputval);
       @SuppressWarnings("unchecked")
       final CompletableFuture<T> output = (CompletableFuture<T>)future;
@@ -5061,7 +6181,10 @@ public final class Test {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Test.Type_testcase testcase = Core.f_any_from_any(Test.t_testcase, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testcase testcase = Core.f_any_from_any(
+        Test.t_testcase,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Test.Type_testcase> future = Test.f_resolve_testcase(testcase);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -5082,49 +6205,56 @@ public final class Test {
     CompletableFuture<Test.Type_testcase> output = Core.vx_async_new_from_value(Test.e_testcase);
     output = Core.f_let_async(
       Test.t_testcase,
-      Core.t_any_from_func_async.vx_fn_new(() -> {
-        final Test.Type_testdescribelist describelist = testcase.describelist();
-        final CompletableFuture<Test.Type_testdescribelist> future_resolvedlist = Test.f_resolve_testdescribelist(
-          describelist
-        );
+      Core.t_any_from_func_async.vx_fn_new(
+        () -> {
+          final Test.Type_testdescribelist describelist = testcase.describelist();
+        final CompletableFuture<Test.Type_testdescribelist> future_resolvedlist = Test.f_resolve_testdescribelist(describelist);
         final CompletableFuture<Core.Type_any> output_1 = Core.vx_async_from_async_fn(
           Core.t_any,
           future_resolvedlist,
           (resolvedlist) -> {
-            final Core.Type_booleanlist passfaillist = Core.f_list_from_list_1(
-              Core.t_booleanlist,
-              resolvedlist,
-              Core.t_any_from_any.vx_fn_new((testdescribe_any) -> {
-                final Test.Type_testdescribe testdescribe = Core.f_any_from_any(Test.t_testdescribe, testdescribe_any);
-                Core.Type_any output_3 = Core.f_let(
-                  Core.t_boolean,
-                  Core.t_any_from_func.vx_fn_new(() -> {
-                    final Test.Type_testresult testresult = testdescribe.testresult();
-                    final Core.Type_any output_4 = testresult.passfail();
-                    return output_4;
-                  })
-                );
-                return output_3;
-              })
-            );
-            final Core.Type_boolean passfail = Core.f_and_1(
-              passfaillist
-            );
+              final Core.Type_booleanlist passfaillist = Core.f_list_from_list_1(
+                Core.t_booleanlist,
+                resolvedlist,
+                Core.t_any_from_any.vx_fn_new(
+                  (testdescribe_any) -> {
+                    final Test.Type_testdescribe testdescribe = Core.f_any_from_any(
+                      Test.t_testdescribe,
+                      testdescribe_any
+                    );
+                    Core.Type_any output_3 = Core.f_let(
+                      Core.t_boolean,
+                      Core.t_any_from_func.vx_fn_new(
+                        () -> {
+                          final Test.Type_testresult testresult = testdescribe.testresult();
+                          final Core.Type_any output_4 = testresult.passfail();
+                          return output_4;
+                        }
+                      )
+                    );
+                    return output_3;
+                  }
+                )
+              );
+              final Core.Type_boolean passfail = Core.f_and_1(passfaillist);
             final Core.Type_any output_2 = Core.f_copy(
               testcase,
               Core.vx_new(
                 Core.t_anylist,
-                Core.vx_new_string(":passfail"),
-                passfail,
-                Core.vx_new_string(":describelist"),
-                resolvedlist
+                // [
+                  Core.vx_new_string(":passfail"),
+                  passfail,
+                  Core.vx_new_string(":describelist"),
+                  resolvedlist
+                // ]
               )
             );
-            return output_2;
-          }
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5170,17 +6300,22 @@ public final class Test {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testcaselist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Test.t_testcase), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testcaselist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Test.t_testcase
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5205,7 +6340,10 @@ public final class Test {
 
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
-      final Test.Type_testcaselist inputval = Core.f_any_from_any(Test.t_testcaselist, value);
+      final Test.Type_testcaselist inputval = Core.f_any_from_any(
+        Test.t_testcaselist,
+        value
+      );
       final CompletableFuture<Test.Type_testcaselist> future = Test.f_resolve_testcaselist(inputval);
       @SuppressWarnings("unchecked")
       final CompletableFuture<T> output = (CompletableFuture<T>)future;
@@ -5215,7 +6353,10 @@ public final class Test {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Test.Type_testcaselist testcaselist = Core.f_any_from_any(Test.t_testcaselist, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testcaselist testcaselist = Core.f_any_from_any(
+        Test.t_testcaselist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Test.Type_testcaselist> future = Test.f_resolve_testcaselist(testcaselist);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -5283,17 +6424,17 @@ public final class Test {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testdescribe", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testdescribe",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5318,7 +6459,10 @@ public final class Test {
 
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
-      final Test.Type_testdescribe inputval = Core.f_any_from_any(Test.t_testdescribe, value);
+      final Test.Type_testdescribe inputval = Core.f_any_from_any(
+        Test.t_testdescribe,
+        value
+      );
       final CompletableFuture<Test.Type_testdescribe> future = Test.f_resolve_testdescribe(inputval);
       @SuppressWarnings("unchecked")
       final CompletableFuture<T> output = (CompletableFuture<T>)future;
@@ -5328,7 +6472,10 @@ public final class Test {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Test.Type_testdescribe testdescribe = Core.f_any_from_any(Test.t_testdescribe, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testdescribe testdescribe = Core.f_any_from_any(
+        Test.t_testdescribe,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Test.Type_testdescribe> future = Test.f_resolve_testdescribe(testdescribe);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -5349,11 +6496,10 @@ public final class Test {
     CompletableFuture<Test.Type_testdescribe> output = Core.vx_async_new_from_value(Test.e_testdescribe);
     output = Core.f_let_async(
       Test.t_testdescribe,
-      Core.t_any_from_func_async.vx_fn_new(() -> {
-        final Test.Type_testresult testresult = testdescribe.testresult();
-        final CompletableFuture<Test.Type_testresult> future_resolved = Test.f_resolve_testresult(
-          testresult
-        );
+      Core.t_any_from_func_async.vx_fn_new(
+        () -> {
+          final Test.Type_testresult testresult = testdescribe.testresult();
+        final CompletableFuture<Test.Type_testresult> future_resolved = Test.f_resolve_testresult(testresult);
         final CompletableFuture<Core.Type_any> output_1 = Core.vx_async_from_async_fn(
           Core.t_any,
           future_resolved,
@@ -5362,15 +6508,18 @@ public final class Test {
               testdescribe,
               Core.vx_new(
                 Core.t_anylist,
-                Core.vx_new_string(":testresult"),
-                resolved
+                // [
+                  Core.vx_new_string(":testresult"),
+                  resolved
+                // ]
               )
             );
-            return output_2;
-          }
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5416,17 +6565,22 @@ public final class Test {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testdescribelist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Test.t_testdescribe), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testdescribelist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Test.t_testdescribe
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5451,7 +6605,10 @@ public final class Test {
 
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
-      final Test.Type_testdescribelist inputval = Core.f_any_from_any(Test.t_testdescribelist, value);
+      final Test.Type_testdescribelist inputval = Core.f_any_from_any(
+        Test.t_testdescribelist,
+        value
+      );
       final CompletableFuture<Test.Type_testdescribelist> future = Test.f_resolve_testdescribelist(inputval);
       @SuppressWarnings("unchecked")
       final CompletableFuture<T> output = (CompletableFuture<T>)future;
@@ -5461,7 +6618,10 @@ public final class Test {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Test.Type_testdescribelist testdescribelist = Core.f_any_from_any(Test.t_testdescribelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testdescribelist testdescribelist = Core.f_any_from_any(
+        Test.t_testdescribelist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Test.Type_testdescribelist> future = Test.f_resolve_testdescribelist(testdescribelist);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -5529,17 +6689,17 @@ public final class Test {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testpackage", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testpackage",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5564,7 +6724,10 @@ public final class Test {
 
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
-      final Test.Type_testpackage inputval = Core.f_any_from_any(Test.t_testpackage, value);
+      final Test.Type_testpackage inputval = Core.f_any_from_any(
+        Test.t_testpackage,
+        value
+      );
       final CompletableFuture<Test.Type_testpackage> future = Test.f_resolve_testpackage(inputval);
       @SuppressWarnings("unchecked")
       final CompletableFuture<T> output = (CompletableFuture<T>)future;
@@ -5574,7 +6737,10 @@ public final class Test {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Test.Type_testpackage testpackage = Core.f_any_from_any(Test.t_testpackage, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testpackage testpackage = Core.f_any_from_any(
+        Test.t_testpackage,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Test.Type_testpackage> future = Test.f_resolve_testpackage(testpackage);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -5595,42 +6761,47 @@ public final class Test {
     CompletableFuture<Test.Type_testpackage> output = Core.vx_async_new_from_value(Test.e_testpackage);
     output = Core.f_let_async(
       Test.t_testpackage,
-      Core.t_any_from_func_async.vx_fn_new(() -> {
-        final Test.Type_testcaselist testcaselist = testpackage.caselist();
-        final CompletableFuture<Test.Type_testcaselist> future_resolvedlist = Test.f_resolve_testcaselist(
-          testcaselist
-        );
+      Core.t_any_from_func_async.vx_fn_new(
+        () -> {
+          final Test.Type_testcaselist testcaselist = testpackage.caselist();
+        final CompletableFuture<Test.Type_testcaselist> future_resolvedlist = Test.f_resolve_testcaselist(testcaselist);
         final CompletableFuture<Core.Type_any> output_1 = Core.vx_async_from_async_fn(
           Core.t_any,
           future_resolvedlist,
           (resolvedlist) -> {
-            final Core.Type_booleanlist passfaillist = Core.f_list_from_list_1(
-              Core.t_booleanlist,
-              resolvedlist,
-              Core.t_any_from_any.vx_fn_new((testcase_any) -> {
-                final Test.Type_testcase testcase = Core.f_any_from_any(Test.t_testcase, testcase_any);
-                Core.Type_any output_3 = testcase.passfail();
-                return output_3;
-              })
-            );
-            final Core.Type_boolean passfail = Core.f_and_1(
-              passfaillist
-            );
+              final Core.Type_booleanlist passfaillist = Core.f_list_from_list_1(
+                Core.t_booleanlist,
+                resolvedlist,
+                Core.t_any_from_any.vx_fn_new(
+                  (testcase_any) -> {
+                    final Test.Type_testcase testcase = Core.f_any_from_any(
+                      Test.t_testcase,
+                      testcase_any
+                    );
+                    Core.Type_any output_3 = testcase.passfail();
+                    return output_3;
+                  }
+                )
+              );
+              final Core.Type_boolean passfail = Core.f_and_1(passfaillist);
             final Core.Type_any output_2 = Core.f_copy(
               testpackage,
               Core.vx_new(
                 Core.t_anylist,
-                Core.vx_new_string(":passfail"),
-                passfail,
-                Core.vx_new_string(":caselist"),
-                resolvedlist
+                // [
+                  Core.vx_new_string(":passfail"),
+                  passfail,
+                  Core.vx_new_string(":caselist"),
+                  resolvedlist
+                // ]
               )
             );
-            return output_2;
-          }
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5676,17 +6847,22 @@ public final class Test {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testpackagelist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Test.t_testpackage), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testpackagelist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Test.t_testpackage
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5711,7 +6887,10 @@ public final class Test {
 
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
-      final Test.Type_testpackagelist inputval = Core.f_any_from_any(Test.t_testpackagelist, value);
+      final Test.Type_testpackagelist inputval = Core.f_any_from_any(
+        Test.t_testpackagelist,
+        value
+      );
       final CompletableFuture<Test.Type_testpackagelist> future = Test.f_resolve_testpackagelist(inputval);
       @SuppressWarnings("unchecked")
       final CompletableFuture<T> output = (CompletableFuture<T>)future;
@@ -5721,7 +6900,10 @@ public final class Test {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Test.Type_testpackagelist testpackagelist = Core.f_any_from_any(Test.t_testpackagelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testpackagelist testpackagelist = Core.f_any_from_any(
+        Test.t_testpackagelist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Test.Type_testpackagelist> future = Test.f_resolve_testpackagelist(testpackagelist);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -5789,17 +6971,17 @@ public final class Test {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5824,7 +7006,10 @@ public final class Test {
 
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
-      final Test.Type_testresult inputval = Core.f_any_from_any(Test.t_testresult, value);
+      final Test.Type_testresult inputval = Core.f_any_from_any(
+        Test.t_testresult,
+        value
+      );
       final CompletableFuture<Test.Type_testresult> future = Test.f_resolve_testresult(inputval);
       @SuppressWarnings("unchecked")
       final CompletableFuture<T> output = (CompletableFuture<T>)future;
@@ -5834,7 +7019,10 @@ public final class Test {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Test.Type_testresult testresult = Core.f_any_from_any(Test.t_testresult, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testresult testresult = Core.f_any_from_any(
+        Test.t_testresult,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Test.Type_testresult> future = Test.f_resolve_testresult(testresult);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -5855,9 +7043,10 @@ public final class Test {
     CompletableFuture<Test.Type_testresult> output = Core.vx_async_new_from_value(Test.e_testresult);
     output = Core.f_let_async(
       Test.t_testresult,
-      Core.t_any_from_func_async.vx_fn_new(() -> {
-        final Core.Func_any_from_func_async fn_actual = testresult.fn_actual();
-        final Core.Type_any expected = testresult.expected();
+      Core.t_any_from_func_async.vx_fn_new(
+        () -> {
+          final Core.Func_any_from_func_async fn_actual = testresult.fn_actual();
+          final Core.Type_any expected = testresult.expected();
         final CompletableFuture<Core.Type_any> future_actual = Core.f_resolve_async(
           Core.t_any,
           fn_actual
@@ -5870,50 +7059,58 @@ public final class Test {
               Test.t_testresult,
               Core.vx_new(
                 Core.t_thenelselist,
-                Core.f_then(
-                  Core.t_boolean_from_func.vx_fn_new(() -> {
-                    Core.Type_any output_2 = Core.f_is_empty_1(
-                      fn_actual
-                    );
-                    return output_2;
-                  }),
-                  Core.t_any_from_func.vx_fn_new(() -> {
-                    final Core.Type_any output_3 = testresult;
-                    return output_3;
-                  })
-                ),
-                Core.f_else(
-                  Core.t_any_from_func.vx_fn_new(() -> {
-                    Core.Type_any output_4 = Core.f_let(
-                      Test.t_testresult,
-                      Core.t_any_from_func.vx_fn_new(() -> {
-                        final Core.Type_boolean passfail = Core.f_eq(
-                          expected,
-                          actual
-                        );
-                        final Core.Type_any output_5 = Core.f_copy(
-                          testresult,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":passfail"),
-                            passfail,
-                            Core.vx_new_string(":actual"),
-                            actual
-                          )
-                        );
-                        return output_5;
-                      })
-                    );
-                    return output_4;
-                  })
-                )
+                // [
+                  Core.f_then(
+                    Core.t_boolean_from_func.vx_fn_new(
+                      () -> {
+                        Core.Type_any output_2 = Core.f_is_empty_1(fn_actual);
+                          return output_2;
+                        }
+                    ),
+                    Core.t_any_from_func.vx_fn_new(
+                      () -> {
+      final Core.Type_any output_3 = testresult;
+                          return output_3;
+                        }
+                    )
+                  ),
+                  Core.f_else(
+                    Core.t_any_from_func.vx_fn_new(
+                      () -> {
+                        Core.Type_any output_4 = Core.f_let(
+                            Test.t_testresult,
+                            Core.t_any_from_func.vx_fn_new(
+                              () -> {
+                                final Core.Type_boolean passfail = Core.f_eq(expected, actual);
+                                final Core.Type_any output_5 = Core.f_copy(
+                                  testresult,
+                                  Core.vx_new(
+                                    Core.t_anylist,
+                                    // [
+                                      Core.vx_new_string(":passfail"),
+                                      passfail,
+                                      Core.vx_new_string(":actual"),
+                                      actual
+                                    // ]
+                                  )
+                                );
+                                return output_5;
+                              }
+                            )
+                          );
+                          return output_4;
+                        }
+                    )
+                  )
+                // ]
               )
             );
-            return output_6;
-          }
+              return output_6;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5956,17 +7153,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6008,17 +7205,21 @@ public final class Test {
       Core.t_security,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":allowfuncs"),
-        Core.f_new(
-          Core.t_funclist,
-          Core.vx_new(
-            Core.t_anylist,
-            File.t_boolean_write_from_file_any,
-            File.t_boolean_write_from_file_string,
-            File.t_file_read_from_file,
-            File.t_string_read_from_file
+        // [
+          Core.vx_new_string(":allowfuncs"),
+          Core.f_new(
+            Core.t_funclist,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                File.t_boolean_write_from_file_any,
+                File.t_boolean_write_from_file_string,
+                File.t_file_read_from_file,
+                File.t_string_read_from_file
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -6064,17 +7265,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6095,9 +7296,18 @@ public final class Test {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any expected = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any actual = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any expected = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any actual = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Test.f_test(context, expected, actual);
       return output;
     }
@@ -6120,22 +7330,26 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":eq"),
-          Core.vx_new_string(":passfail"),
-          Core.f_eq(
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":eq"),
+            Core.vx_new_string(":passfail"),
+            Core.f_eq(expected, actual),
+            Core.vx_new_string(":expected"),
             expected,
+            Core.vx_new_string(":actual"),
             actual
-          ),
-          Core.vx_new_string(":expected"),
-          expected,
-          Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
       Core.Type_msg msg = Core.vx_msg_from_exception("vx/test/test", err);
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6180,17 +7394,17 @@ public final class Test {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6211,9 +7425,18 @@ public final class Test {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any expected = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(Core.t_any_from_func_async, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any expected = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(
+        Core.t_any_from_func_async,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Test.f_test_1(context, expected, fn_actual);
       return output;
     }
@@ -6236,17 +7459,24 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":eq"),
-          Core.vx_new_string(":expected"),
-          expected,
-          Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":eq"),
+            Core.vx_new_string(":expected"),
+            expected,
+            Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
       Core.Type_msg msg = Core.vx_msg_from_exception("vx/test/test", err);
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6290,17 +7520,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6328,15 +7558,24 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Test.f_test_false(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any actual = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any actual = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Test.f_test_false(context, actual);
       return output;
     }
@@ -6359,17 +7598,19 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":false"),
-          Core.vx_new_string(":passfail"),
-          Core.f_eq(
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":false"),
+            Core.vx_new_string(":passfail"),
+            Core.f_eq(
+              Core.vx_new_boolean(false),
+              actual
+            ),
+            Core.vx_new_string(":expected"),
             Core.vx_new_boolean(false),
+            Core.vx_new_string(":actual"),
             actual
-          ),
-          Core.vx_new_string(":expected"),
-          Core.vx_new_boolean(false),
-          Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6377,7 +7618,12 @@ public final class Test {
         "vx/test/test-false",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6421,17 +7667,17 @@ public final class Test {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6459,15 +7705,24 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Core.Func_any_from_func_async inputval = (Core.Func_any_from_func_async)value;
       final Core.Type_any outputval = Test.f_test_false_1(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(Core.t_any_from_func_async, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(
+        Core.t_any_from_func_async,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Test.f_test_false_1(context, fn_actual);
       return output;
     }
@@ -6490,12 +7745,14 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":false"),
-          Core.vx_new_string(":expected"),
-          Core.vx_new_boolean(false),
-          Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":false"),
+            Core.vx_new_string(":expected"),
+            Core.vx_new_boolean(false),
+            Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6503,7 +7760,12 @@ public final class Test {
         "vx/test/test-false",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6548,17 +7810,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6579,9 +7841,18 @@ public final class Test {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any expected = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any actual = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any expected = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any actual = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Test.f_test_gt(context, expected, actual);
       return output;
     }
@@ -6604,17 +7875,16 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":gt"),
-          Core.vx_new_string(":passfail"),
-          Core.f_gt(
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":gt"),
+            Core.vx_new_string(":passfail"),
+            Core.f_gt(expected, actual),
+            Core.vx_new_string(":expected"),
             expected,
+            Core.vx_new_string(":actual"),
             actual
-          ),
-          Core.vx_new_string(":expected"),
-          expected,
-          Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6622,7 +7892,12 @@ public final class Test {
         "vx/test/test-gt",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6667,17 +7942,17 @@ public final class Test {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6698,9 +7973,18 @@ public final class Test {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any expected = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(Core.t_any_from_func_async, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any expected = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(
+        Core.t_any_from_func_async,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Test.f_test_gt_1(context, expected, fn_actual);
       return output;
     }
@@ -6723,12 +8007,14 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":gt"),
-          Core.vx_new_string(":expected"),
-          expected,
-          Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":gt"),
+            Core.vx_new_string(":expected"),
+            expected,
+            Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6736,7 +8022,12 @@ public final class Test {
         "vx/test/test-gt",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6781,17 +8072,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6812,9 +8103,18 @@ public final class Test {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any expected = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any actual = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any expected = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any actual = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Test.f_test_ne(context, expected, actual);
       return output;
     }
@@ -6837,17 +8137,16 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":ne"),
-          Core.vx_new_string(":passfail"),
-          Core.f_ne(
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":ne"),
+            Core.vx_new_string(":passfail"),
+            Core.f_ne(expected, actual),
+            Core.vx_new_string(":expected"),
             expected,
+            Core.vx_new_string(":actual"),
             actual
-          ),
-          Core.vx_new_string(":expected"),
-          expected,
-          Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6855,7 +8154,12 @@ public final class Test {
         "vx/test/test-ne",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6900,17 +8204,17 @@ public final class Test {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6931,9 +8235,18 @@ public final class Test {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any expected = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(Core.t_any_from_func_async, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any expected = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(
+        Core.t_any_from_func_async,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Test.f_test_ne_1(context, expected, fn_actual);
       return output;
     }
@@ -6956,12 +8269,14 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":ne"),
-          Core.vx_new_string(":expected"),
-          expected,
-          Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":ne"),
+            Core.vx_new_string(":expected"),
+            expected,
+            Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6969,7 +8284,12 @@ public final class Test {
         "vx/test/test-ne",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -7014,17 +8334,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7045,9 +8365,18 @@ public final class Test {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any expected = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any actual = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any expected = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any actual = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Test.f_test_string(context, expected, actual);
       return output;
     }
@@ -7070,19 +8399,17 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":passfail"),
-          Core.f_eq(
-            Core.f_string_from_any(
-              expected
+          // [
+            Core.vx_new_string(":passfail"),
+            Core.f_eq(
+              Core.f_string_from_any(expected),
+              Core.f_string_from_any(actual)
             ),
-            Core.f_string_from_any(
-              actual
-            )
-          ),
-          Core.vx_new_string(":expected"),
-          expected,
-          Core.vx_new_string(":actual"),
-          actual
+            Core.vx_new_string(":expected"),
+            expected,
+            Core.vx_new_string(":actual"),
+            actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -7090,7 +8417,12 @@ public final class Test {
         "vx/test/test-string",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -7135,17 +8467,17 @@ public final class Test {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7166,9 +8498,18 @@ public final class Test {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any expected = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(Core.t_any_from_func_async, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any expected = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(
+        Core.t_any_from_func_async,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Test.f_test_string_1(context, expected, fn_actual);
       return output;
     }
@@ -7191,12 +8532,14 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":string"),
-          Core.vx_new_string(":expected"),
-          expected,
-          Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":string"),
+            Core.vx_new_string(":expected"),
+            expected,
+            Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -7204,7 +8547,12 @@ public final class Test {
         "vx/test/test-string",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -7248,17 +8596,17 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7286,15 +8634,24 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Test.f_test_true(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any actual = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any actual = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Test.f_test_true(context, actual);
       return output;
     }
@@ -7317,17 +8674,19 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":true"),
-          Core.vx_new_string(":passfail"),
-          Core.f_eq(
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":true"),
+            Core.vx_new_string(":passfail"),
+            Core.f_eq(
+              Core.vx_new_boolean(true),
+              actual
+            ),
+            Core.vx_new_string(":expected"),
             Core.vx_new_boolean(true),
+            Core.vx_new_string(":actual"),
             actual
-          ),
-          Core.vx_new_string(":expected"),
-          Core.vx_new_boolean(true),
-          Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -7335,7 +8694,12 @@ public final class Test {
         "vx/test/test-true",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -7379,17 +8743,17 @@ public final class Test {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7417,15 +8781,24 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Core.Func_any_from_func_async inputval = (Core.Func_any_from_func_async)value;
       final Core.Type_any outputval = Test.f_test_true_1(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(Core.t_any_from_func_async, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func_async fn_actual = Core.f_any_from_any(
+        Core.t_any_from_func_async,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Test.f_test_true_1(context, fn_actual);
       return output;
     }
@@ -7448,12 +8821,14 @@ public final class Test {
         Test.t_testresult,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":code"),
-          Core.vx_new_string(":true"),
-          Core.vx_new_string(":expected"),
-          Core.vx_new_boolean(true),
-          Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Core.vx_new_string(":code"),
+            Core.vx_new_string(":true"),
+            Core.vx_new_string(":expected"),
+            Core.vx_new_boolean(true),
+            Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -7461,7 +8836,12 @@ public final class Test {
         "vx/test/test-true",
         err
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -7506,17 +8886,22 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "tr", // name
-          ":struct", // extends
-          Core.vx_new(Core.t_typelist, Html.t_node), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "tr",
+          ":struct",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_node
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7537,8 +8922,14 @@ public final class Test {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Test.Type_testdescribe testdescribe = Core.f_any_from_any(Test.t_testdescribe, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string casename = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Test.Type_testdescribe testdescribe = Core.f_any_from_any(
+        Test.t_testdescribe,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string casename = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Test.f_tr_from_testdescribe_casename(testdescribe, casename);
       return output;
     }
@@ -7558,101 +8949,117 @@ public final class Test {
     Html.Type_tr output = Html.e_tr;
     output = Core.f_let(
       Html.t_tr,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string describename = testdescribe.describename();
-        final Test.Type_testresult result = testdescribe.testresult();
-        final Core.Type_boolean passfail = result.passfail();
-        final Core.Type_string expected = Core.f_string_from_any(
-          result.expected()
-        );
-        final Core.Type_string actual = Core.f_string_from_any(
-          result.actual()
-        );
-        final Html.Type_style prestyle = Html.f_style_from_stylesheet_name(
-          Test.c_stylesheet_test,
-          Core.vx_new_string(".preformatted")
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Html.t_tr,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.f_new(
-              Html.t_td,
-              Core.vx_new(
-                Core.t_anylist,
-                Test.f_p_from_passfail(
-                  passfail
-                )
-              )
-            ),
-            Core.f_new(
-              Html.t_td,
-              Core.vx_new(
-                Core.t_anylist,
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string describename = testdescribe.describename();
+          final Test.Type_testresult result = testdescribe.testresult();
+          final Core.Type_boolean passfail = result.passfail();
+          final Core.Type_string expected = Core.f_string_from_any(result.expected());
+          final Core.Type_string actual = Core.f_string_from_any(result.actual());
+          final Html.Type_style prestyle = Html.f_style_from_stylesheet_name(
+            Test.c_stylesheet_test,
+            Core.vx_new_string(".preformatted")
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Html.t_tr,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
                 Core.f_new(
-                  Html.t_p,
+                  Html.t_td,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    prestyle,
-                    Core.vx_new_string(":text"),
-                    casename
+                    // [
+                      Test.f_p_from_passfail(passfail)
+                    // ]
                   )
-                )
-              )
-            ),
-            Core.f_new(
-              Html.t_td,
-              Core.vx_new(
-                Core.t_anylist,
+                ),
                 Core.f_new(
-                  Html.t_p,
+                  Html.t_td,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    prestyle,
-                    Core.vx_new_string(":text"),
-                    describename
+                    // [
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            prestyle,
+                            Core.vx_new_string(":text"),
+                            casename
+                          // ]
+                        )
+                      )
+                    // ]
                   )
-                )
-              )
-            ),
-            Core.f_new(
-              Html.t_td,
-              Core.vx_new(
-                Core.t_anylist,
+                ),
                 Core.f_new(
-                  Html.t_p,
+                  Html.t_td,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    prestyle,
-                    Core.vx_new_string(":text"),
-                    expected
+                    // [
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            prestyle,
+                            Core.vx_new_string(":text"),
+                            describename
+                          // ]
+                        )
+                      )
+                    // ]
                   )
-                )
-              )
-            ),
-            Core.f_new(
-              Html.t_td,
-              Core.vx_new(
-                Core.t_anylist,
+                ),
                 Core.f_new(
-                  Html.t_p,
+                  Html.t_td,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":style"),
-                    prestyle,
-                    Core.vx_new_string(":text"),
-                    actual
+                    // [
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            prestyle,
+                            Core.vx_new_string(":text"),
+                            expected
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                ),
+                Core.f_new(
+                  Html.t_td,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Html.t_p,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":style"),
+                            prestyle,
+                            Core.vx_new_string(":text"),
+                            actual
+                          // ]
+                        )
+                      )
+                    // ]
                   )
                 )
-              )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -7695,17 +9102,22 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "trlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Html.t_tr), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "trlist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_tr
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7733,14 +9145,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Test.Type_testcase inputval = (Test.Type_testcase)value;
       final Core.Type_any outputval = Test.f_trlist_from_testcase(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Test.Type_testcase testcase = Core.f_any_from_any(Test.t_testcase, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testcase testcase = Core.f_any_from_any(
+        Test.t_testcase,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_trlist_from_testcase(testcase);
       return output;
     }
@@ -7760,23 +9178,30 @@ public final class Test {
     Html.Type_trlist output = Html.e_trlist;
     output = Core.f_let(
       Html.t_trlist,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Test.Type_testdescribelist describelist = testcase.describelist();
-        final Core.Type_string casename = testcase.casename();
-        final Core.Type_any output_1 = Core.f_list_from_list_1(
-          Html.t_trlist,
-          describelist,
-          Core.t_any_from_any.vx_fn_new((testdescribe_any) -> {
-            final Test.Type_testdescribe testdescribe = Core.f_any_from_any(Test.t_testdescribe, testdescribe_any);
-            Core.Type_any output_2 = Test.f_tr_from_testdescribe_casename(
-              testdescribe,
-              casename
-            );
-            return output_2;
-          })
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Test.Type_testdescribelist describelist = testcase.describelist();
+          final Core.Type_string casename = testcase.casename();
+          final Core.Type_any output_1 = Core.f_list_from_list_1(
+            Html.t_trlist,
+            describelist,
+            Core.t_any_from_any.vx_fn_new(
+              (testdescribe_any) -> {
+                final Test.Type_testdescribe testdescribe = Core.f_any_from_any(
+                  Test.t_testdescribe,
+                  testdescribe_any
+                );
+                Core.Type_any output_2 = Test.f_tr_from_testdescribe_casename(
+                  testdescribe,
+                  casename
+                );
+                return output_2;
+              }
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -7820,17 +9245,22 @@ public final class Test {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "trlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Html.t_tr), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "trlist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_tr
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7858,14 +9288,20 @@ public final class Test {
       T output = Core.f_empty(generic_any_1);
       final Test.Type_testcaselist inputval = (Test.Type_testcaselist)value;
       final Core.Type_any outputval = Test.f_trlist_from_testcaselist(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Test.Type_testcaselist testcaselist = Core.f_any_from_any(Test.t_testcaselist, arglist.vx_any(Core.vx_new_int(0)));
+      final Test.Type_testcaselist testcaselist = Core.f_any_from_any(
+        Test.t_testcaselist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Test.f_trlist_from_testcaselist(testcaselist);
       return output;
     }

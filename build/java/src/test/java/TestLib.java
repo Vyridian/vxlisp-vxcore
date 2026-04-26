@@ -14,34 +14,120 @@ public final class TestLib {
   public static File.Type_file file_test(final File.Type_file file) {
     final File.Type_file output = Core.vx_copy(
       file,
-      Core.vx_new_string(":path"),
-      Core.vx_new_string(spath)
+      // [
+        Core.vx_new_string(":path"),
+        Core.vx_new_string(spath)
+      // ]
     );
     return output;
   }
 
-  public static String read_test_file(final String path, final String filename) {
+  public static String read_test_file(final Core.Type_context context, final String path, final String filename) {
     File.Type_file file = Core.vx_new(
       File.t_file,
-      Core.vx_new_string(":path"),
-      Core.vx_new_string(path),
-      Core.vx_new_string(":name"),
-      Core.vx_new_string(filename)
+      // [
+        Core.vx_new_string(":path"),
+        Core.vx_new_string(path),
+        Core.vx_new_string(":name"),
+        Core.vx_new_string(filename)
+      // ]
     );
     Core.Type_string string_file = File.vx_string_read_from_file(file);
     final String output = string_file.vx_string();
     return output;
   }
 
+  public static Test.Type_testcase sample_testcase1(final Core.Type_context context) {
+    Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      // [
+        Core.vx_new_string(":passfail"),
+        Core.e_boolean,
+        Core.vx_new_string(":testpkg"),
+        Core.vx_new_string("vx/core"),
+        Core.vx_new_string(":casename"),
+        Core.vx_new_string("boolean"),
+        Core.vx_new_string(":describelist"),
+        TestLib.sample_testdescribelist(context)
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase sample_testcase2(final Core.Type_context context) {
+    Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      // [
+        Core.vx_new_string(":passfail"),
+        Core.e_boolean,
+        Core.vx_new_string(":testpkg"),
+        Core.vx_new_string("vx/core"),
+        Core.vx_new_string(":casename"),
+        Core.vx_new_string("float"),
+        Core.vx_new_string(":describelist"),
+        Core.vx_any_from_any(
+          Test.t_testdescribelist,
+          Core.vx_new(
+            Test.t_testdescribelist,
+            // [
+              Core.vx_new(
+                Test.t_testdescribe,
+                // [
+                  Core.vx_new_string(":describename"),
+                  Core.vx_new_string(
+                    "(test 4.5 (float 4.5))"
+                  ),
+                  Core.vx_new_string(":testpkg"),
+                  Core.vx_new_string("vx/core"),
+                  Core.vx_new_string(":testresult"),
+                  Test.f_test(
+                    context,
+                    Core.vx_new_decimal("4.5"),
+                    Core.f_new_from_type(
+                      Core.t_float,
+                      Core.vx_new(
+                        Core.t_anylist,
+                        // [
+                          Core.vx_new_decimal("4.5")
+                        // ]
+                      )
+                    )
+                  )
+                // ]
+              )
+            // ]
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testcaselist sample_testcaselist(final Core.Type_context context) {
+    Test.Type_testcaselist output = Core.vx_any_from_any(
+      Test.t_testcaselist,
+      Core.vx_new(
+        Test.t_testcaselist,
+        // [
+          TestLib.sample_testcase1(context),
+          TestLib.sample_testcase2(context)
+        // ]
+      )
+    );
+    return output;
+  }
+
   public static Test.Type_testdescribe sample_testdescribe1(final Core.Type_context context) {
     Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      Core.vx_new_string(":describename"),
-      Core.vx_new_string("(test-true true)"),
-      Core.vx_new_string(":testpkg"),
-      Core.vx_new_string("vx/core"),
-      Core.vx_new_string(":testresult"),
-      TestLib.sample_testresult1(context)
+      // [
+        Core.vx_new_string(":describename"),
+        Core.vx_new_string("(test-true true)"),
+        Core.vx_new_string(":testpkg"),
+        Core.vx_new_string("vx/core"),
+        Core.vx_new_string(":testresult"),
+        TestLib.sample_testresult1(context)
+      // ]
     );
     return output;
   }
@@ -49,12 +135,14 @@ public final class TestLib {
   public static Test.Type_testdescribe sample_testdescribe2(final Core.Type_context context) {
     Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      Core.vx_new_string(":describename"),
-      Core.vx_new_string("(test-false false)"),
-      Core.vx_new_string(":testpkg"),
-      Core.vx_new_string("vx/core"),
-      Core.vx_new_string(":testresult"),
-      TestLib.sample_testresult2(context)
+      // [
+        Core.vx_new_string(":describename"),
+        Core.vx_new_string("(test-false false)"),
+        Core.vx_new_string(":testpkg"),
+        Core.vx_new_string("vx/core"),
+        Core.vx_new_string(":testresult"),
+        TestLib.sample_testresult2(context)
+      // ]
     );
     return output;
   }
@@ -62,10 +150,34 @@ public final class TestLib {
   public static Test.Type_testdescribelist sample_testdescribelist(final Core.Type_context context) {
     Test.Type_testdescribelist output = Core.vx_any_from_any(
       Test.t_testdescribelist,
-      Test.t_testdescribelist.vx_new(
-        TestLib.sample_testdescribe1(context),
-        TestLib.sample_testdescribe2(context)
+      Core.vx_new(
+        Test.t_testdescribelist,
+        // [
+          TestLib.sample_testdescribe1(context),
+          TestLib.sample_testdescribe2(context)
+        // ]
       )
+    );
+    return output;
+  }
+
+  public static Test.Type_testpackage sample_testpackage(final Core.Type_context context) {
+    Test.Type_testpackage output = Core.vx_new(
+      Test.t_testpackage,
+      // [
+        Core.vx_new_string(":testpkg"),
+        Core.vx_new_string("vx/core"),
+        Core.vx_new_string(":caselist"),
+        TestLib.sample_testcaselist(context)
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testpackagelist sample_testpackagelist(final Core.Type_context context) {
+    Test.Type_testpackagelist output = Core.vx_any_from_any(
+      Test.t_testpackagelist,
+      TestLib.sample_testpackage(context)
     );
     return output;
   }
@@ -152,8 +264,16 @@ public final class TestLib {
 
   public static boolean test_list_from_list_async() {
     final String testname = "test_list_from_list_async";
-    final Core.Type_anylist sparams = Core.vx_anylist_from_arraystring("hello", "world");
-    final Core.Type_stringlist slist = Core.f_new_from_type(Core.t_stringlist, sparams);
+    final Core.Type_anylist sparams = Core.vx_anylist_from_arraystring(
+      // [
+        "hello",
+        "world"
+      // ]
+    );
+    final Core.Type_stringlist slist = Core.f_new_from_type(
+      Core.t_stringlist,
+      sparams
+    );
     Core.Func_any_from_any_async fn_async = Core.t_any_from_any_async.vx_fn_new((anyval) -> {
       Core.Type_string stringval = (Core.Type_string)anyval;
       String sout = stringval.vx_string() + "!";
@@ -161,8 +281,15 @@ public final class TestLib {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(outval);
       return output;
     });
-    final CompletableFuture<Core.Type_stringlist> asynclist = Core.vx_list_from_list_async(Core.t_stringlist, slist, fn_async);
-    final Core.Type_stringlist sync = Core.vx_sync_from_async(Core.t_stringlist, asynclist);
+    final CompletableFuture<Core.Type_stringlist> asynclist = Core.vx_list_from_list_async(
+      Core.t_stringlist,
+      slist,
+      fn_async
+    );
+    final Core.Type_stringlist sync = Core.vx_sync_from_async(
+      Core.t_stringlist,
+      asynclist
+    );
     final String expected = "(stringlist\n \"hello!\"\n \"world!\")";
     final String actual = Core.vx_string_from_any(sync);
     final boolean output = TestLib.test(
@@ -175,14 +302,15 @@ public final class TestLib {
 
   public static Boolean test_run_testresult(final Core.Type_context context) {
     final String testname = "test_run_testresult";
-    Test.Type_testresult testresult = TestLib.sample_testresult1(context);
-    Test.Type_testresult testresult_resolved = TestLib.run_testresult(
+    final Test.Type_testresult testresult = TestLib.sample_testresult1(context);
+    final Test.Type_testresult testresult_resolved = TestLib.run_testresult(
       "vx/core",
       "boolean",
       "",
       testresult
     );
     String expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testresult.txt"
     );
@@ -204,6 +332,7 @@ public final class TestLib {
       testdescribe
     );
     String expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribe.txt"
     );
@@ -220,18 +349,94 @@ public final class TestLib {
 
   public static Boolean test_run_testdescribelist(final Core.Type_context context) {
     final String testname = "test_run_testdescribelist";
-    Test.Type_testresult testresult = TestLib.sample_testresult1(context);
-    Test.Type_testresult testresult_resolved = TestLib.run_testresult(
+    final Test.Type_testdescribelist testdescribelist = TestLib.sample_testdescribelist(context);
+    final Test.Type_testdescribelist testdescribelist_resolved = TestLib.run_testdescribelist(
       "vx/core",
       "boolean",
-      "",
-      testresult
+      testdescribelist
     );
     String expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribelist.txt"
     );
-    String actual = Core.vx_string_from_any(testresult_resolved);
+    String actual = Core.vx_string_from_any(
+      testdescribelist_resolved
+    );
+    final boolean output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
+  public static Boolean test_run_testcase(final Core.Type_context context) {
+    final String testname = "test_run_testcase";
+    final Test.Type_testcase testcase = TestLib.sample_testcase1(context);
+    final Test.Type_testcase testcase_resolved = TestLib.run_testcase(testcase);
+    String expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcase.txt"
+    );
+    String actual = Core.vx_string_from_any(testcase_resolved);
+    final boolean output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
+  public static Boolean test_run_testcaselist(final Core.Type_context context) {
+    final String testname = "test_run_testcaselist";
+    final Test.Type_testcase testcase = TestLib.sample_testcase1(context);
+    final Test.Type_testcase testcase_resolved = TestLib.run_testcase(testcase);
+    String expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcaselist.txt"
+    );
+    String actual = Core.vx_string_from_any(testcase_resolved);
+    final boolean output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
+  public static Boolean test_run_testpackage(final Core.Type_context context) {
+    final String testname = "test_run_testpackage";
+    final Test.Type_testpackage testpackage = TestLib.sample_testpackage(context);
+    final Test.Type_testpackage testpackage_resolved = TestLib.run_testpackage(testpackage);
+    String expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testpackage.txt"
+    );
+    String actual = Core.vx_string_from_any(testpackage_resolved);
+    final boolean output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
+  public static Boolean test_run_testpackagelist(final Core.Type_context context) {
+    final String testname = "test_run_testpackagelist";
+    final Test.Type_testpackagelist testpackagelist = TestLib.sample_testpackagelist(context);
+    final Test.Type_testpackagelist testpackagelist_resolved = TestLib.run_testpackagelist(testpackagelist);
+    String expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testpackagelist.txt"
+    );
+    String actual = Core.vx_string_from_any(
+      testpackagelist_resolved
+    );
     final boolean output = TestLib.test(
       testname,
       expected,
@@ -242,14 +447,15 @@ public final class TestLib {
 
   public static Boolean test_run_testresult_async(final Core.Type_context context) {
     final String testname = "test_run_testresult_async";
-    Test.Type_testresult testresult = TestLib.sample_testresult1(context);
-    Test.Type_testresult testresult_resolved = TestLib.run_testresult(
+    final Test.Type_testresult testresult = TestLib.sample_testresult1(context);
+    final Test.Type_testresult testresult_resolved = TestLib.run_testresult(
       "vx/core",
       "boolean",
       "",
       testresult
     );
     String expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testresult_async.txt"
     );
@@ -262,15 +468,40 @@ public final class TestLib {
     return output;
   }
 
+  public static Boolean test_run_testdescribe_async(final Core.Type_context context) {
+    final String testname = "test_run_testdescribe_async";
+    final Test.Type_testdescribe testdescribe = TestLib.sample_testdescribe1(context);
+    final Test.Type_testdescribe testdescribe_resolved = TestLib.run_testdescribe(
+      "vx/core",
+      "boolean",
+      testdescribe
+    );
+    String expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testdescribe_async.txt"
+    );
+    String actual = Core.vx_string_from_any(
+      testdescribe_resolved
+    );
+    final boolean output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
   public static Boolean test_run_testdescribelist_async(final Core.Type_context context) {
     final String testname = "test_run_testdescribelist_async";
-    Test.Type_testdescribelist testdescribelist = TestLib.sample_testdescribelist(context);
-    Test.Type_testdescribelist testdescribelist_resolved = TestLib.run_testdescribelist(
+    final Test.Type_testdescribelist testdescribelist = TestLib.sample_testdescribelist(context);
+    final Test.Type_testdescribelist testdescribelist_resolved = TestLib.run_testdescribelist(
       "vx/core",
       "boolean",
       testdescribelist
     );
     String expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribelist_async.txt"
     );
@@ -285,12 +516,37 @@ public final class TestLib {
     return output;
   }
 
+  public static Boolean test_run_testcase_async(final Core.Type_context context) {
+    final String testname = "test_run_testcase_async";
+    Test.Type_testcase testcase = TestLib.sample_testcase1(context);
+    Test.Type_testcase testcase_resolved = TestLib.run_testcase(testcase);
+    String expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcase_async.txt"
+    );
+    String actual = Core.vx_string_from_any(testcase_resolved);
+    final boolean output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
   public static boolean test_pathfull_from_file() {
     final String testname = "test_pathfull_from_file";
     File.Type_file file = Core.vx_new(
       File.t_file,
-      Core.vx_new_string(":path"), Core.vx_new_string(spath + "/vx"),
-      Core.vx_new_string(":name"), Core.vx_new_string("string_read_from_file.txt"));
+      // [
+        Core.vx_new_string(":path"),
+        Core.vx_new_string(spath + "/vx"),
+        Core.vx_new_string(":name"),
+        Core.vx_new_string(
+          "string_read_from_file.txt"
+        )
+      // ]
+    );
     Core.Type_string string_path = File.f_pathfull_from_file(file);
     String expected = spath + "/vx/string_read_from_file.txt";
     String actual = string_path.vx_string();
@@ -302,10 +558,14 @@ public final class TestLib {
     return output;
   }
 
-  public static boolean test_read_file() {
+  public static boolean test_read_file(final Core.Type_context context) {
     final String testname = "test_read_file";
     String expected = "testdata";
-    String actual = read_test_file(spath + "/vx", "string_read_from_file.txt");
+    String actual = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "string_read_from_file.txt"
+    );
     final boolean output = TestLib.test(
       testname,
       expected,
@@ -314,16 +574,27 @@ public final class TestLib {
     return output;
   }
 
-  public static boolean test_write_file() {
+  public static boolean test_write_file(final Core.Type_context context) {
     final String testname = "test_write_file";
-    File.Type_file file = Core.vx_new(
-      File.t_file, 
-      Core.vx_new_string(":path"), Core.vx_new_string(spath + "/vx"),
-      Core.vx_new_string(":name"), Core.vx_new_string("string_read_from_file.txt")
+    final File.Type_file file = Core.vx_new(
+      File.t_file,
+      // [
+        Core.vx_new_string(":path"),
+        Core.vx_new_string(spath + "/vx"),
+        Core.vx_new_string(":name"),
+        Core.vx_new_string(
+          "boolean_write_from_file_string"
+        )
+      // ]
     );
-    Core.Type_string string_path = File.f_pathfull_from_file(file);
-    String expected = spath + "/vx/string_read_from_file.txt";
-    String actual = string_path.vx_string();
+    Core.Type_string string_file = Core.vx_new_string("writetext");
+    Core.Type_boolean boolean_write = File.vx_boolean_write_from_file_string(
+      context,
+      file,
+      string_file
+    );
+    String expected = "true";
+    String actual = Core.vx_string_from_any(boolean_write);
     final boolean output = TestLib.test(
       testname,
       expected,
@@ -345,8 +616,10 @@ public final class TestLib {
     );
     final Test.Type_testcase output = Core.vx_copy(
       testcase,
-      Core.vx_new_string(":describelist"),
-      testdescribelist_resolved
+      // [
+        Core.vx_new_string(":describelist"),
+        testdescribelist_resolved
+      // ]
     );
     return output;
   }
@@ -372,9 +645,13 @@ public final class TestLib {
     }
     final Test.Type_testcaselist output = Core.vx_any_from_any(
       Test.t_testcaselist,
-      testcaselist.vx_new(
+      Core.vx_new(
+      Test.t_testcaselist,
+      // [
+        testcaselist,
         listtestcase_resolved
-      )
+      // ]
+    )
     );
     return output;
   }
@@ -385,20 +662,22 @@ public final class TestLib {
     final Test.Type_testresult testresult = describe.testresult();
     final Test.Type_testdescribe output = Core.vx_copy(
       describe,
-      ":testresult",
-      TestLib.run_testresult(
+      // [
+        ":testresult",
+        TestLib.run_testresult(
         testpkg,
         casename,
         message,
         testresult
       )
+      // ]
     );
     return output;
   }
 
   public static Test.Type_testdescribelist run_testdescribelist(final String testpkg, final String casename, final Test.Type_testdescribelist testdescribelist) {
     final List<Test.Type_testdescribe> listtestdescribe = testdescribelist.vx_listtestdescribe();
-    List<Test.Type_testdescribe> listtestdescribe_resolved = new ArrayList<Test.Type_testdescribe>();
+    List<Core.Type_any> listtestdescribe_resolved = new ArrayList<Core.Type_any>();
     for (Test.Type_testdescribe testdescribe : listtestdescribe) {
       final Test.Type_testdescribe testdescribe_resolved = TestLib.run_testdescribe(
         testpkg,
@@ -409,8 +688,11 @@ public final class TestLib {
     }
     final Test.Type_testdescribelist output = Core.vx_any_from_any(
       Test.t_testdescribelist,
-      testdescribelist.vx_new(
-        listtestdescribe_resolved
+      Core.vx_new(
+        Test.t_testdescribelist,
+        // [
+          listtestdescribe_resolved
+        // ]
       )
     );
     return output;
@@ -421,8 +703,10 @@ public final class TestLib {
     final Test.Type_testcaselist testcaselist_resolved = TestLib.run_testcaselist(testcaselist);
     final Test.Type_testpackage output = Core.vx_copy(
       testpackage,
-      Core.vx_new_string(":caselist"),
-      testcaselist_resolved
+      // [
+        Core.vx_new_string(":caselist"),
+        testcaselist_resolved
+      // ]
     );
     return output;
   }
@@ -436,13 +720,33 @@ public final class TestLib {
     return output;
   }
 
+  public static Test.Type_testpackagelist run_testpackagelist(final Test.Type_testpackagelist testpackagelist) {
+    final List<Test.Type_testpackage> listtestpackage = testpackagelist.vx_listtestpackage();
+    List<Test.Type_testpackage> listtestpackage_resolved = new ArrayList<Test.Type_testpackage>();
+    for (Test.Type_testpackage testpackage : listtestpackage) {
+      final Test.Type_testpackage testpackage_resolved = TestLib.run_testpackage(testpackage);
+      listtestpackage_resolved.add(testpackage_resolved);
+    }
+    final Test.Type_testpackagelist output = Core.vx_any_from_any(
+      Test.t_testpackagelist,
+      Core.vx_new(
+      Test.t_testpackagelist,
+      // [
+        testpackagelist,
+        listtestpackage_resolved
+      // ]
+    )
+    );
+    return output;
+  }
+
   public static Test.Type_testresult run_testresult(final String testpkg, final String testname, final String message, final Test.Type_testresult testresult) {
     Core.Type_any valexpected = testresult.expected();
     Core.Type_any valactual = testresult.actual();
     boolean passfail = testresult.passfail().vx_boolean();
     String code = testresult.code().vx_string();
-    String expected = Core.f_string_from_any(valexpected).vx_string();
-    String actual = Core.f_string_from_any(valactual).vx_string();
+    String expected = Core.vx_string_from_any(valexpected);
+    String actual = Core.vx_string_from_any(valactual);
     String msg = testpkg + "/" + testname + " " + message;
     if ((!passfail)) {
       System.out.println(msg);

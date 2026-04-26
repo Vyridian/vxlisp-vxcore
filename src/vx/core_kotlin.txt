@@ -115,14 +115,6 @@
     return output
   }
 
-  //@SafeVarargs
-  fun <T> arraylist_from_array(
-    vararg items : T) : List<T> {
-    var output : List<T> = items.asList()
-    output = vx_core.vx_listimmutable(output)
-    return output
-  }
-
   fun <T : vx_core.Type_any, U : vx_core.Type_any> arraylist_from_arraylist(
     generic_any_1 : T,
     listval : List<U>) : List<T> {
@@ -328,6 +320,14 @@
         break
       }
     }
+    return output
+  }
+
+  //@SafeVarargs
+  fun <T> vx_arraylist_from_array(
+    vararg items : T) : List<T> {
+    var output : List<T> = items.asList()
+    output = vx_core.vx_listimmutable(output)
     return output
   }
 
@@ -1267,7 +1267,11 @@
         vx_core.t_list, value
       )
       val typedef : vx_core.Type_typedef = vallist.vx_typedef()
-      val typedefname : vx_core.Type_string = typedef.name()
+      var typedefname : String = typedef.name().vx_string()
+      val pkgname : String = typedef.pkgname().vx_string()
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname
+      }
       val indentint : Int = indent + 1
       val listval : List<vx_core.Type_any> = vallist.vx_list()
       for (valsub : vx_core.Type_any in listval) {
@@ -1282,14 +1286,17 @@
         )
         output += "\n" + indenttext + " :msgblock\n  " + indenttext + msgtext
       }
-      output = "(" + typedefname.vx_string() + output + ")"
+      output = "(" + typedefname + output + ")"
     } else if (value is vx_core.Type_map) {
       val valmap : vx_core.Type_map = vx_core.f_any_from_any(
         vx_core.t_map, value
       )
       val typedef : vx_core.Type_typedef = valmap.vx_typedef()
-      val typedefname : vx_core.Type_string = typedef.name()
-      val stypedefname : String = typedefname.vx_string()
+      var typedefname : String = typedef.name().vx_string()
+      val pkgname : String = typedef.pkgname().vx_string()
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname
+      }
       val indentint : Int = indent + 2
       val mapval : Map<String, vx_core.Type_any> = valmap.vx_map()
       val keys : Set<String> = mapval.keys
@@ -1311,21 +1318,25 @@
         }
         output += "\n" + indenttext + " " + key + strval
       }
-      if (stypedefname == "msg") {
-      } else if (stypedefname == "msgblock") {
+      if (typedefname == "msg") {
+      } else if (typedefname == "msgblock") {
       } else if (valmap.vx_msgblock() != vx_core.e_msgblock) {
         val msgtext : String = vx_core.vx_string_from_any_indent(
           valmap.vx_msgblock(), indentint, linefeed
         )
         output += "\n" + indenttext + " :msgblock\n  " + indenttext + msgtext
       }
-      output = "(" + typedefname.vx_string() + output + ")"
+      output = "(" + typedefname + output + ")"
     } else if (value is vx_core.Type_struct) {
       val valstruct : vx_core.Type_struct = vx_core.f_any_from_any(
         vx_core.t_struct, value
       )
       val typedef : vx_core.Type_typedef = valstruct.vx_typedef()
-      val typedefname : vx_core.Type_string = typedef.name()
+      var typedefname : String = typedef.name().vx_string()
+      val pkgname : String = typedef.pkgname().vx_string()
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname
+      }
       var indentint2 : Int = indent
       indentint2 += 2
       val mapval2 : Map<String, vx_core.Type_any> = valstruct.vx_map()
@@ -1356,7 +1367,7 @@
         )
         output += "\n" + indenttext + " :msgblock\n  " + indenttext + msgtext2
       }
-      output = "(" + typedefname.vx_string() + output + ")"
+      output = "(" + typedefname + output + ")"
     } else if (value is vx_core.Type_func) {
       val valfunc : vx_core.Type_func = vx_core.f_any_from_any(
         vx_core.t_func, value

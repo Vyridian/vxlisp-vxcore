@@ -43,17 +43,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -71,8 +71,18 @@ object vx_web_htmldoc {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      val stylesheettext : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val id : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val stylesheettext : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_htmldoc.f_boolean_print_from_id_stylesheettext(id, stylesheettext)
       return output
     }
@@ -128,17 +138,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -162,13 +172,21 @@ object vx_web_htmldoc {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_web_htmldoc.f_boolean_remove_from_id(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val id : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_htmldoc.f_boolean_remove_from_id(id)
       return output
     }
@@ -225,17 +243,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -253,8 +271,18 @@ object vx_web_htmldoc {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      val htmltext : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val id : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val htmltext : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_htmldoc.f_boolean_replace_from_id_htmltext(id, htmltext)
       return output
     }
@@ -312,17 +340,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -340,9 +368,24 @@ object vx_web_htmldoc {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      val parent : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
-      val htmltext : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
+      val id : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val parent : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val htmltext : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_web_htmldoc.f_boolean_replace_from_id_parent_htmltext(id, parent, htmltext)
       return output
     }
@@ -400,17 +443,17 @@ object vx_web_htmldoc {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -431,7 +474,10 @@ object vx_web_htmldoc {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      val inputval : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value)
+      val inputval : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        value
+      )
       val future : CompletableFuture<vx_core.Type_boolean> = vx_web_htmldoc.f_boolean_write_stylesheet_from_string(inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -439,9 +485,17 @@ object vx_web_htmldoc {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       var future : CompletableFuture<vx_core.Type_boolean> = vx_web_htmldoc.f_boolean_write_stylesheet_from_string(text)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -498,17 +552,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -526,9 +580,24 @@ object vx_web_htmldoc {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      val attribute : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
-      val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
+      val id : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val attribute : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val value : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_web_htmldoc.f_boolean_write_from_id_attribute_value(id, attribute, value)
       return output
     }
@@ -585,17 +654,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -613,8 +682,18 @@ object vx_web_htmldoc {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      val htmltext : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val id : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val htmltext : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_htmldoc.f_boolean_write_from_id_htmltext(id, htmltext)
       return output
     }
@@ -671,17 +750,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -699,8 +778,18 @@ object vx_web_htmldoc {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      val visible : vx_core.Type_boolean = vx_core.f_any_from_any(vx_core.t_boolean, arglist.vx_any(vx_core.vx_new_int(1)))
+      val id : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val visible : vx_core.Type_boolean = vx_core.f_any_from_any(
+        vx_core.t_boolean,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_htmldoc.f_boolean_write_from_id_visible(id, visible)
       return output
     }
@@ -758,17 +847,17 @@ object vx_web_htmldoc {
         0, // idx
         true, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -789,7 +878,10 @@ object vx_web_htmldoc {
     }
 
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any_async(generic_any_1 : T, value : U) : CompletableFuture<T> {
-      val inputval : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, value)
+      val inputval : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(
+        vx_web_html.t_stylesheet,
+        value
+      )
       val future : CompletableFuture<vx_core.Type_boolean> = vx_web_htmldoc.f_boolean_write_from_stylesheet(inputval)
       val output : CompletableFuture<T> = future as (CompletableFuture<T>)
       return output
@@ -797,9 +889,17 @@ object vx_web_htmldoc {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : CompletableFuture<vx_core.Type_any> {
       var output : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_new_from_value(vx_core.e_any)
-      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(
+        vx_web_html.t_stylesheet,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       var future : CompletableFuture<vx_core.Type_boolean> = vx_web_htmldoc.f_boolean_write_from_stylesheet(stylesheet)
-      output = vx_core.vx_async_from_async(vx_core.t_any, future)
+      output = vx_core.vx_async_from_async(
+        vx_core.t_any,
+        future
+      )
       return output
     }
 
@@ -817,23 +917,21 @@ object vx_web_htmldoc {
     var output : CompletableFuture<vx_core.Type_boolean> = vx_core.vx_async_new_from_value(vx_core.e_boolean)
     output = vx_core.f_let_async(
       vx_core.t_boolean,
-      vx_core.t_any_from_func_async.vx_fn_new({ ->
-        val text : vx_core.Type_string = vx_web_htmldoc.f_string_from_stylesheet(
-          stylesheet
-        )
-        val future_iswrite : CompletableFuture<vx_core.Type_boolean> = vx_web_htmldoc.f_boolean_write_stylesheet_from_string(
-          text
-        )
+      vx_core.t_any_from_func_async.vx_fn_new(
+        { ->
+          val text : vx_core.Type_string = vx_web_htmldoc.f_string_from_stylesheet(stylesheet)
+        val future_iswrite : CompletableFuture<vx_core.Type_boolean> = vx_web_htmldoc.f_boolean_write_stylesheet_from_string(text)
         val output_1 : CompletableFuture<vx_core.Type_any> = vx_core.vx_async_from_async_fn(
           vx_core.t_any,
           future_iswrite,
           {iswrite ->
             val output_2 : vx_core.Type_any = iswrite
-            output_2
-          }
+              output_2
+            }
         )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -874,17 +972,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -908,13 +1006,21 @@ object vx_web_htmldoc {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_ui_ui.Type_ui = value as vx_ui_ui.Type_ui
       val outputval : vx_core.Type_any = vx_web_htmldoc.f_boolean_writeevents_from_ui(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(vx_ui_ui.t_ui, arglist.vx_any(vx_core.vx_new_int(0)))
+      val ui : vx_ui_ui.Type_ui = vx_core.f_any_from_any(
+        vx_ui_ui.t_ui,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_htmldoc.f_boolean_writeevents_from_ui(ui)
       return output
     }
@@ -969,17 +1075,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1051,17 +1157,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1079,7 +1185,12 @@ object vx_web_htmldoc {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val context : vx_core.Type_context = vx_core.f_any_from_any(vx_core.t_context, arglist.vx_any(vx_core.vx_new_int(0)))
+      val context : vx_core.Type_context = vx_core.f_any_from_any(
+        vx_core.t_context,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_htmldoc.f_context_write(context)
       return output
     }
@@ -1135,17 +1246,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1169,13 +1280,21 @@ object vx_web_htmldoc {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_web_htmldoc.f_string_from_id(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val id : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val id : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_htmldoc.f_string_from_id(id)
       return output
     }
@@ -1231,17 +1350,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1265,13 +1384,21 @@ object vx_web_htmldoc {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
       val outputval : vx_core.Type_any = vx_web_htmldoc.f_string_from_stylesheet(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(
+        vx_web_html.t_stylesheet,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_htmldoc.f_string_from_stylesheet(stylesheet)
       return output
     }
@@ -1290,17 +1417,17 @@ object vx_web_htmldoc {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val stylelist : vx_web_html.Type_stylelist = vx_web_html.f_styles_from_stylesheet(
-          stylesheet
-        )
-        val text : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
-          stylelist,
-          vx_core.vx_new_int(0)
-        )
-        val output_1 : vx_core.Type_any = text
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val stylelist : vx_web_html.Type_stylelist = vx_web_html.f_styles_from_stylesheet(stylesheet)
+          val text : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
+            stylelist,
+            vx_core.vx_new_int(0)
+          )
+          val output_1 : vx_core.Type_any = text
+          output_1
+        }
+      )
     )
     return output
   }
@@ -1341,17 +1468,17 @@ object vx_web_htmldoc {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1375,13 +1502,21 @@ object vx_web_htmldoc {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_web_htmldoc.f_ui_readstate_from_uid(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val uid : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uid : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_htmldoc.f_ui_readstate_from_uid(uid)
       return output
     }

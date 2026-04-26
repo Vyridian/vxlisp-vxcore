@@ -84,7 +84,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testcase = Vx_Core.vx_copy(Vx_Test.e_testcase, vals)
+      var output : any Vx_Test.Type_testcase = Vx_Core.vx_copy(
+        Vx_Test.t_testcase,
+        Vx_Test.e_testcase,
+        vals
+      )
       return output
     }
 
@@ -112,9 +116,21 @@ public enum Vx_Test {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -130,10 +146,22 @@ public enum Vx_Test {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/test/testcase", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testcase",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -144,8 +172,18 @@ public enum Vx_Test {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcase", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -157,7 +195,12 @@ public enum Vx_Test {
               vx_p_passfail = valpassfail
             } else if valsub is Bool {
               ischanged = true
-              vx_p_passfail = Vx_Core.vx_new(Vx_Core.t_boolean, valsub)
+              vx_p_passfail = Vx_Core.vx_new(
+                Vx_Core.t_boolean,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -168,9 +211,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("passfail"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":testpkg" {
             if Vx_Core.vx_issame(valsub, vx_p_testpkg) {
@@ -179,7 +234,12 @@ public enum Vx_Test {
               vx_p_testpkg = valtestpkg
             } else if valsub is String {
               ischanged = true
-              vx_p_testpkg = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_testpkg = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -190,9 +250,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":casename" {
             if Vx_Core.vx_issame(valsub, vx_p_casename) {
@@ -201,7 +273,12 @@ public enum Vx_Test {
               vx_p_casename = valcasename
             } else if valsub is String {
               ischanged = true
-              vx_p_casename = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_casename = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -212,9 +289,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("casename"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":describelist" {
             if Vx_Core.vx_issame(valsub, vx_p_describelist) {
@@ -231,14 +320,36 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("describelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/test/testcase", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testcase",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -269,17 +380,17 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testcase", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testcase",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -336,7 +447,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testcaselist = Vx_Core.vx_copy(Vx_Test.e_testcaselist, vals)
+      var output : any Vx_Test.Type_testcaselist = Vx_Core.vx_copy(
+        Vx_Test.t_testcaselist,
+        Vx_Test.e_testcaselist,
+        vals
+      )
       return output
     }
 
@@ -354,9 +469,21 @@ public enum Vx_Test {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Test.Type_testcaselist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listtestcase())
@@ -376,11 +503,33 @@ public enum Vx_Test {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/test/testcaselist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/test/testcaselist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/test/testcaselist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/test/testcaselist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -406,17 +555,22 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testcaselist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Test.t_testcase), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testcaselist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Test.t_testcase
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -507,7 +661,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testcoveragedetail = Vx_Core.vx_copy(Vx_Test.e_testcoveragedetail, vals)
+      var output : any Vx_Test.Type_testcoveragedetail = Vx_Core.vx_copy(
+        Vx_Test.t_testcoveragedetail,
+        Vx_Test.e_testcoveragedetail,
+        vals
+      )
       return output
     }
 
@@ -535,9 +693,21 @@ public enum Vx_Test {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -553,10 +723,22 @@ public enum Vx_Test {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testcoveragedetail",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -567,8 +749,18 @@ public enum Vx_Test {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -588,9 +780,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("constmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":funcmap" {
             if Vx_Core.vx_issame(valsub, vx_p_funcmap) {
@@ -607,9 +811,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("funcmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":testpkg" {
             if Vx_Core.vx_issame(valsub, vx_p_testpkg) {
@@ -618,7 +834,12 @@ public enum Vx_Test {
               vx_p_testpkg = valtestpkg
             } else if valsub is String {
               ischanged = true
-              vx_p_testpkg = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_testpkg = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -629,9 +850,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":typemap" {
             if Vx_Core.vx_issame(valsub, vx_p_typemap) {
@@ -648,14 +881,36 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("typemap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testcoveragedetail",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -686,17 +941,17 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragedetail", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testcoveragedetail",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -787,7 +1042,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testcoveragenums = Vx_Core.vx_copy(Vx_Test.e_testcoveragenums, vals)
+      var output : any Vx_Test.Type_testcoveragenums = Vx_Core.vx_copy(
+        Vx_Test.t_testcoveragenums,
+        Vx_Test.e_testcoveragenums,
+        vals
+      )
       return output
     }
 
@@ -815,9 +1074,21 @@ public enum Vx_Test {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -833,10 +1104,22 @@ public enum Vx_Test {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testcoveragenums",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -847,8 +1130,18 @@ public enum Vx_Test {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -860,7 +1153,12 @@ public enum Vx_Test {
               vx_p_pct = valpct
             } else if valsub is Int {
               ischanged = true
-              vx_p_pct = Vx_Core.vx_new(Vx_Core.t_int, valsub)
+              vx_p_pct = Vx_Core.vx_new(
+                Vx_Core.t_int,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -871,9 +1169,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("pct"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":testpkg" {
             if Vx_Core.vx_issame(valsub, vx_p_testpkg) {
@@ -882,7 +1192,12 @@ public enum Vx_Test {
               vx_p_testpkg = valtestpkg
             } else if valsub is String {
               ischanged = true
-              vx_p_testpkg = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_testpkg = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -893,9 +1208,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":tests" {
             if Vx_Core.vx_issame(valsub, vx_p_tests) {
@@ -904,7 +1231,12 @@ public enum Vx_Test {
               vx_p_tests = valtests
             } else if valsub is Int {
               ischanged = true
-              vx_p_tests = Vx_Core.vx_new(Vx_Core.t_int, valsub)
+              vx_p_tests = Vx_Core.vx_new(
+                Vx_Core.t_int,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -915,9 +1247,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("tests"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":total" {
             if Vx_Core.vx_issame(valsub, vx_p_total) {
@@ -926,7 +1270,12 @@ public enum Vx_Test {
               vx_p_total = valtotal
             } else if valsub is Int {
               ischanged = true
-              vx_p_total = Vx_Core.vx_new(Vx_Core.t_int, valsub)
+              vx_p_total = Vx_Core.vx_new(
+                Vx_Core.t_int,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -937,14 +1286,36 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("total"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testcoveragenums",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -975,17 +1346,17 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragenums", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testcoveragenums",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -1132,7 +1503,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testcoveragesummary = Vx_Core.vx_copy(Vx_Test.e_testcoveragesummary, vals)
+      var output : any Vx_Test.Type_testcoveragesummary = Vx_Core.vx_copy(
+        Vx_Test.t_testcoveragesummary,
+        Vx_Test.e_testcoveragesummary,
+        vals
+      )
       return output
     }
 
@@ -1168,9 +1543,21 @@ public enum Vx_Test {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -1186,10 +1573,22 @@ public enum Vx_Test {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testcoveragesummary",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -1200,8 +1599,18 @@ public enum Vx_Test {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -1221,9 +1630,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("bigospacenums"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":bigotimenums" {
             if Vx_Core.vx_issame(valsub, vx_p_bigotimenums) {
@@ -1240,9 +1661,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("bigotimenums"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":constnums" {
             if Vx_Core.vx_issame(valsub, vx_p_constnums) {
@@ -1259,9 +1692,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("constnums"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":docnums" {
             if Vx_Core.vx_issame(valsub, vx_p_docnums) {
@@ -1278,9 +1723,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("docnums"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":funcnums" {
             if Vx_Core.vx_issame(valsub, vx_p_funcnums) {
@@ -1297,9 +1754,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("funcnums"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":testpkg" {
             if Vx_Core.vx_issame(valsub, vx_p_testpkg) {
@@ -1308,7 +1777,12 @@ public enum Vx_Test {
               vx_p_testpkg = valtestpkg
             } else if valsub is String {
               ischanged = true
-              vx_p_testpkg = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_testpkg = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -1319,9 +1793,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":totalnums" {
             if Vx_Core.vx_issame(valsub, vx_p_totalnums) {
@@ -1338,9 +1824,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("totalnums"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":typenums" {
             if Vx_Core.vx_issame(valsub, vx_p_typenums) {
@@ -1357,14 +1855,36 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("typenums"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testcoveragesummary",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -1399,17 +1919,17 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragesummary", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testcoveragesummary",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -1486,7 +2006,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testdescribe = Vx_Core.vx_copy(Vx_Test.e_testdescribe, vals)
+      var output : any Vx_Test.Type_testdescribe = Vx_Core.vx_copy(
+        Vx_Test.t_testdescribe,
+        Vx_Test.e_testdescribe,
+        vals
+      )
       return output
     }
 
@@ -1512,9 +2036,21 @@ public enum Vx_Test {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -1530,10 +2066,22 @@ public enum Vx_Test {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/test/testdescribe", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testdescribe",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -1544,8 +2092,18 @@ public enum Vx_Test {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/test/testdescribe", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -1557,7 +2115,12 @@ public enum Vx_Test {
               vx_p_describename = valdescribename
             } else if valsub is String {
               ischanged = true
-              vx_p_describename = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_describename = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -1568,9 +2131,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("describename"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":testpkg" {
             if Vx_Core.vx_issame(valsub, vx_p_testpkg) {
@@ -1579,7 +2154,12 @@ public enum Vx_Test {
               vx_p_testpkg = valtestpkg
             } else if valsub is String {
               ischanged = true
-              vx_p_testpkg = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_testpkg = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -1590,9 +2170,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":testresult" {
             if Vx_Core.vx_issame(valsub, vx_p_testresult) {
@@ -1609,14 +2201,36 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("testresult"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/test/testdescribe", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testdescribe",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -1646,17 +2260,17 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testdescribe", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testdescribe",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -1713,7 +2327,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testdescribelist = Vx_Core.vx_copy(Vx_Test.e_testdescribelist, vals)
+      var output : any Vx_Test.Type_testdescribelist = Vx_Core.vx_copy(
+        Vx_Test.t_testdescribelist,
+        Vx_Test.e_testdescribelist,
+        vals
+      )
       return output
     }
 
@@ -1731,9 +2349,21 @@ public enum Vx_Test {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Test.Type_testdescribelist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listtestdescribe())
@@ -1753,11 +2383,33 @@ public enum Vx_Test {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/test/testdescribelist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/test/testdescribelist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/test/testdescribelist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/test/testdescribelist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -1783,17 +2435,22 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testdescribelist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Test.t_testdescribe), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testdescribelist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Test.t_testdescribe
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -1898,7 +2555,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testpackage = Vx_Core.vx_copy(Vx_Test.e_testpackage, vals)
+      var output : any Vx_Test.Type_testpackage = Vx_Core.vx_copy(
+        Vx_Test.t_testpackage,
+        Vx_Test.e_testpackage,
+        vals
+      )
       return output
     }
 
@@ -1928,9 +2589,21 @@ public enum Vx_Test {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -1946,10 +2619,22 @@ public enum Vx_Test {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/test/testpackage", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testpackage",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -1960,8 +2645,18 @@ public enum Vx_Test {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/test/testpackage", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -1981,9 +2676,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("caselist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":coveragedetail" {
             if Vx_Core.vx_issame(valsub, vx_p_coveragedetail) {
@@ -2000,9 +2707,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("coveragedetail"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":coveragesummary" {
             if Vx_Core.vx_issame(valsub, vx_p_coveragesummary) {
@@ -2019,9 +2738,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("coveragesummary"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":passfail" {
             if Vx_Core.vx_issame(valsub, vx_p_passfail) {
@@ -2030,7 +2761,12 @@ public enum Vx_Test {
               vx_p_passfail = valpassfail
             } else if valsub is Bool {
               ischanged = true
-              vx_p_passfail = Vx_Core.vx_new(Vx_Core.t_boolean, valsub)
+              vx_p_passfail = Vx_Core.vx_new(
+                Vx_Core.t_boolean,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -2041,9 +2777,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("passfail"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":testpkg" {
             if Vx_Core.vx_issame(valsub, vx_p_testpkg) {
@@ -2052,7 +2800,12 @@ public enum Vx_Test {
               vx_p_testpkg = valtestpkg
             } else if valsub is String {
               ischanged = true
-              vx_p_testpkg = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_testpkg = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -2063,14 +2816,36 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("testpkg"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/test/testpackage", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testpackage",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -2102,17 +2877,17 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testpackage", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testpackage",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2169,7 +2944,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testpackagelist = Vx_Core.vx_copy(Vx_Test.e_testpackagelist, vals)
+      var output : any Vx_Test.Type_testpackagelist = Vx_Core.vx_copy(
+        Vx_Test.t_testpackagelist,
+        Vx_Test.e_testpackagelist,
+        vals
+      )
       return output
     }
 
@@ -2187,9 +2966,21 @@ public enum Vx_Test {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Test.Type_testpackagelist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listtestpackage())
@@ -2209,11 +3000,33 @@ public enum Vx_Test {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/test/testpackagelist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/test/testpackagelist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/test/testpackagelist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/test/testpackagelist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -2239,17 +3052,22 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testpackagelist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Test.t_testpackage), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testpackagelist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Test.t_testpackage
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2354,7 +3172,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testresult = Vx_Core.vx_copy(Vx_Test.e_testresult, vals)
+      var output : any Vx_Test.Type_testresult = Vx_Core.vx_copy(
+        Vx_Test.t_testresult,
+        Vx_Test.e_testresult,
+        vals
+      )
       return output
     }
 
@@ -2384,9 +3206,21 @@ public enum Vx_Test {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -2402,10 +3236,22 @@ public enum Vx_Test {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/test/testresult", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testresult",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -2416,8 +3262,18 @@ public enum Vx_Test {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/test/testresult", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -2429,7 +3285,12 @@ public enum Vx_Test {
               vx_p_code = valcode
             } else if valsub is String {
               ischanged = true
-              vx_p_code = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_code = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -2440,9 +3301,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("code"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":passfail" {
             if Vx_Core.vx_issame(valsub, vx_p_passfail) {
@@ -2451,7 +3324,12 @@ public enum Vx_Test {
               vx_p_passfail = valpassfail
             } else if valsub is Bool {
               ischanged = true
-              vx_p_passfail = Vx_Core.vx_new(Vx_Core.t_boolean, valsub)
+              vx_p_passfail = Vx_Core.vx_new(
+                Vx_Core.t_boolean,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -2462,9 +3340,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("passfail"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":expected" {
             if Vx_Core.vx_issame(valsub, vx_p_expected) {
@@ -2481,9 +3371,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("expected"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":actual" {
             if Vx_Core.vx_issame(valsub, vx_p_actual) {
@@ -2500,9 +3402,21 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("actual"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":fn-actual" {
             if Vx_Core.vx_issame(valsub, vx_p_fn_actual) {
@@ -2519,14 +3433,36 @@ public enum Vx_Test {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("fn-actual"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/test/testresult", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/test/testresult",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -2558,17 +3494,17 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testresult", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testresult",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2625,7 +3561,11 @@ public enum Vx_Test {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Test.Type_testresultlist = Vx_Core.vx_copy(Vx_Test.e_testresultlist, vals)
+      var output : any Vx_Test.Type_testresultlist = Vx_Core.vx_copy(
+        Vx_Test.t_testresultlist,
+        Vx_Test.e_testresultlist,
+        vals
+      )
       return output
     }
 
@@ -2643,9 +3583,21 @@ public enum Vx_Test {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Test.Type_testresultlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listtestresult())
@@ -2665,11 +3617,33 @@ public enum Vx_Test {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/test/testresultlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/test/testresultlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/test/testresultlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/test/testresultlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -2695,17 +3669,22 @@ public enum Vx_Test {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/test", // pkgname
-        "testresultlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Test.t_testresult), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/test",
+        "testresultlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Test.t_testresult
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2736,381 +3715,457 @@ public enum Vx_Test {
           Vx_Web_Html.t_stylesheet,
           Vx_Core.vx_new(
             Vx_Core.t_anylist,
-            Vx_Core.vx_new_string(":name"),
-            Vx_Core.vx_new_string("Test Suite"),
-            Vx_Core.vx_new_string(":styles"),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_stylelist,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string("body"),
-                    Vx_Core.vx_new_string(":props"),
+            [
+              Vx_Core.vx_new_string(":name"),
+              Vx_Core.vx_new_string("Test Suite"),
+              Vx_Core.vx_new_string(":styles"),
+              Vx_Core.f_new(
+                Vx_Web_Html.t_stylelist,
+                Vx_Core.vx_new(
+                  Vx_Core.t_anylist,
+                  [
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("font-size"),
-                        Vx_Core.vx_new_string("0.9em"),
-                        Vx_Core.vx_new_string("font-family"),
-                        Vx_Core.vx_new_string("sans-serif")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string("body"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("font-size"),
+                                Vx_Core.vx_new_string("0.9em"),
+                                Vx_Core.vx_new_string("font-family"),
+                                Vx_Core.vx_new_string("sans-serif")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string("details summary"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("cursor"),
-                        Vx_Core.vx_new_string("pointer"),
-                        Vx_Core.vx_new_string("display"),
-                        Vx_Core.vx_new_string("inline-flex"),
-                        Vx_Core.vx_new_string("gap"),
-                        Vx_Core.vx_new_string("10px")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string("details summary"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("cursor"),
+                                Vx_Core.vx_new_string("pointer"),
+                                Vx_Core.vx_new_string("display"),
+                                Vx_Core.vx_new_string("inline-flex"),
+                                Vx_Core.vx_new_string("gap"),
+                                Vx_Core.vx_new_string("10px")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string("table"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("vertical-align"),
-                        Vx_Core.vx_new_string("top"),
-                        Vx_Core.vx_new_string("border-collapse"),
-                        Vx_Core.vx_new_string("collapse"),
-                        Vx_Core.vx_new_string("margin"),
-                        Vx_Core.vx_new_string("25px 0"),
-                        Vx_Core.vx_new_string("min-width"),
-                        Vx_Core.vx_new_string("400px"),
-                        Vx_Core.vx_new_string("box-shadow"),
-                        Vx_Core.vx_new_string("0 0 20px rgba(0, 0, 0, 0.15)")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string("table"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("vertical-align"),
+                                Vx_Core.vx_new_string("top"),
+                                Vx_Core.vx_new_string("border-collapse"),
+                                Vx_Core.vx_new_string("collapse"),
+                                Vx_Core.vx_new_string("margin"),
+                                Vx_Core.vx_new_string("25px 0"),
+                                Vx_Core.vx_new_string("min-width"),
+                                Vx_Core.vx_new_string("400px"),
+                                Vx_Core.vx_new_string("box-shadow"),
+                                Vx_Core.vx_new_string("0 0 20px rgba(0, 0, 0, 0.15)")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string("thead tr"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("background-color"),
-                        Vx_Core.vx_new_string("#009879"),
-                        Vx_Core.vx_new_string("color"),
-                        Vx_Core.vx_new_string("#ffffff"),
-                        Vx_Core.vx_new_string("text-align"),
-                        Vx_Core.vx_new_string("left")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string("thead tr"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("background-color"),
+                                Vx_Core.vx_new_string("#009879"),
+                                Vx_Core.vx_new_string("color"),
+                                Vx_Core.vx_new_string("#ffffff"),
+                                Vx_Core.vx_new_string("text-align"),
+                                Vx_Core.vx_new_string("left")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string("td"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("padding"),
-                        Vx_Core.vx_new_string("10px 10px"),
-                        Vx_Core.vx_new_string("vertical-align"),
-                        Vx_Core.vx_new_string("top")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string("td"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("padding"),
+                                Vx_Core.vx_new_string("10px 10px"),
+                                Vx_Core.vx_new_string("vertical-align"),
+                                Vx_Core.vx_new_string("top")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string("tbody tr"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("border-bottom"),
-                        Vx_Core.vx_new_string("1px solid #dddddd")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string("tbody tr"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("border-bottom"),
+                                Vx_Core.vx_new_string("1px solid #dddddd")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string("tbody tr:nth-of-type(even)"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("background-color"),
-                        Vx_Core.vx_new_string("#f3f3f3")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string("tbody tr:nth-of-type(even)"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("background-color"),
+                                Vx_Core.vx_new_string("#f3f3f3")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string("tbody tr:last-of-type"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("border-bottom"),
-                        Vx_Core.vx_new_string("2px solid #009879")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string("tbody tr:last-of-type"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("border-bottom"),
+                                Vx_Core.vx_new_string("2px solid #009879")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string("tbody tr.active-row"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("font-weight"),
-                        Vx_Core.vx_new_string("bold"),
-                        Vx_Core.vx_new_string("color"),
-                        Vx_Core.vx_new_string("#009879")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string("tbody tr.active-row"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("font-weight"),
+                                Vx_Core.vx_new_string("bold"),
+                                Vx_Core.vx_new_string("color"),
+                                Vx_Core.vx_new_string("#009879")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string(".failflag"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("background-color"),
-                        Vx_Core.vx_new_string("red"),
-                        Vx_Core.vx_new_string("color"),
-                        Vx_Core.vx_new_string("white"),
-                        Vx_Core.vx_new_string("padding-left"),
-                        Vx_Core.vx_new_string("4px"),
-                        Vx_Core.vx_new_string("padding-right"),
-                        Vx_Core.vx_new_string("4px"),
-                        Vx_Core.vx_new_string("padding-top"),
-                        Vx_Core.vx_new_string("1px"),
-                        Vx_Core.vx_new_string("padding-bottom"),
-                        Vx_Core.vx_new_string("1px")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string(".failflag"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("background-color"),
+                                Vx_Core.vx_new_string("red"),
+                                Vx_Core.vx_new_string("color"),
+                                Vx_Core.vx_new_string("white"),
+                                Vx_Core.vx_new_string("padding-left"),
+                                Vx_Core.vx_new_string("4px"),
+                                Vx_Core.vx_new_string("padding-right"),
+                                Vx_Core.vx_new_string("4px"),
+                                Vx_Core.vx_new_string("padding-top"),
+                                Vx_Core.vx_new_string("1px"),
+                                Vx_Core.vx_new_string("padding-bottom"),
+                                Vx_Core.vx_new_string("1px")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string(".passflag"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("background-color"),
-                        Vx_Core.vx_new_string("green"),
-                        Vx_Core.vx_new_string("color"),
-                        Vx_Core.vx_new_string("white"),
-                        Vx_Core.vx_new_string("padding-left"),
-                        Vx_Core.vx_new_string("4px"),
-                        Vx_Core.vx_new_string("padding-right"),
-                        Vx_Core.vx_new_string("4px"),
-                        Vx_Core.vx_new_string("padding-top"),
-                        Vx_Core.vx_new_string("1px"),
-                        Vx_Core.vx_new_string("padding-bottom"),
-                        Vx_Core.vx_new_string("1px")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string(".passflag"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("background-color"),
+                                Vx_Core.vx_new_string("green"),
+                                Vx_Core.vx_new_string("color"),
+                                Vx_Core.vx_new_string("white"),
+                                Vx_Core.vx_new_string("padding-left"),
+                                Vx_Core.vx_new_string("4px"),
+                                Vx_Core.vx_new_string("padding-right"),
+                                Vx_Core.vx_new_string("4px"),
+                                Vx_Core.vx_new_string("padding-top"),
+                                Vx_Core.vx_new_string("1px"),
+                                Vx_Core.vx_new_string("padding-bottom"),
+                                Vx_Core.vx_new_string("1px")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string(".coveragenums"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("width"),
-                        Vx_Core.vx_new_string("90px")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string(".coveragenums"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("width"),
+                                Vx_Core.vx_new_string("90px")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string(".coveragepct"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("text-align"),
-                        Vx_Core.vx_new_string("right")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string(".coveragepct"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("text-align"),
+                                Vx_Core.vx_new_string("right")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string(".coveragepctgreen"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("background-color"),
-                        Vx_Core.vx_new_string("green"),
-                        Vx_Core.vx_new_string("color"),
-                        Vx_Core.vx_new_string("white"),
-                        Vx_Core.vx_new_string("text-align"),
-                        Vx_Core.vx_new_string("right")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string(".coveragepctgreen"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("background-color"),
+                                Vx_Core.vx_new_string("green"),
+                                Vx_Core.vx_new_string("color"),
+                                Vx_Core.vx_new_string("white"),
+                                Vx_Core.vx_new_string("text-align"),
+                                Vx_Core.vx_new_string("right")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string(".coveragepctred"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("background-color"),
-                        Vx_Core.vx_new_string("red"),
-                        Vx_Core.vx_new_string("color"),
-                        Vx_Core.vx_new_string("white"),
-                        Vx_Core.vx_new_string("text-align"),
-                        Vx_Core.vx_new_string("right")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string(".coveragepctred"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("background-color"),
+                                Vx_Core.vx_new_string("red"),
+                                Vx_Core.vx_new_string("color"),
+                                Vx_Core.vx_new_string("white"),
+                                Vx_Core.vx_new_string("text-align"),
+                                Vx_Core.vx_new_string("right")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string(".pkgheader"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("display"),
-                        Vx_Core.vx_new_string("inline-flex"),
-                        Vx_Core.vx_new_string("gap"),
-                        Vx_Core.vx_new_string("10px")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string(".pkgheader"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("display"),
+                                Vx_Core.vx_new_string("inline-flex"),
+                                Vx_Core.vx_new_string("gap"),
+                                Vx_Core.vx_new_string("10px")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string(".pkgname"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("font-weight"),
-                        Vx_Core.vx_new_string("bold"),
-                        Vx_Core.vx_new_string("width"),
-                        Vx_Core.vx_new_string("180px")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string(".pkgname"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("font-weight"),
+                                Vx_Core.vx_new_string("bold"),
+                                Vx_Core.vx_new_string("width"),
+                                Vx_Core.vx_new_string("180px")
+                              ]
+                            )
+                          )
+                        ]
                       )
-                    )
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_style,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":name"),
-                    Vx_Core.vx_new_string(".preformatted"),
-                    Vx_Core.vx_new_string(":props"),
+                    ),
                     Vx_Core.f_new(
-                      Vx_Web_Html.t_propmap,
+                      Vx_Web_Html.t_style,
                       Vx_Core.vx_new(
                         Vx_Core.t_anylist,
-                        Vx_Core.vx_new_string("display"),
-                        Vx_Core.vx_new_string("block"),
-                        Vx_Core.vx_new_string("unicode-bidi"),
-                        Vx_Core.vx_new_string("embed"),
-                        Vx_Core.vx_new_string("font-family"),
-                        Vx_Core.vx_new_string("monospace"),
-                        Vx_Core.vx_new_string("white-space"),
-                        Vx_Core.vx_new_string("pre")
+                        [
+                          Vx_Core.vx_new_string(":name"),
+                          Vx_Core.vx_new_string(".preformatted"),
+                          Vx_Core.vx_new_string(":props"),
+                          Vx_Core.f_new(
+                            Vx_Web_Html.t_propmap,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string("display"),
+                                Vx_Core.vx_new_string("block"),
+                                Vx_Core.vx_new_string("unicode-bidi"),
+                                Vx_Core.vx_new_string("embed"),
+                                Vx_Core.vx_new_string("font-family"),
+                                Vx_Core.vx_new_string("monospace"),
+                                Vx_Core.vx_new_string("white-space"),
+                                Vx_Core.vx_new_string("pre")
+                              ]
+                            )
+                          )
+                        ]
                       )
                     )
-                  )
+                  ]
                 )
               )
-            )
+            ]
           )
         )
       )
@@ -3163,17 +4218,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3200,7 +4255,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_anylist = value as! any Vx_Core.Type_anylist
       let outputval : any Vx_Core.Type_any = Vx_Test.f_context_test(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -3208,7 +4266,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(Vx_Core.t_anylist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let args : any Vx_Core.Type_anylist = Vx_Core.f_any_from_any(
+        Vx_Core.t_anylist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_context_test(args)
       return output
     }
@@ -3233,22 +4296,28 @@ public enum Vx_Test {
       Vx_Core.t_context,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":session"),
-        Vx_Core.f_new(
-          Vx_Core.t_session,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string(":user"),
-            Vx_Core.f_new(
-              Vx_Core.t_user,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(":security"),
-                Vx_Test.f_security_test()
-              )
+        [
+          Vx_Core.vx_new_string(":session"),
+          Vx_Core.f_new(
+            Vx_Core.t_session,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string(":user"),
+                Vx_Core.f_new(
+                  Vx_Core.t_user,
+                  Vx_Core.vx_new(
+                    Vx_Core.t_anylist,
+                    [
+                      Vx_Core.vx_new_string(":security"),
+                      Vx_Test.f_security_test()
+                    ]
+                  )
+                )
+              ]
             )
           )
-        )
+        ]
       )
     )
     return output
@@ -3289,17 +4358,23 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_node,
+              Vx_Web_Html.t_divchild
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3326,7 +4401,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Test.Type_testcaselist = value as! any Vx_Test.Type_testcaselist
       let outputval : any Vx_Core.Type_any = Vx_Test.f_div_from_testcaselist(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -3334,7 +4412,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let testcaselist : any Vx_Test.Type_testcaselist = Vx_Core.f_any_from_any(Vx_Test.t_testcaselist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testcaselist : any Vx_Test.Type_testcaselist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testcaselist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_div_from_testcaselist(testcaselist)
       return output
     }
@@ -3359,105 +4442,133 @@ public enum Vx_Test {
       Vx_Web_Html.t_div,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.f_new(
-          Vx_Web_Html.t_table,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string(":thead"),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_thead,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
+        [
+          Vx_Core.f_new(
+            Vx_Web_Html.t_table,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string(":thead"),
                 Vx_Core.f_new(
-                  Vx_Web_Html.t_tr,
+                  Vx_Web_Html.t_thead,
                   Vx_Core.vx_new(
                     Vx_Core.t_anylist,
-                    Vx_Core.f_new(
-                      Vx_Web_Html.t_td,
-                      Vx_Core.vx_new(
-                        Vx_Core.t_anylist,
-                        Vx_Core.f_new(
-                          Vx_Web_Html.t_p,
-                          Vx_Core.vx_new(
-                            Vx_Core.t_anylist,
-                            Vx_Core.vx_new_string(":text"),
-                            Vx_Core.vx_new_string("Pass?")
-                          )
+                    [
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_tr,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.f_new(
+                              Vx_Web_Html.t_td,
+                              Vx_Core.vx_new(
+                                Vx_Core.t_anylist,
+                                [
+                                  Vx_Core.f_new(
+                                    Vx_Web_Html.t_p,
+                                    Vx_Core.vx_new(
+                                      Vx_Core.t_anylist,
+                                      [
+                                        Vx_Core.vx_new_string(":text"),
+                                        Vx_Core.vx_new_string("Pass?")
+                                      ]
+                                    )
+                                  )
+                                ]
+                              )
+                            ),
+                            Vx_Core.f_new(
+                              Vx_Web_Html.t_td,
+                              Vx_Core.vx_new(
+                                Vx_Core.t_anylist,
+                                [
+                                  Vx_Core.f_new(
+                                    Vx_Web_Html.t_p,
+                                    Vx_Core.vx_new(
+                                      Vx_Core.t_anylist,
+                                      [
+                                        Vx_Core.vx_new_string(":text"),
+                                        Vx_Core.vx_new_string("Name")
+                                      ]
+                                    )
+                                  )
+                                ]
+                              )
+                            ),
+                            Vx_Core.f_new(
+                              Vx_Web_Html.t_td,
+                              Vx_Core.vx_new(
+                                Vx_Core.t_anylist,
+                                [
+                                  Vx_Core.f_new(
+                                    Vx_Web_Html.t_p,
+                                    Vx_Core.vx_new(
+                                      Vx_Core.t_anylist,
+                                      [
+                                        Vx_Core.vx_new_string(":text"),
+                                        Vx_Core.vx_new_string("Test")
+                                      ]
+                                    )
+                                  )
+                                ]
+                              )
+                            ),
+                            Vx_Core.f_new(
+                              Vx_Web_Html.t_td,
+                              Vx_Core.vx_new(
+                                Vx_Core.t_anylist,
+                                [
+                                  Vx_Core.f_new(
+                                    Vx_Web_Html.t_p,
+                                    Vx_Core.vx_new(
+                                      Vx_Core.t_anylist,
+                                      [
+                                        Vx_Core.vx_new_string(":text"),
+                                        Vx_Core.vx_new_string("Expected")
+                                      ]
+                                    )
+                                  )
+                                ]
+                              )
+                            ),
+                            Vx_Core.f_new(
+                              Vx_Web_Html.t_td,
+                              Vx_Core.vx_new(
+                                Vx_Core.t_anylist,
+                                [
+                                  Vx_Core.f_new(
+                                    Vx_Web_Html.t_p,
+                                    Vx_Core.vx_new(
+                                      Vx_Core.t_anylist,
+                                      [
+                                        Vx_Core.vx_new_string(":text"),
+                                        Vx_Core.vx_new_string("Actual")
+                                      ]
+                                    )
+                                  )
+                                ]
+                              )
+                            )
+                          ]
                         )
                       )
-                    ),
-                    Vx_Core.f_new(
-                      Vx_Web_Html.t_td,
-                      Vx_Core.vx_new(
-                        Vx_Core.t_anylist,
-                        Vx_Core.f_new(
-                          Vx_Web_Html.t_p,
-                          Vx_Core.vx_new(
-                            Vx_Core.t_anylist,
-                            Vx_Core.vx_new_string(":text"),
-                            Vx_Core.vx_new_string("Name")
-                          )
-                        )
-                      )
-                    ),
-                    Vx_Core.f_new(
-                      Vx_Web_Html.t_td,
-                      Vx_Core.vx_new(
-                        Vx_Core.t_anylist,
-                        Vx_Core.f_new(
-                          Vx_Web_Html.t_p,
-                          Vx_Core.vx_new(
-                            Vx_Core.t_anylist,
-                            Vx_Core.vx_new_string(":text"),
-                            Vx_Core.vx_new_string("Test")
-                          )
-                        )
-                      )
-                    ),
-                    Vx_Core.f_new(
-                      Vx_Web_Html.t_td,
-                      Vx_Core.vx_new(
-                        Vx_Core.t_anylist,
-                        Vx_Core.f_new(
-                          Vx_Web_Html.t_p,
-                          Vx_Core.vx_new(
-                            Vx_Core.t_anylist,
-                            Vx_Core.vx_new_string(":text"),
-                            Vx_Core.vx_new_string("Expected")
-                          )
-                        )
-                      )
-                    ),
-                    Vx_Core.f_new(
-                      Vx_Web_Html.t_td,
-                      Vx_Core.vx_new(
-                        Vx_Core.t_anylist,
-                        Vx_Core.f_new(
-                          Vx_Web_Html.t_p,
-                          Vx_Core.vx_new(
-                            Vx_Core.t_anylist,
-                            Vx_Core.vx_new_string(":text"),
-                            Vx_Core.vx_new_string("Actual")
-                          )
-                        )
-                      )
-                    )
+                    ]
+                  )
+                ),
+                Vx_Core.vx_new_string(":tbody"),
+                Vx_Core.f_new(
+                  Vx_Web_Html.t_tbody,
+                  Vx_Core.vx_new(
+                    Vx_Core.t_anylist,
+                    [
+                      Vx_Test.f_trlist_from_testcaselist(testcaselist)
+                    ]
                   )
                 )
-              )
-            ),
-            Vx_Core.vx_new_string(":tbody"),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_tbody,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Test.f_trlist_from_testcaselist(
-                  testcaselist
-                )
-              )
+              ]
             )
           )
-        )
+        ]
       )
     )
     return output
@@ -3498,17 +4609,23 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_node,
+              Vx_Web_Html.t_divchild
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3535,7 +4652,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Test.Type_testpackage = value as! any Vx_Test.Type_testpackage
       let outputval : any Vx_Core.Type_any = Vx_Test.f_div_from_testpackage(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -3543,7 +4663,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let testpackage : any Vx_Test.Type_testpackage = Vx_Core.f_any_from_any(Vx_Test.t_testpackage, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testpackage : any Vx_Test.Type_testpackage = Vx_Core.f_any_from_any(
+        Vx_Test.t_testpackage,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_div_from_testpackage(testpackage)
       return output
     }
@@ -3566,93 +4691,101 @@ public enum Vx_Test {
     var output : any Vx_Web_Html.Type_div = Vx_Web_Html.e_div
     output = Vx_Core.f_let(
       Vx_Web_Html.t_div,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let testcoveragesummary : any Vx_Test.Type_testcoveragesummary = testpackage.coveragesummary()
-        let pkgname : any Vx_Core.Type_string = testpackage.testpkg()
-        let caselist : any Vx_Test.Type_testcaselist = testpackage.caselist()
-        let passfail : any Vx_Core.Type_boolean = testpackage.passfail()
-        let pkgnamestyle : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
-          Vx_Test.c_stylesheet_test,
-          Vx_Core.vx_new_string(".pkgname")
-        )
-        let node : any Vx_Web_Html.Type_div = Vx_Test.f_div_from_testcaselist(
-          caselist
-        )
-        let nodes : any Vx_Web_Html.Type_divchildlist = Vx_Core.f_new(
-          Vx_Web_Html.t_divchildlist,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            node
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let testcoveragesummary : any Vx_Test.Type_testcoveragesummary = testpackage.coveragesummary()
+          let pkgname : any Vx_Core.Type_string = testpackage.testpkg()
+          let caselist : any Vx_Test.Type_testcaselist = testpackage.caselist()
+          let passfail : any Vx_Core.Type_boolean = testpackage.passfail()
+          let pkgnamestyle : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
+            Vx_Test.c_stylesheet_test,
+            Vx_Core.vx_new_string(".pkgname")
           )
-        )
-        let p_passfail : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_passfail(
-          passfail
-        )
-        let p_pkgname : any Vx_Web_Html.Type_p = Vx_Core.f_new(
-          Vx_Web_Html.t_p,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string(":style"),
-            pkgnamestyle,
-            Vx_Core.vx_new_string(":text"),
-            pkgname
+          let node : any Vx_Web_Html.Type_div = Vx_Test.f_div_from_testcaselist(caselist)
+          let nodes : any Vx_Web_Html.Type_divchildlist = Vx_Core.f_new(
+            Vx_Web_Html.t_divchildlist,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                node
+              ]
+            )
           )
-        )
-        let p_totalnums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
-          testcoveragesummary.totalnums()
-        )
-        let p_coveragenums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
-          testcoveragesummary.typenums()
-        )
-        let p_constnums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
-          testcoveragesummary.constnums()
-        )
-        let p_funcnums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
-          testcoveragesummary.funcnums()
-        )
-        let p_docnums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
-          testcoveragesummary.docnums()
-        )
-        let p_bigospacenums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
-          testcoveragesummary.bigospacenums()
-        )
-        let p_bigotimenums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
-          testcoveragesummary.bigotimenums()
-        )
-        let summary : any Vx_Web_Html.Type_divchildlist = Vx_Core.f_new(
-          Vx_Web_Html.t_divchildlist,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            p_passfail,
-            p_pkgname,
-            p_totalnums,
-            p_coveragenums,
-            p_constnums,
-            p_funcnums,
-            p_docnums,
-            p_bigospacenums,
-            p_bigotimenums
+          let p_passfail : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_passfail(passfail)
+          let p_pkgname : any Vx_Web_Html.Type_p = Vx_Core.f_new(
+            Vx_Web_Html.t_p,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string(":style"),
+                pkgnamestyle,
+                Vx_Core.vx_new_string(":text"),
+                pkgname
+              ]
+            )
           )
-        )
-        let details : any Vx_Web_Html.Type_details = Vx_Core.f_new(
-          Vx_Web_Html.t_details,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string(":summary"),
-            summary,
-            Vx_Core.vx_new_string(":nodes"),
-            nodes
+          let p_totalnums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
+            testcoveragesummary.totalnums()
           )
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Web_Html.t_div,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            details
+          let p_coveragenums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
+            testcoveragesummary.typenums()
           )
-        )
-        return output_1
-      })
+          let p_constnums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
+            testcoveragesummary.constnums()
+          )
+          let p_funcnums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
+            testcoveragesummary.funcnums()
+          )
+          let p_docnums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
+            testcoveragesummary.docnums()
+          )
+          let p_bigospacenums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
+            testcoveragesummary.bigospacenums()
+          )
+          let p_bigotimenums : any Vx_Web_Html.Type_p = Vx_Test.f_p_from_testcoveragenums(
+            testcoveragesummary.bigotimenums()
+          )
+          let summary : any Vx_Web_Html.Type_divchildlist = Vx_Core.f_new(
+            Vx_Web_Html.t_divchildlist,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                p_passfail,
+                p_pkgname,
+                p_totalnums,
+                p_coveragenums,
+                p_constnums,
+                p_funcnums,
+                p_docnums,
+                p_bigospacenums,
+                p_bigotimenums
+              ]
+            )
+          )
+          let details : any Vx_Web_Html.Type_details = Vx_Core.f_new(
+            Vx_Web_Html.t_details,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string(":summary"),
+                summary,
+                Vx_Core.vx_new_string(":nodes"),
+                nodes
+              ]
+            )
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Web_Html.t_div,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                details
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -3692,17 +4825,23 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_node,
+              Vx_Web_Html.t_divchild
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3729,7 +4868,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Test.Type_testpackagelist = value as! any Vx_Test.Type_testpackagelist
       let outputval : any Vx_Core.Type_any = Vx_Test.f_div_from_testpackagelist(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -3737,7 +4879,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let testpackagelist : any Vx_Test.Type_testpackagelist = Vx_Core.f_any_from_any(Vx_Test.t_testpackagelist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testpackagelist : any Vx_Test.Type_testpackagelist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testpackagelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_div_from_testpackagelist(testpackagelist)
       return output
     }
@@ -3760,138 +4907,162 @@ public enum Vx_Test {
     var output : any Vx_Web_Html.Type_div = Vx_Web_Html.e_div
     output = Vx_Core.f_let(
       Vx_Web_Html.t_div,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let stylepassfail : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
-          Vx_Test.c_stylesheet_test,
-          Vx_Core.vx_new_string(".passfail")
-        )
-        let stylepkgname : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
-          Vx_Test.c_stylesheet_test,
-          Vx_Core.vx_new_string(".pkgname")
-        )
-        let stylepkgheader : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
-          Vx_Test.c_stylesheet_test,
-          Vx_Core.vx_new_string(".pkgheader")
-        )
-        let stylecoveragenum : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
-          Vx_Test.c_stylesheet_test,
-          Vx_Core.vx_new_string(".coveragenums")
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Web_Html.t_div,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.f_new(
-              Vx_Web_Html.t_div,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(":style"),
-                stylepkgheader,
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let stylepassfail : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
+            Vx_Test.c_stylesheet_test,
+            Vx_Core.vx_new_string(".passfail")
+          )
+          let stylepkgname : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
+            Vx_Test.c_stylesheet_test,
+            Vx_Core.vx_new_string(".pkgname")
+          )
+          let stylepkgheader : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
+            Vx_Test.c_stylesheet_test,
+            Vx_Core.vx_new_string(".pkgheader")
+          )
+          let stylecoveragenum : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
+            Vx_Test.c_stylesheet_test,
+            Vx_Core.vx_new_string(".coveragenums")
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Web_Html.t_div,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
                 Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
+                  Vx_Web_Html.t_div,
                   Vx_Core.vx_new(
                     Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    stylepassfail,
-                    Vx_Core.vx_new_string(":text"),
-                    Vx_Core.vx_new_string("Pass?")
+                    [
+                      Vx_Core.vx_new_string(":style"),
+                      stylepkgheader,
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            stylepassfail,
+                            Vx_Core.vx_new_string(":text"),
+                            Vx_Core.vx_new_string("Pass?")
+                          ]
+                        )
+                      ),
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            stylepkgname,
+                            Vx_Core.vx_new_string(":text"),
+                            Vx_Core.vx_new_string("Package Name")
+                          ]
+                        )
+                      ),
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx_Core.vx_new_string(":text"),
+                            Vx_Core.vx_new_string("Coverage")
+                          ]
+                        )
+                      ),
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx_Core.vx_new_string(":text"),
+                            Vx_Core.vx_new_string("(type)")
+                          ]
+                        )
+                      ),
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx_Core.vx_new_string(":text"),
+                            Vx_Core.vx_new_string("(const)")
+                          ]
+                        )
+                      ),
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx_Core.vx_new_string(":text"),
+                            Vx_Core.vx_new_string("(func)")
+                          ]
+                        )
+                      ),
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx_Core.vx_new_string(":text"),
+                            Vx_Core.vx_new_string(":doc")
+                          ]
+                        )
+                      ),
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx_Core.vx_new_string(":text"),
+                            Vx_Core.vx_new_string(":bigospace")
+                          ]
+                        )
+                      ),
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx_Core.vx_new_string(":text"),
+                            Vx_Core.vx_new_string(":bigotime")
+                          ]
+                        )
+                      )
+                    ]
                   )
                 ),
                 Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
+                  Vx_Web_Html.t_div,
                   Vx_Core.vx_new(
                     Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    stylepkgname,
-                    Vx_Core.vx_new_string(":text"),
-                    Vx_Core.vx_new_string("Package Name")
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx_Core.vx_new_string(":text"),
-                    Vx_Core.vx_new_string("Coverage")
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx_Core.vx_new_string(":text"),
-                    Vx_Core.vx_new_string("(type)")
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx_Core.vx_new_string(":text"),
-                    Vx_Core.vx_new_string("(const)")
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx_Core.vx_new_string(":text"),
-                    Vx_Core.vx_new_string("(func)")
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx_Core.vx_new_string(":text"),
-                    Vx_Core.vx_new_string(":doc")
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx_Core.vx_new_string(":text"),
-                    Vx_Core.vx_new_string(":bigospace")
-                  )
-                ),
-                Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx_Core.vx_new_string(":text"),
-                    Vx_Core.vx_new_string(":bigotime")
+                    [
+                      Vx_Test.f_divchildlist_from_testpackagelist(testpackagelist)
+                    ]
                   )
                 )
-              )
-            ),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_div,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Test.f_divchildlist_from_testpackagelist(
-                  testpackagelist
-                )
-              )
+              ]
             )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -3931,17 +5102,22 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "divchildlist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_divchild), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "divchildlist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_divchild
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -3968,7 +5144,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Test.Type_testpackagelist = value as! any Vx_Test.Type_testpackagelist
       let outputval : any Vx_Core.Type_any = Vx_Test.f_divchildlist_from_testpackagelist(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -3976,7 +5155,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let testpackagelist : any Vx_Test.Type_testpackagelist = Vx_Core.f_any_from_any(Vx_Test.t_testpackagelist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testpackagelist : any Vx_Test.Type_testpackagelist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testpackagelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_divchildlist_from_testpackagelist(testpackagelist)
       return output
     }
@@ -4038,17 +5222,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -4088,10 +5272,12 @@ public enum Vx_Test {
       Vx_Data_File.t_file,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":name"),
-        Vx_Core.vx_new_string("testsuite.vxlisp"),
-        Vx_Core.vx_new_string(":path"),
-        Vx_Core.c_path_test_resources
+        [
+          Vx_Core.vx_new_string(":name"),
+          Vx_Core.vx_new_string("testsuite.vxlisp"),
+          Vx_Core.vx_new_string(":path"),
+          Vx_Core.c_path_test_resources
+        ]
       )
     )
     return output
@@ -4130,17 +5316,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -4180,10 +5366,12 @@ public enum Vx_Test {
       Vx_Data_File.t_file,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":name"),
-        Vx_Core.vx_new_string("testsuite.html"),
-        Vx_Core.vx_new_string(":path"),
-        Vx_Core.c_path_test_resources
+        [
+          Vx_Core.vx_new_string(":name"),
+          Vx_Core.vx_new_string("testsuite.html"),
+          Vx_Core.vx_new_string(":path"),
+          Vx_Core.c_path_test_resources
+        ]
       )
     )
     return output
@@ -4222,17 +5410,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -4272,10 +5460,12 @@ public enum Vx_Test {
       Vx_Data_File.t_file,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":name"),
-        Vx_Core.vx_new_string("testsuitenode.vxlisp"),
-        Vx_Core.vx_new_string(":path"),
-        Vx_Core.c_path_test_resources
+        [
+          Vx_Core.vx_new_string(":name"),
+          Vx_Core.vx_new_string("testsuitenode.vxlisp"),
+          Vx_Core.vx_new_string(":path"),
+          Vx_Core.c_path_test_resources
+        ]
       )
     )
     return output
@@ -4316,17 +5506,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "html", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "html",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -4353,7 +5543,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_div = value as! any Vx_Web_Html.Type_div
       let outputval : any Vx_Core.Type_any = Vx_Test.f_html_from_divtest(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -4361,7 +5554,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let divtest : any Vx_Web_Html.Type_div = Vx_Core.f_any_from_any(Vx_Web_Html.t_div, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let divtest : any Vx_Web_Html.Type_div = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_div,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_html_from_divtest(divtest)
       return output
     }
@@ -4386,63 +5584,79 @@ public enum Vx_Test {
       Vx_Web_Html.t_html,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":lang"),
-        Vx_Core.vx_new_string("en"),
-        Vx_Core.vx_new_string(":head"),
-        Vx_Core.f_new(
-          Vx_Web_Html.t_head,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.f_new(
-              Vx_Web_Html.t_meta,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(":charset"),
-                Vx_Core.vx_new_string("utf-8")
-              )
-            ),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_meta,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(":name"),
-                Vx_Core.vx_new_string("viewport"),
-                Vx_Core.vx_new_string(":content"),
-                Vx_Core.vx_new_string("width=device-width, initial-scale=1.0")
-              )
-            ),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_title,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(":text"),
-                Vx_Core.vx_new_string("Test Suite")
-              )
-            ),
-            Vx_Test.c_stylesheet_test
-          )
-        ),
-        Vx_Core.vx_new_string(":body"),
-        Vx_Core.f_new(
-          Vx_Web_Html.t_body,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.f_new(
-              Vx_Web_Html.t_div,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
+        [
+          Vx_Core.vx_new_string(":lang"),
+          Vx_Core.vx_new_string("en"),
+          Vx_Core.vx_new_string(":head"),
+          Vx_Core.f_new(
+            Vx_Web_Html.t_head,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
                 Vx_Core.f_new(
-                  Vx_Web_Html.t_h1,
+                  Vx_Web_Html.t_meta,
                   Vx_Core.vx_new(
                     Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string("Test Suite")
+                    [
+                      Vx_Core.vx_new_string(":charset"),
+                      Vx_Core.vx_new_string("utf-8")
+                    ]
                   )
-                )
-              )
-            ),
-            divtest
+                ),
+                Vx_Core.f_new(
+                  Vx_Web_Html.t_meta,
+                  Vx_Core.vx_new(
+                    Vx_Core.t_anylist,
+                    [
+                      Vx_Core.vx_new_string(":name"),
+                      Vx_Core.vx_new_string("viewport"),
+                      Vx_Core.vx_new_string(":content"),
+                      Vx_Core.vx_new_string("width=device-width, initial-scale=1.0")
+                    ]
+                  )
+                ),
+                Vx_Core.f_new(
+                  Vx_Web_Html.t_title,
+                  Vx_Core.vx_new(
+                    Vx_Core.t_anylist,
+                    [
+                      Vx_Core.vx_new_string(":text"),
+                      Vx_Core.vx_new_string("Test Suite")
+                    ]
+                  )
+                ),
+                Vx_Test.c_stylesheet_test
+              ]
+            )
+          ),
+          Vx_Core.vx_new_string(":body"),
+          Vx_Core.f_new(
+            Vx_Web_Html.t_body,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.f_new(
+                  Vx_Web_Html.t_div,
+                  Vx_Core.vx_new(
+                    Vx_Core.t_anylist,
+                    [
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_h1,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string("Test Suite")
+                          ]
+                        )
+                      )
+                    ]
+                  )
+                ),
+                divtest
+              ]
+            )
           )
-        )
+        ]
       )
     )
     return output
@@ -4483,17 +5697,23 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "p", // name
-          ":struct", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "p",
+          ":struct",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_node,
+              Vx_Web_Html.t_divchild
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -4520,7 +5740,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_boolean = value as! any Vx_Core.Type_boolean
       let outputval : any Vx_Core.Type_any = Vx_Test.f_p_from_passfail(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -4528,7 +5751,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let passfail : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let passfail : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+        Vx_Core.t_boolean,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_p_from_passfail(passfail)
       return output
     }
@@ -4551,35 +5779,39 @@ public enum Vx_Test {
     var output : any Vx_Web_Html.Type_p = Vx_Web_Html.e_p
     output = Vx_Core.f_let(
       Vx_Web_Html.t_p,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let text : any Vx_Core.Type_string = Vx_Core.f_if_1(
-          Vx_Core.t_string,
-          passfail,
-          Vx_Core.vx_new_string("Pass"),
-          Vx_Core.vx_new_string("Fail")
-        )
-        let stylename : any Vx_Core.Type_string = Vx_Core.f_if_1(
-          Vx_Core.t_string,
-          passfail,
-          Vx_Core.vx_new_string(".passflag"),
-          Vx_Core.vx_new_string(".failflag")
-        )
-        let style : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
-          Vx_Test.c_stylesheet_test,
-          stylename
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Web_Html.t_p,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string(":style"),
-            style,
-            Vx_Core.vx_new_string(":text"),
-            text
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let text : any Vx_Core.Type_string = Vx_Core.f_if_1(
+            Vx_Core.t_string,
+            passfail,
+            Vx_Core.vx_new_string("Pass"),
+            Vx_Core.vx_new_string("Fail")
           )
-        )
-        return output_1
-      })
+          let stylename : any Vx_Core.Type_string = Vx_Core.f_if_1(
+            Vx_Core.t_string,
+            passfail,
+            Vx_Core.vx_new_string(".passflag"),
+            Vx_Core.vx_new_string(".failflag")
+          )
+          let style : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
+            Vx_Test.c_stylesheet_test,
+            stylename
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Web_Html.t_p,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string(":style"),
+                style,
+                Vx_Core.vx_new_string(":text"),
+                text
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -4619,17 +5851,23 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "p", // name
-          ":struct", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "p",
+          ":struct",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_node,
+              Vx_Web_Html.t_divchild
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -4656,7 +5894,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Test.Type_testcoveragenums = value as! any Vx_Test.Type_testcoveragenums
       let outputval : any Vx_Core.Type_any = Vx_Test.f_p_from_testcoveragenums(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -4664,7 +5905,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let nums : any Vx_Test.Type_testcoveragenums = Vx_Core.f_any_from_any(Vx_Test.t_testcoveragenums, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let nums : any Vx_Test.Type_testcoveragenums = Vx_Core.f_any_from_any(
+        Vx_Test.t_testcoveragenums,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_p_from_testcoveragenums(nums)
       return output
     }
@@ -4689,23 +5935,27 @@ public enum Vx_Test {
       Vx_Web_Html.t_p,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":style"),
-        Vx_Web_Html.f_style_from_stylesheet_name(
-          Vx_Test.c_stylesheet_test,
-          Vx_Core.vx_new_string(".coveragenums")
-        ),
-        Vx_Core.vx_new_string(":text"),
-        Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            nums.pct(),
-            Vx_Core.vx_new_string("% "),
-            nums.tests(),
-            Vx_Core.vx_new_string("/"),
-            nums.total()
+        [
+          Vx_Core.vx_new_string(":style"),
+          Vx_Web_Html.f_style_from_stylesheet_name(
+            Vx_Test.c_stylesheet_test,
+            Vx_Core.vx_new_string(".coveragenums")
+          ),
+          Vx_Core.vx_new_string(":text"),
+          Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                nums.pct(),
+                Vx_Core.vx_new_string("% "),
+                nums.tests(),
+                Vx_Core.vx_new_string("/"),
+                nums.total()
+              ]
+            )
           )
-        )
+        ]
       )
     )
     return output
@@ -4746,17 +5996,17 @@ public enum Vx_Test {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testcase", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testcase",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -4780,7 +6030,10 @@ public enum Vx_Test {
       _ generic_any_1 : T,
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
-      let inputval : any Vx_Test.Type_testcase = Vx_Core.f_any_from_any(Vx_Test.t_testcase, value)
+      let inputval : any Vx_Test.Type_testcase = Vx_Core.f_any_from_any(
+        Vx_Test.t_testcase,
+        value
+      )
       let future : Vx_Core.Future = Vx_Test.f_resolve_testcase(inputval)
       let output : Vx_Core.Future = Vx_Core.vx_async_from_async(generic_any_1, future)
       return output
@@ -4790,9 +6043,17 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let testcase : any Vx_Test.Type_testcase = Vx_Core.f_any_from_any(Vx_Test.t_testcase, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testcase : any Vx_Test.Type_testcase = Vx_Core.f_any_from_any(
+        Vx_Test.t_testcase,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Test.f_resolve_testcase(testcase)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -4814,11 +6075,10 @@ public enum Vx_Test {
     var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Test.e_testcase)
     output = Vx_Core.f_let_async(
       Vx_Test.t_testcase,
-      Vx_Core.t_any_from_func_async.vx_fn_new({() in
-        let describelist : any Vx_Test.Type_testdescribelist = testcase.describelist()
-        let future_resolvedlist : Vx_Core.Future = Vx_Test.f_resolve_testdescribelist(
-          describelist
-        )
+      Vx_Core.t_any_from_func_async.vx_fn_new(
+        {() in
+          let describelist : any Vx_Test.Type_testdescribelist = testcase.describelist()
+        let future_resolvedlist : Vx_Core.Future = Vx_Test.f_resolve_testdescribelist(describelist)
         let output_1 : Vx_Core.Future = Vx_Core.vx_async_from_async_fn(
           Vx_Core.t_any,
           future_resolvedlist,
@@ -4827,41 +6087,49 @@ public enum Vx_Test {
               Vx_Test.t_testdescribelist,
               resolvedlist_any
             )
-            let passfaillist : any Vx_Core.Type_booleanlist = Vx_Core.f_list_from_list_1(
-              Vx_Core.t_booleanlist,
-              resolvedlist,
-              Vx_Core.t_any_from_any.vx_fn_new({(testdescribe_any) in
-                let testdescribe : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(Vx_Test.t_testdescribe, testdescribe_any)
-                var output_3 : any Vx_Core.Type_any = Vx_Core.f_let(
-                  Vx_Core.t_boolean,
-                  Vx_Core.t_any_from_func.vx_fn_new({() in
-                    let testresult : any Vx_Test.Type_testresult = testdescribe.testresult()
-                    let output_4 : any Vx_Core.Type_any = testresult.passfail()
-                    return output_4
-                  })
+              let passfaillist : any Vx_Core.Type_booleanlist = Vx_Core.f_list_from_list_1(
+                Vx_Core.t_booleanlist,
+                resolvedlist,
+                Vx_Core.t_any_from_any.vx_fn_new(
+                  {(testdescribe_any) in
+                    let testdescribe : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(
+                      Vx_Test.t_testdescribe,
+                      testdescribe_any
+                    )
+                    var output_3 : any Vx_Core.Type_any = Vx_Core.f_let(
+                      Vx_Core.t_boolean,
+                      Vx_Core.t_any_from_func.vx_fn_new(
+                        {() in
+                          let testresult : any Vx_Test.Type_testresult = testdescribe.testresult()
+                          let output_4 : any Vx_Core.Type_any = testresult.passfail()
+                          return output_4
+                        }
+                      )
+                    )
+                    return output_3
+                  }
                 )
-                return output_3
-              })
-            )
-            let passfail : any Vx_Core.Type_boolean = Vx_Core.f_and_1(
-              passfaillist
-            )
+              )
+              let passfail : any Vx_Core.Type_boolean = Vx_Core.f_and_1(passfaillist)
             let output_2 : any Vx_Core.Type_any = Vx_Core.f_copy(
               Vx_Test.t_testcase,
               testcase,
               Vx_Core.vx_new(
                 Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(":passfail"),
-                passfail,
-                Vx_Core.vx_new_string(":describelist"),
-                resolvedlist
+                [
+                  Vx_Core.vx_new_string(":passfail"),
+                  passfail,
+                  Vx_Core.vx_new_string(":describelist"),
+                  resolvedlist
+                ]
               )
             )
-            return output_2
-          }
+              return output_2
+            }
         )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -4901,17 +6169,22 @@ public enum Vx_Test {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testcaselist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Test.t_testcase), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testcaselist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Test.t_testcase
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -4935,7 +6208,10 @@ public enum Vx_Test {
       _ generic_any_1 : T,
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
-      let inputval : any Vx_Test.Type_testcaselist = Vx_Core.f_any_from_any(Vx_Test.t_testcaselist, value)
+      let inputval : any Vx_Test.Type_testcaselist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testcaselist,
+        value
+      )
       let future : Vx_Core.Future = Vx_Test.f_resolve_testcaselist(inputval)
       let output : Vx_Core.Future = Vx_Core.vx_async_from_async(generic_any_1, future)
       return output
@@ -4945,9 +6221,17 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let testcaselist : any Vx_Test.Type_testcaselist = Vx_Core.f_any_from_any(Vx_Test.t_testcaselist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testcaselist : any Vx_Test.Type_testcaselist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testcaselist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Test.f_resolve_testcaselist(testcaselist)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -5010,17 +6294,17 @@ public enum Vx_Test {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testdescribe", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testdescribe",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -5044,7 +6328,10 @@ public enum Vx_Test {
       _ generic_any_1 : T,
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
-      let inputval : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(Vx_Test.t_testdescribe, value)
+      let inputval : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(
+        Vx_Test.t_testdescribe,
+        value
+      )
       let future : Vx_Core.Future = Vx_Test.f_resolve_testdescribe(inputval)
       let output : Vx_Core.Future = Vx_Core.vx_async_from_async(generic_any_1, future)
       return output
@@ -5054,9 +6341,17 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let testdescribe : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(Vx_Test.t_testdescribe, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testdescribe : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(
+        Vx_Test.t_testdescribe,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Test.f_resolve_testdescribe(testdescribe)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -5078,11 +6373,10 @@ public enum Vx_Test {
     var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Test.e_testdescribe)
     output = Vx_Core.f_let_async(
       Vx_Test.t_testdescribe,
-      Vx_Core.t_any_from_func_async.vx_fn_new({() in
-        let testresult : any Vx_Test.Type_testresult = testdescribe.testresult()
-        let future_resolved : Vx_Core.Future = Vx_Test.f_resolve_testresult(
-          testresult
-        )
+      Vx_Core.t_any_from_func_async.vx_fn_new(
+        {() in
+          let testresult : any Vx_Test.Type_testresult = testdescribe.testresult()
+        let future_resolved : Vx_Core.Future = Vx_Test.f_resolve_testresult(testresult)
         let output_1 : Vx_Core.Future = Vx_Core.vx_async_from_async_fn(
           Vx_Core.t_any,
           future_resolved,
@@ -5096,15 +6390,18 @@ public enum Vx_Test {
               testdescribe,
               Vx_Core.vx_new(
                 Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(":testresult"),
-                resolved
+                [
+                  Vx_Core.vx_new_string(":testresult"),
+                  resolved
+                ]
               )
             )
-            return output_2
-          }
+              return output_2
+            }
         )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -5144,17 +6441,22 @@ public enum Vx_Test {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testdescribelist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Test.t_testdescribe), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testdescribelist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Test.t_testdescribe
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -5178,7 +6480,10 @@ public enum Vx_Test {
       _ generic_any_1 : T,
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
-      let inputval : any Vx_Test.Type_testdescribelist = Vx_Core.f_any_from_any(Vx_Test.t_testdescribelist, value)
+      let inputval : any Vx_Test.Type_testdescribelist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testdescribelist,
+        value
+      )
       let future : Vx_Core.Future = Vx_Test.f_resolve_testdescribelist(inputval)
       let output : Vx_Core.Future = Vx_Core.vx_async_from_async(generic_any_1, future)
       return output
@@ -5188,9 +6493,17 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let testdescribelist : any Vx_Test.Type_testdescribelist = Vx_Core.f_any_from_any(Vx_Test.t_testdescribelist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testdescribelist : any Vx_Test.Type_testdescribelist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testdescribelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Test.f_resolve_testdescribelist(testdescribelist)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -5253,17 +6566,17 @@ public enum Vx_Test {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testpackage", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testpackage",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -5287,7 +6600,10 @@ public enum Vx_Test {
       _ generic_any_1 : T,
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
-      let inputval : any Vx_Test.Type_testpackage = Vx_Core.f_any_from_any(Vx_Test.t_testpackage, value)
+      let inputval : any Vx_Test.Type_testpackage = Vx_Core.f_any_from_any(
+        Vx_Test.t_testpackage,
+        value
+      )
       let future : Vx_Core.Future = Vx_Test.f_resolve_testpackage(inputval)
       let output : Vx_Core.Future = Vx_Core.vx_async_from_async(generic_any_1, future)
       return output
@@ -5297,9 +6613,17 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let testpackage : any Vx_Test.Type_testpackage = Vx_Core.f_any_from_any(Vx_Test.t_testpackage, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testpackage : any Vx_Test.Type_testpackage = Vx_Core.f_any_from_any(
+        Vx_Test.t_testpackage,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Test.f_resolve_testpackage(testpackage)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -5321,11 +6645,10 @@ public enum Vx_Test {
     var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Test.e_testpackage)
     output = Vx_Core.f_let_async(
       Vx_Test.t_testpackage,
-      Vx_Core.t_any_from_func_async.vx_fn_new({() in
-        let testcaselist : any Vx_Test.Type_testcaselist = testpackage.caselist()
-        let future_resolvedlist : Vx_Core.Future = Vx_Test.f_resolve_testcaselist(
-          testcaselist
-        )
+      Vx_Core.t_any_from_func_async.vx_fn_new(
+        {() in
+          let testcaselist : any Vx_Test.Type_testcaselist = testpackage.caselist()
+        let future_resolvedlist : Vx_Core.Future = Vx_Test.f_resolve_testcaselist(testcaselist)
         let output_1 : Vx_Core.Future = Vx_Core.vx_async_from_async_fn(
           Vx_Core.t_any,
           future_resolvedlist,
@@ -5334,34 +6657,40 @@ public enum Vx_Test {
               Vx_Test.t_testcaselist,
               resolvedlist_any
             )
-            let passfaillist : any Vx_Core.Type_booleanlist = Vx_Core.f_list_from_list_1(
-              Vx_Core.t_booleanlist,
-              resolvedlist,
-              Vx_Core.t_any_from_any.vx_fn_new({(testcase_any) in
-                let testcase : any Vx_Test.Type_testcase = Vx_Core.f_any_from_any(Vx_Test.t_testcase, testcase_any)
-                var output_3 : any Vx_Core.Type_any = testcase.passfail()
-                return output_3
-              })
-            )
-            let passfail : any Vx_Core.Type_boolean = Vx_Core.f_and_1(
-              passfaillist
-            )
+              let passfaillist : any Vx_Core.Type_booleanlist = Vx_Core.f_list_from_list_1(
+                Vx_Core.t_booleanlist,
+                resolvedlist,
+                Vx_Core.t_any_from_any.vx_fn_new(
+                  {(testcase_any) in
+                    let testcase : any Vx_Test.Type_testcase = Vx_Core.f_any_from_any(
+                      Vx_Test.t_testcase,
+                      testcase_any
+                    )
+                    var output_3 : any Vx_Core.Type_any = testcase.passfail()
+                    return output_3
+                  }
+                )
+              )
+              let passfail : any Vx_Core.Type_boolean = Vx_Core.f_and_1(passfaillist)
             let output_2 : any Vx_Core.Type_any = Vx_Core.f_copy(
               Vx_Test.t_testpackage,
               testpackage,
               Vx_Core.vx_new(
                 Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(":passfail"),
-                passfail,
-                Vx_Core.vx_new_string(":caselist"),
-                resolvedlist
+                [
+                  Vx_Core.vx_new_string(":passfail"),
+                  passfail,
+                  Vx_Core.vx_new_string(":caselist"),
+                  resolvedlist
+                ]
               )
             )
-            return output_2
-          }
+              return output_2
+            }
         )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -5401,17 +6730,22 @@ public enum Vx_Test {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testpackagelist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Test.t_testpackage), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testpackagelist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Test.t_testpackage
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -5435,7 +6769,10 @@ public enum Vx_Test {
       _ generic_any_1 : T,
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
-      let inputval : any Vx_Test.Type_testpackagelist = Vx_Core.f_any_from_any(Vx_Test.t_testpackagelist, value)
+      let inputval : any Vx_Test.Type_testpackagelist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testpackagelist,
+        value
+      )
       let future : Vx_Core.Future = Vx_Test.f_resolve_testpackagelist(inputval)
       let output : Vx_Core.Future = Vx_Core.vx_async_from_async(generic_any_1, future)
       return output
@@ -5445,9 +6782,17 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let testpackagelist : any Vx_Test.Type_testpackagelist = Vx_Core.f_any_from_any(Vx_Test.t_testpackagelist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testpackagelist : any Vx_Test.Type_testpackagelist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testpackagelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Test.f_resolve_testpackagelist(testpackagelist)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -5510,17 +6855,17 @@ public enum Vx_Test {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -5544,7 +6889,10 @@ public enum Vx_Test {
       _ generic_any_1 : T,
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
-      let inputval : any Vx_Test.Type_testresult = Vx_Core.f_any_from_any(Vx_Test.t_testresult, value)
+      let inputval : any Vx_Test.Type_testresult = Vx_Core.f_any_from_any(
+        Vx_Test.t_testresult,
+        value
+      )
       let future : Vx_Core.Future = Vx_Test.f_resolve_testresult(inputval)
       let output : Vx_Core.Future = Vx_Core.vx_async_from_async(generic_any_1, future)
       return output
@@ -5554,9 +6902,17 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let testresult : any Vx_Test.Type_testresult = Vx_Core.f_any_from_any(Vx_Test.t_testresult, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testresult : any Vx_Test.Type_testresult = Vx_Core.f_any_from_any(
+        Vx_Test.t_testresult,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       var future : Vx_Core.Future = Vx_Test.f_resolve_testresult(testresult)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -5578,9 +6934,10 @@ public enum Vx_Test {
     var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Test.e_testresult)
     output = Vx_Core.f_let_async(
       Vx_Test.t_testresult,
-      Vx_Core.t_any_from_func_async.vx_fn_new({() in
-        let fn_actual : any Vx_Core.Func_any_from_func_async = testresult.fn_actual()
-        let expected : any Vx_Core.Type_any = testresult.expected()
+      Vx_Core.t_any_from_func_async.vx_fn_new(
+        {() in
+          let fn_actual : any Vx_Core.Func_any_from_func_async = testresult.fn_actual()
+          let expected : any Vx_Core.Type_any = testresult.expected()
         let future_actual : Vx_Core.Future = Vx_Core.f_resolve_async(
           Vx_Core.t_any,
           fn_actual
@@ -5597,51 +6954,59 @@ public enum Vx_Test {
               Vx_Test.t_testresult,
               Vx_Core.vx_new(
                 Vx_Core.t_thenelselist,
-                Vx_Core.f_then(
-                  Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                    var output_2 : any Vx_Core.Type_any = Vx_Core.f_is_empty_1(
-                      fn_actual
+                [
+                  Vx_Core.f_then(
+                    Vx_Core.t_boolean_from_func.vx_fn_new(
+                      {() in
+                        var output_2 : any Vx_Core.Type_any = Vx_Core.f_is_empty_1(fn_actual)
+                          return output_2
+                        }
+                    ),
+                    Vx_Core.t_any_from_func.vx_fn_new(
+                      {() in
+      let output_3 : any Vx_Core.Type_any = testresult
+                          return output_3
+                        }
                     )
-                    return output_2
-                  }),
-                  Vx_Core.t_any_from_func.vx_fn_new({() in
-                    let output_3 : any Vx_Core.Type_any = testresult
-                    return output_3
-                  })
-                ),
-                Vx_Core.f_else(
-                  Vx_Core.t_any_from_func.vx_fn_new({() in
-                    var output_4 : any Vx_Core.Type_any = Vx_Core.f_let(
-                      Vx_Test.t_testresult,
-                      Vx_Core.t_any_from_func.vx_fn_new({() in
-                        let passfail : any Vx_Core.Type_boolean = Vx_Core.f_eq(
-                          expected,
-                          actual
-                        )
-                        let output_5 : any Vx_Core.Type_any = Vx_Core.f_copy(
-                          Vx_Test.t_testresult,
-                          testresult,
-                          Vx_Core.vx_new(
-                            Vx_Core.t_anylist,
-                            Vx_Core.vx_new_string(":passfail"),
-                            passfail,
-                            Vx_Core.vx_new_string(":actual"),
-                            actual
+                  ),
+                  Vx_Core.f_else(
+                    Vx_Core.t_any_from_func.vx_fn_new(
+                      {() in
+                        var output_4 : any Vx_Core.Type_any = Vx_Core.f_let(
+                            Vx_Test.t_testresult,
+                            Vx_Core.t_any_from_func.vx_fn_new(
+                              {() in
+                                let passfail : any Vx_Core.Type_boolean = Vx_Core.f_eq(expected, actual)
+                                let output_5 : any Vx_Core.Type_any = Vx_Core.f_copy(
+                                  Vx_Test.t_testresult,
+                                  testresult,
+                                  Vx_Core.vx_new(
+                                    Vx_Core.t_anylist,
+                                    [
+                                      Vx_Core.vx_new_string(":passfail"),
+                                      passfail,
+                                      Vx_Core.vx_new_string(":actual"),
+                                      actual
+                                    ]
+                                  )
+                                )
+                                return output_5
+                              }
+                            )
                           )
-                        )
-                        return output_5
-                      })
+                          return output_4
+                        }
                     )
-                    return output_4
-                  })
-                )
+                  )
+                ]
               )
             )
-            return output_6
-          }
+              return output_6
+            }
         )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -5679,17 +7044,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -5729,17 +7094,21 @@ public enum Vx_Test {
       Vx_Core.t_security,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":allowfuncs"),
-        Vx_Core.f_new(
-          Vx_Core.t_funclist,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Data_File.t_boolean_write_from_file_any,
-            Vx_Data_File.t_boolean_write_from_file_string,
-            Vx_Data_File.t_file_read_from_file,
-            Vx_Data_File.t_string_read_from_file
+        [
+          Vx_Core.vx_new_string(":allowfuncs"),
+          Vx_Core.f_new(
+            Vx_Core.t_funclist,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Data_File.t_boolean_write_from_file_any,
+                Vx_Data_File.t_boolean_write_from_file_string,
+                Vx_Data_File.t_file_read_from_file,
+                Vx_Data_File.t_string_read_from_file
+              ]
+            )
           )
-        )
+        ]
       )
     )
     return output
@@ -5782,17 +7151,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -5812,9 +7181,24 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Test.f_test(context, expected, actual)
       return output
     }
@@ -5844,17 +7228,16 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":eq"),
-          Vx_Core.vx_new_string(":passfail"),
-          Vx_Core.f_eq(
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":eq"),
+            Vx_Core.vx_new_string(":passfail"),
+            Vx_Core.f_eq(expected, actual),
+            Vx_Core.vx_new_string(":expected"),
             expected,
+            Vx_Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx_Core.vx_new_string(":expected"),
-          expected,
-          Vx_Core.vx_new_string(":actual"),
-          actual
+          ]
         )
       )
     } catch {
@@ -5865,7 +7248,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -5908,17 +7293,17 @@ public enum Vx_Test {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -5938,9 +7323,24 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func_async, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Test.f_test_1(context, expected, fn_actual)
       return output
     }
@@ -5970,12 +7370,14 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":eq"),
-          Vx_Core.vx_new_string(":expected"),
-          expected,
-          Vx_Core.vx_new_string(":fn-actual"),
-          fn_actual
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":eq"),
+            Vx_Core.vx_new_string(":expected"),
+            expected,
+            Vx_Core.vx_new_string(":fn-actual"),
+            fn_actual
+          ]
         )
       )
     } catch {
@@ -5986,7 +7388,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -6028,17 +7432,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -6066,7 +7470,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Test.f_test_false(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -6074,8 +7481,18 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Test.f_test_false(context, actual)
       return output
     }
@@ -6103,17 +7520,19 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":false"),
-          Vx_Core.vx_new_string(":passfail"),
-          Vx_Core.f_eq(
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":false"),
+            Vx_Core.vx_new_string(":passfail"),
+            Vx_Core.f_eq(
+              Vx_Core.vx_new_boolean(false),
+              actual
+            ),
+            Vx_Core.vx_new_string(":expected"),
             Vx_Core.vx_new_boolean(false),
+            Vx_Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx_Core.vx_new_string(":expected"),
-          Vx_Core.vx_new_boolean(false),
-          Vx_Core.vx_new_string(":actual"),
-          actual
+          ]
         )
       )
     } catch {
@@ -6124,7 +7543,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -6166,17 +7587,17 @@ public enum Vx_Test {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -6204,7 +7625,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Func_any_from_func_async = value as! any Vx_Core.Func_any_from_func_async
       let outputval : any Vx_Core.Type_any = Vx_Test.f_test_false_1(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -6212,8 +7636,18 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func_async, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Test.f_test_false_1(context, fn_actual)
       return output
     }
@@ -6241,12 +7675,14 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":false"),
-          Vx_Core.vx_new_string(":expected"),
-          Vx_Core.vx_new_boolean(false),
-          Vx_Core.vx_new_string(":fn-actual"),
-          fn_actual
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":false"),
+            Vx_Core.vx_new_string(":expected"),
+            Vx_Core.vx_new_boolean(false),
+            Vx_Core.vx_new_string(":fn-actual"),
+            fn_actual
+          ]
         )
       )
     } catch {
@@ -6257,7 +7693,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -6300,17 +7738,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -6330,9 +7768,24 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Test.f_test_gt(context, expected, actual)
       return output
     }
@@ -6362,17 +7815,16 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":gt"),
-          Vx_Core.vx_new_string(":passfail"),
-          Vx_Core.f_gt(
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":gt"),
+            Vx_Core.vx_new_string(":passfail"),
+            Vx_Core.f_gt(expected, actual),
+            Vx_Core.vx_new_string(":expected"),
             expected,
+            Vx_Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx_Core.vx_new_string(":expected"),
-          expected,
-          Vx_Core.vx_new_string(":actual"),
-          actual
+          ]
         )
       )
     } catch {
@@ -6383,7 +7835,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -6426,17 +7880,17 @@ public enum Vx_Test {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -6456,9 +7910,24 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func_async, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Test.f_test_gt_1(context, expected, fn_actual)
       return output
     }
@@ -6488,12 +7957,14 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":gt"),
-          Vx_Core.vx_new_string(":expected"),
-          expected,
-          Vx_Core.vx_new_string(":fn-actual"),
-          fn_actual
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":gt"),
+            Vx_Core.vx_new_string(":expected"),
+            expected,
+            Vx_Core.vx_new_string(":fn-actual"),
+            fn_actual
+          ]
         )
       )
     } catch {
@@ -6504,7 +7975,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -6547,17 +8020,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -6577,9 +8050,24 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Test.f_test_ne(context, expected, actual)
       return output
     }
@@ -6609,17 +8097,16 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":ne"),
-          Vx_Core.vx_new_string(":passfail"),
-          Vx_Core.f_ne(
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":ne"),
+            Vx_Core.vx_new_string(":passfail"),
+            Vx_Core.f_ne(expected, actual),
+            Vx_Core.vx_new_string(":expected"),
             expected,
+            Vx_Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx_Core.vx_new_string(":expected"),
-          expected,
-          Vx_Core.vx_new_string(":actual"),
-          actual
+          ]
         )
       )
     } catch {
@@ -6630,7 +8117,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -6673,17 +8162,17 @@ public enum Vx_Test {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -6703,9 +8192,24 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func_async, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Test.f_test_ne_1(context, expected, fn_actual)
       return output
     }
@@ -6735,12 +8239,14 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":ne"),
-          Vx_Core.vx_new_string(":expected"),
-          expected,
-          Vx_Core.vx_new_string(":fn-actual"),
-          fn_actual
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":ne"),
+            Vx_Core.vx_new_string(":expected"),
+            expected,
+            Vx_Core.vx_new_string(":fn-actual"),
+            fn_actual
+          ]
         )
       )
     } catch {
@@ -6751,7 +8257,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -6794,17 +8302,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -6824,9 +8332,24 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Test.f_test_string(context, expected, actual)
       return output
     }
@@ -6856,19 +8379,17 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":passfail"),
-          Vx_Core.f_eq(
-            Vx_Core.f_string_from_any(
-              expected
+          [
+            Vx_Core.vx_new_string(":passfail"),
+            Vx_Core.f_eq(
+              Vx_Core.f_string_from_any(expected),
+              Vx_Core.f_string_from_any(actual)
             ),
-            Vx_Core.f_string_from_any(
-              actual
-            )
-          ),
-          Vx_Core.vx_new_string(":expected"),
-          expected,
-          Vx_Core.vx_new_string(":actual"),
-          actual
+            Vx_Core.vx_new_string(":expected"),
+            expected,
+            Vx_Core.vx_new_string(":actual"),
+            actual
+          ]
         )
       )
     } catch {
@@ -6879,7 +8400,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -6922,17 +8445,17 @@ public enum Vx_Test {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -6952,9 +8475,24 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func_async, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let expected : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Test.f_test_string_1(context, expected, fn_actual)
       return output
     }
@@ -6984,12 +8522,14 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":string"),
-          Vx_Core.vx_new_string(":expected"),
-          expected,
-          Vx_Core.vx_new_string(":fn-actual"),
-          fn_actual
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":string"),
+            Vx_Core.vx_new_string(":expected"),
+            expected,
+            Vx_Core.vx_new_string(":fn-actual"),
+            fn_actual
+          ]
         )
       )
     } catch {
@@ -7000,7 +8540,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -7042,17 +8584,17 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -7080,7 +8622,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Test.f_test_true(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -7088,8 +8633,18 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let actual : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Test.f_test_true(context, actual)
       return output
     }
@@ -7117,17 +8672,19 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":true"),
-          Vx_Core.vx_new_string(":passfail"),
-          Vx_Core.f_eq(
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":true"),
+            Vx_Core.vx_new_string(":passfail"),
+            Vx_Core.f_eq(
+              Vx_Core.vx_new_boolean(true),
+              actual
+            ),
+            Vx_Core.vx_new_string(":expected"),
             Vx_Core.vx_new_boolean(true),
+            Vx_Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx_Core.vx_new_string(":expected"),
-          Vx_Core.vx_new_boolean(true),
-          Vx_Core.vx_new_string(":actual"),
-          actual
+          ]
         )
       )
     } catch {
@@ -7138,7 +8695,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -7180,17 +8739,17 @@ public enum Vx_Test {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -7218,7 +8777,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Func_any_from_func_async = value as! any Vx_Core.Func_any_from_func_async
       let outputval : any Vx_Core.Type_any = Vx_Test.f_test_true_1(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -7226,8 +8788,18 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(Vx_Core.t_any_from_func_async, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let fn_actual : any Vx_Core.Func_any_from_func_async = Vx_Core.f_any_from_any(
+        Vx_Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Test.f_test_true_1(context, fn_actual)
       return output
     }
@@ -7255,12 +8827,14 @@ public enum Vx_Test {
         Vx_Test.t_testresult,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":code"),
-          Vx_Core.vx_new_string(":true"),
-          Vx_Core.vx_new_string(":expected"),
-          Vx_Core.vx_new_boolean(true),
-          Vx_Core.vx_new_string(":fn-actual"),
-          fn_actual
+          [
+            Vx_Core.vx_new_string(":code"),
+            Vx_Core.vx_new_string(":true"),
+            Vx_Core.vx_new_string(":expected"),
+            Vx_Core.vx_new_boolean(true),
+            Vx_Core.vx_new_string(":fn-actual"),
+            fn_actual
+          ]
         )
       )
     } catch {
@@ -7271,7 +8845,9 @@ public enum Vx_Test {
       output = Vx_Core.vx_copy(
         Vx_Test.t_testresult,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -7313,17 +8889,22 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "tr", // name
-          ":struct", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "tr",
+          ":struct",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_node
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -7343,8 +8924,18 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let testdescribe : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(Vx_Test.t_testdescribe, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let casename : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let testdescribe : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(
+        Vx_Test.t_testdescribe,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let casename : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Test.f_tr_from_testdescribe_casename(testdescribe, casename)
       return output
     }
@@ -7369,101 +8960,117 @@ public enum Vx_Test {
     var output : any Vx_Web_Html.Type_tr = Vx_Web_Html.e_tr
     output = Vx_Core.f_let(
       Vx_Web_Html.t_tr,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let describename : any Vx_Core.Type_string = testdescribe.describename()
-        let result : any Vx_Test.Type_testresult = testdescribe.testresult()
-        let passfail : any Vx_Core.Type_boolean = result.passfail()
-        let expected : any Vx_Core.Type_string = Vx_Core.f_string_from_any(
-          result.expected()
-        )
-        let actual : any Vx_Core.Type_string = Vx_Core.f_string_from_any(
-          result.actual()
-        )
-        let prestyle : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
-          Vx_Test.c_stylesheet_test,
-          Vx_Core.vx_new_string(".preformatted")
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Web_Html.t_tr,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.f_new(
-              Vx_Web_Html.t_td,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Test.f_p_from_passfail(
-                  passfail
-                )
-              )
-            ),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_td,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let describename : any Vx_Core.Type_string = testdescribe.describename()
+          let result : any Vx_Test.Type_testresult = testdescribe.testresult()
+          let passfail : any Vx_Core.Type_boolean = result.passfail()
+          let expected : any Vx_Core.Type_string = Vx_Core.f_string_from_any(result.expected())
+          let actual : any Vx_Core.Type_string = Vx_Core.f_string_from_any(result.actual())
+          let prestyle : any Vx_Web_Html.Type_style = Vx_Web_Html.f_style_from_stylesheet_name(
+            Vx_Test.c_stylesheet_test,
+            Vx_Core.vx_new_string(".preformatted")
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Web_Html.t_tr,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
                 Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
+                  Vx_Web_Html.t_td,
                   Vx_Core.vx_new(
                     Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    prestyle,
-                    Vx_Core.vx_new_string(":text"),
-                    casename
+                    [
+                      Vx_Test.f_p_from_passfail(passfail)
+                    ]
                   )
-                )
-              )
-            ),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_td,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
+                ),
                 Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
+                  Vx_Web_Html.t_td,
                   Vx_Core.vx_new(
                     Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    prestyle,
-                    Vx_Core.vx_new_string(":text"),
-                    describename
+                    [
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            prestyle,
+                            Vx_Core.vx_new_string(":text"),
+                            casename
+                          ]
+                        )
+                      )
+                    ]
                   )
-                )
-              )
-            ),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_td,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
+                ),
                 Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
+                  Vx_Web_Html.t_td,
                   Vx_Core.vx_new(
                     Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    prestyle,
-                    Vx_Core.vx_new_string(":text"),
-                    expected
+                    [
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            prestyle,
+                            Vx_Core.vx_new_string(":text"),
+                            describename
+                          ]
+                        )
+                      )
+                    ]
                   )
-                )
-              )
-            ),
-            Vx_Core.f_new(
-              Vx_Web_Html.t_td,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
+                ),
                 Vx_Core.f_new(
-                  Vx_Web_Html.t_p,
+                  Vx_Web_Html.t_td,
                   Vx_Core.vx_new(
                     Vx_Core.t_anylist,
-                    Vx_Core.vx_new_string(":style"),
-                    prestyle,
-                    Vx_Core.vx_new_string(":text"),
-                    actual
+                    [
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            prestyle,
+                            Vx_Core.vx_new_string(":text"),
+                            expected
+                          ]
+                        )
+                      )
+                    ]
+                  )
+                ),
+                Vx_Core.f_new(
+                  Vx_Web_Html.t_td,
+                  Vx_Core.vx_new(
+                    Vx_Core.t_anylist,
+                    [
+                      Vx_Core.f_new(
+                        Vx_Web_Html.t_p,
+                        Vx_Core.vx_new(
+                          Vx_Core.t_anylist,
+                          [
+                            Vx_Core.vx_new_string(":style"),
+                            prestyle,
+                            Vx_Core.vx_new_string(":text"),
+                            actual
+                          ]
+                        )
+                      )
+                    ]
                   )
                 )
-              )
+              ]
             )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -7503,17 +9110,22 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "trlist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_tr), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "trlist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_tr
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -7540,7 +9152,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Test.Type_testcase = value as! any Vx_Test.Type_testcase
       let outputval : any Vx_Core.Type_any = Vx_Test.f_trlist_from_testcase(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -7548,7 +9163,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let testcase : any Vx_Test.Type_testcase = Vx_Core.f_any_from_any(Vx_Test.t_testcase, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testcase : any Vx_Test.Type_testcase = Vx_Core.f_any_from_any(
+        Vx_Test.t_testcase,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_trlist_from_testcase(testcase)
       return output
     }
@@ -7571,23 +9191,30 @@ public enum Vx_Test {
     var output : any Vx_Web_Html.Type_trlist = Vx_Web_Html.e_trlist
     output = Vx_Core.f_let(
       Vx_Web_Html.t_trlist,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let describelist : any Vx_Test.Type_testdescribelist = testcase.describelist()
-        let casename : any Vx_Core.Type_string = testcase.casename()
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_list_from_list_1(
-          Vx_Web_Html.t_trlist,
-          describelist,
-          Vx_Core.t_any_from_any.vx_fn_new({(testdescribe_any) in
-            let testdescribe : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(Vx_Test.t_testdescribe, testdescribe_any)
-            var output_2 : any Vx_Core.Type_any = Vx_Test.f_tr_from_testdescribe_casename(
-              testdescribe,
-              casename
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let describelist : any Vx_Test.Type_testdescribelist = testcase.describelist()
+          let casename : any Vx_Core.Type_string = testcase.casename()
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_list_from_list_1(
+            Vx_Web_Html.t_trlist,
+            describelist,
+            Vx_Core.t_any_from_any.vx_fn_new(
+              {(testdescribe_any) in
+                let testdescribe : any Vx_Test.Type_testdescribe = Vx_Core.f_any_from_any(
+                  Vx_Test.t_testdescribe,
+                  testdescribe_any
+                )
+                var output_2 : any Vx_Core.Type_any = Vx_Test.f_tr_from_testdescribe_casename(
+                  testdescribe,
+                  casename
+                )
+                return output_2
+              }
             )
-            return output_2
-          })
-        )
-        return output_1
-      })
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -7627,17 +9254,22 @@ public enum Vx_Test {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "trlist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_tr), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "trlist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_tr
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -7664,7 +9296,10 @@ public enum Vx_Test {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Test.Type_testcaselist = value as! any Vx_Test.Type_testcaselist
       let outputval : any Vx_Core.Type_any = Vx_Test.f_trlist_from_testcaselist(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -7672,7 +9307,12 @@ public enum Vx_Test {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let testcaselist : any Vx_Test.Type_testcaselist = Vx_Core.f_any_from_any(Vx_Test.t_testcaselist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let testcaselist : any Vx_Test.Type_testcaselist = Vx_Core.f_any_from_any(
+        Vx_Test.t_testcaselist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Test.f_trlist_from_testcaselist(testcaselist)
       return output
     }

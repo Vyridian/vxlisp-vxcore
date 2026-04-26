@@ -74,9 +74,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -97,9 +107,19 @@ public final class Html {
             Html.Type_divchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Core.vx_new(Html.t_divchildlist, valdefault);
+              vallist = Core.vx_new(
+                Html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Core.vx_copy(vallist, valdefault);
+              vallist = Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -111,8 +131,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/body", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/body",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -123,8 +152,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/body", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/body",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -146,14 +184,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/body", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/body",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/body", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/body",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -184,17 +242,17 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "body", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "body",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -377,9 +435,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -400,8 +468,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/details",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -412,8 +489,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -426,7 +512,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -438,9 +529,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -459,9 +561,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -480,9 +593,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -501,9 +625,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -522,9 +657,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":summary"))) {
             if (valsub == vx_p_summary) {
@@ -543,9 +689,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("summary"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":nodes"))) {
             if (valsub == vx_p_nodes) {
@@ -564,14 +721,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/details", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/details",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -608,17 +785,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "details", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "details",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_divchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -783,9 +966,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -806,9 +999,19 @@ public final class Html {
             Html.Type_divchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Core.vx_new(Html.t_divchildlist, valdefault);
+              vallist = Core.vx_new(
+                Html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Core.vx_copy(vallist, valdefault);
+              vallist = Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -820,8 +1023,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/div", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/div",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -832,8 +1044,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/div", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -846,7 +1067,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -858,9 +1084,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -879,9 +1116,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -900,9 +1148,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -921,9 +1180,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -942,9 +1212,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":nodes"))) {
             if (valsub == vx_p_nodes) {
@@ -963,14 +1244,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/div", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/div",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1006,17 +1307,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "div", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "div",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_divchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1051,7 +1358,10 @@ public final class Html {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Html.Type_divchild output = Core.vx_copy(Html.e_divchild, vals);
+      Html.Type_divchild output = Core.vx_copy(
+        Html.e_divchild,
+        vals
+      );
       return output;
     }
 
@@ -1089,17 +1399,17 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "divchild", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "divchild",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1159,7 +1469,10 @@ public final class Html {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Html.Type_divchildlist output = Core.vx_copy(Html.e_divchildlist, vals);
+      Html.Type_divchildlist output = Core.vx_copy(
+        Html.e_divchildlist,
+        vals
+      );
       return output;
     }
 
@@ -1176,9 +1489,19 @@ public final class Html {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Html.Type_divchildlist) {
           Html.Type_divchildlist multi = (Html.Type_divchildlist)valsub;
           ischanged = true;
@@ -1203,11 +1526,29 @@ public final class Html {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/web/html/divchildlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/divchildlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/web/html/divchildlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/divchildlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -1236,17 +1577,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "divchildlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Html.t_divchild), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "divchildlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_divchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1323,9 +1669,19 @@ public final class Html {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Html.Type_divlist) {
           Html.Type_divlist multi = (Html.Type_divlist)valsub;
           ischanged = true;
@@ -1350,11 +1706,29 @@ public final class Html {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/web/html/divlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/divlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/web/html/divlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/divlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -1383,17 +1757,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "divlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Html.t_div), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "divlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_div
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1468,9 +1847,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -1491,9 +1880,19 @@ public final class Html {
             Html.Type_divchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Core.vx_new(Html.t_divchildlist, valdefault);
+              vallist = Core.vx_new(
+                Html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Core.vx_copy(vallist, valdefault);
+              vallist = Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -1505,8 +1904,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/footer", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/footer",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1517,8 +1925,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/footer", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/footer",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1540,14 +1957,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/footer", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/footer",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/footer", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/footer",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1578,17 +2015,17 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "footer", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "footer",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1753,9 +2190,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -1779,8 +2226,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/h1", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/h1",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1795,11 +2251,25 @@ public final class Html {
               vx_p_text = valstr;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/h1", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1812,7 +2282,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -1824,9 +2299,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -1845,9 +2331,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -1866,9 +2363,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -1887,9 +2395,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -1908,9 +2427,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":text"))) {
             if (valsub == vx_p_text) {
@@ -1920,7 +2450,12 @@ public final class Html {
               vx_p_text = valtext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -1932,14 +2467,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/h1", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/h1",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1975,17 +2530,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "h1", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "h1",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_divchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2150,9 +2711,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -2176,8 +2747,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/h2", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/h2",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2192,11 +2772,25 @@ public final class Html {
               vx_p_text = valstr;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/h2", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2209,7 +2803,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2221,9 +2820,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -2242,9 +2852,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -2263,9 +2884,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -2284,9 +2916,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -2305,9 +2948,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":text"))) {
             if (valsub == vx_p_text) {
@@ -2317,7 +2971,12 @@ public final class Html {
               vx_p_text = valtext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2329,14 +2988,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/h2", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/h2",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2372,17 +3051,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "h2", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "h2",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_divchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2547,9 +3232,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -2573,8 +3268,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/h3", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/h3",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2589,11 +3293,25 @@ public final class Html {
               vx_p_text = valstr;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/h3", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2606,7 +3324,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2618,9 +3341,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -2639,9 +3373,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -2660,9 +3405,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -2681,9 +3437,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -2702,9 +3469,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":text"))) {
             if (valsub == vx_p_text) {
@@ -2714,7 +3492,12 @@ public final class Html {
               vx_p_text = valtext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2726,14 +3509,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/h3", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/h3",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2769,17 +3572,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "h3", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "h3",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_divchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2854,9 +3663,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -2877,9 +3696,19 @@ public final class Html {
             Html.Type_headchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Core.vx_new(Html.t_headchildlist, valdefault);
+              vallist = Core.vx_new(
+                Html.t_headchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Core.vx_copy(vallist, valdefault);
+              vallist = Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -2891,8 +3720,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/head", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/head",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2903,8 +3741,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/head", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/head",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2926,14 +3773,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/head", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/head",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/head", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/head",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2964,17 +3831,17 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "head", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "head",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3009,7 +3876,10 @@ public final class Html {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Html.Type_headchild output = Core.vx_copy(Html.e_headchild, vals);
+      Html.Type_headchild output = Core.vx_copy(
+        Html.e_headchild,
+        vals
+      );
       return output;
     }
 
@@ -3047,17 +3917,17 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "headchild", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "headchild",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3117,7 +3987,10 @@ public final class Html {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Html.Type_headchildlist output = Core.vx_copy(Html.e_headchildlist, vals);
+      Html.Type_headchildlist output = Core.vx_copy(
+        Html.e_headchildlist,
+        vals
+      );
       return output;
     }
 
@@ -3134,9 +4007,19 @@ public final class Html {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Html.Type_headchildlist) {
           Html.Type_headchildlist multi = (Html.Type_headchildlist)valsub;
           ischanged = true;
@@ -3161,11 +4044,29 @@ public final class Html {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/web/html/headchildlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/headchildlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/web/html/headchildlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/headchildlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -3194,17 +4095,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "headchildlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Html.t_headchild), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "headchildlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_headchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3333,9 +4239,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -3356,8 +4272,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/html", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/html",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -3368,8 +4293,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/html", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -3382,7 +4316,12 @@ public final class Html {
               vx_p_lang = vallang;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_lang = Core.vx_new(Core.t_string, valsub);
+              vx_p_lang = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -3394,9 +4333,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("lang"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":head"))) {
             if (valsub == vx_p_head) {
@@ -3415,9 +4365,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("head"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":body"))) {
             if (valsub == vx_p_body) {
@@ -3436,9 +4397,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("body"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":footer"))) {
             if (valsub == vx_p_footer) {
@@ -3457,14 +4429,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("footer"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/html", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/html",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -3498,17 +4490,17 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "html", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "html",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3673,9 +4665,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -3699,8 +4701,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/img", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/img",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -3715,11 +4726,25 @@ public final class Html {
               vx_p_src = valstr;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_src = Core.vx_new(Core.t_string, valsub);
+              vx_p_src = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/img", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -3732,7 +4757,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -3744,9 +4774,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -3765,9 +4806,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -3786,9 +4838,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -3807,9 +4870,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -3828,9 +4902,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":src"))) {
             if (valsub == vx_p_src) {
@@ -3840,7 +4925,12 @@ public final class Html {
               vx_p_src = valsrc;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_src = Core.vx_new(Core.t_string, valsub);
+              vx_p_src = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -3852,14 +4942,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("src"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/img", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/img",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -3895,17 +5005,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "img", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "img",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_divchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -4106,9 +5222,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -4129,8 +5255,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/meta",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -4141,8 +5276,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -4155,7 +5299,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -4167,9 +5316,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -4188,9 +5348,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -4209,9 +5380,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -4230,9 +5412,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -4251,9 +5444,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":charset"))) {
             if (valsub == vx_p_charset) {
@@ -4263,7 +5467,12 @@ public final class Html {
               vx_p_charset = valcharset;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_charset = Core.vx_new(Core.t_string, valsub);
+              vx_p_charset = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -4275,9 +5484,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("charset"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":name"))) {
             if (valsub == vx_p_name) {
@@ -4287,7 +5507,12 @@ public final class Html {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -4299,9 +5524,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":content"))) {
             if (valsub == vx_p_content) {
@@ -4311,7 +5547,12 @@ public final class Html {
               vx_p_content = valcontent;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_content = Core.vx_new(Core.t_string, valsub);
+              vx_p_content = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -4323,14 +5564,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("content"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/meta", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/meta",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -4368,17 +5629,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "meta", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_headchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "meta",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_headchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -4525,9 +5792,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -4548,8 +5825,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/node", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/node",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -4560,8 +5846,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/node", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -4574,7 +5869,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -4586,9 +5886,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -4607,9 +5918,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -4628,9 +5950,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -4649,9 +5982,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -4670,14 +6014,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/node", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/node",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -4712,17 +6076,17 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "node", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "node",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -4782,7 +6146,10 @@ public final class Html {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Html.Type_nodelist output = Core.vx_copy(Html.e_nodelist, vals);
+      Html.Type_nodelist output = Core.vx_copy(
+        Html.e_nodelist,
+        vals
+      );
       return output;
     }
 
@@ -4799,9 +6166,19 @@ public final class Html {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Html.Type_nodelist) {
           Html.Type_nodelist multi = (Html.Type_nodelist)valsub;
           ischanged = true;
@@ -4826,11 +6203,29 @@ public final class Html {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/web/html/nodelist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/nodelist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/web/html/nodelist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/nodelist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -4859,17 +6254,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "nodelist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Html.t_node), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "nodelist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5034,9 +6434,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -5060,8 +6470,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/p", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/p",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -5076,11 +6495,25 @@ public final class Html {
               vx_p_text = valstr;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/p", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -5093,7 +6526,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -5105,9 +6543,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -5126,9 +6575,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -5147,9 +6607,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -5168,9 +6639,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -5189,9 +6671,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":text"))) {
             if (valsub == vx_p_text) {
@@ -5201,7 +6694,12 @@ public final class Html {
               vx_p_text = valtext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -5213,14 +6711,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/p", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/p",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -5256,17 +6774,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "p", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "p",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_divchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5288,7 +6812,9 @@ public final class Html {
 
   public static class Class_propmap extends Core.Class_base implements Type_propmap {
 
-    public Map<String, Core.Type_string> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_string>());
+    public Map<String, Core.Type_string> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_string>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -5358,8 +6884,17 @@ public final class Html {
           Core.Type_string castval = (Core.Type_string)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/web/html/propmap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/web/html/propmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -5390,9 +6925,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -5409,8 +6954,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/propmap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/propmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_string valany = Core.e_string;
@@ -5419,7 +6973,12 @@ public final class Html {
             Core.Type_string valallowed = (Core.Type_string)valsub;
             valany = valallowed;
           } else if (valsub instanceof String) {
-            valany = Core.vx_new(Core.t_string, valsub);
+            valany = Core.vx_new(
+              Core.t_string,
+              // [
+                valsub
+              // ]
+            );
           } else {
             if (false) {
             } else if (valsub instanceof Core.Type_any) {
@@ -5431,9 +6990,20 @@ public final class Html {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/web/html/propmap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/propmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -5471,17 +7041,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "propmap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "propmap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_string
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5592,9 +7167,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -5615,8 +7200,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/style", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/style",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -5627,8 +7221,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/style", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -5641,7 +7244,12 @@ public final class Html {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -5653,9 +7261,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":props"))) {
             if (valsub == vx_p_props) {
@@ -5674,9 +7293,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("props"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -5695,14 +7325,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/style", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/style",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -5735,17 +7385,17 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "style", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "style",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5805,7 +7455,10 @@ public final class Html {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Html.Type_stylelist output = Core.vx_copy(Html.e_stylelist, vals);
+      Html.Type_stylelist output = Core.vx_copy(
+        Html.e_stylelist,
+        vals
+      );
       return output;
     }
 
@@ -5822,9 +7475,19 @@ public final class Html {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Html.Type_stylelist) {
           Html.Type_stylelist multi = (Html.Type_stylelist)valsub;
           ischanged = true;
@@ -5849,11 +7512,29 @@ public final class Html {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/web/html/stylelist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/stylelist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/web/html/stylelist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/stylelist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -5882,17 +7563,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylelist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Html.t_style), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "stylelist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_style
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5914,7 +7600,9 @@ public final class Html {
 
   public static class Class_stylemap extends Core.Class_base implements Type_stylemap {
 
-    public Map<String, Html.Type_style> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Html.Type_style>());
+    public Map<String, Html.Type_style> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Html.Type_style>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -5984,8 +7672,17 @@ public final class Html {
           Html.Type_style castval = (Html.Type_style)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/web/html/stylemap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/web/html/stylemap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -5997,7 +7694,10 @@ public final class Html {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Html.Type_stylemap output = Core.vx_copy(Html.e_stylemap, vals);
+      Html.Type_stylemap output = Core.vx_copy(
+        Html.e_stylemap,
+        vals
+      );
       return output;
     }
 
@@ -6016,9 +7716,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -6035,8 +7745,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/stylemap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/stylemap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Html.Type_style valany = Html.e_style;
@@ -6057,9 +7776,20 @@ public final class Html {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/web/html/stylemap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/stylemap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -6097,17 +7827,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylemap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Html.t_style), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "stylemap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_style
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -6273,7 +8008,10 @@ public final class Html {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Html.Type_stylesheet output = Core.vx_copy(Html.e_stylesheet, vals);
+      Html.Type_stylesheet output = Core.vx_copy(
+        Html.e_stylesheet,
+        vals
+      );
       return output;
     }
 
@@ -6308,9 +8046,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -6331,8 +8079,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/stylesheet",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -6343,8 +8100,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -6357,7 +8123,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -6369,9 +8140,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -6390,9 +8172,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -6411,9 +8204,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -6432,9 +8236,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -6453,9 +8268,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":name"))) {
             if (valsub == vx_p_name) {
@@ -6465,7 +8291,12 @@ public final class Html {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -6477,9 +8308,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":styles"))) {
             if (valsub == vx_p_styles) {
@@ -6498,9 +8340,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("styles"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylemap"))) {
             if (valsub == vx_p_stylemap) {
@@ -6519,14 +8372,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylemap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/stylesheet",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -6564,17 +8437,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylesheet", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_headchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "stylesheet",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_headchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -6757,9 +8636,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -6780,8 +8669,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/table",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -6792,8 +8690,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -6806,7 +8713,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -6818,9 +8730,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -6839,9 +8762,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -6860,9 +8794,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -6881,9 +8826,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -6902,9 +8858,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":tbody"))) {
             if (valsub == vx_p_tbody) {
@@ -6923,9 +8890,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("tbody"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":thead"))) {
             if (valsub == vx_p_thead) {
@@ -6944,14 +8922,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("thead"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/table", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/table",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -6988,17 +8986,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "table", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_divchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "table",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_divchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7163,9 +9167,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -7186,9 +9200,19 @@ public final class Html {
             Html.Type_trlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Core.vx_new(Html.t_trlist, valdefault);
+              vallist = Core.vx_new(
+                Html.t_trlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Core.vx_copy(vallist, valdefault);
+              vallist = Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -7200,8 +9224,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/tbody", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/tbody",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -7212,8 +9245,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/tbody", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -7226,7 +9268,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -7238,9 +9285,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -7259,9 +9317,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -7280,9 +9349,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -7301,9 +9381,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -7322,9 +9413,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":nodes"))) {
             if (valsub == vx_p_nodes) {
@@ -7343,14 +9445,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/tbody", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/tbody",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -7386,17 +9508,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "tbody", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "tbody",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7561,9 +9688,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -7584,9 +9721,19 @@ public final class Html {
             Html.Type_divchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Core.vx_new(Html.t_divchildlist, valdefault);
+              vallist = Core.vx_new(
+                Html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Core.vx_copy(vallist, valdefault);
+              vallist = Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -7598,8 +9745,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/td", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/td",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -7610,8 +9766,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/td", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -7624,7 +9789,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -7636,9 +9806,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -7657,9 +9838,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -7678,9 +9870,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -7699,9 +9902,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -7720,9 +9934,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":nodes"))) {
             if (valsub == vx_p_nodes) {
@@ -7741,14 +9966,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/td", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/td",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -7784,17 +10029,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "td", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "td",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7871,9 +10121,19 @@ public final class Html {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Html.Type_tdlist) {
           Html.Type_tdlist multi = (Html.Type_tdlist)valsub;
           ischanged = true;
@@ -7898,11 +10158,29 @@ public final class Html {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/web/html/tdlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/tdlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/web/html/tdlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/tdlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -7931,17 +10209,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "tdlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Html.t_td), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "tdlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_td
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -8106,9 +10389,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -8129,9 +10422,19 @@ public final class Html {
             Html.Type_trlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Core.vx_new(Html.t_trlist, valdefault);
+              vallist = Core.vx_new(
+                Html.t_trlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Core.vx_copy(vallist, valdefault);
+              vallist = Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -8143,8 +10446,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/thead", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/thead",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -8155,8 +10467,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/thead", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -8169,7 +10490,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -8181,9 +10507,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -8202,9 +10539,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -8223,9 +10571,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -8244,9 +10603,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -8265,9 +10635,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":nodes"))) {
             if (valsub == vx_p_nodes) {
@@ -8286,14 +10667,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/thead", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/thead",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -8329,17 +10730,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "thead", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "thead",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -8504,9 +10910,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -8527,8 +10943,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/title", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/title",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -8539,8 +10964,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/title", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -8553,7 +10987,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -8565,9 +11004,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -8586,9 +11036,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -8607,9 +11068,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -8628,9 +11100,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -8649,9 +11132,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":text"))) {
             if (valsub == vx_p_text) {
@@ -8661,7 +11155,12 @@ public final class Html {
               vx_p_text = valtext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -8673,14 +11172,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/title", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/title",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -8716,17 +11235,23 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "title", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node, Html.t_headchild), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "title",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node,
+            Html.t_headchild
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -8891,9 +11416,19 @@ public final class Html {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -8914,9 +11449,19 @@ public final class Html {
             Html.Type_tdlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Core.vx_new(Html.t_tdlist, valdefault);
+              vallist = Core.vx_new(
+                Html.t_tdlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Core.vx_copy(vallist, valdefault);
+              vallist = Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -8928,8 +11473,17 @@ public final class Html {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/web/html/tr", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/tr",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -8940,8 +11494,17 @@ public final class Html {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/web/html/tr", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -8954,7 +11517,12 @@ public final class Html {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -8966,9 +11534,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":eventmap"))) {
             if (valsub == vx_p_eventmap) {
@@ -8987,9 +11566,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style"))) {
             if (valsub == vx_p_style) {
@@ -9008,9 +11598,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":style-unique"))) {
             if (valsub == vx_p_style_unique) {
@@ -9029,9 +11630,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":stylelist"))) {
             if (valsub == vx_p_stylelist) {
@@ -9050,9 +11662,20 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":nodes"))) {
             if (valsub == vx_p_nodes) {
@@ -9071,14 +11694,34 @@ public final class Html {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/web/html/tr", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/web/html/tr",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -9114,17 +11757,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "tr", // name
-        ":struct", // extends
-        Core.vx_new(Core.t_typelist, Html.t_node), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "tr",
+        ":struct",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_node
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -9201,9 +11849,19 @@ public final class Html {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Html.Type_trlist) {
           Html.Type_trlist multi = (Html.Type_trlist)valsub;
           ischanged = true;
@@ -9228,11 +11886,29 @@ public final class Html {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/web/html/trlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/trlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/web/html/trlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/web/html/trlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -9261,17 +11937,22 @@ public final class Html {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/web/html", // pkgname
-        "trlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Html.t_tr), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/web/html",
+        "trlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Html.t_tr
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -9320,17 +12001,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9358,14 +12039,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Html.f_htmlstring_from_string(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_htmlstring_from_string(text);
       return output;
     }
@@ -9431,17 +12118,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9469,14 +12156,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_int inputval = (Core.Type_int)value;
       final Core.Type_any outputval = Html.f_string_indent(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_string_indent(indent);
       return output;
     }
@@ -9541,17 +12234,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9572,8 +12265,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_body body = Core.f_any_from_any(Html.t_body, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_body body = Core.f_any_from_any(
+        Html.t_body,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_body_indent(body, indent);
       return output;
     }
@@ -9593,16 +12292,18 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_divchildlist nodes = body.nodes();
-        final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Core.vx_new_string("body"),
-          Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_divchildlist nodes = body.nodes();
+          final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Core.vx_new_string("body"),
+            Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9647,17 +12348,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9678,8 +12379,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_details details = Core.f_any_from_any(Html.t_details, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_details details = Core.f_any_from_any(
+        Html.t_details,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_details_indent(details, indent);
       return output;
     }
@@ -9699,44 +12406,46 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Html.Type_divchildlist summary = details.summary();
-        final Html.Type_divchildlist nodes = details.nodes();
-        final Core.Type_string ssummary = Html.f_string_from_nodelist_indent(
-          summary,
-          Core.f_plus(
-            indent,
-            Core.vx_new_int(2)
-          )
-        );
-        final Core.Type_string snodes = Html.f_string_from_nodelist_indent(
-          nodes,
-          Core.f_plus(
-            indent,
-            Core.vx_new_int(1)
-          )
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<details>"),
-            sindent,
-            Core.vx_new_string("  <summary>"),
-            ssummary,
-            sindent,
-            Core.vx_new_string("  </summary>"),
-            snodes,
-            sindent,
-            Core.vx_new_string("</details>")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Html.Type_divchildlist summary = details.summary();
+          final Html.Type_divchildlist nodes = details.nodes();
+          final Core.Type_string ssummary = Html.f_string_from_nodelist_indent(
+            summary,
+            Core.f_plus(
+              indent,
+              Core.vx_new_int(2)
+            )
+          );
+          final Core.Type_string snodes = Html.f_string_from_nodelist_indent(
+            nodes,
+            Core.f_plus(
+              indent,
+              Core.vx_new_int(1)
+            )
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<details>"),
+                sindent,
+                Core.vx_new_string("  <summary>"),
+                ssummary,
+                sindent,
+                Core.vx_new_string("  </summary>"),
+                snodes,
+                sindent,
+                Core.vx_new_string("</details>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9781,17 +12490,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9812,8 +12521,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_div div = Core.f_any_from_any(Html.t_div, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_div div = Core.f_any_from_any(
+        Html.t_div,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_div_indent(div, indent);
       return output;
     }
@@ -9833,35 +12548,37 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_divchildlist nodes = div.nodes();
-        final Core.Type_string sid = Html.f_string_from_propname_val(
-          Core.vx_new_string("id"),
-          div.id()
-        );
-        final Core.Type_string sclass = Html.f_string_from_propstyle_stylelist(
-          div.style(),
-          div.stylelist()
-        );
-        final Core.Type_string sstyle = Html.f_string_from_propstyleunique(
-          div.style_unique()
-        );
-        final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Core.vx_new_string("div"),
-          Core.f_new(
-            Core.t_string,
-            Core.vx_new(
-              Core.t_anylist,
-              sid,
-              sclass,
-              sstyle
-            )
-          ),
-          indent
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_divchildlist nodes = div.nodes();
+          final Core.Type_string sid = Html.f_string_from_propname_val(
+            Core.vx_new_string("id"),
+            div.id()
+          );
+          final Core.Type_string sclass = Html.f_string_from_propstyle_stylelist(
+            div.style(),
+            div.stylelist()
+          );
+          final Core.Type_string sstyle = Html.f_string_from_propstyleunique(div.style_unique());
+          final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Core.vx_new_string("div"),
+            Core.f_new(
+              Core.t_string,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  sid,
+                  sclass,
+                  sstyle
+                // ]
+              )
+            ),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9906,17 +12623,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9937,8 +12654,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_footer footer = Core.f_any_from_any(Html.t_footer, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_footer footer = Core.f_any_from_any(
+        Html.t_footer,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_footer_indent(footer, indent);
       return output;
     }
@@ -9958,16 +12681,18 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_divchildlist nodes = footer.nodes();
-        final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Core.vx_new_string("footer"),
-          Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_divchildlist nodes = footer.nodes();
+          final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Core.vx_new_string("footer"),
+            Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10012,17 +12737,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10043,8 +12768,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_h1 h1 = Core.f_any_from_any(Html.t_h1, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_h1 h1 = Core.f_any_from_any(
+        Html.t_h1,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_h1_indent(h1, indent);
       return output;
     }
@@ -10064,29 +12795,31 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string text = h1.text();
-        final Core.Type_string sid = Html.f_string_from_propname_val(
-          Core.vx_new_string("id"),
-          h1.id()
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<h1"),
-            sid,
-            Core.vx_new_string(">"),
-            text,
-            Core.vx_new_string("</h1>")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string text = h1.text();
+          final Core.Type_string sid = Html.f_string_from_propname_val(
+            Core.vx_new_string("id"),
+            h1.id()
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<h1"),
+                sid,
+                Core.vx_new_string(">"),
+                text,
+                Core.vx_new_string("</h1>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10131,17 +12864,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10162,8 +12895,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_h2 h2 = Core.f_any_from_any(Html.t_h2, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_h2 h2 = Core.f_any_from_any(
+        Html.t_h2,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_h2_indent(h2, indent);
       return output;
     }
@@ -10183,29 +12922,31 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string text = h2.text();
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string sid = Html.f_string_from_propname_val(
-          Core.vx_new_string("id"),
-          h2.id()
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<h2"),
-            sid,
-            Core.vx_new_string(">"),
-            text,
-            Core.vx_new_string("</h2>")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string text = h2.text();
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string sid = Html.f_string_from_propname_val(
+            Core.vx_new_string("id"),
+            h2.id()
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<h2"),
+                sid,
+                Core.vx_new_string(">"),
+                text,
+                Core.vx_new_string("</h2>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10250,17 +12991,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10281,8 +13022,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_h3 h3 = Core.f_any_from_any(Html.t_h3, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_h3 h3 = Core.f_any_from_any(
+        Html.t_h3,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_h3_indent(h3, indent);
       return output;
     }
@@ -10302,29 +13049,31 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string text = h3.text();
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string sid = Html.f_string_from_propname_val(
-          Core.vx_new_string("id"),
-          h3.id()
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<h3"),
-            sid,
-            Core.vx_new_string(">"),
-            text,
-            Core.vx_new_string("</h3>")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string text = h3.text();
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string sid = Html.f_string_from_propname_val(
+            Core.vx_new_string("id"),
+            h3.id()
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<h3"),
+                sid,
+                Core.vx_new_string(">"),
+                text,
+                Core.vx_new_string("</h3>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10369,17 +13118,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10400,8 +13149,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_head head = Core.f_any_from_any(Html.t_head, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_head head = Core.f_any_from_any(
+        Html.t_head,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_head_indent(head, indent);
       return output;
     }
@@ -10421,16 +13176,18 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_headchildlist nodes = head.nodes();
-        final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Core.vx_new_string("head"),
-          Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_headchildlist nodes = head.nodes();
+          final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Core.vx_new_string("head"),
+            Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10474,17 +13231,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10512,14 +13269,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_html inputval = (Html.Type_html)value;
       final Core.Type_any outputval = Html.f_string_from_html(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_html html = Core.f_any_from_any(Html.t_html, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_html html = Core.f_any_from_any(
+        Html.t_html,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_string_from_html(html);
       return output;
     }
@@ -10539,44 +13302,48 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string lang = Html.f_string_from_propname_val(
-          Core.vx_new_string("lang"),
-          html.lang()
-        );
-        final Html.Type_head head = html.head();
-        final Html.Type_body body = html.body();
-        final Html.Type_footer footer = html.footer();
-        final Core.Type_string shead = Html.f_string_from_head_indent(
-          head,
-          Core.vx_new_int(1)
-        );
-        final Core.Type_string sbody = Html.f_string_from_body_indent(
-          body,
-          Core.vx_new_int(1)
-        );
-        final Core.Type_string sfooter = Html.f_string_from_footer_indent(
-          footer,
-          Core.vx_new_int(1)
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string("<!DOCTYPE html>"),
-            Core.c_newline,
-            Core.vx_new_string("<html"),
-            lang,
-            Core.vx_new_string(">"),
-            shead,
-            sbody,
-            sfooter,
-            Core.c_newline,
-            Core.vx_new_string("</html>")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string lang = Html.f_string_from_propname_val(
+            Core.vx_new_string("lang"),
+            html.lang()
+          );
+          final Html.Type_head head = html.head();
+          final Html.Type_body body = html.body();
+          final Html.Type_footer footer = html.footer();
+          final Core.Type_string shead = Html.f_string_from_head_indent(
+            head,
+            Core.vx_new_int(1)
+          );
+          final Core.Type_string sbody = Html.f_string_from_body_indent(
+            body,
+            Core.vx_new_int(1)
+          );
+          final Core.Type_string sfooter = Html.f_string_from_footer_indent(
+            footer,
+            Core.vx_new_int(1)
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string("<!DOCTYPE html>"),
+                Core.c_newline,
+                Core.vx_new_string("<html"),
+                lang,
+                Core.vx_new_string(">"),
+                shead,
+                sbody,
+                sfooter,
+                Core.c_newline,
+                Core.vx_new_string("</html>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10621,17 +13388,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10652,8 +13419,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_img img = Core.f_any_from_any(Html.t_img, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_img img = Core.f_any_from_any(
+        Html.t_img,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_img_indent(img, indent);
       return output;
     }
@@ -10673,40 +13446,40 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string ssrc = Html.f_string_from_propname_val(
-          Core.vx_new_string("src"),
-          img.src()
-        );
-        final Core.Type_string sid = Html.f_string_from_propname_val(
-          Core.vx_new_string("id"),
-          img.id()
-        );
-        final Core.Type_string sclass = Html.f_string_from_propstyle_stylelist(
-          img.style(),
-          img.stylelist()
-        );
-        final Core.Type_string sstyle = Html.f_string_from_propstyleunique(
-          img.style_unique()
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<img"),
-            sid,
-            sclass,
-            sstyle,
-            ssrc,
-            Core.vx_new_string(" />")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string ssrc = Html.f_string_from_propname_val(
+            Core.vx_new_string("src"),
+            img.src()
+          );
+          final Core.Type_string sid = Html.f_string_from_propname_val(
+            Core.vx_new_string("id"),
+            img.id()
+          );
+          final Core.Type_string sclass = Html.f_string_from_propstyle_stylelist(
+            img.style(),
+            img.stylelist()
+          );
+          final Core.Type_string sstyle = Html.f_string_from_propstyleunique(img.style_unique());
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<img"),
+                sid,
+                sclass,
+                sstyle,
+                ssrc,
+                Core.vx_new_string(" />")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10750,17 +13523,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10788,14 +13561,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_int inputval = (Core.Type_int)value;
       final Core.Type_any outputval = Html.f_string_from_indent(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_string_from_indent(indent);
       return output;
     }
@@ -10824,10 +13603,10 @@ public final class Html {
         Core.t_string,
         Core.vx_new(
           Core.t_anylist,
-          Core.c_newline,
-          Html.f_string_indent(
-            indent
-          )
+          // [
+            Core.c_newline,
+            Html.f_string_indent(indent)
+          // ]
         )
       )
     );
@@ -10874,17 +13653,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10905,8 +13684,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_meta meta = Core.f_any_from_any(Html.t_meta, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_meta meta = Core.f_any_from_any(
+        Html.t_meta,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_meta_indent(meta, indent);
       return output;
     }
@@ -10926,93 +13711,113 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string charset = meta.charset();
-        final Core.Type_string name = meta.name();
-        final Core.Type_string content = meta.content();
-        final Core.Type_string scharset = Core.f_if_2(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_ne(
-                  Core.vx_new_string(""),
-                  charset
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Html.f_string_from_propname_val(
-                  Core.vx_new_string("charset"),
-                  charset
-                );
-                return output_3;
-              })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string charset = meta.charset();
+          final Core.Type_string name = meta.name();
+          final Core.Type_string content = meta.content();
+          final Core.Type_string scharset = Core.f_if_2(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_ne(
+                          Core.vx_new_string(""),
+                          charset
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Html.f_string_from_propname_val(
+                          Core.vx_new_string("charset"),
+                          charset
+                        );
+                        return output_3;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        final Core.Type_string sname = Core.f_if_2(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_ne(
-                  Core.vx_new_string(""),
-                  name
-                );
-                return output_4;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_5 = Html.f_string_from_propname_val(
-                  Core.vx_new_string("name"),
-                  name
-                );
-                return output_5;
-              })
+          );
+          final Core.Type_string sname = Core.f_if_2(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_ne(
+                          Core.vx_new_string(""),
+                          name
+                        );
+                        return output_4;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_5 = Html.f_string_from_propname_val(
+                          Core.vx_new_string("name"),
+                          name
+                        );
+                        return output_5;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        final Core.Type_string scontext = Core.f_if_2(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_6 = Core.f_ne(
-                  Core.vx_new_string(""),
-                  content
-                );
-                return output_6;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_7 = Html.f_string_from_propname_val(
-                  Core.vx_new_string("content"),
-                  content
-                );
-                return output_7;
-              })
+          );
+          final Core.Type_string scontext = Core.f_if_2(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_6 = Core.f_ne(
+                          Core.vx_new_string(""),
+                          content
+                        );
+                        return output_6;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_7 = Html.f_string_from_propname_val(
+                          Core.vx_new_string("content"),
+                          content
+                        );
+                        return output_7;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<meta"),
-            scharset,
-            sname,
-            scontext,
-            Core.vx_new_string(" />")
-          )
-        );
-        return output_1;
-      })
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<meta"),
+                scharset,
+                sname,
+                scontext,
+                Core.vx_new_string(" />")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -11056,17 +13861,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11094,14 +13899,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Html.f_string_from_node(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any node = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any node = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_string_from_node(node);
       return output;
     }
@@ -11166,17 +13977,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11197,8 +14008,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any node = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any node = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_node_indent(node, indent);
       return output;
     }
@@ -11218,245 +14035,230 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_switch(
       Core.t_string,
-      Core.f_type_from_any(
-        node
-      ),
+      Core.f_type_from_any(node),
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_case_1(
-          Html.t_body,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Html.f_string_from_body_indent(
-              Core.f_any_from_any(
-                Html.t_body,
-                node
-              ),
-              indent
-            );
-            return output_1;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_details,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Html.f_string_from_details_indent(
-              Core.f_any_from_any(
-                Html.t_details,
-                node
-              ),
-              indent
-            );
-            return output_2;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_div,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_3 = Html.f_string_from_div_indent(
-              Core.f_any_from_any(
-                Html.t_div,
-                node
-              ),
-              indent
-            );
-            return output_3;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_h1,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_4 = Html.f_string_from_h1_indent(
-              Core.f_any_from_any(
-                Html.t_h1,
-                node
-              ),
-              indent
-            );
-            return output_4;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_h2,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_5 = Html.f_string_from_h2_indent(
-              Core.f_any_from_any(
-                Html.t_h2,
-                node
-              ),
-              indent
-            );
-            return output_5;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_h3,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_6 = Html.f_string_from_h3_indent(
-              Core.f_any_from_any(
-                Html.t_h3,
-                node
-              ),
-              indent
-            );
-            return output_6;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_head,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_7 = Html.f_string_from_head_indent(
-              Core.f_any_from_any(
-                Html.t_head,
-                node
-              ),
-              indent
-            );
-            return output_7;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_footer,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_8 = Html.f_string_from_footer_indent(
-              Core.f_any_from_any(
-                Html.t_footer,
-                node
-              ),
-              indent
-            );
-            return output_8;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_img,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_9 = Html.f_string_from_img_indent(
-              Core.f_any_from_any(
-                Html.t_img,
-                node
-              ),
-              indent
-            );
-            return output_9;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_meta,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_10 = Html.f_string_from_meta_indent(
-              Core.f_any_from_any(
-                Html.t_meta,
-                node
-              ),
-              indent
-            );
-            return output_10;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_p,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_11 = Html.f_string_from_p_indent(
-              Core.f_any_from_any(
-                Html.t_p,
-                node
-              ),
-              indent
-            );
-            return output_11;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_stylesheet,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_12 = Html.f_string_from_stylesheet_indent(
-              Core.f_any_from_any(
-                Html.t_stylesheet,
-                node
-              ),
-              indent
-            );
-            return output_12;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_table,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_13 = Html.f_string_from_table_indent(
-              Core.f_any_from_any(
-                Html.t_table,
-                node
-              ),
-              indent
-            );
-            return output_13;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_title,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_14 = Html.f_string_from_title_indent(
-              Core.f_any_from_any(
-                Html.t_title,
-                node
-              ),
-              indent
-            );
-            return output_14;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_tbody,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_15 = Html.f_string_from_tbody_indent(
-              Core.f_any_from_any(
-                Html.t_tbody,
-                node
-              ),
-              indent
-            );
-            return output_15;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_thead,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_16 = Html.f_string_from_thead_indent(
-              Core.f_any_from_any(
-                Html.t_thead,
-                node
-              ),
-              indent
-            );
-            return output_16;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_td,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_17 = Html.f_string_from_td_indent(
-              Core.f_any_from_any(
-                Html.t_td,
-                node
-              ),
-              indent
-            );
-            return output_17;
-          })
-        ),
-        Core.f_case_1(
-          Html.t_tr,
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_18 = Html.f_string_from_tr_indent(
-              Core.f_any_from_any(
-                Html.t_tr,
-                node
-              ),
-              indent
-            );
-            return output_18;
-          })
-        )
+        // [
+          Core.f_case_1(
+            Html.t_body,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Html.f_string_from_body_indent(
+                    Core.f_any_from_any(Html.t_body, node),
+                    indent
+                  );
+                  return output_1;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_details,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Html.f_string_from_details_indent(
+                    Core.f_any_from_any(Html.t_details, node),
+                    indent
+                  );
+                  return output_2;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_div,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_3 = Html.f_string_from_div_indent(
+                    Core.f_any_from_any(Html.t_div, node),
+                    indent
+                  );
+                  return output_3;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_h1,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_4 = Html.f_string_from_h1_indent(
+                    Core.f_any_from_any(Html.t_h1, node),
+                    indent
+                  );
+                  return output_4;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_h2,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_5 = Html.f_string_from_h2_indent(
+                    Core.f_any_from_any(Html.t_h2, node),
+                    indent
+                  );
+                  return output_5;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_h3,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_6 = Html.f_string_from_h3_indent(
+                    Core.f_any_from_any(Html.t_h3, node),
+                    indent
+                  );
+                  return output_6;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_head,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_7 = Html.f_string_from_head_indent(
+                    Core.f_any_from_any(Html.t_head, node),
+                    indent
+                  );
+                  return output_7;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_footer,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_8 = Html.f_string_from_footer_indent(
+                    Core.f_any_from_any(Html.t_footer, node),
+                    indent
+                  );
+                  return output_8;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_img,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_9 = Html.f_string_from_img_indent(
+                    Core.f_any_from_any(Html.t_img, node),
+                    indent
+                  );
+                  return output_9;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_meta,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_10 = Html.f_string_from_meta_indent(
+                    Core.f_any_from_any(Html.t_meta, node),
+                    indent
+                  );
+                  return output_10;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_p,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_11 = Html.f_string_from_p_indent(
+                    Core.f_any_from_any(Html.t_p, node),
+                    indent
+                  );
+                  return output_11;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_stylesheet,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_12 = Html.f_string_from_stylesheet_indent(
+                    Core.f_any_from_any(
+                      Html.t_stylesheet,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_12;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_table,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_13 = Html.f_string_from_table_indent(
+                    Core.f_any_from_any(Html.t_table, node),
+                    indent
+                  );
+                  return output_13;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_title,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_14 = Html.f_string_from_title_indent(
+                    Core.f_any_from_any(Html.t_title, node),
+                    indent
+                  );
+                  return output_14;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_tbody,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_15 = Html.f_string_from_tbody_indent(
+                    Core.f_any_from_any(Html.t_tbody, node),
+                    indent
+                  );
+                  return output_15;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_thead,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_16 = Html.f_string_from_thead_indent(
+                    Core.f_any_from_any(Html.t_thead, node),
+                    indent
+                  );
+                  return output_16;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_td,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_17 = Html.f_string_from_td_indent(
+                    Core.f_any_from_any(Html.t_td, node),
+                    indent
+                  );
+                  return output_17;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Html.t_tr,
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_18 = Html.f_string_from_tr_indent(
+                    Core.f_any_from_any(Html.t_tr, node),
+                    indent
+                  );
+                  return output_18;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -11502,17 +14304,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11533,8 +14335,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list nodelist = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list nodelist = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_nodelist_indent(nodelist, indent);
       return output;
     }
@@ -11554,25 +14362,29 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_stringlist textlist = Core.f_list_from_list_1(
-          Core.t_stringlist,
-          nodelist,
-          Core.t_any_from_any.vx_fn_new((node_any) -> {
-            final Html.Type_node node = Core.f_any_from_any(Html.t_node, node_any);
-            Core.Type_any output_2 = Html.f_string_from_node_indent(
-              node,
-              indent
-            );
-            return output_2;
-          })
-        );
-        final Core.Type_any output_1 = Type.f_string_from_stringlist_join(
-          textlist,
-          Core.vx_new_string("")
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_stringlist textlist = Core.f_list_from_list_1(
+            Core.t_stringlist,
+            nodelist,
+            Core.t_any_from_any.vx_fn_new(
+              (node_any) -> {
+                final Html.Type_node node = Core.f_any_from_any(
+                  Html.t_node,
+                  node_any
+                );
+                Core.Type_any output_2 = Html.f_string_from_node_indent(node, indent);
+                return output_2;
+              }
+            )
+          );
+          final Core.Type_any output_1 = Type.f_string_from_stringlist_join(
+            textlist,
+            Core.vx_new_string("")
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -11619,17 +14431,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11650,10 +14462,22 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list nodes = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string tag = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_string prop = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(3)));
+      final Core.Type_list nodes = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string tag = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_string prop = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(3))
+      );
       output = Html.f_string_from_nodelist_tag_prop_indent(nodes, tag, prop, indent);
       return output;
     }
@@ -11673,70 +14497,78 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string text = Html.f_string_from_nodelist_indent(
-          nodes,
-          Core.f_plus1(
-            indent
-          )
-        );
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string eindent = Core.f_if_2(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_is_empty(
-                  text
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Core.vx_new_string("");
-                return output_3;
-              })
-            ),
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_is_empty(
-                  sindent
-                );
-                return output_4;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_5 = Core.c_newline;
-                return output_5;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_6 = sindent;
-                return output_6;
-              })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string text = Html.f_string_from_nodelist_indent(
+            nodes,
+            Core.f_plus1(indent)
+          );
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string eindent = Core.f_if_2(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_is_empty(text);
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Core.vx_new_string("");
+                        return output_3;
+                      }
+                  )
+                ),
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_is_empty(sindent);
+                        return output_4;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_5 = Core.c_newline;
+                        return output_5;
+                      }
+                  )
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_6 = sindent;
+                        return output_6;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<"),
-            tag,
-            prop,
-            Core.vx_new_string(">"),
-            text,
-            eindent,
-            Core.vx_new_string("</"),
-            tag,
-            Core.vx_new_string(">")
-          )
-        );
-        return output_1;
-      })
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<"),
+                tag,
+                prop,
+                Core.vx_new_string(">"),
+                text,
+                eindent,
+                Core.vx_new_string("</"),
+                tag,
+                Core.vx_new_string(">")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -11781,17 +14613,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11812,8 +14644,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_p p = Core.f_any_from_any(Html.t_p, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_p p = Core.f_any_from_any(
+        Html.t_p,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_p_indent(p, indent);
       return output;
     }
@@ -11833,40 +14671,38 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string text = Html.f_htmlstring_from_string(
-          p.text()
-        );
-        final Core.Type_string sid = Html.f_string_from_propname_val(
-          Core.vx_new_string("id"),
-          p.id()
-        );
-        final Core.Type_string sclass = Html.f_string_from_propstyle_stylelist(
-          p.style(),
-          p.stylelist()
-        );
-        final Core.Type_string sstyle = Html.f_string_from_propstyleunique(
-          p.style_unique()
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<p"),
-            sid,
-            sclass,
-            sstyle,
-            Core.vx_new_string(">"),
-            text,
-            Core.vx_new_string("</p>")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string text = Html.f_htmlstring_from_string(p.text());
+          final Core.Type_string sid = Html.f_string_from_propname_val(
+            Core.vx_new_string("id"),
+            p.id()
+          );
+          final Core.Type_string sclass = Html.f_string_from_propstyle_stylelist(
+            p.style(),
+            p.stylelist()
+          );
+          final Core.Type_string sstyle = Html.f_string_from_propstyleunique(p.style_unique());
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<p"),
+                sid,
+                sclass,
+                sstyle,
+                Core.vx_new_string(">"),
+                text,
+                Core.vx_new_string("</p>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -11911,17 +14747,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11942,8 +14778,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string value = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string key = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string value = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_propname_val(key, value);
       return output;
     }
@@ -11963,19 +14805,19 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_if(
       Core.t_string,
-      Core.f_notempty(
-        value
-      ),
+      Core.f_notempty(value),
       Core.f_new(
         Core.t_string,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(" "),
-          key,
-          Core.vx_new_string("="),
-          Core.c_quote,
-          value,
-          Core.c_quote
+          // [
+            Core.vx_new_string(" "),
+            key,
+            Core.vx_new_string("="),
+            Core.c_quote,
+            value,
+            Core.c_quote
+          // ]
         )
       )
     );
@@ -12021,17 +14863,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12059,14 +14901,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_style inputval = (Html.Type_style)value;
       final Core.Type_any outputval = Html.f_string_from_propstyle(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_style style = Core.f_any_from_any(Html.t_style, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_style style = Core.f_any_from_any(
+        Html.t_style,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_string_from_propstyle(style);
       return output;
     }
@@ -12088,30 +14936,36 @@ public final class Html {
       Core.t_string,
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.f_notempty_1(
-              style
-            );
-            return output_1;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.f_new(
-              Core.t_string,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(" class="),
-                Core.c_quote,
-                Type.f_string_from_string_start(
-                  style.name(),
-                  Core.vx_new_int(2)
-                ),
-                Core.c_quote
-              )
-            );
-            return output_2;
-          })
-        )
+        // [
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.f_notempty_1(style);
+                  return output_1;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.f_new(
+                    Core.t_string,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(" class="),
+                        Core.c_quote,
+                        Type.f_string_from_string_start(
+                          style.name(),
+                          Core.vx_new_int(2)
+                        ),
+                        Core.c_quote
+                      // ]
+                    )
+                  );
+                  return output_2;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -12157,17 +15011,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12188,8 +15042,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_style style = Core.f_any_from_any(Html.t_style, arglist.vx_any(Core.vx_new_int(0)));
-      final Html.Type_stylelist stylelist = Core.f_any_from_any(Html.t_stylelist, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_style style = Core.f_any_from_any(
+        Html.t_style,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Html.Type_stylelist stylelist = Core.f_any_from_any(
+        Html.t_stylelist,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_propstyle_stylelist(style, stylelist);
       return output;
     }
@@ -12211,34 +15071,36 @@ public final class Html {
       Core.t_string,
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.f_notempty_1(
-              style
-            );
-            return output_1;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Html.f_string_from_propstyle(
-              style
-            );
-            return output_2;
-          })
-        ),
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_3 = Core.f_notempty_1(
-              stylelist
-            );
-            return output_3;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_4 = Html.f_string_from_propstylelist(
-              stylelist
-            );
-            return output_4;
-          })
-        )
+        // [
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.f_notempty_1(style);
+                  return output_1;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Html.f_string_from_propstyle(style);
+                  return output_2;
+                }
+            )
+          ),
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_3 = Core.f_notempty_1(stylelist);
+                  return output_3;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_4 = Html.f_string_from_propstylelist(stylelist);
+                  return output_4;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -12283,17 +15145,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12321,14 +15183,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_stylelist inputval = (Html.Type_stylelist)value;
       final Core.Type_any outputval = Html.f_string_from_propstylelist(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylelist stylelist = Core.f_any_from_any(Html.t_stylelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_stylelist stylelist = Core.f_any_from_any(
+        Html.t_stylelist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_string_from_propstylelist(stylelist);
       return output;
     }
@@ -12350,43 +15218,49 @@ public final class Html {
       Core.t_string,
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.f_notempty_1(
-              stylelist
-            );
-            return output_1;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.f_let(
-              Core.t_string,
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_string joined = Html.f_string_from_stylelist(
-                  stylelist
-                );
-                final Core.Type_any output_3 = Core.f_if(
-                  Core.t_string,
-                  Core.f_ne(
-                    Core.vx_new_string(""),
-                    joined
-                  ),
-                  Core.f_new(
+        // [
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.f_notempty_1(stylelist);
+                  return output_1;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.f_let(
                     Core.t_string,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(" class="),
-                      Core.c_quote,
-                      joined,
-                      Core.c_quote
+                    Core.t_any_from_func.vx_fn_new(
+                      () -> {
+                        final Core.Type_string joined = Html.f_string_from_stylelist(stylelist);
+                        final Core.Type_any output_3 = Core.f_if(
+                          Core.t_string,
+                          Core.f_ne(
+                            Core.vx_new_string(""),
+                            joined
+                          ),
+                          Core.f_new(
+                            Core.t_string,
+                            Core.vx_new(
+                              Core.t_anylist,
+                              // [
+                                Core.vx_new_string(" class="),
+                                Core.c_quote,
+                                joined,
+                                Core.c_quote
+                              // ]
+                            )
+                          )
+                        );
+                        return output_3;
+                      }
                     )
-                  )
-                );
-                return output_3;
-              })
-            );
-            return output_2;
-          })
-        )
+                  );
+                  return output_2;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -12431,17 +15305,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12469,14 +15343,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_style inputval = (Html.Type_style)value;
       final Core.Type_any outputval = Html.f_string_from_propstyleunique(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_style style = Core.f_any_from_any(Html.t_style, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_style style = Core.f_any_from_any(
+        Html.t_style,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_string_from_propstyleunique(style);
       return output;
     }
@@ -12498,55 +15378,67 @@ public final class Html {
       Core.t_string,
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.f_notempty_1(
-              style
-            );
-            return output_1;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.f_let(
-              Core.t_string,
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Html.Type_propmap props = style.props();
-                final Core.Type_string text = Html.f_string_from_stylepropmap_indent(
-                  props,
-                  Core.vx_new_int(0)
-                );
-                final Core.Type_any output_3 = Core.f_if_2(
-                  Core.t_string,
-                  Core.vx_new(
-                    Core.t_thenelselist,
-                    Core.f_then(
-                      Core.t_boolean_from_func.vx_fn_new(() -> {
-                        Core.Type_any output_4 = Core.f_notempty(
-                          text
+        // [
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.f_notempty_1(style);
+                  return output_1;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.f_let(
+                    Core.t_string,
+                    Core.t_any_from_func.vx_fn_new(
+                      () -> {
+                        final Html.Type_propmap props = style.props();
+                        final Core.Type_string text = Html.f_string_from_stylepropmap_indent(
+                          props,
+                          Core.vx_new_int(0)
                         );
-                        return output_4;
-                      }),
-                      Core.t_any_from_func.vx_fn_new(() -> {
-                        Core.Type_any output_5 = Core.f_new(
+                        final Core.Type_any output_3 = Core.f_if_2(
                           Core.t_string,
                           Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(" style="),
-                            Core.c_quote,
-                            text,
-                            Core.c_quote
+                            Core.t_thenelselist,
+                            // [
+                              Core.f_then(
+                                Core.t_boolean_from_func.vx_fn_new(
+                                  () -> {
+                                    Core.Type_any output_4 = Core.f_notempty(text);
+                                      return output_4;
+                                    }
+                                ),
+                                Core.t_any_from_func.vx_fn_new(
+                                  () -> {
+                                    Core.Type_any output_5 = Core.f_new(
+                                        Core.t_string,
+                                        Core.vx_new(
+                                          Core.t_anylist,
+                                          // [
+                                            Core.vx_new_string(" style="),
+                                            Core.c_quote,
+                                            text,
+                                            Core.c_quote
+                                          // ]
+                                        )
+                                      );
+                                      return output_5;
+                                    }
+                                )
+                              )
+                            // ]
                           )
                         );
-                        return output_5;
-                      })
+                        return output_3;
+                      }
                     )
-                  )
-                );
-                return output_3;
-              })
-            );
-            return output_2;
-          })
-        )
+                  );
+                  return output_2;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -12592,17 +15484,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12623,8 +15515,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_style style = Core.f_any_from_any(Html.t_style, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_style style = Core.f_any_from_any(
+        Html.t_style,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_style_indent(style, indent);
       return output;
     }
@@ -12644,40 +15542,38 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string name = style.name();
-        final Html.Type_propmap propmap = style.props();
-        final Html.Type_stylelist sublist = style.stylelist();
-        final Core.Type_string stext = Html.f_string_from_stylepropmap_indent(
-          propmap,
-          Core.f_plus1(
-            indent
-          )
-        );
-        final Core.Type_string subtext = Html.f_string_from_stylelist_indent(
-          sublist,
-          Core.f_plus1(
-            indent
-          )
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            name,
-            Core.vx_new_string(" {"),
-            stext,
-            subtext,
-            sindent,
-            Core.vx_new_string("}")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string name = style.name();
+          final Html.Type_propmap propmap = style.props();
+          final Html.Type_stylelist sublist = style.stylelist();
+          final Core.Type_string stext = Html.f_string_from_stylepropmap_indent(
+            propmap,
+            Core.f_plus1(indent)
+          );
+          final Core.Type_string subtext = Html.f_string_from_stylelist_indent(
+            sublist,
+            Core.f_plus1(indent)
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                name,
+                Core.vx_new_string(" {"),
+                stext,
+                subtext,
+                sindent,
+                Core.vx_new_string("}")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12721,17 +15617,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12759,14 +15655,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_stylelist inputval = (Html.Type_stylelist)value;
       final Core.Type_any outputval = Html.f_string_from_stylelist(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylelist stylelist = Core.f_any_from_any(Html.t_stylelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_stylelist stylelist = Core.f_any_from_any(
+        Html.t_stylelist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_string_from_stylelist(stylelist);
       return output;
     }
@@ -12786,25 +15688,32 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_stringlist namelist = Core.f_list_from_list_1(
-          Core.t_stringlist,
-          stylelist,
-          Core.t_any_from_any.vx_fn_new((item_any) -> {
-            final Html.Type_style item = Core.f_any_from_any(Html.t_style, item_any);
-            Core.Type_any output_2 = Type.f_string_from_string_start(
-              item.name(),
-              Core.vx_new_int(2)
-            );
-            return output_2;
-          })
-        );
-        final Core.Type_any output_1 = Type.f_string_from_stringlist_join(
-          namelist,
-          Core.vx_new_string(" ")
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_stringlist namelist = Core.f_list_from_list_1(
+            Core.t_stringlist,
+            stylelist,
+            Core.t_any_from_any.vx_fn_new(
+              (item_any) -> {
+                final Html.Type_style item = Core.f_any_from_any(
+                  Html.t_style,
+                  item_any
+                );
+                Core.Type_any output_2 = Type.f_string_from_string_start(
+                  item.name(),
+                  Core.vx_new_int(2)
+                );
+                return output_2;
+              }
+            )
+          );
+          final Core.Type_any output_1 = Type.f_string_from_stringlist_join(
+            namelist,
+            Core.vx_new_string(" ")
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12849,17 +15758,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12880,8 +15789,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylelist stylelist = Core.f_any_from_any(Html.t_stylelist, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_stylelist stylelist = Core.f_any_from_any(
+        Html.t_stylelist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_stylelist_indent(stylelist, indent);
       return output;
     }
@@ -12901,25 +15816,29 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_stringlist sstyles = Core.f_list_from_list_1(
-          Core.t_stringlist,
-          stylelist,
-          Core.t_any_from_any.vx_fn_new((substyle_any) -> {
-            final Html.Type_style substyle = Core.f_any_from_any(Html.t_style, substyle_any);
-            Core.Type_any output_2 = Html.f_string_from_style_indent(
-              substyle,
-              indent
-            );
-            return output_2;
-          })
-        );
-        final Core.Type_any output_1 = Type.f_string_from_stringlist_join(
-          sstyles,
-          Core.c_newline
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_stringlist sstyles = Core.f_list_from_list_1(
+            Core.t_stringlist,
+            stylelist,
+            Core.t_any_from_any.vx_fn_new(
+              (substyle_any) -> {
+                final Html.Type_style substyle = Core.f_any_from_any(
+                  Html.t_style,
+                  substyle_any
+                );
+                Core.Type_any output_2 = Html.f_string_from_style_indent(substyle, indent);
+                return output_2;
+              }
+            )
+          );
+          final Core.Type_any output_1 = Type.f_string_from_stringlist_join(
+            sstyles,
+            Core.c_newline
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12964,17 +15883,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12995,8 +15914,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_propmap propmap = Core.f_any_from_any(Html.t_propmap, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_propmap propmap = Core.f_any_from_any(
+        Html.t_propmap,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_stylepropmap_indent(propmap, indent);
       return output;
     }
@@ -13016,40 +15941,50 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_stringlist sprops = Core.f_list_from_map_1(
-          Core.t_stringlist,
-          propmap,
-          Core.t_any_from_key_value.vx_fn_new((key_any, value_any) -> {
-            final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
-            final Core.Type_string value = Core.f_any_from_any(Core.t_string, value_any);
-            Core.Type_any output_2 = Core.f_new(
-              Core.t_string,
-              Core.vx_new(
-                Core.t_anylist,
-                sindent,
-                key,
-                Core.vx_new_string(": "),
-                Core.f_string_from_string_find_replace(
-                  value,
-                  Core.c_quote,
-                  Core.vx_new_string("'")
-                ),
-                Core.vx_new_string(";")
-              )
-            );
-            return output_2;
-          })
-        );
-        final Core.Type_any output_1 = Type.f_string_from_stringlist_join(
-          sprops,
-          Core.vx_new_string("")
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_stringlist sprops = Core.f_list_from_map_1(
+            Core.t_stringlist,
+            propmap,
+            Core.t_any_from_key_value.vx_fn_new(
+              (key_any, value_any) -> {
+                final Core.Type_string key = Core.f_any_from_any(
+                  Core.t_string,
+                  key_any
+                );
+                final Core.Type_string value = Core.f_any_from_any(
+                  Core.t_string,
+                  value_any
+                );
+                Core.Type_any output_2 = Core.f_new(
+                  Core.t_string,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      sindent,
+                      key,
+                      Core.vx_new_string(": "),
+                      Core.f_string_from_string_find_replace(
+                        value,
+                        Core.c_quote,
+                        Core.vx_new_string("'")
+                      ),
+                      Core.vx_new_string(";")
+                    // ]
+                  )
+                );
+                return output_2;
+              }
+            )
+          );
+          final Core.Type_any output_1 = Type.f_string_from_stringlist_join(
+            sprops,
+            Core.vx_new_string("")
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -13094,17 +16029,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13125,8 +16060,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(Html.t_stylesheet, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(
+        Html.t_stylesheet,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_stylesheet_indent(stylesheet, indent);
       return output;
     }
@@ -13146,37 +16087,35 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_stylelist styles = stylesheet.styles();
-        final Core.Type_string sstyles = Html.f_string_from_stylelist_indent(
-          styles,
-          Core.f_plus1(
-            indent
-          )
-        );
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string eindent = Core.f_if(
-          Core.t_string,
-          Core.f_notempty(
-            sstyles
-          ),
-          sindent
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<style>"),
-            sstyles,
-            eindent,
-            Core.vx_new_string("</style>")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_stylelist styles = stylesheet.styles();
+          final Core.Type_string sstyles = Html.f_string_from_stylelist_indent(
+            styles,
+            Core.f_plus1(indent)
+          );
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string eindent = Core.f_if(
+            Core.t_string,
+            Core.f_notempty(sstyles),
+            sindent
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<style>"),
+                sstyles,
+                eindent,
+                Core.vx_new_string("</style>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -13221,17 +16160,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13252,8 +16191,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_table table = Core.f_any_from_any(Html.t_table, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_table table = Core.f_any_from_any(
+        Html.t_table,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_table_indent(table, indent);
       return output;
     }
@@ -13273,44 +16218,42 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string sid = Html.f_string_from_propname_val(
-          Core.vx_new_string("id"),
-          table.id()
-        );
-        final Html.Type_thead thead = table.thead();
-        final Html.Type_tbody tbody = table.tbody();
-        final Core.Type_string shead = Html.f_string_from_thead_indent(
-          thead,
-          Core.f_plus1(
-            indent
-          )
-        );
-        final Core.Type_string sbody = Html.f_string_from_tbody_indent(
-          tbody,
-          Core.f_plus1(
-            indent
-          )
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<table"),
-            sid,
-            Core.vx_new_string(">"),
-            shead,
-            sbody,
-            sindent,
-            Core.vx_new_string("</table>")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string sid = Html.f_string_from_propname_val(
+            Core.vx_new_string("id"),
+            table.id()
+          );
+          final Html.Type_thead thead = table.thead();
+          final Html.Type_tbody tbody = table.tbody();
+          final Core.Type_string shead = Html.f_string_from_thead_indent(
+            thead,
+            Core.f_plus1(indent)
+          );
+          final Core.Type_string sbody = Html.f_string_from_tbody_indent(
+            tbody,
+            Core.f_plus1(indent)
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<table"),
+                sid,
+                Core.vx_new_string(">"),
+                shead,
+                sbody,
+                sindent,
+                Core.vx_new_string("</table>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -13355,17 +16298,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13386,8 +16329,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_tbody tbody = Core.f_any_from_any(Html.t_tbody, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_tbody tbody = Core.f_any_from_any(
+        Html.t_tbody,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_tbody_indent(tbody, indent);
       return output;
     }
@@ -13407,16 +16356,18 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_trlist nodes = tbody.nodes();
-        final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Core.vx_new_string("tbody"),
-          Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_trlist nodes = tbody.nodes();
+          final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Core.vx_new_string("tbody"),
+            Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -13461,17 +16412,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13492,8 +16443,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_td td = Core.f_any_from_any(Html.t_td, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_td td = Core.f_any_from_any(
+        Html.t_td,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_td_indent(td, indent);
       return output;
     }
@@ -13513,16 +16470,18 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_divchildlist nodes = td.nodes();
-        final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Core.vx_new_string("td"),
-          Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_divchildlist nodes = td.nodes();
+          final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Core.vx_new_string("td"),
+            Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -13567,17 +16526,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13598,8 +16557,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_thead thead = Core.f_any_from_any(Html.t_thead, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_thead thead = Core.f_any_from_any(
+        Html.t_thead,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_thead_indent(thead, indent);
       return output;
     }
@@ -13619,16 +16584,18 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_trlist nodes = thead.nodes();
-        final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Core.vx_new_string("thead"),
-          Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_trlist nodes = thead.nodes();
+          final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Core.vx_new_string("thead"),
+            Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -13673,17 +16640,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13704,8 +16671,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_title title = Core.f_any_from_any(Html.t_title, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_title title = Core.f_any_from_any(
+        Html.t_title,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_title_indent(title, indent);
       return output;
     }
@@ -13725,23 +16698,25 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string sindent = Html.f_string_from_indent(
-          indent
-        );
-        final Core.Type_string text = title.text();
-        final Core.Type_any output_1 = Core.f_new(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_anylist,
-            sindent,
-            Core.vx_new_string("<title>"),
-            text,
-            Core.vx_new_string("</title>")
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string sindent = Html.f_string_from_indent(indent);
+          final Core.Type_string text = title.text();
+          final Core.Type_any output_1 = Core.f_new(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                sindent,
+                Core.vx_new_string("<title>"),
+                text,
+                Core.vx_new_string("</title>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -13786,17 +16761,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13817,8 +16792,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_tr tr = Core.f_any_from_any(Html.t_tr, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_tr tr = Core.f_any_from_any(
+        Html.t_tr,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_string_from_tr_indent(tr, indent);
       return output;
     }
@@ -13838,16 +16819,18 @@ public final class Html {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Html.Type_tdlist nodes = tr.nodes();
-        final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Core.vx_new_string("tr"),
-          Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Html.Type_tdlist nodes = tr.nodes();
+          final Core.Type_any output_1 = Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Core.vx_new_string("tr"),
+            Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -13891,17 +16874,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13929,14 +16912,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Html.f_string_from_uri(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string uri = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string uri = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_string_from_uri(uri);
       return output;
     }
@@ -13997,17 +16986,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "style",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -14028,8 +17017,14 @@ public final class Html {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(Html.t_stylesheet, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(
+        Html.t_stylesheet,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string name = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Html.f_style_from_stylesheet_name(stylesheet, name);
       return output;
     }
@@ -14049,9 +17044,7 @@ public final class Html {
     Html.Type_style output = Html.e_style;
     output = Core.f_any_from_map(
       Html.t_style,
-      Html.f_stylemap_from_stylesheet(
-        stylesheet
-      ),
+      Html.f_stylemap_from_stylesheet(stylesheet),
       name
     );
     return output;
@@ -14096,17 +17089,22 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylemap", // name
-          ":map", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Html.t_style), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "stylemap",
+          ":map",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_style
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -14134,14 +17132,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_stylelist inputval = (Html.Type_stylelist)value;
       final Core.Type_any outputval = Html.f_stylemap_from_stylelist(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylelist stylelist = Core.f_any_from_any(Html.t_stylelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_stylelist stylelist = Core.f_any_from_any(
+        Html.t_stylelist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_stylemap_from_stylelist(stylelist);
       return output;
     }
@@ -14162,11 +17166,16 @@ public final class Html {
     output = Core.f_map_from_list(
       Html.t_stylemap,
       stylelist,
-      Core.t_any_from_any.vx_fn_new((style_any) -> {
-        final Html.Type_style style = Core.f_any_from_any(Html.t_style, style_any);
-        Core.Type_any output_1 = style.name();
-        return output_1;
-      })
+      Core.t_any_from_any.vx_fn_new(
+        (style_any) -> {
+          final Html.Type_style style = Core.f_any_from_any(
+            Html.t_style,
+            style_any
+          );
+          Core.Type_any output_1 = style.name();
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -14210,17 +17219,22 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylemap", // name
-          ":map", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Html.t_style), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "stylemap",
+          ":map",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_style
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -14248,14 +17262,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_stylesheet inputval = (Html.Type_stylesheet)value;
       final Core.Type_any outputval = Html.f_stylemap_from_stylesheet(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(Html.t_stylesheet, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(
+        Html.t_stylesheet,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_stylemap_from_stylesheet(stylesheet);
       return output;
     }
@@ -14316,17 +17336,22 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylelist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Html.t_style), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "stylelist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_style
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -14354,14 +17379,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_stylesheet inputval = (Html.Type_stylesheet)value;
       final Core.Type_any outputval = Html.f_styles_from_stylesheet(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(Html.t_stylesheet, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(
+        Html.t_stylesheet,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_styles_from_stylesheet(stylesheet);
       return output;
     }
@@ -14422,17 +17453,23 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylesheet", // name
-          ":struct", // extends
-          Core.vx_new(Core.t_typelist, Html.t_node, Html.t_headchild), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/web/html",
+          "stylesheet",
+          ":struct",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Html.t_node,
+              Html.t_headchild
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -14460,14 +17497,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Html.Type_stylesheet inputval = (Html.Type_stylesheet)value;
       final Core.Type_any outputval = Html.f_stylesheet_loadmap(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(Html.t_stylesheet, arglist.vx_any(Core.vx_new_int(0)));
+      final Html.Type_stylesheet stylesheet = Core.f_any_from_any(
+        Html.t_stylesheet,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_stylesheet_loadmap(stylesheet);
       return output;
     }
@@ -14489,10 +17532,10 @@ public final class Html {
       stylesheet,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":stylemap"),
-        Html.f_stylemap_from_stylelist(
-          stylesheet.styles()
-        )
+        // [
+          Core.vx_new_string(":stylemap"),
+          Html.f_stylemap_from_stylelist(stylesheet.styles())
+        // ]
       )
     );
     return output;
@@ -14537,17 +17580,17 @@ public final class Html {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -14575,14 +17618,20 @@ public final class Html {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Html.f_uri_from_string(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Html.f_uri_from_string(text);
       return output;
     }

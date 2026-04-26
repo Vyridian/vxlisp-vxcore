@@ -123,15 +123,6 @@ public final class Core {
     return output;
   }
 
-  @SafeVarargs
-  public static <T> List<T> arraylist_from_array(
-    final T... items
-  ) {
-    List<T> output = new ArrayList<T>(Arrays.asList(items));
-    output = Core.vx_listimmutable(output);
-    return output;
-  }
-
   public static <T extends Core.Type_any, U extends Core.Type_any> List<T> arraylist_from_arraylist(
     final T generic_any_1,
     final List<U> listval
@@ -228,6 +219,19 @@ public final class Core {
     return output;
   }
 
+  public static Core.Type_boolean vx_and(
+    final Core.Type_boolean val1,
+    final Core.Type_boolean val2
+  ) {
+    Core.Type_boolean output = Core.e_boolean;
+    if (val1.vx_boolean() && val2.vx_boolean()) {
+      output = Core.c_true;
+    } else {
+      output = Core.c_false;
+    };
+    return output;
+  }
+
   @SuppressWarnings("unchecked")
   public static <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(
     final T generic_any_1,
@@ -243,6 +247,15 @@ public final class Core {
   ) {
     List<Core.Type_any> listany = list.vx_list();
     Core.Type_any[] output = listany.toArray(new Core.Type_any[0]);
+    return output;
+  }
+
+  @SafeVarargs
+  public static <T> List<T> vx_arraylist_from_array(
+    final T... items
+  ) {
+    List<T> output = new ArrayList<T>(Arrays.asList(items));
+    output = Core.vx_listimmutable(output);
     return output;
   }
 
@@ -1120,8 +1133,11 @@ public final class Core {
     } else if (value instanceof Core.Type_list) {
       Core.Type_list vallist = Core.f_any_from_any(Core.t_list, value);
       Core.Type_typedef typedef = vallist.vx_typedef();
-      Core.Type_string typedefname = typedef.name();
-      String stypedefname = typedefname.vx_string();
+      String typedefname = typedef.name().vx_string();
+      String pkgname = typedef.pkgname().vx_string();
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname;
+      }
       int indentint = indent + 1;
       List<Core.Type_any> listval = vallist.vx_list();
       for (Core.Type_any valsub : listval) {
@@ -1132,12 +1148,15 @@ public final class Core {
         String msgtext = Core.vx_string_from_any_indent(vallist.vx_msgblock(), indent, linefeed);
         output += "\n" + indenttext + msgtext;
       }
-      output = "(" + stypedefname + output + ")";
+      output = "(" + typedefname + output + ")";
     } else if (value instanceof Core.Type_map) {
       Core.Type_map valmap = Core.f_any_from_any(Core.t_map, value);
       Core.Type_typedef typedef = valmap.vx_typedef();
-      Core.Type_string typedefname = typedef.name();
-      String stypedefname = typedefname.vx_string();
+      String typedefname = typedef.name().vx_string();
+      String pkgname = typedef.pkgname().vx_string();
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname;
+      }
       int indentint = indent + 2;
       Map<String, Core.Type_any> mapval = valmap.vx_map();
       Set<String> keys = mapval.keySet();
@@ -1164,14 +1183,17 @@ public final class Core {
         );
         output += "\n " + indenttext + msgtext;
       }
-      output = "(" + stypedefname + output + ")";
+      output = "(" + typedefname + output + ")";
     } else if (value instanceof Core.Type_struct) {
       Core.Type_struct valstruct = Core.f_any_from_any(
         Core.t_struct, value
       );
       Core.Type_typedef typedef = valstruct.vx_typedef();
-      Core.Type_string typedefname = typedef.name();
-      String stypedefname = typedefname.vx_string();
+      String typedefname = typedef.name().vx_string();
+      String pkgname = typedef.pkgname().vx_string();
+      if (pkgname != "vx/core") {
+        typedefname = pkgname + "/" + typedefname;
+      }
       int indentint2 = indent;
       indentint2 += 2;
       Map<String, Core.Type_any> mapval2 = valstruct.vx_map();
@@ -1193,15 +1215,15 @@ public final class Core {
           output += "\n" + indenttext + " " + key + strval2;
         }
       }
-      if (stypedefname.equals("msg")) {
-      } else if (stypedefname.equals("msgblock")) {
+      if (typedefname.equals("msg")) {
+      } else if (typedefname.equals("msgblock")) {
       } else if (valstruct.vx_msgblock() != Core.e_msgblock) {
         String msgtext2 = Core.vx_string_from_any_indent(
           valstruct.vx_msgblock(), indent+1, linefeed
         );
         output += "\n " + indenttext + msgtext2;
       }
-      output = "(" + stypedefname + output + ")";
+      output = "(" + typedefname + output + ")";
     } else if (value instanceof Core.Type_func) {
       Core.Type_func valfunc = Core.f_any_from_any(Core.t_func, value);
       Core.Type_funcdef funcdef = valfunc.vx_funcdef();
@@ -1370,9 +1392,19 @@ public final class Core {
       }
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -1400,17 +1432,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "any", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "any",
+        "",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1432,7 +1464,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_any_async_from_func output = Core.vx_copy(Core.e_any_async_from_func, vals);
+      Core.Type_any_async_from_func output = Core.vx_copy(
+        Core.e_any_async_from_func,
+        vals
+      );
       return output;
     }
 
@@ -1470,17 +1505,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "any-async<-func", // name
-        ":func", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "any-async<-func",
+        ":func",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1540,7 +1575,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_any_from_anylist output = Core.vx_copy(Core.e_any_from_anylist, vals);
+      Core.Type_any_from_anylist output = Core.vx_copy(
+        Core.e_any_from_anylist,
+        vals
+      );
       return output;
     }
 
@@ -1557,9 +1595,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_any_from_anylist) {
           Core.Type_any_from_anylist multi = (Core.Type_any_from_anylist)valsub;
           ischanged = true;
@@ -1580,11 +1628,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/any<-anylist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/any<-anylist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/any<-anylist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/any<-anylist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -1613,17 +1679,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "any<-anylist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "any<-anylist",
+        ":list",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1705,8 +1771,17 @@ public final class Core {
             }
           }
         } else {
-          msg = Core.vx_msg_from_error("vx/core/anylist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/anylist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -1735,17 +1810,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "anylist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "anylist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_any
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -1765,7 +1845,9 @@ public final class Core {
 
   public static class Class_anymap extends Core.Class_base implements Type_anymap {
 
-    public Map<String, Core.Type_any> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_any>());
+    public Map<String, Core.Type_any> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_any>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -1822,8 +1904,17 @@ public final class Core {
           Core.Type_any castval = (Core.Type_any)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/anymap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/anymap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -1854,9 +1945,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -1873,8 +1974,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/anymap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/anymap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_any valany = Core.e_any;
@@ -1895,9 +2005,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/anymap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/anymap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -1935,17 +2056,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "anymap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "anymap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_any
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2005,17 +2131,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "anytype", // name
-        ":type", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "anytype",
+        ":type",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2144,9 +2270,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -2167,8 +2303,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/arg", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/arg",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2179,8 +2324,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/arg", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2193,7 +2347,12 @@ public final class Core {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2205,9 +2364,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":argtype"))) {
             if (valsub == vx_p_argtype) {
@@ -2226,9 +2396,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("argtype"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":fn-any"))) {
             if (valsub == vx_p_fn_any) {
@@ -2247,9 +2428,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fn-any"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":doc"))) {
             if (valsub == vx_p_doc) {
@@ -2259,7 +2451,12 @@ public final class Core {
               vx_p_doc = valdoc;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_doc = Core.vx_new(Core.t_string, valsub);
+              vx_p_doc = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -2271,14 +2468,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("doc"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/arg", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/arg",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/arg", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/arg",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2312,17 +2529,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "arg", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "arg",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2399,9 +2616,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_arglist) {
           Core.Type_arglist multi = (Core.Type_arglist)valsub;
           ischanged = true;
@@ -2426,11 +2653,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/arglist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/arglist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/arglist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/arglist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -2459,17 +2704,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "arglist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_arg), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "arglist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_arg
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2491,7 +2741,9 @@ public final class Core {
 
   public static class Class_argmap extends Core.Class_base implements Type_argmap {
 
-    public Map<String, Core.Type_arg> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_arg>());
+    public Map<String, Core.Type_arg> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_arg>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -2561,8 +2813,17 @@ public final class Core {
           Core.Type_arg castval = (Core.Type_arg)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/argmap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/argmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -2593,9 +2854,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -2612,8 +2883,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/argmap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/argmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_arg valany = Core.e_arg;
@@ -2634,9 +2914,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/argmap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/argmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -2674,17 +2965,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "argmap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_arg), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "argmap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_arg
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2730,9 +3026,19 @@ public final class Core {
       boolean booleanval = value.vx_boolean();
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_boolean) {
           Core.Type_boolean valboolean = (Core.Type_boolean)valsub;
           booleanval = booleanval || valboolean.vx_boolean();
@@ -2771,17 +3077,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "boolean", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "boolean",
+        "",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2839,7 +3145,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_booleanlist output = Core.vx_copy(Core.e_booleanlist, vals);
+      Core.Type_booleanlist output = Core.vx_copy(
+        Core.e_booleanlist,
+        vals
+      );
       return output;
     }
 
@@ -2856,9 +3165,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_booleanlist) {
           Core.Type_booleanlist multi = (Core.Type_booleanlist)valsub;
           ischanged = true;
@@ -2868,7 +3187,12 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Boolean) {
-          Core.Type_boolean subitem = Core.vx_new(Core.t_boolean, valsub);
+          Core.Type_boolean subitem = Core.vx_new(
+            Core.t_boolean,
+            // [
+              valsub
+            // ]
+          );
           ischanged = true;
           listval.add(subitem);
         } else if (valsub instanceof List<?>) {
@@ -2883,11 +3207,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/booleanlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/booleanlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/booleanlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/booleanlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -2916,17 +3258,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "booleanlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_boolean), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "booleanlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_boolean
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -2947,7 +3294,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_collection output = Core.vx_copy(Core.e_collection, vals);
+      Core.Type_collection output = Core.vx_copy(
+        Core.e_collection,
+        vals
+      );
       return output;
     }
 
@@ -2985,17 +3335,23 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "collection", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_list, Core.t_map), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "collection",
+        "",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_list,
+            Core.t_map
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3016,7 +3372,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_compilelanguages output = Core.vx_copy(Core.e_compilelanguages, vals);
+      Core.Type_compilelanguages output = Core.vx_copy(
+        Core.e_compilelanguages,
+        vals
+      );
       return output;
     }
 
@@ -3054,17 +3413,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "compilelanguages", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "compilelanguages",
+        "",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3124,17 +3483,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "connect", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "connect",
+        "",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3194,7 +3553,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_connectlist output = Core.vx_copy(Core.e_connectlist, vals);
+      Core.Type_connectlist output = Core.vx_copy(
+        Core.e_connectlist,
+        vals
+      );
       return output;
     }
 
@@ -3211,9 +3573,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_connectlist) {
           Core.Type_connectlist multi = (Core.Type_connectlist)valsub;
           ischanged = true;
@@ -3238,11 +3610,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/connectlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/connectlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/connectlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/connectlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -3271,17 +3661,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "connectlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_connect), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "connectlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_connect
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3303,7 +3698,9 @@ public final class Core {
 
   public static class Class_connectmap extends Core.Class_base implements Type_connectmap {
 
-    public Map<String, Core.Type_connect> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_connect>());
+    public Map<String, Core.Type_connect> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_connect>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -3373,8 +3770,17 @@ public final class Core {
           Core.Type_connect castval = (Core.Type_connect)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/connectmap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/connectmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -3386,7 +3792,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_connectmap output = Core.vx_copy(Core.e_connectmap, vals);
+      Core.Type_connectmap output = Core.vx_copy(
+        Core.e_connectmap,
+        vals
+      );
       return output;
     }
 
@@ -3407,9 +3816,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -3426,8 +3845,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/connectmap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/connectmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_connect valany = Core.e_connect;
@@ -3448,9 +3876,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/connectmap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/connectmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -3488,17 +3927,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "connectmap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_connect), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "connectmap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_connect
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3558,17 +4002,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "const", // name
-        ":const", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "const",
+        ":const",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3654,7 +4098,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_constdef output = Core.vx_copy(Core.e_constdef, vals);
+      Core.Type_constdef output = Core.vx_copy(
+        Core.e_constdef,
+        vals
+      );
       return output;
     }
 
@@ -3679,9 +4126,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -3702,8 +4159,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/constdef", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/constdef",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -3714,8 +4180,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/constdef", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/constdef",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -3728,7 +4203,12 @@ public final class Core {
               vx_p_pkgname = valpkgname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_pkgname = Core.vx_new(Core.t_string, valsub);
+              vx_p_pkgname = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -3740,9 +4220,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pkgname"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/constdef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/constdef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":name"))) {
             if (valsub == vx_p_name) {
@@ -3752,7 +4243,12 @@ public final class Core {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -3764,9 +4260,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/constdef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/constdef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":type"))) {
             if (valsub == vx_p_type) {
@@ -3785,14 +4292,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("type"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/constdef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/constdef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/constdef", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/constdef",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -3825,17 +4352,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "constdef", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "constdef",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3881,7 +4408,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_constlist output = Core.vx_copy(Core.e_constlist, vals);
+      Core.Type_constlist output = Core.vx_copy(
+        Core.e_constlist,
+        vals
+      );
       return output;
     }
 
@@ -3898,9 +4428,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_constlist) {
           Core.Type_constlist multi = (Core.Type_constlist)valsub;
           ischanged = true;
@@ -3920,8 +4460,17 @@ public final class Core {
             }
           }
         } else {
-          msg = Core.vx_msg_from_error("vx/core/constlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/constlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -3950,17 +4499,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "constlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "constlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_any
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -3980,7 +4534,9 @@ public final class Core {
 
   public static class Class_constmap extends Core.Class_base implements Type_constmap {
 
-    public Map<String, Core.Type_any> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_any>());
+    public Map<String, Core.Type_any> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_any>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -4037,8 +4593,17 @@ public final class Core {
           Core.Type_any castval = (Core.Type_any)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/constmap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/constmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -4050,7 +4615,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_constmap output = Core.vx_copy(Core.e_constmap, vals);
+      Core.Type_constmap output = Core.vx_copy(
+        Core.e_constmap,
+        vals
+      );
       return output;
     }
 
@@ -4069,9 +4637,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -4088,8 +4666,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/constmap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/constmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_any valany = Core.e_any;
@@ -4110,9 +4697,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/constmap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/constmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -4150,17 +4748,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "constmap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "constmap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_any
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -4289,9 +4892,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -4312,8 +4925,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/context", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/context",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -4324,8 +4946,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/context", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -4338,7 +4969,12 @@ public final class Core {
               vx_p_code = valcode;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_code = Core.vx_new(Core.t_string, valsub);
+              vx_p_code = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -4350,9 +4986,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("code"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":session"))) {
             if (valsub == vx_p_session) {
@@ -4371,9 +5018,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("session"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":setting"))) {
             if (valsub == vx_p_setting) {
@@ -4392,9 +5050,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("setting"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":state"))) {
             if (valsub == vx_p_state) {
@@ -4413,14 +5082,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("state"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/context", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/context",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/context", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/context",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -4454,17 +5143,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "context", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "context",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -4524,17 +5213,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "date", // name
-        ":string", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "date",
+        ":string",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -4586,9 +5275,19 @@ public final class Core {
       String sval = value.vx_string();
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_string) {
           Core.Type_string valstring = (Core.Type_string)valsub;
           ischanged = true;
@@ -4625,17 +5324,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "decimal", // name
-        "", // extends
-        Core.vx_new(Core.t_typelist, Core.t_number), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "decimal",
+        "",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_number
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -4695,17 +5399,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "error", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "error",
+        "",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -4751,9 +5455,19 @@ public final class Core {
       Float floatval = value.vx_float();
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_decimal) {
           Core.Type_decimal valdecimal = (Core.Type_decimal)valsub;
           ischanged = true;
@@ -4810,17 +5524,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "float", // name
-        "", // extends
-        Core.vx_new(Core.t_typelist, Core.t_number), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "float",
+        "",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_number
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -4887,17 +5606,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "func", // name
-        ":func", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "func",
+        ":func",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5044,9 +5763,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -5067,8 +5796,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/funcdef", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/funcdef",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -5079,8 +5817,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/funcdef", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -5093,7 +5840,12 @@ public final class Core {
               vx_p_pkgname = valpkgname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_pkgname = Core.vx_new(Core.t_string, valsub);
+              vx_p_pkgname = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -5105,9 +5857,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pkgname"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":name"))) {
             if (valsub == vx_p_name) {
@@ -5117,7 +5880,12 @@ public final class Core {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -5129,9 +5897,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":idx"))) {
             if (valsub == vx_p_idx) {
@@ -5141,7 +5920,12 @@ public final class Core {
               vx_p_idx = validx;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_idx = Core.vx_new(Core.t_int, valsub);
+              vx_p_idx = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -5153,9 +5937,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("idx"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":type"))) {
             if (valsub == vx_p_type) {
@@ -5174,9 +5969,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("type"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":async"))) {
             if (valsub == vx_p_async) {
@@ -5186,7 +5992,12 @@ public final class Core {
               vx_p_async = valasync;
             } else if (valsub instanceof Boolean) {
               ischanged = true;
-              vx_p_async = Core.vx_new(Core.t_boolean, valsub);
+              vx_p_async = Core.vx_new(
+                Core.t_boolean,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -5198,14 +6009,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("async"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/funcdef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/funcdef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/funcdef", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/funcdef",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -5240,17 +6071,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "funcdef", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "funcdef",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5310,7 +6141,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_funclist output = Core.vx_copy(Core.e_funclist, vals);
+      Core.Type_funclist output = Core.vx_copy(
+        Core.e_funclist,
+        vals
+      );
       return output;
     }
 
@@ -5327,9 +6161,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_funclist) {
           Core.Type_funclist multi = (Core.Type_funclist)valsub;
           ischanged = true;
@@ -5354,11 +6198,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/funclist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/funclist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/funclist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/funclist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -5387,17 +6249,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "funclist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_func), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "funclist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_func
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5419,7 +6286,9 @@ public final class Core {
 
   public static class Class_funcmap extends Core.Class_base implements Type_funcmap {
 
-    public Map<String, Core.Type_func> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_func>());
+    public Map<String, Core.Type_func> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_func>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -5489,8 +6358,17 @@ public final class Core {
           Core.Type_func castval = (Core.Type_func)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/funcmap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/funcmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -5521,9 +6399,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -5540,8 +6428,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/funcmap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/funcmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_func valany = Core.e_func;
@@ -5562,9 +6459,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/funcmap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/funcmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -5602,17 +6510,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "funcmap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_func), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "funcmap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_func
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5658,9 +6571,19 @@ public final class Core {
       int intval = value.vx_int();
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_int) {
           Core.Type_int valint = (Core.Type_int)valsub;
           ischanged = true;
@@ -5701,17 +6624,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "int", // name
-        "", // extends
-        Core.vx_new(Core.t_typelist, Core.t_number), // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "int",
+        "",
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_number
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5788,9 +6716,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_intlist) {
           Core.Type_intlist multi = (Core.Type_intlist)valsub;
           ischanged = true;
@@ -5800,7 +6738,12 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof Integer) {
-          Core.Type_int subitem = Core.vx_new(Core.t_int, valsub);
+          Core.Type_int subitem = Core.vx_new(
+            Core.t_int,
+            // [
+              valsub
+            // ]
+          );
           ischanged = true;
           listval.add(subitem);
         } else if (valsub instanceof List<?>) {
@@ -5815,11 +6758,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/intlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/intlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/intlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/intlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -5848,17 +6809,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "intlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_int), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "intlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_int
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -5880,7 +6846,9 @@ public final class Core {
 
   public static class Class_intmap extends Core.Class_base implements Type_intmap {
 
-    public Map<String, Core.Type_int> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_int>());
+    public Map<String, Core.Type_int> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_int>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -5950,8 +6918,17 @@ public final class Core {
           Core.Type_int castval = (Core.Type_int)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/intmap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/intmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -5982,9 +6959,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -6001,8 +6988,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/intmap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/intmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_int valany = Core.e_int;
@@ -6011,7 +7007,12 @@ public final class Core {
             Core.Type_int valallowed = (Core.Type_int)valsub;
             valany = valallowed;
           } else if (valsub instanceof Integer) {
-            valany = Core.vx_new(Core.t_int, valsub);
+            valany = Core.vx_new(
+              Core.t_int,
+              // [
+                valsub
+              // ]
+            );
           } else {
             if (false) {
             } else if (valsub instanceof Core.Type_any) {
@@ -6023,9 +7024,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/intmap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/intmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -6063,17 +7075,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "intmap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_int), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "intmap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_int
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -6138,9 +7155,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_list) {
           Core.Type_list multi = (Core.Type_list)valsub;
           ischanged = true;
@@ -6160,8 +7187,17 @@ public final class Core {
             }
           }
         } else {
-          msg = Core.vx_msg_from_error("vx/core/list", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/list",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -6190,17 +7226,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "list", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "list",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_any
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -6222,7 +7263,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_listtype output = Core.vx_copy(Core.e_listtype, vals);
+      Core.Type_listtype output = Core.vx_copy(
+        Core.e_listtype,
+        vals
+      );
       return output;
     }
 
@@ -6260,17 +7304,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "listtype", // name
-        ":type", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "listtype",
+        ":type",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -6343,17 +7387,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "locale", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "locale",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -6377,7 +7421,9 @@ public final class Core {
 
   public static class Class_map extends Core.Class_base implements Type_map {
 
-    public Map<String, Core.Type_any> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_any>());
+    public Map<String, Core.Type_any> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_any>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -6434,8 +7480,17 @@ public final class Core {
           Core.Type_any castval = (Core.Type_any)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/map", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/map",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -6466,9 +7521,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -6485,8 +7550,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/map", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/map",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_any valany = Core.e_any;
@@ -6507,9 +7581,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/map", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/map",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -6547,17 +7632,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "map", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "map",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_any
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -6617,17 +7707,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "maptype", // name
-        ":type", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "maptype",
+        ":type",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -6754,9 +7844,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -6777,8 +7877,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/mempool", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/mempool",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -6789,8 +7898,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/mempool", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/mempool",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -6812,14 +7930,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("valuepool"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/mempool", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/mempool",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/mempool", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/mempool",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -6850,17 +7988,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "mempool", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "mempool",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7018,7 +8156,12 @@ public final class Core {
               vx_p_code = valcode;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_code = Core.vx_new(Core.t_string, valsub);
+              vx_p_code = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             }
           } else if ((key.equals(":detail"))) {
             if (valsub == vx_p_detail) {
@@ -7035,7 +8178,12 @@ public final class Core {
               vx_p_path = valpath;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_path = Core.vx_new(Core.t_string, valsub);
+              vx_p_path = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             }
           } else if ((key.equals(":severity"))) {
             if (valsub == vx_p_severity) {
@@ -7045,7 +8193,12 @@ public final class Core {
               vx_p_severity = valseverity;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_severity = Core.vx_new(Core.t_int, valsub);
+              vx_p_severity = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             }
           } else if ((key.equals(":text"))) {
             if (valsub == vx_p_text) {
@@ -7055,7 +8208,12 @@ public final class Core {
               vx_p_text = valtext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             }
           }
           key = "";
@@ -7088,17 +8246,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "msg", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "msg",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7168,7 +8326,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_msgblock output = Core.vx_copy(Core.e_msgblock, vals);
+      Core.Type_msgblock output = Core.vx_copy(
+        Core.e_msgblock,
+        vals
+      );
       return output;
     }
 
@@ -7191,19 +8352,39 @@ public final class Core {
           if (valsub == Core.e_msgblock) {
           } else if (valsub == msgblock) {
           } else {
-            vx_p_msgblocks = Core.vx_copy(vx_p_msgblocks, valsub);
+            vx_p_msgblocks = Core.vx_copy(
+              vx_p_msgblocks,
+              // [
+                valsub
+              // ]
+            );
           }
         } else if (valsub instanceof Core.Type_msgblocklist) {
           if (valsub != Core.e_msgblocklist) {
-            vx_p_msgblocks = Core.vx_copy(vx_p_msgblocks, valsub);
+            vx_p_msgblocks = Core.vx_copy(
+              vx_p_msgblocks,
+              // [
+                valsub
+              // ]
+            );
           }
         } else if (valsub instanceof Core.Type_msg) {
           if (valsub != Core.e_msg) {
-            vx_p_msgs = Core.vx_copy(vx_p_msgs, valsub);
+            vx_p_msgs = Core.vx_copy(
+              vx_p_msgs,
+              // [
+                valsub
+              // ]
+            );
           }
         } else if (valsub instanceof Core.Type_msglist) {
           if (valsub != Core.e_msglist) {
-            vx_p_msgs = Core.vx_copy(vx_p_msgs, valsub);
+            vx_p_msgs = Core.vx_copy(
+              vx_p_msgs,
+              // [
+                valsub
+              // ]
+            );
           }
         } else if (key.equals("")) {
           if (false) {
@@ -7233,9 +8414,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("msgs"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/msgblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/msgblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":msgblocks"))) {
             if (valsub == vx_p_msgblocks) {
@@ -7254,9 +8446,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("msgblocks"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/msgblock", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/msgblock",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
           key = "";
@@ -7293,17 +8496,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "msgblock", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "msgblock",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7363,7 +8566,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_msgblocklist output = Core.vx_copy(Core.e_msgblocklist, vals);
+      Core.Type_msgblocklist output = Core.vx_copy(
+        Core.e_msgblocklist,
+        vals
+      );
       return output;
     }
 
@@ -7380,7 +8586,12 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msgblocklist) {
           Core.Type_msgblocklist multi = (Core.Type_msgblocklist)valsub;
           ischanged = true;
@@ -7403,11 +8614,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/msgblocklist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/msgblocklist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/msgblocklist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/msgblocklist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -7436,17 +8665,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "msgblocklist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_msgblock), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "msgblocklist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_msgblock
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7523,7 +8757,12 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msglist) {
           Core.Type_msglist multi = (Core.Type_msglist)valsub;
           ischanged = true;
@@ -7546,11 +8785,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/msglist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/msglist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/msglist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/msglist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -7579,17 +8836,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "msglist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_msg), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "msglist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_msg
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7649,17 +8911,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "none", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "none",
+        "",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7719,17 +8981,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "notype", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "notype",
+        "",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7789,17 +9051,24 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "number", // name
-        "", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_int, Core.t_float, Core.t_decimal), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "number",
+        "",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_int,
+            Core.t_float,
+            Core.t_decimal
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7859,7 +9128,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_numberlist output = Core.vx_copy(Core.e_numberlist, vals);
+      Core.Type_numberlist output = Core.vx_copy(
+        Core.e_numberlist,
+        vals
+      );
       return output;
     }
 
@@ -7876,9 +9148,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_numberlist) {
           Core.Type_numberlist multi = (Core.Type_numberlist)valsub;
           ischanged = true;
@@ -7903,11 +9185,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/numberlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/numberlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/numberlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/numberlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -7936,17 +9236,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "numberlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_number), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "numberlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_number
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -7968,7 +9273,9 @@ public final class Core {
 
   public static class Class_numbermap extends Core.Class_base implements Type_numbermap {
 
-    public Map<String, Core.Type_number> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_number>());
+    public Map<String, Core.Type_number> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_number>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -8038,8 +9345,17 @@ public final class Core {
           Core.Type_number castval = (Core.Type_number)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/numbermap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/numbermap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -8051,7 +9367,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_numbermap output = Core.vx_copy(Core.e_numbermap, vals);
+      Core.Type_numbermap output = Core.vx_copy(
+        Core.e_numbermap,
+        vals
+      );
       return output;
     }
 
@@ -8070,9 +9389,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -8089,8 +9418,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/numbermap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/numbermap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_number valany = Core.e_number;
@@ -8111,9 +9449,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/numbermap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/numbermap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -8151,17 +9500,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "numbermap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_number), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "numbermap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_number
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -8308,9 +9662,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -8331,8 +9695,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/package", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/package",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -8343,8 +9716,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/package", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -8357,7 +9739,12 @@ public final class Core {
               vx_p_pkgname = valpkgname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_pkgname = Core.vx_new(Core.t_string, valsub);
+              vx_p_pkgname = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -8369,9 +9756,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pkgname"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":constmap"))) {
             if (valsub == vx_p_constmap) {
@@ -8390,9 +9788,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("constmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":funcmap"))) {
             if (valsub == vx_p_funcmap) {
@@ -8411,9 +9820,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("funcmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":typemap"))) {
             if (valsub == vx_p_typemap) {
@@ -8432,9 +9852,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("typemap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":emptymap"))) {
             if (valsub == vx_p_emptymap) {
@@ -8453,14 +9884,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("emptymap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/package", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/package",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/package", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/package",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -8495,17 +9946,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "package", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "package",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -8526,7 +9977,9 @@ public final class Core {
 
   public static class Class_packagemap extends Core.Class_base implements Type_packagemap {
 
-    public Map<String, Core.Type_package> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_package>());
+    public Map<String, Core.Type_package> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_package>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -8596,8 +10049,17 @@ public final class Core {
           Core.Type_package castval = (Core.Type_package)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/packagemap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/packagemap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -8609,7 +10071,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_packagemap output = Core.vx_copy(Core.e_packagemap, vals);
+      Core.Type_packagemap output = Core.vx_copy(
+        Core.e_packagemap,
+        vals
+      );
       return output;
     }
 
@@ -8630,9 +10095,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -8649,8 +10124,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/packagemap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/packagemap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_package valany = Core.e_package;
@@ -8671,9 +10155,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/packagemap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/packagemap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -8711,17 +10206,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "packagemap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_package), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "packagemap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_package
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -8775,7 +10275,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_permission output = Core.vx_copy(Core.e_permission, vals);
+      Core.Type_permission output = Core.vx_copy(
+        Core.e_permission,
+        vals
+      );
       return output;
     }
 
@@ -8796,9 +10299,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -8819,8 +10332,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/permission", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/permission",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -8831,8 +10353,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/permission", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/permission",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -8845,7 +10376,12 @@ public final class Core {
               vx_p_id = valid;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_id = Core.vx_new(Core.t_string, valsub);
+              vx_p_id = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -8857,14 +10393,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/permission", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/permission",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/permission", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/permission",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -8895,17 +10451,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "permission", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "permission",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -8965,7 +10521,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_permissionlist output = Core.vx_copy(Core.e_permissionlist, vals);
+      Core.Type_permissionlist output = Core.vx_copy(
+        Core.e_permissionlist,
+        vals
+      );
       return output;
     }
 
@@ -8982,9 +10541,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_permissionlist) {
           Core.Type_permissionlist multi = (Core.Type_permissionlist)valsub;
           ischanged = true;
@@ -9009,11 +10578,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/permissionlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/permissionlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/permissionlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/permissionlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -9042,17 +10629,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "permissionlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_permission), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "permissionlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_permission
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -9074,7 +10666,9 @@ public final class Core {
 
   public static class Class_permissionmap extends Core.Class_base implements Type_permissionmap {
 
-    public Map<String, Core.Type_permission> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_permission>());
+    public Map<String, Core.Type_permission> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_permission>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -9144,8 +10738,17 @@ public final class Core {
           Core.Type_permission castval = (Core.Type_permission)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/permissionmap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/permissionmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -9157,7 +10760,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_permissionmap output = Core.vx_copy(Core.e_permissionmap, vals);
+      Core.Type_permissionmap output = Core.vx_copy(
+        Core.e_permissionmap,
+        vals
+      );
       return output;
     }
 
@@ -9178,9 +10784,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -9197,8 +10813,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/permissionmap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/permissionmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_permission valany = Core.e_permission;
@@ -9219,9 +10844,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/permissionmap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/permissionmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -9259,17 +10895,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "permissionmap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_permission), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "permissionmap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_permission
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -9344,9 +10985,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -9367,8 +11018,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/project", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/project",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -9379,8 +11039,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/project", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/project",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -9402,14 +11071,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("packagemap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/project", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/project",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/project", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/project",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -9440,17 +11129,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "project", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "project",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -9536,7 +11225,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_security output = Core.vx_copy(Core.e_security, vals);
+      Core.Type_security output = Core.vx_copy(
+        Core.e_security,
+        vals
+      );
       return output;
     }
 
@@ -9561,9 +11253,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -9584,8 +11286,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/security", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/security",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -9596,8 +11307,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/security", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/security",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -9619,9 +11339,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("allowfuncs"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/security", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/security",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":permissions"))) {
             if (valsub == vx_p_permissions) {
@@ -9640,9 +11371,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("permissions"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/security", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/security",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":permissionmap"))) {
             if (valsub == vx_p_permissionmap) {
@@ -9661,14 +11403,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("permissionmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/security", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/security",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/security", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/security",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -9701,17 +11463,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "security", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "security",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -9876,9 +11638,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -9899,8 +11671,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/session", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/session",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -9911,8 +11692,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/session", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -9934,9 +11724,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("user"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":connectlist"))) {
             if (valsub == vx_p_connectlist) {
@@ -9955,9 +11756,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("connectlist"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":connectmap"))) {
             if (valsub == vx_p_connectmap) {
@@ -9976,9 +11788,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("connectmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":locale"))) {
             if (valsub == vx_p_locale) {
@@ -9997,9 +11820,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("locale"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":translation"))) {
             if (valsub == vx_p_translation) {
@@ -10018,9 +11852,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("translation"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":translationmap"))) {
             if (valsub == vx_p_translationmap) {
@@ -10039,14 +11884,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("translationmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/session", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/session",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/session", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/session",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -10082,17 +11947,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "session", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "session",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -10167,9 +12032,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -10190,8 +12065,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/setting", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/setting",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -10202,8 +12086,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/setting", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/setting",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -10225,14 +12118,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pathmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/setting", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/setting",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/setting", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/setting",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -10263,17 +12176,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "setting", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "setting",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -10348,9 +12261,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -10371,8 +12294,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/state", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/state",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -10383,8 +12315,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/state", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/state",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -10406,14 +12347,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("statelistenermap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/state", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/state",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/state", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/state",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -10444,17 +12405,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "state", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "state",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -10540,7 +12501,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_statelistener output = Core.vx_copy(Core.e_statelistener, vals);
+      Core.Type_statelistener output = Core.vx_copy(
+        Core.e_statelistener,
+        vals
+      );
       return output;
     }
 
@@ -10565,9 +12529,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -10588,8 +12562,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/statelistener", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/statelistener",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -10600,8 +12583,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/statelistener", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/statelistener",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -10614,7 +12606,12 @@ public final class Core {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -10626,9 +12623,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/statelistener", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/statelistener",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":value"))) {
             if (valsub == vx_p_value) {
@@ -10647,9 +12655,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("value"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/statelistener", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/statelistener",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":fn-boolean"))) {
             if (valsub == vx_p_fn_boolean) {
@@ -10668,14 +12687,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fn-boolean"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/statelistener", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/statelistener",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/statelistener", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/statelistener",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -10708,17 +12747,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "statelistener", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "statelistener",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -10740,7 +12779,9 @@ public final class Core {
 
   public static class Class_statelistenermap extends Core.Class_base implements Type_statelistenermap {
 
-    public Map<String, Core.Type_statelistener> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_statelistener>());
+    public Map<String, Core.Type_statelistener> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_statelistener>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -10810,8 +12851,17 @@ public final class Core {
           Core.Type_statelistener castval = (Core.Type_statelistener)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/statelistenermap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/statelistenermap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -10823,7 +12873,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_statelistenermap output = Core.vx_copy(Core.e_statelistenermap, vals);
+      Core.Type_statelistenermap output = Core.vx_copy(
+        Core.e_statelistenermap,
+        vals
+      );
       return output;
     }
 
@@ -10844,9 +12897,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -10863,8 +12926,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/statelistenermap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/statelistenermap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_statelistener valany = Core.e_statelistener;
@@ -10885,9 +12957,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/statelistenermap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/statelistenermap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -10925,17 +13008,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "statelistenermap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_statelistener), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "statelistenermap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_statelistener
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -10982,9 +13070,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_string) {
           Core.Type_string valstring = (Core.Type_string)valsub;
           String ssub = valstring.vx_string();
@@ -11022,11 +13120,29 @@ public final class Core {
           sb.append(fval);
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anysub = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/string", ":invalidtype", anysub);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/string",
+            ":invalidtype",
+            anysub
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/string", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/string",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -11056,17 +13172,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "string", // name
-        ":string", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "string",
+        ":string",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -11126,7 +13242,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_stringlist output = Core.vx_copy(Core.e_stringlist, vals);
+      Core.Type_stringlist output = Core.vx_copy(
+        Core.e_stringlist,
+        vals
+      );
       return output;
     }
 
@@ -11143,9 +13262,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_stringlist) {
           Core.Type_stringlist multi = (Core.Type_stringlist)valsub;
           ischanged = true;
@@ -11155,7 +13284,12 @@ public final class Core {
           ischanged = true;
           listval.add(allowsub);
         } else if (valsub instanceof String) {
-          Core.Type_string subitem = Core.vx_new(Core.t_string, valsub);
+          Core.Type_string subitem = Core.vx_new(
+            Core.t_string,
+            // [
+              valsub
+            // ]
+          );
           ischanged = true;
           listval.add(subitem);
         } else if (valsub instanceof List<?>) {
@@ -11170,11 +13304,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/stringlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/stringlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/stringlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/stringlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -11203,17 +13355,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "stringlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "stringlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_string
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -11273,7 +13430,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_stringlistlist output = Core.vx_copy(Core.e_stringlistlist, vals);
+      Core.Type_stringlistlist output = Core.vx_copy(
+        Core.e_stringlistlist,
+        vals
+      );
       return output;
     }
 
@@ -11290,9 +13450,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_stringlistlist) {
           Core.Type_stringlistlist multi = (Core.Type_stringlistlist)valsub;
           ischanged = true;
@@ -11317,11 +13487,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/stringlistlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/stringlistlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/stringlistlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/stringlistlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -11350,17 +13538,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "stringlistlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_stringlist), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "stringlistlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_stringlist
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -11382,7 +13575,9 @@ public final class Core {
 
   public static class Class_stringmap extends Core.Class_base implements Type_stringmap {
 
-    public Map<String, Core.Type_string> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_string>());
+    public Map<String, Core.Type_string> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_string>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -11452,8 +13647,17 @@ public final class Core {
           Core.Type_string castval = (Core.Type_string)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/stringmap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/stringmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -11465,7 +13669,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_stringmap output = Core.vx_copy(Core.e_stringmap, vals);
+      Core.Type_stringmap output = Core.vx_copy(
+        Core.e_stringmap,
+        vals
+      );
       return output;
     }
 
@@ -11484,9 +13691,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -11503,8 +13720,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/stringmap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/stringmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_string valany = Core.e_string;
@@ -11513,7 +13739,12 @@ public final class Core {
             Core.Type_string valallowed = (Core.Type_string)valsub;
             valany = valallowed;
           } else if (valsub instanceof String) {
-            valany = Core.vx_new(Core.t_string, valsub);
+            valany = Core.vx_new(
+              Core.t_string,
+              // [
+                valsub
+              // ]
+            );
           } else {
             if (false) {
             } else if (valsub instanceof Core.Type_any) {
@@ -11525,9 +13756,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/stringmap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/stringmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -11565,17 +13807,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "stringmap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "stringmap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_string
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -11597,7 +13844,9 @@ public final class Core {
 
   public static class Class_stringmutablemap extends Core.Class_base implements Type_stringmutablemap {
 
-    public Map<String, Core.Type_string> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_string>());
+    public Map<String, Core.Type_string> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_string>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -11667,8 +13916,17 @@ public final class Core {
           Core.Type_string castval = (Core.Type_string)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/stringmutablemap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/stringmutablemap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -11680,7 +13938,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_stringmutablemap output = Core.vx_copy(Core.e_stringmutablemap, vals);
+      Core.Type_stringmutablemap output = Core.vx_copy(
+        Core.e_stringmutablemap,
+        vals
+      );
       return output;
     }
 
@@ -11699,9 +13960,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -11718,8 +13989,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/stringmutablemap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/stringmutablemap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_string valany = Core.e_string;
@@ -11728,7 +14008,12 @@ public final class Core {
             Core.Type_string valallowed = (Core.Type_string)valsub;
             valany = valallowed;
           } else if (valsub instanceof String) {
-            valany = Core.vx_new(Core.t_string, valsub);
+            valany = Core.vx_new(
+              Core.t_string,
+              // [
+                valsub
+              // ]
+            );
           } else {
             if (false) {
             } else if (valsub instanceof Core.Type_any) {
@@ -11740,9 +14025,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/stringmutablemap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/stringmutablemap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -11780,17 +14076,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "stringmutablemap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "stringmutablemap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_string
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -11865,17 +14166,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "struct", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "struct",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -11993,7 +14294,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_thenelse output = Core.vx_copy(Core.e_thenelse, vals);
+      Core.Type_thenelse output = Core.vx_copy(
+        Core.e_thenelse,
+        vals
+      );
       return output;
     }
 
@@ -12022,9 +14326,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -12045,8 +14359,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/thenelse", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/thenelse",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -12057,8 +14380,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/thenelse", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -12071,7 +14403,12 @@ public final class Core {
               vx_p_code = valcode;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_code = Core.vx_new(Core.t_string, valsub);
+              vx_p_code = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -12083,9 +14420,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("code"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":value"))) {
             if (valsub == vx_p_value) {
@@ -12104,9 +14452,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("value"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":values"))) {
             if (valsub == vx_p_values) {
@@ -12125,9 +14484,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("values"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":fn-cond"))) {
             if (valsub == vx_p_fn_cond) {
@@ -12146,9 +14516,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fn-cond"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":fn-any"))) {
             if (valsub == vx_p_fn_any) {
@@ -12167,14 +14548,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("fn-any"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/thenelse", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/thenelse",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/thenelse", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/thenelse",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -12209,17 +14610,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "thenelse", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "thenelse",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -12279,7 +14680,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_thenelselist output = Core.vx_copy(Core.e_thenelselist, vals);
+      Core.Type_thenelselist output = Core.vx_copy(
+        Core.e_thenelselist,
+        vals
+      );
       return output;
     }
 
@@ -12296,9 +14700,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_thenelselist) {
           Core.Type_thenelselist multi = (Core.Type_thenelselist)valsub;
           ischanged = true;
@@ -12323,11 +14737,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/thenelselist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/thenelselist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/thenelselist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/thenelselist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -12356,17 +14788,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "thenelselist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_thenelse), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "thenelselist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_thenelse
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -12436,7 +14873,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_translation output = Core.vx_copy(Core.e_translation, vals);
+      Core.Type_translation output = Core.vx_copy(
+        Core.e_translation,
+        vals
+      );
       return output;
     }
 
@@ -12459,9 +14899,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -12482,8 +14932,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/translation", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/translation",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -12494,8 +14953,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/translation", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/translation",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -12508,7 +14976,12 @@ public final class Core {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -12520,9 +14993,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/translation", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/translation",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":wordmap"))) {
             if (valsub == vx_p_wordmap) {
@@ -12541,14 +15025,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("wordmap"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/translation", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/translation",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/translation", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/translation",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -12580,17 +15084,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "translation", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "translation",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -12650,7 +15154,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_translationlist output = Core.vx_copy(Core.e_translationlist, vals);
+      Core.Type_translationlist output = Core.vx_copy(
+        Core.e_translationlist,
+        vals
+      );
       return output;
     }
 
@@ -12667,9 +15174,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_translationlist) {
           Core.Type_translationlist multi = (Core.Type_translationlist)valsub;
           ischanged = true;
@@ -12694,11 +15211,29 @@ public final class Core {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/core/translationlist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/translationlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/core/translationlist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/translationlist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -12727,17 +15262,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "translationlist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_translation), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "translationlist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_translation
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -12759,7 +15299,9 @@ public final class Core {
 
   public static class Class_translationmap extends Core.Class_base implements Type_translationmap {
 
-    public Map<String, Core.Type_translation> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_translation>());
+    public Map<String, Core.Type_translation> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_translation>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -12829,8 +15371,17 @@ public final class Core {
           Core.Type_translation castval = (Core.Type_translation)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/translationmap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/translationmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -12842,7 +15393,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_translationmap output = Core.vx_copy(Core.e_translationmap, vals);
+      Core.Type_translationmap output = Core.vx_copy(
+        Core.e_translationmap,
+        vals
+      );
       return output;
     }
 
@@ -12863,9 +15417,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -12882,8 +15446,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/translationmap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/translationmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_translation valany = Core.e_translation;
@@ -12904,9 +15477,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/translationmap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/translationmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -12944,17 +15528,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "translationmap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_translation), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "translationmap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_translation
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -13014,17 +15603,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "type", // name
-        ":type", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "type",
+        ":type",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -13297,9 +15886,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -13320,8 +15919,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/typedef",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -13332,8 +15940,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -13346,7 +15963,12 @@ public final class Core {
               vx_p_pkgname = valpkgname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_pkgname = Core.vx_new(Core.t_string, valsub);
+              vx_p_pkgname = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -13358,9 +15980,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("pkgname"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":name"))) {
             if (valsub == vx_p_name) {
@@ -13370,7 +16003,12 @@ public final class Core {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -13382,9 +16020,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":extends"))) {
             if (valsub == vx_p_extend) {
@@ -13394,7 +16043,12 @@ public final class Core {
               vx_p_extend = valextend;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_extend = Core.vx_new(Core.t_string, valsub);
+              vx_p_extend = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -13406,9 +16060,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("extends"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":allowfuncs"))) {
             if (valsub == vx_p_allowfuncs) {
@@ -13427,9 +16092,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("allowfuncs"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":allowtypes"))) {
             if (valsub == vx_p_allowtypes) {
@@ -13448,9 +16124,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("allowtypes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":allowvalues"))) {
             if (valsub == vx_p_allowvalues) {
@@ -13469,9 +16156,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("allowvalues"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":disallowfuncs"))) {
             if (valsub == vx_p_disallowfuncs) {
@@ -13490,9 +16188,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("disallowfuncs"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":disallowtypes"))) {
             if (valsub == vx_p_disallowtypes) {
@@ -13511,9 +16220,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("disallowtypes"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":disallowvalues"))) {
             if (valsub == vx_p_disallowvalues) {
@@ -13532,9 +16252,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("disallowvalues"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":properties"))) {
             if (valsub == vx_p_properties) {
@@ -13553,9 +16284,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("properties"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":proplast"))) {
             if (valsub == vx_p_proplast) {
@@ -13574,9 +16316,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("proplast"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":traits"))) {
             if (valsub == vx_p_traits) {
@@ -13595,14 +16348,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("traits"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/typedef",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/typedef", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/typedef",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -13644,17 +16417,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "typedef", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "typedef",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -13700,7 +16473,10 @@ public final class Core {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      Core.Type_typelist output = Core.vx_copy(Core.e_typelist, vals);
+      Core.Type_typelist output = Core.vx_copy(
+        Core.e_typelist,
+        vals
+      );
       return output;
     }
 
@@ -13717,9 +16493,19 @@ public final class Core {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_typelist) {
           Core.Type_typelist multi = (Core.Type_typelist)valsub;
           ischanged = true;
@@ -13739,8 +16525,17 @@ public final class Core {
             }
           }
         } else {
-          msg = Core.vx_msg_from_error("vx/core/typelist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/core/typelist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -13769,17 +16564,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "typelist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "typelist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_any
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -13799,7 +16599,9 @@ public final class Core {
 
   public static class Class_typemap extends Core.Class_base implements Type_typemap {
 
-    public Map<String, Core.Type_any> vx_p_map = Core.vx_mapimmutable(new LinkedHashMap<String, Core.Type_any>());
+    public Map<String, Core.Type_any> vx_p_map = Core.vx_mapimmutable(
+      new LinkedHashMap<String, Core.Type_any>()
+    );
 
     @Override
     public Map<String, Core.Type_any> vx_map() {
@@ -13856,8 +16658,17 @@ public final class Core {
           Core.Type_any castval = (Core.Type_any)value;
           map.put(key, castval);
         } else {
-          Core.Type_msg msg = Core.vx_msg_from_error("vx/core/typemap", ":invalidvalue", value);
-          msgblock = Core.vx_copy(msgblock, msg);
+          Core.Type_msg msg = Core.vx_msg_from_error(
+            "vx/core/typemap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Core.vx_mapimmutable(map);
@@ -13888,9 +16699,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub instanceof Core.Type_string) {
@@ -13907,8 +16728,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/typemap", ":keyexpected", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/typemap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Core.Type_any valany = Core.e_any;
@@ -13929,9 +16759,20 @@ public final class Core {
             Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
             mapany.put("key", Core.vx_new_string(key));
             mapany.put("value", msgval);
-            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-            msg = Core.vx_msg_from_error("vx/core/typemap", ":invalidkeyvalue", msgmap);
-            msgblock = Core.vx_copy(msgblock, msg);
+            final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+              Core.vx_mapimmutable(mapany)
+            );
+            msg = Core.vx_msg_from_error(
+              "vx/core/typemap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Core.e_any) {
             ischanged = true;
@@ -13969,17 +16810,22 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "typemap", // name
-        ":map", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "typemap",
+        ":map",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            Core.t_any
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -14090,9 +16936,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -14113,8 +16969,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/user", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/user",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -14125,8 +16990,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/user", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/user",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -14148,9 +17022,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("security"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/user", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/user",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":username"))) {
             if (valsub == vx_p_username) {
@@ -14160,7 +17045,12 @@ public final class Core {
               vx_p_username = valusername;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_username = Core.vx_new(Core.t_string, valsub);
+              vx_p_username = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -14172,9 +17062,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("username"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/user", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/user",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":token"))) {
             if (valsub == vx_p_token) {
@@ -14184,7 +17085,12 @@ public final class Core {
               vx_p_token = valtoken;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_token = Core.vx_new(Core.t_string, valsub);
+              vx_p_token = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -14196,14 +17102,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("token"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/user", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/user",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/user", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/user",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -14236,17 +17162,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "user", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "user",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -14338,9 +17264,19 @@ public final class Core {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -14361,8 +17297,17 @@ public final class Core {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/core/value", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/value",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -14373,8 +17318,17 @@ public final class Core {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/core/value", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/core/value",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -14396,9 +17350,20 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("next"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/value", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/value",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":refs"))) {
             if (valsub == vx_p_refs) {
@@ -14408,7 +17373,12 @@ public final class Core {
               vx_p_refs = valrefs;
             } else if (valsub instanceof Integer) {
               ischanged = true;
-              vx_p_refs = Core.vx_new(Core.t_int, valsub);
+              vx_p_refs = Core.vx_new(
+                Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -14420,14 +17390,34 @@ public final class Core {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("refs"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/core/value", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/core/value",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/core/value", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/core/value",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -14459,17 +17449,17 @@ public final class Core {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/core", // pkgname
-        "value", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/core",
+        "value",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -14891,17 +17881,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -14929,14 +17919,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_boolean inputval = (Core.Type_boolean)value;
       final Core.Type_any outputval = Core.f_not(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_boolean value = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_boolean value = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_not(value);
       return output;
     }
@@ -14997,17 +17993,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15035,14 +18031,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_notempty(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_notempty(text);
       return output;
     }
@@ -15061,9 +18063,7 @@ public final class Core {
   public static Core.Type_boolean f_notempty(final Core.Type_string text) {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_not(
-      Core.f_is_empty(
-        text
-      )
+      Core.f_is_empty(text)
     );
     return output;
   }
@@ -15107,17 +18107,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15145,14 +18145,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_notempty_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_notempty_1(value);
       return output;
     }
@@ -15171,9 +18177,7 @@ public final class Core {
   public static Core.Type_boolean f_notempty_1(final Core.Type_any value) {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_not(
-      Core.f_is_empty_1(
-        value
-      )
+      Core.f_is_empty_1(value)
     );
     return output;
   }
@@ -15218,17 +18222,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15249,8 +18253,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any val1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any val2 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any val1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any val2 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_ne(val1, val2);
       return output;
     }
@@ -15269,10 +18279,7 @@ public final class Core {
   public static Core.Type_boolean f_ne(final Core.Type_any val1, final Core.Type_any val2) {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_not(
-      Core.f_eq(
-        val1,
-        val2
-      )
+      Core.f_eq(val1, val2)
     );
     return output;
   }
@@ -15317,17 +18324,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15348,8 +18355,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any val1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any val2 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any val1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any val2 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_neqeq(val1, val2);
       return output;
     }
@@ -15368,10 +18381,7 @@ public final class Core {
   public static Core.Type_boolean f_neqeq(final Core.Type_any val1, final Core.Type_any val2) {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_not(
-      Core.f_eqeq(
-        val1,
-        val2
-      )
+      Core.f_eqeq(val1, val2)
     );
     return output;
   }
@@ -15416,17 +18426,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15447,8 +18462,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_int num1 = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int num2 = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_int num1 = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int num2 = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_multiply(num1, num2);
       return output;
     }
@@ -15511,17 +18532,24 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_int, Core.t_float, Core.t_decimal), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_int,
+              Core.t_float,
+              Core.t_decimal
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15542,8 +18570,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_number num1 = Core.f_any_from_any(Core.t_number, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_number num2 = Core.f_any_from_any(Core.t_number, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_number num1 = Core.f_any_from_any(
+        Core.t_number,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_number num2 = Core.f_any_from_any(
+        Core.t_number,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_multiply_1(num1, num2);
       return output;
     }
@@ -15605,17 +18639,22 @@ public final class Core {
         2, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15643,14 +18682,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_intlist inputval = (Core.Type_intlist)value;
       final Core.Type_any outputval = Core.f_multiply_2(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_intlist nums = Core.f_any_from_any(Core.t_intlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_intlist nums = Core.f_any_from_any(
+        Core.t_intlist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_multiply_2(nums);
       return output;
     }
@@ -15672,15 +18717,17 @@ public final class Core {
       Core.t_int,
       nums,
       Core.vx_new_int(1),
-      Core.t_any_from_reduce.vx_fn_new((total_any, num_any) -> {
-        final Core.Type_int total = Core.f_any_from_any(Core.t_int, total_any);
-        final Core.Type_int num = Core.f_any_from_any(Core.t_int, num_any);
-        Core.Type_any output_1 = Core.f_multiply(
-          total,
-          num
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce.vx_fn_new(
+        (total_any, num_any) -> {
+          final Core.Type_int total = Core.f_any_from_any(
+            Core.t_int,
+            total_any
+          );
+          final Core.Type_int num = Core.f_any_from_any(Core.t_int, num_any);
+          Core.Type_any output_1 = Core.f_multiply(total, num);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -15724,17 +18771,24 @@ public final class Core {
         3, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_int, Core.t_float, Core.t_decimal), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_int,
+              Core.t_float,
+              Core.t_decimal
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15762,14 +18816,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_numberlist inputval = (Core.Type_numberlist)value;
       final Core.Type_any outputval = Core.f_multiply_3(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_numberlist nums = Core.f_any_from_any(Core.t_numberlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_numberlist nums = Core.f_any_from_any(
+        Core.t_numberlist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_multiply_3(nums);
       return output;
     }
@@ -15791,15 +18851,20 @@ public final class Core {
       Core.t_number,
       nums,
       Core.vx_new_int(1),
-      Core.t_any_from_reduce.vx_fn_new((total_any, num_any) -> {
-        final Core.Type_number total = Core.f_any_from_any(Core.t_number, total_any);
-        final Core.Type_number num = Core.f_any_from_any(Core.t_number, num_any);
-        Core.Type_any output_1 = Core.f_multiply_1(
-          total,
-          num
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce.vx_fn_new(
+        (total_any, num_any) -> {
+          final Core.Type_number total = Core.f_any_from_any(
+            Core.t_number,
+            total_any
+          );
+          final Core.Type_number num = Core.f_any_from_any(
+            Core.t_number,
+            num_any
+          );
+          Core.Type_any output_1 = Core.f_multiply_1(total, num);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -15844,17 +18909,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15875,8 +18945,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_int num1 = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int num2 = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_int num1 = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int num2 = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_plus(num1, num2);
       return output;
     }
@@ -15939,17 +19015,24 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_int, Core.t_float, Core.t_decimal), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_int,
+              Core.t_float,
+              Core.t_decimal
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -15970,8 +19053,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_number num1 = Core.f_any_from_any(Core.t_number, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_number num2 = Core.f_any_from_any(Core.t_number, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_number num1 = Core.f_any_from_any(
+        Core.t_number,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_number num2 = Core.f_any_from_any(
+        Core.t_number,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_plus_1(num1, num2);
       return output;
     }
@@ -16033,17 +19122,22 @@ public final class Core {
         2, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -16071,14 +19165,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_intlist inputval = (Core.Type_intlist)value;
       final Core.Type_any outputval = Core.f_plus_2(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_intlist nums = Core.f_any_from_any(Core.t_intlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_intlist nums = Core.f_any_from_any(
+        Core.t_intlist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_plus_2(nums);
       return output;
     }
@@ -16100,15 +19200,17 @@ public final class Core {
       Core.t_int,
       nums,
       Core.vx_new_int(0),
-      Core.t_any_from_reduce.vx_fn_new((total_any, num_any) -> {
-        final Core.Type_int total = Core.f_any_from_any(Core.t_int, total_any);
-        final Core.Type_int num = Core.f_any_from_any(Core.t_int, num_any);
-        Core.Type_any output_1 = Core.f_plus(
-          total,
-          num
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce.vx_fn_new(
+        (total_any, num_any) -> {
+          final Core.Type_int total = Core.f_any_from_any(
+            Core.t_int,
+            total_any
+          );
+          final Core.Type_int num = Core.f_any_from_any(Core.t_int, num_any);
+          Core.Type_any output_1 = Core.f_plus(total, num);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -16152,17 +19254,24 @@ public final class Core {
         3, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_int, Core.t_float, Core.t_decimal), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_int,
+              Core.t_float,
+              Core.t_decimal
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -16190,14 +19299,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_numberlist inputval = (Core.Type_numberlist)value;
       final Core.Type_any outputval = Core.f_plus_3(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_numberlist nums = Core.f_any_from_any(Core.t_numberlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_numberlist nums = Core.f_any_from_any(
+        Core.t_numberlist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_plus_3(nums);
       return output;
     }
@@ -16219,15 +19334,20 @@ public final class Core {
       Core.t_number,
       nums,
       Core.vx_new_int(0),
-      Core.t_any_from_reduce.vx_fn_new((total_any, num_any) -> {
-        final Core.Type_number total = Core.f_any_from_any(Core.t_number, total_any);
-        final Core.Type_number num = Core.f_any_from_any(Core.t_number, num_any);
-        Core.Type_any output_1 = Core.f_plus_1(
-          total,
-          num
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce.vx_fn_new(
+        (total_any, num_any) -> {
+          final Core.Type_number total = Core.f_any_from_any(
+            Core.t_number,
+            total_any
+          );
+          final Core.Type_number num = Core.f_any_from_any(
+            Core.t_number,
+            num_any
+          );
+          Core.Type_any output_1 = Core.f_plus_1(total, num);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -16271,17 +19391,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -16309,14 +19434,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_int inputval = (Core.Type_int)value;
       final Core.Type_any outputval = Core.f_plus1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_int num = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int num = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_plus1(num);
       return output;
     }
@@ -16381,17 +19512,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -16412,8 +19548,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_int num1 = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int num2 = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_int num1 = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int num2 = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_minus(num1, num2);
       return output;
     }
@@ -16476,17 +19618,24 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_int, Core.t_float, Core.t_decimal), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_int,
+              Core.t_float,
+              Core.t_decimal
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -16507,8 +19656,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_number num1 = Core.f_any_from_any(Core.t_number, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_number num2 = Core.f_any_from_any(Core.t_number, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_number num1 = Core.f_any_from_any(
+        Core.t_number,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_number num2 = Core.f_any_from_any(
+        Core.t_number,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_minus_1(num1, num2);
       return output;
     }
@@ -16570,17 +19725,22 @@ public final class Core {
         2, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -16608,14 +19768,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_intlist inputval = (Core.Type_intlist)value;
       final Core.Type_any outputval = Core.f_minus_2(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_intlist nums = Core.f_any_from_any(Core.t_intlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_intlist nums = Core.f_any_from_any(
+        Core.t_intlist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_minus_2(nums);
       return output;
     }
@@ -16637,15 +19803,17 @@ public final class Core {
       Core.t_int,
       nums,
       Core.vx_new_int(0),
-      Core.t_any_from_reduce.vx_fn_new((total_any, num_any) -> {
-        final Core.Type_int total = Core.f_any_from_any(Core.t_int, total_any);
-        final Core.Type_int num = Core.f_any_from_any(Core.t_int, num_any);
-        Core.Type_any output_1 = Core.f_minus(
-          total,
-          num
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce.vx_fn_new(
+        (total_any, num_any) -> {
+          final Core.Type_int total = Core.f_any_from_any(
+            Core.t_int,
+            total_any
+          );
+          final Core.Type_int num = Core.f_any_from_any(Core.t_int, num_any);
+          Core.Type_any output_1 = Core.f_minus(total, num);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -16689,17 +19857,24 @@ public final class Core {
         3, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_int, Core.t_float, Core.t_decimal), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_int,
+              Core.t_float,
+              Core.t_decimal
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -16727,14 +19902,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_numberlist inputval = (Core.Type_numberlist)value;
       final Core.Type_any outputval = Core.f_minus_3(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_numberlist nums = Core.f_any_from_any(Core.t_numberlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_numberlist nums = Core.f_any_from_any(
+        Core.t_numberlist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_minus_3(nums);
       return output;
     }
@@ -16756,15 +19937,20 @@ public final class Core {
       Core.t_number,
       nums,
       Core.vx_new_int(0),
-      Core.t_any_from_reduce.vx_fn_new((total_any, num_any) -> {
-        final Core.Type_number total = Core.f_any_from_any(Core.t_number, total_any);
-        final Core.Type_number num = Core.f_any_from_any(Core.t_number, num_any);
-        Core.Type_any output_1 = Core.f_minus_1(
-          total,
-          num
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce.vx_fn_new(
+        (total_any, num_any) -> {
+          final Core.Type_number total = Core.f_any_from_any(
+            Core.t_number,
+            total_any
+          );
+          final Core.Type_number num = Core.f_any_from_any(
+            Core.t_number,
+            num_any
+          );
+          Core.Type_any output_1 = Core.f_minus_1(total, num);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -16808,17 +19994,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -16846,14 +20037,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_int inputval = (Core.Type_int)value;
       final Core.Type_any outputval = Core.f_minus1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_int num = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_int num = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_minus1(num);
       return output;
     }
@@ -16919,17 +20116,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -16950,9 +20147,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any target = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string method = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_anylist parameters = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any target = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string method = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_anylist parameters = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_dotmethod(target, method, parameters);
       return output;
     }
@@ -17013,17 +20219,24 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_int, Core.t_float, Core.t_decimal), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_int,
+              Core.t_float,
+              Core.t_decimal
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -17044,8 +20257,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_number num1 = Core.f_any_from_any(Core.t_number, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_number num2 = Core.f_any_from_any(Core.t_number, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_number num1 = Core.f_any_from_any(
+        Core.t_number,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_number num2 = Core.f_any_from_any(
+        Core.t_number,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_divide(num1, num2);
       return output;
     }
@@ -17115,17 +20334,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -17146,8 +20365,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any val1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any val2 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any val1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any val2 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_lt(val1, val2);
       return output;
     }
@@ -17167,25 +20392,28 @@ public final class Core {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_switch(
       Core.t_boolean,
-      Core.f_compare(
-        val1,
-        val2
-      ),
+      Core.f_compare(val1, val2),
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_case_1(
-          Core.vx_new_int(-1),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.vx_new_boolean(true);
-            return output_1;
-          })
-        ),
-        Core.f_else(
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.vx_new_boolean(false);
-            return output_2;
-          })
-        )
+        // [
+          Core.f_case_1(
+            Core.vx_new_int(-1),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.vx_new_boolean(true);
+                  return output_1;
+                }
+            )
+          ),
+          Core.f_else(
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.vx_new_boolean(false);
+                  return output_2;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -17230,17 +20458,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -17268,14 +20496,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Core.f_lt_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist values = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist values = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_lt_1(values);
       return output;
     }
@@ -17297,19 +20531,24 @@ public final class Core {
       Core.t_boolean,
       values,
       Core.vx_new_boolean(true),
-      Core.t_any_from_reduce_next.vx_fn_new((reduce_any, current_any, next_any) -> {
-        final Core.Type_boolean reduce = Core.f_any_from_any(Core.t_boolean, reduce_any);
-        final Core.Type_any current = Core.f_any_from_any(Core.t_any, current_any);
-        final Core.Type_any next = Core.f_any_from_any(Core.t_any, next_any);
-        Core.Type_any output_1 = Core.f_and(
-          reduce,
-          Core.f_lt(
-            current,
-            next
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce_next.vx_fn_new(
+        (reduce_any, current_any, next_any) -> {
+          final Core.Type_boolean reduce = Core.f_any_from_any(
+            Core.t_boolean,
+            reduce_any
+          );
+          final Core.Type_any current = Core.f_any_from_any(
+            Core.t_any,
+            current_any
+          );
+          final Core.Type_any next = Core.f_any_from_any(Core.t_any, next_any);
+          Core.Type_any output_1 = Core.f_and(
+            reduce,
+            Core.f_lt(current, next)
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -17356,17 +20595,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -17387,9 +20626,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any_from_anylist fnlist = Core.f_any_from_any(Core.t_any_from_anylist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any_from_anylist fnlist = Core.f_any_from_any(
+        Core.t_any_from_anylist,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_chainfirst(generic_any_1, value, fnlist);
       return output;
     }
@@ -17452,17 +20700,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -17483,9 +20731,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any_from_anylist fnlist = Core.f_any_from_any(Core.t_any_from_anylist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any_from_anylist fnlist = Core.f_any_from_any(
+        Core.t_any_from_anylist,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_chainlast(generic_any_1, value, fnlist);
       return output;
     }
@@ -17546,17 +20803,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -17577,8 +20834,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any val1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any val2 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any val1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any val2 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_le(val1, val2);
       return output;
     }
@@ -17597,10 +20860,7 @@ public final class Core {
   public static Core.Type_boolean f_le(final Core.Type_any val1, final Core.Type_any val2) {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_not(
-      Core.f_gt(
-        val1,
-        val2
-      )
+      Core.f_gt(val1, val2)
     );
     return output;
   }
@@ -17644,17 +20904,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -17682,14 +20942,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Core.f_le_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist args = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist args = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_le_1(args);
       return output;
     }
@@ -17707,11 +20973,7 @@ public final class Core {
 
   public static Core.Type_boolean f_le_1(final Core.Type_anylist args) {
     Core.Type_boolean output = Core.e_boolean;
-    output = Core.f_not(
-      Core.f_gt_1(
-        args
-      )
-    );
+    output = Core.f_not(Core.f_gt_1(args));
     return output;
   }
 
@@ -17755,17 +21017,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -17786,8 +21048,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any val1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any val2 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any val1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any val2 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_eq(val1, val2);
       return output;
     }
@@ -17858,17 +21126,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -17896,14 +21164,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Core.f_eq_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist values = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist values = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_eq_1(values);
       return output;
     }
@@ -17925,19 +21199,24 @@ public final class Core {
       Core.t_boolean,
       values,
       Core.vx_new_boolean(false),
-      Core.t_any_from_reduce_next.vx_fn_new((reduce_any, current_any, next_any) -> {
-        final Core.Type_boolean reduce = Core.f_any_from_any(Core.t_boolean, reduce_any);
-        final Core.Type_any current = Core.f_any_from_any(Core.t_any, current_any);
-        final Core.Type_any next = Core.f_any_from_any(Core.t_any, next_any);
-        Core.Type_any output_1 = Core.f_and(
-          reduce,
-          Core.f_eq(
-            current,
-            next
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce_next.vx_fn_new(
+        (reduce_any, current_any, next_any) -> {
+          final Core.Type_boolean reduce = Core.f_any_from_any(
+            Core.t_boolean,
+            reduce_any
+          );
+          final Core.Type_any current = Core.f_any_from_any(
+            Core.t_any,
+            current_any
+          );
+          final Core.Type_any next = Core.f_any_from_any(Core.t_any, next_any);
+          Core.Type_any output_1 = Core.f_and(
+            reduce,
+            Core.f_eq(current, next)
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -17982,17 +21261,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18013,8 +21292,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any val1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any val2 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any val1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any val2 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_eqeq(val1, val2);
       return output;
     }
@@ -18077,17 +21362,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18108,8 +21393,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any val1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any val2 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any val1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any val2 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_gt(val1, val2);
       return output;
     }
@@ -18129,25 +21420,28 @@ public final class Core {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_switch(
       Core.t_boolean,
-      Core.f_compare(
-        val1,
-        val2
-      ),
+      Core.f_compare(val1, val2),
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_case_1(
-          Core.vx_new_int(1),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.vx_new_boolean(true);
-            return output_1;
-          })
-        ),
-        Core.f_else(
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.vx_new_boolean(false);
-            return output_2;
-          })
-        )
+        // [
+          Core.f_case_1(
+            Core.vx_new_int(1),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.vx_new_boolean(true);
+                  return output_1;
+                }
+            )
+          ),
+          Core.f_else(
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.vx_new_boolean(false);
+                  return output_2;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -18192,17 +21486,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18230,14 +21524,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Core.f_gt_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist values = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist values = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_gt_1(values);
       return output;
     }
@@ -18259,19 +21559,24 @@ public final class Core {
       Core.t_boolean,
       values,
       Core.vx_new_boolean(true),
-      Core.t_any_from_reduce_next.vx_fn_new((reduce_any, current_any, next_any) -> {
-        final Core.Type_boolean reduce = Core.f_any_from_any(Core.t_boolean, reduce_any);
-        final Core.Type_any current = Core.f_any_from_any(Core.t_any, current_any);
-        final Core.Type_any next = Core.f_any_from_any(Core.t_any, next_any);
-        Core.Type_any output_1 = Core.f_and(
-          reduce,
-          Core.f_gt(
-            current,
-            next
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce_next.vx_fn_new(
+        (reduce_any, current_any, next_any) -> {
+          final Core.Type_boolean reduce = Core.f_any_from_any(
+            Core.t_boolean,
+            reduce_any
+          );
+          final Core.Type_any current = Core.f_any_from_any(
+            Core.t_any,
+            current_any
+          );
+          final Core.Type_any next = Core.f_any_from_any(Core.t_any, next_any);
+          Core.Type_any output_1 = Core.f_and(
+            reduce,
+            Core.f_gt(current, next)
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -18316,17 +21621,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18347,8 +21652,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any val1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any val2 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any val1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any val2 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_ge(val1, val2);
       return output;
     }
@@ -18367,10 +21678,7 @@ public final class Core {
   public static Core.Type_boolean f_ge(final Core.Type_any val1, final Core.Type_any val2) {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_not(
-      Core.f_lt(
-        val1,
-        val2
-      )
+      Core.f_lt(val1, val2)
     );
     return output;
   }
@@ -18414,17 +21722,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18452,14 +21760,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Core.f_ge_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist args = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist args = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_ge_1(args);
       return output;
     }
@@ -18477,11 +21791,7 @@ public final class Core {
 
   public static Core.Type_boolean f_ge_1(final Core.Type_anylist args) {
     Core.Type_boolean output = Core.e_boolean;
-    output = Core.f_not(
-      Core.f_lt_1(
-        args
-      )
-    );
+    output = Core.f_not(Core.f_lt_1(args));
     return output;
   }
 
@@ -18524,17 +21834,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "funclist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_func), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "funclist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_func
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18562,14 +21877,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_security inputval = (Core.Type_security)value;
       final Core.Type_any outputval = Core.f_allowfuncs_from_security(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_security security = Core.f_any_from_any(Core.t_security, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_security security = Core.f_any_from_any(
+        Core.t_security,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_allowfuncs_from_security(security);
       return output;
     }
@@ -18630,17 +21951,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_string
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18668,14 +21994,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typedef inputval = (Core.Type_typedef)value;
       final Core.Type_any outputval = Core.f_allowtypenames_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typedef vtypedef = Core.f_any_from_any(
+        Core.t_typedef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_allowtypenames_from_typedef(vtypedef);
       return output;
     }
@@ -18694,9 +22026,7 @@ public final class Core {
   public static Core.Type_stringlist f_allowtypenames_from_typedef(final Core.Type_typedef vtypedef) {
     Core.Type_stringlist output = Core.e_stringlist;
     output = Core.f_typenames_from_typelist(
-      Core.f_allowtypes_from_typedef(
-        vtypedef
-      )
+      Core.f_allowtypes_from_typedef(vtypedef)
     );
     return output;
   }
@@ -18740,17 +22070,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "typelist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "typelist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18778,14 +22113,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typedef inputval = (Core.Type_typedef)value;
       final Core.Type_any outputval = Core.f_allowtypes_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typedef vtypedef = Core.f_any_from_any(
+        Core.t_typedef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_allowtypes_from_typedef(vtypedef);
       return output;
     }
@@ -18847,17 +22188,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18878,8 +22219,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_boolean val1 = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_boolean val2 = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_boolean val1 = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_boolean val2 = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_and(val1, val2);
       return output;
     }
@@ -18897,11 +22244,7 @@ public final class Core {
 
   public static Core.Type_boolean f_and(final Core.Type_boolean val1, final Core.Type_boolean val2) {
     Core.Type_boolean output = Core.e_boolean;
-    if (val1.vx_boolean() && val2.vx_boolean()) {
-      output = Core.c_true;
-    } else {
-      output = Core.c_false;
-    };
+    output = Core.vx_and(val1, val2);
     return output;
   }
 
@@ -18944,17 +22287,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -18982,14 +22325,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_booleanlist inputval = (Core.Type_booleanlist)value;
       final Core.Type_any outputval = Core.f_and_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_booleanlist values = Core.f_any_from_any(Core.t_booleanlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_booleanlist values = Core.f_any_from_any(
+        Core.t_booleanlist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_and_1(values);
       return output;
     }
@@ -19009,52 +22358,66 @@ public final class Core {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_switch(
       Core.t_boolean,
-      Core.f_length_1(
-        values
-      ),
+      Core.f_length_1(values),
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_case_1(
-          Core.vx_new_int(0),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.vx_new_boolean(true);
-            return output_1;
-          })
-        ),
-        Core.f_case_1(
-          Core.vx_new_int(1),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.f_any_from_list(
-              Core.t_boolean,
-              values,
-              Core.vx_new_int(1)
-            );
-            return output_2;
-          })
-        ),
-        Core.f_else(
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_3 = Core.f_any_from_list_start_reduce_next(
-              Core.t_boolean,
-              values,
-              Core.vx_new_boolean(true),
-              Core.t_any_from_reduce_next.vx_fn_new((reduce_any, current_any, next_any) -> {
-                final Core.Type_boolean reduce = Core.f_any_from_any(Core.t_boolean, reduce_any);
-                final Core.Type_boolean current = Core.f_any_from_any(Core.t_boolean, current_any);
-                final Core.Type_boolean next = Core.f_any_from_any(Core.t_boolean, next_any);
-                Core.Type_any output_4 = Core.f_and(
-                  reduce,
-                  Core.f_and(
-                    current,
-                    next
-                  )
-                );
-                return output_4;
-              })
-            );
-            return output_3;
-          })
-        )
+        // [
+          Core.f_case_1(
+            Core.vx_new_int(0),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.vx_new_boolean(true);
+                  return output_1;
+                }
+            )
+          ),
+          Core.f_case_1(
+            Core.vx_new_int(1),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.f_any_from_list(
+                    Core.t_boolean,
+                    values,
+                    Core.vx_new_int(1)
+                  );
+                  return output_2;
+                }
+            )
+          ),
+          Core.f_else(
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_3 = Core.f_any_from_list_start_reduce_next(
+                    Core.t_boolean,
+                    values,
+                    Core.vx_new_boolean(true),
+                    Core.t_any_from_reduce_next.vx_fn_new(
+                      (reduce_any, current_any, next_any) -> {
+                        final Core.Type_boolean reduce = Core.f_any_from_any(
+                          Core.t_boolean,
+                          reduce_any
+                        );
+                        final Core.Type_boolean current = Core.f_any_from_any(
+                          Core.t_boolean,
+                          current_any
+                        );
+                        final Core.Type_boolean next = Core.f_any_from_any(
+                          Core.t_boolean,
+                          next_any
+                        );
+                        Core.Type_any output_4 = Core.f_and(
+                          reduce,
+                          Core.f_and(current, next)
+                        );
+                        return output_4;
+                      }
+                    )
+                  );
+                  return output_3;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -19100,17 +22463,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -19145,8 +22508,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_any_from_any(generic_any_1, value);
       return output;
     }
@@ -19157,7 +22526,10 @@ public final class Core {
       Class_any_from_any.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve(value);
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -19215,17 +22587,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -19260,8 +22632,14 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_any_from_any_async(generic_any_1, value);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -19275,7 +22653,10 @@ public final class Core {
         output = Core.vx_async_new_from_value(Core.f_empty(generic_any_1));
       } else {
         CompletableFuture<Core.Type_any> future = fnlocal.resolve(value);
-        output = Core.vx_async_from_async(generic_any_1, future);
+        output = Core.vx_async_from_async(
+          generic_any_1,
+          future
+        );
       }
       return output;
     }
@@ -19330,17 +22711,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -19375,9 +22756,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_any_from_any_context(generic_any_1, context, value);
       return output;
     }
@@ -19388,7 +22778,10 @@ public final class Core {
       Class_any_from_any_context.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve(context, value);
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -19447,17 +22840,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -19492,9 +22885,18 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_any_from_any_context_async(generic_any_1, context, value);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -19508,7 +22910,10 @@ public final class Core {
         output = Core.vx_async_new_from_value(Core.f_empty(generic_any_1));
       } else {
         CompletableFuture<Core.Type_any> future = fnlocal.resolve(context, value);
-        output = Core.vx_async_from_async(generic_any_1, future);
+        output = Core.vx_async_from_async(
+          generic_any_1,
+          future
+        );
       }
       return output;
     }
@@ -19565,17 +22970,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -19610,10 +23015,22 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any current = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any current = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string key = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_any_from_any_key_value(generic_any_1, current, key, value);
       return output;
     }
@@ -19624,7 +23041,10 @@ public final class Core {
       Class_any_from_any_key_value.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve(current, key, value);
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -19678,17 +23098,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -19723,7 +23143,10 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_any_from_func(generic_any_1);
       return output;
     }
@@ -19734,7 +23157,10 @@ public final class Core {
       Class_any_from_func.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve();
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -19790,17 +23216,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -19835,7 +23261,10 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_any_from_func_async(generic_any_1);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -19849,7 +23278,10 @@ public final class Core {
         output = Core.vx_async_new_from_value(Core.f_empty(generic_any_1));
       } else {
         CompletableFuture<Core.Type_any> future = fnlocal.resolve();
-        output = Core.vx_async_from_async(generic_any_1, future);
+        output = Core.vx_async_from_async(
+          generic_any_1,
+          future
+        );
       }
       return output;
     }
@@ -19904,17 +23336,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -19949,8 +23381,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int value = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int value = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_any_from_int(generic_any_1, value);
       return output;
     }
@@ -19961,7 +23399,10 @@ public final class Core {
       Class_any_from_int.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve(value);
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -20017,17 +23458,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -20062,9 +23503,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int num = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int num = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_any_from_int_any(generic_any_1, num, value);
       return output;
     }
@@ -20075,7 +23525,10 @@ public final class Core {
       Class_any_from_int_any.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve(num, value);
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -20131,17 +23584,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -20176,9 +23629,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string key = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_any_from_key_value(generic_any_1, key, value);
       return output;
     }
@@ -20189,7 +23651,10 @@ public final class Core {
       Class_any_from_key_value.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve(key, value);
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -20247,17 +23712,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -20292,9 +23757,18 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string key = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_any_from_key_value_async(generic_any_1, key, value);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -20308,7 +23782,10 @@ public final class Core {
         output = Core.vx_async_new_from_value(Core.f_empty(generic_any_1));
       } else {
         CompletableFuture<Core.Type_any> future = fnlocal.resolve(key, value);
-        output = Core.vx_async_from_async(generic_any_1, future);
+        output = Core.vx_async_from_async(
+          generic_any_1,
+          future
+        );
       }
       return output;
     }
@@ -20363,17 +23840,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -20394,9 +23871,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int index = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int index = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_any_from_list(generic_any_1, values, index);
       return output;
     }
@@ -20465,17 +23951,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -20496,10 +23982,22 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list list = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any valstart = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Func_any_from_reduce fn_reduce = Core.f_any_from_any(Core.t_any_from_reduce, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list list = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any valstart = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Func_any_from_reduce fn_reduce = Core.f_any_from_any(
+        Core.t_any_from_reduce,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_any_from_list_start_reduce(generic_any_1, list, valstart, fn_reduce);
       return output;
     }
@@ -20562,17 +24060,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -20593,10 +24091,22 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list list = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any valstart = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Func_any_from_reduce_next fn_reduce_next = Core.f_any_from_any(Core.t_any_from_reduce_next, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list list = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any valstart = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Func_any_from_reduce_next fn_reduce_next = Core.f_any_from_any(
+        Core.t_any_from_reduce_next,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_any_from_list_start_reduce_next(generic_any_1, list, valstart, fn_reduce_next);
       return output;
     }
@@ -20669,17 +24179,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -20700,9 +24210,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_map valuemap = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string key = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_any_from_map(generic_any_1, valuemap, key);
       return output;
     }
@@ -20765,17 +24284,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -20796,10 +24315,22 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_map map = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any start = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Func_any_from_any_key_value fn_reduce = Core.f_any_from_any(Core.t_any_from_any_key_value, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_map map = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any start = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Func_any_from_any_key_value fn_reduce = Core.f_any_from_any(
+        Core.t_any_from_any_key_value,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_any_from_map_start_reduce(generic_any_1, map, start, fn_reduce);
       return output;
     }
@@ -20860,17 +24391,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -20905,7 +24436,10 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_any_from_none(generic_any_1);
       return output;
     }
@@ -20916,7 +24450,10 @@ public final class Core {
       Class_any_from_none.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve();
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -20972,17 +24509,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -21017,7 +24554,10 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_any_from_none_async(generic_any_1);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -21031,7 +24571,10 @@ public final class Core {
         output = Core.vx_async_new_from_value(Core.f_empty(generic_any_1));
       } else {
         CompletableFuture<Core.Type_any> future = fnlocal.resolve();
-        output = Core.vx_async_from_async(generic_any_1, future);
+        output = Core.vx_async_from_async(
+          generic_any_1,
+          future
+        );
       }
       return output;
     }
@@ -21086,17 +24629,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -21131,9 +24674,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any result = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any item = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any result = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any item = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_any_from_reduce(generic_any_1, result, item);
       return output;
     }
@@ -21144,7 +24696,10 @@ public final class Core {
       Class_any_from_reduce.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve(result, item);
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -21201,17 +24756,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -21246,9 +24801,18 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any result = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any item = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any result = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any item = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_any_from_reduce_async(generic_any_1, result, item);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -21262,7 +24826,10 @@ public final class Core {
         output = Core.vx_async_new_from_value(Core.f_empty(generic_any_1));
       } else {
         CompletableFuture<Core.Type_any> future = fnlocal.resolve(result, item);
-        output = Core.vx_async_from_async(generic_any_1, future);
+        output = Core.vx_async_from_async(
+          generic_any_1,
+          future
+        );
       }
       return output;
     }
@@ -21318,17 +24885,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -21363,10 +24930,22 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any result = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any current = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any next = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any result = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any current = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any next = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_any_from_reduce_next(generic_any_1, result, current, next);
       return output;
     }
@@ -21377,7 +24956,10 @@ public final class Core {
       Class_any_from_reduce_next.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve(result, current, next);
-        output = Core.f_any_from_any(generic_any_1, anyoutput);
+        output = Core.f_any_from_any(
+          generic_any_1,
+          anyoutput
+        );
       }
       return output;
     }
@@ -21435,17 +25017,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -21480,10 +25062,22 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any result = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any current = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any next = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any result = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any current = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any next = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_any_from_reduce_next_async(generic_any_1, result, current, next);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -21497,7 +25091,10 @@ public final class Core {
         output = Core.vx_async_new_from_value(Core.f_empty(generic_any_1));
       } else {
         CompletableFuture<Core.Type_any> future = fnlocal.resolve(result, current, next);
-        output = Core.vx_async_from_async(generic_any_1, future);
+        output = Core.vx_async_from_async(
+          generic_any_1,
+          future
+        );
       }
       return output;
     }
@@ -21552,17 +25149,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -21583,9 +25180,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_struct vstruct = Core.f_any_from_any(Core.t_struct, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string key = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_struct vstruct = Core.f_any_from_any(
+        Core.t_struct,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string key = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_any_from_struct(generic_any_1, vstruct, key);
       return output;
     }
@@ -21649,17 +25255,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -21685,15 +25291,24 @@ public final class Core {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
       final T inputval = Core.f_any_from_any(generic_any_1, value);
-      final CompletableFuture<T> output = Core.f_async(generic_any_1, inputval);
+      final CompletableFuture<T> output = Core.f_async(
+        generic_any_1,
+        inputval
+      );
       return output;
     }
 
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_async(generic_any_1, value);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -21755,17 +25370,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -21793,15 +25408,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_func inputval = (Core.Type_func)value;
       final Core.Type_any outputval = Core.f_boolean_permission_from_func(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_func fnc = Core.f_any_from_any(Core.t_func, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_func fnc = Core.f_any_from_any(
+        Core.t_func,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_boolean_permission_from_func(context, fnc);
       return output;
     }
@@ -21821,9 +25445,7 @@ public final class Core {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_contains_1(
       Core.f_allowfuncs_from_security(
-        Core.f_security_from_context(
-          context
-        )
+        Core.f_security_from_context(context)
       ),
       fnc
     );
@@ -21871,17 +25493,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -21902,9 +25524,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_map valuemap = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string name = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_boolean_write_from_map_name_value(valuemap, name, value);
       return output;
     }
@@ -21966,17 +25597,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22011,7 +25642,10 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_boolean_from_any(value);
       return output;
     }
@@ -22022,7 +25656,10 @@ public final class Core {
       Class_boolean_from_any.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve(value);
-        output = Core.f_any_from_any(Core.t_boolean, anyoutput);
+        output = Core.f_any_from_any(
+          Core.t_boolean,
+          anyoutput
+        );
       }
       return output;
     }
@@ -22076,17 +25713,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22131,7 +25768,10 @@ public final class Core {
       Core.Class_any_from_func.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve();
-        output = Core.f_any_from_any(Core.t_boolean, anyoutput);
+        output = Core.f_any_from_any(
+          Core.t_boolean,
+          anyoutput
+        );
       }
       return output;
     }
@@ -22185,17 +25825,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22240,7 +25880,10 @@ public final class Core {
       Core.Class_any_from_func.IFn fnlocal = this.fn;
       if (fnlocal != null) {
         final Core.Type_any anyoutput = fnlocal.resolve();
-        output = Core.f_any_from_any(Core.t_boolean, anyoutput);
+        output = Core.f_any_from_any(
+          Core.t_boolean,
+          anyoutput
+        );
       }
       return output;
     }
@@ -22294,17 +25937,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "thenelse", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "thenelse",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22325,8 +25968,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func fn_any = Core.f_any_from_any(Core.t_any_from_func, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func fn_any = Core.f_any_from_any(
+        Core.t_any_from_func,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_case(values, fn_any);
       return output;
     }
@@ -22348,12 +25997,14 @@ public final class Core {
       Core.t_thenelse,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":code"),
-        Core.vx_new_string(":casemany"),
-        Core.vx_new_string(":values"),
-        values,
-        Core.vx_new_string(":fn-any"),
-        fn_any
+        // [
+          Core.vx_new_string(":code"),
+          Core.vx_new_string(":casemany"),
+          Core.vx_new_string(":values"),
+          values,
+          Core.vx_new_string(":fn-any"),
+          fn_any
+        // ]
       )
     );
     return output;
@@ -22398,17 +26049,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "thenelse", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "thenelse",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22429,8 +26080,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func fn_any = Core.f_any_from_any(Core.t_any_from_func, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func fn_any = Core.f_any_from_any(
+        Core.t_any_from_func,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_case_1(value, fn_any);
       return output;
     }
@@ -22452,12 +26109,14 @@ public final class Core {
       Core.t_thenelse,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":code"),
-        Core.vx_new_string(":case"),
-        Core.vx_new_string(":value"),
-        value,
-        Core.vx_new_string(":fn-any"),
-        fn_any
+        // [
+          Core.vx_new_string(":code"),
+          Core.vx_new_string(":case"),
+          Core.vx_new_string(":value"),
+          value,
+          Core.vx_new_string(":fn-any"),
+          fn_any
+        // ]
       )
     );
     return output;
@@ -22503,17 +26162,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22534,8 +26198,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any val1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any val2 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any val1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any val2 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_compare(val1, val2);
       return output;
     }
@@ -22617,17 +26287,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "constdef", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "constdef",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22655,14 +26325,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_constdef_from_any(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_constdef_from_any(value);
       return output;
     }
@@ -22723,17 +26399,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22761,14 +26437,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_constname_from_any(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_constname_from_any(value);
       return output;
     }
@@ -22788,44 +26470,52 @@ public final class Core {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_constdef cnstdef = Core.f_constdef_from_any(
-          value
-        );
-        final Core.Type_any output_1 = Core.f_if_2(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_is_empty_1(
-                  cnstdef
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Core.vx_new_string("");
-                return output_3;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_new(
-                  Core.t_string,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    cnstdef.pkgname(),
-                    Core.vx_new_string("/"),
-                    cnstdef.name()
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_constdef cnstdef = Core.f_constdef_from_any(value);
+          final Core.Type_any output_1 = Core.f_if_2(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_is_empty_1(cnstdef);
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Core.vx_new_string("");
+                        return output_3;
+                      }
                   )
-                );
-                return output_4;
-              })
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_new(
+                          Core.t_string,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              cnstdef.pkgname(),
+                              Core.vx_new_string("/"),
+                              cnstdef.name()
+                            // ]
+                          )
+                        );
+                        return output_4;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -22870,17 +26560,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22901,8 +26591,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string find = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string find = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_contains(text, find);
       return output;
     }
@@ -22967,17 +26663,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -22998,8 +26694,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any find = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any find = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_contains_1(values, find);
       return output;
     }
@@ -23069,17 +26771,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -23107,14 +26809,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Core.f_context_main(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist args = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist args = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_context_main(args);
       return output;
     }
@@ -23132,9 +26840,7 @@ public final class Core {
 
   public static Core.Type_context f_context_main(final Core.Type_anylist args) {
     Core.Type_context output = Core.e_context;
-    output = Core.f_empty(
-      Core.t_context
-    );
+    output = Core.f_empty(Core.t_context);
     return output;
   }
 
@@ -23178,17 +26884,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -23209,8 +26915,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_anylist values = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_anylist values = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_copy(value, values);
       return output;
     }
@@ -23274,17 +26986,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "thenelse", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "thenelse",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -23312,14 +27024,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Func_any_from_func inputval = (Core.Func_any_from_func)value;
       final Core.Type_any outputval = Core.f_else(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Func_any_from_func fn_any = Core.f_any_from_any(Core.t_any_from_func, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Func_any_from_func fn_any = Core.f_any_from_any(
+        Core.t_any_from_func,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_else(fn_any);
       return output;
     }
@@ -23341,10 +27059,12 @@ public final class Core {
       Core.t_thenelse,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":code"),
-        Core.vx_new_string(":else"),
-        Core.vx_new_string(":fn-any"),
-        fn_any
+        // [
+          Core.vx_new_string(":code"),
+          Core.vx_new_string(":else"),
+          Core.vx_new_string(":fn-any"),
+          fn_any
+        // ]
       )
     );
     return output;
@@ -23389,17 +27109,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -23427,14 +27147,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_empty(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any type = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any type = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_empty(type);
       return output;
     }
@@ -23493,17 +27219,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -23531,14 +27257,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_extends_from_any(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_extends_from_any(value);
       return output;
     }
@@ -23557,9 +27289,7 @@ public final class Core {
   public static Core.Type_string f_extends_from_any(final Core.Type_any value) {
     Core.Type_string output = Core.e_string;
     output = Core.f_extends_from_typedef(
-      Core.f_typedef_from_any(
-        value
-      )
+      Core.f_typedef_from_any(value)
     );
     return output;
   }
@@ -23603,17 +27333,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -23641,14 +27371,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typedef inputval = (Core.Type_typedef)value;
       final Core.Type_any outputval = Core.f_extends_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typedef vtypedef = Core.f_any_from_any(
+        Core.t_typedef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_extends_from_typedef(vtypedef);
       return output;
     }
@@ -23709,17 +27445,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -23747,15 +27483,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_list inputval = (Core.Type_list)value;
       final Core.Type_any outputval = Core.f_first_from_list(Core.t_any, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_first_from_list(generic_any_1, values);
       return output;
     }
@@ -23821,17 +27566,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -23852,9 +27597,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(
+        Core.t_any_from_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_first_from_list_any_from_any(generic_any_1, values, fn_any_from_any);
       return output;
     }
@@ -23921,17 +27675,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "float", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "float",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -23959,14 +27718,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_float_from_string(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_float_from_string(text);
       return output;
     }
@@ -24029,17 +27794,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24060,9 +27825,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_arglist parameters = Core.f_any_from_any(Core.t_arglist, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func fn_any = Core.f_any_from_any(Core.t_any_from_func, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_arglist parameters = Core.f_any_from_any(
+        Core.t_arglist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func fn_any = Core.f_any_from_any(
+        Core.t_any_from_func,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_fn(generic_any_1, parameters, fn_any);
       return output;
     }
@@ -24122,17 +27896,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "funcdef", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "funcdef",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24160,14 +27934,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_func inputval = (Core.Type_func)value;
       final Core.Type_any outputval = Core.f_funcdef_from_func(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_func value = Core.f_any_from_any(Core.t_func, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_func value = Core.f_any_from_any(
+        Core.t_func,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_funcdef_from_func(value);
       return output;
     }
@@ -24228,17 +28008,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24266,14 +28046,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_funcdef inputval = (Core.Type_funcdef)value;
       final Core.Type_any outputval = Core.f_funcname_from_funcdef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_funcdef funcdef = Core.f_any_from_any(Core.t_funcdef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_funcdef funcdef = Core.f_any_from_any(
+        Core.t_funcdef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_funcname_from_funcdef(funcdef);
       return output;
     }
@@ -24295,9 +28081,11 @@ public final class Core {
       Core.t_string,
       Core.vx_new(
         Core.t_anylist,
-        funcdef.pkgname(),
-        Core.vx_new_string("/"),
-        funcdef.name()
+        // [
+          funcdef.pkgname(),
+          Core.vx_new_string("/"),
+          funcdef.name()
+        // ]
       )
     );
     return output;
@@ -24343,17 +28131,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24374,9 +28162,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_boolean clause = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any then = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_boolean clause = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any then = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_if(generic_any_1, clause, then);
       return output;
     }
@@ -24441,17 +28238,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24472,10 +28269,22 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_boolean clause = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any thenval = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any elseval = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_boolean clause = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any thenval = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any elseval = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_if_1(generic_any_1, clause, thenval, elseval);
       return output;
     }
@@ -24540,17 +28349,17 @@ public final class Core {
         2, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24578,15 +28387,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_thenelselist inputval = (Core.Type_thenelselist)value;
       final Core.Type_any outputval = Core.f_if_2(Core.t_any, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_thenelselist thenelselist = Core.f_any_from_any(Core.t_thenelselist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_thenelselist thenelselist = Core.f_any_from_any(
+        Core.t_thenelselist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_if_2(generic_any_1, thenelselist);
       return output;
     }
@@ -24647,17 +28465,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24746,17 +28569,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24784,14 +28612,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_int_from_string(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string value = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string value = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_int_from_string(value);
       return output;
     }
@@ -24852,17 +28686,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24890,14 +28724,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_is_empty(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_is_empty(text);
       return output;
     }
@@ -24960,17 +28800,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -24998,14 +28838,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_is_empty_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_is_empty_1(value);
       return output;
     }
@@ -25071,17 +28917,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -25102,8 +28948,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string find = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string find = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_is_endswith(text, find);
       return output;
     }
@@ -25168,17 +29020,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -25206,14 +29058,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_is_error(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_is_error(value);
       return output;
     }
@@ -25233,30 +29091,34 @@ public final class Core {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_let(
       Core.t_boolean,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_msgblock msgblock = Core.f_msgblock_from_any(
-          value
-        );
-        final Core.Type_any output_1 = Core.f_if_2(
-          Core.t_boolean,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_notempty_1(
-                  msgblock
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_3 = Core.vx_new_boolean(true);
-                return output_3;
-              })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_msgblock msgblock = Core.f_msgblock_from_any(value);
+          final Core.Type_any output_1 = Core.f_if_2(
+            Core.t_boolean,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_notempty_1(msgblock);
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_3 = Core.vx_new_boolean(true);
+                        return output_3;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -25300,17 +29162,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -25338,14 +29200,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_is_float(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_is_float(value);
       return output;
     }
@@ -25407,17 +29275,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -25445,14 +29313,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_is_func(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_is_func(value);
       return output;
     }
@@ -25515,17 +29389,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -25553,14 +29427,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_is_int(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_is_int(value);
       return output;
     }
@@ -25622,17 +29502,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -25660,14 +29540,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_is_number(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_is_number(value);
       return output;
     }
@@ -25687,33 +29573,39 @@ public final class Core {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_switch(
       Core.t_boolean,
-      Core.f_typename_from_any(
-        value
-      ),
+      Core.f_typename_from_any(value),
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_case(
-          Core.f_new(
-            Core.t_list,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string("vx/core/decimal"),
-              Core.vx_new_string("vx/core/float"),
-              Core.vx_new_string("vx/core/int"),
-              Core.vx_new_string("vx/core/number")
+        // [
+          Core.f_case(
+            Core.f_new(
+              Core.t_list,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string("vx/core/decimal"),
+                  Core.vx_new_string("vx/core/float"),
+                  Core.vx_new_string("vx/core/int"),
+                  Core.vx_new_string("vx/core/number")
+                // ]
+              )
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.vx_new_boolean(true);
+                  return output_1;
+                }
             )
           ),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.vx_new_boolean(true);
-            return output_1;
-          })
-        ),
-        Core.f_else(
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.vx_new_boolean(false);
-            return output_2;
-          })
-        )
+          Core.f_else(
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.vx_new_boolean(false);
+                  return output_2;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -25758,17 +29650,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -25796,15 +29688,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_permission inputval = (Core.Type_permission)value;
       final Core.Type_any outputval = Core.f_is_pass_from_permission(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_permission permission = Core.f_any_from_any(Core.t_permission, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_permission permission = Core.f_any_from_any(
+        Core.t_permission,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_is_pass_from_permission(context, permission);
       return output;
     }
@@ -25824,18 +29725,14 @@ public final class Core {
     Core.Type_boolean output = Core.e_boolean;
     output = Core.f_let(
       Core.t_boolean,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string id = permission.id();
-        final Core.Type_permission lookup = Core.f_permission_from_id_context(
-          context,
-          id
-        );
-        final Core.Type_any output_1 = Core.f_eq(
-          lookup,
-          permission
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string id = permission.id();
+          final Core.Type_permission lookup = Core.f_permission_from_id_context(context, id);
+          final Core.Type_any output_1 = Core.f_eq(lookup, permission);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -25879,17 +29776,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -25917,15 +29814,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_list inputval = (Core.Type_list)value;
       final Core.Type_any outputval = Core.f_last_from_list(Core.t_any, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_last_from_list(generic_any_1, values);
       return output;
     }
@@ -25945,17 +29851,17 @@ public final class Core {
     T output = Core.f_empty(generic_any_1);
     output = Core.f_let(
       generic_any_1,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_int len = Core.f_length_1(
-          values
-        );
-        final Core.Type_any output_1 = Core.f_any_from_list(
-          generic_any_1,
-          values,
-          len
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_int len = Core.f_length_1(values);
+          final Core.Type_any output_1 = Core.f_any_from_list(
+            generic_any_1,
+            values,
+            len
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -25999,17 +29905,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26037,14 +29948,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_length(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_length(text);
       return output;
     }
@@ -26106,17 +30023,22 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26144,14 +30066,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_list inputval = (Core.Type_list)value;
       final Core.Type_any outputval = Core.f_length_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_length_1(values);
       return output;
     }
@@ -26213,17 +30141,22 @@ public final class Core {
         2, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Core.vx_new(Core.t_typelist, Core.t_number), // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_number
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26251,14 +30184,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_map inputval = (Core.Type_map)value;
       final Core.Type_any outputval = Core.f_length_2(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map valuemap = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_length_2(valuemap);
       return output;
     }
@@ -26277,9 +30216,7 @@ public final class Core {
   public static Core.Type_int f_length_2(final Core.Type_map valuemap) {
     Core.Type_int output = Core.e_int;
     output = Core.f_length_1(
-      Core.f_stringlist_from_map(
-        valuemap
-      )
+      Core.f_stringlist_from_map(valuemap)
     );
     return output;
   }
@@ -26323,17 +30260,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26354,8 +30291,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func fn_any = Core.f_any_from_any(Core.t_any_from_func, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func fn_any = Core.f_any_from_any(
+        Core.t_any_from_func,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_let(generic_any_1, fn_any);
       return output;
     }
@@ -26419,17 +30362,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26450,8 +30393,14 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func_async fn_any_async = Core.f_any_from_any(Core.t_any_from_func_async, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func_async fn_any_async = Core.f_any_from_any(
+        Core.t_any_from_func_async,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_let_async(generic_any_1, fn_any_async);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -26513,17 +30462,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26550,16 +30504,28 @@ public final class Core {
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_list inputval = (Core.Type_list)value;
-      final Core.Type_any outputval = Core.f_list_from_list(Core.t_list, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      final Core.Type_any outputval = Core.f_list_from_list(
+        Core.t_list,
+        inputval
+      );
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_list_from_list(generic_list_1, values);
       return output;
     }
@@ -26580,11 +30546,16 @@ public final class Core {
     output = Core.f_list_from_list_1(
       generic_list_1,
       values,
-      Core.t_any_from_any.vx_fn_new((value_any) -> {
-        final Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
-        Core.Type_any output_1 = value;
-        return output_1;
-      })
+      Core.t_any_from_any.vx_fn_new(
+        (value_any) -> {
+          final Core.Type_any value = Core.f_any_from_any(
+            Core.t_any,
+            value_any
+          );
+          Core.Type_any output_1 = value;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -26629,17 +30600,22 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26660,9 +30636,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(
+        Core.t_any_from_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_list_from_list_1(generic_list_1, values, fn_any_from_any);
       return output;
     }
@@ -26730,17 +30715,22 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26761,9 +30751,18 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_any_async fn_any_from_any_async = Core.f_any_from_any(Core.t_any_from_any_async, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_any_async fn_any_from_any_async = Core.f_any_from_any(
+        Core.t_any_from_any_async,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       CompletableFuture<Core.Type_list> future = Core.f_list_from_list_async(generic_list_1, values, fn_any_from_any_async);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -26826,17 +30825,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26857,9 +30861,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list values = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_int_any fn_any_from_int_any = Core.f_any_from_any(Core.t_any_from_int_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list values = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_int_any fn_any_from_int_any = Core.f_any_from_any(
+        Core.t_any_from_int_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_list_from_list_intany(generic_list_1, values, fn_any_from_int_any);
       return output;
     }
@@ -26920,17 +30933,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -26957,16 +30975,28 @@ public final class Core {
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_map inputval = (Core.Type_map)value;
-      final Core.Type_any outputval = Core.f_list_from_map(Core.t_list, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      final Core.Type_any outputval = Core.f_list_from_map(
+        Core.t_list,
+        inputval
+      );
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_map valuemap = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_list_from_map(generic_list_1, valuemap);
       return output;
     }
@@ -26987,12 +31017,20 @@ public final class Core {
     output = Core.f_list_from_map_1(
       generic_list_1,
       valuemap,
-      Core.t_any_from_key_value.vx_fn_new((key_any, value_any) -> {
-        final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
-        final Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
-        Core.Type_any output_1 = value;
-        return output_1;
-      })
+      Core.t_any_from_key_value.vx_fn_new(
+        (key_any, value_any) -> {
+          final Core.Type_string key = Core.f_any_from_any(
+            Core.t_string,
+            key_any
+          );
+          final Core.Type_any value = Core.f_any_from_any(
+            Core.t_any,
+            value_any
+          );
+          Core.Type_any output_1 = value;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -27037,17 +31075,22 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -27068,9 +31111,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_key_value fn_any_from_key_value = Core.f_any_from_any(Core.t_any_from_key_value, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_map valuemap = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_key_value fn_any_from_key_value = Core.f_any_from_any(
+        Core.t_any_from_key_value,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_list_from_map_1(generic_list_1, valuemap, fn_any_from_key_value);
       return output;
     }
@@ -27138,17 +31190,22 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -27169,9 +31226,18 @@ public final class Core {
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_key_value_async fn_any_from_key_value_async = Core.f_any_from_any(Core.t_any_from_key_value_async, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_map valuemap = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_key_value_async fn_any_from_key_value_async = Core.f_any_from_any(
+        Core.t_any_from_key_value_async,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       CompletableFuture<Core.Type_list> future = Core.f_list_from_map_async(generic_list_1, valuemap, fn_any_from_key_value_async);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -27232,17 +31298,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -27270,14 +31336,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_list_from_type(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any type = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any type = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_list_from_type(type);
       return output;
     }
@@ -27337,17 +31409,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -27375,14 +31447,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_log(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_log(value);
       return output;
     }
@@ -27445,17 +31523,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -27476,9 +31554,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_log_1(generic_any_1, text, value);
       return output;
     }
@@ -27541,17 +31628,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -27579,15 +31666,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_log_error(Core.t_any, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_log_error(generic_any_1, value);
       return output;
     }
@@ -27609,26 +31705,30 @@ public final class Core {
       generic_any_1,
       Core.vx_new(
         Core.t_thenelselist,
-        Core.f_then(
-          Core.t_boolean_from_func.vx_fn_new(() -> {
-            Core.Type_any output_1 = Core.f_is_error(
-              value
-            );
-            return output_1;
-          }),
-          Core.t_any_from_func.vx_fn_new(() -> {
-            Core.Type_any output_2 = Core.f_log(
-              value
-            );
-            return output_2;
-          })
-        ),
-        Core.f_else(
-          Core.t_any_from_func.vx_fn_new(() -> {
-            final Core.Type_any output_3 = value;
-            return output_3;
-          })
-        )
+        // [
+          Core.f_then(
+            Core.t_boolean_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_1 = Core.f_is_error(value);
+                  return output_1;
+                }
+            ),
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+                Core.Type_any output_2 = Core.f_log(value);
+                  return output_2;
+                }
+            )
+          ),
+          Core.f_else(
+            Core.t_any_from_func.vx_fn_new(
+              () -> {
+      final Core.Type_any output_3 = value;
+                  return output_3;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -27673,17 +31773,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -27711,14 +31811,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Core.f_main(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_anylist args = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_anylist args = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_main(args);
       return output;
     }
@@ -27736,10 +31842,7 @@ public final class Core {
 
   public static Core.Type_string f_main(final Core.Type_anylist args) {
     Core.Type_string output = Core.e_string;
-    output = Core.f_new(
-      Core.t_string,
-      args
-    );
+    output = Core.f_new(Core.t_string, args);
     return output;
   }
 
@@ -27783,17 +31886,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -27814,9 +31922,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list vallist = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(Core.t_any_from_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_map generic_map_1 = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list vallist = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_any fn_any_from_any = Core.f_any_from_any(
+        Core.t_any_from_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_map_from_list(generic_map_1, vallist, fn_any_from_any);
       return output;
     }
@@ -27881,17 +31998,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -27919,15 +32041,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_map inputval = (Core.Type_map)value;
       final Core.Type_any outputval = Core.f_map_from_map(Core.t_map, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map generic_map_1 = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_map valuemap = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_map_from_map(generic_map_1, valuemap);
       return output;
     }
@@ -27948,12 +32079,20 @@ public final class Core {
     output = Core.f_map_from_map_1(
       generic_map_1,
       valuemap,
-      Core.t_any_from_key_value.vx_fn_new((key_any, value_any) -> {
-        final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
-        final Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
-        Core.Type_any output_1 = value;
-        return output_1;
-      })
+      Core.t_any_from_key_value.vx_fn_new(
+        (key_any, value_any) -> {
+          final Core.Type_string key = Core.f_any_from_any(
+            Core.t_string,
+            key_any
+          );
+          final Core.Type_any value = Core.f_any_from_any(
+            Core.t_any,
+            value_any
+          );
+          Core.Type_any output_1 = value;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -27998,17 +32137,22 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28029,9 +32173,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_map generic_map_1 = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_map valuemap = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_key_value fn_any_from_key_value = Core.f_any_from_any(Core.t_any_from_key_value, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_map generic_map_1 = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_map valuemap = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_key_value fn_any_from_key_value = Core.f_any_from_any(
+        Core.t_any_from_key_value,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_map_from_map_1(generic_map_1, valuemap, fn_any_from_key_value);
       return output;
     }
@@ -28095,17 +32248,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "msg", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "msg",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28133,14 +32286,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_msg_from_error(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string error = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string error = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_msg_from_error(error);
       return output;
     }
@@ -28162,10 +32321,12 @@ public final class Core {
       Core.t_msg,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":severity"),
-        Core.c_msg_error,
-        Core.vx_new_string(":text"),
-        error
+        // [
+          Core.vx_new_string(":severity"),
+          Core.c_msg_error,
+          Core.vx_new_string(":text"),
+          error
+        // ]
       )
     );
     return output;
@@ -28211,17 +32372,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "msg", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "msg",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28242,8 +32403,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string code = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any detail = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string code = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any detail = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_msg_from_error_1(code, detail);
       return output;
     }
@@ -28265,12 +32432,14 @@ public final class Core {
       Core.t_msg,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":code"),
-        code,
-        Core.vx_new_string(":detail"),
-        detail,
-        Core.vx_new_string(":severity"),
-        Core.c_msg_error
+        // [
+          Core.vx_new_string(":code"),
+          code,
+          Core.vx_new_string(":detail"),
+          detail,
+          Core.vx_new_string(":severity"),
+          Core.c_msg_error
+        // ]
       )
     );
     return output;
@@ -28317,17 +32486,17 @@ public final class Core {
         2, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "msg", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "msg",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28348,9 +32517,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string path = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string code = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any detail = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_string path = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string code = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any detail = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_msg_from_error_2(path, code, detail);
       return output;
     }
@@ -28372,14 +32550,16 @@ public final class Core {
       Core.t_msg,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":code"),
-        code,
-        Core.vx_new_string(":path"),
-        path,
-        Core.vx_new_string(":severity"),
-        Core.c_msg_error,
-        Core.vx_new_string(":detail"),
-        detail
+        // [
+          Core.vx_new_string(":code"),
+          code,
+          Core.vx_new_string(":path"),
+          path,
+          Core.vx_new_string(":severity"),
+          Core.c_msg_error,
+          Core.vx_new_string(":detail"),
+          detail
+        // ]
       )
     );
     return output;
@@ -28424,17 +32604,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "msg", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "msg",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28462,14 +32642,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_msg_from_warning(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string warning = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string warning = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_msg_from_warning(warning);
       return output;
     }
@@ -28491,10 +32677,12 @@ public final class Core {
       Core.t_msg,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":severity"),
-        Core.c_msg_warning,
-        Core.vx_new_string(":text"),
-        warning
+        // [
+          Core.vx_new_string(":severity"),
+          Core.c_msg_warning,
+          Core.vx_new_string(":text"),
+          warning
+        // ]
       )
     );
     return output;
@@ -28539,17 +32727,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "msgblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "msgblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28577,14 +32765,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_msgblock_from_any(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_msgblock_from_any(value);
       return output;
     }
@@ -28646,17 +32840,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "msgblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "msgblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28677,8 +32871,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_msgblock origblock = Core.f_any_from_any(Core.t_msgblock, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_msg addmsg = Core.f_any_from_any(Core.t_msg, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_msgblock origblock = Core.f_any_from_any(
+        Core.t_msgblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_msg addmsg = Core.f_any_from_any(
+        Core.t_msg,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_msgblock_from_msgblock_msg(origblock, addmsg);
       return output;
     }
@@ -28700,7 +32900,9 @@ public final class Core {
       origblock,
       Core.vx_new(
         Core.t_anylist,
-        addmsg
+        // [
+          addmsg
+        // ]
       )
     );
     return output;
@@ -28746,17 +32948,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "msgblock", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "msgblock",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28777,8 +32979,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_msgblock origblock = Core.f_any_from_any(Core.t_msgblock, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_msgblock addblock = Core.f_any_from_any(Core.t_msgblock, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_msgblock origblock = Core.f_any_from_any(
+        Core.t_msgblock,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_msgblock addblock = Core.f_any_from_any(
+        Core.t_msgblock,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_msgblock_from_msgblock_msgblock(origblock, addblock);
       return output;
     }
@@ -28800,8 +33008,10 @@ public final class Core {
       Core.t_msgblock,
       Core.vx_new(
         Core.t_anylist,
-        origblock,
-        addblock
+        // [
+          origblock,
+          addblock
+        // ]
       )
     );
     return output;
@@ -28846,17 +33056,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28884,14 +33094,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typedef inputval = (Core.Type_typedef)value;
       final Core.Type_any outputval = Core.f_name_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typedef vtypedef = Core.f_any_from_any(
+        Core.t_typedef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_name_from_typedef(vtypedef);
       return output;
     }
@@ -28952,17 +33168,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -28990,15 +33206,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Core.f_native(Core.t_any, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_anylist clauses = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_anylist clauses = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_native(generic_any_1, clauses);
       return output;
     }
@@ -29058,17 +33283,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -29096,14 +33321,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_native_from_any(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_native_from_any(value);
       return output;
     }
@@ -29163,17 +33394,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -29201,15 +33432,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_anylist inputval = (Core.Type_anylist)value;
       final Core.Type_any outputval = Core.f_new(Core.t_any, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_anylist values = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_anylist values = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_new(generic_any_1, values);
       return output;
     }
@@ -29276,17 +33516,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -29307,8 +33547,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any type = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_anylist values = Core.f_any_from_any(Core.t_anylist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any type = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_anylist values = Core.f_any_from_any(
+        Core.t_anylist,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_new_from_type(type, values);
       return output;
     }
@@ -29372,17 +33618,24 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "number", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_int, Core.t_float, Core.t_decimal), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "number",
+          "",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_int,
+              Core.t_float,
+              Core.t_decimal
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -29463,17 +33716,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -29494,8 +33747,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_boolean val1 = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_boolean val2 = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_boolean val1 = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_boolean val2 = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_or(val1, val2);
       return output;
     }
@@ -29560,17 +33819,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -29598,14 +33857,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_booleanlist inputval = (Core.Type_booleanlist)value;
       final Core.Type_any outputval = Core.f_or_1(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_booleanlist values = Core.f_any_from_any(Core.t_booleanlist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_booleanlist values = Core.f_any_from_any(
+        Core.t_booleanlist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_or_1(values);
       return output;
     }
@@ -29627,19 +33892,27 @@ public final class Core {
       Core.t_boolean,
       values,
       Core.vx_new_boolean(false),
-      Core.t_any_from_reduce_next.vx_fn_new((reduce_any, current_any, next_any) -> {
-        final Core.Type_boolean reduce = Core.f_any_from_any(Core.t_boolean, reduce_any);
-        final Core.Type_boolean current = Core.f_any_from_any(Core.t_boolean, current_any);
-        final Core.Type_boolean next = Core.f_any_from_any(Core.t_boolean, next_any);
-        Core.Type_any output_1 = Core.f_or(
-          reduce,
-          Core.f_or(
-            current,
-            next
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_reduce_next.vx_fn_new(
+        (reduce_any, current_any, next_any) -> {
+          final Core.Type_boolean reduce = Core.f_any_from_any(
+            Core.t_boolean,
+            reduce_any
+          );
+          final Core.Type_boolean current = Core.f_any_from_any(
+            Core.t_boolean,
+            current_any
+          );
+          final Core.Type_boolean next = Core.f_any_from_any(
+            Core.t_boolean,
+            next_any
+          );
+          Core.Type_any output_1 = Core.f_or(
+            reduce,
+            Core.f_or(current, next)
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -29683,17 +33956,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "package", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "package",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -29721,14 +33994,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_package_global_from_name(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string name = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string name = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_package_global_from_name(name);
       return output;
     }
@@ -29793,17 +34072,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -29831,14 +34110,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typedef inputval = (Core.Type_typedef)value;
       final Core.Type_any outputval = Core.f_packagename_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typedef vtypedef = Core.f_any_from_any(
+        Core.t_typedef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_packagename_from_typedef(vtypedef);
       return output;
     }
@@ -29899,17 +34184,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -29937,15 +34222,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_path_from_context_path(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string path = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string path = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_path_from_context_path(context, path);
       return output;
     }
@@ -29964,9 +34258,7 @@ public final class Core {
   public static Core.Type_string f_path_from_context_path(final Core.Type_context context, final Core.Type_string path) {
     Core.Type_string output = Core.e_string;
     output = Core.f_path_from_setting_path(
-      Core.f_setting_from_context(
-        context
-      ),
+      Core.f_setting_from_context(context),
       path
     );
     return output;
@@ -30012,17 +34304,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -30043,8 +34335,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_setting session = Core.f_any_from_any(Core.t_setting, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string path = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_setting session = Core.f_any_from_any(
+        Core.t_setting,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string path = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_path_from_setting_path(session, path);
       return output;
     }
@@ -30104,17 +34402,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "permission", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "permission",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -30142,15 +34440,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = Core.f_permission_from_id_context(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string id = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string id = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_permission_from_id_context(context, id);
       return output;
     }
@@ -30170,19 +34477,19 @@ public final class Core {
     Core.Type_permission output = Core.e_permission;
     output = Core.f_let(
       Core.t_permission,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_user user = Core.f_user_from_context(
-          context
-        );
-        final Core.Type_security security = user.security();
-        final Core.Type_permissionmap permissionmap = security.permissionmap();
-        final Core.Type_any output_1 = Core.f_any_from_map(
-          Core.t_permission,
-          permissionmap,
-          Core.vx_new_string(":id")
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_user user = Core.f_user_from_context(context);
+          final Core.Type_security security = user.security();
+          final Core.Type_permissionmap permissionmap = security.permissionmap();
+          final Core.Type_any output_1 = Core.f_any_from_map(
+            Core.t_permission,
+            permissionmap,
+            Core.vx_new_string(":id")
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -30226,17 +34533,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "argmap", // name
-          ":map", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_arg), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "argmap",
+          ":map",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_arg
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -30264,14 +34576,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typedef inputval = (Core.Type_typedef)value;
       final Core.Type_any outputval = Core.f_properties_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typedef vtypedef = Core.f_any_from_any(
+        Core.t_typedef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_properties_from_typedef(vtypedef);
       return output;
     }
@@ -30332,17 +34650,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "arg", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "arg",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -30370,14 +34688,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typedef inputval = (Core.Type_typedef)value;
       final Core.Type_any outputval = Core.f_proplast_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typedef vtypedef = Core.f_any_from_any(
+        Core.t_typedef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_proplast_from_typedef(vtypedef);
       return output;
     }
@@ -30437,17 +34761,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -30475,15 +34799,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_resolve(Core.t_any, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_resolve(generic_any_1, value);
       return output;
     }
@@ -30543,17 +34876,17 @@ public final class Core {
         1, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -30581,15 +34914,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Func_any_from_func inputval = (Core.Func_any_from_func)value;
       final Core.Type_any outputval = Core.f_resolve_1(Core.t_any, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func fn_any = Core.f_any_from_any(Core.t_any_from_func, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func fn_any = Core.f_any_from_any(
+        Core.t_any_from_func,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_resolve_1(generic_any_1, fn_any);
       return output;
     }
@@ -30655,17 +34997,17 @@ public final class Core {
         0, // idx
         true, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -30691,15 +35033,24 @@ public final class Core {
     @Override
     public <T extends Core.Type_any, U extends Core.Type_any> CompletableFuture<T> vx_any_from_any_async(final T generic_any_1, final U value) {
       final T inputval = Core.f_any_from_any(generic_any_1, value);
-      final CompletableFuture<T> output = Core.f_async(generic_any_1, inputval);
+      final CompletableFuture<T> output = Core.f_async(
+        generic_any_1,
+        inputval
+      );
       return output;
     }
 
     @Override
     public CompletableFuture<Core.Type_any> vx_repl(Core.Type_anylist arglist) {
       CompletableFuture<Core.Type_any> output = Core.vx_async_new_from_value(Core.e_any);
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func_async fn_any = Core.f_any_from_any(Core.t_any_from_func_async, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func_async fn_any = Core.f_any_from_any(
+        Core.t_any_from_func_async,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       CompletableFuture<Core.Type_any> future = Core.f_resolve_async(generic_any_1, fn_any);
       output = Core.vx_async_from_async(Core.t_any, future);
       return output;
@@ -30765,17 +35116,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -30803,15 +35154,24 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_list inputval = (Core.Type_list)value;
       final Core.Type_any outputval = Core.f_resolve_first(Core.t_any, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list clauses = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list clauses = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_resolve_first(generic_any_1, clauses);
       return output;
     }
@@ -30875,17 +35235,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -30912,16 +35277,28 @@ public final class Core {
     public <T extends Core.Type_any, U extends Core.Type_any> T vx_any_from_any(final T generic_any_1, final U value) {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_list inputval = (Core.Type_list)value;
-      final Core.Type_any outputval = Core.f_resolve_list(Core.t_list, inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      final Core.Type_any outputval = Core.f_resolve_list(
+        Core.t_list,
+        inputval
+      );
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_list generic_list_1 = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_list clauses = Core.f_any_from_any(Core.t_list, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_list generic_list_1 = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_list clauses = Core.f_any_from_any(
+        Core.t_list,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_resolve_list(generic_list_1, clauses);
       return output;
     }
@@ -30985,17 +35362,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31016,7 +35393,10 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_security_from_context(context);
       return output;
     }
@@ -31035,9 +35415,7 @@ public final class Core {
   public static Core.Type_security f_security_from_context(final Core.Type_context context) {
     Core.Type_security output = Core.e_security;
     output = Core.f_security_from_user(
-      Core.f_user_from_context(
-        context
-      )
+      Core.f_user_from_context(context)
     );
     return output;
   }
@@ -31081,17 +35459,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31119,14 +35497,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_user inputval = (Core.Type_user)value;
       final Core.Type_any outputval = Core.f_security_from_user(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_user user = Core.f_any_from_any(Core.t_user, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_user user = Core.f_any_from_any(
+        Core.t_user,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_security_from_user(user);
       return output;
     }
@@ -31186,17 +35570,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "session", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "session",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31217,7 +35601,10 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_session_from_context(context);
       return output;
     }
@@ -31277,17 +35664,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "setting", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "setting",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31308,7 +35695,10 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_setting_from_context(context);
       return output;
     }
@@ -31369,17 +35759,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31400,8 +35790,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int num = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int num = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_string_repeat(text, num);
       return output;
     }
@@ -31465,17 +35861,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31503,14 +35899,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_string_from_any(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_string_from_any(value);
       return output;
     }
@@ -31577,17 +35979,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31608,9 +36010,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_int indent = Core.f_any_from_any(Core.t_int, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_boolean linefeed = Core.f_any_from_any(Core.t_boolean, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_int indent = Core.f_any_from_any(
+        Core.t_int,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_boolean linefeed = Core.f_any_from_any(
+        Core.t_boolean,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_string_from_any_indent(value, indent, linefeed);
       return output;
     }
@@ -31671,17 +36082,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31772,17 +36183,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31803,9 +36214,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_string find = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_string replace = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_string find = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_string replace = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = Core.f_string_from_string_find_replace(text, find, replace);
       return output;
     }
@@ -31866,17 +36286,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_string
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -31904,14 +36329,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_map inputval = (Core.Type_map)value;
       final Core.Type_any outputval = Core.f_stringlist_from_map(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_map map = Core.f_any_from_any(Core.t_map, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_map map = Core.f_any_from_any(
+        Core.t_map,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_stringlist_from_map(map);
       return output;
     }
@@ -31932,12 +36363,20 @@ public final class Core {
     output = Core.f_list_from_map_1(
       Core.t_stringlist,
       map,
-      Core.t_any_from_key_value.vx_fn_new((key_any, value_any) -> {
-        final Core.Type_string key = Core.f_any_from_any(Core.t_string, key_any);
-        final Core.Type_any value = Core.f_any_from_any(Core.t_any, value_any);
-        Core.Type_any output_1 = key;
-        return output_1;
-      })
+      Core.t_any_from_key_value.vx_fn_new(
+        (key_any, value_any) -> {
+          final Core.Type_string key = Core.f_any_from_any(
+            Core.t_string,
+            key_any
+          );
+          final Core.Type_any value = Core.f_any_from_any(
+            Core.t_any,
+            value_any
+          );
+          Core.Type_any output_1 = key;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -31982,17 +36421,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -32013,9 +36452,18 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any generic_any_1 = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Type_thenelselist thenelselist = Core.f_any_from_any(Core.t_thenelselist, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_any generic_any_1 = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Type_thenelselist thenelselist = Core.f_any_from_any(
+        Core.t_thenelselist,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_switch(generic_any_1, value, thenelselist);
       return output;
     }
@@ -32106,17 +36554,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "thenelse", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "thenelse",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -32137,8 +36585,14 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Func_boolean_from_func fn_cond = Core.f_any_from_any(Core.t_boolean_from_func, arglist.vx_any(Core.vx_new_int(0)));
-      final Core.Func_any_from_func fn_any = Core.f_any_from_any(Core.t_any_from_func, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Func_boolean_from_func fn_cond = Core.f_any_from_any(
+        Core.t_boolean_from_func,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final Core.Func_any_from_func fn_any = Core.f_any_from_any(
+        Core.t_any_from_func,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = Core.f_then(fn_cond, fn_any);
       return output;
     }
@@ -32160,12 +36614,14 @@ public final class Core {
       Core.t_thenelse,
       Core.vx_new(
         Core.t_anylist,
-        Core.vx_new_string(":code"),
-        Core.vx_new_string(":then"),
-        Core.vx_new_string(":fn-cond"),
-        fn_cond,
-        Core.vx_new_string(":fn-any"),
-        fn_any
+        // [
+          Core.vx_new_string(":code"),
+          Core.vx_new_string(":then"),
+          Core.vx_new_string(":fn-cond"),
+          fn_cond,
+          Core.vx_new_string(":fn-any"),
+          fn_any
+        // ]
       )
     );
     return output;
@@ -32210,17 +36666,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "typelist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_any), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "typelist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_any
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -32248,14 +36709,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typedef inputval = (Core.Type_typedef)value;
       final Core.Type_any outputval = Core.f_traits_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typedef vtypedef = Core.f_any_from_any(
+        Core.t_typedef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_traits_from_typedef(vtypedef);
       return output;
     }
@@ -32316,17 +36783,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -32354,14 +36821,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_type_from_any(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_type_from_any(value);
       return output;
     }
@@ -32422,17 +36895,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "typedef", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "typedef",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -32460,14 +36933,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_typedef_from_any(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_typedef_from_any(value);
       return output;
     }
@@ -32486,9 +36965,7 @@ public final class Core {
   public static Core.Type_typedef f_typedef_from_any(final Core.Type_any value) {
     Core.Type_typedef output = Core.e_typedef;
     output = Core.f_typedef_from_type(
-      Core.f_type_from_any(
-        value
-      )
+      Core.f_type_from_any(value)
     );
     return output;
   }
@@ -32532,17 +37009,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "typedef", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "typedef",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -32570,14 +37047,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_typedef_from_type(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_typedef_from_type(value);
       return output;
     }
@@ -32638,17 +37121,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -32676,14 +37159,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_typename_from_any(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_typename_from_any(value);
       return output;
     }
@@ -32702,9 +37191,7 @@ public final class Core {
   public static Core.Type_string f_typename_from_any(final Core.Type_any value) {
     Core.Type_string output = Core.e_string;
     output = Core.f_typename_from_type(
-      Core.f_type_from_any(
-        value
-      )
+      Core.f_type_from_any(value)
     );
     return output;
   }
@@ -32748,17 +37235,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -32786,14 +37273,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_any inputval = (Core.Type_any)value;
       final Core.Type_any outputval = Core.f_typename_from_type(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_any type = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_any type = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_typename_from_type(type);
       return output;
     }
@@ -32812,9 +37305,7 @@ public final class Core {
   public static Core.Type_string f_typename_from_type(final Core.Type_any type) {
     Core.Type_string output = Core.e_string;
     output = Core.f_typename_from_typedef(
-      Core.f_typedef_from_type(
-        type
-      )
+      Core.f_typedef_from_type(type)
     );
     return output;
   }
@@ -32858,17 +37349,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -32896,14 +37387,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typedef inputval = (Core.Type_typedef)value;
       final Core.Type_any outputval = Core.f_typename_from_typedef(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typedef vtypedef = Core.f_any_from_any(Core.t_typedef, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typedef vtypedef = Core.f_any_from_any(
+        Core.t_typedef,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_typename_from_typedef(vtypedef);
       return output;
     }
@@ -32925,9 +37422,11 @@ public final class Core {
       Core.t_string,
       Core.vx_new(
         Core.t_anylist,
-        vtypedef.pkgname(),
-        Core.vx_new_string("/"),
-        vtypedef.name()
+        // [
+          vtypedef.pkgname(),
+          Core.vx_new_string("/"),
+          vtypedef.name()
+        // ]
       )
     );
     return output;
@@ -32972,17 +37471,22 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Core.e_typelist, // traits
-          Core.vx_new(Core.t_typelist, Core.t_string), // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Core.e_typelist,
+          Core.vx_new(
+            Core.t_typelist,
+            // [
+              Core.t_string
+            // ]
+          ),
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -33010,14 +37514,20 @@ public final class Core {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_typelist inputval = (Core.Type_typelist)value;
       final Core.Type_any outputval = Core.f_typenames_from_typelist(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_typelist typelist = Core.f_any_from_any(Core.t_typelist, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_typelist typelist = Core.f_any_from_any(
+        Core.t_typelist,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_typenames_from_typelist(typelist);
       return output;
     }
@@ -33038,13 +37548,13 @@ public final class Core {
     output = Core.f_list_from_list_1(
       Core.t_stringlist,
       typelist,
-      Core.t_any_from_any.vx_fn_new((type_any) -> {
-        final Core.Type_any type = Core.f_any_from_any(Core.t_any, type_any);
-        Core.Type_any output_1 = Core.f_typename_from_type(
-          type
-        );
-        return output_1;
-      })
+      Core.t_any_from_any.vx_fn_new(
+        (type_any) -> {
+          final Core.Type_any type = Core.f_any_from_any(Core.t_any, type_any);
+          Core.Type_any output_1 = Core.f_typename_from_type(type);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -33087,17 +37597,17 @@ public final class Core {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "user", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "user",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -33118,7 +37628,10 @@ public final class Core {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = Core.f_user_from_context(context);
       return output;
     }
@@ -33136,9 +37649,7 @@ public final class Core {
 
   public static Core.Type_user f_user_from_context(final Core.Type_context context) {
     Core.Type_user output = Core.e_user;
-    output = Core.f_session_from_context(
-      context
-    ).user();
+    output = Core.f_session_from_context(context).user();
     return output;
   }
 

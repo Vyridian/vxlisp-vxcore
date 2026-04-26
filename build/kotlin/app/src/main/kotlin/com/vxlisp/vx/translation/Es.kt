@@ -39,17 +39,17 @@ object vx_translation_es {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -87,10 +87,12 @@ object vx_translation_es {
       vx_core.t_translation,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":name"),
-        vx_core.vx_new_string("es"),
-        vx_core.vx_new_string(":wordmap"),
-        vx_translation_es.f_words()
+        // [
+          vx_core.vx_new_string(":name"),
+          vx_core.vx_new_string("es"),
+          vx_core.vx_new_string(":wordmap"),
+          vx_translation_es.f_words()
+        // ]
       )
     )
     return output
@@ -131,17 +133,22 @@ object vx_translation_es {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "stringmap", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_string), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "stringmap",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_string
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -179,10 +186,12 @@ object vx_translation_es {
       vx_core.t_stringmap,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string("Hello"),
-        vx_core.vx_new_string("Hola"),
-        vx_core.vx_new_string("World"),
-        vx_core.vx_new_string("Mundo")
+        // [
+          vx_core.vx_new_string("Hello"),
+          vx_core.vx_new_string("Hola"),
+          vx_core.vx_new_string("World"),
+          vx_core.vx_new_string("Mundo")
+        // ]
       )
     )
     return output

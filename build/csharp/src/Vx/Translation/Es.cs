@@ -36,17 +36,17 @@ public static class Es {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -84,10 +84,12 @@ public static class Es {
       Vx.Core.t_translation,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":name"),
-        Vx.Core.vx_new_string("es"),
-        Vx.Core.vx_new_string(":wordmap"),
-        Vx.Translation.Es.f_words()
+        // [
+          Vx.Core.vx_new_string(":name"),
+          Vx.Core.vx_new_string("es"),
+          Vx.Core.vx_new_string(":wordmap"),
+          Vx.Translation.Es.f_words()
+        // ]
       )
     );
     return output;
@@ -127,17 +129,22 @@ public static class Es {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "stringmap", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_string), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "stringmap",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_string
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -175,10 +182,12 @@ public static class Es {
       Vx.Core.t_stringmap,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string("Hello"),
-        Vx.Core.vx_new_string("Hola"),
-        Vx.Core.vx_new_string("World"),
-        Vx.Core.vx_new_string("Mundo")
+        // [
+          Vx.Core.vx_new_string("Hello"),
+          Vx.Core.vx_new_string("Hola"),
+          Vx.Core.vx_new_string("World"),
+          Vx.Core.vx_new_string("Mundo")
+        // ]
       )
     );
     return output;

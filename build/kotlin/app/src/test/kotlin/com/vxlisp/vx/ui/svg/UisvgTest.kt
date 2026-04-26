@@ -14,14 +14,94 @@ object vx_ui_svg_uisvgTest {
   fun test_coveragesummary() : vx_test.Type_testcoveragesummary {
     val output : vx_test.Type_testcoveragesummary = vx_core.vx_new(
       vx_test.t_testcoveragesummary,
-      ":testpkg", "vx/ui/svg/uisvg", 
-      ":constnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":docnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":funcnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":bigospacenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":bigotimenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":totalnums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0), 
-      ":typenums", vx_core.vx_new(vx_test.t_testcoveragenums, ":pct", 100, ":tests", 0, ":total", 0)
+      // [
+        ":testpkg",
+        "vx/ui/svg/uisvg",
+        ":constnums",
+        vx_core.vx_new(
+          vx_test.t_testcoveragenums,
+          // [
+            ":pct",
+            100,
+            ":tests",
+            0,
+            ":total",
+            0
+          // ]
+        ),
+        ":docnums",
+        vx_core.vx_new(
+          vx_test.t_testcoveragenums,
+          // [
+            ":pct",
+            100,
+            ":tests",
+            0,
+            ":total",
+            0
+          // ]
+        ),
+        ":funcnums",
+        vx_core.vx_new(
+          vx_test.t_testcoveragenums,
+          // [
+            ":pct",
+            100,
+            ":tests",
+            0,
+            ":total",
+            0
+          // ]
+        ),
+        ":bigospacenums",
+        vx_core.vx_new(
+          vx_test.t_testcoveragenums,
+          // [
+            ":pct",
+            100,
+            ":tests",
+            0,
+            ":total",
+            0
+          // ]
+        ),
+        ":bigotimenums",
+        vx_core.vx_new(
+          vx_test.t_testcoveragenums,
+          // [
+            ":pct",
+            100,
+            ":tests",
+            0,
+            ":total",
+            0
+          // ]
+        ),
+        ":totalnums",
+        vx_core.vx_new(
+          vx_test.t_testcoveragenums,
+          // [
+            ":pct",
+            100,
+            ":tests",
+            0,
+            ":total",
+            0
+          // ]
+        ),
+        ":typenums",
+        vx_core.vx_new(
+          vx_test.t_testcoveragenums,
+          // [
+            ":pct",
+            100,
+            ":tests",
+            0,
+            ":total",
+            0
+          // ]
+        )
+      // ]
     )
     return output
   }
@@ -29,10 +109,16 @@ object vx_ui_svg_uisvgTest {
   fun test_coveragedetail() : vx_test.Type_testcoveragedetail {
     val output : vx_test.Type_testcoveragedetail = vx_core.vx_new(
       vx_test.t_testcoveragedetail,
-      ":testpkg", "vx/ui/svg/uisvg",
-      ":typemap", vx_core.e_intmap, 
-      ":constmap", vx_core.e_intmap, 
-      ":funcmap", vx_core.e_intmap
+      // [
+        ":testpkg",
+        "vx/ui/svg/uisvg",
+        ":typemap",
+        vx_core.e_intmap,
+        ":constmap",
+        vx_core.e_intmap,
+        ":funcmap",
+        vx_core.e_intmap
+      // ]
     )
     return output
   }
@@ -41,10 +127,16 @@ object vx_ui_svg_uisvgTest {
     val testcaselist : vx_test.Type_testcaselist = test_cases(context)
     val output : vx_test.Type_testpackage = vx_core.vx_new(
       vx_test.t_testpackage,
-      ":testpkg", "vx/ui/svg/uisvg", 
-      ":caselist", testcaselist,
-      ":coveragesummary", test_coveragesummary(),
-      ":coveragedetail", test_coveragedetail()
+      // [
+        ":testpkg",
+        "vx/ui/svg/uisvg",
+        ":caselist",
+        testcaselist,
+        ":coveragesummary",
+        test_coveragesummary(),
+        ":coveragedetail",
+        test_coveragedetail()
+      // ]
     )
     return output
   }

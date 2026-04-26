@@ -53,7 +53,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_body = Vx_Core.vx_copy(Vx_Web_Html.e_body, vals)
+      var output : any Vx_Web_Html.Type_body = Vx_Core.vx_copy(
+        Vx_Web_Html.t_body,
+        Vx_Web_Html.e_body,
+        vals
+      )
       return output
     }
 
@@ -75,9 +79,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -96,9 +112,20 @@ public enum Vx_Web_Html {
             var vallist : any Vx_Web_Html.Type_divchildlist = Vx_Web_Html.e_divchildlist
             vallist = vx_p_nodes
             if vallist == nil {
-              vallist = Vx_Core.vx_new(Vx_Web_Html.t_divchildlist, valdefault)
+              vallist = Vx_Core.vx_new(
+                Vx_Web_Html.t_divchildlist,
+                [
+                  valdefault
+                ]
+              )
             } else {
-              vallist = Vx_Core.vx_copy(vallist, valdefault)
+              vallist = Vx_Core.vx_copy(
+            Vx_Web_Html.t_divchildlist,
+            vallist,
+            [
+              valdefault
+            ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -107,10 +134,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/body", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/body",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -121,8 +160,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/body", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/body",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -142,14 +191,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/body", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/body",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/body", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/body",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -177,17 +248,17 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "body", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "body",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -315,7 +386,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_details = Vx_Core.vx_copy(Vx_Web_Html.e_details, vals)
+      var output : any Vx_Web_Html.Type_details = Vx_Core.vx_copy(
+        Vx_Web_Html.t_details,
+        Vx_Web_Html.e_details,
+        vals
+      )
       return output
     }
 
@@ -349,9 +424,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -367,10 +454,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/details",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -381,8 +480,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -394,7 +503,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -405,9 +519,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -424,9 +550,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -443,9 +581,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -462,9 +612,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -481,9 +643,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":summary" {
             if Vx_Core.vx_issame(valsub, vx_p_summary) {
@@ -500,9 +674,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("summary"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":nodes" {
             if Vx_Core.vx_issame(valsub, vx_p_nodes) {
@@ -519,14 +705,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/details", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/details",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -560,17 +768,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "details", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "details",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_divchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -684,7 +898,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_div = Vx_Core.vx_copy(Vx_Web_Html.e_div, vals)
+      var output : any Vx_Web_Html.Type_div = Vx_Core.vx_copy(
+        Vx_Web_Html.t_div,
+        Vx_Web_Html.e_div,
+        vals
+      )
       return output
     }
 
@@ -716,9 +934,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -737,9 +967,20 @@ public enum Vx_Web_Html {
             var vallist : any Vx_Web_Html.Type_divchildlist = Vx_Web_Html.e_divchildlist
             vallist = vx_p_nodes
             if vallist == nil {
-              vallist = Vx_Core.vx_new(Vx_Web_Html.t_divchildlist, valdefault)
+              vallist = Vx_Core.vx_new(
+                Vx_Web_Html.t_divchildlist,
+                [
+                  valdefault
+                ]
+              )
             } else {
-              vallist = Vx_Core.vx_copy(vallist, valdefault)
+              vallist = Vx_Core.vx_copy(
+            Vx_Web_Html.t_divchildlist,
+            vallist,
+            [
+              valdefault
+            ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -748,10 +989,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/div", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/div",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -762,8 +1015,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/div", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -775,7 +1038,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -786,9 +1054,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -805,9 +1085,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -824,9 +1116,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -843,9 +1147,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -862,9 +1178,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":nodes" {
             if Vx_Core.vx_issame(valsub, vx_p_nodes) {
@@ -881,14 +1209,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/div", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/div",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -921,17 +1271,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "div", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "div",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_divchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -963,7 +1319,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_divchild = Vx_Core.vx_copy(Vx_Web_Html.e_divchild, vals)
+      var output : any Vx_Web_Html.Type_divchild = Vx_Core.vx_copy(
+        Vx_Web_Html.t_divchild,
+        Vx_Web_Html.e_divchild,
+        vals
+      )
       return output
     }
 
@@ -999,17 +1359,17 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "divchild", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "divchild",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -1066,7 +1426,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_divchildlist = Vx_Core.vx_copy(Vx_Web_Html.e_divchildlist, vals)
+      var output : any Vx_Web_Html.Type_divchildlist = Vx_Core.vx_copy(
+        Vx_Web_Html.t_divchildlist,
+        Vx_Web_Html.e_divchildlist,
+        vals
+      )
       return output
     }
 
@@ -1084,9 +1448,21 @@ public enum Vx_Web_Html {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Web_Html.Type_divchildlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listdivchild())
@@ -1106,11 +1482,33 @@ public enum Vx_Web_Html {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/divchildlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/divchildlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/divchildlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/divchildlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -1136,17 +1534,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "divchildlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_divchild), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "divchildlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_divchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -1203,7 +1606,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_divlist = Vx_Core.vx_copy(Vx_Web_Html.e_divlist, vals)
+      var output : any Vx_Web_Html.Type_divlist = Vx_Core.vx_copy(
+        Vx_Web_Html.t_divlist,
+        Vx_Web_Html.e_divlist,
+        vals
+      )
       return output
     }
 
@@ -1221,9 +1628,21 @@ public enum Vx_Web_Html {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Web_Html.Type_divlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listdiv())
@@ -1243,11 +1662,33 @@ public enum Vx_Web_Html {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/divlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/divlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/divlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/divlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -1273,17 +1714,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "divlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_div), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "divlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_div
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -1332,7 +1778,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_footer = Vx_Core.vx_copy(Vx_Web_Html.e_footer, vals)
+      var output : any Vx_Web_Html.Type_footer = Vx_Core.vx_copy(
+        Vx_Web_Html.t_footer,
+        Vx_Web_Html.e_footer,
+        vals
+      )
       return output
     }
 
@@ -1354,9 +1804,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -1375,9 +1837,20 @@ public enum Vx_Web_Html {
             var vallist : any Vx_Web_Html.Type_divchildlist = Vx_Web_Html.e_divchildlist
             vallist = vx_p_nodes
             if vallist == nil {
-              vallist = Vx_Core.vx_new(Vx_Web_Html.t_divchildlist, valdefault)
+              vallist = Vx_Core.vx_new(
+                Vx_Web_Html.t_divchildlist,
+                [
+                  valdefault
+                ]
+              )
             } else {
-              vallist = Vx_Core.vx_copy(vallist, valdefault)
+              vallist = Vx_Core.vx_copy(
+            Vx_Web_Html.t_divchildlist,
+            vallist,
+            [
+              valdefault
+            ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -1386,10 +1859,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/footer", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/footer",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -1400,8 +1885,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/footer", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/footer",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -1421,14 +1916,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/footer", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/footer",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/footer", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/footer",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -1456,17 +1973,17 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "footer", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "footer",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -1580,7 +2097,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_h1 = Vx_Core.vx_copy(Vx_Web_Html.e_h1, vals)
+      var output : any Vx_Web_Html.Type_h1 = Vx_Core.vx_copy(
+        Vx_Web_Html.t_h1,
+        Vx_Web_Html.e_h1,
+        vals
+      )
       return output
     }
 
@@ -1612,9 +2133,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -1633,10 +2166,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/h1", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/h1",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -1650,11 +2195,26 @@ public enum Vx_Web_Html {
               vx_p_text = valstr
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h1", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -1666,7 +2226,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -1677,9 +2242,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -1696,9 +2273,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -1715,9 +2304,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -1734,9 +2335,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -1753,9 +2366,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":text" {
             if Vx_Core.vx_issame(valsub, vx_p_text) {
@@ -1764,7 +2389,12 @@ public enum Vx_Web_Html {
               vx_p_text = valtext
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -1775,14 +2405,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("text"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/h1", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/h1",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -1815,17 +2467,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "h1", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "h1",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_divchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -1939,7 +2597,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_h2 = Vx_Core.vx_copy(Vx_Web_Html.e_h2, vals)
+      var output : any Vx_Web_Html.Type_h2 = Vx_Core.vx_copy(
+        Vx_Web_Html.t_h2,
+        Vx_Web_Html.e_h2,
+        vals
+      )
       return output
     }
 
@@ -1971,9 +2633,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -1992,10 +2666,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/h2", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/h2",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -2009,11 +2695,26 @@ public enum Vx_Web_Html {
               vx_p_text = valstr
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h2", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -2025,7 +2726,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -2036,9 +2742,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -2055,9 +2773,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -2074,9 +2804,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -2093,9 +2835,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -2112,9 +2866,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":text" {
             if Vx_Core.vx_issame(valsub, vx_p_text) {
@@ -2123,7 +2889,12 @@ public enum Vx_Web_Html {
               vx_p_text = valtext
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -2134,14 +2905,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("text"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/h2", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/h2",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -2174,17 +2967,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "h2", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "h2",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_divchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2298,7 +3097,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_h3 = Vx_Core.vx_copy(Vx_Web_Html.e_h3, vals)
+      var output : any Vx_Web_Html.Type_h3 = Vx_Core.vx_copy(
+        Vx_Web_Html.t_h3,
+        Vx_Web_Html.e_h3,
+        vals
+      )
       return output
     }
 
@@ -2330,9 +3133,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -2351,10 +3166,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/h3", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/h3",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -2368,11 +3195,26 @@ public enum Vx_Web_Html {
               vx_p_text = valstr
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h3", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -2384,7 +3226,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -2395,9 +3242,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -2414,9 +3273,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -2433,9 +3304,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -2452,9 +3335,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -2471,9 +3366,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":text" {
             if Vx_Core.vx_issame(valsub, vx_p_text) {
@@ -2482,7 +3389,12 @@ public enum Vx_Web_Html {
               vx_p_text = valtext
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -2493,14 +3405,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("text"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/h3", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/h3",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -2533,17 +3467,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "h3", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "h3",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_divchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2592,7 +3532,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_head = Vx_Core.vx_copy(Vx_Web_Html.e_head, vals)
+      var output : any Vx_Web_Html.Type_head = Vx_Core.vx_copy(
+        Vx_Web_Html.t_head,
+        Vx_Web_Html.e_head,
+        vals
+      )
       return output
     }
 
@@ -2614,9 +3558,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -2635,9 +3591,20 @@ public enum Vx_Web_Html {
             var vallist : any Vx_Web_Html.Type_headchildlist = Vx_Web_Html.e_headchildlist
             vallist = vx_p_nodes
             if vallist == nil {
-              vallist = Vx_Core.vx_new(Vx_Web_Html.t_headchildlist, valdefault)
+              vallist = Vx_Core.vx_new(
+                Vx_Web_Html.t_headchildlist,
+                [
+                  valdefault
+                ]
+              )
             } else {
-              vallist = Vx_Core.vx_copy(vallist, valdefault)
+              vallist = Vx_Core.vx_copy(
+            Vx_Web_Html.t_headchildlist,
+            vallist,
+            [
+              valdefault
+            ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -2646,10 +3613,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/head", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/head",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -2660,8 +3639,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/head", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/head",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -2681,14 +3670,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/head", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/head",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/head", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/head",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -2716,17 +3727,17 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "head", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "head",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2758,7 +3769,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_headchild = Vx_Core.vx_copy(Vx_Web_Html.e_headchild, vals)
+      var output : any Vx_Web_Html.Type_headchild = Vx_Core.vx_copy(
+        Vx_Web_Html.t_headchild,
+        Vx_Web_Html.e_headchild,
+        vals
+      )
       return output
     }
 
@@ -2794,17 +3809,17 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "headchild", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "headchild",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -2861,7 +3876,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_headchildlist = Vx_Core.vx_copy(Vx_Web_Html.e_headchildlist, vals)
+      var output : any Vx_Web_Html.Type_headchildlist = Vx_Core.vx_copy(
+        Vx_Web_Html.t_headchildlist,
+        Vx_Web_Html.e_headchildlist,
+        vals
+      )
       return output
     }
 
@@ -2879,9 +3898,21 @@ public enum Vx_Web_Html {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Web_Html.Type_headchildlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listheadchild())
@@ -2901,11 +3932,33 @@ public enum Vx_Web_Html {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/headchildlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/headchildlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/headchildlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/headchildlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -2931,17 +3984,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "headchildlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_headchild), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "headchildlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_headchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3032,7 +4090,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_html = Vx_Core.vx_copy(Vx_Web_Html.e_html, vals)
+      var output : any Vx_Web_Html.Type_html = Vx_Core.vx_copy(
+        Vx_Web_Html.t_html,
+        Vx_Web_Html.e_html,
+        vals
+      )
       return output
     }
 
@@ -3060,9 +4122,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -3078,10 +4152,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/html", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/html",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -3092,8 +4178,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/html", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -3105,7 +4201,12 @@ public enum Vx_Web_Html {
               vx_p_lang = vallang
             } else if valsub is String {
               ischanged = true
-              vx_p_lang = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_lang = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -3116,9 +4217,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("lang"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":head" {
             if Vx_Core.vx_issame(valsub, vx_p_head) {
@@ -3135,9 +4248,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("head"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":body" {
             if Vx_Core.vx_issame(valsub, vx_p_body) {
@@ -3154,9 +4279,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("body"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":footer" {
             if Vx_Core.vx_issame(valsub, vx_p_footer) {
@@ -3173,14 +4310,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("footer"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/html", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/html",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -3211,17 +4370,17 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "html", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "html",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3335,7 +4494,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_img = Vx_Core.vx_copy(Vx_Web_Html.e_img, vals)
+      var output : any Vx_Web_Html.Type_img = Vx_Core.vx_copy(
+        Vx_Web_Html.t_img,
+        Vx_Web_Html.e_img,
+        vals
+      )
       return output
     }
 
@@ -3367,9 +4530,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -3388,10 +4563,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/img", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/img",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -3405,11 +4592,26 @@ public enum Vx_Web_Html {
               vx_p_src = valstr
             } else if valsub is String {
               ischanged = true
-              vx_p_src = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_src = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/img", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -3421,7 +4623,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -3432,9 +4639,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -3451,9 +4670,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -3470,9 +4701,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -3489,9 +4732,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -3508,9 +4763,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":src" {
             if Vx_Core.vx_issame(valsub, vx_p_src) {
@@ -3519,7 +4786,12 @@ public enum Vx_Web_Html {
               vx_p_src = valsrc
             } else if valsub is String {
               ischanged = true
-              vx_p_src = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_src = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -3530,14 +4802,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("src"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/img", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/img",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -3570,17 +4864,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "img", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "img",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_divchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -3722,7 +5022,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_meta = Vx_Core.vx_copy(Vx_Web_Html.e_meta, vals)
+      var output : any Vx_Web_Html.Type_meta = Vx_Core.vx_copy(
+        Vx_Web_Html.t_meta,
+        Vx_Web_Html.e_meta,
+        vals
+      )
       return output
     }
 
@@ -3758,9 +5062,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -3776,10 +5092,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/meta",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -3790,8 +5118,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -3803,7 +5141,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -3814,9 +5157,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -3833,9 +5188,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -3852,9 +5219,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -3871,9 +5250,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -3890,9 +5281,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":charset" {
             if Vx_Core.vx_issame(valsub, vx_p_charset) {
@@ -3901,7 +5304,12 @@ public enum Vx_Web_Html {
               vx_p_charset = valcharset
             } else if valsub is String {
               ischanged = true
-              vx_p_charset = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_charset = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -3912,9 +5320,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("charset"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":name" {
             if Vx_Core.vx_issame(valsub, vx_p_name) {
@@ -3923,7 +5343,12 @@ public enum Vx_Web_Html {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -3934,9 +5359,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":content" {
             if Vx_Core.vx_issame(valsub, vx_p_content) {
@@ -3945,7 +5382,12 @@ public enum Vx_Web_Html {
               vx_p_content = valcontent
             } else if valsub is String {
               ischanged = true
-              vx_p_content = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_content = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -3956,14 +5398,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("content"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/meta", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/meta",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -3998,17 +5462,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "meta", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_headchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "meta",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_headchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4113,7 +5583,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_node = Vx_Core.vx_copy(Vx_Web_Html.e_node, vals)
+      var output : any Vx_Web_Html.Type_node = Vx_Core.vx_copy(
+        Vx_Web_Html.t_node,
+        Vx_Web_Html.e_node,
+        vals
+      )
       return output
     }
 
@@ -4143,9 +5617,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -4161,10 +5647,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/node", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/node",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -4175,8 +5673,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/node", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -4188,7 +5696,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -4199,9 +5712,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -4218,9 +5743,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -4237,9 +5774,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -4256,9 +5805,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -4275,14 +5836,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/node", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/node",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -4314,17 +5897,17 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "node", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "node",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4381,7 +5964,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_nodelist = Vx_Core.vx_copy(Vx_Web_Html.e_nodelist, vals)
+      var output : any Vx_Web_Html.Type_nodelist = Vx_Core.vx_copy(
+        Vx_Web_Html.t_nodelist,
+        Vx_Web_Html.e_nodelist,
+        vals
+      )
       return output
     }
 
@@ -4399,9 +5986,21 @@ public enum Vx_Web_Html {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Web_Html.Type_nodelist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listnode())
@@ -4421,11 +6020,33 @@ public enum Vx_Web_Html {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/nodelist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/nodelist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/nodelist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/nodelist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -4451,17 +6072,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "nodelist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "nodelist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4575,7 +6201,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_p = Vx_Core.vx_copy(Vx_Web_Html.e_p, vals)
+      var output : any Vx_Web_Html.Type_p = Vx_Core.vx_copy(
+        Vx_Web_Html.t_p,
+        Vx_Web_Html.e_p,
+        vals
+      )
       return output
     }
 
@@ -4607,9 +6237,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -4628,10 +6270,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/p", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/p",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -4645,11 +6299,26 @@ public enum Vx_Web_Html {
               vx_p_text = valstr
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/p", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -4661,7 +6330,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -4672,9 +6346,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -4691,9 +6377,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -4710,9 +6408,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -4729,9 +6439,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -4748,9 +6470,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":text" {
             if Vx_Core.vx_issame(valsub, vx_p_text) {
@@ -4759,7 +6493,12 @@ public enum Vx_Web_Html {
               vx_p_text = valtext
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -4770,14 +6509,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("text"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/p", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/p",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -4810,17 +6571,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "p", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "p",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_divchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -4840,7 +6607,7 @@ public enum Vx_Web_Html {
 
   public class Class_propmap : Vx_Core.Class_base, Type_propmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_string> = Vx_Core.Map<any Vx_Core.Type_string>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Core.Type_string> = Vx_Core.Map<any Vx_Core.Type_string>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -4911,8 +6678,18 @@ public enum Vx_Web_Html {
         } else if let castval = value as? any Vx_Core.Type_string {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/web/html/propmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/propmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -4925,7 +6702,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_propmap = Vx_Core.vx_copy(Vx_Web_Html.e_propmap, vals)
+      var output : any Vx_Web_Html.Type_propmap = Vx_Core.vx_copy(
+        Vx_Web_Html.t_propmap,
+        Vx_Web_Html.e_propmap,
+        vals
+      )
       return output
     }
 
@@ -4945,9 +6726,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -4959,10 +6752,22 @@ public enum Vx_Web_Html {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/propmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/propmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Core.Type_string = Vx_Core.e_string
@@ -4970,20 +6775,39 @@ public enum Vx_Web_Html {
           } else if let valallowed = valsub as? any Vx_Core.Type_string {
             valany = valallowed
           } else if valsub is String {
-            valany = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+            valany = Vx_Core.vx_new(
+              Vx_Core.t_string,
+              [
+                valsub
+              ]
+            )
           } else {
             if false {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/propmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/propmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -5018,17 +6842,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "propmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "propmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Core.t_string
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5105,7 +6934,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_style = Vx_Core.vx_copy(Vx_Web_Html.e_style, vals)
+      var output : any Vx_Web_Html.Type_style = Vx_Core.vx_copy(
+        Vx_Web_Html.t_style,
+        Vx_Web_Html.e_style,
+        vals
+      )
       return output
     }
 
@@ -5131,9 +6964,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -5149,10 +6994,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/style", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/style",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -5163,8 +7020,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/style", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -5176,7 +7043,12 @@ public enum Vx_Web_Html {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -5187,9 +7059,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":props" {
             if Vx_Core.vx_issame(valsub, vx_p_props) {
@@ -5206,9 +7090,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("props"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -5225,14 +7121,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/style", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/style",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -5262,17 +7180,17 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "style", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "style",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5329,7 +7247,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_stylelist = Vx_Core.vx_copy(Vx_Web_Html.e_stylelist, vals)
+      var output : any Vx_Web_Html.Type_stylelist = Vx_Core.vx_copy(
+        Vx_Web_Html.t_stylelist,
+        Vx_Web_Html.e_stylelist,
+        vals
+      )
       return output
     }
 
@@ -5347,9 +7269,21 @@ public enum Vx_Web_Html {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Web_Html.Type_stylelist {
           ischanged = true
           listval.append(contentsOf: multi.vx_liststyle())
@@ -5369,11 +7303,33 @@ public enum Vx_Web_Html {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/stylelist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/stylelist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/stylelist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/stylelist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -5399,17 +7355,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylelist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_style), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "stylelist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_style
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5429,7 +7390,7 @@ public enum Vx_Web_Html {
 
   public class Class_stylemap : Vx_Core.Class_base, Type_stylemap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Web_Html.Type_style> = Vx_Core.Map<any Vx_Web_Html.Type_style>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Web_Html.Type_style> = Vx_Core.Map<any Vx_Web_Html.Type_style>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -5500,8 +7461,18 @@ public enum Vx_Web_Html {
         } else if let castval = value as? any Vx_Web_Html.Type_style {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/web/html/stylemap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/stylemap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -5514,7 +7485,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_stylemap = Vx_Core.vx_copy(Vx_Web_Html.e_stylemap, vals)
+      var output : any Vx_Web_Html.Type_stylemap = Vx_Core.vx_copy(
+        Vx_Web_Html.t_stylemap,
+        Vx_Web_Html.e_stylemap,
+        vals
+      )
       return output
     }
 
@@ -5534,9 +7509,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -5548,10 +7535,22 @@ public enum Vx_Web_Html {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/stylemap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/stylemap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Web_Html.Type_style = Vx_Web_Html.e_style
@@ -5565,14 +7564,28 @@ public enum Vx_Web_Html {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/stylemap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/stylemap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -5607,17 +7620,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylemap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_style), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "stylemap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_style
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -5759,7 +7777,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_stylesheet = Vx_Core.vx_copy(Vx_Web_Html.e_stylesheet, vals)
+      var output : any Vx_Web_Html.Type_stylesheet = Vx_Core.vx_copy(
+        Vx_Web_Html.t_stylesheet,
+        Vx_Web_Html.e_stylesheet,
+        vals
+      )
       return output
     }
 
@@ -5795,9 +7817,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -5813,10 +7847,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/stylesheet",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -5827,8 +7873,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -5840,7 +7896,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -5851,9 +7912,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -5870,9 +7943,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -5889,9 +7974,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -5908,9 +8005,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -5927,9 +8036,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":name" {
             if Vx_Core.vx_issame(valsub, vx_p_name) {
@@ -5938,7 +8059,12 @@ public enum Vx_Web_Html {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -5949,9 +8075,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":styles" {
             if Vx_Core.vx_issame(valsub, vx_p_styles) {
@@ -5968,9 +8106,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("styles"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylemap" {
             if Vx_Core.vx_issame(valsub, vx_p_stylemap) {
@@ -5987,14 +8137,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylemap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/stylesheet",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -6029,17 +8201,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylesheet", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_headchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "stylesheet",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_headchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6167,7 +8345,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_table = Vx_Core.vx_copy(Vx_Web_Html.e_table, vals)
+      var output : any Vx_Web_Html.Type_table = Vx_Core.vx_copy(
+        Vx_Web_Html.t_table,
+        Vx_Web_Html.e_table,
+        vals
+      )
       return output
     }
 
@@ -6201,9 +8383,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -6219,10 +8413,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/table",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -6233,8 +8439,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -6246,7 +8462,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -6257,9 +8478,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -6276,9 +8509,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -6295,9 +8540,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -6314,9 +8571,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -6333,9 +8602,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":tbody" {
             if Vx_Core.vx_issame(valsub, vx_p_tbody) {
@@ -6352,9 +8633,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("tbody"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":thead" {
             if Vx_Core.vx_issame(valsub, vx_p_thead) {
@@ -6371,14 +8664,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("thead"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/table", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/table",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -6412,17 +8727,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "table", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_divchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "table",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_divchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6536,7 +8857,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_tbody = Vx_Core.vx_copy(Vx_Web_Html.e_tbody, vals)
+      var output : any Vx_Web_Html.Type_tbody = Vx_Core.vx_copy(
+        Vx_Web_Html.t_tbody,
+        Vx_Web_Html.e_tbody,
+        vals
+      )
       return output
     }
 
@@ -6568,9 +8893,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -6589,9 +8926,20 @@ public enum Vx_Web_Html {
             var vallist : any Vx_Web_Html.Type_trlist = Vx_Web_Html.e_trlist
             vallist = vx_p_nodes
             if vallist == nil {
-              vallist = Vx_Core.vx_new(Vx_Web_Html.t_trlist, valdefault)
+              vallist = Vx_Core.vx_new(
+                Vx_Web_Html.t_trlist,
+                [
+                  valdefault
+                ]
+              )
             } else {
-              vallist = Vx_Core.vx_copy(vallist, valdefault)
+              vallist = Vx_Core.vx_copy(
+            Vx_Web_Html.t_trlist,
+            vallist,
+            [
+              valdefault
+            ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -6600,10 +8948,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/tbody", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/tbody",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -6614,8 +8974,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tbody", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -6627,7 +8997,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -6638,9 +9013,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -6657,9 +9044,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -6676,9 +9075,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -6695,9 +9106,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -6714,9 +9137,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":nodes" {
             if Vx_Core.vx_issame(valsub, vx_p_nodes) {
@@ -6733,14 +9168,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/tbody", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/tbody",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -6773,17 +9230,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "tbody", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "tbody",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -6897,7 +9359,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_td = Vx_Core.vx_copy(Vx_Web_Html.e_td, vals)
+      var output : any Vx_Web_Html.Type_td = Vx_Core.vx_copy(
+        Vx_Web_Html.t_td,
+        Vx_Web_Html.e_td,
+        vals
+      )
       return output
     }
 
@@ -6929,9 +9395,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -6950,9 +9428,20 @@ public enum Vx_Web_Html {
             var vallist : any Vx_Web_Html.Type_divchildlist = Vx_Web_Html.e_divchildlist
             vallist = vx_p_nodes
             if vallist == nil {
-              vallist = Vx_Core.vx_new(Vx_Web_Html.t_divchildlist, valdefault)
+              vallist = Vx_Core.vx_new(
+                Vx_Web_Html.t_divchildlist,
+                [
+                  valdefault
+                ]
+              )
             } else {
-              vallist = Vx_Core.vx_copy(vallist, valdefault)
+              vallist = Vx_Core.vx_copy(
+            Vx_Web_Html.t_divchildlist,
+            vallist,
+            [
+              valdefault
+            ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -6961,10 +9450,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/td", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/td",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -6975,8 +9476,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/td", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -6988,7 +9499,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -6999,9 +9515,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -7018,9 +9546,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -7037,9 +9577,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -7056,9 +9608,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -7075,9 +9639,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":nodes" {
             if Vx_Core.vx_issame(valsub, vx_p_nodes) {
@@ -7094,14 +9670,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/td", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/td",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -7134,17 +9732,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "td", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "td",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7201,7 +9804,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_tdlist = Vx_Core.vx_copy(Vx_Web_Html.e_tdlist, vals)
+      var output : any Vx_Web_Html.Type_tdlist = Vx_Core.vx_copy(
+        Vx_Web_Html.t_tdlist,
+        Vx_Web_Html.e_tdlist,
+        vals
+      )
       return output
     }
 
@@ -7219,9 +9826,21 @@ public enum Vx_Web_Html {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Web_Html.Type_tdlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listtd())
@@ -7241,11 +9860,33 @@ public enum Vx_Web_Html {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/tdlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/tdlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/tdlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/tdlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -7271,17 +9912,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "tdlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_td), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "tdlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_td
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7395,7 +10041,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_thead = Vx_Core.vx_copy(Vx_Web_Html.e_thead, vals)
+      var output : any Vx_Web_Html.Type_thead = Vx_Core.vx_copy(
+        Vx_Web_Html.t_thead,
+        Vx_Web_Html.e_thead,
+        vals
+      )
       return output
     }
 
@@ -7427,9 +10077,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -7448,9 +10110,20 @@ public enum Vx_Web_Html {
             var vallist : any Vx_Web_Html.Type_trlist = Vx_Web_Html.e_trlist
             vallist = vx_p_nodes
             if vallist == nil {
-              vallist = Vx_Core.vx_new(Vx_Web_Html.t_trlist, valdefault)
+              vallist = Vx_Core.vx_new(
+                Vx_Web_Html.t_trlist,
+                [
+                  valdefault
+                ]
+              )
             } else {
-              vallist = Vx_Core.vx_copy(vallist, valdefault)
+              vallist = Vx_Core.vx_copy(
+            Vx_Web_Html.t_trlist,
+            vallist,
+            [
+              valdefault
+            ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -7459,10 +10132,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/thead", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/thead",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -7473,8 +10158,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/thead", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -7486,7 +10181,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -7497,9 +10197,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -7516,9 +10228,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -7535,9 +10259,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -7554,9 +10290,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -7573,9 +10321,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":nodes" {
             if Vx_Core.vx_issame(valsub, vx_p_nodes) {
@@ -7592,14 +10352,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/thead", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/thead",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -7632,17 +10414,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "thead", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "thead",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -7756,7 +10543,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_title = Vx_Core.vx_copy(Vx_Web_Html.e_title, vals)
+      var output : any Vx_Web_Html.Type_title = Vx_Core.vx_copy(
+        Vx_Web_Html.t_title,
+        Vx_Web_Html.e_title,
+        vals
+      )
       return output
     }
 
@@ -7788,9 +10579,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -7806,10 +10609,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/title", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/title",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -7820,8 +10635,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/title", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -7833,7 +10658,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -7844,9 +10674,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -7863,9 +10705,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -7882,9 +10736,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -7901,9 +10767,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -7920,9 +10798,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":text" {
             if Vx_Core.vx_issame(valsub, vx_p_text) {
@@ -7931,7 +10821,12 @@ public enum Vx_Web_Html {
               vx_p_text = valtext
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -7942,14 +10837,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("text"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/title", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/title",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -7982,17 +10899,23 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "title", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_headchild), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "title",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node,
+            Vx_Web_Html.t_headchild
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8106,7 +11029,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_tr = Vx_Core.vx_copy(Vx_Web_Html.e_tr, vals)
+      var output : any Vx_Web_Html.Type_tr = Vx_Core.vx_copy(
+        Vx_Web_Html.t_tr,
+        Vx_Web_Html.e_tr,
+        vals
+      )
       return output
     }
 
@@ -8138,9 +11065,21 @@ public enum Vx_Web_Html {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -8159,9 +11098,20 @@ public enum Vx_Web_Html {
             var vallist : any Vx_Web_Html.Type_tdlist = Vx_Web_Html.e_tdlist
             vallist = vx_p_nodes
             if vallist == nil {
-              vallist = Vx_Core.vx_new(Vx_Web_Html.t_tdlist, valdefault)
+              vallist = Vx_Core.vx_new(
+                Vx_Web_Html.t_tdlist,
+                [
+                  valdefault
+                ]
+              )
             } else {
-              vallist = Vx_Core.vx_copy(vallist, valdefault)
+              vallist = Vx_Core.vx_copy(
+            Vx_Web_Html.t_tdlist,
+            vallist,
+            [
+              valdefault
+            ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -8170,10 +11120,22 @@ public enum Vx_Web_Html {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/tr", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/tr",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -8184,8 +11146,18 @@ public enum Vx_Web_Html {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tr", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -8197,7 +11169,12 @@ public enum Vx_Web_Html {
               vx_p_id = valid
             } else if valsub is String {
               ischanged = true
-              vx_p_id = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_id = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -8208,9 +11185,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("id"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":eventmap" {
             if Vx_Core.vx_issame(valsub, vx_p_eventmap) {
@@ -8227,9 +11216,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style" {
             if Vx_Core.vx_issame(valsub, vx_p_style) {
@@ -8246,9 +11247,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":style-unique" {
             if Vx_Core.vx_issame(valsub, vx_p_style_unique) {
@@ -8265,9 +11278,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":stylelist" {
             if Vx_Core.vx_issame(valsub, vx_p_stylelist) {
@@ -8284,9 +11309,21 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":nodes" {
             if Vx_Core.vx_issame(valsub, vx_p_nodes) {
@@ -8303,14 +11340,36 @@ public enum Vx_Web_Html {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/web/html/tr", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/web/html/tr",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -8343,17 +11402,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "tr", // name
-        ":struct", // extends
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node), // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "tr",
+        ":struct",
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_node
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8410,7 +11474,11 @@ public enum Vx_Web_Html {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Web_Html.Type_trlist = Vx_Core.vx_copy(Vx_Web_Html.e_trlist, vals)
+      var output : any Vx_Web_Html.Type_trlist = Vx_Core.vx_copy(
+        Vx_Web_Html.t_trlist,
+        Vx_Web_Html.e_trlist,
+        vals
+      )
       return output
     }
 
@@ -8428,9 +11496,21 @@ public enum Vx_Web_Html {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Web_Html.Type_trlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listtr())
@@ -8450,11 +11530,33 @@ public enum Vx_Web_Html {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/trlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/trlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/web/html/trlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/web/html/trlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -8480,17 +11582,22 @@ public enum Vx_Web_Html {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/web/html", // pkgname
-        "trlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_tr), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/web/html",
+        "trlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Web_Html.t_tr
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -8535,17 +11642,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -8572,7 +11679,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_htmlstring_from_string(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -8580,7 +11690,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_htmlstring_from_string(text)
       return output
     }
@@ -8640,17 +11755,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -8677,7 +11792,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_int = value as! any Vx_Core.Type_int
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_string_indent(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -8685,7 +11803,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_string_indent(indent)
       return output
     }
@@ -8749,17 +11872,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -8779,8 +11902,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let body : any Vx_Web_Html.Type_body = Vx_Core.f_any_from_any(Vx_Web_Html.t_body, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let body : any Vx_Web_Html.Type_body = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_body,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_body_indent(body, indent)
       return output
     }
@@ -8805,16 +11938,18 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let nodes : any Vx_Web_Html.Type_divchildlist = body.nodes()
-        let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx_Core.vx_new_string("body"),
-          Vx_Core.vx_new_string(""),
-          indent
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let nodes : any Vx_Web_Html.Type_divchildlist = body.nodes()
+          let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx_Core.vx_new_string("body"),
+            Vx_Core.vx_new_string(""),
+            indent
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -8855,17 +11990,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -8885,8 +12020,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let details : any Vx_Web_Html.Type_details = Vx_Core.f_any_from_any(Vx_Web_Html.t_details, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let details : any Vx_Web_Html.Type_details = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_details,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_details_indent(details, indent)
       return output
     }
@@ -8911,44 +12056,46 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let summary : any Vx_Web_Html.Type_divchildlist = details.summary()
-        let nodes : any Vx_Web_Html.Type_divchildlist = details.nodes()
-        let ssummary : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_nodelist_indent(
-          summary,
-          Vx_Core.f_plus(
-            indent,
-            Vx_Core.vx_new_int(2)
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let summary : any Vx_Web_Html.Type_divchildlist = details.summary()
+          let nodes : any Vx_Web_Html.Type_divchildlist = details.nodes()
+          let ssummary : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_nodelist_indent(
+            summary,
+            Vx_Core.f_plus(
+              indent,
+              Vx_Core.vx_new_int(2)
+            )
           )
-        )
-        let snodes : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_nodelist_indent(
-          nodes,
-          Vx_Core.f_plus(
-            indent,
-            Vx_Core.vx_new_int(1)
+          let snodes : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_nodelist_indent(
+            nodes,
+            Vx_Core.f_plus(
+              indent,
+              Vx_Core.vx_new_int(1)
+            )
           )
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<details>"),
-            sindent,
-            Vx_Core.vx_new_string("  <summary>"),
-            ssummary,
-            sindent,
-            Vx_Core.vx_new_string("  </summary>"),
-            snodes,
-            sindent,
-            Vx_Core.vx_new_string("</details>")
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<details>"),
+                sindent,
+                Vx_Core.vx_new_string("  <summary>"),
+                ssummary,
+                sindent,
+                Vx_Core.vx_new_string("  </summary>"),
+                snodes,
+                sindent,
+                Vx_Core.vx_new_string("</details>")
+              ]
+            )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -8989,17 +12136,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -9019,8 +12166,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let div : any Vx_Web_Html.Type_div = Vx_Core.f_any_from_any(Vx_Web_Html.t_div, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let div : any Vx_Web_Html.Type_div = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_div,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_div_indent(div, indent)
       return output
     }
@@ -9045,35 +12202,37 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let nodes : any Vx_Web_Html.Type_divchildlist = div.nodes()
-        let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
-          Vx_Core.vx_new_string("id"),
-          div.id()
-        )
-        let sclass : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyle_stylelist(
-          div.style(),
-          div.stylelist()
-        )
-        let sstyle : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyleunique(
-          div.style_unique()
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx_Core.vx_new_string("div"),
-          Vx_Core.f_new(
-            Vx_Core.t_string,
-            Vx_Core.vx_new(
-              Vx_Core.t_anylist,
-              sid,
-              sclass,
-              sstyle
-            )
-          ),
-          indent
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let nodes : any Vx_Web_Html.Type_divchildlist = div.nodes()
+          let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
+            Vx_Core.vx_new_string("id"),
+            div.id()
+          )
+          let sclass : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyle_stylelist(
+            div.style(),
+            div.stylelist()
+          )
+          let sstyle : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyleunique(div.style_unique())
+          let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx_Core.vx_new_string("div"),
+            Vx_Core.f_new(
+              Vx_Core.t_string,
+              Vx_Core.vx_new(
+                Vx_Core.t_anylist,
+                [
+                  sid,
+                  sclass,
+                  sstyle
+                ]
+              )
+            ),
+            indent
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -9114,17 +12273,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -9144,8 +12303,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let footer : any Vx_Web_Html.Type_footer = Vx_Core.f_any_from_any(Vx_Web_Html.t_footer, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let footer : any Vx_Web_Html.Type_footer = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_footer,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_footer_indent(footer, indent)
       return output
     }
@@ -9170,16 +12339,18 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let nodes : any Vx_Web_Html.Type_divchildlist = footer.nodes()
-        let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx_Core.vx_new_string("footer"),
-          Vx_Core.vx_new_string(""),
-          indent
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let nodes : any Vx_Web_Html.Type_divchildlist = footer.nodes()
+          let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx_Core.vx_new_string("footer"),
+            Vx_Core.vx_new_string(""),
+            indent
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -9220,17 +12391,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -9250,8 +12421,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let h1 : any Vx_Web_Html.Type_h1 = Vx_Core.f_any_from_any(Vx_Web_Html.t_h1, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let h1 : any Vx_Web_Html.Type_h1 = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_h1,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_h1_indent(h1, indent)
       return output
     }
@@ -9276,29 +12457,31 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let text : any Vx_Core.Type_string = h1.text()
-        let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
-          Vx_Core.vx_new_string("id"),
-          h1.id()
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<h1"),
-            sid,
-            Vx_Core.vx_new_string(">"),
-            text,
-            Vx_Core.vx_new_string("</h1>")
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let text : any Vx_Core.Type_string = h1.text()
+          let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
+            Vx_Core.vx_new_string("id"),
+            h1.id()
           )
-        )
-        return output_1
-      })
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<h1"),
+                sid,
+                Vx_Core.vx_new_string(">"),
+                text,
+                Vx_Core.vx_new_string("</h1>")
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -9339,17 +12522,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -9369,8 +12552,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let h2 : any Vx_Web_Html.Type_h2 = Vx_Core.f_any_from_any(Vx_Web_Html.t_h2, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let h2 : any Vx_Web_Html.Type_h2 = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_h2,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_h2_indent(h2, indent)
       return output
     }
@@ -9395,29 +12588,31 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let text : any Vx_Core.Type_string = h2.text()
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
-          Vx_Core.vx_new_string("id"),
-          h2.id()
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<h2"),
-            sid,
-            Vx_Core.vx_new_string(">"),
-            text,
-            Vx_Core.vx_new_string("</h2>")
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let text : any Vx_Core.Type_string = h2.text()
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
+            Vx_Core.vx_new_string("id"),
+            h2.id()
           )
-        )
-        return output_1
-      })
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<h2"),
+                sid,
+                Vx_Core.vx_new_string(">"),
+                text,
+                Vx_Core.vx_new_string("</h2>")
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -9458,17 +12653,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -9488,8 +12683,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let h3 : any Vx_Web_Html.Type_h3 = Vx_Core.f_any_from_any(Vx_Web_Html.t_h3, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let h3 : any Vx_Web_Html.Type_h3 = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_h3,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_h3_indent(h3, indent)
       return output
     }
@@ -9514,29 +12719,31 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let text : any Vx_Core.Type_string = h3.text()
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
-          Vx_Core.vx_new_string("id"),
-          h3.id()
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<h3"),
-            sid,
-            Vx_Core.vx_new_string(">"),
-            text,
-            Vx_Core.vx_new_string("</h3>")
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let text : any Vx_Core.Type_string = h3.text()
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
+            Vx_Core.vx_new_string("id"),
+            h3.id()
           )
-        )
-        return output_1
-      })
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<h3"),
+                sid,
+                Vx_Core.vx_new_string(">"),
+                text,
+                Vx_Core.vx_new_string("</h3>")
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -9577,17 +12784,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -9607,8 +12814,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let head : any Vx_Web_Html.Type_head = Vx_Core.f_any_from_any(Vx_Web_Html.t_head, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let head : any Vx_Web_Html.Type_head = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_head,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_head_indent(head, indent)
       return output
     }
@@ -9633,16 +12850,18 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let nodes : any Vx_Web_Html.Type_headchildlist = head.nodes()
-        let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx_Core.vx_new_string("head"),
-          Vx_Core.vx_new_string(""),
-          indent
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let nodes : any Vx_Web_Html.Type_headchildlist = head.nodes()
+          let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx_Core.vx_new_string("head"),
+            Vx_Core.vx_new_string(""),
+            indent
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -9682,17 +12901,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -9719,7 +12938,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_html = value as! any Vx_Web_Html.Type_html
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_html(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -9727,7 +12949,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let html : any Vx_Web_Html.Type_html = Vx_Core.f_any_from_any(Vx_Web_Html.t_html, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let html : any Vx_Web_Html.Type_html = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_html,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_string_from_html(html)
       return output
     }
@@ -9750,44 +12977,48 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let lang : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
-          Vx_Core.vx_new_string("lang"),
-          html.lang()
-        )
-        let head : any Vx_Web_Html.Type_head = html.head()
-        let body : any Vx_Web_Html.Type_body = html.body()
-        let footer : any Vx_Web_Html.Type_footer = html.footer()
-        let shead : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_head_indent(
-          head,
-          Vx_Core.vx_new_int(1)
-        )
-        let sbody : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_body_indent(
-          body,
-          Vx_Core.vx_new_int(1)
-        )
-        let sfooter : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_footer_indent(
-          footer,
-          Vx_Core.vx_new_int(1)
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string("<!DOCTYPE html>"),
-            Vx_Core.c_newline,
-            Vx_Core.vx_new_string("<html"),
-            lang,
-            Vx_Core.vx_new_string(">"),
-            shead,
-            sbody,
-            sfooter,
-            Vx_Core.c_newline,
-            Vx_Core.vx_new_string("</html>")
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let lang : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
+            Vx_Core.vx_new_string("lang"),
+            html.lang()
           )
-        )
-        return output_1
-      })
+          let head : any Vx_Web_Html.Type_head = html.head()
+          let body : any Vx_Web_Html.Type_body = html.body()
+          let footer : any Vx_Web_Html.Type_footer = html.footer()
+          let shead : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_head_indent(
+            head,
+            Vx_Core.vx_new_int(1)
+          )
+          let sbody : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_body_indent(
+            body,
+            Vx_Core.vx_new_int(1)
+          )
+          let sfooter : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_footer_indent(
+            footer,
+            Vx_Core.vx_new_int(1)
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string("<!DOCTYPE html>"),
+                Vx_Core.c_newline,
+                Vx_Core.vx_new_string("<html"),
+                lang,
+                Vx_Core.vx_new_string(">"),
+                shead,
+                sbody,
+                sfooter,
+                Vx_Core.c_newline,
+                Vx_Core.vx_new_string("</html>")
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -9828,17 +13059,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -9858,8 +13089,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let img : any Vx_Web_Html.Type_img = Vx_Core.f_any_from_any(Vx_Web_Html.t_img, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let img : any Vx_Web_Html.Type_img = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_img,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_img_indent(img, indent)
       return output
     }
@@ -9884,40 +13125,40 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let ssrc : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
-          Vx_Core.vx_new_string("src"),
-          img.src()
-        )
-        let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
-          Vx_Core.vx_new_string("id"),
-          img.id()
-        )
-        let sclass : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyle_stylelist(
-          img.style(),
-          img.stylelist()
-        )
-        let sstyle : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyleunique(
-          img.style_unique()
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<img"),
-            sid,
-            sclass,
-            sstyle,
-            ssrc,
-            Vx_Core.vx_new_string(" />")
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let ssrc : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
+            Vx_Core.vx_new_string("src"),
+            img.src()
           )
-        )
-        return output_1
-      })
+          let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
+            Vx_Core.vx_new_string("id"),
+            img.id()
+          )
+          let sclass : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyle_stylelist(
+            img.style(),
+            img.stylelist()
+          )
+          let sstyle : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyleunique(img.style_unique())
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<img"),
+                sid,
+                sclass,
+                sstyle,
+                ssrc,
+                Vx_Core.vx_new_string(" />")
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -9957,17 +13198,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -9994,7 +13235,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_int = value as! any Vx_Core.Type_int
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_indent(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -10002,7 +13246,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_string_from_indent(indent)
       return output
     }
@@ -10034,10 +13283,10 @@ public enum Vx_Web_Html {
         Vx_Core.t_string,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.c_newline,
-          Vx_Web_Html.f_string_indent(
-            indent
-          )
+          [
+            Vx_Core.c_newline,
+            Vx_Web_Html.f_string_indent(indent)
+          ]
         )
       )
     )
@@ -10080,17 +13329,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -10110,8 +13359,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let meta : any Vx_Web_Html.Type_meta = Vx_Core.f_any_from_any(Vx_Web_Html.t_meta, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let meta : any Vx_Web_Html.Type_meta = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_meta,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_meta_indent(meta, indent)
       return output
     }
@@ -10136,93 +13395,113 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let charset : any Vx_Core.Type_string = meta.charset()
-        let name : any Vx_Core.Type_string = meta.name()
-        let content : any Vx_Core.Type_string = meta.content()
-        let scharset : any Vx_Core.Type_string = Vx_Core.f_if_2(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_thenelselist,
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_2 : any Vx_Core.Type_any = Vx_Core.f_ne(
-                  Vx_Core.vx_new_string(""),
-                  charset
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let charset : any Vx_Core.Type_string = meta.charset()
+          let name : any Vx_Core.Type_string = meta.name()
+          let content : any Vx_Core.Type_string = meta.content()
+          let scharset : any Vx_Core.Type_string = Vx_Core.f_if_2(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_thenelselist,
+              [
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_2 : any Vx_Core.Type_any = Vx_Core.f_ne(
+                          Vx_Core.vx_new_string(""),
+                          charset
+                        )
+                        return output_2
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_3 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propname_val(
+                          Vx_Core.vx_new_string("charset"),
+                          charset
+                        )
+                        return output_3
+                      }
+                  )
                 )
-                return output_2
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_3 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propname_val(
-                  Vx_Core.vx_new_string("charset"),
-                  charset
-                )
-                return output_3
-              })
+              ]
             )
           )
-        )
-        let sname : any Vx_Core.Type_string = Vx_Core.f_if_2(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_thenelselist,
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_4 : any Vx_Core.Type_any = Vx_Core.f_ne(
-                  Vx_Core.vx_new_string(""),
-                  name
+          let sname : any Vx_Core.Type_string = Vx_Core.f_if_2(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_thenelselist,
+              [
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_4 : any Vx_Core.Type_any = Vx_Core.f_ne(
+                          Vx_Core.vx_new_string(""),
+                          name
+                        )
+                        return output_4
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_5 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propname_val(
+                          Vx_Core.vx_new_string("name"),
+                          name
+                        )
+                        return output_5
+                      }
+                  )
                 )
-                return output_4
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_5 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propname_val(
-                  Vx_Core.vx_new_string("name"),
-                  name
-                )
-                return output_5
-              })
+              ]
             )
           )
-        )
-        let scontext : any Vx_Core.Type_string = Vx_Core.f_if_2(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_thenelselist,
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_6 : any Vx_Core.Type_any = Vx_Core.f_ne(
-                  Vx_Core.vx_new_string(""),
-                  content
+          let scontext : any Vx_Core.Type_string = Vx_Core.f_if_2(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_thenelselist,
+              [
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_6 : any Vx_Core.Type_any = Vx_Core.f_ne(
+                          Vx_Core.vx_new_string(""),
+                          content
+                        )
+                        return output_6
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_7 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propname_val(
+                          Vx_Core.vx_new_string("content"),
+                          content
+                        )
+                        return output_7
+                      }
+                  )
                 )
-                return output_6
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_7 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propname_val(
-                  Vx_Core.vx_new_string("content"),
-                  content
-                )
-                return output_7
-              })
+              ]
             )
           )
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<meta"),
-            scharset,
-            sname,
-            scontext,
-            Vx_Core.vx_new_string(" />")
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<meta"),
+                scharset,
+                sname,
+                scontext,
+                Vx_Core.vx_new_string(" />")
+              ]
+            )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -10262,17 +13541,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -10299,7 +13578,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_node(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -10307,7 +13589,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let node : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let node : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_string_from_node(node)
       return output
     }
@@ -10371,17 +13658,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -10401,8 +13688,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let node : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let node : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_node_indent(node, indent)
       return output
     }
@@ -10427,245 +13724,281 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_switch(
       Vx_Core.t_string,
-      Vx_Core.f_type_from_any(
-        node
-      ),
+      Vx_Core.f_type_from_any(node),
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_body,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_body_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_body,
-                node
-              ),
-              indent
+        [
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_body,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_body_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_body,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_1
+                }
             )
-            return output_1
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_details,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_details_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_details,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_details,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_details_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_details,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_2
+                }
             )
-            return output_2
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_div,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_3 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_div_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_div,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_div,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_3 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_div_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_div,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_3
+                }
             )
-            return output_3
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_h1,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_4 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_h1_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_h1,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_h1,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_4 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_h1_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_h1,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_4
+                }
             )
-            return output_4
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_h2,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_5 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_h2_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_h2,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_h2,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_5 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_h2_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_h2,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_5
+                }
             )
-            return output_5
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_h3,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_6 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_h3_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_h3,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_h3,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_6 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_h3_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_h3,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_6
+                }
             )
-            return output_6
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_head,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_7 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_head_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_head,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_head,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_7 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_head_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_head,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_7
+                }
             )
-            return output_7
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_footer,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_8 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_footer_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_footer,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_footer,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_8 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_footer_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_footer,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_8
+                }
             )
-            return output_8
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_img,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_9 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_img_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_img,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_img,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_9 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_img_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_img,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_9
+                }
             )
-            return output_9
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_meta,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_10 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_meta_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_meta,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_meta,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_10 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_meta_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_meta,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_10
+                }
             )
-            return output_10
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_p,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_11 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_p_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_p,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_p,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_11 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_p_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_p,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_11
+                }
             )
-            return output_11
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_stylesheet,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_12 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_stylesheet_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_stylesheet,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_stylesheet,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_12 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_stylesheet_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_stylesheet,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_12
+                }
             )
-            return output_12
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_table,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_13 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_table_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_table,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_table,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_13 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_table_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_table,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_13
+                }
             )
-            return output_13
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_title,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_14 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_title_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_title,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_title,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_14 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_title_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_title,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_14
+                }
             )
-            return output_14
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_tbody,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_15 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_tbody_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_tbody,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_tbody,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_15 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_tbody_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_tbody,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_15
+                }
             )
-            return output_15
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_thead,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_16 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_thead_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_thead,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_thead,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_16 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_thead_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_thead,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_16
+                }
             )
-            return output_16
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_td,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_17 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_td_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_td,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_td,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_17 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_td_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_td,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_17
+                }
             )
-            return output_17
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Web_Html.t_tr,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_18 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_tr_indent(
-              Vx_Core.f_any_from_any(
-                Vx_Web_Html.t_tr,
-                node
-              ),
-              indent
+          ),
+          Vx_Core.f_case_1(
+            Vx_Web_Html.t_tr,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_18 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_tr_indent(
+                    Vx_Core.f_any_from_any(
+                      Vx_Web_Html.t_tr,
+                      node
+                    ),
+                    indent
+                  )
+                  return output_18
+                }
             )
-            return output_18
-          })
-        )
+          )
+        ]
       )
     )
     return output
@@ -10707,17 +14040,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -10737,8 +14070,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let nodelist : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let nodelist : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_nodelist_indent(nodelist, indent)
       return output
     }
@@ -10763,25 +14106,29 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let textlist : any Vx_Core.Type_stringlist = Vx_Core.f_list_from_list_1(
-          Vx_Core.t_stringlist,
-          nodelist,
-          Vx_Core.t_any_from_any.vx_fn_new({(node_any) in
-            let node : any Vx_Web_Html.Type_node = Vx_Core.f_any_from_any(Vx_Web_Html.t_node, node_any)
-            var output_2 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_node_indent(
-              node,
-              indent
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let textlist : any Vx_Core.Type_stringlist = Vx_Core.f_list_from_list_1(
+            Vx_Core.t_stringlist,
+            nodelist,
+            Vx_Core.t_any_from_any.vx_fn_new(
+              {(node_any) in
+                let node : any Vx_Web_Html.Type_node = Vx_Core.f_any_from_any(
+                  Vx_Web_Html.t_node,
+                  node_any
+                )
+                var output_2 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_node_indent(node, indent)
+                return output_2
+              }
             )
-            return output_2
-          })
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Type.f_string_from_stringlist_join(
-          textlist,
-          Vx_Core.vx_new_string("")
-        )
-        return output_1
-      })
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Type.f_string_from_stringlist_join(
+            textlist,
+            Vx_Core.vx_new_string("")
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -10824,17 +14171,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -10854,10 +14201,30 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let nodes : any Vx_Core.Type_list = Vx_Core.f_any_from_any(Vx_Core.t_list, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let tag : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let prop : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(2)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(3)))
+      let nodes : any Vx_Core.Type_list = Vx_Core.f_any_from_any(
+        Vx_Core.t_list,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let tag : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let prop : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(3)
+        )
+      )
       output = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(nodes, tag, prop, indent)
       return output
     }
@@ -10886,70 +14253,78 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let text : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_nodelist_indent(
-          nodes,
-          Vx_Core.f_plus1(
-            indent
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let text : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_nodelist_indent(
+            nodes,
+            Vx_Core.f_plus1(indent)
           )
-        )
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let eindent : any Vx_Core.Type_string = Vx_Core.f_if_2(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_thenelselist,
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_2 : any Vx_Core.Type_any = Vx_Core.f_is_empty(
-                  text
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let eindent : any Vx_Core.Type_string = Vx_Core.f_if_2(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_thenelselist,
+              [
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_2 : any Vx_Core.Type_any = Vx_Core.f_is_empty(text)
+                        return output_2
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_3 : any Vx_Core.Type_any = Vx_Core.vx_new_string("")
+                        return output_3
+                      }
+                  )
+                ),
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_4 : any Vx_Core.Type_any = Vx_Core.f_is_empty(sindent)
+                        return output_4
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_5 : any Vx_Core.Type_any = Vx_Core.c_newline
+                        return output_5
+                      }
+                  )
+                ),
+                Vx_Core.f_else(
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+      let output_6 : any Vx_Core.Type_any = sindent
+                        return output_6
+                      }
+                  )
                 )
-                return output_2
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_3 : any Vx_Core.Type_any = Vx_Core.vx_new_string("")
-                return output_3
-              })
-            ),
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_4 : any Vx_Core.Type_any = Vx_Core.f_is_empty(
-                  sindent
-                )
-                return output_4
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_5 : any Vx_Core.Type_any = Vx_Core.c_newline
-                return output_5
-              })
-            ),
-            Vx_Core.f_else(
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                let output_6 : any Vx_Core.Type_any = sindent
-                return output_6
-              })
+              ]
             )
           )
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<"),
-            tag,
-            prop,
-            Vx_Core.vx_new_string(">"),
-            text,
-            eindent,
-            Vx_Core.vx_new_string("</"),
-            tag,
-            Vx_Core.vx_new_string(">")
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<"),
+                tag,
+                prop,
+                Vx_Core.vx_new_string(">"),
+                text,
+                eindent,
+                Vx_Core.vx_new_string("</"),
+                tag,
+                Vx_Core.vx_new_string(">")
+              ]
+            )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -10990,17 +14365,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -11020,8 +14395,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let p : any Vx_Web_Html.Type_p = Vx_Core.f_any_from_any(Vx_Web_Html.t_p, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let p : any Vx_Web_Html.Type_p = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_p,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_p_indent(p, indent)
       return output
     }
@@ -11046,40 +14431,38 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let text : any Vx_Core.Type_string = Vx_Web_Html.f_htmlstring_from_string(
-          p.text()
-        )
-        let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
-          Vx_Core.vx_new_string("id"),
-          p.id()
-        )
-        let sclass : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyle_stylelist(
-          p.style(),
-          p.stylelist()
-        )
-        let sstyle : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyleunique(
-          p.style_unique()
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<p"),
-            sid,
-            sclass,
-            sstyle,
-            Vx_Core.vx_new_string(">"),
-            text,
-            Vx_Core.vx_new_string("</p>")
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let text : any Vx_Core.Type_string = Vx_Web_Html.f_htmlstring_from_string(p.text())
+          let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
+            Vx_Core.vx_new_string("id"),
+            p.id()
           )
-        )
-        return output_1
-      })
+          let sclass : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyle_stylelist(
+            p.style(),
+            p.stylelist()
+          )
+          let sstyle : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propstyleunique(p.style_unique())
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<p"),
+                sid,
+                sclass,
+                sstyle,
+                Vx_Core.vx_new_string(">"),
+                text,
+                Vx_Core.vx_new_string("</p>")
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -11120,17 +14503,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -11150,8 +14533,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_propname_val(key, value)
       return output
     }
@@ -11176,19 +14569,19 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_if(
       Vx_Core.t_string,
-      Vx_Core.f_notempty(
-        value
-      ),
+      Vx_Core.f_notempty(value),
       Vx_Core.f_new(
         Vx_Core.t_string,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(" "),
-          key,
-          Vx_Core.vx_new_string("="),
-          Vx_Core.c_quote,
-          value,
-          Vx_Core.c_quote
+          [
+            Vx_Core.vx_new_string(" "),
+            key,
+            Vx_Core.vx_new_string("="),
+            Vx_Core.c_quote,
+            value,
+            Vx_Core.c_quote
+          ]
         )
       )
     )
@@ -11230,17 +14623,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -11267,7 +14660,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_style = value as! any Vx_Web_Html.Type_style
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propstyle(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -11275,7 +14671,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(Vx_Web_Html.t_style, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_style,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_string_from_propstyle(style)
       return output
     }
@@ -11300,30 +14701,36 @@ public enum Vx_Web_Html {
       Vx_Core.t_string,
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_then(
-          Vx_Core.t_boolean_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(
-              style
+        [
+          Vx_Core.f_then(
+            Vx_Core.t_boolean_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(style)
+                  return output_1
+                }
+            ),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Core.f_new(
+                    Vx_Core.t_string,
+                    Vx_Core.vx_new(
+                      Vx_Core.t_anylist,
+                      [
+                        Vx_Core.vx_new_string(" class="),
+                        Vx_Core.c_quote,
+                        Vx_Type.f_string_from_string_start(
+                          style.name(),
+                          Vx_Core.vx_new_int(2)
+                        ),
+                        Vx_Core.c_quote
+                      ]
+                    )
+                  )
+                  return output_2
+                }
             )
-            return output_1
-          }),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Core.f_new(
-              Vx_Core.t_string,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                Vx_Core.vx_new_string(" class="),
-                Vx_Core.c_quote,
-                Vx_Type.f_string_from_string_start(
-                  style.name(),
-                  Vx_Core.vx_new_int(2)
-                ),
-                Vx_Core.c_quote
-              )
-            )
-            return output_2
-          })
-        )
+          )
+        ]
       )
     )
     return output
@@ -11365,17 +14772,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -11395,8 +14802,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(Vx_Web_Html.t_style, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylelist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_style,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_propstyle_stylelist(style, stylelist)
       return output
     }
@@ -11423,34 +14840,36 @@ public enum Vx_Web_Html {
       Vx_Core.t_string,
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_then(
-          Vx_Core.t_boolean_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(
-              style
+        [
+          Vx_Core.f_then(
+            Vx_Core.t_boolean_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(style)
+                  return output_1
+                }
+            ),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propstyle(style)
+                  return output_2
+                }
             )
-            return output_1
-          }),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propstyle(
-              style
+          ),
+          Vx_Core.f_then(
+            Vx_Core.t_boolean_from_func.vx_fn_new(
+              {() in
+                var output_3 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(stylelist)
+                  return output_3
+                }
+            ),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_4 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propstylelist(stylelist)
+                  return output_4
+                }
             )
-            return output_2
-          })
-        ),
-        Vx_Core.f_then(
-          Vx_Core.t_boolean_from_func.vx_fn_new({() in
-            var output_3 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(
-              stylelist
-            )
-            return output_3
-          }),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_4 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propstylelist(
-              stylelist
-            )
-            return output_4
-          })
-        )
+          )
+        ]
       )
     )
     return output
@@ -11491,17 +14910,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -11528,7 +14947,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_stylelist = value as! any Vx_Web_Html.Type_stylelist
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propstylelist(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -11536,7 +14958,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylelist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_string_from_propstylelist(stylelist)
       return output
     }
@@ -11561,43 +14988,49 @@ public enum Vx_Web_Html {
       Vx_Core.t_string,
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_then(
-          Vx_Core.t_boolean_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(
-              stylelist
-            )
-            return output_1
-          }),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Core.f_let(
-              Vx_Core.t_string,
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                let joined : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylelist(
-                  stylelist
-                )
-                let output_3 : any Vx_Core.Type_any = Vx_Core.f_if(
-                  Vx_Core.t_string,
-                  Vx_Core.f_ne(
-                    Vx_Core.vx_new_string(""),
-                    joined
-                  ),
-                  Vx_Core.f_new(
+        [
+          Vx_Core.f_then(
+            Vx_Core.t_boolean_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(stylelist)
+                  return output_1
+                }
+            ),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Core.f_let(
                     Vx_Core.t_string,
-                    Vx_Core.vx_new(
-                      Vx_Core.t_anylist,
-                      Vx_Core.vx_new_string(" class="),
-                      Vx_Core.c_quote,
-                      joined,
-                      Vx_Core.c_quote
+                    Vx_Core.t_any_from_func.vx_fn_new(
+                      {() in
+                        let joined : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylelist(stylelist)
+                        let output_3 : any Vx_Core.Type_any = Vx_Core.f_if(
+                          Vx_Core.t_string,
+                          Vx_Core.f_ne(
+                            Vx_Core.vx_new_string(""),
+                            joined
+                          ),
+                          Vx_Core.f_new(
+                            Vx_Core.t_string,
+                            Vx_Core.vx_new(
+                              Vx_Core.t_anylist,
+                              [
+                                Vx_Core.vx_new_string(" class="),
+                                Vx_Core.c_quote,
+                                joined,
+                                Vx_Core.c_quote
+                              ]
+                            )
+                          )
+                        )
+                        return output_3
+                      }
                     )
                   )
-                )
-                return output_3
-              })
+                  return output_2
+                }
             )
-            return output_2
-          })
-        )
+          )
+        ]
       )
     )
     return output
@@ -11638,17 +15071,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -11675,7 +15108,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_style = value as! any Vx_Web_Html.Type_style
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_propstyleunique(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -11683,7 +15119,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(Vx_Web_Html.t_style, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_style,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_string_from_propstyleunique(style)
       return output
     }
@@ -11708,55 +15149,67 @@ public enum Vx_Web_Html {
       Vx_Core.t_string,
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_then(
-          Vx_Core.t_boolean_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(
-              style
-            )
-            return output_1
-          }),
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Core.f_let(
-              Vx_Core.t_string,
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                let props : any Vx_Web_Html.Type_propmap = style.props()
-                let text : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylepropmap_indent(
-                  props,
-                  Vx_Core.vx_new_int(0)
-                )
-                let output_3 : any Vx_Core.Type_any = Vx_Core.f_if_2(
-                  Vx_Core.t_string,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_thenelselist,
-                    Vx_Core.f_then(
-                      Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                        var output_4 : any Vx_Core.Type_any = Vx_Core.f_notempty(
-                          text
+        [
+          Vx_Core.f_then(
+            Vx_Core.t_boolean_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.f_notempty_1(style)
+                  return output_1
+                }
+            ),
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Core.f_let(
+                    Vx_Core.t_string,
+                    Vx_Core.t_any_from_func.vx_fn_new(
+                      {() in
+                        let props : any Vx_Web_Html.Type_propmap = style.props()
+                        let text : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylepropmap_indent(
+                          props,
+                          Vx_Core.vx_new_int(0)
                         )
-                        return output_4
-                      }),
-                      Vx_Core.t_any_from_func.vx_fn_new({() in
-                        var output_5 : any Vx_Core.Type_any = Vx_Core.f_new(
+                        let output_3 : any Vx_Core.Type_any = Vx_Core.f_if_2(
                           Vx_Core.t_string,
                           Vx_Core.vx_new(
-                            Vx_Core.t_anylist,
-                            Vx_Core.vx_new_string(" style="),
-                            Vx_Core.c_quote,
-                            text,
-                            Vx_Core.c_quote
+                            Vx_Core.t_thenelselist,
+                            [
+                              Vx_Core.f_then(
+                                Vx_Core.t_boolean_from_func.vx_fn_new(
+                                  {() in
+                                    var output_4 : any Vx_Core.Type_any = Vx_Core.f_notempty(text)
+                                      return output_4
+                                    }
+                                ),
+                                Vx_Core.t_any_from_func.vx_fn_new(
+                                  {() in
+                                    var output_5 : any Vx_Core.Type_any = Vx_Core.f_new(
+                                        Vx_Core.t_string,
+                                        Vx_Core.vx_new(
+                                          Vx_Core.t_anylist,
+                                          [
+                                            Vx_Core.vx_new_string(" style="),
+                                            Vx_Core.c_quote,
+                                            text,
+                                            Vx_Core.c_quote
+                                          ]
+                                        )
+                                      )
+                                      return output_5
+                                    }
+                                )
+                              )
+                            ]
                           )
                         )
-                        return output_5
-                      })
+                        return output_3
+                      }
                     )
                   )
-                )
-                return output_3
-              })
+                  return output_2
+                }
             )
-            return output_2
-          })
-        )
+          )
+        ]
       )
     )
     return output
@@ -11798,17 +15251,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -11828,8 +15281,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(Vx_Web_Html.t_style, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_style,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_style_indent(style, indent)
       return output
     }
@@ -11854,40 +15317,38 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let name : any Vx_Core.Type_string = style.name()
-        let propmap : any Vx_Web_Html.Type_propmap = style.props()
-        let sublist : any Vx_Web_Html.Type_stylelist = style.stylelist()
-        let stext : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylepropmap_indent(
-          propmap,
-          Vx_Core.f_plus1(
-            indent
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let name : any Vx_Core.Type_string = style.name()
+          let propmap : any Vx_Web_Html.Type_propmap = style.props()
+          let sublist : any Vx_Web_Html.Type_stylelist = style.stylelist()
+          let stext : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylepropmap_indent(
+            propmap,
+            Vx_Core.f_plus1(indent)
           )
-        )
-        let subtext : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylelist_indent(
-          sublist,
-          Vx_Core.f_plus1(
-            indent
+          let subtext : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylelist_indent(
+            sublist,
+            Vx_Core.f_plus1(indent)
           )
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            name,
-            Vx_Core.vx_new_string(" {"),
-            stext,
-            subtext,
-            sindent,
-            Vx_Core.vx_new_string("}")
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                name,
+                Vx_Core.vx_new_string(" {"),
+                stext,
+                subtext,
+                sindent,
+                Vx_Core.vx_new_string("}")
+              ]
+            )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -11927,17 +15388,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -11964,7 +15425,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_stylelist = value as! any Vx_Web_Html.Type_stylelist
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_stylelist(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -11972,7 +15436,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylelist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_string_from_stylelist(stylelist)
       return output
     }
@@ -11995,25 +15464,32 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let namelist : any Vx_Core.Type_stringlist = Vx_Core.f_list_from_list_1(
-          Vx_Core.t_stringlist,
-          stylelist,
-          Vx_Core.t_any_from_any.vx_fn_new({(item_any) in
-            let item : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(Vx_Web_Html.t_style, item_any)
-            var output_2 : any Vx_Core.Type_any = Vx_Type.f_string_from_string_start(
-              item.name(),
-              Vx_Core.vx_new_int(2)
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let namelist : any Vx_Core.Type_stringlist = Vx_Core.f_list_from_list_1(
+            Vx_Core.t_stringlist,
+            stylelist,
+            Vx_Core.t_any_from_any.vx_fn_new(
+              {(item_any) in
+                let item : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(
+                  Vx_Web_Html.t_style,
+                  item_any
+                )
+                var output_2 : any Vx_Core.Type_any = Vx_Type.f_string_from_string_start(
+                  item.name(),
+                  Vx_Core.vx_new_int(2)
+                )
+                return output_2
+              }
             )
-            return output_2
-          })
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Type.f_string_from_stringlist_join(
-          namelist,
-          Vx_Core.vx_new_string(" ")
-        )
-        return output_1
-      })
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Type.f_string_from_stringlist_join(
+            namelist,
+            Vx_Core.vx_new_string(" ")
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -12054,17 +15530,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -12084,8 +15560,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylelist, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_stylelist_indent(stylelist, indent)
       return output
     }
@@ -12110,25 +15596,29 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sstyles : any Vx_Core.Type_stringlist = Vx_Core.f_list_from_list_1(
-          Vx_Core.t_stringlist,
-          stylelist,
-          Vx_Core.t_any_from_any.vx_fn_new({(substyle_any) in
-            let substyle : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(Vx_Web_Html.t_style, substyle_any)
-            var output_2 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_style_indent(
-              substyle,
-              indent
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sstyles : any Vx_Core.Type_stringlist = Vx_Core.f_list_from_list_1(
+            Vx_Core.t_stringlist,
+            stylelist,
+            Vx_Core.t_any_from_any.vx_fn_new(
+              {(substyle_any) in
+                let substyle : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(
+                  Vx_Web_Html.t_style,
+                  substyle_any
+                )
+                var output_2 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_style_indent(substyle, indent)
+                return output_2
+              }
             )
-            return output_2
-          })
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Type.f_string_from_stringlist_join(
-          sstyles,
-          Vx_Core.c_newline
-        )
-        return output_1
-      })
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Type.f_string_from_stringlist_join(
+            sstyles,
+            Vx_Core.c_newline
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -12169,17 +15659,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -12199,8 +15689,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let propmap : any Vx_Web_Html.Type_propmap = Vx_Core.f_any_from_any(Vx_Web_Html.t_propmap, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let propmap : any Vx_Web_Html.Type_propmap = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_propmap,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_stylepropmap_indent(propmap, indent)
       return output
     }
@@ -12225,40 +15725,50 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let sprops : any Vx_Core.Type_stringlist = Vx_Core.f_list_from_map_1(
-          Vx_Core.t_stringlist,
-          propmap,
-          Vx_Core.t_any_from_key_value.vx_fn_new({(key_any, value_any) in
-            let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, key_any)
-            let value : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, value_any)
-            var output_2 : any Vx_Core.Type_any = Vx_Core.f_new(
-              Vx_Core.t_string,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                sindent,
-                key,
-                Vx_Core.vx_new_string(": "),
-                Vx_Core.f_string_from_string_find_replace(
-                  value,
-                  Vx_Core.c_quote,
-                  Vx_Core.vx_new_string("'")
-                ),
-                Vx_Core.vx_new_string(";")
-              )
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let sprops : any Vx_Core.Type_stringlist = Vx_Core.f_list_from_map_1(
+            Vx_Core.t_stringlist,
+            propmap,
+            Vx_Core.t_any_from_key_value.vx_fn_new(
+              {(key_any, value_any) in
+                let key : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+                  Vx_Core.t_string,
+                  key_any
+                )
+                let value : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+                  Vx_Core.t_string,
+                  value_any
+                )
+                var output_2 : any Vx_Core.Type_any = Vx_Core.f_new(
+                  Vx_Core.t_string,
+                  Vx_Core.vx_new(
+                    Vx_Core.t_anylist,
+                    [
+                      sindent,
+                      key,
+                      Vx_Core.vx_new_string(": "),
+                      Vx_Core.f_string_from_string_find_replace(
+                        value,
+                        Vx_Core.c_quote,
+                        Vx_Core.vx_new_string("'")
+                      ),
+                      Vx_Core.vx_new_string(";")
+                    ]
+                  )
+                )
+                return output_2
+              }
             )
-            return output_2
-          })
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Type.f_string_from_stringlist_join(
-          sprops,
-          Vx_Core.vx_new_string("")
-        )
-        return output_1
-      })
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Type.f_string_from_stringlist_join(
+            sprops,
+            Vx_Core.vx_new_string("")
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -12299,17 +15809,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -12329,8 +15839,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylesheet, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylesheet,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_stylesheet_indent(stylesheet, indent)
       return output
     }
@@ -12355,37 +15875,35 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let styles : any Vx_Web_Html.Type_stylelist = stylesheet.styles()
-        let sstyles : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylelist_indent(
-          styles,
-          Vx_Core.f_plus1(
-            indent
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let styles : any Vx_Web_Html.Type_stylelist = stylesheet.styles()
+          let sstyles : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_stylelist_indent(
+            styles,
+            Vx_Core.f_plus1(indent)
           )
-        )
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let eindent : any Vx_Core.Type_string = Vx_Core.f_if(
-          Vx_Core.t_string,
-          Vx_Core.f_notempty(
-            sstyles
-          ),
-          sindent
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<style>"),
-            sstyles,
-            eindent,
-            Vx_Core.vx_new_string("</style>")
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let eindent : any Vx_Core.Type_string = Vx_Core.f_if(
+            Vx_Core.t_string,
+            Vx_Core.f_notempty(sstyles),
+            sindent
           )
-        )
-        return output_1
-      })
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<style>"),
+                sstyles,
+                eindent,
+                Vx_Core.vx_new_string("</style>")
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -12426,17 +15944,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -12456,8 +15974,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let table : any Vx_Web_Html.Type_table = Vx_Core.f_any_from_any(Vx_Web_Html.t_table, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let table : any Vx_Web_Html.Type_table = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_table,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_table_indent(table, indent)
       return output
     }
@@ -12482,44 +16010,42 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
-          Vx_Core.vx_new_string("id"),
-          table.id()
-        )
-        let thead : any Vx_Web_Html.Type_thead = table.thead()
-        let tbody : any Vx_Web_Html.Type_tbody = table.tbody()
-        let shead : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_thead_indent(
-          thead,
-          Vx_Core.f_plus1(
-            indent
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let sid : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_propname_val(
+            Vx_Core.vx_new_string("id"),
+            table.id()
           )
-        )
-        let sbody : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_tbody_indent(
-          tbody,
-          Vx_Core.f_plus1(
-            indent
+          let thead : any Vx_Web_Html.Type_thead = table.thead()
+          let tbody : any Vx_Web_Html.Type_tbody = table.tbody()
+          let shead : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_thead_indent(
+            thead,
+            Vx_Core.f_plus1(indent)
           )
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<table"),
-            sid,
-            Vx_Core.vx_new_string(">"),
-            shead,
-            sbody,
-            sindent,
-            Vx_Core.vx_new_string("</table>")
+          let sbody : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_tbody_indent(
+            tbody,
+            Vx_Core.f_plus1(indent)
           )
-        )
-        return output_1
-      })
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<table"),
+                sid,
+                Vx_Core.vx_new_string(">"),
+                shead,
+                sbody,
+                sindent,
+                Vx_Core.vx_new_string("</table>")
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -12560,17 +16086,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -12590,8 +16116,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let tbody : any Vx_Web_Html.Type_tbody = Vx_Core.f_any_from_any(Vx_Web_Html.t_tbody, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let tbody : any Vx_Web_Html.Type_tbody = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_tbody,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_tbody_indent(tbody, indent)
       return output
     }
@@ -12616,16 +16152,18 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let nodes : any Vx_Web_Html.Type_trlist = tbody.nodes()
-        let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx_Core.vx_new_string("tbody"),
-          Vx_Core.vx_new_string(""),
-          indent
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let nodes : any Vx_Web_Html.Type_trlist = tbody.nodes()
+          let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx_Core.vx_new_string("tbody"),
+            Vx_Core.vx_new_string(""),
+            indent
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -12666,17 +16204,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -12696,8 +16234,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let td : any Vx_Web_Html.Type_td = Vx_Core.f_any_from_any(Vx_Web_Html.t_td, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let td : any Vx_Web_Html.Type_td = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_td,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_td_indent(td, indent)
       return output
     }
@@ -12722,16 +16270,18 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let nodes : any Vx_Web_Html.Type_divchildlist = td.nodes()
-        let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx_Core.vx_new_string("td"),
-          Vx_Core.vx_new_string(""),
-          indent
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let nodes : any Vx_Web_Html.Type_divchildlist = td.nodes()
+          let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx_Core.vx_new_string("td"),
+            Vx_Core.vx_new_string(""),
+            indent
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -12772,17 +16322,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -12802,8 +16352,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let thead : any Vx_Web_Html.Type_thead = Vx_Core.f_any_from_any(Vx_Web_Html.t_thead, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let thead : any Vx_Web_Html.Type_thead = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_thead,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_thead_indent(thead, indent)
       return output
     }
@@ -12828,16 +16388,18 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let nodes : any Vx_Web_Html.Type_trlist = thead.nodes()
-        let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx_Core.vx_new_string("thead"),
-          Vx_Core.vx_new_string(""),
-          indent
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let nodes : any Vx_Web_Html.Type_trlist = thead.nodes()
+          let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx_Core.vx_new_string("thead"),
+            Vx_Core.vx_new_string(""),
+            indent
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -12878,17 +16440,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -12908,8 +16470,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let title : any Vx_Web_Html.Type_title = Vx_Core.f_any_from_any(Vx_Web_Html.t_title, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let title : any Vx_Web_Html.Type_title = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_title,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_title_indent(title, indent)
       return output
     }
@@ -12934,23 +16506,25 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(
-          indent
-        )
-        let text : any Vx_Core.Type_string = title.text()
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            sindent,
-            Vx_Core.vx_new_string("<title>"),
-            text,
-            Vx_Core.vx_new_string("</title>")
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let sindent : any Vx_Core.Type_string = Vx_Web_Html.f_string_from_indent(indent)
+          let text : any Vx_Core.Type_string = title.text()
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                sindent,
+                Vx_Core.vx_new_string("<title>"),
+                text,
+                Vx_Core.vx_new_string("</title>")
+              ]
+            )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -12991,17 +16565,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -13021,8 +16595,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let tr : any Vx_Web_Html.Type_tr = Vx_Core.f_any_from_any(Vx_Web_Html.t_tr, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let tr : any Vx_Web_Html.Type_tr = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_tr,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let indent : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_string_from_tr_indent(tr, indent)
       return output
     }
@@ -13047,16 +16631,18 @@ public enum Vx_Web_Html {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let nodes : any Vx_Web_Html.Type_tdlist = tr.nodes()
-        let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx_Core.vx_new_string("tr"),
-          Vx_Core.vx_new_string(""),
-          indent
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let nodes : any Vx_Web_Html.Type_tdlist = tr.nodes()
+          let output_1 : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx_Core.vx_new_string("tr"),
+            Vx_Core.vx_new_string(""),
+            indent
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -13096,17 +16682,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -13133,7 +16719,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_string_from_uri(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -13141,7 +16730,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let uri : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let uri : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_string_from_uri(uri)
       return output
     }
@@ -13201,17 +16795,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "style",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -13231,8 +16825,18 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylesheet, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylesheet,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Web_Html.f_style_from_stylesheet_name(stylesheet, name)
       return output
     }
@@ -13257,9 +16861,7 @@ public enum Vx_Web_Html {
     var output : any Vx_Web_Html.Type_style = Vx_Web_Html.e_style
     output = Vx_Core.f_any_from_map(
       Vx_Web_Html.t_style,
-      Vx_Web_Html.f_stylemap_from_stylesheet(
-        stylesheet
-      ),
+      Vx_Web_Html.f_stylemap_from_stylesheet(stylesheet),
       name
     )
     return output
@@ -13300,17 +16902,22 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylemap", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_style), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "stylemap",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_style
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -13337,7 +16944,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_stylelist = value as! any Vx_Web_Html.Type_stylelist
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_stylemap_from_stylelist(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -13345,7 +16955,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylelist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let stylelist : any Vx_Web_Html.Type_stylelist = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_stylemap_from_stylelist(stylelist)
       return output
     }
@@ -13369,11 +16984,16 @@ public enum Vx_Web_Html {
     output = Vx_Core.f_map_from_list(
       Vx_Web_Html.t_stylemap,
       stylelist,
-      Vx_Core.t_any_from_any.vx_fn_new({(style_any) in
-        let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(Vx_Web_Html.t_style, style_any)
-        var output_1 : any Vx_Core.Type_any = style.name()
-        return output_1
-      })
+      Vx_Core.t_any_from_any.vx_fn_new(
+        {(style_any) in
+          let style : any Vx_Web_Html.Type_style = Vx_Core.f_any_from_any(
+            Vx_Web_Html.t_style,
+            style_any
+          )
+          var output_1 : any Vx_Core.Type_any = style.name()
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -13413,17 +17033,22 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylemap", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_style), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "stylemap",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_style
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -13450,7 +17075,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_stylesheet = value as! any Vx_Web_Html.Type_stylesheet
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_stylemap_from_stylesheet(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -13458,7 +17086,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylesheet, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylesheet,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_stylemap_from_stylesheet(stylesheet)
       return output
     }
@@ -13518,17 +17151,22 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylelist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_style), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "stylelist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_style
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -13555,7 +17193,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_stylesheet = value as! any Vx_Web_Html.Type_stylesheet
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_styles_from_stylesheet(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -13563,7 +17204,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylesheet, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylesheet,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_styles_from_stylesheet(stylesheet)
       return output
     }
@@ -13623,17 +17269,23 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylesheet", // name
-          ":struct", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Web_Html.t_node, Vx_Web_Html.t_headchild), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/web/html",
+          "stylesheet",
+          ":struct",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Web_Html.t_node,
+              Vx_Web_Html.t_headchild
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -13660,7 +17312,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Web_Html.Type_stylesheet = value as! any Vx_Web_Html.Type_stylesheet
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_stylesheet_loadmap(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -13668,7 +17323,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(Vx_Web_Html.t_stylesheet, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let stylesheet : any Vx_Web_Html.Type_stylesheet = Vx_Core.f_any_from_any(
+        Vx_Web_Html.t_stylesheet,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_stylesheet_loadmap(stylesheet)
       return output
     }
@@ -13694,10 +17354,10 @@ public enum Vx_Web_Html {
       stylesheet,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":stylemap"),
-        Vx_Web_Html.f_stylemap_from_stylelist(
-          stylesheet.styles()
-        )
+        [
+          Vx_Core.vx_new_string(":stylemap"),
+          Vx_Web_Html.f_stylemap_from_stylelist(stylesheet.styles())
+        ]
       )
     )
     return output
@@ -13738,17 +17398,17 @@ public enum Vx_Web_Html {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -13775,7 +17435,10 @@ public enum Vx_Web_Html {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Web_Html.f_uri_from_string(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -13783,7 +17446,12 @@ public enum Vx_Web_Html {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Web_Html.f_uri_from_string(text)
       return output
     }

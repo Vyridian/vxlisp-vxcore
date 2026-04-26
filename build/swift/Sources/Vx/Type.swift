@@ -222,17 +222,22 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_string
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -259,7 +264,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Type.f_allowtypenames_from_type(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -267,7 +275,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_allowtypenames_from_type(type)
       return output
     }
@@ -289,9 +302,7 @@ public static func vx_uid() -> any Vx_Core.Type_string {
   ) -> any Vx_Core.Type_stringlist {
     var output : any Vx_Core.Type_stringlist = Vx_Core.e_stringlist
     output = Vx_Core.f_typenames_from_typelist(
-      Vx_Type.f_allowtypes_from_type(
-        type
-      )
+      Vx_Type.f_allowtypes_from_type(type)
     )
     return output
   }
@@ -331,17 +342,22 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "typelist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "typelist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -368,7 +384,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Type.f_allowtypes_from_type(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -376,7 +395,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_allowtypes_from_type(type)
       return output
     }
@@ -397,9 +421,7 @@ public static func vx_uid() -> any Vx_Core.Type_string {
     _ type : any Vx_Core.Type_any
   ) -> any Vx_Core.Type_typelist {
     var output : any Vx_Core.Type_typelist = Vx_Core.e_typelist
-    output = Vx_Core.f_typedef_from_type(
-      type
-    ).allowtypes()
+    output = Vx_Core.f_typedef_from_type(type).allowtypes()
     return output
   }
 
@@ -439,17 +461,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -475,8 +497,14 @@ public static func vx_uid() -> any Vx_Core.Type_string {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_int = value as! any Vx_Core.Type_int
-      let outputval : any Vx_Core.Type_any = Vx_Type.f_any_from_int(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Type.f_any_from_int(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -484,8 +512,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let value : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let value : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_any_from_int(generic_any_1, value)
       return output
     }
@@ -547,17 +585,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -577,8 +615,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let ends : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let ends : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_boolean_from_string_ends(text, ends)
       return output
     }
@@ -641,17 +689,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -671,8 +719,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let starts : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let starts : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_boolean_from_string_starts(text, starts)
       return output
     }
@@ -735,17 +793,22 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -765,8 +828,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_int_from_string_find(text, find)
       return output
     }
@@ -829,17 +902,22 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -859,8 +937,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let find : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_int_from_string_findkeyword(text, find)
       return output
     }
@@ -923,17 +1011,22 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_number), // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_number
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -953,8 +1046,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let findlast : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let findlast : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_int_from_string_findlast(text, findlast)
       return output
     }
@@ -1016,17 +1119,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1053,7 +1156,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Type.f_is_boolean(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1061,7 +1167,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_is_boolean(value)
       return output
     }
@@ -1084,9 +1195,7 @@ public static func vx_uid() -> any Vx_Core.Type_string {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_eq(
       Vx_Core.vx_new_string("boolean"),
-      Vx_Core.f_typename_from_any(
-        value
-      )
+      Vx_Core.f_typename_from_any(value)
     )
     return output
   }
@@ -1126,17 +1235,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1163,7 +1272,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Type.f_is_decimal(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1171,7 +1283,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_is_decimal(value)
       return output
     }
@@ -1194,9 +1311,7 @@ public static func vx_uid() -> any Vx_Core.Type_string {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_eq(
       Vx_Core.vx_new_string("decimal"),
-      Vx_Core.f_typename_from_any(
-        value
-      )
+      Vx_Core.f_typename_from_any(value)
     )
     return output
   }
@@ -1236,17 +1351,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1273,7 +1388,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Type.f_is_none(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1281,7 +1399,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_is_none(value)
       return output
     }
@@ -1344,17 +1467,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1381,7 +1504,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Type.f_is_string(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1389,7 +1515,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_is_string(value)
       return output
     }
@@ -1412,9 +1543,7 @@ public static func vx_uid() -> any Vx_Core.Type_string {
     var output : any Vx_Core.Type_boolean = Vx_Core.e_boolean
     output = Vx_Core.f_eq(
       Vx_Core.vx_new_string("vx/core/string"),
-      Vx_Core.f_typename_from_any(
-        value
-      )
+      Vx_Core.f_typename_from_any(value)
     )
     return output
   }
@@ -1455,17 +1584,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1485,8 +1614,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_is_type(value, type)
       return output
     }
@@ -1512,30 +1651,20 @@ public static func vx_uid() -> any Vx_Core.Type_string {
     output = Vx_Core.f_or_1(
       Vx_Core.vx_new(
         Vx_Core.t_booleanlist,
-        Vx_Core.f_eq(
-          Vx_Core.f_typename_from_type(
-            type
+        [
+          Vx_Core.f_eq(
+            Vx_Core.f_typename_from_type(type),
+            Vx_Core.f_typename_from_any(value)
           ),
-          Vx_Core.f_typename_from_any(
-            value
-          )
-        ),
-        Vx_Core.f_contains_1(
-          Vx_Type.f_allowtypenames_from_type(
-            type
+          Vx_Core.f_contains_1(
+            Vx_Type.f_allowtypenames_from_type(type),
+            Vx_Core.f_typename_from_any(value)
           ),
-          Vx_Core.f_typename_from_any(
-            value
+          Vx_Core.f_contains_1(
+            Vx_Type.f_traitnames_from_any(value),
+            Vx_Core.f_typename_from_type(type)
           )
-        ),
-        Vx_Core.f_contains_1(
-          Vx_Type.f_traitnames_from_any(
-            value
-          ),
-          Vx_Core.f_typename_from_type(
-            type
-          )
-        )
+        ]
       )
     )
     return output
@@ -1577,17 +1706,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1607,8 +1736,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let typelist : any Vx_Core.Type_typelist = Vx_Core.f_any_from_any(Vx_Core.t_typelist, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let typelist : any Vx_Core.Type_typelist = Vx_Core.f_any_from_any(
+        Vx_Core.t_typelist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_is_type_from_any_typelist(value, typelist)
       return output
     }
@@ -1635,18 +1774,23 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       Vx_Core.t_boolean,
       typelist,
       Vx_Core.vx_new_boolean(false),
-      Vx_Core.t_any_from_reduce.vx_fn_new({(result_any, type_any) in
-        let result : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(Vx_Core.t_boolean, result_any)
-        let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, type_any)
-        var output_1 : any Vx_Core.Type_any = Vx_Core.f_or(
-          result,
-          Vx_Type.f_is_type(
-            value,
-            type
+      Vx_Core.t_any_from_reduce.vx_fn_new(
+        {(result_any, type_any) in
+          let result : any Vx_Core.Type_boolean = Vx_Core.f_any_from_any(
+            Vx_Core.t_boolean,
+            result_any
           )
-        )
-        return output_1
-      })
+          let type : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+            Vx_Core.t_any,
+            type_any
+          )
+          var output_1 : any Vx_Core.Type_any = Vx_Core.f_or(
+            result,
+            Vx_Type.f_is_type(value, type)
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1686,17 +1830,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1723,7 +1867,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Type.f_string_lowercase(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1731,7 +1878,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_string_lowercase(text)
       return output
     }
@@ -1791,17 +1943,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1828,7 +1980,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Type.f_string_outdent(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1836,7 +1991,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_string_outdent(text)
       return output
     }
@@ -1859,71 +2019,78 @@ public static func vx_uid() -> any Vx_Core.Type_string {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let pos : any Vx_Core.Type_int = Vx_Type.f_int_from_string_findkeyword(
-          text,
-          Vx_Core.vx_new_string(":nonwhitespace")
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_thenelselist,
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_2 : any Vx_Core.Type_any = Vx_Core.f_eq(
-                  Vx_Core.vx_new_int(0),
-                  pos
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let pos : any Vx_Core.Type_int = Vx_Type.f_int_from_string_findkeyword(
+            text,
+            Vx_Core.vx_new_string(":nonwhitespace")
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_thenelselist,
+              [
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_2 : any Vx_Core.Type_any = Vx_Core.f_eq(
+                          Vx_Core.vx_new_int(0),
+                          pos
+                        )
+                        return output_2
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+      let output_3 : any Vx_Core.Type_any = text
+                        return output_3
+                      }
+                  )
+                ),
+                Vx_Core.f_else(
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_4 : any Vx_Core.Type_any = Vx_Core.f_let(
+                          Vx_Core.t_string,
+                          Vx_Core.t_any_from_func.vx_fn_new(
+                            {() in
+                              let indent : any Vx_Core.Type_string = Vx_Type.f_string_from_string_end(
+                                text,
+                                Vx_Core.f_minus1(pos)
+                              )
+                              let rest : any Vx_Core.Type_string = Vx_Type.f_string_from_string_start(text, pos)
+                              let linepos : any Vx_Core.Type_int = Vx_Type.f_int_from_string_find(
+                                indent,
+                                Vx_Core.vx_new_string("\n")
+                              )
+                              let outdent : any Vx_Core.Type_string = Vx_Core.f_if_1(
+                                Vx_Core.t_string,
+                                Vx_Core.f_eq(
+                                  Vx_Core.vx_new_int(0),
+                                  linepos
+                                ),
+                                Vx_Core.vx_new_string(""),
+                                Vx_Core.vx_new_string("\n")
+                              )
+                              let output_5 : any Vx_Core.Type_any = Vx_Core.f_string_from_string_find_replace(
+                                rest,
+                                indent,
+                                outdent
+                              )
+                              return output_5
+                            }
+                          )
+                        )
+                        return output_4
+                      }
+                  )
                 )
-                return output_2
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                let output_3 : any Vx_Core.Type_any = text
-                return output_3
-              })
-            ),
-            Vx_Core.f_else(
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_4 : any Vx_Core.Type_any = Vx_Core.f_let(
-                  Vx_Core.t_string,
-                  Vx_Core.t_any_from_func.vx_fn_new({() in
-                    let indent : any Vx_Core.Type_string = Vx_Type.f_string_from_string_end(
-                      text,
-                      Vx_Core.f_minus1(
-                        pos
-                      )
-                    )
-                    let rest : any Vx_Core.Type_string = Vx_Type.f_string_from_string_start(
-                      text,
-                      pos
-                    )
-                    let linepos : any Vx_Core.Type_int = Vx_Type.f_int_from_string_find(
-                      indent,
-                      Vx_Core.vx_new_string("\n")
-                    )
-                    let outdent : any Vx_Core.Type_string = Vx_Core.f_if_1(
-                      Vx_Core.t_string,
-                      Vx_Core.f_eq(
-                        Vx_Core.vx_new_int(0),
-                        linepos
-                      ),
-                      Vx_Core.vx_new_string(""),
-                      Vx_Core.vx_new_string("\n")
-                    )
-                    let output_5 : any Vx_Core.Type_any = Vx_Core.f_string_from_string_find_replace(
-                      rest,
-                      indent,
-                      outdent
-                    )
-                    return output_5
-                  })
-                )
-                return output_4
-              })
+              ]
             )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1963,17 +2130,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2000,7 +2167,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Type.f_string_trim(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -2008,7 +2178,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_string_trim(text)
       return output
     }
@@ -2068,17 +2243,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2105,7 +2280,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Type.f_string_uppercase(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -2113,7 +2291,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_string_uppercase(text)
       return output
     }
@@ -2173,17 +2356,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2210,7 +2393,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_int = value as! any Vx_Core.Type_int
       let outputval : any Vx_Core.Type_any = Vx_Type.f_string_from_int(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -2218,7 +2404,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_string_from_int(value)
       return output
     }
@@ -2244,39 +2435,51 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       value,
       Vx_Core.vx_new(
         Vx_Core.t_thenelselist,
-        Vx_Core.f_case_1(
-          Vx_Core.c_infinity,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_string("infinity")
-            return output_1
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Core.c_neginfinity,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_2 : any Vx_Core.Type_any = Vx_Core.vx_new_string("neginfinity")
-            return output_2
-          })
-        ),
-        Vx_Core.f_case_1(
-          Vx_Core.c_notanumber,
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_3 : any Vx_Core.Type_any = Vx_Core.vx_new_string("notanumber")
-            return output_3
-          })
-        ),
-        Vx_Core.f_else(
-          Vx_Core.t_any_from_func.vx_fn_new({() in
-            var output_4 : any Vx_Core.Type_any = Vx_Core.f_new(
-              Vx_Core.t_string,
-              Vx_Core.vx_new(
-                Vx_Core.t_anylist,
-                value
-              )
+        [
+          Vx_Core.f_case_1(
+            Vx_Core.c_infinity,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_1 : any Vx_Core.Type_any = Vx_Core.vx_new_string("infinity")
+                  return output_1
+                }
             )
-            return output_4
-          })
-        )
+          ),
+          Vx_Core.f_case_1(
+            Vx_Core.c_neginfinity,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_2 : any Vx_Core.Type_any = Vx_Core.vx_new_string("neginfinity")
+                  return output_2
+                }
+            )
+          ),
+          Vx_Core.f_case_1(
+            Vx_Core.c_notanumber,
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_3 : any Vx_Core.Type_any = Vx_Core.vx_new_string("notanumber")
+                  return output_3
+                }
+            )
+          ),
+          Vx_Core.f_else(
+            Vx_Core.t_any_from_func.vx_fn_new(
+              {() in
+                var output_4 : any Vx_Core.Type_any = Vx_Core.f_new(
+                    Vx_Core.t_string,
+                    Vx_Core.vx_new(
+                      Vx_Core.t_anylist,
+                      [
+                        value
+                      ]
+                    )
+                  )
+                  return output_4
+                }
+            )
+          )
+        ]
       )
     )
     return output
@@ -2318,17 +2521,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2348,8 +2551,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let endpos : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let endpos : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_string_from_string_end(text, endpos)
       return output
     }
@@ -2416,17 +2629,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2446,8 +2659,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let startpos : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let startpos : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_string_from_string_start(text, startpos)
       return output
     }
@@ -2473,9 +2696,7 @@ public static func vx_uid() -> any Vx_Core.Type_string {
     output = Vx_Type.f_string_from_string_start_end(
       text,
       startpos,
-      Vx_Core.f_length(
-        text
-      )
+      Vx_Core.f_length(text)
     )
     return output
   }
@@ -2517,17 +2738,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2547,9 +2768,24 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(Vx_Core.t_int, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let start : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let end : any Vx_Core.Type_int = Vx_Core.f_any_from_any(
+        Vx_Core.t_int,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Type.f_string_from_string_start_end(text, start, end)
       return output
     }
@@ -2614,17 +2850,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2644,8 +2880,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let vals : any Vx_Core.Type_stringlist = Vx_Core.f_any_from_any(Vx_Core.t_stringlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let delim : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let vals : any Vx_Core.Type_stringlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_stringlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let delim : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_string_from_stringlist_join(vals, delim)
       return output
     }
@@ -2708,17 +2954,22 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_string
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2738,8 +2989,18 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let delim : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let delim : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Type.f_stringlist_from_string_split(text, delim)
       return output
     }
@@ -2801,17 +3062,22 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "stringlist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_string), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "stringlist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_string
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2838,7 +3104,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Type.f_traitnames_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -2846,7 +3115,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_traitnames_from_any(value)
       return output
     }
@@ -2868,9 +3142,7 @@ public static func vx_uid() -> any Vx_Core.Type_string {
   ) -> any Vx_Core.Type_stringlist {
     var output : any Vx_Core.Type_stringlist = Vx_Core.e_stringlist
     output = Vx_Core.f_typenames_from_typelist(
-      Vx_Type.f_traits_from_any(
-        value
-      )
+      Vx_Type.f_traits_from_any(value)
     )
     return output
   }
@@ -2910,17 +3182,22 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "typelist", // name
-          ":list", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_any), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "typelist",
+          ":list",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_any
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -2947,7 +3224,10 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_any = value as! any Vx_Core.Type_any
       let outputval : any Vx_Core.Type_any = Vx_Type.f_traits_from_any(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -2955,7 +3235,12 @@ public static func vx_uid() -> any Vx_Core.Type_string {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Type.f_traits_from_any(value)
       return output
     }
@@ -2977,9 +3262,7 @@ public static func vx_uid() -> any Vx_Core.Type_string {
   ) -> any Vx_Core.Type_typelist {
     var output : any Vx_Core.Type_typelist = Vx_Core.e_typelist
     output = Vx_Core.f_traits_from_typedef(
-      Vx_Core.f_typedef_from_any(
-        value
-      )
+      Vx_Core.f_typedef_from_any(value)
     )
     return output
   }
@@ -3017,17 +3300,17 @@ public static func vx_uid() -> any Vx_Core.Type_string {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output

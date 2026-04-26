@@ -4,23 +4,23 @@ import Foundation
 public enum Vx_Data_File {
 
 public static func vx_boolean_exists_from_file(
-  _ file: Vx_Data_File.Type_file
+  _ file : Vx_Data_File.Type_file
 ) -> Vx_Core.Type_boolean {
-  let fullpath: Vx_Core.Type_string = Vx_Data_File.f_pathfull_from_file(file)
-  let sfullpath: String = fullpath.vx_string()
-  let normalized = Vx_Data_File.vx_path_normalize_from_path(sfullpath)
-  let exists = FileManager.default.fileExists(atPath: normalized)
+  let fullpath : Vx_Core.Type_string = Vx_Data_File.f_pathfull_from_file(file)
+  let sfullpath : String = fullpath.vx_string()
+  let normalized : String = Vx_Data_File.vx_path_normalize_from_path(sfullpath)
+  let exists : Bool = FileManager.default.fileExists(atPath: normalized)
   return exists ? Vx_Core.c_true : Vx_Core.e_boolean
 }
 
 public static func vx_boolean_write_from_file_string(
-  _ context: Vx_Core.Type_context,
-  _ file: Vx_Data_File.Type_file,
-  _ text: Vx_Core.Type_string
+  _ context : Vx_Core.Type_context,
+  _ file : Vx_Data_File.Type_file,
+  _ text : Vx_Core.Type_string
 ) -> Vx_Core.Type_boolean {
-  let fullpath: Vx_Core.Type_string = Vx_Data_File.f_pathfull_from_file(file)
-  let sfullpath: String = fullpath.vx_string()
-  let normalized = Vx_Data_File.vx_path_normalize_from_path(sfullpath)
+  let fullpath : Vx_Core.Type_string = Vx_Data_File.f_pathfull_from_file(file)
+  let sfullpath : String = fullpath.vx_string()
+  let normalized : String = Vx_Data_File.vx_path_normalize_from_path(sfullpath)
   let stext: String = text.vx_string()
   do {
     try stext.write(toFile: normalized, atomically: true, encoding: .utf8)
@@ -30,12 +30,14 @@ public static func vx_boolean_write_from_file_string(
     return Vx_Core.vx_copy(
       Vx_Core.t_boolean,
       Vx_Core.c_false,
-      msg
+      [msg]
     )
   }
 }
 
-public static func vx_path_normalize_from_path(_ spath: String) -> String {
+public static func vx_path_normalize_from_path(
+  _ spath : String
+) -> String {
   var output = spath
   if !spath.contains(":") {
     let pathcurrent = vx_spathcurrent_from_os()
@@ -44,25 +46,22 @@ public static func vx_path_normalize_from_path(_ spath: String) -> String {
   return output
 }
 
-public static func vx_pathcurrent_from_os() -> Vx_Core.Type_string {
+public static func vx_pathcurrent_from_os(
+) -> Vx_Core.Type_string {
   let stext = vx_spathcurrent_from_os()
   return Vx_Core.vx_new_string(stext)
 }
 
-public static func vx_spathcurrent_from_os() -> String {
-  var output = FileManager.default.currentDirectoryPath
-  if let range = output.range(of: "/TestSuite/AppTest") ?? output.range(of: "\\TestSuite\\AppTest") {
-    let index = output.index(output.startIndex, offsetBy: range.lowerBound.utf16Offset(in: output))
-    output = String(output[..<index])
-  }
-  return output
+public static func vx_spathcurrent_from_os(
+) -> String {
+  return FileManager.default.currentDirectoryPath
 }
 
 public static func vx_string_read_from_file(
-    _ file: Vx_Data_File.Type_file
+  _ file : Vx_Data_File.Type_file
 ) -> Vx_Core.Type_string {
-  let fullpath: Vx_Core.Type_string = Vx_Data_File.f_pathfull_from_file(file)
-  let sfullpath: String = fullpath.vx_string()
+  let fullpath : Vx_Core.Type_string = Vx_Data_File.f_pathfull_from_file(file)
+  let sfullpath : String = fullpath.vx_string()
   let normalized = Vx_Data_File.vx_path_normalize_from_path(sfullpath)
   guard FileManager.default.fileExists(atPath: normalized) else {
     let msg = Vx_Core.vx_msg_from_error(
@@ -70,14 +69,22 @@ public static func vx_string_read_from_file(
       ":filenotfound",
       file
     )
-    return Vx_Core.vx_new(Vx_Core.t_string, msg)
+    return Vx_Core.vx_new(
+      Vx_Core.t_string,
+      [msg]
+    )
   }
   do {
     let scontent = try String(contentsOfFile: normalized, encoding: .utf8)
     return Vx_Core.vx_new_string(scontent)
   } catch {
-    let msg = Vx_Core.vx_msg_from_exception("string-read<-file", error)
-    return Vx_Core.vx_new(Vx_Core.t_string, msg)
+    let msg = Vx_Core.vx_msg_from_exception(
+      "string-read<-file", error
+    )
+    return Vx_Core.vx_new(
+      Vx_Core.t_string,
+      [msg]
+    )
   }
 }
 
@@ -183,7 +190,11 @@ public static func vx_string_read_from_file(
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Data_File.Type_file = Vx_Core.vx_copy(Vx_Data_File.e_file, vals)
+      var output : any Vx_Data_File.Type_file = Vx_Core.vx_copy(
+        Vx_Data_File.t_file,
+        Vx_Data_File.e_file,
+        vals
+      )
       return output
     }
 
@@ -213,9 +224,21 @@ public static func vx_string_read_from_file(
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -231,10 +254,22 @@ public static func vx_string_read_from_file(
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/data/file/file", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/data/file/file",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -245,8 +280,18 @@ public static func vx_string_read_from_file(
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/data/file/file", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -258,7 +303,12 @@ public static func vx_string_read_from_file(
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -269,9 +319,21 @@ public static func vx_string_read_from_file(
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":format" {
             if Vx_Core.vx_issame(valsub, vx_p_format) {
@@ -288,9 +350,21 @@ public static func vx_string_read_from_file(
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("format"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":path" {
             if Vx_Core.vx_issame(valsub, vx_p_path) {
@@ -299,7 +373,12 @@ public static func vx_string_read_from_file(
               vx_p_path = valpath
             } else if valsub is String {
               ischanged = true
-              vx_p_path = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_path = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -310,9 +389,21 @@ public static func vx_string_read_from_file(
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("path"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":permission" {
             if Vx_Core.vx_issame(valsub, vx_p_permission) {
@@ -329,9 +420,21 @@ public static func vx_string_read_from_file(
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("permission"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":text" {
             if Vx_Core.vx_issame(valsub, vx_p_text) {
@@ -340,7 +443,12 @@ public static func vx_string_read_from_file(
               vx_p_text = valtext
             } else if valsub is String {
               ischanged = true
-              vx_p_text = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_text = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -351,14 +459,36 @@ public static func vx_string_read_from_file(
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("text"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/data/file/file", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/data/file/file",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -390,17 +520,17 @@ public static func vx_string_read_from_file(
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/data/file", // pkgname
-        "file", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/data/file",
+        "file",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -419,7 +549,11 @@ public static func vx_string_read_from_file(
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Data_File.Type_fileformat = Vx_Core.vx_copy(Vx_Data_File.e_fileformat, vals)
+      var output : any Vx_Data_File.Type_fileformat = Vx_Core.vx_copy(
+        Vx_Data_File.t_fileformat,
+        Vx_Data_File.e_fileformat,
+        vals
+      )
       return output
     }
 
@@ -455,17 +589,17 @@ public static func vx_string_read_from_file(
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/data/file", // pkgname
-        "fileformat", // name
-        ":string", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/data/file",
+        "fileformat",
+        ":string",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -522,7 +656,11 @@ public static func vx_string_read_from_file(
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Data_File.Type_filelist = Vx_Core.vx_copy(Vx_Data_File.e_filelist, vals)
+      var output : any Vx_Data_File.Type_filelist = Vx_Core.vx_copy(
+        Vx_Data_File.t_filelist,
+        Vx_Data_File.e_filelist,
+        vals
+      )
       return output
     }
 
@@ -540,9 +678,21 @@ public static func vx_string_read_from_file(
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Data_File.Type_filelist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listfile())
@@ -562,11 +712,33 @@ public static func vx_string_read_from_file(
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/data/file/filelist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/data/file/filelist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/data/file/filelist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/data/file/filelist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -592,17 +764,22 @@ public static func vx_string_read_from_file(
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/data/file", // pkgname
-        "filelist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Data_File.t_file), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/data/file",
+        "filelist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Data_File.t_file
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -647,17 +824,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -684,7 +861,10 @@ public static func vx_string_read_from_file(
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Data_File.Type_file = value as! any Vx_Data_File.Type_file
       let outputval : any Vx_Core.Type_any = Vx_Data_File.f_boolean_exists_from_file(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -692,7 +872,12 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(Vx_Data_File.t_file, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(
+        Vx_Data_File.t_file,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Data_File.f_boolean_exists_from_file(file)
       return output
     }
@@ -753,17 +938,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -791,7 +976,10 @@ public static func vx_string_read_from_file(
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Data_File.Type_file = value as! any Vx_Data_File.Type_file
       let outputval : any Vx_Core.Type_any = Vx_Data_File.f_boolean_write_from_file(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -799,8 +987,18 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(Vx_Data_File.t_file, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(
+        Vx_Data_File.t_file,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Data_File.f_boolean_write_from_file(context, file)
       return output
     }
@@ -868,17 +1066,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -898,9 +1096,24 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(Vx_Data_File.t_file, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(
+        Vx_Data_File.t_file,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let value : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Data_File.f_boolean_write_from_file_any(context, file, value)
       return output
     }
@@ -928,9 +1141,7 @@ public static func vx_string_read_from_file(
     output = Vx_Data_File.f_boolean_write_from_file_string(
       context,
       file,
-      Vx_Core.f_string_from_any(
-        value
-      )
+      Vx_Core.f_string_from_any(value)
     )
     return output
   }
@@ -972,17 +1183,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1002,9 +1213,24 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(Vx_Data_File.t_file, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(
+        Vx_Data_File.t_file,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Data_File.f_boolean_write_from_file_string(context, file, text)
       return output
     }
@@ -1043,7 +1269,9 @@ public static func vx_string_read_from_file(
         output = Vx_Core.vx_copy(
           Vx_Core.t_boolean,
           output,
-          msg
+          [
+            msg
+          ]
         )
       }
     } else {
@@ -1057,7 +1285,9 @@ public static func vx_string_read_from_file(
       output = Vx_Core.vx_copy(
         Vx_Core.t_boolean,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -1099,17 +1329,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1137,7 +1367,10 @@ public static func vx_string_read_from_file(
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Data_File.Type_file = value as! any Vx_Data_File.Type_file
       let outputval : any Vx_Core.Type_any = Vx_Data_File.f_file_read_from_file(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1145,8 +1378,18 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(Vx_Data_File.t_file, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(
+        Vx_Data_File.t_file,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Data_File.f_file_read_from_file(context, file)
       return output
     }
@@ -1178,11 +1421,10 @@ public static func vx_string_read_from_file(
         file,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":text"),
-          Vx_Data_File.f_string_read_from_file(
-            context,
-            file
-          )
+          [
+            Vx_Core.vx_new_string(":text"),
+            Vx_Data_File.f_string_read_from_file(context, file)
+          ]
         )
       )
     } else {
@@ -1194,7 +1436,9 @@ public static func vx_string_read_from_file(
       output = Vx_Core.vx_copy(
         Vx_Data_File.t_file,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output
@@ -1235,17 +1479,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1272,7 +1516,10 @@ public static func vx_string_read_from_file(
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Data_File.f_file_from_path(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1280,7 +1527,12 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let path : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let path : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Data_File.f_file_from_path(path)
       return output
     }
@@ -1303,35 +1555,35 @@ public static func vx_string_read_from_file(
     var output : any Vx_Data_File.Type_file = Vx_Data_File.e_file
     output = Vx_Core.f_let(
       Vx_Data_File.t_file,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let pos : any Vx_Core.Type_int = Vx_Type.f_int_from_string_findlast(
-          path,
-          Vx_Core.vx_new_string("/")
-        )
-        let name : any Vx_Core.Type_string = Vx_Type.f_string_from_string_start(
-          path,
-          Vx_Core.f_plus1(
-            pos
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let pos : any Vx_Core.Type_int = Vx_Type.f_int_from_string_findlast(
+            path,
+            Vx_Core.vx_new_string("/")
           )
-        )
-        let pth : any Vx_Core.Type_string = Vx_Type.f_string_from_string_end(
-          path,
-          Vx_Core.f_minus1(
-            pos
+          let name : any Vx_Core.Type_string = Vx_Type.f_string_from_string_start(
+            path,
+            Vx_Core.f_plus1(pos)
           )
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
-          Vx_Data_File.t_file,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string(":name"),
-            name,
-            Vx_Core.vx_new_string(":path"),
-            pth
+          let pth : any Vx_Core.Type_string = Vx_Type.f_string_from_string_end(
+            path,
+            Vx_Core.f_minus1(pos)
           )
-        )
-        return output_1
-      })
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_new(
+            Vx_Data_File.t_file,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string(":name"),
+                name,
+                Vx_Core.vx_new_string(":path"),
+                pth
+              ]
+            )
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1371,17 +1623,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1408,7 +1660,10 @@ public static func vx_string_read_from_file(
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Data_File.Type_file = value as! any Vx_Data_File.Type_file
       let outputval : any Vx_Core.Type_any = Vx_Data_File.f_name_from_file(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1416,7 +1671,12 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(Vx_Data_File.t_file, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(
+        Vx_Data_File.t_file,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Data_File.f_name_from_file(file)
       return output
     }
@@ -1476,17 +1736,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1513,7 +1773,10 @@ public static func vx_string_read_from_file(
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Data_File.Type_file = value as! any Vx_Data_File.Type_file
       let outputval : any Vx_Core.Type_any = Vx_Data_File.f_path_from_file(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1521,7 +1784,12 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(Vx_Data_File.t_file, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(
+        Vx_Data_File.t_file,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Data_File.f_path_from_file(file)
       return output
     }
@@ -1579,17 +1847,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1664,17 +1932,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1701,7 +1969,10 @@ public static func vx_string_read_from_file(
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Data_File.Type_file = value as! any Vx_Data_File.Type_file
       let outputval : any Vx_Core.Type_any = Vx_Data_File.f_pathfull_from_file(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1709,7 +1980,12 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(Vx_Data_File.t_file, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(
+        Vx_Data_File.t_file,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Data_File.f_pathfull_from_file(file)
       return output
     }
@@ -1732,47 +2008,53 @@ public static func vx_string_read_from_file(
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let path : any Vx_Core.Type_string = Vx_Data_File.f_path_from_file(
-          file
-        )
-        let name : any Vx_Core.Type_string = Vx_Data_File.f_name_from_file(
-          file
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_thenelselist,
-            Vx_Core.f_then(
-              Vx_Core.t_boolean_from_func.vx_fn_new({() in
-                var output_2 : any Vx_Core.Type_any = Vx_Core.f_is_empty(
-                  path
-                )
-                return output_2
-              }),
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                let output_3 : any Vx_Core.Type_any = name
-                return output_3
-              })
-            ),
-            Vx_Core.f_else(
-              Vx_Core.t_any_from_func.vx_fn_new({() in
-                var output_4 : any Vx_Core.Type_any = Vx_Core.f_new(
-                  Vx_Core.t_string,
-                  Vx_Core.vx_new(
-                    Vx_Core.t_anylist,
-                    path,
-                    Vx_Core.vx_new_string("/"),
-                    name
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let path : any Vx_Core.Type_string = Vx_Data_File.f_path_from_file(file)
+          let name : any Vx_Core.Type_string = Vx_Data_File.f_name_from_file(file)
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_2(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_thenelselist,
+              [
+                Vx_Core.f_then(
+                  Vx_Core.t_boolean_from_func.vx_fn_new(
+                    {() in
+                      var output_2 : any Vx_Core.Type_any = Vx_Core.f_is_empty(path)
+                        return output_2
+                      }
+                  ),
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+      let output_3 : any Vx_Core.Type_any = name
+                        return output_3
+                      }
+                  )
+                ),
+                Vx_Core.f_else(
+                  Vx_Core.t_any_from_func.vx_fn_new(
+                    {() in
+                      var output_4 : any Vx_Core.Type_any = Vx_Core.f_new(
+                          Vx_Core.t_string,
+                          Vx_Core.vx_new(
+                            Vx_Core.t_anylist,
+                            [
+                              path,
+                              Vx_Core.vx_new_string("/"),
+                              name
+                            ]
+                          )
+                        )
+                        return output_4
+                      }
                   )
                 )
-                return output_4
-              })
+              ]
             )
           )
-        )
-        return output_1
-      })
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1813,17 +2095,17 @@ public static func vx_string_read_from_file(
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1851,7 +2133,10 @@ public static func vx_string_read_from_file(
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Data_File.Type_file = value as! any Vx_Data_File.Type_file
       let outputval : any Vx_Core.Type_any = Vx_Data_File.f_string_read_from_file(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1859,8 +2144,18 @@ public static func vx_string_read_from_file(
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(Vx_Data_File.t_file, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let file : any Vx_Data_File.Type_file = Vx_Core.f_any_from_any(
+        Vx_Data_File.t_file,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Data_File.f_string_read_from_file(context, file)
       return output
     }
@@ -1897,7 +2192,9 @@ public static func vx_string_read_from_file(
         output = Vx_Core.vx_copy(
           Vx_Core.t_string,
           output,
-          msg
+          [
+            msg
+          ]
         )
       }
     } else {
@@ -1909,7 +2206,9 @@ public static func vx_string_read_from_file(
       output = Vx_Core.vx_copy(
         Vx_Core.t_string,
         output,
-        msg
+        [
+          msg
+        ]
       )
     }
     return output

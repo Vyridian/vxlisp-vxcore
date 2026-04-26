@@ -39,17 +39,17 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "session", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "session",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -69,8 +69,18 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let session : any Vx_Core.Type_session = Vx_Core.f_any_from_any(Vx_Core.t_session, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let session : any Vx_Core.Type_session = Vx_Core.f_any_from_any(
+        Vx_Core.t_session,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Translate.f_session_from_session_name(session, name)
       return output
     }
@@ -98,11 +108,10 @@ public enum Vx_Translate {
       session,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":translation"),
-        Vx_Translate.f_translation_from_session_name(
-          session,
-          name
-        )
+        [
+          Vx_Core.vx_new_string(":translation"),
+          Vx_Translate.f_translation_from_session_name(session, name)
+        ]
       )
     )
     return output
@@ -144,17 +153,17 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "session", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "session",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -174,8 +183,18 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let session : any Vx_Core.Type_session = Vx_Core.f_any_from_any(Vx_Core.t_session, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_any(Vx_Core.t_translation, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let session : any Vx_Core.Type_session = Vx_Core.f_any_from_any(
+        Vx_Core.t_session,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_any(
+        Vx_Core.t_translation,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Translate.f_session_from_session_translation(session, translation)
       return output
     }
@@ -203,8 +222,10 @@ public enum Vx_Translate {
       session,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":translation"),
-        translation
+        [
+          Vx_Core.vx_new_string(":translation"),
+          translation
+        ]
       )
     )
     return output
@@ -247,17 +268,17 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "session", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "session",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -277,9 +298,24 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let session : any Vx_Core.Type_session = Vx_Core.f_any_from_any(Vx_Core.t_session, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let translationmap : any Vx_Core.Type_translationmap = Vx_Core.f_any_from_any(Vx_Core.t_translationmap, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let session : any Vx_Core.Type_session = Vx_Core.f_any_from_any(
+        Vx_Core.t_session,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let translationmap : any Vx_Core.Type_translationmap = Vx_Core.f_any_from_any(
+        Vx_Core.t_translationmap,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Translate.f_session_from_session_translationmap_name(session, translationmap, name)
       return output
     }
@@ -309,14 +345,16 @@ public enum Vx_Translate {
       session,
       Vx_Core.vx_new(
         Vx_Core.t_anylist,
-        Vx_Core.vx_new_string(":translation"),
-        Vx_Core.f_any_from_map(
-          Vx_Core.t_anylist,
-          translationmap,
-          name
-        ),
-        Vx_Core.vx_new_string(":translationmap"),
-        translationmap
+        [
+          Vx_Core.vx_new_string(":translation"),
+          Vx_Core.f_any_from_map(
+            Vx_Core.t_anylist,
+            translationmap,
+            name
+          ),
+          Vx_Core.vx_new_string(":translationmap"),
+          translationmap
+        ]
       )
     )
     return output
@@ -358,17 +396,17 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -396,7 +434,10 @@ public enum Vx_Translate {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_string = value as! any Vx_Core.Type_string
       let outputval : any Vx_Core.Type_any = Vx_Translate.f_translate(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -404,8 +445,18 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Translate.f_translate(context, text)
       return output
     }
@@ -429,9 +480,7 @@ public enum Vx_Translate {
   ) -> any Vx_Core.Type_string {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Translate.f_translate_from_translation_string(
-      Vx_Translate.f_translation_from_context(
-        context
-      ),
+      Vx_Translate.f_translation_from_context(context),
       text
     )
     return output
@@ -473,17 +522,17 @@ public enum Vx_Translate {
         1, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -511,7 +560,10 @@ public enum Vx_Translate {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_msg = value as! any Vx_Core.Type_msg
       let outputval : any Vx_Core.Type_any = Vx_Translate.f_translate_1(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -519,8 +571,18 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let msg : any Vx_Core.Type_msg = Vx_Core.f_any_from_any(Vx_Core.t_msg, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let msg : any Vx_Core.Type_msg = Vx_Core.f_any_from_any(
+        Vx_Core.t_msg,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Translate.f_translate_1(context, msg)
       return output
     }
@@ -545,25 +607,26 @@ public enum Vx_Translate {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let path : any Vx_Core.Type_string = msg.path()
-        let code : any Vx_Core.Type_string = msg.code()
-        let text : any Vx_Core.Type_string = Vx_Core.f_new(
-          Vx_Core.t_string,
-          Vx_Core.vx_new(
-            Vx_Core.t_anylist,
-            Vx_Core.vx_new_string("!"),
-            path,
-            Vx_Core.vx_new_string(" "),
-            code
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let path : any Vx_Core.Type_string = msg.path()
+          let code : any Vx_Core.Type_string = msg.code()
+          let text : any Vx_Core.Type_string = Vx_Core.f_new(
+            Vx_Core.t_string,
+            Vx_Core.vx_new(
+              Vx_Core.t_anylist,
+              [
+                Vx_Core.vx_new_string("!"),
+                path,
+                Vx_Core.vx_new_string(" "),
+                code
+              ]
+            )
           )
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Translate.f_translate(
-          context,
-          text
-        )
-        return output_1
-      })
+          let output_1 : any Vx_Core.Type_any = Vx_Translate.f_translate(context, text)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -604,17 +667,17 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -634,8 +697,18 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_any(Vx_Core.t_translation, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_any(
+        Vx_Core.t_translation,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Translate.f_translate_from_translation_string(translation, text)
       return output
     }
@@ -660,29 +733,27 @@ public enum Vx_Translate {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_if_1(
       Vx_Core.t_string,
-      Vx_Core.f_is_empty_1(
-        translation
-      ),
+      Vx_Core.f_is_empty_1(translation),
       text,
       Vx_Core.f_let(
         Vx_Core.t_string,
-        Vx_Core.t_any_from_func.vx_fn_new({() in
-          let wordmap : any Vx_Core.Type_stringmap = translation.wordmap()
-          let xlate : any Vx_Core.Type_string = Vx_Core.f_any_from_map(
-            Vx_Core.t_string,
-            wordmap,
-            text
-          )
-          let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_1(
-            Vx_Core.t_string,
-            Vx_Core.f_is_empty(
+        Vx_Core.t_any_from_func.vx_fn_new(
+          {() in
+            let wordmap : any Vx_Core.Type_stringmap = translation.wordmap()
+            let xlate : any Vx_Core.Type_string = Vx_Core.f_any_from_map(
+              Vx_Core.t_string,
+              wordmap,
+              text
+            )
+            let output_1 : any Vx_Core.Type_any = Vx_Core.f_if_1(
+              Vx_Core.t_string,
+              Vx_Core.f_is_empty(xlate),
+              text,
               xlate
-            ),
-            text,
-            xlate
-          )
-          return output_1
-        })
+            )
+            return output_1
+          }
+        )
       )
     )
     return output
@@ -725,17 +796,17 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -755,9 +826,24 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let translationmap : any Vx_Core.Type_translationmap = Vx_Core.f_any_from_any(Vx_Core.t_translationmap, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
-      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(2)))
+      let translationmap : any Vx_Core.Type_translationmap = Vx_Core.f_any_from_any(
+        Vx_Core.t_translationmap,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
+      let text : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(2)
+        )
+      )
       output = Vx_Translate.f_translate_from_translationmap_name_string(translationmap, name, text)
       return output
     }
@@ -784,18 +870,17 @@ public enum Vx_Translate {
     var output : any Vx_Core.Type_string = Vx_Core.e_string
     output = Vx_Core.f_let(
       Vx_Core.t_string,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_map(
-          Vx_Core.t_translation,
-          translationmap,
-          name
-        )
-        let output_1 : any Vx_Core.Type_any = Vx_Translate.f_translate_from_translation_string(
-          translation,
-          text
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_map(
+            Vx_Core.t_translation,
+            translationmap,
+            name
+          )
+          let output_1 : any Vx_Core.Type_any = Vx_Translate.f_translate_from_translation_string(translation, text)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -836,17 +921,17 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -874,7 +959,10 @@ public enum Vx_Translate {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_translation = value as! any Vx_Core.Type_translation
       let outputval : any Vx_Core.Type_any = Vx_Translate.f_translation_load_session(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -882,8 +970,18 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_any(Vx_Core.t_translation, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_any(
+        Vx_Core.t_translation,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Translate.f_translation_load_session(context, translation)
       return output
     }
@@ -944,17 +1042,17 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -974,7 +1072,12 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Translate.f_translation_from_context(context)
       return output
     }
@@ -995,9 +1098,7 @@ public enum Vx_Translate {
     _ context : any Vx_Core.Type_context
   ) -> any Vx_Core.Type_translation {
     var output : any Vx_Core.Type_translation = Vx_Core.e_translation
-    output = Vx_Core.f_session_from_context(
-      context
-    ).translation()
+    output = Vx_Core.f_session_from_context(context).translation()
     return output
   }
 
@@ -1037,17 +1138,17 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "translation", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "translation",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1067,8 +1168,18 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let session : any Vx_Core.Type_session = Vx_Core.f_any_from_any(Vx_Core.t_session, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(Vx_Core.t_string, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let session : any Vx_Core.Type_session = Vx_Core.f_any_from_any(
+        Vx_Core.t_session,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let name : any Vx_Core.Type_string = Vx_Core.f_any_from_any(
+        Vx_Core.t_string,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Translate.f_translation_from_session_name(session, name)
       return output
     }
@@ -1093,15 +1204,17 @@ public enum Vx_Translate {
     var output : any Vx_Core.Type_translation = Vx_Core.e_translation
     output = Vx_Core.f_let(
       Vx_Core.t_translation,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let translationmap : any Vx_Core.Type_translationmap = session.translationmap()
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_map(
-          Vx_Core.t_translation,
-          translationmap,
-          name
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let translationmap : any Vx_Core.Type_translationmap = session.translationmap()
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_map(
+            Vx_Core.t_translation,
+            translationmap,
+            name
+          )
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1141,17 +1254,22 @@ public enum Vx_Translate {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "translationmap", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Core.t_translation), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "translationmap",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Core.t_translation
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1178,7 +1296,10 @@ public enum Vx_Translate {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Core.Type_translationlist = value as! any Vx_Core.Type_translationlist
       let outputval : any Vx_Core.Type_any = Vx_Translate.f_translationmap_from_translations(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1186,7 +1307,12 @@ public enum Vx_Translate {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let translations : any Vx_Core.Type_translationlist = Vx_Core.f_any_from_any(Vx_Core.t_translationlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let translations : any Vx_Core.Type_translationlist = Vx_Core.f_any_from_any(
+        Vx_Core.t_translationlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Translate.f_translationmap_from_translations(translations)
       return output
     }
@@ -1210,11 +1336,16 @@ public enum Vx_Translate {
     output = Vx_Core.f_map_from_list(
       Vx_Core.t_translationmap,
       translations,
-      Vx_Core.t_any_from_any.vx_fn_new({(translation_any) in
-        let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_any(Vx_Core.t_translation, translation_any)
-        var output_1 : any Vx_Core.Type_any = translation.name()
-        return output_1
-      })
+      Vx_Core.t_any_from_any.vx_fn_new(
+        {(translation_any) in
+          let translation : any Vx_Core.Type_translation = Vx_Core.f_any_from_any(
+            Vx_Core.t_translation,
+            translation_any
+          )
+          var output_1 : any Vx_Core.Type_any = translation.name()
+          return output_1
+        }
+      )
     )
     return output
   }

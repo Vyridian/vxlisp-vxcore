@@ -911,7 +911,7 @@
        (vx/test/testdescribe
         :describename
          "(test-true
- (< 2 3))"
+ (< 2 3 5))"
         :testpkg "vx/core"
         :testresult
          (vx/test/testresult

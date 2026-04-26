@@ -90,7 +90,10 @@ public static class Repl {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Repl.Type_liblist output = Vx.Core.vx_copy(Vx.Repl.e_liblist, vals);
+      Vx.Repl.Type_liblist output = Vx.Core.vx_copy(
+        Vx.Repl.e_liblist,
+        vals
+      );
       return output;
     }
 
@@ -106,9 +109,19 @@ public static class Repl {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Repl.Type_liblist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_liststring());
@@ -116,7 +129,12 @@ public static class Repl {
           ischanged = true;
           listval.Add(allowsub);
         } else if (valsub is string) {
-          Vx.Core.Type_string subitem = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+          Vx.Core.Type_string subitem = Vx.Core.vx_new(
+            Vx.Core.t_string,
+            // [
+              valsub
+            // ]
+          );
           ischanged = true;
           listval.Add(subitem);
         } else if (valsub is List<Vx.Core.Type_any> listany) {
@@ -128,11 +146,31 @@ public static class Repl {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/repl/liblist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/repl/liblist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/repl/liblist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/repl/liblist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -158,17 +196,22 @@ public static class Repl {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/repl", // pkgname
-        "liblist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_string), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/repl",
+        "liblist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Core.t_string
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -323,9 +366,19 @@ public static class Repl {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -341,10 +394,21 @@ public static class Repl {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/repl/repl",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -355,8 +419,17 @@ public static class Repl {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/repl",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -368,7 +441,12 @@ public static class Repl {
               vx_p_name = valname;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_name = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_name = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -379,9 +457,20 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/repl",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":type")) {
             if (valsub == vx_p_type) {
@@ -398,9 +487,20 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("type"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/repl",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":repllist")) {
             if (valsub == vx_p_repllist) {
@@ -417,9 +517,20 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("repllist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/repl",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":async")) {
             if (valsub == vx_p_async) {
@@ -428,7 +539,12 @@ public static class Repl {
               vx_p_async = valasync;
             } else if (valsub is bool) {
               ischanged = true;
-              vx_p_async = Vx.Core.vx_new(Vx.Core.t_boolean, valsub);
+              vx_p_async = Vx.Core.vx_new(
+                Vx.Core.t_boolean,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -439,9 +555,20 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("async"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/repl",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":value")) {
             if (valsub == vx_p_value) {
@@ -458,9 +585,20 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("value"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/repl",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":doc")) {
             if (valsub == vx_p_doc) {
@@ -469,7 +607,12 @@ public static class Repl {
               vx_p_doc = valdoc;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_doc = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_doc = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -480,14 +623,34 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("doc"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/repl",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/repl/repl", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/repl/repl",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -520,17 +683,17 @@ public static class Repl {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/repl", // pkgname
-        "repl", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/repl",
+        "repl",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -610,7 +773,10 @@ public static class Repl {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Repl.Type_replarglist output = Vx.Core.vx_copy(Vx.Repl.e_replarglist, vals);
+      Vx.Repl.Type_replarglist output = Vx.Core.vx_copy(
+        Vx.Repl.e_replarglist,
+        vals
+      );
       return output;
     }
 
@@ -634,9 +800,19 @@ public static class Repl {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -652,10 +828,21 @@ public static class Repl {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/repl/replarglist",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -666,8 +853,17 @@ public static class Repl {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/replarglist",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -679,7 +875,12 @@ public static class Repl {
               vx_p_key = valkey;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_key = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_key = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -690,9 +891,20 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("key"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/replarglist",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":current")) {
             if (valsub == vx_p_current) {
@@ -709,9 +921,20 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("current"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/replarglist",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":repllist")) {
             if (valsub == vx_p_repllist) {
@@ -728,14 +951,34 @@ public static class Repl {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("repllist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/repl/replarglist",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/repl/replarglist", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/repl/replarglist",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -765,17 +1008,17 @@ public static class Repl {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/repl", // pkgname
-        "replarglist", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/repl",
+        "replarglist",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -830,7 +1073,10 @@ public static class Repl {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Repl.Type_repllist output = Vx.Core.vx_copy(Vx.Repl.e_repllist, vals);
+      Vx.Repl.Type_repllist output = Vx.Core.vx_copy(
+        Vx.Repl.e_repllist,
+        vals
+      );
       return output;
     }
 
@@ -846,9 +1092,19 @@ public static class Repl {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Repl.Type_repllist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listrepl());
@@ -868,11 +1124,31 @@ public static class Repl {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/repl/repllist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/repl/repllist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/repl/repllist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/repl/repllist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -898,17 +1174,22 @@ public static class Repl {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/repl", // pkgname
-        "repllist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Repl.t_repl), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/repl",
+        "repllist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Repl.t_repl
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -940,18 +1221,22 @@ public static class Repl {
         Vx.Data.Textblock.t_delim,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("delimvxlisp"),
-          Vx.Core.vx_new_string(":delimlist"),
-          Vx.Core.f_new(
-            Vx.Data.Textblock.t_delimlist,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              Vx.Repl.c_delimvxlispparen,
-              Vx.Data.Textblock.c_delimcomment,
-              Vx.Data.Textblock.c_delimcommentblock
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("delimvxlisp"),
+            Vx.Core.vx_new_string(":delimlist"),
+            Vx.Core.f_new(
+              Vx.Data.Textblock.t_delimlist,
+              Vx.Core.vx_new(
+                Vx.Core.t_anylist,
+                // [
+                  Vx.Repl.c_delimvxlispparen,
+                  Vx.Data.Textblock.c_delimcomment,
+                  Vx.Data.Textblock.c_delimcommentblock
+                // ]
+              )
             )
-          )
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -987,21 +1272,25 @@ public static class Repl {
         Vx.Data.Textblock.c_delimbracketsquare,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("delimvxlispbracketsquare"),
-          Vx.Core.vx_new_string(":delimlist"),
-          Vx.Core.f_new(
-            Vx.Data.Textblock.t_delimlist,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              Vx.Data.Textblock.c_delimcomment,
-              Vx.Data.Textblock.c_delimcommentblock,
-              Vx.Data.Textblock.c_delimquote,
-              Vx.Data.Textblock.c_delimquoteblock,
-              Vx.Data.Textblock.c_delimwhitespace,
-              Vx.Repl.c_delimvxlispparen
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("delimvxlispbracketsquare"),
+            Vx.Core.vx_new_string(":delimlist"),
+            Vx.Core.f_new(
+              Vx.Data.Textblock.t_delimlist,
+              Vx.Core.vx_new(
+                Vx.Core.t_anylist,
+                // [
+                  Vx.Data.Textblock.c_delimcomment,
+                  Vx.Data.Textblock.c_delimcommentblock,
+                  Vx.Data.Textblock.c_delimquote,
+                  Vx.Data.Textblock.c_delimquoteblock,
+                  Vx.Data.Textblock.c_delimwhitespace,
+                  Vx.Repl.c_delimvxlispparen
+                // ]
+              )
             )
-          )
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1037,22 +1326,26 @@ public static class Repl {
         Vx.Data.Textblock.c_delimparen,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":name"),
-          Vx.Core.vx_new_string("delimvxlispparen"),
-          Vx.Core.vx_new_string(":delimlist"),
-          Vx.Core.f_new(
-            Vx.Data.Textblock.t_delimlist,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              Vx.Data.Textblock.c_delimcomment,
-              Vx.Data.Textblock.c_delimcommentblock,
-              Vx.Data.Textblock.c_delimquote,
-              Vx.Data.Textblock.c_delimquoteblock,
-              Vx.Data.Textblock.c_delimwhitespace,
-              Vx.Repl.c_delimvxlispbracket,
-              Vx.Repl.c_delimvxlispparen
+          // [
+            Vx.Core.vx_new_string(":name"),
+            Vx.Core.vx_new_string("delimvxlispparen"),
+            Vx.Core.vx_new_string(":delimlist"),
+            Vx.Core.f_new(
+              Vx.Data.Textblock.t_delimlist,
+              Vx.Core.vx_new(
+                Vx.Core.t_anylist,
+                // [
+                  Vx.Data.Textblock.c_delimcomment,
+                  Vx.Data.Textblock.c_delimcommentblock,
+                  Vx.Data.Textblock.c_delimquote,
+                  Vx.Data.Textblock.c_delimquoteblock,
+                  Vx.Data.Textblock.c_delimwhitespace,
+                  Vx.Repl.c_delimvxlispbracket,
+                  Vx.Repl.c_delimvxlispparen
+                // ]
+              )
             )
-          )
+          // ]
         )
       );
       outval.vx_p_name = value.name();
@@ -1102,17 +1395,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1130,8 +1423,18 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any type = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_anylist args = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_any type = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_anylist args = Vx.Core.f_any_from_any(
+        Vx.Core.t_anylist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_any_repl_from_functype_args(type, args);
       return output;
     }
@@ -1190,17 +1493,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1218,9 +1521,24 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Repl.Type_liblist liblist = Vx.Core.f_any_from_any(Vx.Repl.t_liblist, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Repl.Type_liblist liblist = Vx.Core.f_any_from_any(
+        Vx.Repl.t_liblist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Repl.f_any_from_liblist_string(context, liblist, text);
       return output;
     }
@@ -1239,17 +1557,13 @@ public static class Repl {
     Vx.Core.Type_any output = Vx.Core.e_any;
     output = Vx.Core.f_let(
       Vx.Core.t_any,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Repl.Type_repl repl = Vx.Repl.f_repl_from_liblist_string(
-          liblist,
-          text
-        );
-        Vx.Core.Type_any output_1 = Vx.Repl.f_any_from_repl(
-          context,
-          repl
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Repl.Type_repl repl = Vx.Repl.f_repl_from_liblist_string(liblist, text);
+          Vx.Core.Type_any output_1 = Vx.Repl.f_any_from_repl(context, repl);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1289,17 +1603,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1322,16 +1636,38 @@ public static class Repl {
     public T vx_any_from_any_context<T, U>(T generic_any_1, Vx.Core.Type_context context, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_anylist inputval = (Vx.Core.Type_anylist)value;
-      Vx.Core.Type_any outputval = Vx.Repl.f_any_from_macro(Vx.Core.t_any, context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      Vx.Core.Type_any outputval = Vx.Repl.f_any_from_macro(
+        Vx.Core.t_any,
+        context,
+        inputval
+      );
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_anylist anylist = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_anylist anylist = Vx.Core.f_any_from_any(
+        Vx.Core.t_anylist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_any_from_macro(generic_any_1, context, anylist);
       return output;
     }
@@ -1350,21 +1686,14 @@ public static class Repl {
     T output = Vx.Core.f_empty(generic_any_1);
     output = Vx.Core.f_let(
       generic_any_1,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Repl.Type_repl repl = Vx.Repl.f_repl_from_macro(
-          context,
-          anylist
-        );
-        Vx.Core.Type_any value = Vx.Repl.f_any_from_repl(
-          context,
-          repl
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_any_from_any(
-          generic_any_1,
-          value
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Repl.Type_repl repl = Vx.Repl.f_repl_from_macro(context, anylist);
+          Vx.Core.Type_any value = Vx.Repl.f_any_from_repl(context, repl);
+          Vx.Core.Type_any output_1 = Vx.Core.f_any_from_any(generic_any_1, value);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1404,17 +1733,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1438,14 +1767,27 @@ public static class Repl {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Repl.Type_repl inputval = (Vx.Repl.Type_repl)value;
       Vx.Core.Type_any outputval = Vx.Repl.f_any_from_repl(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Repl.Type_repl repl = Vx.Core.f_any_from_any(Vx.Repl.t_repl, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Repl.Type_repl repl = Vx.Core.f_any_from_any(
+        Vx.Repl.t_repl,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_any_from_repl(context, repl);
       return output;
     }
@@ -1464,58 +1806,59 @@ public static class Repl {
     Vx.Core.Type_any output = Vx.Core.e_any;
     output = Vx.Core.f_let(
       Vx.Core.t_any,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_any value = repl.value();
-        Vx.Core.Type_any repltype = repl.type();
-        Vx.Repl.Type_repllist repllist = repl.repllist();
-        Vx.Core.Type_anylist args = Vx.Repl.f_anylist_from_repllist(
-          context,
-          repllist
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
-          Vx.Core.t_any,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.f_notempty_1(
-                  value
-                );
-                return output_2;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = value;
-                return output_3;
-              })
-            ),
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_4 = Vx.Core.f_is_func(
-                  repltype
-                );
-                return output_4;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_5 = Vx.Repl.f_any_repl_from_functype_args(
-                  repltype,
-                  args
-                );
-                return output_5;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_6 = Vx.Core.f_new_from_type(
-                  repltype,
-                  args
-                );
-                return output_6;
-              })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_any value = repl.value();
+          Vx.Core.Type_any repltype = repl.type();
+          Vx.Repl.Type_repllist repllist = repl.repllist();
+          Vx.Core.Type_anylist args = Vx.Repl.f_anylist_from_repllist(context, repllist);
+          Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
+            Vx.Core.t_any,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.f_notempty_1(value);
+                        return output_2;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_3 = value;
+                        return output_3;
+                      }
+                  )
+                ),
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_4 = Vx.Core.f_is_func(repltype);
+                        return output_4;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_5 = Vx.Repl.f_any_repl_from_functype_args(repltype, args);
+                        return output_5;
+                      }
+                  )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_6 = Vx.Core.f_new_from_type(repltype, args);
+                        return output_6;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1555,17 +1898,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1589,14 +1932,27 @@ public static class Repl {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Repl.f_any_from_script(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string script = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string script = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_any_from_script(context, script);
       return output;
     }
@@ -1615,19 +1971,14 @@ public static class Repl {
     Vx.Core.Type_any output = Vx.Core.e_any;
     output = Vx.Core.f_let(
       Vx.Core.t_any,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Textblock.Type_textblock textblock = Vx.Repl.f_textblock_from_script(
-          script
-        );
-        Vx.Repl.Type_repl repl = Vx.Repl.f_repl_from_textblock(
-          textblock
-        );
-        Vx.Core.Type_any output_1 = Vx.Repl.f_any_from_repl(
-          context,
-          repl
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Textblock.Type_textblock textblock = Vx.Repl.f_textblock_from_script(script);
+          Vx.Repl.Type_repl repl = Vx.Repl.f_repl_from_textblock(textblock);
+          Vx.Core.Type_any output_1 = Vx.Repl.f_any_from_repl(context, repl);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1667,17 +2018,22 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "anylist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "anylist",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1701,14 +2057,27 @@ public static class Repl {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Repl.Type_repllist inputval = (Vx.Repl.Type_repllist)value;
       Vx.Core.Type_any outputval = Vx.Repl.f_anylist_from_repllist(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Repl.Type_repllist repllist = Vx.Core.f_any_from_any(Vx.Repl.t_repllist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Repl.Type_repllist repllist = Vx.Core.f_any_from_any(
+        Vx.Repl.t_repllist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_anylist_from_repllist(context, repllist);
       return output;
     }
@@ -1728,14 +2097,16 @@ public static class Repl {
     output = Vx.Core.f_list_from_list_1(
       Vx.Core.t_anylist,
       repllist,
-      Vx.Core.t_any_from_any.vx_fn_new((repl_any) => {
-        Vx.Repl.Type_repl repl = Vx.Core.f_any_from_any(Vx.Repl.t_repl, repl_any);
-        Vx.Core.Type_any output_1 = Vx.Repl.f_any_from_repl(
-          context,
-          repl
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_any.vx_fn_new(
+        (repl_any) => {
+          Vx.Repl.Type_repl repl = Vx.Core.f_any_from_any(
+            Vx.Repl.t_repl,
+            repl_any
+          );
+          Vx.Core.Type_any output_1 = Vx.Repl.f_any_from_repl(context, repl);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1776,17 +2147,22 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "argmap", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_arg), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "argmap",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_arg
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1804,8 +2180,18 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(Vx.Core.t_argmap, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(
+        Vx.Core.t_argmap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_argmap_from_textblock_argmap(textblock, argmap);
       return output;
     }
@@ -1869,17 +2255,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1903,13 +2289,21 @@ public static class Repl {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Repl.f_const_from_string(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Repl.f_const_from_string(text);
       return output;
     }
@@ -1928,60 +2322,52 @@ public static class Repl {
     Vx.Core.Type_any output = Vx.Core.e_any;
     output = Vx.Core.f_let(
       Vx.Core.t_any,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_int pkgpos = Vx.Type.f_int_from_string_findlast(
-          text,
-          Vx.Core.vx_new_string("/")
-        );
-        Vx.Core.Type_string pkgname = Vx.Core.f_if_1(
-          Vx.Core.t_string,
-          Vx.Core.f_eq(
-            Vx.Core.vx_new_int(0),
-            pkgpos
-          ),
-          Vx.Core.vx_new_string("vx/core"),
-          Vx.Type.f_string_from_string_end(
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_int pkgpos = Vx.Type.f_int_from_string_findlast(
             text,
-            Vx.Core.f_minus1(
+            Vx.Core.vx_new_string("/")
+          );
+          Vx.Core.Type_string pkgname = Vx.Core.f_if_1(
+            Vx.Core.t_string,
+            Vx.Core.f_eq(
+              Vx.Core.vx_new_int(0),
               pkgpos
+            ),
+            Vx.Core.vx_new_string("vx/core"),
+            Vx.Type.f_string_from_string_end(
+              text,
+              Vx.Core.f_minus1(pkgpos)
             )
-          )
-        );
-        Vx.Core.Type_string name = Vx.Core.f_if_1(
-          Vx.Core.t_string,
-          Vx.Core.f_eq(
-            Vx.Core.vx_new_int(0),
-            pkgpos
-          ),
-          text,
-          Vx.Type.f_string_from_string_start(
+          );
+          Vx.Core.Type_string name = Vx.Core.f_if_1(
+            Vx.Core.t_string,
+            Vx.Core.f_eq(
+              Vx.Core.vx_new_int(0),
+              pkgpos
+            ),
             text,
-            Vx.Core.f_plus1(
-              pkgpos
+            Vx.Type.f_string_from_string_start(
+              text,
+              Vx.Core.f_plus1(pkgpos)
             )
-          )
-        );
-        Vx.Core.Type_package pkg = Vx.Core.f_package_global_from_name(
-          pkgname
-        );
-        Vx.Core.Type_constmap constmap = pkg.constmap();
-        Vx.Core.Type_any constval = Vx.Core.f_any_from_map(
-          Vx.Core.t_any,
-          constmap,
-          name
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_if_1(
-          Vx.Core.t_any,
-          Vx.Core.f_notempty_1(
-            constval
-          ),
-          constval,
-          Vx.Core.f_empty(
-            Vx.Core.t_any
-          )
-        );
-        return output_1;
-      })
+          );
+          Vx.Core.Type_package pkg = Vx.Core.f_package_global_from_name(pkgname);
+          Vx.Core.Type_constmap constmap = pkg.constmap();
+          Vx.Core.Type_any constval = Vx.Core.f_any_from_map(
+            Vx.Core.t_any,
+            constmap,
+            name
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_if_1(
+            Vx.Core.t_any,
+            Vx.Core.f_notempty_1(constval),
+            constval,
+            Vx.Core.f_empty(Vx.Core.t_any)
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2022,17 +2408,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repl", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repl",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2050,8 +2436,18 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(Vx.Core.t_argmap, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(
+        Vx.Core.t_argmap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_repl_bracket_from_textblock_argmap(textblock, argmap);
       return output;
     }
@@ -2068,9 +2464,7 @@ public static class Repl {
 
   public static Vx.Repl.Type_repl f_repl_bracket_from_textblock_argmap(Vx.Data.Textblock.Type_textblock textblock, Vx.Core.Type_argmap argmap) {
     Vx.Repl.Type_repl output = Vx.Repl.e_repl;
-    output = Vx.Core.f_empty(
-      Vx.Repl.t_repl
-    );
+    output = Vx.Core.f_empty(Vx.Repl.t_repl);
     return output;
   }
 
@@ -2110,17 +2504,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repl", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repl",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2138,8 +2532,18 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(Vx.Core.t_argmap, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(
+        Vx.Core.t_argmap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_repl_empty_from_textblock_argmap(textblock, argmap);
       return output;
     }
@@ -2158,58 +2562,68 @@ public static class Repl {
     Vx.Repl.Type_repl output = Vx.Repl.e_repl;
     output = Vx.Core.f_let(
       Vx.Repl.t_repl,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Textblock.Type_textblocklist children = textblock.children();
-        Vx.Core.Type_int len = Vx.Core.f_length_1(
-          children
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_switch(
-          Vx.Repl.t_repl,
-          len,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_case_1(
-              Vx.Core.vx_new_int(0),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Repl.f_repl_from_string_argmap(
-                  textblock.text(),
-                  argmap
-                );
-                return output_2;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Core.vx_new_int(1),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = Vx.Repl.f_repl_from_textblock_argmap(
-                  Vx.Core.f_any_from_list(
-                    Vx.Data.Textblock.t_textblock,
-                    children,
-                    Vx.Core.vx_new_int(1)
-                  ),
-                  argmap
-                );
-                return output_3;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_4 = Vx.Core.f_new(
-                  Vx.Repl.t_repl,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.f_msg_from_error(
-                      Vx.Core.vx_new_string("Empty delim cannot have more than one child.")
-                    )
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Textblock.Type_textblocklist children = textblock.children();
+          Vx.Core.Type_int len = Vx.Core.f_length_1(children);
+          Vx.Core.Type_any output_1 = Vx.Core.f_switch(
+            Vx.Repl.t_repl,
+            len,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_case_1(
+                  Vx.Core.vx_new_int(0),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Repl.f_repl_from_string_argmap(
+                          textblock.text(),
+                          argmap
+                        );
+                        return output_2;
+                      }
                   )
-                );
-                return output_4;
-              })
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Core.vx_new_int(1),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_3 = Vx.Repl.f_repl_from_textblock_argmap(
+                          Vx.Core.f_any_from_list(
+                            Vx.Data.Textblock.t_textblock,
+                            children,
+                            Vx.Core.vx_new_int(1)
+                          ),
+                          argmap
+                        );
+                        return output_3;
+                      }
+                  )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_4 = Vx.Core.f_new(
+                          Vx.Repl.t_repl,
+                          Vx.Core.vx_new(
+                            Vx.Core.t_anylist,
+                            // [
+                              Vx.Core.f_msg_from_error(
+                                Vx.Core.vx_new_string("Empty delim cannot have more than one child.")
+                              )
+                            // ]
+                          )
+                        );
+                        return output_4;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2250,17 +2664,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repl", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repl",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2278,8 +2692,18 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(Vx.Core.t_argmap, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(
+        Vx.Core.t_argmap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_repl_paren_from_textblock_argmap(textblock, argmap);
       return output;
     }
@@ -2298,110 +2722,124 @@ public static class Repl {
     Vx.Repl.Type_repl output = Vx.Repl.e_repl;
     output = Vx.Core.f_let(
       Vx.Repl.t_repl,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Textblock.Type_textblocklist childlst = textblock.children();
-        Vx.Data.Textblock.Type_textblocklist children = Vx.Data.Textblock.f_textblocklist_from_textblocklist_remove(
-          childlst,
-          Vx.Data.Textblock.c_delimwhitespace
-        );
-        Vx.Data.Textblock.Type_textblock tbfunc = Vx.Core.f_any_from_list(
-          Vx.Data.Textblock.t_textblock,
-          children,
-          Vx.Core.vx_new_int(1)
-        );
-        Vx.Core.Type_string sfunc = tbfunc.text();
-        Vx.Repl.Type_repl replfunc = Vx.Repl.f_repl_from_string_argmap(
-          sfunc,
-          argmap
-        );
-        Vx.Core.Type_any typefunc = replfunc.type();
-        Vx.Core.Type_int posarg = Vx.Core.f_switch(
-          Vx.Core.t_int,
-          typefunc,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_case_1(
-              Vx.Core.t_let,
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.vx_new_int(3);
-                return output_2;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Core.t_fn,
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = Vx.Core.vx_new_int(3);
-                return output_3;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_4 = Vx.Core.vx_new_int(2);
-                return output_4;
-              })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Textblock.Type_textblocklist childlst = textblock.children();
+          Vx.Data.Textblock.Type_textblocklist children = Vx.Data.Textblock.f_textblocklist_from_textblocklist_remove(
+            childlst,
+            Vx.Data.Textblock.c_delimwhitespace
+          );
+          Vx.Data.Textblock.Type_textblock tbfunc = Vx.Core.f_any_from_list(
+            Vx.Data.Textblock.t_textblock,
+            children,
+            Vx.Core.vx_new_int(1)
+          );
+          Vx.Core.Type_string sfunc = tbfunc.text();
+          Vx.Repl.Type_repl replfunc = Vx.Repl.f_repl_from_string_argmap(sfunc, argmap);
+          Vx.Core.Type_any typefunc = replfunc.type();
+          Vx.Core.Type_int posarg = Vx.Core.f_switch(
+            Vx.Core.t_int,
+            typefunc,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_case_1(
+                  Vx.Core.t_let,
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.vx_new_int(3);
+                        return output_2;
+                      }
+                  )
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Core.t_fn,
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_3 = Vx.Core.vx_new_int(3);
+                        return output_3;
+                      }
+                  )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_4 = Vx.Core.vx_new_int(2);
+                        return output_4;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        Vx.Core.Type_argmap argmap2 = Vx.Core.f_switch(
-          Vx.Core.t_argmap,
-          typefunc,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_case_1(
-              Vx.Core.t_let,
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_5 = Vx.Repl.f_argmap_from_textblock_argmap(
-                  Vx.Core.f_any_from_list(
-                    Vx.Data.Textblock.t_textblock,
-                    children,
-                    Vx.Core.vx_new_int(3)
-                  ),
-                  argmap
-                );
-                return output_5;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Core.t_fn,
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_6 = Vx.Repl.f_argmap_from_textblock_argmap(
-                  Vx.Core.f_any_from_list(
-                    Vx.Data.Textblock.t_textblock,
-                    children,
-                    Vx.Core.vx_new_int(3)
-                  ),
-                  argmap
-                );
-                return output_6;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_7 = argmap;
-                return output_7;
-              })
+          );
+          Vx.Core.Type_argmap argmap2 = Vx.Core.f_switch(
+            Vx.Core.t_argmap,
+            typefunc,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_case_1(
+                  Vx.Core.t_let,
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_5 = Vx.Repl.f_argmap_from_textblock_argmap(
+                          Vx.Core.f_any_from_list(
+                            Vx.Data.Textblock.t_textblock,
+                            children,
+                            Vx.Core.vx_new_int(3)
+                          ),
+                          argmap
+                        );
+                        return output_5;
+                      }
+                  )
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Core.t_fn,
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_6 = Vx.Repl.f_argmap_from_textblock_argmap(
+                          Vx.Core.f_any_from_list(
+                            Vx.Data.Textblock.t_textblock,
+                            children,
+                            Vx.Core.vx_new_int(3)
+                          ),
+                          argmap
+                        );
+                        return output_6;
+                      }
+                  )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_7 = argmap;
+                        return output_7;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        Vx.Data.Textblock.Type_textblocklist tbargs = Vx.Collection.f_list_from_list_start(
-          Vx.Data.Textblock.t_textblocklist,
-          children,
-          posarg
-        );
-        Vx.Repl.Type_repllist replargs = Vx.Repl.f_repllist_from_textblocklist_argmap(
-          tbargs,
-          argmap
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_copy(
-          replfunc,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":repllist"),
-            replargs
-          )
-        );
-        return output_1;
-      })
+          );
+          Vx.Data.Textblock.Type_textblocklist tbargs = Vx.Collection.f_list_from_list_start(
+            Vx.Data.Textblock.t_textblocklist,
+            children,
+            posarg
+          );
+          Vx.Repl.Type_repllist replargs = Vx.Repl.f_repllist_from_textblocklist_argmap(tbargs, argmap);
+          Vx.Core.Type_any output_1 = Vx.Core.f_copy(
+            replfunc,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":repllist"),
+                replargs
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2442,17 +2880,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repl", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repl",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2470,8 +2908,18 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Repl.Type_liblist liblist = Vx.Core.f_any_from_any(Vx.Repl.t_liblist, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Repl.Type_liblist liblist = Vx.Core.f_any_from_any(
+        Vx.Repl.t_liblist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_repl_from_liblist_string(liblist, text);
       return output;
     }
@@ -2526,17 +2974,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repl", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repl",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2560,14 +3008,27 @@ public static class Repl {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_anylist inputval = (Vx.Core.Type_anylist)value;
       Vx.Core.Type_any outputval = Vx.Repl.f_repl_from_macro(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_anylist anylist = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_anylist anylist = Vx.Core.f_any_from_any(
+        Vx.Core.t_anylist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_repl_from_macro(context, anylist);
       return output;
     }
@@ -2586,61 +3047,68 @@ public static class Repl {
     Vx.Repl.Type_repl output = Vx.Repl.e_repl;
     output = Vx.Core.f_let(
       Vx.Repl.t_repl,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_stringlist textlist = Vx.Core.f_list_from_list_1(
-          Vx.Core.t_stringlist,
-          anylist,
-          Vx.Core.t_any_from_any.vx_fn_new((item_any) => {
-            Vx.Core.Type_any item = Vx.Core.f_any_from_any(Vx.Core.t_any, item_any);
-            Vx.Core.Type_any output_2 = Vx.Core.f_let(
-              Vx.Core.t_string,
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any typ = Vx.Core.f_type_from_any(
-                  item
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_stringlist textlist = Vx.Core.f_list_from_list_1(
+            Vx.Core.t_stringlist,
+            anylist,
+            Vx.Core.t_any_from_any.vx_fn_new(
+              (item_any) => {
+                Vx.Core.Type_any item = Vx.Core.f_any_from_any(
+                  Vx.Core.t_any,
+                  item_any
                 );
-                Vx.Core.Type_any output_3 = Vx.Core.f_switch(
+                Vx.Core.Type_any output_2 = Vx.Core.f_let(
                   Vx.Core.t_string,
-                  typ,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_thenelselist,
-                    Vx.Core.f_case_1(
-                      Vx.Core.t_string,
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_4 = Vx.Core.f_any_from_any(
-                          Vx.Core.t_string,
-                          item
-                        );
-                        return output_4;
-                      })
-                    ),
-                    Vx.Core.f_else(
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_5 = Vx.Core.f_string_from_any(
-                          item
-                        );
-                        return output_5;
-                      })
-                    )
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any typ = Vx.Core.f_type_from_any(item);
+                      Vx.Core.Type_any output_3 = Vx.Core.f_switch(
+                        Vx.Core.t_string,
+                        typ,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_thenelselist,
+                          // [
+                            Vx.Core.f_case_1(
+                              Vx.Core.t_string,
+                              Vx.Core.t_any_from_func.vx_fn_new(
+                                () => {
+                                  Vx.Core.Type_any output_4 = Vx.Core.f_any_from_any(
+                                      Vx.Core.t_string,
+                                      item
+                                    );
+                                    return output_4;
+                                  }
+                              )
+                            ),
+                            Vx.Core.f_else(
+                              Vx.Core.t_any_from_func.vx_fn_new(
+                                () => {
+                                  Vx.Core.Type_any output_5 = Vx.Core.f_string_from_any(item);
+                                    return output_5;
+                                  }
+                              )
+                            )
+                          // ]
+                        )
+                      );
+                      return output_3;
+                    }
                   )
                 );
-                return output_3;
-              })
-            );
-            return output_2;
-          })
-        );
-        Vx.Core.Type_string script = Vx.Type.f_string_from_stringlist_join(
-          textlist,
-          Vx.Core.vx_new_string("")
-        );
-        Vx.Data.Textblock.Type_textblock tb = Vx.Repl.f_textblock_from_script(
-          script
-        );
-        Vx.Core.Type_any output_1 = Vx.Repl.f_repl_from_textblock(
-          tb
-        );
-        return output_1;
-      })
+                return output_2;
+              }
+            )
+          );
+          Vx.Core.Type_string script = Vx.Type.f_string_from_stringlist_join(
+            textlist,
+            Vx.Core.vx_new_string("")
+          );
+          Vx.Data.Textblock.Type_textblock tb = Vx.Repl.f_textblock_from_script(script);
+          Vx.Core.Type_any output_1 = Vx.Repl.f_repl_from_textblock(tb);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2680,17 +3148,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repl", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repl",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2714,13 +3182,21 @@ public static class Repl {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Repl.f_repl_from_script(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string script = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string script = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Repl.f_repl_from_script(script);
       return output;
     }
@@ -2739,15 +3215,13 @@ public static class Repl {
     Vx.Repl.Type_repl output = Vx.Repl.e_repl;
     output = Vx.Core.f_let(
       Vx.Repl.t_repl,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Textblock.Type_textblock textblock = Vx.Repl.f_textblock_from_script(
-          script
-        );
-        Vx.Core.Type_any output_1 = Vx.Repl.f_repl_from_textblock(
-          textblock
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Textblock.Type_textblock textblock = Vx.Repl.f_textblock_from_script(script);
+          Vx.Core.Type_any output_1 = Vx.Repl.f_repl_from_textblock(textblock);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2788,17 +3262,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repl", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repl",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2816,8 +3290,18 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(Vx.Core.t_argmap, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(
+        Vx.Core.t_argmap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_repl_from_string_argmap(text, argmap);
       return output;
     }
@@ -2838,212 +3322,254 @@ public static class Repl {
       Vx.Repl.t_repl,
       Vx.Core.vx_new(
         Vx.Core.t_thenelselist,
-        Vx.Core.f_then(
-          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_1 = Vx.Core.f_and(
-              Vx.Type.f_boolean_from_string_starts(
-                text,
-                Vx.Core.c_quote
-              ),
-              Vx.Type.f_boolean_from_string_ends(
-                text,
-                Vx.Core.c_quote
-              )
-            );
-            return output_1;
-          }),
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_2 = Vx.Core.f_new(
-              Vx.Repl.t_repl,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":value"),
-                Vx.Type.f_string_from_string_start_end(
-                  text,
-                  Vx.Core.vx_new_int(2),
-                  Vx.Core.vx_new_int(-1)
-                )
-              )
-            );
-            return output_2;
-          })
-        ),
-        Vx.Core.f_then(
-          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_3 = Vx.Core.f_is_int(
-              text
-            );
-            return output_3;
-          }),
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_4 = Vx.Core.f_new(
-              Vx.Repl.t_repl,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":value"),
-                Vx.Core.f_int_from_string(
-                  text
-                )
-              )
-            );
-            return output_4;
-          })
-        ),
-        Vx.Core.f_then(
-          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_5 = Vx.Core.f_is_float(
-              text
-            );
-            return output_5;
-          }),
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_6 = Vx.Core.f_new(
-              Vx.Repl.t_repl,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":value"),
-                Vx.Core.f_float_from_string(
-                  text
-                )
-              )
-            );
-            return output_6;
-          })
-        ),
-        Vx.Core.f_else(
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_7 = Vx.Core.f_let(
-              Vx.Repl.t_repl,
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any arg = Vx.Core.f_any_from_map(
-                  Vx.Core.t_any,
-                  argmap,
-                  text
-                );
-                Vx.Core.Type_any output_8 = Vx.Core.f_if_2(
-                  Vx.Repl.t_repl,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_thenelselist,
-                    Vx.Core.f_then(
-                      Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_9 = Vx.Core.f_notempty_1(
-                          arg
+        // [
+          Vx.Core.f_then(
+            Vx.Core.t_boolean_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_1 = Vx.Core.f_and(
+                    Vx.Type.f_boolean_from_string_starts(
+                      text,
+                      Vx.Core.c_quote
+                    ),
+                    Vx.Type.f_boolean_from_string_ends(
+                      text,
+                      Vx.Core.c_quote
+                    )
+                  );
+                  return output_1;
+                }
+            ),
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_2 = Vx.Core.f_new(
+                    Vx.Repl.t_repl,
+                    Vx.Core.vx_new(
+                      Vx.Core.t_anylist,
+                      // [
+                        Vx.Core.vx_new_string(":value"),
+                        Vx.Type.f_string_from_string_start_end(
+                          text,
+                          Vx.Core.vx_new_int(2),
+                          Vx.Core.vx_new_int(-1)
+                        )
+                      // ]
+                    )
+                  );
+                  return output_2;
+                }
+            )
+          ),
+          Vx.Core.f_then(
+            Vx.Core.t_boolean_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_3 = Vx.Core.f_is_int(text);
+                  return output_3;
+                }
+            ),
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_4 = Vx.Core.f_new(
+                    Vx.Repl.t_repl,
+                    Vx.Core.vx_new(
+                      Vx.Core.t_anylist,
+                      // [
+                        Vx.Core.vx_new_string(":value"),
+                        Vx.Core.f_int_from_string(text)
+                      // ]
+                    )
+                  );
+                  return output_4;
+                }
+            )
+          ),
+          Vx.Core.f_then(
+            Vx.Core.t_boolean_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_5 = Vx.Core.f_is_float(text);
+                  return output_5;
+                }
+            ),
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_6 = Vx.Core.f_new(
+                    Vx.Repl.t_repl,
+                    Vx.Core.vx_new(
+                      Vx.Core.t_anylist,
+                      // [
+                        Vx.Core.vx_new_string(":value"),
+                        Vx.Core.f_float_from_string(text)
+                      // ]
+                    )
+                  );
+                  return output_6;
+                }
+            )
+          ),
+          Vx.Core.f_else(
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_7 = Vx.Core.f_let(
+                    Vx.Repl.t_repl,
+                    Vx.Core.t_any_from_func.vx_fn_new(
+                      () => {
+                        Vx.Core.Type_any arg = Vx.Core.f_any_from_map(
+                          Vx.Core.t_any,
+                          argmap,
+                          text
                         );
-                        return output_9;
-                      }),
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_10 = Vx.Core.f_new(
+                        Vx.Core.Type_any output_8 = Vx.Core.f_if_2(
                           Vx.Repl.t_repl,
                           Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":value"),
-                            arg
-                          )
-                        );
-                        return output_10;
-                      })
-                    ),
-                    Vx.Core.f_else(
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_11 = Vx.Core.f_let(
-                          Vx.Repl.t_repl,
-                          Vx.Core.t_any_from_func.vx_fn_new(() => {
-                            Vx.Core.Type_any cnst = Vx.Repl.f_const_from_string(
-                              text
-                            );
-                            Vx.Core.Type_any output_12 = Vx.Core.f_if_2(
-                              Vx.Repl.t_repl,
-                              Vx.Core.vx_new(
-                                Vx.Core.t_thenelselist,
-                                Vx.Core.f_then(
-                                  Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                                    Vx.Core.Type_any output_13 = Vx.Core.f_notempty_1(
-                                      cnst
-                                    );
-                                    return output_13;
-                                  }),
-                                  Vx.Core.t_any_from_func.vx_fn_new(() => {
-                                    Vx.Core.Type_any output_14 = Vx.Core.f_new(
-                                      Vx.Repl.t_repl,
-                                      Vx.Core.vx_new(
-                                        Vx.Core.t_anylist,
-                                        Vx.Core.vx_new_string(":value"),
-                                        cnst
-                                      )
-                                    );
-                                    return output_14;
-                                  })
+                            Vx.Core.t_thenelselist,
+                            // [
+                              Vx.Core.f_then(
+                                Vx.Core.t_boolean_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_9 = Vx.Core.f_notempty_1(arg);
+                                      return output_9;
+                                    }
                                 ),
-                                Vx.Core.f_else(
-                                  Vx.Core.t_any_from_func.vx_fn_new(() => {
-                                    Vx.Core.Type_any output_15 = Vx.Core.f_let(
-                                      Vx.Repl.t_repl,
-                                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                                        Vx.Core.Type_any typefunc = Vx.Repl.f_typefunc_from_string(
-                                          text
-                                        );
-                                        Vx.Core.Type_any output_16 = Vx.Core.f_if_2(
-                                          Vx.Repl.t_repl,
-                                          Vx.Core.vx_new(
-                                            Vx.Core.t_thenelselist,
-                                            Vx.Core.f_then(
-                                              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                                                Vx.Core.Type_any output_17 = Vx.Core.f_notempty_1(
-                                                  typefunc
-                                                );
-                                                return output_17;
-                                              }),
-                                              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                                                Vx.Core.Type_any output_18 = Vx.Core.f_new(
-                                                  Vx.Repl.t_repl,
-                                                  Vx.Core.vx_new(
-                                                    Vx.Core.t_anylist,
-                                                    Vx.Core.vx_new_string(":type"),
-                                                    typefunc
-                                                  )
-                                                );
-                                                return output_18;
-                                              })
-                                            ),
-                                            Vx.Core.f_else(
-                                              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                                                Vx.Core.Type_any output_19 = Vx.Core.f_new(
-                                                  Vx.Repl.t_repl,
-                                                  Vx.Core.vx_new(
-                                                    Vx.Core.t_anylist,
-                                                    Vx.Core.f_msg_from_error_1(
-                                                      Vx.Core.vx_new_string(":repltypenotfound"),
-                                                      text
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_10 = Vx.Core.f_new(
+                                        Vx.Repl.t_repl,
+                                        Vx.Core.vx_new(
+                                          Vx.Core.t_anylist,
+                                          // [
+                                            Vx.Core.vx_new_string(":value"),
+                                            arg
+                                          // ]
+                                        )
+                                      );
+                                      return output_10;
+                                    }
+                                )
+                              ),
+                              Vx.Core.f_else(
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_11 = Vx.Core.f_let(
+                                        Vx.Repl.t_repl,
+                                        Vx.Core.t_any_from_func.vx_fn_new(
+                                          () => {
+                                            Vx.Core.Type_any cnst = Vx.Repl.f_const_from_string(text);
+                                            Vx.Core.Type_any output_12 = Vx.Core.f_if_2(
+                                              Vx.Repl.t_repl,
+                                              Vx.Core.vx_new(
+                                                Vx.Core.t_thenelselist,
+                                                // [
+                                                  Vx.Core.f_then(
+                                                    Vx.Core.t_boolean_from_func.vx_fn_new(
+                                                      () => {
+                                                        Vx.Core.Type_any output_13 = Vx.Core.f_notempty_1(cnst);
+                                                          return output_13;
+                                                        }
+                                                    ),
+                                                    Vx.Core.t_any_from_func.vx_fn_new(
+                                                      () => {
+                                                        Vx.Core.Type_any output_14 = Vx.Core.f_new(
+                                                            Vx.Repl.t_repl,
+                                                            Vx.Core.vx_new(
+                                                              Vx.Core.t_anylist,
+                                                              // [
+                                                                Vx.Core.vx_new_string(":value"),
+                                                                cnst
+                                                              // ]
+                                                            )
+                                                          );
+                                                          return output_14;
+                                                        }
+                                                    )
+                                                  ),
+                                                  Vx.Core.f_else(
+                                                    Vx.Core.t_any_from_func.vx_fn_new(
+                                                      () => {
+                                                        Vx.Core.Type_any output_15 = Vx.Core.f_let(
+                                                            Vx.Repl.t_repl,
+                                                            Vx.Core.t_any_from_func.vx_fn_new(
+                                                              () => {
+                                                                Vx.Core.Type_any typefunc = Vx.Repl.f_typefunc_from_string(text);
+                                                                Vx.Core.Type_any output_16 = Vx.Core.f_if_2(
+                                                                  Vx.Repl.t_repl,
+                                                                  Vx.Core.vx_new(
+                                                                    Vx.Core.t_thenelselist,
+                                                                    // [
+                                                                      Vx.Core.f_then(
+                                                                        Vx.Core.t_boolean_from_func.vx_fn_new(
+                                                                          () => {
+                                                                            Vx.Core.Type_any output_17 = Vx.Core.f_notempty_1(typefunc);
+                                                                              return output_17;
+                                                                            }
+                                                                        ),
+                                                                        Vx.Core.t_any_from_func.vx_fn_new(
+                                                                          () => {
+                                                                            Vx.Core.Type_any output_18 = Vx.Core.f_new(
+                                                                                Vx.Repl.t_repl,
+                                                                                Vx.Core.vx_new(
+                                                                                  Vx.Core.t_anylist,
+                                                                                  // [
+                                                                                    Vx.Core.vx_new_string(":type"),
+                                                                                    typefunc
+                                                                                  // ]
+                                                                                )
+                                                                              );
+                                                                              return output_18;
+                                                                            }
+                                                                        )
+                                                                      ),
+                                                                      Vx.Core.f_else(
+                                                                        Vx.Core.t_any_from_func.vx_fn_new(
+                                                                          () => {
+                                                                            Vx.Core.Type_any output_19 = Vx.Core.f_new(
+                                                                                Vx.Repl.t_repl,
+                                                                                Vx.Core.vx_new(
+                                                                                  Vx.Core.t_anylist,
+                                                                                  // [
+                                                                                    Vx.Core.f_msg_from_error_1(
+                                                                                      Vx.Core.vx_new_string(":repltypenotfound"),
+                                                                                      text
+                                                                                    )
+                                                                                  // ]
+                                                                                )
+                                                                              );
+                                                                              return output_19;
+                                                                            }
+                                                                        )
+                                                                      )
+                                                                    // ]
+                                                                  )
+                                                                );
+                                                                return output_16;
+                                                              }
+                                                            )
+                                                          );
+                                                          return output_15;
+                                                        }
                                                     )
                                                   )
-                                                );
-                                                return output_19;
-                                              })
-                                            )
-                                          )
-                                        );
-                                        return output_16;
-                                      })
-                                    );
-                                    return output_15;
-                                  })
+                                                // ]
+                                              )
+                                            );
+                                            return output_12;
+                                          }
+                                        )
+                                      );
+                                      return output_11;
+                                    }
                                 )
                               )
-                            );
-                            return output_12;
-                          })
+                            // ]
+                          )
                         );
-                        return output_11;
-                      })
+                        return output_8;
+                      }
                     )
-                  )
-                );
-                return output_8;
-              })
-            );
-            return output_7;
-          })
-        )
+                  );
+                  return output_7;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -3084,17 +3610,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repl", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repl",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3118,13 +3644,21 @@ public static class Repl {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Data.Textblock.Type_textblock inputval = (Vx.Data.Textblock.Type_textblock)value;
       Vx.Core.Type_any outputval = Vx.Repl.f_repl_from_textblock(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Repl.f_repl_from_textblock(textblock);
       return output;
     }
@@ -3143,9 +3677,7 @@ public static class Repl {
     Vx.Repl.Type_repl output = Vx.Repl.e_repl;
     output = Vx.Repl.f_repl_from_textblock_argmap(
       textblock,
-      Vx.Core.f_empty(
-        Vx.Core.t_argmap
-      )
+      Vx.Core.f_empty(Vx.Core.t_argmap)
     );
     return output;
   }
@@ -3186,17 +3718,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repl", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repl",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3214,8 +3746,18 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(Vx.Core.t_argmap, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(
+        Vx.Core.t_argmap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_repl_from_textblock_argmap(textblock, argmap);
       return output;
     }
@@ -3234,48 +3776,49 @@ public static class Repl {
     Vx.Repl.Type_repl output = Vx.Repl.e_repl;
     output = Vx.Core.f_let(
       Vx.Repl.t_repl,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Data.Textblock.Type_delim delim = textblock.delim();
-        Vx.Core.Type_string starttext = delim.starttext();
-        Vx.Core.Type_any output_1 = Vx.Core.f_switch(
-          Vx.Repl.t_repl,
-          starttext,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_case_1(
-              Vx.Core.vx_new_string(""),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Repl.f_repl_empty_from_textblock_argmap(
-                  textblock,
-                  argmap
-                );
-                return output_2;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Data.Textblock.c_delimparen.starttext(),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = Vx.Repl.f_repl_paren_from_textblock_argmap(
-                  textblock,
-                  argmap
-                );
-                return output_3;
-              })
-            ),
-            Vx.Core.f_case_1(
-              Vx.Data.Textblock.c_delimbracketsquare.starttext(),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_4 = Vx.Repl.f_repl_bracket_from_textblock_argmap(
-                  textblock,
-                  argmap
-                );
-                return output_4;
-              })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Data.Textblock.Type_delim delim = textblock.delim();
+          Vx.Core.Type_string starttext = delim.starttext();
+          Vx.Core.Type_any output_1 = Vx.Core.f_switch(
+            Vx.Repl.t_repl,
+            starttext,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_case_1(
+                  Vx.Core.vx_new_string(""),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Repl.f_repl_empty_from_textblock_argmap(textblock, argmap);
+                        return output_2;
+                      }
+                  )
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Data.Textblock.c_delimparen.starttext(),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_3 = Vx.Repl.f_repl_paren_from_textblock_argmap(textblock, argmap);
+                        return output_3;
+                      }
+                  )
+                ),
+                Vx.Core.f_case_1(
+                  Vx.Data.Textblock.c_delimbracketsquare.starttext(),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_4 = Vx.Repl.f_repl_bracket_from_textblock_argmap(textblock, argmap);
+                        return output_4;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -3317,17 +3860,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "replarglist", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "replarglist",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3345,9 +3888,24 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Repl.Type_replarglist replargs = Vx.Core.f_any_from_any(Vx.Repl.t_replarglist, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(Vx.Core.t_argmap, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Repl.Type_replarglist replargs = Vx.Core.f_any_from_any(
+        Vx.Repl.t_replarglist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Data.Textblock.Type_textblock tb = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblock,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(
+        Vx.Core.t_argmap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Repl.f_replarglist_from_replarglist_textblock_argmap(replargs, tb, argmap);
       return output;
     }
@@ -3366,228 +3924,289 @@ public static class Repl {
     Vx.Repl.Type_replarglist output = Vx.Repl.e_replarglist;
     output = Vx.Core.f_let(
       Vx.Repl.t_replarglist,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string key = replargs.key();
-        Vx.Repl.Type_repl current = replargs.current();
-        Vx.Repl.Type_repllist repllist = replargs.repllist();
-        Vx.Repl.Type_repllist currlist = current.repllist();
-        Vx.Core.Type_string text = Vx.Data.Textblock.t_textblock.text();
-        Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
-          Vx.Repl.t_replarglist,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.f_eq(
-                  key,
-                  Vx.Core.vx_new_string("")
-                );
-                return output_2;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = Vx.Core.f_if_2(
-                  Vx.Repl.t_replarglist,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_thenelselist,
-                    Vx.Core.f_then(
-                      Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_4 = Vx.Core.f_eq(
-                          text,
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string key = replargs.key();
+          Vx.Repl.Type_repl current = replargs.current();
+          Vx.Repl.Type_repllist repllist = replargs.repllist();
+          Vx.Repl.Type_repllist currlist = current.repllist();
+          Vx.Core.Type_string text = Vx.Data.Textblock.t_textblock.text();
+          Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
+            Vx.Repl.t_replarglist,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.f_eq(
+                          key,
+                          Vx.Core.vx_new_string("")
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_3 = Vx.Core.f_if_2(
+                          Vx.Repl.t_replarglist,
+                          Vx.Core.vx_new(
+                            Vx.Core.t_thenelselist,
+                            // [
+                              Vx.Core.f_then(
+                                Vx.Core.t_boolean_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_4 = Vx.Core.f_eq(
+                                        text,
+                                        Vx.Core.vx_new_string(":")
+                                      );
+                                      return output_4;
+                                    }
+                                ),
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_5 = Vx.Core.f_copy(
+                                        replargs,
+                                        Vx.Core.vx_new(
+                                          Vx.Core.t_anylist,
+                                          // [
+                                            Vx.Core.vx_new_string(":key"),
+                                            text
+                                          // ]
+                                        )
+                                      );
+                                      return output_5;
+                                    }
+                                )
+                              ),
+                              Vx.Core.f_then(
+                                Vx.Core.t_boolean_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_6 = Vx.Core.f_eq(
+                                        text,
+                                        Vx.Core.vx_new_string(":=")
+                                      );
+                                      return output_6;
+                                    }
+                                ),
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_7 = Vx.Core.f_copy(
+                                        replargs,
+                                        Vx.Core.vx_new(
+                                          Vx.Core.t_anylist,
+                                          // [
+                                            Vx.Core.vx_new_string(":key"),
+                                            text
+                                          // ]
+                                        )
+                                      );
+                                      return output_7;
+                                    }
+                                )
+                              ),
+                              Vx.Core.f_then(
+                                Vx.Core.t_boolean_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_8 = Vx.Core.f_eq(
+                                        text,
+                                        Vx.Core.vx_new_string(":doc")
+                                      );
+                                      return output_8;
+                                    }
+                                ),
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_9 = Vx.Core.f_copy(
+                                        replargs,
+                                        Vx.Core.vx_new(
+                                          Vx.Core.t_anylist,
+                                          // [
+                                            Vx.Core.vx_new_string(":key"),
+                                            text
+                                          // ]
+                                        )
+                                      );
+                                      return output_9;
+                                    }
+                                )
+                              ),
+                              Vx.Core.f_else(
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_10 = Vx.Core.f_copy(
+                                        replargs,
+                                        Vx.Core.vx_new(
+                                          Vx.Core.t_anylist,
+                                          // [
+                                            Vx.Core.vx_new_string(":current"),
+                                            Vx.Core.f_new(
+                                              Vx.Repl.t_repl,
+                                              Vx.Core.vx_new(
+                                                Vx.Core.t_anylist,
+                                                // [
+                                                  Vx.Core.vx_new_string(":name"),
+                                                  text
+                                                // ]
+                                              )
+                                            ),
+                                            Vx.Core.vx_new_string(":repllist"),
+                                            Vx.Core.f_copy(
+                                              repllist,
+                                              Vx.Core.vx_new(
+                                                Vx.Core.t_anylist,
+                                                // [
+                                                  current
+                                                // ]
+                                              )
+                                            )
+                                          // ]
+                                        )
+                                      );
+                                      return output_10;
+                                    }
+                                )
+                              )
+                            // ]
+                          )
+                        );
+                        return output_3;
+                      }
+                  )
+                ),
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_11 = Vx.Core.f_eq(
+                          key,
                           Vx.Core.vx_new_string(":")
                         );
-                        return output_4;
-                      }),
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_5 = Vx.Core.f_copy(
+                        return output_11;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_12 = Vx.Core.f_copy(
                           replargs,
                           Vx.Core.vx_new(
                             Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":key"),
-                            text
+                            // [
+                              Vx.Core.vx_new_string(":key"),
+                              Vx.Core.vx_new_string(""),
+                              Vx.Core.vx_new_string(":current"),
+                              Vx.Core.f_copy(
+                                current,
+                                Vx.Core.vx_new(
+                                  Vx.Core.t_anylist,
+                                  // [
+                                    Vx.Core.vx_new_string(":type"),
+                                    text
+                                  // ]
+                                )
+                              )
+                            // ]
                           )
                         );
-                        return output_5;
-                      })
-                    ),
-                    Vx.Core.f_then(
-                      Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_6 = Vx.Core.f_eq(
-                          text,
+                        return output_12;
+                      }
+                  )
+                ),
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_13 = Vx.Core.f_eq(
+                          key,
                           Vx.Core.vx_new_string(":=")
                         );
-                        return output_6;
-                      }),
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_7 = Vx.Core.f_copy(
+                        return output_13;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_14 = Vx.Core.f_copy(
                           replargs,
                           Vx.Core.vx_new(
                             Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":key"),
-                            text
+                            // [
+                              Vx.Core.vx_new_string(":key"),
+                              Vx.Core.vx_new_string(""),
+                              Vx.Core.vx_new_string(":current"),
+                              Vx.Core.f_copy(
+                                current,
+                                Vx.Core.vx_new(
+                                  Vx.Core.t_anylist,
+                                  // [
+                                    Vx.Core.vx_new_string(":repllist"),
+                                    Vx.Core.f_copy(
+                                      currlist,
+                                      Vx.Core.vx_new(
+                                        Vx.Core.t_anylist,
+                                        // [
+                                          Vx.Repl.f_repl_from_textblock_argmap(tb, argmap)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              )
+                            // ]
                           )
                         );
-                        return output_7;
-                      })
-                    ),
-                    Vx.Core.f_then(
-                      Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_8 = Vx.Core.f_eq(
-                          text,
+                        return output_14;
+                      }
+                  )
+                ),
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_15 = Vx.Core.f_eq(
+                          key,
                           Vx.Core.vx_new_string(":doc")
                         );
-                        return output_8;
-                      }),
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_9 = Vx.Core.f_copy(
+                        return output_15;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_16 = Vx.Core.f_copy(
                           replargs,
                           Vx.Core.vx_new(
                             Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":key"),
-                            text
+                            // [
+                              Vx.Core.vx_new_string(":key"),
+                              Vx.Core.vx_new_string(""),
+                              Vx.Core.vx_new_string(":current"),
+                              Vx.Core.f_copy(
+                                current,
+                                Vx.Core.vx_new(
+                                  Vx.Core.t_anylist,
+                                  // [
+                                    Vx.Core.vx_new_string(":doc"),
+                                    text
+                                  // ]
+                                )
+                              )
+                            // ]
                           )
                         );
-                        return output_9;
-                      })
-                    ),
-                    Vx.Core.f_else(
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_10 = Vx.Core.f_copy(
-                          replargs,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":current"),
-                            Vx.Core.f_new(
-                              Vx.Repl.t_repl,
-                              Vx.Core.vx_new(
-                                Vx.Core.t_anylist,
-                                Vx.Core.vx_new_string(":name"),
-                                text
-                              )
-                            ),
-                            Vx.Core.vx_new_string(":repllist"),
-                            Vx.Core.f_copy(
-                              repllist,
-                              Vx.Core.vx_new(
-                                Vx.Core.t_anylist,
-                                current
-                              )
-                            )
-                          )
-                        );
-                        return output_10;
-                      })
-                    )
+                        return output_16;
+                      }
                   )
-                );
-                return output_3;
-              })
-            ),
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_11 = Vx.Core.f_eq(
-                  key,
-                  Vx.Core.vx_new_string(":")
-                );
-                return output_11;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_12 = Vx.Core.f_copy(
-                  replargs,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":key"),
-                    Vx.Core.vx_new_string(""),
-                    Vx.Core.vx_new_string(":current"),
-                    Vx.Core.f_copy(
-                      current,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string(":type"),
-                        text
-                      )
-                    )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_17 = replargs;
+                        return output_17;
+                      }
                   )
-                );
-                return output_12;
-              })
-            ),
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_13 = Vx.Core.f_eq(
-                  key,
-                  Vx.Core.vx_new_string(":=")
-                );
-                return output_13;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_14 = Vx.Core.f_copy(
-                  replargs,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":key"),
-                    Vx.Core.vx_new_string(""),
-                    Vx.Core.vx_new_string(":current"),
-                    Vx.Core.f_copy(
-                      current,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string(":repllist"),
-                        Vx.Core.f_copy(
-                          currlist,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Repl.f_repl_from_textblock_argmap(
-                              tb,
-                              argmap
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                );
-                return output_14;
-              })
-            ),
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_15 = Vx.Core.f_eq(
-                  key,
-                  Vx.Core.vx_new_string(":doc")
-                );
-                return output_15;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_16 = Vx.Core.f_copy(
-                  replargs,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":key"),
-                    Vx.Core.vx_new_string(""),
-                    Vx.Core.vx_new_string(":current"),
-                    Vx.Core.f_copy(
-                      current,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string(":doc"),
-                        text
-                      )
-                    )
-                  )
-                );
-                return output_16;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_17 = replargs;
-                return output_17;
-              })
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -3628,17 +4247,22 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/repl", // pkgname
-          "repllist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Repl.t_repl), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/repl",
+          "repllist",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Repl.t_repl
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3656,8 +4280,18 @@ public static class Repl {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Data.Textblock.Type_textblocklist textblocklist = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblocklist, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(Vx.Core.t_argmap, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Data.Textblock.Type_textblocklist textblocklist = Vx.Core.f_any_from_any(
+        Vx.Data.Textblock.t_textblocklist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_argmap argmap = Vx.Core.f_any_from_any(
+        Vx.Core.t_argmap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Repl.f_repllist_from_textblocklist_argmap(textblocklist, argmap);
       return output;
     }
@@ -3677,13 +4311,16 @@ public static class Repl {
     output = Vx.Core.f_list_from_list_1(
       Vx.Repl.t_repllist,
       textblocklist,
-      Vx.Core.t_any_from_any.vx_fn_new((textblock_any) => {
-        Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(Vx.Data.Textblock.t_textblock, textblock_any);
-        Vx.Core.Type_any output_1 = Vx.Repl.f_repl_from_textblock(
-          textblock
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_any.vx_fn_new(
+        (textblock_any) => {
+          Vx.Data.Textblock.Type_textblock textblock = Vx.Core.f_any_from_any(
+            Vx.Data.Textblock.t_textblock,
+            textblock_any
+          );
+          Vx.Core.Type_any output_1 = Vx.Repl.f_repl_from_textblock(textblock);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -3723,17 +4360,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/textblock", // pkgname
-          "textblock", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/textblock",
+          "textblock",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3757,13 +4394,21 @@ public static class Repl {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Repl.f_textblock_from_script(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string script = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string script = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Repl.f_textblock_from_script(script);
       return output;
     }
@@ -3822,17 +4467,17 @@ public static class Repl {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3856,13 +4501,21 @@ public static class Repl {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Repl.f_typefunc_from_string(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Repl.f_typefunc_from_string(text);
       return output;
     }
@@ -3881,79 +4534,71 @@ public static class Repl {
     Vx.Core.Type_any output = Vx.Core.e_any;
     output = Vx.Core.f_let(
       Vx.Core.t_any,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_int pkgpos = Vx.Type.f_int_from_string_findlast(
-          text,
-          Vx.Core.vx_new_string("/")
-        );
-        Vx.Core.Type_string pkgname = Vx.Core.f_if_1(
-          Vx.Core.t_string,
-          Vx.Core.f_eq(
-            Vx.Core.vx_new_int(0),
-            pkgpos
-          ),
-          Vx.Core.vx_new_string("vx/core"),
-          Vx.Type.f_string_from_string_end(
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_int pkgpos = Vx.Type.f_int_from_string_findlast(
             text,
-            Vx.Core.f_minus1(
+            Vx.Core.vx_new_string("/")
+          );
+          Vx.Core.Type_string pkgname = Vx.Core.f_if_1(
+            Vx.Core.t_string,
+            Vx.Core.f_eq(
+              Vx.Core.vx_new_int(0),
               pkgpos
+            ),
+            Vx.Core.vx_new_string("vx/core"),
+            Vx.Type.f_string_from_string_end(
+              text,
+              Vx.Core.f_minus1(pkgpos)
             )
-          )
-        );
-        Vx.Core.Type_string name = Vx.Core.f_if_1(
-          Vx.Core.t_string,
-          Vx.Core.f_eq(
-            Vx.Core.vx_new_int(0),
-            pkgpos
-          ),
-          text,
-          Vx.Type.f_string_from_string_start(
+          );
+          Vx.Core.Type_string name = Vx.Core.f_if_1(
+            Vx.Core.t_string,
+            Vx.Core.f_eq(
+              Vx.Core.vx_new_int(0),
+              pkgpos
+            ),
             text,
-            Vx.Core.f_plus1(
-              pkgpos
+            Vx.Type.f_string_from_string_start(
+              text,
+              Vx.Core.f_plus1(pkgpos)
             )
-          )
-        );
-        Vx.Core.Type_package pkg = Vx.Core.f_package_global_from_name(
-          pkgname
-        );
-        Vx.Core.Type_typemap typemap = pkg.typemap();
-        Vx.Core.Type_any typeval = Vx.Core.f_any_from_map(
-          Vx.Core.t_any,
-          typemap,
-          name
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_if_1(
-          Vx.Core.t_any,
-          Vx.Core.f_notempty_1(
-            typeval
-          ),
-          typeval,
-          Vx.Core.f_let(
+          );
+          Vx.Core.Type_package pkg = Vx.Core.f_package_global_from_name(pkgname);
+          Vx.Core.Type_typemap typemap = pkg.typemap();
+          Vx.Core.Type_any typeval = Vx.Core.f_any_from_map(
             Vx.Core.t_any,
-            Vx.Core.t_any_from_func.vx_fn_new(() => {
-              Vx.Core.Type_funcmap funcmap = pkg.funcmap();
-              Vx.Core.Type_any funcval = Vx.Core.f_any_from_map(
-                Vx.Core.t_any,
-                funcmap,
-                name
-              );
-              Vx.Core.Type_any output_2 = Vx.Core.f_if_1(
-                Vx.Core.t_any,
-                Vx.Core.f_notempty_1(
-                  funcval
-                ),
-                funcval,
-                Vx.Core.f_empty(
-                  Vx.Core.t_any
-                )
-              );
-              return output_2;
-            })
-          )
-        );
-        return output_1;
-      })
+            typemap,
+            name
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_if_1(
+            Vx.Core.t_any,
+            Vx.Core.f_notempty_1(typeval),
+            typeval,
+            Vx.Core.f_let(
+              Vx.Core.t_any,
+              Vx.Core.t_any_from_func.vx_fn_new(
+                () => {
+                  Vx.Core.Type_funcmap funcmap = pkg.funcmap();
+                  Vx.Core.Type_any funcval = Vx.Core.f_any_from_map(
+                    Vx.Core.t_any,
+                    funcmap,
+                    name
+                  );
+                  Vx.Core.Type_any output_2 = Vx.Core.f_if_1(
+                    Vx.Core.t_any,
+                    Vx.Core.f_notempty_1(funcval),
+                    funcval,
+                    Vx.Core.f_empty(Vx.Core.t_any)
+                  );
+                  return output_2;
+                }
+              )
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }

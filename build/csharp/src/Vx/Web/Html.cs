@@ -54,7 +54,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_body output = Vx.Core.vx_copy(Vx.Web.Html.e_body, vals);
+      Vx.Web.Html.Type_body output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_body,
+        vals
+      );
       return output;
     }
 
@@ -74,9 +77,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -95,9 +108,19 @@ public static class Html {
             Vx.Web.Html.Type_divchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Vx.Core.vx_new(Vx.Web.Html.t_divchildlist, valdefault);
+              vallist = Vx.Core.vx_new(
+                Vx.Web.Html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Vx.Core.vx_copy(vallist, valdefault);
+              vallist = Vx.Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -106,10 +129,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/body", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/body",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -120,8 +154,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/body", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/body",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -141,14 +184,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/body", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/body",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/body", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/body",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -176,17 +239,17 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "body", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "body",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -321,7 +384,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_details output = Vx.Core.vx_copy(Vx.Web.Html.e_details, vals);
+      Vx.Web.Html.Type_details output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_details,
+        vals
+      );
       return output;
     }
 
@@ -353,9 +419,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -371,10 +447,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/details",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -385,8 +472,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -398,7 +494,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -409,9 +510,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -428,9 +540,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -447,9 +570,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -466,9 +600,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -485,9 +630,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":summary")) {
             if (valsub == vx_p_summary) {
@@ -504,9 +660,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("summary"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -523,14 +690,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/details", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/details",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -564,17 +751,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "details", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "details",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_divchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -694,7 +887,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_div output = Vx.Core.vx_copy(Vx.Web.Html.e_div, vals);
+      Vx.Web.Html.Type_div output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_div,
+        vals
+      );
       return output;
     }
 
@@ -724,9 +920,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -745,9 +951,19 @@ public static class Html {
             Vx.Web.Html.Type_divchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Vx.Core.vx_new(Vx.Web.Html.t_divchildlist, valdefault);
+              vallist = Vx.Core.vx_new(
+                Vx.Web.Html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Vx.Core.vx_copy(vallist, valdefault);
+              vallist = Vx.Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -756,10 +972,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/div",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -770,8 +997,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -783,7 +1019,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -794,9 +1035,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -813,9 +1065,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -832,9 +1095,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -851,9 +1125,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -870,9 +1155,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -889,14 +1185,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/div", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/div",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -929,17 +1245,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "div", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "div",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_divchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -971,7 +1293,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_divchild output = Vx.Core.vx_copy(Vx.Web.Html.e_divchild, vals);
+      Vx.Web.Html.Type_divchild output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_divchild,
+        vals
+      );
       return output;
     }
 
@@ -1005,17 +1330,17 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "divchild", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "divchild",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -1070,7 +1395,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_divchildlist output = Vx.Core.vx_copy(Vx.Web.Html.e_divchildlist, vals);
+      Vx.Web.Html.Type_divchildlist output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_divchildlist,
+        vals
+      );
       return output;
     }
 
@@ -1086,9 +1414,19 @@ public static class Html {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Web.Html.Type_divchildlist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listdivchild());
@@ -1108,11 +1446,31 @@ public static class Html {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/divchildlist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/divchildlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/divchildlist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/divchildlist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -1138,17 +1496,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "divchildlist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_divchild), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "divchildlist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_divchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -1203,7 +1566,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_divlist output = Vx.Core.vx_copy(Vx.Web.Html.e_divlist, vals);
+      Vx.Web.Html.Type_divlist output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_divlist,
+        vals
+      );
       return output;
     }
 
@@ -1219,9 +1585,19 @@ public static class Html {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Web.Html.Type_divlist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listdiv());
@@ -1241,11 +1617,31 @@ public static class Html {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/divlist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/divlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/divlist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/divlist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -1271,17 +1667,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "divlist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_div), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "divlist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_div
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -1331,7 +1732,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_footer output = Vx.Core.vx_copy(Vx.Web.Html.e_footer, vals);
+      Vx.Web.Html.Type_footer output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_footer,
+        vals
+      );
       return output;
     }
 
@@ -1351,9 +1755,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -1372,9 +1786,19 @@ public static class Html {
             Vx.Web.Html.Type_divchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Vx.Core.vx_new(Vx.Web.Html.t_divchildlist, valdefault);
+              vallist = Vx.Core.vx_new(
+                Vx.Web.Html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Vx.Core.vx_copy(vallist, valdefault);
+              vallist = Vx.Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -1383,10 +1807,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/footer", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/footer",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -1397,8 +1832,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/footer", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/footer",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1418,14 +1862,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/footer", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/footer",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/footer", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/footer",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1453,17 +1917,17 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "footer", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "footer",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -1583,7 +2047,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_h1 output = Vx.Core.vx_copy(Vx.Web.Html.e_h1, vals);
+      Vx.Web.Html.Type_h1 output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_h1,
+        vals
+      );
       return output;
     }
 
@@ -1613,9 +2080,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -1634,10 +2111,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/h1",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -1651,11 +2139,25 @@ public static class Html {
               vx_p_text = valstr;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1667,7 +2169,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -1678,9 +2185,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -1697,9 +2215,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -1716,9 +2245,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -1735,9 +2275,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -1754,9 +2305,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -1765,7 +2327,12 @@ public static class Html {
               vx_p_text = valtext;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -1776,14 +2343,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/h1", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/h1",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1816,17 +2403,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "h1", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "h1",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_divchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -1946,7 +2539,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_h2 output = Vx.Core.vx_copy(Vx.Web.Html.e_h2, vals);
+      Vx.Web.Html.Type_h2 output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_h2,
+        vals
+      );
       return output;
     }
 
@@ -1976,9 +2572,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -1997,10 +2603,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/h2",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -2014,11 +2631,25 @@ public static class Html {
               vx_p_text = valstr;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2030,7 +2661,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -2041,9 +2677,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -2060,9 +2707,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -2079,9 +2737,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -2098,9 +2767,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -2117,9 +2797,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -2128,7 +2819,12 @@ public static class Html {
               vx_p_text = valtext;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -2139,14 +2835,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/h2", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/h2",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2179,17 +2895,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "h2", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "h2",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_divchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -2309,7 +3031,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_h3 output = Vx.Core.vx_copy(Vx.Web.Html.e_h3, vals);
+      Vx.Web.Html.Type_h3 output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_h3,
+        vals
+      );
       return output;
     }
 
@@ -2339,9 +3064,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -2360,10 +3095,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/h3",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -2377,11 +3123,25 @@ public static class Html {
               vx_p_text = valstr;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2393,7 +3153,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -2404,9 +3169,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -2423,9 +3199,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -2442,9 +3229,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -2461,9 +3259,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -2480,9 +3289,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -2491,7 +3311,12 @@ public static class Html {
               vx_p_text = valtext;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -2502,14 +3327,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/h3", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/h3",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2542,17 +3387,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "h3", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "h3",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_divchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -2602,7 +3453,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_head output = Vx.Core.vx_copy(Vx.Web.Html.e_head, vals);
+      Vx.Web.Html.Type_head output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_head,
+        vals
+      );
       return output;
     }
 
@@ -2622,9 +3476,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -2643,9 +3507,19 @@ public static class Html {
             Vx.Web.Html.Type_headchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Vx.Core.vx_new(Vx.Web.Html.t_headchildlist, valdefault);
+              vallist = Vx.Core.vx_new(
+                Vx.Web.Html.t_headchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Vx.Core.vx_copy(vallist, valdefault);
+              vallist = Vx.Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -2654,10 +3528,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/head", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/head",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -2668,8 +3553,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/head", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/head",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2689,14 +3583,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/head", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/head",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/head", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/head",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2724,17 +3638,17 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "head", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "head",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -2766,7 +3680,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_headchild output = Vx.Core.vx_copy(Vx.Web.Html.e_headchild, vals);
+      Vx.Web.Html.Type_headchild output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_headchild,
+        vals
+      );
       return output;
     }
 
@@ -2800,17 +3717,17 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "headchild", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "headchild",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -2865,7 +3782,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_headchildlist output = Vx.Core.vx_copy(Vx.Web.Html.e_headchildlist, vals);
+      Vx.Web.Html.Type_headchildlist output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_headchildlist,
+        vals
+      );
       return output;
     }
 
@@ -2881,9 +3801,19 @@ public static class Html {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Web.Html.Type_headchildlist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listheadchild());
@@ -2903,11 +3833,31 @@ public static class Html {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/headchildlist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/headchildlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/headchildlist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/headchildlist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -2933,17 +3883,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "headchildlist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_headchild), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "headchildlist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_headchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -3038,7 +3993,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_html output = Vx.Core.vx_copy(Vx.Web.Html.e_html, vals);
+      Vx.Web.Html.Type_html output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_html,
+        vals
+      );
       return output;
     }
 
@@ -3064,9 +4022,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -3082,10 +4050,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/html",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -3096,8 +4075,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -3109,7 +4097,12 @@ public static class Html {
               vx_p_lang = vallang;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_lang = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_lang = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -3120,9 +4113,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("lang"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":head")) {
             if (valsub == vx_p_head) {
@@ -3139,9 +4143,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("head"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":body")) {
             if (valsub == vx_p_body) {
@@ -3158,9 +4173,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("body"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":footer")) {
             if (valsub == vx_p_footer) {
@@ -3177,14 +4203,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("footer"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/html", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/html",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -3215,17 +4261,17 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "html", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "html",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -3345,7 +4391,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_img output = Vx.Core.vx_copy(Vx.Web.Html.e_img, vals);
+      Vx.Web.Html.Type_img output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_img,
+        vals
+      );
       return output;
     }
 
@@ -3375,9 +4424,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -3396,10 +4455,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/img",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -3413,11 +4483,25 @@ public static class Html {
               vx_p_src = valstr;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_src = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_src = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -3429,7 +4513,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -3440,9 +4529,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -3459,9 +4559,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -3478,9 +4589,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -3497,9 +4619,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -3516,9 +4649,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":src")) {
             if (valsub == vx_p_src) {
@@ -3527,7 +4671,12 @@ public static class Html {
               vx_p_src = valsrc;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_src = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_src = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -3538,14 +4687,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("src"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/img", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/img",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -3578,17 +4747,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "img", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "img",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_divchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -3738,7 +4913,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_meta output = Vx.Core.vx_copy(Vx.Web.Html.e_meta, vals);
+      Vx.Web.Html.Type_meta output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_meta,
+        vals
+      );
       return output;
     }
 
@@ -3772,9 +4950,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -3790,10 +4978,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/meta",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -3804,8 +5003,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -3817,7 +5025,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -3828,9 +5041,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -3847,9 +5071,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -3866,9 +5101,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -3885,9 +5131,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -3904,9 +5161,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":charset")) {
             if (valsub == vx_p_charset) {
@@ -3915,7 +5183,12 @@ public static class Html {
               vx_p_charset = valcharset;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_charset = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_charset = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -3926,9 +5199,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("charset"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
@@ -3937,7 +5221,12 @@ public static class Html {
               vx_p_name = valname;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_name = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_name = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -3948,9 +5237,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":content")) {
             if (valsub == vx_p_content) {
@@ -3959,7 +5259,12 @@ public static class Html {
               vx_p_content = valcontent;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_content = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_content = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -3970,14 +5275,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("content"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/meta", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/meta",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -4012,17 +5337,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "meta", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_headchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "meta",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_headchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -4132,7 +5463,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_node output = Vx.Core.vx_copy(Vx.Web.Html.e_node, vals);
+      Vx.Web.Html.Type_node output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_node,
+        vals
+      );
       return output;
     }
 
@@ -4160,9 +5494,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -4178,10 +5522,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/node",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -4192,8 +5547,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -4205,7 +5569,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -4216,9 +5585,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -4235,9 +5615,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -4254,9 +5645,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -4273,9 +5675,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -4292,14 +5705,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/node", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/node",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -4331,17 +5764,17 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "node", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "node",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -4396,7 +5829,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_nodelist output = Vx.Core.vx_copy(Vx.Web.Html.e_nodelist, vals);
+      Vx.Web.Html.Type_nodelist output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_nodelist,
+        vals
+      );
       return output;
     }
 
@@ -4412,9 +5848,19 @@ public static class Html {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Web.Html.Type_nodelist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listnode());
@@ -4434,11 +5880,31 @@ public static class Html {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/nodelist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/nodelist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/nodelist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/nodelist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -4464,17 +5930,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "nodelist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "nodelist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -4594,7 +6065,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_p output = Vx.Core.vx_copy(Vx.Web.Html.e_p, vals);
+      Vx.Web.Html.Type_p output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_p,
+        vals
+      );
       return output;
     }
 
@@ -4624,9 +6098,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -4645,10 +6129,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/p",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -4662,11 +6157,25 @@ public static class Html {
               vx_p_text = valstr;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -4678,7 +6187,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -4689,9 +6203,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -4708,9 +6233,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -4727,9 +6263,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -4746,9 +6293,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -4765,9 +6323,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -4776,7 +6345,12 @@ public static class Html {
               vx_p_text = valtext;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -4787,14 +6361,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/p", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/p",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -4827,17 +6421,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "p", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "p",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_divchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -4859,7 +6459,9 @@ public static class Html {
 
   public class Class_propmap : Vx.Core.Class_base, Type_propmap {
 
-    public Vx.Core.Map<string, Vx.Core.Type_string> vx_p_map = Vx.Core.vx_mapimmutable(new Vx.Core.LinkedHashMap<string, Vx.Core.Type_string>());
+    public Vx.Core.Map<string, Vx.Core.Type_string> vx_p_map = Vx.Core.vx_mapimmutable(
+      new Vx.Core.LinkedHashMap<string, Vx.Core.Type_string>()
+    );
 
     public Vx.Core.Map<string, Vx.Core.Type_any> vx_map() {
       Vx.Core.Map<string, Vx.Core.Type_any> anymap = Vx.Core.vx_map_from_map<Vx.Core.Type_any, Vx.Core.Type_string>(this.vx_p_map);
@@ -4922,8 +6524,17 @@ public static class Html {
         } else if (value is Vx.Core.Type_string castval) {
           map.put(key, castval);
         } else {
-          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error("vx/web/html/propmap", ":invalidvalue", value);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/propmap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Vx.Core.vx_mapimmutable(map);
@@ -4934,7 +6545,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_propmap output = Vx.Core.vx_copy(Vx.Web.Html.e_propmap, vals);
+      Vx.Web.Html.Type_propmap output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_propmap,
+        vals
+      );
       return output;
     }
 
@@ -4952,9 +6566,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           if (false) {
           } else if (valsub is Vx.Core.Type_string valstring) {
@@ -4966,10 +6590,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/propmap", ":keyexpected", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/propmap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Vx.Core.Type_string valany = Vx.Core.e_string;
@@ -4977,20 +6612,38 @@ public static class Html {
           } else if (valsub is Vx.Core.Type_string valallowed) {
             valany = valallowed;
           } else if (valsub is string) {
-            valany = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+            valany = Vx.Core.vx_new(
+              Vx.Core.t_string,
+              // [
+                valsub
+              // ]
+            );
           } else {
             if (false) {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                  Vx.Core.vx_string_from_object(valsub)
+                );
             }
             Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
             mapany.put("key", Vx.Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/propmap", ":invalidkeyvalue", msgmap);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+              Vx.Core.vx_mapimmutable(mapany)
+            );
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/propmap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Vx.Core.e_any) {
             ischanged = true;
@@ -5025,17 +6678,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "propmap", // name
-        ":map", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_string), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "propmap",
+        ":map",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Core.t_string
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -5115,7 +6773,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_style output = Vx.Core.vx_copy(Vx.Web.Html.e_style, vals);
+      Vx.Web.Html.Type_style output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_style,
+        vals
+      );
       return output;
     }
 
@@ -5139,9 +6800,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -5157,10 +6828,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/style", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/style",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -5171,8 +6853,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/style", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -5184,7 +6875,12 @@ public static class Html {
               vx_p_name = valname;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_name = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_name = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -5195,9 +6891,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":props")) {
             if (valsub == vx_p_props) {
@@ -5214,9 +6921,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("props"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -5233,14 +6951,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/style", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/style",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -5270,17 +7008,17 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "style", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "style",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -5335,7 +7073,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_stylelist output = Vx.Core.vx_copy(Vx.Web.Html.e_stylelist, vals);
+      Vx.Web.Html.Type_stylelist output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_stylelist,
+        vals
+      );
       return output;
     }
 
@@ -5351,9 +7092,19 @@ public static class Html {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Web.Html.Type_stylelist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_liststyle());
@@ -5373,11 +7124,31 @@ public static class Html {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/stylelist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/stylelist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/stylelist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/stylelist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -5403,17 +7174,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylelist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_style), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "stylelist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_style
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -5435,7 +7211,9 @@ public static class Html {
 
   public class Class_stylemap : Vx.Core.Class_base, Type_stylemap {
 
-    public Vx.Core.Map<string, Vx.Web.Html.Type_style> vx_p_map = Vx.Core.vx_mapimmutable(new Vx.Core.LinkedHashMap<string, Vx.Web.Html.Type_style>());
+    public Vx.Core.Map<string, Vx.Web.Html.Type_style> vx_p_map = Vx.Core.vx_mapimmutable(
+      new Vx.Core.LinkedHashMap<string, Vx.Web.Html.Type_style>()
+    );
 
     public Vx.Core.Map<string, Vx.Core.Type_any> vx_map() {
       Vx.Core.Map<string, Vx.Core.Type_any> anymap = Vx.Core.vx_map_from_map<Vx.Core.Type_any, Vx.Web.Html.Type_style>(this.vx_p_map);
@@ -5498,8 +7276,17 @@ public static class Html {
         } else if (value is Vx.Web.Html.Type_style castval) {
           map.put(key, castval);
         } else {
-          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error("vx/web/html/stylemap", ":invalidvalue", value);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/stylemap",
+            ":invalidvalue",
+            value
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       output.vx_p_map = Vx.Core.vx_mapimmutable(map);
@@ -5510,7 +7297,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_stylemap output = Vx.Core.vx_copy(Vx.Web.Html.e_stylemap, vals);
+      Vx.Web.Html.Type_stylemap output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_stylemap,
+        vals
+      );
       return output;
     }
 
@@ -5528,9 +7318,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           if (false) {
           } else if (valsub is Vx.Core.Type_string valstring) {
@@ -5542,10 +7342,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/stylemap", ":keyexpected", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/stylemap",
+              ":keyexpected",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
         } else {
           Vx.Web.Html.Type_style valany = Vx.Web.Html.e_style;
@@ -5559,14 +7370,27 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valinvalid) {
               msgval = valinvalid;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                  Vx.Core.vx_string_from_object(valsub)
+                );
             }
             Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
             mapany.put("key", Vx.Core.vx_new_string(key));
             mapany.put("value", msgval);
-            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/stylemap", ":invalidkeyvalue", msgmap);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+              Vx.Core.vx_mapimmutable(mapany)
+            );
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/stylemap",
+              ":invalidkeyvalue",
+              msgmap
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (valany != Vx.Core.e_any) {
             ischanged = true;
@@ -5601,17 +7425,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylemap", // name
-        ":map", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_style), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "stylemap",
+        ":map",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_style
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -5761,7 +7590,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_stylesheet output = Vx.Core.vx_copy(Vx.Web.Html.e_stylesheet, vals);
+      Vx.Web.Html.Type_stylesheet output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_stylesheet,
+        vals
+      );
       return output;
     }
 
@@ -5795,9 +7627,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -5813,10 +7655,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/stylesheet",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -5827,8 +7680,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -5840,7 +7702,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -5851,9 +7718,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -5870,9 +7748,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -5889,9 +7778,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -5908,9 +7808,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -5927,9 +7838,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
@@ -5938,7 +7860,12 @@ public static class Html {
               vx_p_name = valname;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_name = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_name = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -5949,9 +7876,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":styles")) {
             if (valsub == vx_p_styles) {
@@ -5968,9 +7906,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("styles"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylemap")) {
             if (valsub == vx_p_stylemap) {
@@ -5987,14 +7936,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylemap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/stylesheet",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -6029,17 +7998,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylesheet", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_headchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "stylesheet",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_headchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -6174,7 +8149,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_table output = Vx.Core.vx_copy(Vx.Web.Html.e_table, vals);
+      Vx.Web.Html.Type_table output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_table,
+        vals
+      );
       return output;
     }
 
@@ -6206,9 +8184,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -6224,10 +8212,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/table",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -6238,8 +8237,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -6251,7 +8259,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -6262,9 +8275,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -6281,9 +8305,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -6300,9 +8335,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -6319,9 +8365,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -6338,9 +8395,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":tbody")) {
             if (valsub == vx_p_tbody) {
@@ -6357,9 +8425,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("tbody"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":thead")) {
             if (valsub == vx_p_thead) {
@@ -6376,14 +8455,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("thead"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/table", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/table",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -6417,17 +8516,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "table", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "table",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_divchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -6547,7 +8652,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_tbody output = Vx.Core.vx_copy(Vx.Web.Html.e_tbody, vals);
+      Vx.Web.Html.Type_tbody output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_tbody,
+        vals
+      );
       return output;
     }
 
@@ -6577,9 +8685,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -6598,9 +8716,19 @@ public static class Html {
             Vx.Web.Html.Type_trlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Vx.Core.vx_new(Vx.Web.Html.t_trlist, valdefault);
+              vallist = Vx.Core.vx_new(
+                Vx.Web.Html.t_trlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Vx.Core.vx_copy(vallist, valdefault);
+              vallist = Vx.Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -6609,10 +8737,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/tbody",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -6623,8 +8762,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -6636,7 +8784,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -6647,9 +8800,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -6666,9 +8830,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -6685,9 +8860,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -6704,9 +8890,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -6723,9 +8920,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -6742,14 +8950,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/tbody", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/tbody",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -6782,17 +9010,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "tbody", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "tbody",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -6912,7 +9145,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_td output = Vx.Core.vx_copy(Vx.Web.Html.e_td, vals);
+      Vx.Web.Html.Type_td output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_td,
+        vals
+      );
       return output;
     }
 
@@ -6942,9 +9178,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -6963,9 +9209,19 @@ public static class Html {
             Vx.Web.Html.Type_divchildlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Vx.Core.vx_new(Vx.Web.Html.t_divchildlist, valdefault);
+              vallist = Vx.Core.vx_new(
+                Vx.Web.Html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Vx.Core.vx_copy(vallist, valdefault);
+              vallist = Vx.Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -6974,10 +9230,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/td",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -6988,8 +9255,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -7001,7 +9277,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -7012,9 +9293,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -7031,9 +9323,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -7050,9 +9353,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -7069,9 +9383,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -7088,9 +9413,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -7107,14 +9443,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/td", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/td",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -7147,17 +9503,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "td", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "td",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -7212,7 +9573,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_tdlist output = Vx.Core.vx_copy(Vx.Web.Html.e_tdlist, vals);
+      Vx.Web.Html.Type_tdlist output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_tdlist,
+        vals
+      );
       return output;
     }
 
@@ -7228,9 +9592,19 @@ public static class Html {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Web.Html.Type_tdlist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listtd());
@@ -7250,11 +9624,31 @@ public static class Html {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/tdlist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/tdlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/tdlist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/tdlist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -7280,17 +9674,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "tdlist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_td), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "tdlist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_td
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -7410,7 +9809,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_thead output = Vx.Core.vx_copy(Vx.Web.Html.e_thead, vals);
+      Vx.Web.Html.Type_thead output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_thead,
+        vals
+      );
       return output;
     }
 
@@ -7440,9 +9842,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -7461,9 +9873,19 @@ public static class Html {
             Vx.Web.Html.Type_trlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Vx.Core.vx_new(Vx.Web.Html.t_trlist, valdefault);
+              vallist = Vx.Core.vx_new(
+                Vx.Web.Html.t_trlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Vx.Core.vx_copy(vallist, valdefault);
+              vallist = Vx.Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -7472,10 +9894,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/thead",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -7486,8 +9919,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -7499,7 +9941,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -7510,9 +9957,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -7529,9 +9987,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -7548,9 +10017,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -7567,9 +10047,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -7586,9 +10077,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -7605,14 +10107,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/thead", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/thead",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -7645,17 +10167,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "thead", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "thead",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -7775,7 +10302,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_title output = Vx.Core.vx_copy(Vx.Web.Html.e_title, vals);
+      Vx.Web.Html.Type_title output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_title,
+        vals
+      );
       return output;
     }
 
@@ -7805,9 +10335,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -7823,10 +10363,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/title",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -7837,8 +10388,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -7850,7 +10410,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -7861,9 +10426,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -7880,9 +10456,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -7899,9 +10486,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -7918,9 +10516,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -7937,9 +10546,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -7948,7 +10568,12 @@ public static class Html {
               vx_p_text = valtext;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_text = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_text = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -7959,14 +10584,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/title", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/title",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -7999,17 +10644,23 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "title", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_headchild), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "title",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node,
+            Vx.Web.Html.t_headchild
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -8129,7 +10780,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_tr output = Vx.Core.vx_copy(Vx.Web.Html.e_tr, vals);
+      Vx.Web.Html.Type_tr output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_tr,
+        vals
+      );
       return output;
     }
 
@@ -8159,9 +10813,19 @@ public static class Html {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -8180,9 +10844,19 @@ public static class Html {
             Vx.Web.Html.Type_tdlist vallist;
             vallist = vx_p_nodes;
             if (vallist == null) {
-              vallist = Vx.Core.vx_new(Vx.Web.Html.t_tdlist, valdefault);
+              vallist = Vx.Core.vx_new(
+                Vx.Web.Html.t_tdlist,
+                // [
+                  valdefault
+                // ]
+              );
             } else {
-              vallist = Vx.Core.vx_copy(vallist, valdefault);
+              vallist = Vx.Core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          );
             }
             ischanged = true;
             vx_p_nodes = vallist;
@@ -8191,10 +10865,21 @@ public static class Html {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/tr",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -8205,8 +10890,17 @@ public static class Html {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -8218,7 +10912,12 @@ public static class Html {
               vx_p_id = valid;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_id = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_id = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -8229,9 +10928,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("id"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -8248,9 +10958,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("eventmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -8267,9 +10988,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -8286,9 +11018,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("style-unique"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -8305,9 +11048,20 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("stylelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -8324,14 +11078,34 @@ public static class Html {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("nodes"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/web/html/tr", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/web/html/tr",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -8364,17 +11138,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "tr", // name
-        ":struct", // extends
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node), // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "tr",
+        ":struct",
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_node
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -8429,7 +11208,10 @@ public static class Html {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Web.Html.Type_trlist output = Vx.Core.vx_copy(Vx.Web.Html.e_trlist, vals);
+      Vx.Web.Html.Type_trlist output = Vx.Core.vx_copy(
+        Vx.Web.Html.e_trlist,
+        vals
+      );
       return output;
     }
 
@@ -8445,9 +11227,19 @@ public static class Html {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Web.Html.Type_trlist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listtr());
@@ -8467,11 +11259,31 @@ public static class Html {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/trlist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/trlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/web/html/trlist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/web/html/trlist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -8497,17 +11309,22 @@ public static class Html {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/web/html", // pkgname
-        "trlist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_tr), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/web/html",
+        "trlist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Web.Html.t_tr
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -8552,17 +11369,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -8586,13 +11403,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_htmlstring_from_string(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_htmlstring_from_string(text);
       return output;
     }
@@ -8647,17 +11472,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -8681,13 +11506,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_int inputval = (Vx.Core.Type_int)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_string_indent(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_string_indent(indent);
       return output;
     }
@@ -8747,17 +11580,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -8775,8 +11608,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_body body = Vx.Core.f_any_from_any(Vx.Web.Html.t_body, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_body body = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_body,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_body_indent(body, indent);
       return output;
     }
@@ -8795,16 +11638,18 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_divchildlist nodes = body.nodes();
-        Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx.Core.vx_new_string("body"),
-          Vx.Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_divchildlist nodes = body.nodes();
+          Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx.Core.vx_new_string("body"),
+            Vx.Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -8845,17 +11690,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -8873,8 +11718,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_details details = Vx.Core.f_any_from_any(Vx.Web.Html.t_details, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_details details = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_details,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_details_indent(details, indent);
       return output;
     }
@@ -8893,44 +11748,46 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Web.Html.Type_divchildlist summary = details.summary();
-        Vx.Web.Html.Type_divchildlist nodes = details.nodes();
-        Vx.Core.Type_string ssummary = Vx.Web.Html.f_string_from_nodelist_indent(
-          summary,
-          Vx.Core.f_plus(
-            indent,
-            Vx.Core.vx_new_int(2)
-          )
-        );
-        Vx.Core.Type_string snodes = Vx.Web.Html.f_string_from_nodelist_indent(
-          nodes,
-          Vx.Core.f_plus(
-            indent,
-            Vx.Core.vx_new_int(1)
-          )
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<details>"),
-            sindent,
-            Vx.Core.vx_new_string("  <summary>"),
-            ssummary,
-            sindent,
-            Vx.Core.vx_new_string("  </summary>"),
-            snodes,
-            sindent,
-            Vx.Core.vx_new_string("</details>")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Web.Html.Type_divchildlist summary = details.summary();
+          Vx.Web.Html.Type_divchildlist nodes = details.nodes();
+          Vx.Core.Type_string ssummary = Vx.Web.Html.f_string_from_nodelist_indent(
+            summary,
+            Vx.Core.f_plus(
+              indent,
+              Vx.Core.vx_new_int(2)
+            )
+          );
+          Vx.Core.Type_string snodes = Vx.Web.Html.f_string_from_nodelist_indent(
+            nodes,
+            Vx.Core.f_plus(
+              indent,
+              Vx.Core.vx_new_int(1)
+            )
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<details>"),
+                sindent,
+                Vx.Core.vx_new_string("  <summary>"),
+                ssummary,
+                sindent,
+                Vx.Core.vx_new_string("  </summary>"),
+                snodes,
+                sindent,
+                Vx.Core.vx_new_string("</details>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -8971,17 +11828,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -8999,8 +11856,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_div div = Vx.Core.f_any_from_any(Vx.Web.Html.t_div, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_div div = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_div,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_div_indent(div, indent);
       return output;
     }
@@ -9019,35 +11886,37 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_divchildlist nodes = div.nodes();
-        Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
-          Vx.Core.vx_new_string("id"),
-          div.id()
-        );
-        Vx.Core.Type_string sclass = Vx.Web.Html.f_string_from_propstyle_stylelist(
-          div.style(),
-          div.stylelist()
-        );
-        Vx.Core.Type_string sstyle = Vx.Web.Html.f_string_from_propstyleunique(
-          div.style_unique()
-        );
-        Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx.Core.vx_new_string("div"),
-          Vx.Core.f_new(
-            Vx.Core.t_string,
-            Vx.Core.vx_new(
-              Vx.Core.t_anylist,
-              sid,
-              sclass,
-              sstyle
-            )
-          ),
-          indent
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_divchildlist nodes = div.nodes();
+          Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
+            Vx.Core.vx_new_string("id"),
+            div.id()
+          );
+          Vx.Core.Type_string sclass = Vx.Web.Html.f_string_from_propstyle_stylelist(
+            div.style(),
+            div.stylelist()
+          );
+          Vx.Core.Type_string sstyle = Vx.Web.Html.f_string_from_propstyleunique(div.style_unique());
+          Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx.Core.vx_new_string("div"),
+            Vx.Core.f_new(
+              Vx.Core.t_string,
+              Vx.Core.vx_new(
+                Vx.Core.t_anylist,
+                // [
+                  sid,
+                  sclass,
+                  sstyle
+                // ]
+              )
+            ),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9088,17 +11957,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9116,8 +11985,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_footer footer = Vx.Core.f_any_from_any(Vx.Web.Html.t_footer, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_footer footer = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_footer,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_footer_indent(footer, indent);
       return output;
     }
@@ -9136,16 +12015,18 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_divchildlist nodes = footer.nodes();
-        Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx.Core.vx_new_string("footer"),
-          Vx.Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_divchildlist nodes = footer.nodes();
+          Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx.Core.vx_new_string("footer"),
+            Vx.Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9186,17 +12067,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9214,8 +12095,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_h1 h1 = Vx.Core.f_any_from_any(Vx.Web.Html.t_h1, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_h1 h1 = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_h1,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_h1_indent(h1, indent);
       return output;
     }
@@ -9234,29 +12125,31 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string text = h1.text();
-        Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
-          Vx.Core.vx_new_string("id"),
-          h1.id()
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<h1"),
-            sid,
-            Vx.Core.vx_new_string(">"),
-            text,
-            Vx.Core.vx_new_string("</h1>")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string text = h1.text();
+          Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
+            Vx.Core.vx_new_string("id"),
+            h1.id()
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<h1"),
+                sid,
+                Vx.Core.vx_new_string(">"),
+                text,
+                Vx.Core.vx_new_string("</h1>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9297,17 +12190,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9325,8 +12218,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_h2 h2 = Vx.Core.f_any_from_any(Vx.Web.Html.t_h2, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_h2 h2 = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_h2,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_h2_indent(h2, indent);
       return output;
     }
@@ -9345,29 +12248,31 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string text = h2.text();
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
-          Vx.Core.vx_new_string("id"),
-          h2.id()
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<h2"),
-            sid,
-            Vx.Core.vx_new_string(">"),
-            text,
-            Vx.Core.vx_new_string("</h2>")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string text = h2.text();
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
+            Vx.Core.vx_new_string("id"),
+            h2.id()
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<h2"),
+                sid,
+                Vx.Core.vx_new_string(">"),
+                text,
+                Vx.Core.vx_new_string("</h2>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9408,17 +12313,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9436,8 +12341,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_h3 h3 = Vx.Core.f_any_from_any(Vx.Web.Html.t_h3, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_h3 h3 = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_h3,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_h3_indent(h3, indent);
       return output;
     }
@@ -9456,29 +12371,31 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string text = h3.text();
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
-          Vx.Core.vx_new_string("id"),
-          h3.id()
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<h3"),
-            sid,
-            Vx.Core.vx_new_string(">"),
-            text,
-            Vx.Core.vx_new_string("</h3>")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string text = h3.text();
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
+            Vx.Core.vx_new_string("id"),
+            h3.id()
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<h3"),
+                sid,
+                Vx.Core.vx_new_string(">"),
+                text,
+                Vx.Core.vx_new_string("</h3>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9519,17 +12436,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9547,8 +12464,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_head head = Vx.Core.f_any_from_any(Vx.Web.Html.t_head, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_head head = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_head,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_head_indent(head, indent);
       return output;
     }
@@ -9567,16 +12494,18 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_headchildlist nodes = head.nodes();
-        Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx.Core.vx_new_string("head"),
-          Vx.Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_headchildlist nodes = head.nodes();
+          Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx.Core.vx_new_string("head"),
+            Vx.Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9616,17 +12545,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9650,13 +12579,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_html inputval = (Vx.Web.Html.Type_html)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_string_from_html(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_html html = Vx.Core.f_any_from_any(Vx.Web.Html.t_html, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_html html = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_html,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_string_from_html(html);
       return output;
     }
@@ -9675,44 +12612,48 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string lang = Vx.Web.Html.f_string_from_propname_val(
-          Vx.Core.vx_new_string("lang"),
-          html.lang()
-        );
-        Vx.Web.Html.Type_head head = html.head();
-        Vx.Web.Html.Type_body body = html.body();
-        Vx.Web.Html.Type_footer footer = html.footer();
-        Vx.Core.Type_string shead = Vx.Web.Html.f_string_from_head_indent(
-          head,
-          Vx.Core.vx_new_int(1)
-        );
-        Vx.Core.Type_string sbody = Vx.Web.Html.f_string_from_body_indent(
-          body,
-          Vx.Core.vx_new_int(1)
-        );
-        Vx.Core.Type_string sfooter = Vx.Web.Html.f_string_from_footer_indent(
-          footer,
-          Vx.Core.vx_new_int(1)
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string("<!DOCTYPE html>"),
-            Vx.Core.c_newline,
-            Vx.Core.vx_new_string("<html"),
-            lang,
-            Vx.Core.vx_new_string(">"),
-            shead,
-            sbody,
-            sfooter,
-            Vx.Core.c_newline,
-            Vx.Core.vx_new_string("</html>")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string lang = Vx.Web.Html.f_string_from_propname_val(
+            Vx.Core.vx_new_string("lang"),
+            html.lang()
+          );
+          Vx.Web.Html.Type_head head = html.head();
+          Vx.Web.Html.Type_body body = html.body();
+          Vx.Web.Html.Type_footer footer = html.footer();
+          Vx.Core.Type_string shead = Vx.Web.Html.f_string_from_head_indent(
+            head,
+            Vx.Core.vx_new_int(1)
+          );
+          Vx.Core.Type_string sbody = Vx.Web.Html.f_string_from_body_indent(
+            body,
+            Vx.Core.vx_new_int(1)
+          );
+          Vx.Core.Type_string sfooter = Vx.Web.Html.f_string_from_footer_indent(
+            footer,
+            Vx.Core.vx_new_int(1)
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string("<!DOCTYPE html>"),
+                Vx.Core.c_newline,
+                Vx.Core.vx_new_string("<html"),
+                lang,
+                Vx.Core.vx_new_string(">"),
+                shead,
+                sbody,
+                sfooter,
+                Vx.Core.c_newline,
+                Vx.Core.vx_new_string("</html>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9753,17 +12694,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9781,8 +12722,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_img img = Vx.Core.f_any_from_any(Vx.Web.Html.t_img, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_img img = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_img,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_img_indent(img, indent);
       return output;
     }
@@ -9801,40 +12752,40 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string ssrc = Vx.Web.Html.f_string_from_propname_val(
-          Vx.Core.vx_new_string("src"),
-          img.src()
-        );
-        Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
-          Vx.Core.vx_new_string("id"),
-          img.id()
-        );
-        Vx.Core.Type_string sclass = Vx.Web.Html.f_string_from_propstyle_stylelist(
-          img.style(),
-          img.stylelist()
-        );
-        Vx.Core.Type_string sstyle = Vx.Web.Html.f_string_from_propstyleunique(
-          img.style_unique()
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<img"),
-            sid,
-            sclass,
-            sstyle,
-            ssrc,
-            Vx.Core.vx_new_string(" />")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string ssrc = Vx.Web.Html.f_string_from_propname_val(
+            Vx.Core.vx_new_string("src"),
+            img.src()
+          );
+          Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
+            Vx.Core.vx_new_string("id"),
+            img.id()
+          );
+          Vx.Core.Type_string sclass = Vx.Web.Html.f_string_from_propstyle_stylelist(
+            img.style(),
+            img.stylelist()
+          );
+          Vx.Core.Type_string sstyle = Vx.Web.Html.f_string_from_propstyleunique(img.style_unique());
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<img"),
+                sid,
+                sclass,
+                sstyle,
+                ssrc,
+                Vx.Core.vx_new_string(" />")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -9874,17 +12825,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -9908,13 +12859,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_int inputval = (Vx.Core.Type_int)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_string_from_indent(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_string_from_indent(indent);
       return output;
     }
@@ -9942,10 +12901,10 @@ public static class Html {
         Vx.Core.t_string,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.c_newline,
-          Vx.Web.Html.f_string_indent(
-            indent
-          )
+          // [
+            Vx.Core.c_newline,
+            Vx.Web.Html.f_string_indent(indent)
+          // ]
         )
       )
     );
@@ -9988,17 +12947,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10016,8 +12975,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_meta meta = Vx.Core.f_any_from_any(Vx.Web.Html.t_meta, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_meta meta = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_meta,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_meta_indent(meta, indent);
       return output;
     }
@@ -10036,93 +13005,113 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string charset = meta.charset();
-        Vx.Core.Type_string name = meta.name();
-        Vx.Core.Type_string content = meta.content();
-        Vx.Core.Type_string scharset = Vx.Core.f_if_2(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.f_ne(
-                  Vx.Core.vx_new_string(""),
-                  charset
-                );
-                return output_2;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = Vx.Web.Html.f_string_from_propname_val(
-                  Vx.Core.vx_new_string("charset"),
-                  charset
-                );
-                return output_3;
-              })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string charset = meta.charset();
+          Vx.Core.Type_string name = meta.name();
+          Vx.Core.Type_string content = meta.content();
+          Vx.Core.Type_string scharset = Vx.Core.f_if_2(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.f_ne(
+                          Vx.Core.vx_new_string(""),
+                          charset
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_3 = Vx.Web.Html.f_string_from_propname_val(
+                          Vx.Core.vx_new_string("charset"),
+                          charset
+                        );
+                        return output_3;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        Vx.Core.Type_string sname = Vx.Core.f_if_2(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_4 = Vx.Core.f_ne(
-                  Vx.Core.vx_new_string(""),
-                  name
-                );
-                return output_4;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_5 = Vx.Web.Html.f_string_from_propname_val(
-                  Vx.Core.vx_new_string("name"),
-                  name
-                );
-                return output_5;
-              })
+          );
+          Vx.Core.Type_string sname = Vx.Core.f_if_2(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_4 = Vx.Core.f_ne(
+                          Vx.Core.vx_new_string(""),
+                          name
+                        );
+                        return output_4;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_5 = Vx.Web.Html.f_string_from_propname_val(
+                          Vx.Core.vx_new_string("name"),
+                          name
+                        );
+                        return output_5;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        Vx.Core.Type_string scontext = Vx.Core.f_if_2(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_6 = Vx.Core.f_ne(
-                  Vx.Core.vx_new_string(""),
-                  content
-                );
-                return output_6;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_7 = Vx.Web.Html.f_string_from_propname_val(
-                  Vx.Core.vx_new_string("content"),
-                  content
-                );
-                return output_7;
-              })
+          );
+          Vx.Core.Type_string scontext = Vx.Core.f_if_2(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_6 = Vx.Core.f_ne(
+                          Vx.Core.vx_new_string(""),
+                          content
+                        );
+                        return output_6;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_7 = Vx.Web.Html.f_string_from_propname_val(
+                          Vx.Core.vx_new_string("content"),
+                          content
+                        );
+                        return output_7;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<meta"),
-            scharset,
-            sname,
-            scontext,
-            Vx.Core.vx_new_string(" />")
-          )
-        );
-        return output_1;
-      })
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<meta"),
+                scharset,
+                sname,
+                scontext,
+                Vx.Core.vx_new_string(" />")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10162,17 +13151,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10196,13 +13185,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_string_from_node(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any node = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_any node = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_string_from_node(node);
       return output;
     }
@@ -10262,17 +13259,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10290,8 +13287,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any node = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_any node = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_node_indent(node, indent);
       return output;
     }
@@ -10310,245 +13317,281 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_switch(
       Vx.Core.t_string,
-      Vx.Core.f_type_from_any(
-        node
-      ),
+      Vx.Core.f_type_from_any(node),
       Vx.Core.vx_new(
         Vx.Core.t_thenelselist,
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_body,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_body_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_body,
-                node
-              ),
-              indent
-            );
-            return output_1;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_details,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_2 = Vx.Web.Html.f_string_from_details_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_details,
-                node
-              ),
-              indent
-            );
-            return output_2;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_div,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_3 = Vx.Web.Html.f_string_from_div_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_div,
-                node
-              ),
-              indent
-            );
-            return output_3;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_h1,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_4 = Vx.Web.Html.f_string_from_h1_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_h1,
-                node
-              ),
-              indent
-            );
-            return output_4;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_h2,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_5 = Vx.Web.Html.f_string_from_h2_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_h2,
-                node
-              ),
-              indent
-            );
-            return output_5;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_h3,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_6 = Vx.Web.Html.f_string_from_h3_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_h3,
-                node
-              ),
-              indent
-            );
-            return output_6;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_head,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_7 = Vx.Web.Html.f_string_from_head_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_head,
-                node
-              ),
-              indent
-            );
-            return output_7;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_footer,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_8 = Vx.Web.Html.f_string_from_footer_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_footer,
-                node
-              ),
-              indent
-            );
-            return output_8;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_img,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_9 = Vx.Web.Html.f_string_from_img_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_img,
-                node
-              ),
-              indent
-            );
-            return output_9;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_meta,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_10 = Vx.Web.Html.f_string_from_meta_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_meta,
-                node
-              ),
-              indent
-            );
-            return output_10;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_p,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_11 = Vx.Web.Html.f_string_from_p_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_p,
-                node
-              ),
-              indent
-            );
-            return output_11;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_stylesheet,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_12 = Vx.Web.Html.f_string_from_stylesheet_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_stylesheet,
-                node
-              ),
-              indent
-            );
-            return output_12;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_table,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_13 = Vx.Web.Html.f_string_from_table_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_table,
-                node
-              ),
-              indent
-            );
-            return output_13;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_title,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_14 = Vx.Web.Html.f_string_from_title_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_title,
-                node
-              ),
-              indent
-            );
-            return output_14;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_tbody,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_15 = Vx.Web.Html.f_string_from_tbody_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_tbody,
-                node
-              ),
-              indent
-            );
-            return output_15;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_thead,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_16 = Vx.Web.Html.f_string_from_thead_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_thead,
-                node
-              ),
-              indent
-            );
-            return output_16;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_td,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_17 = Vx.Web.Html.f_string_from_td_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_td,
-                node
-              ),
-              indent
-            );
-            return output_17;
-          })
-        ),
-        Vx.Core.f_case_1(
-          Vx.Web.Html.t_tr,
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_18 = Vx.Web.Html.f_string_from_tr_indent(
-              Vx.Core.f_any_from_any(
-                Vx.Web.Html.t_tr,
-                node
-              ),
-              indent
-            );
-            return output_18;
-          })
-        )
+        // [
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_body,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_body_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_body,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_1;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_details,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_2 = Vx.Web.Html.f_string_from_details_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_details,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_2;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_div,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_3 = Vx.Web.Html.f_string_from_div_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_div,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_3;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_h1,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_4 = Vx.Web.Html.f_string_from_h1_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_h1,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_4;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_h2,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_5 = Vx.Web.Html.f_string_from_h2_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_h2,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_5;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_h3,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_6 = Vx.Web.Html.f_string_from_h3_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_h3,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_6;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_head,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_7 = Vx.Web.Html.f_string_from_head_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_head,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_7;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_footer,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_8 = Vx.Web.Html.f_string_from_footer_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_footer,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_8;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_img,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_9 = Vx.Web.Html.f_string_from_img_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_img,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_9;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_meta,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_10 = Vx.Web.Html.f_string_from_meta_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_meta,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_10;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_p,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_11 = Vx.Web.Html.f_string_from_p_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_p,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_11;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_stylesheet,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_12 = Vx.Web.Html.f_string_from_stylesheet_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_stylesheet,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_12;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_table,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_13 = Vx.Web.Html.f_string_from_table_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_table,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_13;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_title,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_14 = Vx.Web.Html.f_string_from_title_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_title,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_14;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_tbody,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_15 = Vx.Web.Html.f_string_from_tbody_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_tbody,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_15;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_thead,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_16 = Vx.Web.Html.f_string_from_thead_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_thead,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_16;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_td,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_17 = Vx.Web.Html.f_string_from_td_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_td,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_17;
+                }
+            )
+          ),
+          Vx.Core.f_case_1(
+            Vx.Web.Html.t_tr,
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_18 = Vx.Web.Html.f_string_from_tr_indent(
+                    Vx.Core.f_any_from_any(
+                      Vx.Web.Html.t_tr,
+                      node
+                    ),
+                    indent
+                  );
+                  return output_18;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -10590,17 +13633,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10618,8 +13661,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list nodelist = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_list nodelist = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_nodelist_indent(nodelist, indent);
       return output;
     }
@@ -10638,25 +13691,29 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_stringlist textlist = Vx.Core.f_list_from_list_1(
-          Vx.Core.t_stringlist,
-          nodelist,
-          Vx.Core.t_any_from_any.vx_fn_new((node_any) => {
-            Vx.Web.Html.Type_node node = Vx.Core.f_any_from_any(Vx.Web.Html.t_node, node_any);
-            Vx.Core.Type_any output_2 = Vx.Web.Html.f_string_from_node_indent(
-              node,
-              indent
-            );
-            return output_2;
-          })
-        );
-        Vx.Core.Type_any output_1 = Vx.Type.f_string_from_stringlist_join(
-          textlist,
-          Vx.Core.vx_new_string("")
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_stringlist textlist = Vx.Core.f_list_from_list_1(
+            Vx.Core.t_stringlist,
+            nodelist,
+            Vx.Core.t_any_from_any.vx_fn_new(
+              (node_any) => {
+                Vx.Web.Html.Type_node node = Vx.Core.f_any_from_any(
+                  Vx.Web.Html.t_node,
+                  node_any
+                );
+                Vx.Core.Type_any output_2 = Vx.Web.Html.f_string_from_node_indent(node, indent);
+                return output_2;
+              }
+            )
+          );
+          Vx.Core.Type_any output_1 = Vx.Type.f_string_from_stringlist_join(
+            textlist,
+            Vx.Core.vx_new_string("")
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10699,17 +13756,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10727,10 +13784,30 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list nodes = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string tag = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_string prop = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(2)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(3)));
+      Vx.Core.Type_list nodes = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string tag = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_string prop = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(3)
+        )
+      );
       output = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(nodes, tag, prop, indent);
       return output;
     }
@@ -10749,70 +13826,78 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string text = Vx.Web.Html.f_string_from_nodelist_indent(
-          nodes,
-          Vx.Core.f_plus1(
-            indent
-          )
-        );
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string eindent = Vx.Core.f_if_2(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.f_is_empty(
-                  text
-                );
-                return output_2;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = Vx.Core.vx_new_string("");
-                return output_3;
-              })
-            ),
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_4 = Vx.Core.f_is_empty(
-                  sindent
-                );
-                return output_4;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_5 = Vx.Core.c_newline;
-                return output_5;
-              })
-            ),
-            Vx.Core.f_else(
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_6 = sindent;
-                return output_6;
-              })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string text = Vx.Web.Html.f_string_from_nodelist_indent(
+            nodes,
+            Vx.Core.f_plus1(indent)
+          );
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string eindent = Vx.Core.f_if_2(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.f_is_empty(text);
+                        return output_2;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_3 = Vx.Core.vx_new_string("");
+                        return output_3;
+                      }
+                  )
+                ),
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_4 = Vx.Core.f_is_empty(sindent);
+                        return output_4;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_5 = Vx.Core.c_newline;
+                        return output_5;
+                      }
+                  )
+                ),
+                Vx.Core.f_else(
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_6 = sindent;
+                        return output_6;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<"),
-            tag,
-            prop,
-            Vx.Core.vx_new_string(">"),
-            text,
-            eindent,
-            Vx.Core.vx_new_string("</"),
-            tag,
-            Vx.Core.vx_new_string(">")
-          )
-        );
-        return output_1;
-      })
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<"),
+                tag,
+                prop,
+                Vx.Core.vx_new_string(">"),
+                text,
+                eindent,
+                Vx.Core.vx_new_string("</"),
+                tag,
+                Vx.Core.vx_new_string(">")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10853,17 +13938,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -10881,8 +13966,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_p p = Vx.Core.f_any_from_any(Vx.Web.Html.t_p, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_p p = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_p,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_p_indent(p, indent);
       return output;
     }
@@ -10901,40 +13996,38 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string text = Vx.Web.Html.f_htmlstring_from_string(
-          p.text()
-        );
-        Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
-          Vx.Core.vx_new_string("id"),
-          p.id()
-        );
-        Vx.Core.Type_string sclass = Vx.Web.Html.f_string_from_propstyle_stylelist(
-          p.style(),
-          p.stylelist()
-        );
-        Vx.Core.Type_string sstyle = Vx.Web.Html.f_string_from_propstyleunique(
-          p.style_unique()
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<p"),
-            sid,
-            sclass,
-            sstyle,
-            Vx.Core.vx_new_string(">"),
-            text,
-            Vx.Core.vx_new_string("</p>")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string text = Vx.Web.Html.f_htmlstring_from_string(p.text());
+          Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
+            Vx.Core.vx_new_string("id"),
+            p.id()
+          );
+          Vx.Core.Type_string sclass = Vx.Web.Html.f_string_from_propstyle_stylelist(
+            p.style(),
+            p.stylelist()
+          );
+          Vx.Core.Type_string sstyle = Vx.Web.Html.f_string_from_propstyleunique(p.style_unique());
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<p"),
+                sid,
+                sclass,
+                sstyle,
+                Vx.Core.vx_new_string(">"),
+                text,
+                Vx.Core.vx_new_string("</p>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -10975,17 +14068,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11003,8 +14096,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string key = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string value = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_string key = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string value = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_propname_val(key, value);
       return output;
     }
@@ -11023,19 +14126,19 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_if(
       Vx.Core.t_string,
-      Vx.Core.f_notempty(
-        value
-      ),
+      Vx.Core.f_notempty(value),
       Vx.Core.f_new(
         Vx.Core.t_string,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(" "),
-          key,
-          Vx.Core.vx_new_string("="),
-          Vx.Core.c_quote,
-          value,
-          Vx.Core.c_quote
+          // [
+            Vx.Core.vx_new_string(" "),
+            key,
+            Vx.Core.vx_new_string("="),
+            Vx.Core.c_quote,
+            value,
+            Vx.Core.c_quote
+          // ]
         )
       )
     );
@@ -11077,17 +14180,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11111,13 +14214,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_style inputval = (Vx.Web.Html.Type_style)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_string_from_propstyle(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(Vx.Web.Html.t_style, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_style,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_string_from_propstyle(style);
       return output;
     }
@@ -11138,30 +14249,36 @@ public static class Html {
       Vx.Core.t_string,
       Vx.Core.vx_new(
         Vx.Core.t_thenelselist,
-        Vx.Core.f_then(
-          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_1 = Vx.Core.f_notempty_1(
-              style
-            );
-            return output_1;
-          }),
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_2 = Vx.Core.f_new(
-              Vx.Core.t_string,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(" class="),
-                Vx.Core.c_quote,
-                Vx.Type.f_string_from_string_start(
-                  style.name(),
-                  Vx.Core.vx_new_int(2)
-                ),
-                Vx.Core.c_quote
-              )
-            );
-            return output_2;
-          })
-        )
+        // [
+          Vx.Core.f_then(
+            Vx.Core.t_boolean_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_1 = Vx.Core.f_notempty_1(style);
+                  return output_1;
+                }
+            ),
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_2 = Vx.Core.f_new(
+                    Vx.Core.t_string,
+                    Vx.Core.vx_new(
+                      Vx.Core.t_anylist,
+                      // [
+                        Vx.Core.vx_new_string(" class="),
+                        Vx.Core.c_quote,
+                        Vx.Type.f_string_from_string_start(
+                          style.name(),
+                          Vx.Core.vx_new_int(2)
+                        ),
+                        Vx.Core.c_quote
+                      // ]
+                    )
+                  );
+                  return output_2;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -11203,17 +14320,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11231,8 +14348,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(Vx.Web.Html.t_style, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylelist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_style,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_propstyle_stylelist(style, stylelist);
       return output;
     }
@@ -11253,34 +14380,36 @@ public static class Html {
       Vx.Core.t_string,
       Vx.Core.vx_new(
         Vx.Core.t_thenelselist,
-        Vx.Core.f_then(
-          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_1 = Vx.Core.f_notempty_1(
-              style
-            );
-            return output_1;
-          }),
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_2 = Vx.Web.Html.f_string_from_propstyle(
-              style
-            );
-            return output_2;
-          })
-        ),
-        Vx.Core.f_then(
-          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_3 = Vx.Core.f_notempty_1(
-              stylelist
-            );
-            return output_3;
-          }),
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_4 = Vx.Web.Html.f_string_from_propstylelist(
-              stylelist
-            );
-            return output_4;
-          })
-        )
+        // [
+          Vx.Core.f_then(
+            Vx.Core.t_boolean_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_1 = Vx.Core.f_notempty_1(style);
+                  return output_1;
+                }
+            ),
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_2 = Vx.Web.Html.f_string_from_propstyle(style);
+                  return output_2;
+                }
+            )
+          ),
+          Vx.Core.f_then(
+            Vx.Core.t_boolean_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_3 = Vx.Core.f_notempty_1(stylelist);
+                  return output_3;
+                }
+            ),
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_4 = Vx.Web.Html.f_string_from_propstylelist(stylelist);
+                  return output_4;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -11321,17 +14450,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11355,13 +14484,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_stylelist inputval = (Vx.Web.Html.Type_stylelist)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_string_from_propstylelist(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylelist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_string_from_propstylelist(stylelist);
       return output;
     }
@@ -11382,43 +14519,49 @@ public static class Html {
       Vx.Core.t_string,
       Vx.Core.vx_new(
         Vx.Core.t_thenelselist,
-        Vx.Core.f_then(
-          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_1 = Vx.Core.f_notempty_1(
-              stylelist
-            );
-            return output_1;
-          }),
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_2 = Vx.Core.f_let(
-              Vx.Core.t_string,
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_string joined = Vx.Web.Html.f_string_from_stylelist(
-                  stylelist
-                );
-                Vx.Core.Type_any output_3 = Vx.Core.f_if(
-                  Vx.Core.t_string,
-                  Vx.Core.f_ne(
-                    Vx.Core.vx_new_string(""),
-                    joined
-                  ),
-                  Vx.Core.f_new(
+        // [
+          Vx.Core.f_then(
+            Vx.Core.t_boolean_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_1 = Vx.Core.f_notempty_1(stylelist);
+                  return output_1;
+                }
+            ),
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_2 = Vx.Core.f_let(
                     Vx.Core.t_string,
-                    Vx.Core.vx_new(
-                      Vx.Core.t_anylist,
-                      Vx.Core.vx_new_string(" class="),
-                      Vx.Core.c_quote,
-                      joined,
-                      Vx.Core.c_quote
+                    Vx.Core.t_any_from_func.vx_fn_new(
+                      () => {
+                        Vx.Core.Type_string joined = Vx.Web.Html.f_string_from_stylelist(stylelist);
+                        Vx.Core.Type_any output_3 = Vx.Core.f_if(
+                          Vx.Core.t_string,
+                          Vx.Core.f_ne(
+                            Vx.Core.vx_new_string(""),
+                            joined
+                          ),
+                          Vx.Core.f_new(
+                            Vx.Core.t_string,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string(" class="),
+                                Vx.Core.c_quote,
+                                joined,
+                                Vx.Core.c_quote
+                              // ]
+                            )
+                          )
+                        );
+                        return output_3;
+                      }
                     )
-                  )
-                );
-                return output_3;
-              })
-            );
-            return output_2;
-          })
-        )
+                  );
+                  return output_2;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -11459,17 +14602,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11493,13 +14636,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_style inputval = (Vx.Web.Html.Type_style)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_string_from_propstyleunique(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(Vx.Web.Html.t_style, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_style,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_string_from_propstyleunique(style);
       return output;
     }
@@ -11520,55 +14671,67 @@ public static class Html {
       Vx.Core.t_string,
       Vx.Core.vx_new(
         Vx.Core.t_thenelselist,
-        Vx.Core.f_then(
-          Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_1 = Vx.Core.f_notempty_1(
-              style
-            );
-            return output_1;
-          }),
-          Vx.Core.t_any_from_func.vx_fn_new(() => {
-            Vx.Core.Type_any output_2 = Vx.Core.f_let(
-              Vx.Core.t_string,
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Web.Html.Type_propmap props = style.props();
-                Vx.Core.Type_string text = Vx.Web.Html.f_string_from_stylepropmap_indent(
-                  props,
-                  Vx.Core.vx_new_int(0)
-                );
-                Vx.Core.Type_any output_3 = Vx.Core.f_if_2(
-                  Vx.Core.t_string,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_thenelselist,
-                    Vx.Core.f_then(
-                      Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_4 = Vx.Core.f_notempty(
-                          text
+        // [
+          Vx.Core.f_then(
+            Vx.Core.t_boolean_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_1 = Vx.Core.f_notempty_1(style);
+                  return output_1;
+                }
+            ),
+            Vx.Core.t_any_from_func.vx_fn_new(
+              () => {
+                Vx.Core.Type_any output_2 = Vx.Core.f_let(
+                    Vx.Core.t_string,
+                    Vx.Core.t_any_from_func.vx_fn_new(
+                      () => {
+                        Vx.Web.Html.Type_propmap props = style.props();
+                        Vx.Core.Type_string text = Vx.Web.Html.f_string_from_stylepropmap_indent(
+                          props,
+                          Vx.Core.vx_new_int(0)
                         );
-                        return output_4;
-                      }),
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_any output_5 = Vx.Core.f_new(
+                        Vx.Core.Type_any output_3 = Vx.Core.f_if_2(
                           Vx.Core.t_string,
                           Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(" style="),
-                            Vx.Core.c_quote,
-                            text,
-                            Vx.Core.c_quote
+                            Vx.Core.t_thenelselist,
+                            // [
+                              Vx.Core.f_then(
+                                Vx.Core.t_boolean_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_4 = Vx.Core.f_notempty(text);
+                                      return output_4;
+                                    }
+                                ),
+                                Vx.Core.t_any_from_func.vx_fn_new(
+                                  () => {
+                                    Vx.Core.Type_any output_5 = Vx.Core.f_new(
+                                        Vx.Core.t_string,
+                                        Vx.Core.vx_new(
+                                          Vx.Core.t_anylist,
+                                          // [
+                                            Vx.Core.vx_new_string(" style="),
+                                            Vx.Core.c_quote,
+                                            text,
+                                            Vx.Core.c_quote
+                                          // ]
+                                        )
+                                      );
+                                      return output_5;
+                                    }
+                                )
+                              )
+                            // ]
                           )
                         );
-                        return output_5;
-                      })
+                        return output_3;
+                      }
                     )
-                  )
-                );
-                return output_3;
-              })
-            );
-            return output_2;
-          })
-        )
+                  );
+                  return output_2;
+                }
+            )
+          )
+        // ]
       )
     );
     return output;
@@ -11610,17 +14773,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11638,8 +14801,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(Vx.Web.Html.t_style, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_style,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_style_indent(style, indent);
       return output;
     }
@@ -11658,40 +14831,38 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string name = style.name();
-        Vx.Web.Html.Type_propmap propmap = style.props();
-        Vx.Web.Html.Type_stylelist sublist = style.stylelist();
-        Vx.Core.Type_string stext = Vx.Web.Html.f_string_from_stylepropmap_indent(
-          propmap,
-          Vx.Core.f_plus1(
-            indent
-          )
-        );
-        Vx.Core.Type_string subtext = Vx.Web.Html.f_string_from_stylelist_indent(
-          sublist,
-          Vx.Core.f_plus1(
-            indent
-          )
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            name,
-            Vx.Core.vx_new_string(" {"),
-            stext,
-            subtext,
-            sindent,
-            Vx.Core.vx_new_string("}")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string name = style.name();
+          Vx.Web.Html.Type_propmap propmap = style.props();
+          Vx.Web.Html.Type_stylelist sublist = style.stylelist();
+          Vx.Core.Type_string stext = Vx.Web.Html.f_string_from_stylepropmap_indent(
+            propmap,
+            Vx.Core.f_plus1(indent)
+          );
+          Vx.Core.Type_string subtext = Vx.Web.Html.f_string_from_stylelist_indent(
+            sublist,
+            Vx.Core.f_plus1(indent)
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                name,
+                Vx.Core.vx_new_string(" {"),
+                stext,
+                subtext,
+                sindent,
+                Vx.Core.vx_new_string("}")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -11731,17 +14902,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11765,13 +14936,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_stylelist inputval = (Vx.Web.Html.Type_stylelist)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_string_from_stylelist(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylelist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_string_from_stylelist(stylelist);
       return output;
     }
@@ -11790,25 +14969,32 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_stringlist namelist = Vx.Core.f_list_from_list_1(
-          Vx.Core.t_stringlist,
-          stylelist,
-          Vx.Core.t_any_from_any.vx_fn_new((item_any) => {
-            Vx.Web.Html.Type_style item = Vx.Core.f_any_from_any(Vx.Web.Html.t_style, item_any);
-            Vx.Core.Type_any output_2 = Vx.Type.f_string_from_string_start(
-              item.name(),
-              Vx.Core.vx_new_int(2)
-            );
-            return output_2;
-          })
-        );
-        Vx.Core.Type_any output_1 = Vx.Type.f_string_from_stringlist_join(
-          namelist,
-          Vx.Core.vx_new_string(" ")
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_stringlist namelist = Vx.Core.f_list_from_list_1(
+            Vx.Core.t_stringlist,
+            stylelist,
+            Vx.Core.t_any_from_any.vx_fn_new(
+              (item_any) => {
+                Vx.Web.Html.Type_style item = Vx.Core.f_any_from_any(
+                  Vx.Web.Html.t_style,
+                  item_any
+                );
+                Vx.Core.Type_any output_2 = Vx.Type.f_string_from_string_start(
+                  item.name(),
+                  Vx.Core.vx_new_int(2)
+                );
+                return output_2;
+              }
+            )
+          );
+          Vx.Core.Type_any output_1 = Vx.Type.f_string_from_stringlist_join(
+            namelist,
+            Vx.Core.vx_new_string(" ")
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -11849,17 +15035,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11877,8 +15063,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylelist, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_stylelist_indent(stylelist, indent);
       return output;
     }
@@ -11897,25 +15093,29 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_stringlist sstyles = Vx.Core.f_list_from_list_1(
-          Vx.Core.t_stringlist,
-          stylelist,
-          Vx.Core.t_any_from_any.vx_fn_new((substyle_any) => {
-            Vx.Web.Html.Type_style substyle = Vx.Core.f_any_from_any(Vx.Web.Html.t_style, substyle_any);
-            Vx.Core.Type_any output_2 = Vx.Web.Html.f_string_from_style_indent(
-              substyle,
-              indent
-            );
-            return output_2;
-          })
-        );
-        Vx.Core.Type_any output_1 = Vx.Type.f_string_from_stringlist_join(
-          sstyles,
-          Vx.Core.c_newline
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_stringlist sstyles = Vx.Core.f_list_from_list_1(
+            Vx.Core.t_stringlist,
+            stylelist,
+            Vx.Core.t_any_from_any.vx_fn_new(
+              (substyle_any) => {
+                Vx.Web.Html.Type_style substyle = Vx.Core.f_any_from_any(
+                  Vx.Web.Html.t_style,
+                  substyle_any
+                );
+                Vx.Core.Type_any output_2 = Vx.Web.Html.f_string_from_style_indent(substyle, indent);
+                return output_2;
+              }
+            )
+          );
+          Vx.Core.Type_any output_1 = Vx.Type.f_string_from_stringlist_join(
+            sstyles,
+            Vx.Core.c_newline
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -11956,17 +15156,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -11984,8 +15184,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_propmap propmap = Vx.Core.f_any_from_any(Vx.Web.Html.t_propmap, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_propmap propmap = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_propmap,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_stylepropmap_indent(propmap, indent);
       return output;
     }
@@ -12004,40 +15214,50 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_stringlist sprops = Vx.Core.f_list_from_map_1(
-          Vx.Core.t_stringlist,
-          propmap,
-          Vx.Core.t_any_from_key_value.vx_fn_new((key_any, value_any) => {
-            Vx.Core.Type_string key = Vx.Core.f_any_from_any(Vx.Core.t_string, key_any);
-            Vx.Core.Type_string value = Vx.Core.f_any_from_any(Vx.Core.t_string, value_any);
-            Vx.Core.Type_any output_2 = Vx.Core.f_new(
-              Vx.Core.t_string,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                sindent,
-                key,
-                Vx.Core.vx_new_string(": "),
-                Vx.Core.f_string_from_string_find_replace(
-                  value,
-                  Vx.Core.c_quote,
-                  Vx.Core.vx_new_string("'")
-                ),
-                Vx.Core.vx_new_string(";")
-              )
-            );
-            return output_2;
-          })
-        );
-        Vx.Core.Type_any output_1 = Vx.Type.f_string_from_stringlist_join(
-          sprops,
-          Vx.Core.vx_new_string("")
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_stringlist sprops = Vx.Core.f_list_from_map_1(
+            Vx.Core.t_stringlist,
+            propmap,
+            Vx.Core.t_any_from_key_value.vx_fn_new(
+              (key_any, value_any) => {
+                Vx.Core.Type_string key = Vx.Core.f_any_from_any(
+                  Vx.Core.t_string,
+                  key_any
+                );
+                Vx.Core.Type_string value = Vx.Core.f_any_from_any(
+                  Vx.Core.t_string,
+                  value_any
+                );
+                Vx.Core.Type_any output_2 = Vx.Core.f_new(
+                  Vx.Core.t_string,
+                  Vx.Core.vx_new(
+                    Vx.Core.t_anylist,
+                    // [
+                      sindent,
+                      key,
+                      Vx.Core.vx_new_string(": "),
+                      Vx.Core.f_string_from_string_find_replace(
+                        value,
+                        Vx.Core.c_quote,
+                        Vx.Core.vx_new_string("'")
+                      ),
+                      Vx.Core.vx_new_string(";")
+                    // ]
+                  )
+                );
+                return output_2;
+              }
+            )
+          );
+          Vx.Core.Type_any output_1 = Vx.Type.f_string_from_stringlist_join(
+            sprops,
+            Vx.Core.vx_new_string("")
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12078,17 +15298,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12106,8 +15326,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylesheet, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylesheet,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_stylesheet_indent(stylesheet, indent);
       return output;
     }
@@ -12126,37 +15356,35 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_stylelist styles = stylesheet.styles();
-        Vx.Core.Type_string sstyles = Vx.Web.Html.f_string_from_stylelist_indent(
-          styles,
-          Vx.Core.f_plus1(
-            indent
-          )
-        );
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string eindent = Vx.Core.f_if(
-          Vx.Core.t_string,
-          Vx.Core.f_notempty(
-            sstyles
-          ),
-          sindent
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<style>"),
-            sstyles,
-            eindent,
-            Vx.Core.vx_new_string("</style>")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_stylelist styles = stylesheet.styles();
+          Vx.Core.Type_string sstyles = Vx.Web.Html.f_string_from_stylelist_indent(
+            styles,
+            Vx.Core.f_plus1(indent)
+          );
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string eindent = Vx.Core.f_if(
+            Vx.Core.t_string,
+            Vx.Core.f_notempty(sstyles),
+            sindent
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<style>"),
+                sstyles,
+                eindent,
+                Vx.Core.vx_new_string("</style>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12197,17 +15425,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12225,8 +15453,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_table table = Vx.Core.f_any_from_any(Vx.Web.Html.t_table, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_table table = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_table,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_table_indent(table, indent);
       return output;
     }
@@ -12245,44 +15483,42 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
-          Vx.Core.vx_new_string("id"),
-          table.id()
-        );
-        Vx.Web.Html.Type_thead thead = table.thead();
-        Vx.Web.Html.Type_tbody tbody = table.tbody();
-        Vx.Core.Type_string shead = Vx.Web.Html.f_string_from_thead_indent(
-          thead,
-          Vx.Core.f_plus1(
-            indent
-          )
-        );
-        Vx.Core.Type_string sbody = Vx.Web.Html.f_string_from_tbody_indent(
-          tbody,
-          Vx.Core.f_plus1(
-            indent
-          )
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<table"),
-            sid,
-            Vx.Core.vx_new_string(">"),
-            shead,
-            sbody,
-            sindent,
-            Vx.Core.vx_new_string("</table>")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string sid = Vx.Web.Html.f_string_from_propname_val(
+            Vx.Core.vx_new_string("id"),
+            table.id()
+          );
+          Vx.Web.Html.Type_thead thead = table.thead();
+          Vx.Web.Html.Type_tbody tbody = table.tbody();
+          Vx.Core.Type_string shead = Vx.Web.Html.f_string_from_thead_indent(
+            thead,
+            Vx.Core.f_plus1(indent)
+          );
+          Vx.Core.Type_string sbody = Vx.Web.Html.f_string_from_tbody_indent(
+            tbody,
+            Vx.Core.f_plus1(indent)
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<table"),
+                sid,
+                Vx.Core.vx_new_string(">"),
+                shead,
+                sbody,
+                sindent,
+                Vx.Core.vx_new_string("</table>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12323,17 +15559,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12351,8 +15587,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_tbody tbody = Vx.Core.f_any_from_any(Vx.Web.Html.t_tbody, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_tbody tbody = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_tbody,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_tbody_indent(tbody, indent);
       return output;
     }
@@ -12371,16 +15617,18 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_trlist nodes = tbody.nodes();
-        Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx.Core.vx_new_string("tbody"),
-          Vx.Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_trlist nodes = tbody.nodes();
+          Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx.Core.vx_new_string("tbody"),
+            Vx.Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12421,17 +15669,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12449,8 +15697,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_td td = Vx.Core.f_any_from_any(Vx.Web.Html.t_td, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_td td = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_td,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_td_indent(td, indent);
       return output;
     }
@@ -12469,16 +15727,18 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_divchildlist nodes = td.nodes();
-        Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx.Core.vx_new_string("td"),
-          Vx.Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_divchildlist nodes = td.nodes();
+          Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx.Core.vx_new_string("td"),
+            Vx.Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12519,17 +15779,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12547,8 +15807,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_thead thead = Vx.Core.f_any_from_any(Vx.Web.Html.t_thead, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_thead thead = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_thead,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_thead_indent(thead, indent);
       return output;
     }
@@ -12567,16 +15837,18 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_trlist nodes = thead.nodes();
-        Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx.Core.vx_new_string("thead"),
-          Vx.Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_trlist nodes = thead.nodes();
+          Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx.Core.vx_new_string("thead"),
+            Vx.Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12617,17 +15889,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12645,8 +15917,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_title title = Vx.Core.f_any_from_any(Vx.Web.Html.t_title, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_title title = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_title,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_title_indent(title, indent);
       return output;
     }
@@ -12665,23 +15947,25 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(
-          indent
-        );
-        Vx.Core.Type_string text = title.text();
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            sindent,
-            Vx.Core.vx_new_string("<title>"),
-            text,
-            Vx.Core.vx_new_string("</title>")
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string sindent = Vx.Web.Html.f_string_from_indent(indent);
+          Vx.Core.Type_string text = title.text();
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                sindent,
+                Vx.Core.vx_new_string("<title>"),
+                text,
+                Vx.Core.vx_new_string("</title>")
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12722,17 +16006,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12750,8 +16034,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_tr tr = Vx.Core.f_any_from_any(Vx.Web.Html.t_tr, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_tr tr = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_tr,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int indent = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_string_from_tr_indent(tr, indent);
       return output;
     }
@@ -12770,16 +16064,18 @@ public static class Html {
     Vx.Core.Type_string output = Vx.Core.e_string;
     output = Vx.Core.f_let(
       Vx.Core.t_string,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_tdlist nodes = tr.nodes();
-        Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          Vx.Core.vx_new_string("tr"),
-          Vx.Core.vx_new_string(""),
-          indent
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_tdlist nodes = tr.nodes();
+          Vx.Core.Type_any output_1 = Vx.Web.Html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            Vx.Core.vx_new_string("tr"),
+            Vx.Core.vx_new_string(""),
+            indent
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -12819,17 +16115,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12853,13 +16149,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_string_from_uri(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string uri = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string uri = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_string_from_uri(uri);
       return output;
     }
@@ -12915,17 +16219,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "style",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -12943,8 +16247,18 @@ public static class Html {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylesheet, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string name = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylesheet,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string name = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Web.Html.f_style_from_stylesheet_name(stylesheet, name);
       return output;
     }
@@ -12963,9 +16277,7 @@ public static class Html {
     Vx.Web.Html.Type_style output = Vx.Web.Html.e_style;
     output = Vx.Core.f_any_from_map(
       Vx.Web.Html.t_style,
-      Vx.Web.Html.f_stylemap_from_stylesheet(
-        stylesheet
-      ),
+      Vx.Web.Html.f_stylemap_from_stylesheet(stylesheet),
       name
     );
     return output;
@@ -13006,17 +16318,22 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylemap", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_style), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "stylemap",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_style
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13040,13 +16357,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_stylelist inputval = (Vx.Web.Html.Type_stylelist)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_stylemap_from_stylelist(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylelist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_stylelist stylelist = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_stylemap_from_stylelist(stylelist);
       return output;
     }
@@ -13066,11 +16391,16 @@ public static class Html {
     output = Vx.Core.f_map_from_list(
       Vx.Web.Html.t_stylemap,
       stylelist,
-      Vx.Core.t_any_from_any.vx_fn_new((style_any) => {
-        Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(Vx.Web.Html.t_style, style_any);
-        Vx.Core.Type_any output_1 = style.name();
-        return output_1;
-      })
+      Vx.Core.t_any_from_any.vx_fn_new(
+        (style_any) => {
+          Vx.Web.Html.Type_style style = Vx.Core.f_any_from_any(
+            Vx.Web.Html.t_style,
+            style_any
+          );
+          Vx.Core.Type_any output_1 = style.name();
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -13110,17 +16440,22 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylemap", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_style), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "stylemap",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_style
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13144,13 +16479,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_stylesheet inputval = (Vx.Web.Html.Type_stylesheet)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_stylemap_from_stylesheet(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylesheet, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylesheet,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_stylemap_from_stylesheet(stylesheet);
       return output;
     }
@@ -13206,17 +16549,22 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylelist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_style), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "stylelist",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_style
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13240,13 +16588,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_stylesheet inputval = (Vx.Web.Html.Type_stylesheet)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_styles_from_stylesheet(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylesheet, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylesheet,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_styles_from_stylesheet(stylesheet);
       return output;
     }
@@ -13302,17 +16658,23 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylesheet", // name
-          ":struct", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_headchild), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "stylesheet",
+          ":struct",
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_node,
+              Vx.Web.Html.t_headchild
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13336,13 +16698,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_stylesheet inputval = (Vx.Web.Html.Type_stylesheet)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_stylesheet_loadmap(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(Vx.Web.Html.t_stylesheet, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_stylesheet stylesheet = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_stylesheet,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_stylesheet_loadmap(stylesheet);
       return output;
     }
@@ -13363,10 +16733,10 @@ public static class Html {
       stylesheet,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":stylemap"),
-        Vx.Web.Html.f_stylemap_from_stylelist(
-          stylesheet.styles()
-        )
+        // [
+          Vx.Core.vx_new_string(":stylemap"),
+          Vx.Web.Html.f_stylemap_from_stylelist(stylesheet.styles())
+        // ]
       )
     );
     return output;
@@ -13407,17 +16777,17 @@ public static class Html {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -13441,13 +16811,21 @@ public static class Html {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_string inputval = (Vx.Core.Type_string)value;
       Vx.Core.Type_any outputval = Vx.Web.Html.f_uri_from_string(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_string text = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_string text = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Web.Html.f_uri_from_string(text);
       return output;
     }

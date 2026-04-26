@@ -9,6 +9,32 @@ import java.nio.file.*;
 
 public final class File {
 
+  public static Core.Type_boolean vx_boolean_write_from_file_string(
+    final Core.Type_context context,
+    final File.Type_file file,
+    final Core.Type_string text
+  ) {
+    Core.Type_boolean output = Core.c_false;
+    try {
+      Core.Type_string fullpath = File.f_pathfull_from_file(file);
+      String sfullpath = fullpath.vx_string();
+      Path path = Paths.get(sfullpath);
+      String stext = text.vx_string();
+      byte[] bytes = stext.getBytes();
+      java.nio.file.Files.write(path, bytes);
+      output = Core.c_true;
+    } catch (Exception err) {
+      Core.Type_msg msg = Core.vx_msg_from_exception(
+        "vx/data/file/boolean-write<-file-string",
+        err
+      );
+      output = Core.vx_copy(
+        output,
+        msg
+      );
+    }
+    return output;
+  }
 
   public static Core.Type_string vx_string_read_from_file(File.Type_file file) {
     Core.Type_string output = Core.e_string;
@@ -173,9 +199,19 @@ public final class File {
       Core.Type_any msgval = Core.e_any;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key.equals("")) {
           boolean istestkey = false;
           String testkey = "";
@@ -196,8 +232,17 @@ public final class File {
             } else {
               msgval = Core.vx_new_string(valsub.toString());
             }
-            msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidkeytype", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/file/file",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -208,8 +253,17 @@ public final class File {
               key = testkey;
             } else {
               msgval = Core.vx_new_string(testkey);
-              msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidkey", msgval);
-              msgblock = Core.vx_copy(msgblock, msg);
+              msg = Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -222,7 +276,12 @@ public final class File {
               vx_p_name = valname;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_name = Core.vx_new(Core.t_string, valsub);
+              vx_p_name = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -234,9 +293,20 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("name"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":format"))) {
             if (valsub == vx_p_format) {
@@ -255,9 +325,20 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("format"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":path"))) {
             if (valsub == vx_p_path) {
@@ -267,7 +348,12 @@ public final class File {
               vx_p_path = valpath;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_path = Core.vx_new(Core.t_string, valsub);
+              vx_p_path = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -279,9 +365,20 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("path"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":permission"))) {
             if (valsub == vx_p_permission) {
@@ -300,9 +397,20 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("permission"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key.equals(":text"))) {
             if (valsub == vx_p_text) {
@@ -312,7 +420,12 @@ public final class File {
               vx_p_text = valtext;
             } else if (valsub instanceof String) {
               ischanged = true;
-              vx_p_text = Core.vx_new(Core.t_string, valsub);
+              vx_p_text = Core.vx_new(
+                Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub instanceof Core.Type_any) {
@@ -324,14 +437,34 @@ public final class File {
               Map<String, Core.Type_any> mapany = new LinkedHashMap<String, Core.Type_any>();
               mapany.put("key", Core.vx_new_string("text"));
               mapany.put("value", msgval);
-              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(Core.vx_mapimmutable(mapany));
-              msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidvalue", msgmap);
-              msgblock = Core.vx_copy(msgblock, msg);
+              final Core.Type_map msgmap = Core.t_anymap.vx_new_from_map(
+                Core.vx_mapimmutable(mapany)
+              );
+              msg = Core.vx_msg_from_error(
+                "vx/data/file/file",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Core.vx_new_string(key);
-            msg = Core.vx_msg_from_error("vx/data/file/file", ":invalidkey", msgval);
-            msgblock = Core.vx_copy(msgblock, msg);
+            msg = Core.vx_msg_from_error(
+              "vx/data/file/file",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -366,17 +499,17 @@ public final class File {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/file", // pkgname
-        "file", // name
-        ":struct", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/file",
+        "file",
+        ":struct",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -397,7 +530,10 @@ public final class File {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      File.Type_fileformat output = Core.vx_copy(File.e_fileformat, vals);
+      File.Type_fileformat output = Core.vx_copy(
+        File.e_fileformat,
+        vals
+      );
       return output;
     }
 
@@ -435,17 +571,17 @@ public final class File {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/file", // pkgname
-        "fileformat", // name
-        ":string", // extends
-        Core.e_typelist, // traits
-        Core.e_typelist, // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/file",
+        "fileformat",
+        ":string",
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -505,7 +641,10 @@ public final class File {
 
     @Override
     public Core.Type_any vx_new(final Object... vals) {
-      File.Type_filelist output = Core.vx_copy(File.e_filelist, vals);
+      File.Type_filelist output = Core.vx_copy(
+        File.e_filelist,
+        vals
+      );
       return output;
     }
 
@@ -522,9 +661,19 @@ public final class File {
       Core.Type_msg msg;
       for (Object valsub : vals) {
         if (valsub instanceof Core.Type_msgblock) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof Core.Type_msg) {
-          msgblock = Core.vx_copy(msgblock, valsub);
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub instanceof File.Type_filelist) {
           File.Type_filelist multi = (File.Type_filelist)valsub;
           ischanged = true;
@@ -549,11 +698,29 @@ public final class File {
           }
         } else if (valsub instanceof Core.Type_any) {
           Core.Type_any anyinvalid = (Core.Type_any)valsub;
-          msg = Core.vx_msg_from_error("vx/data/file/filelist", ":invalidtype", anyinvalid);
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/file/filelist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Core.vx_msg_from_error("vx/data/file/filelist", ":invalidtype", Core.vx_new_string(valsub.toString()));
-          msgblock = Core.vx_copy(msgblock, msg);
+          msg = Core.vx_msg_from_error(
+            "vx/data/file/filelist",
+            ":invalidtype",
+            Core.vx_new_string(valsub.toString())
+          );
+          msgblock = Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Core.e_msgblock)) {
@@ -582,17 +749,22 @@ public final class File {
     @Override
     public Core.Type_typedef vx_typedef() {
       Core.Type_typedef output = Core.typedef_new(
-        "vx/data/file", // pkgname
-        "filelist", // name
-        ":list", // extends
-        Core.e_typelist, // traits
-        Core.vx_new(Core.t_typelist, File.t_file), // allowtypes
-        Core.e_typelist, // disallowtypes
-        Core.e_funclist, // allowfuncs
-        Core.e_funclist, // disallowfuncs
-        Core.e_anylist, // allowvalues
-        Core.e_anylist, // disallowvalues
-        Core.e_argmap // properties
+        "vx/data/file",
+        "filelist",
+        ":list",
+        Core.e_typelist,
+        Core.vx_new(
+          Core.t_typelist,
+          // [
+            File.t_file
+          // ]
+        ),
+        Core.e_typelist,
+        Core.e_funclist,
+        Core.e_funclist,
+        Core.e_anylist,
+        Core.e_anylist,
+        Core.e_argmap
       );
       return output;
     }
@@ -641,17 +813,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -679,14 +851,20 @@ public final class File {
       T output = Core.f_empty(generic_any_1);
       final File.Type_file inputval = (File.Type_file)value;
       final Core.Type_any outputval = File.f_boolean_exists_from_file(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(
+        File.t_file,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = File.f_boolean_exists_from_file(file);
       return output;
     }
@@ -752,17 +930,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -790,15 +968,24 @@ public final class File {
       T output = Core.f_empty(generic_any_1);
       final File.Type_file inputval = (File.Type_file)value;
       final Core.Type_any outputval = File.f_boolean_write_from_file(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final File.Type_file file = Core.f_any_from_any(
+        File.t_file,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = File.f_boolean_write_from_file(context, file);
       return output;
     }
@@ -864,17 +1051,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -895,9 +1082,18 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_any value = Core.f_any_from_any(Core.t_any, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final File.Type_file file = Core.f_any_from_any(
+        File.t_file,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_any value = Core.f_any_from_any(
+        Core.t_any,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = File.f_boolean_write_from_file_any(context, file, value);
       return output;
     }
@@ -918,9 +1114,7 @@ public final class File {
     output = File.f_boolean_write_from_file_string(
       context,
       file,
-      Core.f_string_from_any(
-        value
-      )
+      Core.f_string_from_any(value)
     );
     return output;
   }
@@ -965,17 +1159,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -996,9 +1190,18 @@ public final class File {
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
-      final Core.Type_string text = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(2)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final File.Type_file file = Core.f_any_from_any(
+        File.t_file,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
+      final Core.Type_string text = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(2))
+      );
       output = File.f_boolean_write_from_file_string(context, file, text);
       return output;
     }
@@ -1021,19 +1224,18 @@ public final class File {
       File.t_boolean_write_from_file_string
     ).vx_boolean()) {
       try {
-        Core.Type_string fullpath = File.f_pathfull_from_file(file);
-        String sfullpath = fullpath.vx_string();
-        Path path = Paths.get(sfullpath);
-        String stext = text.vx_string();
-        byte[] bytes = stext.getBytes();
-        java.nio.file.Files.write(path, bytes);
-        output = Core.c_true;
+        output = File.vx_boolean_write_from_file_string(context, file, text);
       } catch (Exception err) {
         Core.Type_msg msg = Core.vx_msg_from_exception(
           "vx/data/file/boolean-write<-file-string",
           err
         );
-        output = Core.vx_copy(output, msg);
+        output = Core.vx_copy(
+          output,
+          // [
+            msg
+          // ]
+        );
       }
     } else {
       Core.Type_msg msg = Core.vx_msg_from_error(
@@ -1043,7 +1245,12 @@ public final class File {
           "boolean-write<-file-string"
         )
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -1087,17 +1294,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1125,15 +1332,24 @@ public final class File {
       T output = Core.f_empty(generic_any_1);
       final File.Type_file inputval = (File.Type_file)value;
       final Core.Type_any outputval = File.f_file_read_from_file(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final File.Type_file file = Core.f_any_from_any(
+        File.t_file,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = File.f_file_read_from_file(context, file);
       return output;
     }
@@ -1159,11 +1375,10 @@ public final class File {
         file,
         Core.vx_new(
           Core.t_anylist,
-          Core.vx_new_string(":text"),
-          File.f_string_read_from_file(
-            context,
-            file
-          )
+          // [
+            Core.vx_new_string(":text"),
+            File.f_string_read_from_file(context, file)
+          // ]
         )
       );
     } else {
@@ -1172,7 +1387,12 @@ public final class File {
         ":permissiondenied",
         Core.vx_new_string("file-read<-file")
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -1216,17 +1436,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1254,14 +1474,20 @@ public final class File {
       T output = Core.f_empty(generic_any_1);
       final Core.Type_string inputval = (Core.Type_string)value;
       final Core.Type_any outputval = File.f_file_from_path(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_string path = Core.f_any_from_any(Core.t_string, arglist.vx_any(Core.vx_new_int(0)));
+      final Core.Type_string path = Core.f_any_from_any(
+        Core.t_string,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = File.f_file_from_path(path);
       return output;
     }
@@ -1281,35 +1507,35 @@ public final class File {
     File.Type_file output = File.e_file;
     output = Core.f_let(
       File.t_file,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_int pos = Type.f_int_from_string_findlast(
-          path,
-          Core.vx_new_string("/")
-        );
-        final Core.Type_string name = Type.f_string_from_string_start(
-          path,
-          Core.f_plus1(
-            pos
-          )
-        );
-        final Core.Type_string pth = Type.f_string_from_string_end(
-          path,
-          Core.f_minus1(
-            pos
-          )
-        );
-        final Core.Type_any output_1 = Core.f_new(
-          File.t_file,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":name"),
-            name,
-            Core.vx_new_string(":path"),
-            pth
-          )
-        );
-        return output_1;
-      })
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_int pos = Type.f_int_from_string_findlast(
+            path,
+            Core.vx_new_string("/")
+          );
+          final Core.Type_string name = Type.f_string_from_string_start(
+            path,
+            Core.f_plus1(pos)
+          );
+          final Core.Type_string pth = Type.f_string_from_string_end(
+            path,
+            Core.f_minus1(pos)
+          );
+          final Core.Type_any output_1 = Core.f_new(
+            File.t_file,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":name"),
+                name,
+                Core.vx_new_string(":path"),
+                pth
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1353,17 +1579,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1391,14 +1617,20 @@ public final class File {
       T output = Core.f_empty(generic_any_1);
       final File.Type_file inputval = (File.Type_file)value;
       final Core.Type_any outputval = File.f_name_from_file(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(
+        File.t_file,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = File.f_name_from_file(file);
       return output;
     }
@@ -1459,17 +1691,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1497,14 +1729,20 @@ public final class File {
       T output = Core.f_empty(generic_any_1);
       final File.Type_file inputval = (File.Type_file)value;
       final Core.Type_any outputval = File.f_path_from_file(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(
+        File.t_file,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = File.f_path_from_file(file);
       return output;
     }
@@ -1564,17 +1802,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1658,17 +1896,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1696,14 +1934,20 @@ public final class File {
       T output = Core.f_empty(generic_any_1);
       final File.Type_file inputval = (File.Type_file)value;
       final Core.Type_any outputval = File.f_pathfull_from_file(inputval);
-      output = Core.f_any_from_any(generic_any_1, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(0)));
+      final File.Type_file file = Core.f_any_from_any(
+        File.t_file,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
       output = File.f_pathfull_from_file(file);
       return output;
     }
@@ -1723,47 +1967,53 @@ public final class File {
     Core.Type_string output = Core.e_string;
     output = Core.f_let(
       Core.t_string,
-      Core.t_any_from_func.vx_fn_new(() -> {
-        final Core.Type_string path = File.f_path_from_file(
-          file
-        );
-        final Core.Type_string name = File.f_name_from_file(
-          file
-        );
-        final Core.Type_any output_1 = Core.f_if_2(
-          Core.t_string,
-          Core.vx_new(
-            Core.t_thenelselist,
-            Core.f_then(
-              Core.t_boolean_from_func.vx_fn_new(() -> {
-                Core.Type_any output_2 = Core.f_is_empty(
-                  path
-                );
-                return output_2;
-              }),
-              Core.t_any_from_func.vx_fn_new(() -> {
-                final Core.Type_any output_3 = name;
-                return output_3;
-              })
-            ),
-            Core.f_else(
-              Core.t_any_from_func.vx_fn_new(() -> {
-                Core.Type_any output_4 = Core.f_new(
-                  Core.t_string,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    path,
-                    Core.vx_new_string("/"),
-                    name
+      Core.t_any_from_func.vx_fn_new(
+        () -> {
+          final Core.Type_string path = File.f_path_from_file(file);
+          final Core.Type_string name = File.f_name_from_file(file);
+          final Core.Type_any output_1 = Core.f_if_2(
+            Core.t_string,
+            Core.vx_new(
+              Core.t_thenelselist,
+              // [
+                Core.f_then(
+                  Core.t_boolean_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_2 = Core.f_is_empty(path);
+                        return output_2;
+                      }
+                  ),
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+      final Core.Type_any output_3 = name;
+                        return output_3;
+                      }
                   )
-                );
-                return output_4;
-              })
+                ),
+                Core.f_else(
+                  Core.t_any_from_func.vx_fn_new(
+                    () -> {
+                      Core.Type_any output_4 = Core.f_new(
+                          Core.t_string,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              path,
+                              Core.vx_new_string("/"),
+                              name
+                            // ]
+                          )
+                        );
+                        return output_4;
+                      }
+                  )
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1807,17 +2057,17 @@ public final class File {
         0, // idx
         false, // async
         Core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          Core.e_typelist, // traits
-          Core.e_typelist, // allowtypes
-          Core.e_typelist, // disallowtypes
-          Core.e_funclist, // allowfuncs
-          Core.e_funclist, // disallowfuncs
-          Core.e_anylist, // allowvalues
-          Core.e_anylist, // disallowvalues
-          Core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_typelist,
+          Core.e_funclist,
+          Core.e_funclist,
+          Core.e_anylist,
+          Core.e_anylist,
+          Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1845,15 +2095,24 @@ public final class File {
       T output = Core.f_empty(generic_any_1);
       final File.Type_file inputval = (File.Type_file)value;
       final Core.Type_any outputval = File.f_string_read_from_file(context, inputval);
-      output = Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     @Override
     public Core.Type_any vx_repl(Core.Type_anylist arglist) {
       Core.Type_any output = Core.e_any;
-      final Core.Type_context context = Core.f_any_from_any(Core.t_context, arglist.vx_any(Core.vx_new_int(0)));
-      final File.Type_file file = Core.f_any_from_any(File.t_file, arglist.vx_any(Core.vx_new_int(1)));
+      final Core.Type_context context = Core.f_any_from_any(
+        Core.t_context,
+        arglist.vx_any(Core.vx_new_int(0))
+      );
+      final File.Type_file file = Core.f_any_from_any(
+        File.t_file,
+        arglist.vx_any(Core.vx_new_int(1))
+      );
       output = File.f_string_read_from_file(context, file);
       return output;
     }
@@ -1882,7 +2141,12 @@ public final class File {
           "vx/data/file/string-read<-file",
           err
         );
-        output = Core.vx_copy(output, msg);
+        output = Core.vx_copy(
+          output,
+          // [
+            msg
+          // ]
+        );
       }
     } else {
       Core.Type_msg msg = Core.vx_msg_from_error(
@@ -1890,7 +2154,12 @@ public final class File {
         ":permissiondenied",
         Core.vx_new_string("string-read<-file")
       );
-      output = Core.vx_copy(output, msg);
+      output = Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }

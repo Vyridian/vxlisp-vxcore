@@ -282,17 +282,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -310,9 +315,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val listmain : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val listremove : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val listmain : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val listremove : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_minus(generic_list_1, listmain, listremove)
       return output
     }
@@ -332,31 +352,39 @@ object vx_collection {
     output = vx_collection.f_list_from_list_filter(
       generic_list_1,
       listmain,
-      vx_core.t_any_from_any.vx_fn_new({item_any : vx_core.Type_any ->
-        val item : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, item_any)
-        var output_1 : vx_core.Type_any = vx_core.f_if_2(
-          vx_core.t_any,
-          vx_core.vx_new(
-            vx_core.t_thenelselist,
-            vx_core.f_then(
-              vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_2 : vx_core.Type_any = vx_core.f_not(
-                  vx_core.f_contains_1(
-                    listremove,
-                    item
+      vx_core.t_any_from_any.vx_fn_new(
+        {item_any : vx_core.Type_any ->
+          val item : vx_core.Type_any = vx_core.f_any_from_any(
+            vx_core.t_any,
+            item_any
+          )
+          var output_1 : vx_core.Type_any = vx_core.f_if_2(
+            vx_core.t_any,
+            vx_core.vx_new(
+              vx_core.t_thenelselist,
+              // [
+                vx_core.f_then(
+                  vx_core.t_boolean_from_func.vx_fn_new(
+                    { ->
+                      var output_2 : vx_core.Type_any = vx_core.f_not(
+                          vx_core.f_contains_1(listremove, item)
+                        )
+                        output_2
+                      }
+                  ),
+                  vx_core.t_any_from_func.vx_fn_new(
+                    { ->
+      val output_3 : vx_core.Type_any = item
+                        output_3
+                      }
                   )
                 )
-                output_2
-              }),
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                val output_3 : vx_core.Type_any = item
-                output_3
-              })
+              // ]
             )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -398,17 +426,22 @@ object vx_collection {
         1, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -426,9 +459,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val mapmain : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val mapremove : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val mapmain : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val mapremove : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_minus_1(generic_map_1, mapmain, mapremove)
       return output
     }
@@ -447,25 +495,23 @@ object vx_collection {
     var output : N = vx_core.f_empty(generic_map_1)
     output = vx_core.f_let(
       generic_map_1,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val keysmain : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(
-          mapmain
-        )
-        val keysremove : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(
-          mapremove
-        )
-        val keysremain : vx_core.Type_stringlist = vx_collection.f_minus(
-          vx_core.t_stringlist,
-          keysmain,
-          keysremove
-        )
-        val output_1 : vx_core.Type_any = vx_collection.f_map_from_map_keys(
-          generic_map_1,
-          mapmain,
-          keysremain
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val keysmain : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(mapmain)
+          val keysremove : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(mapremove)
+          val keysremain : vx_core.Type_stringlist = vx_collection.f_minus(
+            vx_core.t_stringlist,
+            keysmain,
+            keysremove
+          )
+          val output_1 : vx_core.Type_any = vx_collection.f_map_from_map_keys(
+            generic_map_1,
+            mapmain,
+            keysremain
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -508,17 +554,17 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -536,10 +582,30 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_until : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(vx_core.t_boolean_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(2)))
+      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_until : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(
+        vx_core.t_boolean_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(
+        vx_core.t_any_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_collection.f_any_from_for_until_loop(generic_any_1, start, fn_until, fn_loop)
       return output
     }
@@ -613,17 +679,17 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -641,11 +707,36 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_until : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(vx_core.t_boolean_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(2)))
-      val max : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(3)))
+      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_until : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(
+        vx_core.t_boolean_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(
+        vx_core.t_any_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
+      val max : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(3)
+        )
+      )
       output = vx_collection.f_any_from_for_until_loop_max(generic_any_1, start, fn_until, fn_loop, max)
       return output
     }
@@ -704,17 +795,17 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -732,10 +823,30 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_while : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(vx_core.t_boolean_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(2)))
+      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_while : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(
+        vx_core.t_boolean_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(
+        vx_core.t_any_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_collection.f_any_from_for_while_loop(generic_any_1, start, fn_while, fn_loop)
       return output
     }
@@ -810,17 +921,17 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -838,11 +949,36 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_while : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(vx_core.t_boolean_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(2)))
-      val max : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(3)))
+      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_while : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(
+        vx_core.t_boolean_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(
+        vx_core.t_any_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
+      val max : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(3)
+        )
+      )
       output = vx_collection.f_any_from_for_while_loop_max(generic_any_1, start, fn_while, fn_loop, max)
       return output
     }
@@ -900,17 +1036,17 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -928,9 +1064,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val map : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val pos : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_any_1 : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val map : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val pos : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_any_from_map_pos(generic_any_1, map, pos)
       return output
     }
@@ -949,22 +1100,22 @@ object vx_collection {
     var output : T = vx_core.f_empty(generic_any_1)
     output = vx_core.f_let(
       generic_any_1,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val keys : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(
-          map
-        )
-        val key : vx_core.Type_string = vx_core.f_any_from_list(
-          vx_core.t_string,
-          keys,
-          pos
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_any_from_map(
-          generic_any_1,
-          map,
-          key
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val keys : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(map)
+          val key : vx_core.Type_string = vx_core.f_any_from_list(
+            vx_core.t_string,
+            keys,
+            pos
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_any_from_map(
+            generic_any_1,
+            map,
+            key
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -1005,17 +1156,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "anymap", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "anymap",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1039,13 +1195,21 @@ object vx_collection {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_struct = value as vx_core.Type_struct
       val outputval : vx_core.Type_any = vx_collection.f_anymap_from_struct(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val structure : vx_core.Type_struct = vx_core.f_any_from_any(vx_core.t_struct, arglist.vx_any(vx_core.vx_new_int(0)))
+      val structure : vx_core.Type_struct = vx_core.f_any_from_any(
+        vx_core.t_struct,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_collection.f_anymap_from_struct(structure)
       return output
     }
@@ -1103,17 +1267,17 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1131,8 +1295,18 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val key : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_boolean_write_from_map_removekey(valuemap, key)
       return output
     }
@@ -1152,9 +1326,7 @@ object vx_collection {
     output = vx_core.f_boolean_write_from_map_name_value(
       valuemap,
       key,
-      vx_core.f_empty(
-        vx_core.t_any
-      )
+      vx_core.f_empty(vx_core.t_any)
     )
     return output
   }
@@ -1196,17 +1368,17 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1224,8 +1396,18 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val keys : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val keys : vx_core.Type_stringlist = vx_core.f_any_from_any(
+        vx_core.t_stringlist,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_boolean_write_from_map_removekeys(valuemap, keys)
       return output
     }
@@ -1244,24 +1426,26 @@ object vx_collection {
     var output : vx_core.Type_boolean = vx_core.e_boolean
     output = vx_core.f_let(
       vx_core.t_boolean,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val writelist : vx_core.Type_booleanlist = vx_core.f_list_from_list_1(
-          vx_core.t_booleanlist,
-          keys,
-          vx_core.t_any_from_any.vx_fn_new({key_any : vx_core.Type_any ->
-            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-            var output_2 : vx_core.Type_any = vx_collection.f_boolean_write_from_map_removekey(
-              valuemap,
-              key
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val writelist : vx_core.Type_booleanlist = vx_core.f_list_from_list_1(
+            vx_core.t_booleanlist,
+            keys,
+            vx_core.t_any_from_any.vx_fn_new(
+              {key_any : vx_core.Type_any ->
+                val key : vx_core.Type_string = vx_core.f_any_from_any(
+                  vx_core.t_string,
+                  key_any
+                )
+                var output_2 : vx_core.Type_any = vx_collection.f_boolean_write_from_map_removekey(valuemap, key)
+                output_2
+              }
             )
-            output_2
-          })
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_and_1(
-          writelist
-        )
-        output_1
-      })
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_and_1(writelist)
+          output_1
+        }
+      )
     )
     return output
   }
@@ -1303,17 +1487,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_number), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_number
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1331,8 +1520,18 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val map : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val map : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val key : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_int_from_map_key(map, key)
       return output
     }
@@ -1351,16 +1550,13 @@ object vx_collection {
     var output : vx_core.Type_int = vx_core.e_int
     output = vx_core.f_let(
       vx_core.t_int,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val keys : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(
-          map
-        )
-        val output_1 : vx_core.Type_any = vx_collection.f_int_from_stringlist_find(
-          keys,
-          key
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val keys : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(map)
+          val output_1 : vx_core.Type_any = vx_collection.f_int_from_stringlist_find(keys, key)
+          output_1
+        }
+      )
     )
     return output
   }
@@ -1402,17 +1598,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_number), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_number
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1430,8 +1631,18 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stringlist : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, arglist.vx_any(vx_core.vx_new_int(0)))
-      val find : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val stringlist : vx_core.Type_stringlist = vx_core.f_any_from_any(
+        vx_core.t_stringlist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val find : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_int_from_stringlist_find(stringlist, find)
       return output
     }
@@ -1450,40 +1661,52 @@ object vx_collection {
     var output : vx_core.Type_int = vx_core.e_int
     output = vx_core.f_let(
       vx_core.t_int,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val poslist : vx_core.Type_intlist = vx_core.f_list_from_list_intany(
-          vx_core.t_intlist,
-          stringlist,
-          vx_core.t_any_from_int_any.vx_fn_new({pos_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            val pos : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, pos_any)
-            val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
-            var output_2 : vx_core.Type_any = vx_core.f_if_1(
-              vx_core.t_int,
-              vx_core.f_eq(
-                find,
-                value
-              ),
-              pos,
-              vx_core.vx_new_int(0)
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val poslist : vx_core.Type_intlist = vx_core.f_list_from_list_intany(
+            vx_core.t_intlist,
+            stringlist,
+            vx_core.t_any_from_int_any.vx_fn_new(
+              {pos_any : vx_core.Type_any, value_any : vx_core.Type_any ->
+                val pos : vx_core.Type_int = vx_core.f_any_from_any(
+                  vx_core.t_int,
+                  pos_any
+                )
+                val value : vx_core.Type_string = vx_core.f_any_from_any(
+                  vx_core.t_string,
+                  value_any
+                )
+                var output_2 : vx_core.Type_any = vx_core.f_if_1(
+                  vx_core.t_int,
+                  vx_core.f_eq(find, value),
+                  pos,
+                  vx_core.vx_new_int(0)
+                )
+                output_2
+              }
             )
-            output_2
-          })
-        )
-        val gt0list : vx_core.Type_intlist = vx_collection.f_list_from_list_filter(
-          vx_core.t_intlist,
-          poslist,
-          vx_core.t_any_from_any.vx_fn_new({item_any : vx_core.Type_any ->
-            val item : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, item_any)
-            var output_3 : vx_core.Type_any = item
-            output_3
-          })
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_first_from_list(
-          vx_core.t_int,
-          gt0list
-        )
-        output_1
-      })
+          )
+          val gt0list : vx_core.Type_intlist = vx_collection.f_list_from_list_filter(
+            vx_core.t_intlist,
+            poslist,
+            vx_core.t_any_from_any.vx_fn_new(
+              {item_any : vx_core.Type_any ->
+                val item : vx_core.Type_int = vx_core.f_any_from_any(
+                  vx_core.t_int,
+                  item_any
+                )
+                var output_3 : vx_core.Type_any = item
+                output_3
+              }
+            )
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_first_from_list(
+            vx_core.t_int,
+            gt0list
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -1524,17 +1747,17 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1558,13 +1781,21 @@ object vx_collection {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_any = value as vx_core.Type_any
       val outputval : vx_core.Type_any = vx_collection.f_is_list(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      val value : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_collection.f_is_list(value)
       return output
     }
@@ -1583,9 +1814,7 @@ object vx_collection {
     var output : vx_core.Type_boolean = vx_core.e_boolean
     output = vx_core.f_eq(
       vx_core.vx_new_string(":list"),
-      vx_core.f_extends_from_any(
-        value
-      )
+      vx_core.f_extends_from_any(value)
     )
     return output
   }
@@ -1626,17 +1855,17 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1660,13 +1889,21 @@ object vx_collection {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_any = value as vx_core.Type_any
       val outputval : vx_core.Type_any = vx_collection.f_is_map(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      val value : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_collection.f_is_map(value)
       return output
     }
@@ -1685,9 +1922,7 @@ object vx_collection {
     var output : vx_core.Type_boolean = vx_core.e_boolean
     output = vx_core.f_eq(
       vx_core.vx_new_string(":map"),
-      vx_core.f_extends_from_any(
-        value
-      )
+      vx_core.f_extends_from_any(value)
     )
     return output
   }
@@ -1741,17 +1976,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1769,10 +2009,30 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(0)))
-      val end : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_loop : vx_core.Func_any_from_int = vx_core.f_any_from_any(vx_core.t_any_from_int, arglist.vx_any(vx_core.vx_new_int(2)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val end : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_loop : vx_core.Func_any_from_int = vx_core.f_any_from_any(
+        vx_core.t_any_from_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_collection.f_list_from_for_end_loop(generic_list_1, start, end, fn_loop)
       return output
     }
@@ -1831,17 +2091,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1859,10 +2124,30 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_while : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(vx_core.t_boolean_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(2)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_while : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(
+        vx_core.t_boolean_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(
+        vx_core.t_any_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_collection.f_list_from_for_while_loop(generic_list_1, start, fn_while, fn_loop)
       return output
     }
@@ -1934,17 +2219,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -1962,11 +2252,36 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_while : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(vx_core.t_boolean_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
-      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(2)))
-      val max : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(3)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_while : vx_core.Func_boolean_from_any = vx_core.f_any_from_any(
+        vx_core.t_boolean_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val fn_loop : vx_core.Func_any_from_any = vx_core.f_any_from_any(
+        vx_core.t_any_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
+      val max : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(3)
+        )
+      )
       output = vx_collection.f_list_from_for_while_loop_max(generic_list_1, start, fn_while, fn_loop, max)
       return output
     }
@@ -2024,17 +2339,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2052,9 +2372,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val values : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val end : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val values : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val end : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_list_from_list_end(generic_list_1, values, end)
       return output
     }
@@ -2117,17 +2452,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2145,9 +2485,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val vallist : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_filter : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val vallist : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_filter : vx_core.Func_any_from_any = vx_core.f_any_from_any(
+        vx_core.t_any_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_list_from_list_filter(generic_list_1, vallist, fn_filter)
       return output
     }
@@ -2205,17 +2560,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2233,9 +2593,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val vallist : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val filtertypes : vx_core.Type_typelist = vx_core.f_any_from_any(vx_core.t_typelist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val vallist : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val filtertypes : vx_core.Type_typelist = vx_core.f_any_from_any(
+        vx_core.t_typelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_list_from_list_filtertypes(generic_list_1, vallist, filtertypes)
       return output
     }
@@ -2255,18 +2630,20 @@ object vx_collection {
     output = vx_collection.f_list_from_list_filter(
       generic_list_1,
       vallist,
-      vx_core.t_any_from_any.vx_fn_new({value_any : vx_core.Type_any ->
-        val value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, value_any)
-        var output_1 : vx_core.Type_any = vx_core.f_if(
-          vx_core.t_any,
-          vx_type.f_is_type_from_any_typelist(
-            value,
-            filtertypes
-          ),
-          value
-        )
-        output_1
-      })
+      vx_core.t_any_from_any.vx_fn_new(
+        {value_any : vx_core.Type_any ->
+          val value : vx_core.Type_any = vx_core.f_any_from_any(
+            vx_core.t_any,
+            value_any
+          )
+          var output_1 : vx_core.Type_any = vx_core.f_if(
+            vx_core.t_any,
+            vx_type.f_is_type_from_any_typelist(value, filtertypes),
+            value
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -2308,17 +2685,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2336,9 +2718,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val listsrc : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_any_from_any : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val listsrc : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_any_from_any : vx_core.Func_any_from_any = vx_core.f_any_from_any(
+        vx_core.t_any_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_list_from_list_flatten(generic_list_1, listsrc, fn_any_from_any)
       return output
     }
@@ -2357,18 +2754,20 @@ object vx_collection {
     var output : X = vx_core.f_empty(generic_list_1)
     output = vx_core.f_let(
       generic_list_1,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val listany : vx_core.Type_anylist = vx_core.f_list_from_list_1(
-          vx_core.t_anylist,
-          listsrc,
-          fn_any_from_any
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          generic_list_1,
-          listany
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val listany : vx_core.Type_anylist = vx_core.f_list_from_list_1(
+            vx_core.t_anylist,
+            listsrc,
+            fn_any_from_any
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            generic_list_1,
+            listany
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -2409,17 +2808,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2442,15 +2846,31 @@ object vx_collection {
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_list = value as vx_core.Type_list
-      val outputval : vx_core.Type_any = vx_collection.f_list_from_list_join(vx_core.t_list, inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      val outputval : vx_core.Type_any = vx_collection.f_list_from_list_join(
+        vx_core.t_list,
+        inputval
+      )
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val values : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val values : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_collection.f_list_from_list_join(generic_list_1, values)
       return output
     }
@@ -2470,11 +2890,16 @@ object vx_collection {
     output = vx_collection.f_list_from_list_join_1(
       generic_list_1,
       values,
-      vx_core.t_any_from_any.vx_fn_new({value_any : vx_core.Type_any ->
-        val value : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, value_any)
-        var output_1 : vx_core.Type_any = value
-        output_1
-      })
+      vx_core.t_any_from_any.vx_fn_new(
+        {value_any : vx_core.Type_any ->
+          val value : vx_core.Type_any = vx_core.f_any_from_any(
+            vx_core.t_any,
+            value_any
+          )
+          var output_1 : vx_core.Type_any = value
+          output_1
+        }
+      )
     )
     return output
   }
@@ -2516,17 +2941,22 @@ object vx_collection {
         1, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2544,9 +2974,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val values : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val fn_any_from_any : vx_core.Func_any_from_any = vx_core.f_any_from_any(vx_core.t_any_from_any, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val values : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val fn_any_from_any : vx_core.Func_any_from_any = vx_core.f_any_from_any(
+        vx_core.t_any_from_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_list_from_list_join_1(generic_list_1, values, fn_any_from_any)
       return output
     }
@@ -2604,17 +3049,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2632,9 +3082,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val values : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val values : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_list_from_list_start(generic_list_1, values, start)
       return output
     }
@@ -2655,9 +3120,7 @@ object vx_collection {
       generic_list_1,
       values,
       start,
-      vx_core.f_length_1(
-        values
-      )
+      vx_core.f_length_1(values)
     )
     return output
   }
@@ -2700,17 +3163,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2728,10 +3196,30 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val values : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
-      val end : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
+      val generic_list_1 : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val values : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val end : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_collection.f_list_from_list_start_end(generic_list_1, values, start, end)
       return output
     }
@@ -2789,17 +3277,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2817,9 +3310,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val end : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val end : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_map_from_map_end(generic_map_1, valuemap, end)
       return output
     }
@@ -2882,17 +3390,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2910,9 +3423,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val keys : vx_core.Type_stringlist = vx_core.f_any_from_any(vx_core.t_stringlist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val keys : vx_core.Type_stringlist = vx_core.f_any_from_any(
+        vx_core.t_stringlist,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_map_from_map_keys(generic_map_1, valuemap, keys)
       return output
     }
@@ -2970,17 +3498,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -2998,9 +3531,24 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_collection.f_map_from_map_start(generic_map_1, valuemap, start)
       return output
     }
@@ -3021,9 +3569,7 @@ object vx_collection {
       generic_map_1,
       valuemap,
       start,
-      vx_core.f_length_2(
-        valuemap
-      )
+      vx_core.f_length_2(valuemap)
     )
     return output
   }
@@ -3066,17 +3612,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -3094,10 +3645,30 @@ object vx_collection {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val start : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
-      val end : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(2)))
+      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val valuemap : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val start : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val end : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
       output = vx_collection.f_map_from_map_start_end(generic_map_1, valuemap, start, end)
       return output
     }
@@ -3116,23 +3687,23 @@ object vx_collection {
     var output : N = vx_core.f_empty(generic_map_1)
     output = vx_core.f_let(
       generic_map_1,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val keys1 : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(
-          valuemap
-        )
-        val keys2 : vx_core.Type_stringlist = vx_collection.f_list_from_list_start_end(
-          vx_core.t_stringlist,
-          keys1,
-          start,
-          end
-        )
-        val output_1 : vx_core.Type_any = vx_collection.f_map_from_map_keys(
-          generic_map_1,
-          valuemap,
-          keys2
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val keys1 : vx_core.Type_stringlist = vx_core.f_stringlist_from_map(valuemap)
+          val keys2 : vx_core.Type_stringlist = vx_collection.f_list_from_list_start_end(
+            vx_core.t_stringlist,
+            keys1,
+            start,
+            end
+          )
+          val output_1 : vx_core.Type_any = vx_collection.f_map_from_map_keys(
+            generic_map_1,
+            valuemap,
+            keys2
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -3173,17 +3744,22 @@ object vx_collection {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_any), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_any
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -3206,15 +3782,31 @@ object vx_collection {
     override fun <T : vx_core.Type_any, U : vx_core.Type_any> vx_any_from_any(generic_any_1 : T, value : U) : T {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_struct = value as vx_core.Type_struct
-      val outputval : vx_core.Type_any = vx_collection.f_map_from_struct(vx_core.t_map, inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      val outputval : vx_core.Type_any = vx_collection.f_map_from_struct(
+        vx_core.t_map,
+        inputval
+      )
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(vx_core.t_map, arglist.vx_any(vx_core.vx_new_int(0)))
-      val structure : vx_core.Type_struct = vx_core.f_any_from_any(vx_core.t_struct, arglist.vx_any(vx_core.vx_new_int(0)))
+      val generic_map_1 : vx_core.Type_map = vx_core.f_any_from_any(
+        vx_core.t_map,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val structure : vx_core.Type_struct = vx_core.f_any_from_any(
+        vx_core.t_struct,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_collection.f_map_from_struct(generic_map_1, structure)
       return output
     }
@@ -3233,16 +3825,16 @@ object vx_collection {
     var output : N = vx_core.f_empty(generic_map_1)
     output = vx_core.f_let(
       generic_map_1,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val anymap : vx_core.Type_anymap = vx_collection.f_anymap_from_struct(
-          structure
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_map_from_map(
-          generic_map_1,
-          anymap
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val anymap : vx_core.Type_anymap = vx_collection.f_anymap_from_struct(structure)
+          val output_1 : vx_core.Type_any = vx_core.f_map_from_map(
+            generic_map_1,
+            anymap
+          )
+          output_1
+        }
+      )
     )
     return output
   }

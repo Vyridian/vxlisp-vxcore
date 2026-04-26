@@ -40,17 +40,17 @@ object vx_translation_all {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -74,13 +74,21 @@ object vx_translation_all {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_anylist = value as vx_core.Type_anylist
       val outputval : vx_core.Type_any = vx_translation_all.f_context_all(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val args : vx_core.Type_anylist = vx_core.f_any_from_any(vx_core.t_anylist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val args : vx_core.Type_anylist = vx_core.f_any_from_any(
+        vx_core.t_anylist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_translation_all.f_context_all(args)
       return output
     }
@@ -101,17 +109,21 @@ object vx_translation_all {
       vx_core.t_context,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":session"),
-        vx_core.f_new(
-          vx_core.t_session,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string(":translation"),
-            vx_translation_en.f_translation_en(),
-            vx_core.vx_new_string(":translationmap"),
-            vx_translation_all.f_translationmap_all()
+        // [
+          vx_core.vx_new_string(":session"),
+          vx_core.f_new(
+            vx_core.t_session,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string(":translation"),
+                vx_translation_en.f_translation_en(),
+                vx_core.vx_new_string(":translationmap"),
+                vx_translation_all.f_translationmap_all()
+              // ]
+            )
           )
-        )
+        // ]
       )
     )
     return output
@@ -152,17 +164,22 @@ object vx_translation_all {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "translationmap", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_core.t_translation), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "translationmap",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_core.t_translation
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -199,8 +216,10 @@ object vx_translation_all {
     output = vx_translate.f_translationmap_from_translations(
       vx_core.vx_new(
         vx_core.t_translationlist,
-        vx_translation_en.f_translation_en(),
-        vx_translation_es.f_translation_es()
+        // [
+          vx_translation_en.f_translation_en(),
+          vx_translation_es.f_translation_es()
+        // ]
       )
     )
     return output

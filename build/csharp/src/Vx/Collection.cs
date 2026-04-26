@@ -264,17 +264,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -292,9 +297,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list listmain = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list listremove = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list listmain = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list listremove = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_minus(generic_list_1, listmain, listremove);
       return output;
     }
@@ -314,31 +334,39 @@ public static class Collection {
     output = Vx.Collection.f_list_from_list_filter(
       generic_list_1,
       listmain,
-      Vx.Core.t_any_from_any.vx_fn_new((item_any) => {
-        Vx.Core.Type_any item = Vx.Core.f_any_from_any(Vx.Core.t_any, item_any);
-        Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
-          Vx.Core.t_any,
-          Vx.Core.vx_new(
-            Vx.Core.t_thenelselist,
-            Vx.Core.f_then(
-              Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_2 = Vx.Core.f_not(
-                  Vx.Core.f_contains_1(
-                    listremove,
-                    item
+      Vx.Core.t_any_from_any.vx_fn_new(
+        (item_any) => {
+          Vx.Core.Type_any item = Vx.Core.f_any_from_any(
+            Vx.Core.t_any,
+            item_any
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_if_2(
+            Vx.Core.t_any,
+            Vx.Core.vx_new(
+              Vx.Core.t_thenelselist,
+              // [
+                Vx.Core.f_then(
+                  Vx.Core.t_boolean_from_func.vx_fn_new(
+                    () => {
+                      Vx.Core.Type_any output_2 = Vx.Core.f_not(
+                          Vx.Core.f_contains_1(listremove, item)
+                        );
+                        return output_2;
+                      }
+                  ),
+                  Vx.Core.t_any_from_func.vx_fn_new(
+                    () => {
+      Vx.Core.Type_any output_3 = item;
+                        return output_3;
+                      }
                   )
-                );
-                return output_2;
-              }),
-              Vx.Core.t_any_from_func.vx_fn_new(() => {
-                Vx.Core.Type_any output_3 = item;
-                return output_3;
-              })
+                )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -379,17 +407,22 @@ public static class Collection {
         1, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -407,9 +440,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_map mapmain = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_map mapremove = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_map mapmain = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_map mapremove = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_minus_1(generic_map_1, mapmain, mapremove);
       return output;
     }
@@ -428,25 +476,23 @@ public static class Collection {
     N output = Vx.Core.f_empty(generic_map_1);
     output = Vx.Core.f_let(
       generic_map_1,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_stringlist keysmain = Vx.Core.f_stringlist_from_map(
-          mapmain
-        );
-        Vx.Core.Type_stringlist keysremove = Vx.Core.f_stringlist_from_map(
-          mapremove
-        );
-        Vx.Core.Type_stringlist keysremain = Vx.Collection.f_minus(
-          Vx.Core.t_stringlist,
-          keysmain,
-          keysremove
-        );
-        Vx.Core.Type_any output_1 = Vx.Collection.f_map_from_map_keys(
-          generic_map_1,
-          mapmain,
-          keysremain
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_stringlist keysmain = Vx.Core.f_stringlist_from_map(mapmain);
+          Vx.Core.Type_stringlist keysremove = Vx.Core.f_stringlist_from_map(mapremove);
+          Vx.Core.Type_stringlist keysremain = Vx.Collection.f_minus(
+            Vx.Core.t_stringlist,
+            keysmain,
+            keysremove
+          );
+          Vx.Core.Type_any output_1 = Vx.Collection.f_map_from_map_keys(
+            generic_map_1,
+            mapmain,
+            keysremain
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -488,17 +534,17 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -516,10 +562,30 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any start = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_boolean_from_any fn_until = Vx.Core.f_any_from_any(Vx.Core.t_boolean_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any start = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_boolean_from_any fn_until = Vx.Core.f_any_from_any(
+        Vx.Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Collection.f_any_from_for_until_loop(generic_any_1, start, fn_until, fn_loop);
       return output;
     }
@@ -592,17 +658,17 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -620,11 +686,36 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any start = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_boolean_from_any fn_until = Vx.Core.f_any_from_any(Vx.Core.t_boolean_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
-      Vx.Core.Type_int max = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(3)));
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any start = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_boolean_from_any fn_until = Vx.Core.f_any_from_any(
+        Vx.Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
+      Vx.Core.Type_int max = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(3)
+        )
+      );
       output = Vx.Collection.f_any_from_for_until_loop_max(generic_any_1, start, fn_until, fn_loop, max);
       return output;
     }
@@ -682,17 +773,17 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -710,10 +801,30 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any start = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_boolean_from_any fn_while = Vx.Core.f_any_from_any(Vx.Core.t_boolean_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any start = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_boolean_from_any fn_while = Vx.Core.f_any_from_any(
+        Vx.Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Collection.f_any_from_for_while_loop(generic_any_1, start, fn_while, fn_loop);
       return output;
     }
@@ -787,17 +898,17 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -815,11 +926,36 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any start = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_boolean_from_any fn_while = Vx.Core.f_any_from_any(Vx.Core.t_boolean_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
-      Vx.Core.Type_int max = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(3)));
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any start = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_boolean_from_any fn_while = Vx.Core.f_any_from_any(
+        Vx.Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
+      Vx.Core.Type_int max = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(3)
+        )
+      );
       output = Vx.Collection.f_any_from_for_while_loop_max(generic_any_1, start, fn_while, fn_loop, max);
       return output;
     }
@@ -876,17 +1012,17 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -904,9 +1040,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_map map = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int pos = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_any generic_any_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_map map = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int pos = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_any_from_map_pos(generic_any_1, map, pos);
       return output;
     }
@@ -925,22 +1076,22 @@ public static class Collection {
     T output = Vx.Core.f_empty(generic_any_1);
     output = Vx.Core.f_let(
       generic_any_1,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_stringlist keys = Vx.Core.f_stringlist_from_map(
-          map
-        );
-        Vx.Core.Type_string key = Vx.Core.f_any_from_list(
-          Vx.Core.t_string,
-          keys,
-          pos
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_any_from_map(
-          generic_any_1,
-          map,
-          key
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_stringlist keys = Vx.Core.f_stringlist_from_map(map);
+          Vx.Core.Type_string key = Vx.Core.f_any_from_list(
+            Vx.Core.t_string,
+            keys,
+            pos
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_any_from_map(
+            generic_any_1,
+            map,
+            key
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -980,17 +1131,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "anymap", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "anymap",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1014,13 +1170,21 @@ public static class Collection {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_struct inputval = (Vx.Core.Type_struct)value;
       Vx.Core.Type_any outputval = Vx.Collection.f_anymap_from_struct(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_struct structure = Vx.Core.f_any_from_any(Vx.Core.t_struct, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_struct structure = Vx.Core.f_any_from_any(
+        Vx.Core.t_struct,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Collection.f_anymap_from_struct(structure);
       return output;
     }
@@ -1077,17 +1241,17 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1105,8 +1269,18 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string key = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string key = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_boolean_write_from_map_removekey(valuemap, key);
       return output;
     }
@@ -1126,9 +1300,7 @@ public static class Collection {
     output = Vx.Core.f_boolean_write_from_map_name_value(
       valuemap,
       key,
-      Vx.Core.f_empty(
-        Vx.Core.t_any
-      )
+      Vx.Core.f_empty(Vx.Core.t_any)
     );
     return output;
   }
@@ -1169,17 +1341,17 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1197,8 +1369,18 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_stringlist keys = Vx.Core.f_any_from_any(Vx.Core.t_stringlist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_stringlist keys = Vx.Core.f_any_from_any(
+        Vx.Core.t_stringlist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_boolean_write_from_map_removekeys(valuemap, keys);
       return output;
     }
@@ -1217,24 +1399,26 @@ public static class Collection {
     Vx.Core.Type_boolean output = Vx.Core.e_boolean;
     output = Vx.Core.f_let(
       Vx.Core.t_boolean,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_booleanlist writelist = Vx.Core.f_list_from_list_1(
-          Vx.Core.t_booleanlist,
-          keys,
-          Vx.Core.t_any_from_any.vx_fn_new((key_any) => {
-            Vx.Core.Type_string key = Vx.Core.f_any_from_any(Vx.Core.t_string, key_any);
-            Vx.Core.Type_any output_2 = Vx.Collection.f_boolean_write_from_map_removekey(
-              valuemap,
-              key
-            );
-            return output_2;
-          })
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_and_1(
-          writelist
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_booleanlist writelist = Vx.Core.f_list_from_list_1(
+            Vx.Core.t_booleanlist,
+            keys,
+            Vx.Core.t_any_from_any.vx_fn_new(
+              (key_any) => {
+                Vx.Core.Type_string key = Vx.Core.f_any_from_any(
+                  Vx.Core.t_string,
+                  key_any
+                );
+                Vx.Core.Type_any output_2 = Vx.Collection.f_boolean_write_from_map_removekey(valuemap, key);
+                return output_2;
+              }
+            )
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_and_1(writelist);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1275,17 +1459,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_number
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1303,8 +1492,18 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_map map = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string key = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_map map = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string key = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_int_from_map_key(map, key);
       return output;
     }
@@ -1323,16 +1522,13 @@ public static class Collection {
     Vx.Core.Type_int output = Vx.Core.e_int;
     output = Vx.Core.f_let(
       Vx.Core.t_int,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_stringlist keys = Vx.Core.f_stringlist_from_map(
-          map
-        );
-        Vx.Core.Type_any output_1 = Vx.Collection.f_int_from_stringlist_find(
-          keys,
-          key
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_stringlist keys = Vx.Core.f_stringlist_from_map(map);
+          Vx.Core.Type_any output_1 = Vx.Collection.f_int_from_stringlist_find(keys, key);
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1373,17 +1569,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "int", // name
-          "", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_number), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "int",
+          "",
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_number
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1401,8 +1602,18 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_stringlist stringlist = Vx.Core.f_any_from_any(Vx.Core.t_stringlist, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string find = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_stringlist stringlist = Vx.Core.f_any_from_any(
+        Vx.Core.t_stringlist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string find = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_int_from_stringlist_find(stringlist, find);
       return output;
     }
@@ -1421,40 +1632,52 @@ public static class Collection {
     Vx.Core.Type_int output = Vx.Core.e_int;
     output = Vx.Core.f_let(
       Vx.Core.t_int,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_intlist poslist = Vx.Core.f_list_from_list_intany(
-          Vx.Core.t_intlist,
-          stringlist,
-          Vx.Core.t_any_from_int_any.vx_fn_new((pos_any, value_any) => {
-            Vx.Core.Type_int pos = Vx.Core.f_any_from_any(Vx.Core.t_int, pos_any);
-            Vx.Core.Type_string value = Vx.Core.f_any_from_any(Vx.Core.t_string, value_any);
-            Vx.Core.Type_any output_2 = Vx.Core.f_if_1(
-              Vx.Core.t_int,
-              Vx.Core.f_eq(
-                find,
-                value
-              ),
-              pos,
-              Vx.Core.vx_new_int(0)
-            );
-            return output_2;
-          })
-        );
-        Vx.Core.Type_intlist gt0list = Vx.Collection.f_list_from_list_filter(
-          Vx.Core.t_intlist,
-          poslist,
-          Vx.Core.t_any_from_any.vx_fn_new((item_any) => {
-            Vx.Core.Type_int item = Vx.Core.f_any_from_any(Vx.Core.t_int, item_any);
-            Vx.Core.Type_any output_3 = item;
-            return output_3;
-          })
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_first_from_list(
-          Vx.Core.t_int,
-          gt0list
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_intlist poslist = Vx.Core.f_list_from_list_intany(
+            Vx.Core.t_intlist,
+            stringlist,
+            Vx.Core.t_any_from_int_any.vx_fn_new(
+              (pos_any, value_any) => {
+                Vx.Core.Type_int pos = Vx.Core.f_any_from_any(
+                  Vx.Core.t_int,
+                  pos_any
+                );
+                Vx.Core.Type_string value = Vx.Core.f_any_from_any(
+                  Vx.Core.t_string,
+                  value_any
+                );
+                Vx.Core.Type_any output_2 = Vx.Core.f_if_1(
+                  Vx.Core.t_int,
+                  Vx.Core.f_eq(find, value),
+                  pos,
+                  Vx.Core.vx_new_int(0)
+                );
+                return output_2;
+              }
+            )
+          );
+          Vx.Core.Type_intlist gt0list = Vx.Collection.f_list_from_list_filter(
+            Vx.Core.t_intlist,
+            poslist,
+            Vx.Core.t_any_from_any.vx_fn_new(
+              (item_any) => {
+                Vx.Core.Type_int item = Vx.Core.f_any_from_any(
+                  Vx.Core.t_int,
+                  item_any
+                );
+                Vx.Core.Type_any output_3 = item;
+                return output_3;
+              }
+            )
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_first_from_list(
+            Vx.Core.t_int,
+            gt0list
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -1494,17 +1717,17 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1528,13 +1751,21 @@ public static class Collection {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
       Vx.Core.Type_any outputval = Vx.Collection.f_is_list(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Collection.f_is_list(value);
       return output;
     }
@@ -1553,9 +1784,7 @@ public static class Collection {
     Vx.Core.Type_boolean output = Vx.Core.e_boolean;
     output = Vx.Core.f_eq(
       Vx.Core.vx_new_string(":list"),
-      Vx.Core.f_extends_from_any(
-        value
-      )
+      Vx.Core.f_extends_from_any(value)
     );
     return output;
   }
@@ -1595,17 +1824,17 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "boolean", // name
-          "", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "boolean",
+          "",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1629,13 +1858,21 @@ public static class Collection {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
       Vx.Core.Type_any outputval = Vx.Collection.f_is_map(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_any value = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Collection.f_is_map(value);
       return output;
     }
@@ -1654,9 +1891,7 @@ public static class Collection {
     Vx.Core.Type_boolean output = Vx.Core.e_boolean;
     output = Vx.Core.f_eq(
       Vx.Core.vx_new_string(":map"),
-      Vx.Core.f_extends_from_any(
-        value
-      )
+      Vx.Core.f_extends_from_any(value)
     );
     return output;
   }
@@ -1709,17 +1944,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1737,10 +1977,30 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int start = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int end = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_int fn_loop = Vx.Core.f_any_from_any(Vx.Core.t_any_from_int, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int start = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int end = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_int fn_loop = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Collection.f_list_from_for_end_loop(generic_list_1, start, end, fn_loop);
       return output;
     }
@@ -1798,17 +2058,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1826,10 +2091,30 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any start = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_boolean_from_any fn_while = Vx.Core.f_any_from_any(Vx.Core.t_boolean_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any start = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_boolean_from_any fn_while = Vx.Core.f_any_from_any(
+        Vx.Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Collection.f_list_from_for_while_loop(generic_list_1, start, fn_while, fn_loop);
       return output;
     }
@@ -1900,17 +2185,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -1928,11 +2218,36 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any start = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_boolean_from_any fn_while = Vx.Core.f_any_from_any(Vx.Core.t_boolean_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
-      Vx.Core.Type_int max = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(3)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any start = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_boolean_from_any fn_while = Vx.Core.f_any_from_any(
+        Vx.Core.t_boolean_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_any fn_loop = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
+      Vx.Core.Type_int max = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(3)
+        )
+      );
       output = Vx.Collection.f_list_from_for_while_loop_max(generic_list_1, start, fn_while, fn_loop, max);
       return output;
     }
@@ -1989,17 +2304,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2017,9 +2337,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list values = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int end = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list values = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int end = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_list_from_list_end(generic_list_1, values, end);
       return output;
     }
@@ -2081,17 +2416,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2109,9 +2449,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list vallist = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_any_from_any fn_filter = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list vallist = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_any_from_any fn_filter = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_list_from_list_filter(generic_list_1, vallist, fn_filter);
       return output;
     }
@@ -2168,17 +2523,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2196,9 +2556,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list vallist = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_typelist filtertypes = Vx.Core.f_any_from_any(Vx.Core.t_typelist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list vallist = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_typelist filtertypes = Vx.Core.f_any_from_any(
+        Vx.Core.t_typelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_list_from_list_filtertypes(generic_list_1, vallist, filtertypes);
       return output;
     }
@@ -2218,18 +2593,20 @@ public static class Collection {
     output = Vx.Collection.f_list_from_list_filter(
       generic_list_1,
       vallist,
-      Vx.Core.t_any_from_any.vx_fn_new((value_any) => {
-        Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, value_any);
-        Vx.Core.Type_any output_1 = Vx.Core.f_if(
-          Vx.Core.t_any,
-          Vx.Type.f_is_type_from_any_typelist(
-            value,
-            filtertypes
-          ),
-          value
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_any.vx_fn_new(
+        (value_any) => {
+          Vx.Core.Type_any value = Vx.Core.f_any_from_any(
+            Vx.Core.t_any,
+            value_any
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_if(
+            Vx.Core.t_any,
+            Vx.Type.f_is_type_from_any_typelist(value, filtertypes),
+            value
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2270,17 +2647,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2298,9 +2680,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list listsrc = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_any_from_any fn_any_from_any = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list listsrc = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_any_from_any fn_any_from_any = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_list_from_list_flatten(generic_list_1, listsrc, fn_any_from_any);
       return output;
     }
@@ -2319,18 +2716,20 @@ public static class Collection {
     X output = Vx.Core.f_empty(generic_list_1);
     output = Vx.Core.f_let(
       generic_list_1,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_anylist listany = Vx.Core.f_list_from_list_1(
-          Vx.Core.t_anylist,
-          listsrc,
-          fn_any_from_any
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          generic_list_1,
-          listany
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_anylist listany = Vx.Core.f_list_from_list_1(
+            Vx.Core.t_anylist,
+            listsrc,
+            fn_any_from_any
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            generic_list_1,
+            listany
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2370,17 +2769,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2403,15 +2807,31 @@ public static class Collection {
     public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_list inputval = (Vx.Core.Type_list)value;
-      Vx.Core.Type_any outputval = Vx.Collection.f_list_from_list_join(Vx.Core.t_list, inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      Vx.Core.Type_any outputval = Vx.Collection.f_list_from_list_join(
+        Vx.Core.t_list,
+        inputval
+      );
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list values = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list values = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Collection.f_list_from_list_join(generic_list_1, values);
       return output;
     }
@@ -2431,11 +2851,16 @@ public static class Collection {
     output = Vx.Collection.f_list_from_list_join_1(
       generic_list_1,
       values,
-      Vx.Core.t_any_from_any.vx_fn_new((value_any) => {
-        Vx.Core.Type_any value = Vx.Core.f_any_from_any(Vx.Core.t_any, value_any);
-        Vx.Core.Type_any output_1 = value;
-        return output_1;
-      })
+      Vx.Core.t_any_from_any.vx_fn_new(
+        (value_any) => {
+          Vx.Core.Type_any value = Vx.Core.f_any_from_any(
+            Vx.Core.t_any,
+            value_any
+          );
+          Vx.Core.Type_any output_1 = value;
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -2476,17 +2901,22 @@ public static class Collection {
         1, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2504,9 +2934,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list values = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_any_from_any fn_any_from_any = Vx.Core.f_any_from_any(Vx.Core.t_any_from_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list values = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_any_from_any fn_any_from_any = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_list_from_list_join_1(generic_list_1, values, fn_any_from_any);
       return output;
     }
@@ -2563,17 +3008,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2591,9 +3041,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list values = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int start = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list values = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int start = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_list_from_list_start(generic_list_1, values, start);
       return output;
     }
@@ -2614,9 +3079,7 @@ public static class Collection {
       generic_list_1,
       values,
       start,
-      Vx.Core.f_length_1(
-        values
-      )
+      Vx.Core.f_length_1(values)
     );
     return output;
   }
@@ -2658,17 +3121,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "list-1", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "list-1",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2686,10 +3154,30 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_list values = Vx.Core.f_any_from_any(Vx.Core.t_list, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int start = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_int end = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_list generic_list_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_list values = Vx.Core.f_any_from_any(
+        Vx.Core.t_list,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int start = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_int end = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Collection.f_list_from_list_start_end(generic_list_1, values, start, end);
       return output;
     }
@@ -2746,17 +3234,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2774,9 +3267,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int end = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int end = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_map_from_map_end(generic_map_1, valuemap, end);
       return output;
     }
@@ -2838,17 +3346,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2866,9 +3379,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_stringlist keys = Vx.Core.f_any_from_any(Vx.Core.t_stringlist, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_stringlist keys = Vx.Core.f_any_from_any(
+        Vx.Core.t_stringlist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_map_from_map_keys(generic_map_1, valuemap, keys);
       return output;
     }
@@ -2925,17 +3453,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -2953,9 +3486,24 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int start = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int start = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Collection.f_map_from_map_start(generic_map_1, valuemap, start);
       return output;
     }
@@ -2976,9 +3524,7 @@ public static class Collection {
       generic_map_1,
       valuemap,
       start,
-      Vx.Core.f_length_2(
-        valuemap
-      )
+      Vx.Core.f_length_2(valuemap)
     );
     return output;
   }
@@ -3020,17 +3566,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3048,10 +3599,30 @@ public static class Collection {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_int start = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_int end = Vx.Core.f_any_from_any(Vx.Core.t_int, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_map valuemap = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_int start = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_int end = Vx.Core.f_any_from_any(
+        Vx.Core.t_int,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Collection.f_map_from_map_start_end(generic_map_1, valuemap, start, end);
       return output;
     }
@@ -3070,23 +3641,23 @@ public static class Collection {
     N output = Vx.Core.f_empty(generic_map_1);
     output = Vx.Core.f_let(
       generic_map_1,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_stringlist keys1 = Vx.Core.f_stringlist_from_map(
-          valuemap
-        );
-        Vx.Core.Type_stringlist keys2 = Vx.Collection.f_list_from_list_start_end(
-          Vx.Core.t_stringlist,
-          keys1,
-          start,
-          end
-        );
-        Vx.Core.Type_any output_1 = Vx.Collection.f_map_from_map_keys(
-          generic_map_1,
-          valuemap,
-          keys2
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_stringlist keys1 = Vx.Core.f_stringlist_from_map(valuemap);
+          Vx.Core.Type_stringlist keys2 = Vx.Collection.f_list_from_list_start_end(
+            Vx.Core.t_stringlist,
+            keys1,
+            start,
+            end
+          );
+          Vx.Core.Type_any output_1 = Vx.Collection.f_map_from_map_keys(
+            generic_map_1,
+            valuemap,
+            keys2
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -3126,17 +3697,22 @@ public static class Collection {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "map-1", // name
-          ":map", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Core.t_any), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "map-1",
+          ":map",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Core.t_any
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3159,15 +3735,31 @@ public static class Collection {
     public T vx_any_from_any<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_struct inputval = (Vx.Core.Type_struct)value;
-      Vx.Core.Type_any outputval = Vx.Collection.f_map_from_struct(Vx.Core.t_map, inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      Vx.Core.Type_any outputval = Vx.Collection.f_map_from_struct(
+        Vx.Core.t_map,
+        inputval
+      );
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(Vx.Core.t_map, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_struct structure = Vx.Core.f_any_from_any(Vx.Core.t_struct, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_map generic_map_1 = Vx.Core.f_any_from_any(
+        Vx.Core.t_map,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_struct structure = Vx.Core.f_any_from_any(
+        Vx.Core.t_struct,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Collection.f_map_from_struct(generic_map_1, structure);
       return output;
     }
@@ -3186,16 +3778,16 @@ public static class Collection {
     N output = Vx.Core.f_empty(generic_map_1);
     output = Vx.Core.f_let(
       generic_map_1,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_anymap anymap = Vx.Collection.f_anymap_from_struct(
-          structure
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_map_from_map(
-          generic_map_1,
-          anymap
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_anymap anymap = Vx.Collection.f_anymap_from_struct(structure);
+          Vx.Core.Type_any output_1 = Vx.Core.f_map_from_map(
+            generic_map_1,
+            anymap
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }

@@ -37,34 +37,120 @@ public static class TestLib {
   public static Vx.Data.File.Type_file file_test(Vx.Data.File.Type_file file) {
     Vx.Data.File.Type_file output = Vx.Core.vx_copy(
       file,
-      Vx.Core.vx_new_string(":path"),
-      Vx.Core.vx_new_string(spath)
+      // [
+        Vx.Core.vx_new_string(":path"),
+        Vx.Core.vx_new_string(spath)
+      // ]
     );
     return output;
   }
 
-  public static string read_test_file(string path, string filename) {
+  public static string read_test_file(Vx.Core.Type_context context, string path, string filename) {
     Vx.Data.File.Type_file file = Vx.Core.vx_new(
       Vx.Data.File.t_file,
-      Vx.Core.vx_new_string(":path"),
-      Vx.Core.vx_new_string(path),
-      Vx.Core.vx_new_string(":name"),
-      Vx.Core.vx_new_string(filename)
+      // [
+        Vx.Core.vx_new_string(":path"),
+        Vx.Core.vx_new_string(path),
+        Vx.Core.vx_new_string(":name"),
+        Vx.Core.vx_new_string(filename)
+      // ]
     );
     Vx.Core.Type_string string_file = Vx.Data.File.vx_string_read_from_file(file);
     string output = string_file.vx_string();
     return output;
   }
 
+  public static Vx.Test.Type_testcase sample_testcase1(Vx.Core.Type_context context) {
+    Vx.Test.Type_testcase output = Vx.Core.vx_new(
+      Vx.Test.t_testcase,
+      // [
+        Vx.Core.vx_new_string(":passfail"),
+        Vx.Core.e_boolean,
+        Vx.Core.vx_new_string(":testpkg"),
+        Vx.Core.vx_new_string("vx/core"),
+        Vx.Core.vx_new_string(":casename"),
+        Vx.Core.vx_new_string("boolean"),
+        Vx.Core.vx_new_string(":describelist"),
+        TestLib.sample_testdescribelist(context)
+      // ]
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testcase sample_testcase2(Vx.Core.Type_context context) {
+    Vx.Test.Type_testcase output = Vx.Core.vx_new(
+      Vx.Test.t_testcase,
+      // [
+        Vx.Core.vx_new_string(":passfail"),
+        Vx.Core.e_boolean,
+        Vx.Core.vx_new_string(":testpkg"),
+        Vx.Core.vx_new_string("vx/core"),
+        Vx.Core.vx_new_string(":casename"),
+        Vx.Core.vx_new_string("float"),
+        Vx.Core.vx_new_string(":describelist"),
+        Vx.Core.vx_any_from_any(
+          Vx.Test.t_testdescribelist,
+          Vx.Core.vx_new(
+            Vx.Test.t_testdescribelist,
+            // [
+              Vx.Core.vx_new(
+                Vx.Test.t_testdescribe,
+                // [
+                  Vx.Core.vx_new_string(":describename"),
+                  Vx.Core.vx_new_string(
+                    "(test 4.5 (float 4.5))"
+                  ),
+                  Vx.Core.vx_new_string(":testpkg"),
+                  Vx.Core.vx_new_string("vx/core"),
+                  Vx.Core.vx_new_string(":testresult"),
+                  Vx.Test.f_test(
+                    context,
+                    Vx.Core.vx_new_decimal("4.5"),
+                    Vx.Core.f_new_from_type(
+                      Vx.Core.t_float,
+                      Vx.Core.vx_new(
+                        Vx.Core.t_anylist,
+                        // [
+                          Vx.Core.vx_new_decimal("4.5")
+                        // ]
+                      )
+                    )
+                  )
+                // ]
+              )
+            // ]
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testcaselist sample_testcaselist(Vx.Core.Type_context context) {
+    Vx.Test.Type_testcaselist output = Vx.Core.vx_any_from_any(
+      Vx.Test.t_testcaselist,
+      Vx.Core.vx_new(
+        Vx.Test.t_testcaselist,
+        // [
+          TestLib.sample_testcase1(context),
+          TestLib.sample_testcase2(context)
+        // ]
+      )
+    );
+    return output;
+  }
+
   public static Vx.Test.Type_testdescribe sample_testdescribe1(Vx.Core.Type_context context) {
     Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
       Vx.Test.t_testdescribe,
-      Vx.Core.vx_new_string(":describename"),
-      Vx.Core.vx_new_string("(test-true true)"),
-      Vx.Core.vx_new_string(":testpkg"),
-      Vx.Core.vx_new_string("vx/core"),
-      Vx.Core.vx_new_string(":testresult"),
-      TestLib.sample_testresult1(context)
+      // [
+        Vx.Core.vx_new_string(":describename"),
+        Vx.Core.vx_new_string("(test-true true)"),
+        Vx.Core.vx_new_string(":testpkg"),
+        Vx.Core.vx_new_string("vx/core"),
+        Vx.Core.vx_new_string(":testresult"),
+        TestLib.sample_testresult1(context)
+      // ]
     );
     return output;
   }
@@ -72,12 +158,14 @@ public static class TestLib {
   public static Vx.Test.Type_testdescribe sample_testdescribe2(Vx.Core.Type_context context) {
     Vx.Test.Type_testdescribe output = Vx.Core.vx_new(
       Vx.Test.t_testdescribe,
-      Vx.Core.vx_new_string(":describename"),
-      Vx.Core.vx_new_string("(test-false false)"),
-      Vx.Core.vx_new_string(":testpkg"),
-      Vx.Core.vx_new_string("vx/core"),
-      Vx.Core.vx_new_string(":testresult"),
-      TestLib.sample_testresult2(context)
+      // [
+        Vx.Core.vx_new_string(":describename"),
+        Vx.Core.vx_new_string("(test-false false)"),
+        Vx.Core.vx_new_string(":testpkg"),
+        Vx.Core.vx_new_string("vx/core"),
+        Vx.Core.vx_new_string(":testresult"),
+        TestLib.sample_testresult2(context)
+      // ]
     );
     return output;
   }
@@ -85,10 +173,34 @@ public static class TestLib {
   public static Vx.Test.Type_testdescribelist sample_testdescribelist(Vx.Core.Type_context context) {
     Vx.Test.Type_testdescribelist output = Vx.Core.vx_any_from_any(
       Vx.Test.t_testdescribelist,
-      Vx.Test.t_testdescribelist.vx_new(
-        TestLib.sample_testdescribe1(context),
-        TestLib.sample_testdescribe2(context)
+      Vx.Core.vx_new(
+        Vx.Test.t_testdescribelist,
+        // [
+          TestLib.sample_testdescribe1(context),
+          TestLib.sample_testdescribe2(context)
+        // ]
       )
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testpackage sample_testpackage(Vx.Core.Type_context context) {
+    Vx.Test.Type_testpackage output = Vx.Core.vx_new(
+      Vx.Test.t_testpackage,
+      // [
+        Vx.Core.vx_new_string(":testpkg"),
+        Vx.Core.vx_new_string("vx/core"),
+        Vx.Core.vx_new_string(":caselist"),
+        TestLib.sample_testcaselist(context)
+      // ]
+    );
+    return output;
+  }
+
+  public static Vx.Test.Type_testpackagelist sample_testpackagelist(Vx.Core.Type_context context) {
+    Vx.Test.Type_testpackagelist output = Vx.Core.vx_any_from_any(
+      Vx.Test.t_testpackagelist,
+      TestLib.sample_testpackage(context)
     );
     return output;
   }
@@ -175,8 +287,16 @@ public static class TestLib {
 
   public static bool test_list_from_list_async() {
     string testname = "test_list_from_list_async";
-    Vx.Core.Type_anylist sparams = Vx.Core.vx_anylist_from_arraystring("hello", "world");
-    Vx.Core.Type_stringlist slist = Vx.Core.f_new_from_type(Vx.Core.t_stringlist, sparams);
+    Vx.Core.Type_anylist sparams = Vx.Core.vx_anylist_from_arraystring(
+      // [
+        "hello",
+        "world"
+      // ]
+    );
+    Vx.Core.Type_stringlist slist = Vx.Core.f_new_from_type(
+      Vx.Core.t_stringlist,
+      sparams
+    );
     Vx.Core.Func_any_from_any_async fn_async = Vx.Core.t_any_from_any_async.vx_fn_new((anyval) => {
       Vx.Core.Type_string stringval = (Vx.Core.Type_string)anyval;
       string sout = stringval.vx_string() + "!";
@@ -184,8 +304,15 @@ public static class TestLib {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(outval);
       return output;
     });
-    Task<Vx.Core.Type_stringlist> asynclist = Vx.Core.vx_list_from_list_async(Vx.Core.t_stringlist, slist, fn_async);
-    Vx.Core.Type_stringlist sync = Vx.Core.vx_sync_from_async(Vx.Core.t_stringlist, asynclist);
+    Task<Vx.Core.Type_stringlist> asynclist = Vx.Core.vx_list_from_list_async(
+      Vx.Core.t_stringlist,
+      slist,
+      fn_async
+    );
+    Vx.Core.Type_stringlist sync = Vx.Core.vx_sync_from_async(
+      Vx.Core.t_stringlist,
+      asynclist
+    );
     string expected = "(stringlist\n \"hello!\"\n \"world!\")";
     string actual = Vx.Core.vx_string_from_any(sync);
     bool output = TestLib.test(
@@ -206,6 +333,7 @@ public static class TestLib {
       testresult
     );
     string expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testresult.txt"
     );
@@ -227,6 +355,7 @@ public static class TestLib {
       testdescribe
     );
     string expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribe.txt"
     );
@@ -243,18 +372,94 @@ public static class TestLib {
 
   public static bool test_run_testdescribelist(Vx.Core.Type_context context) {
     string testname = "test_run_testdescribelist";
-    Vx.Test.Type_testresult testresult = TestLib.sample_testresult1(context);
-    Vx.Test.Type_testresult testresult_resolved = TestLib.run_testresult(
+    Vx.Test.Type_testdescribelist testdescribelist = TestLib.sample_testdescribelist(context);
+    Vx.Test.Type_testdescribelist testdescribelist_resolved = TestLib.run_testdescribelist(
       "vx/core",
       "boolean",
-      "",
-      testresult
+      testdescribelist
     );
     string expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribelist.txt"
     );
-    string actual = Vx.Core.vx_string_from_any(testresult_resolved);
+    string actual = Vx.Core.vx_string_from_any(
+      testdescribelist_resolved
+    );
+    bool output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
+  public static bool test_run_testcase(Vx.Core.Type_context context) {
+    string testname = "test_run_testcase";
+    Vx.Test.Type_testcase testcase = TestLib.sample_testcase1(context);
+    Vx.Test.Type_testcase testcase_resolved = TestLib.run_testcase(testcase);
+    string expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcase.txt"
+    );
+    string actual = Vx.Core.vx_string_from_any(testcase_resolved);
+    bool output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
+  public static bool test_run_testcaselist(Vx.Core.Type_context context) {
+    string testname = "test_run_testcaselist";
+    Vx.Test.Type_testcase testcase = TestLib.sample_testcase1(context);
+    Vx.Test.Type_testcase testcase_resolved = TestLib.run_testcase(testcase);
+    string expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcaselist.txt"
+    );
+    string actual = Vx.Core.vx_string_from_any(testcase_resolved);
+    bool output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
+  public static bool test_run_testpackage(Vx.Core.Type_context context) {
+    string testname = "test_run_testpackage";
+    Vx.Test.Type_testpackage testpackage = TestLib.sample_testpackage(context);
+    Vx.Test.Type_testpackage testpackage_resolved = TestLib.run_testpackage(testpackage);
+    string expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testpackage.txt"
+    );
+    string actual = Vx.Core.vx_string_from_any(testpackage_resolved);
+    bool output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
+  public static bool test_run_testpackagelist(Vx.Core.Type_context context) {
+    string testname = "test_run_testpackagelist";
+    Vx.Test.Type_testpackagelist testpackagelist = TestLib.sample_testpackagelist(context);
+    Vx.Test.Type_testpackagelist testpackagelist_resolved = TestLib.run_testpackagelist(testpackagelist);
+    string expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testpackagelist.txt"
+    );
+    string actual = Vx.Core.vx_string_from_any(
+      testpackagelist_resolved
+    );
     bool output = TestLib.test(
       testname,
       expected,
@@ -273,10 +478,35 @@ public static class TestLib {
       testresult
     );
     string expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testresult_async.txt"
     );
     string actual = Vx.Core.vx_string_from_any(testresult_resolved);
+    bool output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
+  public static bool test_run_testdescribe_async(Vx.Core.Type_context context) {
+    string testname = "test_run_testdescribe_async";
+    Vx.Test.Type_testdescribe testdescribe = TestLib.sample_testdescribe1(context);
+    Vx.Test.Type_testdescribe testdescribe_resolved = TestLib.run_testdescribe(
+      "vx/core",
+      "boolean",
+      testdescribe
+    );
+    string expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testdescribe_async.txt"
+    );
+    string actual = Vx.Core.vx_string_from_any(
+      testdescribe_resolved
+    );
     bool output = TestLib.test(
       testname,
       expected,
@@ -294,6 +524,7 @@ public static class TestLib {
       testdescribelist
     );
     string expected = TestLib.read_test_file(
+      context,
       spath + "/vx",
       "test_run_testdescribelist_async.txt"
     );
@@ -308,12 +539,37 @@ public static class TestLib {
     return output;
   }
 
+  public static bool test_run_testcase_async(Vx.Core.Type_context context) {
+    string testname = "test_run_testcase_async";
+    Vx.Test.Type_testcase testcase = TestLib.sample_testcase1(context);
+    Vx.Test.Type_testcase testcase_resolved = TestLib.run_testcase(testcase);
+    string expected = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "test_run_testcase_async.txt"
+    );
+    string actual = Vx.Core.vx_string_from_any(testcase_resolved);
+    bool output = TestLib.test(
+      testname,
+      expected,
+      actual
+    );
+    return output;
+  }
+
   public static bool test_pathfull_from_file() {
     string testname = "test_pathfull_from_file";
     Vx.Data.File.Type_file file = Vx.Core.vx_new(
       Vx.Data.File.t_file,
-      Vx.Core.vx_new_string(":path"), Vx.Core.vx_new_string(spath + "/vx"),
-      Vx.Core.vx_new_string(":name"), Vx.Core.vx_new_string("string_read_from_file.txt"));
+      // [
+        Vx.Core.vx_new_string(":path"),
+        Vx.Core.vx_new_string(spath + "/vx"),
+        Vx.Core.vx_new_string(":name"),
+        Vx.Core.vx_new_string(
+          "string_read_from_file.txt"
+        )
+      // ]
+    );
     Vx.Core.Type_string string_path = Vx.Data.File.f_pathfull_from_file(file);
     string expected = spath + "/vx/string_read_from_file.txt";
     string actual = string_path.vx_string();
@@ -325,10 +581,14 @@ public static class TestLib {
     return output;
   }
 
-  public static bool test_read_file() {
+  public static bool test_read_file(Vx.Core.Type_context context) {
     string testname = "test_read_file";
     string expected = "testdata";
-    string actual = read_test_file(spath + "/vx", "string_read_from_file.txt");
+    string actual = TestLib.read_test_file(
+      context,
+      spath + "/vx",
+      "string_read_from_file.txt"
+    );
     bool output = TestLib.test(
       testname,
       expected,
@@ -337,16 +597,27 @@ public static class TestLib {
     return output;
   }
 
-  public static bool test_write_file() {
+  public static bool test_write_file(Vx.Core.Type_context context) {
     string testname = "test_write_file";
     Vx.Data.File.Type_file file = Vx.Core.vx_new(
-      Vx.Data.File.t_file, 
-      Vx.Core.vx_new_string(":path"), Vx.Core.vx_new_string(spath + "/vx"),
-      Vx.Core.vx_new_string(":name"), Vx.Core.vx_new_string("string_read_from_file.txt")
+      Vx.Data.File.t_file,
+      // [
+        Vx.Core.vx_new_string(":path"),
+        Vx.Core.vx_new_string(spath + "/vx"),
+        Vx.Core.vx_new_string(":name"),
+        Vx.Core.vx_new_string(
+          "boolean_write_from_file_string"
+        )
+      // ]
     );
-    Vx.Core.Type_string string_path = Vx.Data.File.f_pathfull_from_file(file);
-    string expected = spath + "/vx/string_read_from_file.txt";
-    string actual = string_path.vx_string();
+    Vx.Core.Type_string string_file = Vx.Core.vx_new_string("writetext");
+    Vx.Core.Type_boolean boolean_write = Vx.Data.File.vx_boolean_write_from_file_string(
+      context,
+      file,
+      string_file
+    );
+    string expected = "true";
+    string actual = Vx.Core.vx_string_from_any(boolean_write);
     bool output = TestLib.test(
       testname,
       expected,
@@ -368,8 +639,10 @@ public static class TestLib {
     );
     Vx.Test.Type_testcase output = Vx.Core.vx_copy(
       testcase,
-      Vx.Core.vx_new_string(":describelist"),
-      testdescribelist_resolved
+      // [
+        Vx.Core.vx_new_string(":describelist"),
+        testdescribelist_resolved
+      // ]
     );
     return output;
   }
@@ -395,9 +668,13 @@ public static class TestLib {
     }
     Vx.Test.Type_testcaselist output = Vx.Core.vx_any_from_any(
       Vx.Test.t_testcaselist,
-      testcaselist.vx_new(
+      Vx.Core.vx_new(
+      Vx.Test.t_testcaselist,
+      // [
+        testcaselist,
         listtestcase_resolved
-      )
+      // ]
+    )
     );
     return output;
   }
@@ -408,20 +685,22 @@ public static class TestLib {
     Vx.Test.Type_testresult testresult = describe.testresult();
     Vx.Test.Type_testdescribe output = Vx.Core.vx_copy(
       describe,
-      ":testresult",
-      TestLib.run_testresult(
+      // [
+        ":testresult",
+        TestLib.run_testresult(
         testpkg,
         casename,
         message,
         testresult
       )
+      // ]
     );
     return output;
   }
 
   public static Vx.Test.Type_testdescribelist run_testdescribelist(string testpkg, string casename, Vx.Test.Type_testdescribelist testdescribelist) {
     List<Vx.Test.Type_testdescribe> listtestdescribe = testdescribelist.vx_listtestdescribe();
-    List<Vx.Test.Type_testdescribe> listtestdescribe_resolved = new List<Vx.Test.Type_testdescribe>();
+    List<Vx.Core.Type_any> listtestdescribe_resolved = new List<Vx.Core.Type_any>();
     foreach (Vx.Test.Type_testdescribe testdescribe in listtestdescribe) {
       Vx.Test.Type_testdescribe testdescribe_resolved = TestLib.run_testdescribe(
         testpkg,
@@ -432,8 +711,11 @@ public static class TestLib {
     }
     Vx.Test.Type_testdescribelist output = Vx.Core.vx_any_from_any(
       Vx.Test.t_testdescribelist,
-      testdescribelist.vx_new(
-        listtestdescribe_resolved
+      Vx.Core.vx_new(
+        Vx.Test.t_testdescribelist,
+        // [
+          listtestdescribe_resolved
+        // ]
       )
     );
     return output;
@@ -444,8 +726,10 @@ public static class TestLib {
     Vx.Test.Type_testcaselist testcaselist_resolved = TestLib.run_testcaselist(testcaselist);
     Vx.Test.Type_testpackage output = Vx.Core.vx_copy(
       testpackage,
-      Vx.Core.vx_new_string(":caselist"),
-      testcaselist_resolved
+      // [
+        Vx.Core.vx_new_string(":caselist"),
+        testcaselist_resolved
+      // ]
     );
     return output;
   }
@@ -459,13 +743,33 @@ public static class TestLib {
     return output;
   }
 
+  public static Vx.Test.Type_testpackagelist run_testpackagelist(Vx.Test.Type_testpackagelist testpackagelist) {
+    List<Vx.Test.Type_testpackage> listtestpackage = testpackagelist.vx_listtestpackage();
+    List<Vx.Test.Type_testpackage> listtestpackage_resolved = new List<Vx.Test.Type_testpackage>();
+    foreach (Vx.Test.Type_testpackage testpackage in listtestpackage) {
+      Vx.Test.Type_testpackage testpackage_resolved = TestLib.run_testpackage(testpackage);
+      listtestpackage_resolved.Add(testpackage_resolved);
+    }
+    Vx.Test.Type_testpackagelist output = Vx.Core.vx_any_from_any(
+      Vx.Test.t_testpackagelist,
+      Vx.Core.vx_new(
+      Vx.Test.t_testpackagelist,
+      // [
+        testpackagelist,
+        listtestpackage_resolved
+      // ]
+    )
+    );
+    return output;
+  }
+
   public static Vx.Test.Type_testresult run_testresult(string testpkg, string testname, string message, Vx.Test.Type_testresult testresult) {
     Vx.Core.Type_any valexpected = testresult.expected();
     Vx.Core.Type_any valactual = testresult.actual();
     bool passfail = testresult.passfail().vx_boolean();
     string code = testresult.code().vx_string();
-    string expected = Vx.Core.f_string_from_any(valexpected).vx_string();
-    string actual = Vx.Core.f_string_from_any(valactual).vx_string();
+    string expected = Vx.Core.vx_string_from_any(valexpected);
+    string actual = Vx.Core.vx_string_from_any(valactual);
     string msg = testpkg + "/" + testname + " " + message;
     if ((!passfail)) {
       System.Console.WriteLine(msg);

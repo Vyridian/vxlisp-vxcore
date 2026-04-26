@@ -56,7 +56,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_body = vx_core.vx_copy(vx_web_html.e_body, *vals)
+      var output : vx_web_html.Type_body = vx_core.vx_copy(
+        vx_web_html.e_body,
+        *vals
+      )
       return output
     }
 
@@ -76,9 +79,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -99,9 +112,19 @@ object vx_web_html {
             var vallist : vx_web_html.Type_divchildlist
             vallist = vx_p_nodes
             if (vallist == null) {
-              vallist = vx_core.vx_new(vx_web_html.t_divchildlist, valdefault)
+              vallist = vx_core.vx_new(
+                vx_web_html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              )
             } else {
-              vallist = vx_core.vx_copy(vallist, valdefault)
+              vallist = vx_core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -113,8 +136,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/body", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/body",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -125,8 +157,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/body", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/body",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -148,14 +189,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/body", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/body",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/body", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/body",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -183,17 +244,17 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "body", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "body",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -329,7 +390,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_details = vx_core.vx_copy(vx_web_html.e_details, *vals)
+      var output : vx_web_html.Type_details = vx_core.vx_copy(
+        vx_web_html.e_details,
+        *vals
+      )
       return output
     }
 
@@ -361,9 +425,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -384,8 +458,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/details",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -396,8 +479,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -410,7 +502,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -422,9 +519,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -443,9 +551,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -464,9 +583,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -485,9 +615,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -506,9 +647,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":summary")) {
             if (valsub == vx_p_summary) {
@@ -527,9 +679,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("summary"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -548,14 +711,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/details",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/details", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/details",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -589,17 +772,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "details", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "details",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_divchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -720,7 +909,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_div = vx_core.vx_copy(vx_web_html.e_div, *vals)
+      var output : vx_web_html.Type_div = vx_core.vx_copy(
+        vx_web_html.e_div,
+        *vals
+      )
       return output
     }
 
@@ -750,9 +942,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -773,9 +975,19 @@ object vx_web_html {
             var vallist : vx_web_html.Type_divchildlist
             vallist = vx_p_nodes
             if (vallist == null) {
-              vallist = vx_core.vx_new(vx_web_html.t_divchildlist, valdefault)
+              vallist = vx_core.vx_new(
+                vx_web_html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              )
             } else {
-              vallist = vx_core.vx_copy(vallist, valdefault)
+              vallist = vx_core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -787,8 +999,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/div",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -799,8 +1020,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -813,7 +1043,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -825,9 +1060,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -846,9 +1092,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -867,9 +1124,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -888,9 +1156,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -909,9 +1188,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -930,14 +1220,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/div",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/div", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/div",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -970,17 +1280,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "div", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "div",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_divchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1013,7 +1329,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_divchild = vx_core.vx_copy(vx_web_html.e_divchild, *vals)
+      var output : vx_web_html.Type_divchild = vx_core.vx_copy(
+        vx_web_html.e_divchild,
+        *vals
+      )
       return output
     }
 
@@ -1047,17 +1366,17 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "divchild", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "divchild",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1113,7 +1432,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_divchildlist = vx_core.vx_copy(vx_web_html.e_divchildlist, *vals)
+      var output : vx_web_html.Type_divchildlist = vx_core.vx_copy(
+        vx_web_html.e_divchildlist,
+        *vals
+      )
       return output
     }
 
@@ -1129,9 +1451,19 @@ object vx_web_html {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_web_html.Type_divchildlist) {
           var multi : vx_web_html.Type_divchildlist = valsub as vx_web_html.Type_divchildlist
           ischanged = true
@@ -1156,11 +1488,29 @@ object vx_web_html {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/web/html/divchildlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/divchildlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/web/html/divchildlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/divchildlist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -1186,17 +1536,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "divchildlist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_divchild), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "divchildlist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_divchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1252,7 +1607,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_divlist = vx_core.vx_copy(vx_web_html.e_divlist, *vals)
+      var output : vx_web_html.Type_divlist = vx_core.vx_copy(
+        vx_web_html.e_divlist,
+        *vals
+      )
       return output
     }
 
@@ -1268,9 +1626,19 @@ object vx_web_html {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_web_html.Type_divlist) {
           var multi : vx_web_html.Type_divlist = valsub as vx_web_html.Type_divlist
           ischanged = true
@@ -1295,11 +1663,29 @@ object vx_web_html {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/web/html/divlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/divlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/web/html/divlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/divlist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -1325,17 +1711,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "divlist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_div), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "divlist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_div
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1386,7 +1777,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_footer = vx_core.vx_copy(vx_web_html.e_footer, *vals)
+      var output : vx_web_html.Type_footer = vx_core.vx_copy(
+        vx_web_html.e_footer,
+        *vals
+      )
       return output
     }
 
@@ -1406,9 +1800,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -1429,9 +1833,19 @@ object vx_web_html {
             var vallist : vx_web_html.Type_divchildlist
             vallist = vx_p_nodes
             if (vallist == null) {
-              vallist = vx_core.vx_new(vx_web_html.t_divchildlist, valdefault)
+              vallist = vx_core.vx_new(
+                vx_web_html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              )
             } else {
-              vallist = vx_core.vx_copy(vallist, valdefault)
+              vallist = vx_core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -1443,8 +1857,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/footer", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/footer",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1455,8 +1878,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/footer", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/footer",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -1478,14 +1910,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/footer", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/footer",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/footer", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/footer",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -1513,17 +1965,17 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "footer", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "footer",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -1644,7 +2096,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_h1 = vx_core.vx_copy(vx_web_html.e_h1, *vals)
+      var output : vx_web_html.Type_h1 = vx_core.vx_copy(
+        vx_web_html.e_h1,
+        *vals
+      )
       return output
     }
 
@@ -1674,9 +2129,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -1700,8 +2165,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/h1",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -1716,11 +2190,25 @@ object vx_web_html {
               vx_p_text = valstr
             } else if (valsub is String) {
               ischanged = true
-              vx_p_text = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_text = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -1733,7 +2221,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -1745,9 +2238,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -1766,9 +2270,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -1787,9 +2302,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -1808,9 +2334,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -1829,9 +2366,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -1841,7 +2389,12 @@ object vx_web_html {
               vx_p_text = valtext
             } else if (valsub is String) {
               ischanged = true
-              vx_p_text = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_text = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -1853,14 +2406,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h1",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/h1", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/h1",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -1893,17 +2466,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "h1", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "h1",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_divchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2024,7 +2603,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_h2 = vx_core.vx_copy(vx_web_html.e_h2, *vals)
+      var output : vx_web_html.Type_h2 = vx_core.vx_copy(
+        vx_web_html.e_h2,
+        *vals
+      )
       return output
     }
 
@@ -2054,9 +2636,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -2080,8 +2672,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/h2",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2096,11 +2697,25 @@ object vx_web_html {
               vx_p_text = valstr
             } else if (valsub is String) {
               ischanged = true
-              vx_p_text = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_text = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -2113,7 +2728,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2125,9 +2745,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -2146,9 +2777,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -2167,9 +2809,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -2188,9 +2841,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -2209,9 +2873,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -2221,7 +2896,12 @@ object vx_web_html {
               vx_p_text = valtext
             } else if (valsub is String) {
               ischanged = true
-              vx_p_text = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_text = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2233,14 +2913,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h2",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/h2", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/h2",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -2273,17 +2973,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "h2", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "h2",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_divchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2404,7 +3110,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_h3 = vx_core.vx_copy(vx_web_html.e_h3, *vals)
+      var output : vx_web_html.Type_h3 = vx_core.vx_copy(
+        vx_web_html.e_h3,
+        *vals
+      )
       return output
     }
 
@@ -2434,9 +3143,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -2460,8 +3179,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/h3",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2476,11 +3204,25 @@ object vx_web_html {
               vx_p_text = valstr
             } else if (valsub is String) {
               ischanged = true
-              vx_p_text = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_text = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -2493,7 +3235,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2505,9 +3252,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -2526,9 +3284,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -2547,9 +3316,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -2568,9 +3348,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -2589,9 +3380,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -2601,7 +3403,12 @@ object vx_web_html {
               vx_p_text = valtext
             } else if (valsub is String) {
               ischanged = true
-              vx_p_text = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_text = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -2613,14 +3420,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/h3",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/h3", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/h3",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -2653,17 +3480,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "h3", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "h3",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_divchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2714,7 +3547,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_head = vx_core.vx_copy(vx_web_html.e_head, *vals)
+      var output : vx_web_html.Type_head = vx_core.vx_copy(
+        vx_web_html.e_head,
+        *vals
+      )
       return output
     }
 
@@ -2734,9 +3570,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -2757,9 +3603,19 @@ object vx_web_html {
             var vallist : vx_web_html.Type_headchildlist
             vallist = vx_p_nodes
             if (vallist == null) {
-              vallist = vx_core.vx_new(vx_web_html.t_headchildlist, valdefault)
+              vallist = vx_core.vx_new(
+                vx_web_html.t_headchildlist,
+                // [
+                  valdefault
+                // ]
+              )
             } else {
-              vallist = vx_core.vx_copy(vallist, valdefault)
+              vallist = vx_core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -2771,8 +3627,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/head", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/head",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -2783,8 +3648,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/head", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/head",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -2806,14 +3680,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/head", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/head",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/head", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/head",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -2841,17 +3735,17 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "head", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "head",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2884,7 +3778,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_headchild = vx_core.vx_copy(vx_web_html.e_headchild, *vals)
+      var output : vx_web_html.Type_headchild = vx_core.vx_copy(
+        vx_web_html.e_headchild,
+        *vals
+      )
       return output
     }
 
@@ -2918,17 +3815,17 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "headchild", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "headchild",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -2984,7 +3881,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_headchildlist = vx_core.vx_copy(vx_web_html.e_headchildlist, *vals)
+      var output : vx_web_html.Type_headchildlist = vx_core.vx_copy(
+        vx_web_html.e_headchildlist,
+        *vals
+      )
       return output
     }
 
@@ -3000,9 +3900,19 @@ object vx_web_html {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_web_html.Type_headchildlist) {
           var multi : vx_web_html.Type_headchildlist = valsub as vx_web_html.Type_headchildlist
           ischanged = true
@@ -3027,11 +3937,29 @@ object vx_web_html {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/web/html/headchildlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/headchildlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/web/html/headchildlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/headchildlist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -3057,17 +3985,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "headchildlist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_headchild), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "headchildlist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_headchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -3163,7 +4096,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_html = vx_core.vx_copy(vx_web_html.e_html, *vals)
+      var output : vx_web_html.Type_html = vx_core.vx_copy(
+        vx_web_html.e_html,
+        *vals
+      )
       return output
     }
 
@@ -3189,9 +4125,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -3212,8 +4158,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/html",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -3224,8 +4179,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -3238,7 +4202,12 @@ object vx_web_html {
               vx_p_lang = vallang
             } else if (valsub is String) {
               ischanged = true
-              vx_p_lang = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_lang = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -3250,9 +4219,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("lang"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":head")) {
             if (valsub == vx_p_head) {
@@ -3271,9 +4251,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("head"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":body")) {
             if (valsub == vx_p_body) {
@@ -3292,9 +4283,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("body"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":footer")) {
             if (valsub == vx_p_footer) {
@@ -3313,14 +4315,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("footer"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/html",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/html", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/html",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -3351,17 +4373,17 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "html", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "html",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -3482,7 +4504,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_img = vx_core.vx_copy(vx_web_html.e_img, *vals)
+      var output : vx_web_html.Type_img = vx_core.vx_copy(
+        vx_web_html.e_img,
+        *vals
+      )
       return output
     }
 
@@ -3512,9 +4537,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -3538,8 +4573,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/img",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -3554,11 +4598,25 @@ object vx_web_html {
               vx_p_src = valstr
             } else if (valsub is String) {
               ischanged = true
-              vx_p_src = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_src = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -3571,7 +4629,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -3583,9 +4646,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -3604,9 +4678,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -3625,9 +4710,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -3646,9 +4742,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -3667,9 +4774,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":src")) {
             if (valsub == vx_p_src) {
@@ -3679,7 +4797,12 @@ object vx_web_html {
               vx_p_src = valsrc
             } else if (valsub is String) {
               ischanged = true
-              vx_p_src = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_src = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -3691,14 +4814,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("src"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/img",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/img", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/img",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -3731,17 +4874,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "img", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "img",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_divchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -3892,7 +5041,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_meta = vx_core.vx_copy(vx_web_html.e_meta, *vals)
+      var output : vx_web_html.Type_meta = vx_core.vx_copy(
+        vx_web_html.e_meta,
+        *vals
+      )
       return output
     }
 
@@ -3926,9 +5078,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -3949,8 +5111,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/meta",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -3961,8 +5132,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -3975,7 +5155,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -3987,9 +5172,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -4008,9 +5204,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -4029,9 +5236,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -4050,9 +5268,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -4071,9 +5300,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":charset")) {
             if (valsub == vx_p_charset) {
@@ -4083,7 +5323,12 @@ object vx_web_html {
               vx_p_charset = valcharset
             } else if (valsub is String) {
               ischanged = true
-              vx_p_charset = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_charset = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -4095,9 +5340,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("charset"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
@@ -4107,7 +5363,12 @@ object vx_web_html {
               vx_p_name = valname
             } else if (valsub is String) {
               ischanged = true
-              vx_p_name = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_name = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -4119,9 +5380,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":content")) {
             if (valsub == vx_p_content) {
@@ -4131,7 +5403,12 @@ object vx_web_html {
               vx_p_content = valcontent
             } else if (valsub is String) {
               ischanged = true
-              vx_p_content = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_content = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -4143,14 +5420,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("content"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/meta",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/meta", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/meta",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -4185,17 +5482,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "meta", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_headchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "meta",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_headchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -4306,7 +5609,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_node = vx_core.vx_copy(vx_web_html.e_node, *vals)
+      var output : vx_web_html.Type_node = vx_core.vx_copy(
+        vx_web_html.e_node,
+        *vals
+      )
       return output
     }
 
@@ -4334,9 +5640,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -4357,8 +5673,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/node",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -4369,8 +5694,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -4383,7 +5717,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -4395,9 +5734,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -4416,9 +5766,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -4437,9 +5798,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -4458,9 +5830,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -4479,14 +5862,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/node",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/node", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/node",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -4518,17 +5921,17 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "node", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "node",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -4584,7 +5987,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_nodelist = vx_core.vx_copy(vx_web_html.e_nodelist, *vals)
+      var output : vx_web_html.Type_nodelist = vx_core.vx_copy(
+        vx_web_html.e_nodelist,
+        *vals
+      )
       return output
     }
 
@@ -4600,9 +6006,19 @@ object vx_web_html {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_web_html.Type_nodelist) {
           var multi : vx_web_html.Type_nodelist = valsub as vx_web_html.Type_nodelist
           ischanged = true
@@ -4627,11 +6043,29 @@ object vx_web_html {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/web/html/nodelist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/nodelist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/web/html/nodelist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/nodelist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -4657,17 +6091,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "nodelist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "nodelist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -4788,7 +6227,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_p = vx_core.vx_copy(vx_web_html.e_p, *vals)
+      var output : vx_web_html.Type_p = vx_core.vx_copy(
+        vx_web_html.e_p,
+        *vals
+      )
       return output
     }
 
@@ -4818,9 +6260,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -4844,8 +6296,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/p",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -4860,11 +6321,25 @@ object vx_web_html {
               vx_p_text = valstr
             } else if (valsub is String) {
               ischanged = true
-              vx_p_text = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_text = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -4877,7 +6352,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -4889,9 +6369,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -4910,9 +6401,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -4931,9 +6433,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -4952,9 +6465,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -4973,9 +6497,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -4985,7 +6520,12 @@ object vx_web_html {
               vx_p_text = valtext
             } else if (valsub is String) {
               ischanged = true
-              vx_p_text = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_text = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -4997,14 +6537,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/p",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/p", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/p",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -5037,17 +6597,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "p", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "p",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_divchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -5070,7 +6636,9 @@ object vx_web_html {
   class Class_propmap : vx_core.Class_base, Type_propmap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_core.Type_string> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_core.Type_string>())
+    var vx_p_map : Map<String, vx_core.Type_string> = vx_core.vx_mapimmutable(
+      LinkedHashMap<String, vx_core.Type_string>()
+    )
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
@@ -5134,8 +6702,17 @@ object vx_web_html {
           var castval : vx_core.Type_string = value as vx_core.Type_string
           map.put(key, castval)
         } else {
-          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error("vx/web/html/propmap", ":invalidvalue", value)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error(
+            "vx/web/html/propmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       output.vx_p_map = vx_core.vx_mapimmutable(map)
@@ -5146,7 +6723,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_propmap = vx_core.vx_copy(vx_web_html.e_propmap, *vals)
+      var output : vx_web_html.Type_propmap = vx_core.vx_copy(
+        vx_web_html.e_propmap,
+        *vals
+      )
       return output
     }
 
@@ -5164,9 +6744,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub is vx_core.Type_string) {
@@ -5183,8 +6773,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/propmap", ":keyexpected", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/propmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
         } else {
           var valany : vx_core.Type_string = vx_core.e_string
@@ -5193,7 +6792,12 @@ object vx_web_html {
             var valallowed : vx_core.Type_string = valsub as vx_core.Type_string
             valany = valallowed
           } else if (valsub is String) {
-            valany = vx_core.vx_new(vx_core.t_string, valsub)
+            valany = vx_core.vx_new(
+              vx_core.t_string,
+              // [
+                valsub
+              // ]
+            )
           } else {
             if (false) {
             } else if (valsub is vx_core.Type_any) {
@@ -5205,9 +6809,20 @@ object vx_web_html {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-            msg = vx_core.vx_msg_from_error("vx/web/html/propmap", ":invalidkeyvalue", msgmap)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+              vx_core.vx_mapimmutable(mapany)
+            )
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/propmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (valany != vx_core.e_any) {
             ischanged = true
@@ -5242,17 +6857,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "propmap", // name
-        ":map", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_core.t_string), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "propmap",
+        ":map",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_core.t_string
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -5333,7 +6953,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_style = vx_core.vx_copy(vx_web_html.e_style, *vals)
+      var output : vx_web_html.Type_style = vx_core.vx_copy(
+        vx_web_html.e_style,
+        *vals
+      )
       return output
     }
 
@@ -5357,9 +6980,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -5380,8 +7013,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/style",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -5392,8 +7034,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -5406,7 +7057,12 @@ object vx_web_html {
               vx_p_name = valname
             } else if (valsub is String) {
               ischanged = true
-              vx_p_name = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_name = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -5418,9 +7074,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":props")) {
             if (valsub == vx_p_props) {
@@ -5439,9 +7106,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("props"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -5460,14 +7138,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/style",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/style", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/style",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -5497,17 +7195,17 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "style", // name
-        ":struct", // extends
-        vx_core.e_typelist, // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "style",
+        ":struct",
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -5563,7 +7261,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_stylelist = vx_core.vx_copy(vx_web_html.e_stylelist, *vals)
+      var output : vx_web_html.Type_stylelist = vx_core.vx_copy(
+        vx_web_html.e_stylelist,
+        *vals
+      )
       return output
     }
 
@@ -5579,9 +7280,19 @@ object vx_web_html {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_web_html.Type_stylelist) {
           var multi : vx_web_html.Type_stylelist = valsub as vx_web_html.Type_stylelist
           ischanged = true
@@ -5606,11 +7317,29 @@ object vx_web_html {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/web/html/stylelist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/stylelist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/web/html/stylelist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/stylelist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -5636,17 +7365,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylelist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_style), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "stylelist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_style
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -5669,7 +7403,9 @@ object vx_web_html {
   class Class_stylemap : vx_core.Class_base, Type_stylemap {
     constructor() {}
 
-    var vx_p_map : Map<String, vx_web_html.Type_style> = vx_core.vx_mapimmutable(LinkedHashMap<String, vx_web_html.Type_style>())
+    var vx_p_map : Map<String, vx_web_html.Type_style> = vx_core.vx_mapimmutable(
+      LinkedHashMap<String, vx_web_html.Type_style>()
+    )
 
     override fun vx_map() : Map<String, vx_core.Type_any> {
       var map : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>(this.vx_p_map)
@@ -5733,8 +7469,17 @@ object vx_web_html {
           var castval : vx_web_html.Type_style = value as vx_web_html.Type_style
           map.put(key, castval)
         } else {
-          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error("vx/web/html/stylemap", ":invalidvalue", value)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          var msg : vx_core.Type_msg = vx_core.vx_msg_from_error(
+            "vx/web/html/stylemap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       output.vx_p_map = vx_core.vx_mapimmutable(map)
@@ -5745,7 +7490,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_stylemap = vx_core.vx_copy(vx_web_html.e_stylemap, *vals)
+      var output : vx_web_html.Type_stylemap = vx_core.vx_copy(
+        vx_web_html.e_stylemap,
+        *vals
+      )
       return output
     }
 
@@ -5763,9 +7511,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           if (false) {
           } else if (valsub is vx_core.Type_string) {
@@ -5782,8 +7540,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/stylemap", ":keyexpected", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/stylemap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
         } else {
           var valany : vx_web_html.Type_style = vx_web_html.e_style
@@ -5804,9 +7571,20 @@ object vx_web_html {
             var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
             mapany.put("key", vx_core.vx_new_string(key))
             mapany.put("value", msgval)
-            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-            msg = vx_core.vx_msg_from_error("vx/web/html/stylemap", ":invalidkeyvalue", msgmap)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+              vx_core.vx_mapimmutable(mapany)
+            )
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/stylemap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (valany != vx_core.e_any) {
             ischanged = true
@@ -5841,17 +7619,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylemap", // name
-        ":map", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_style), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "stylemap",
+        ":map",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_style
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -6002,7 +7785,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_stylesheet = vx_core.vx_copy(vx_web_html.e_stylesheet, *vals)
+      var output : vx_web_html.Type_stylesheet = vx_core.vx_copy(
+        vx_web_html.e_stylesheet,
+        *vals
+      )
       return output
     }
 
@@ -6036,9 +7822,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -6059,8 +7855,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/stylesheet",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -6071,8 +7876,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -6085,7 +7899,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -6097,9 +7916,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -6118,9 +7948,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -6139,9 +7980,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -6160,9 +8012,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -6181,9 +8044,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":name")) {
             if (valsub == vx_p_name) {
@@ -6193,7 +8067,12 @@ object vx_web_html {
               vx_p_name = valname
             } else if (valsub is String) {
               ischanged = true
-              vx_p_name = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_name = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -6205,9 +8084,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("name"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":styles")) {
             if (valsub == vx_p_styles) {
@@ -6226,9 +8116,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("styles"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylemap")) {
             if (valsub == vx_p_stylemap) {
@@ -6247,14 +8148,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylemap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/stylesheet",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/stylesheet", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/stylesheet",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -6289,17 +8210,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "stylesheet", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_headchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "stylesheet",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_headchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -6435,7 +8362,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_table = vx_core.vx_copy(vx_web_html.e_table, *vals)
+      var output : vx_web_html.Type_table = vx_core.vx_copy(
+        vx_web_html.e_table,
+        *vals
+      )
       return output
     }
 
@@ -6467,9 +8397,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -6490,8 +8430,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/table",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -6502,8 +8451,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -6516,7 +8474,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -6528,9 +8491,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -6549,9 +8523,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -6570,9 +8555,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -6591,9 +8587,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -6612,9 +8619,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":tbody")) {
             if (valsub == vx_p_tbody) {
@@ -6633,9 +8651,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("tbody"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":thead")) {
             if (valsub == vx_p_thead) {
@@ -6654,14 +8683,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("thead"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/table",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/table", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/table",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -6695,17 +8744,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "table", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_divchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "table",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_divchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -6826,7 +8881,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_tbody = vx_core.vx_copy(vx_web_html.e_tbody, *vals)
+      var output : vx_web_html.Type_tbody = vx_core.vx_copy(
+        vx_web_html.e_tbody,
+        *vals
+      )
       return output
     }
 
@@ -6856,9 +8914,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -6879,9 +8947,19 @@ object vx_web_html {
             var vallist : vx_web_html.Type_trlist
             vallist = vx_p_nodes
             if (vallist == null) {
-              vallist = vx_core.vx_new(vx_web_html.t_trlist, valdefault)
+              vallist = vx_core.vx_new(
+                vx_web_html.t_trlist,
+                // [
+                  valdefault
+                // ]
+              )
             } else {
-              vallist = vx_core.vx_copy(vallist, valdefault)
+              vallist = vx_core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -6893,8 +8971,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/tbody",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -6905,8 +8992,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -6919,7 +9015,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -6931,9 +9032,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -6952,9 +9064,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -6973,9 +9096,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -6994,9 +9128,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -7015,9 +9160,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -7036,14 +9192,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tbody",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/tbody", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/tbody",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -7076,17 +9252,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "tbody", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "tbody",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -7207,7 +9388,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_td = vx_core.vx_copy(vx_web_html.e_td, *vals)
+      var output : vx_web_html.Type_td = vx_core.vx_copy(
+        vx_web_html.e_td,
+        *vals
+      )
       return output
     }
 
@@ -7237,9 +9421,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -7260,9 +9454,19 @@ object vx_web_html {
             var vallist : vx_web_html.Type_divchildlist
             vallist = vx_p_nodes
             if (vallist == null) {
-              vallist = vx_core.vx_new(vx_web_html.t_divchildlist, valdefault)
+              vallist = vx_core.vx_new(
+                vx_web_html.t_divchildlist,
+                // [
+                  valdefault
+                // ]
+              )
             } else {
-              vallist = vx_core.vx_copy(vallist, valdefault)
+              vallist = vx_core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -7274,8 +9478,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/td",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -7286,8 +9499,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -7300,7 +9522,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -7312,9 +9539,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -7333,9 +9571,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -7354,9 +9603,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -7375,9 +9635,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -7396,9 +9667,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -7417,14 +9699,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/td",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/td", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/td",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -7457,17 +9759,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "td", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "td",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -7523,7 +9830,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_tdlist = vx_core.vx_copy(vx_web_html.e_tdlist, *vals)
+      var output : vx_web_html.Type_tdlist = vx_core.vx_copy(
+        vx_web_html.e_tdlist,
+        *vals
+      )
       return output
     }
 
@@ -7539,9 +9849,19 @@ object vx_web_html {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_web_html.Type_tdlist) {
           var multi : vx_web_html.Type_tdlist = valsub as vx_web_html.Type_tdlist
           ischanged = true
@@ -7566,11 +9886,29 @@ object vx_web_html {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/web/html/tdlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/tdlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/web/html/tdlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/tdlist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -7596,17 +9934,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "tdlist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_td), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "tdlist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_td
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -7727,7 +10070,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_thead = vx_core.vx_copy(vx_web_html.e_thead, *vals)
+      var output : vx_web_html.Type_thead = vx_core.vx_copy(
+        vx_web_html.e_thead,
+        *vals
+      )
       return output
     }
 
@@ -7757,9 +10103,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -7780,9 +10136,19 @@ object vx_web_html {
             var vallist : vx_web_html.Type_trlist
             vallist = vx_p_nodes
             if (vallist == null) {
-              vallist = vx_core.vx_new(vx_web_html.t_trlist, valdefault)
+              vallist = vx_core.vx_new(
+                vx_web_html.t_trlist,
+                // [
+                  valdefault
+                // ]
+              )
             } else {
-              vallist = vx_core.vx_copy(vallist, valdefault)
+              vallist = vx_core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -7794,8 +10160,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/thead",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -7806,8 +10181,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -7820,7 +10204,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -7832,9 +10221,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -7853,9 +10253,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -7874,9 +10285,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -7895,9 +10317,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -7916,9 +10349,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -7937,14 +10381,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/thead",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/thead", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/thead",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -7977,17 +10441,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "thead", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "thead",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -8108,7 +10577,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_title = vx_core.vx_copy(vx_web_html.e_title, *vals)
+      var output : vx_web_html.Type_title = vx_core.vx_copy(
+        vx_web_html.e_title,
+        *vals
+      )
       return output
     }
 
@@ -8138,9 +10610,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -8161,8 +10643,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/title",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -8173,8 +10664,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -8187,7 +10687,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -8199,9 +10704,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -8220,9 +10736,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -8241,9 +10768,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -8262,9 +10800,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -8283,9 +10832,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":text")) {
             if (valsub == vx_p_text) {
@@ -8295,7 +10855,12 @@ object vx_web_html {
               vx_p_text = valtext
             } else if (valsub is String) {
               ischanged = true
-              vx_p_text = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_text = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -8307,14 +10872,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("text"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/title",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/title", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/title",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -8347,17 +10932,23 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "title", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_headchild), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "title",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node,
+            vx_web_html.t_headchild
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -8478,7 +11069,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_tr = vx_core.vx_copy(vx_web_html.e_tr, *vals)
+      var output : vx_web_html.Type_tr = vx_core.vx_copy(
+        vx_web_html.e_tr,
+        *vals
+      )
       return output
     }
 
@@ -8508,9 +11102,19 @@ object vx_web_html {
       var msgval : vx_core.Type_any = vx_core.e_any
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (key.equals("")) {
           var istestkey : Boolean = false
           var testkey : String = ""
@@ -8531,9 +11135,19 @@ object vx_web_html {
             var vallist : vx_web_html.Type_tdlist
             vallist = vx_p_nodes
             if (vallist == null) {
-              vallist = vx_core.vx_new(vx_web_html.t_tdlist, valdefault)
+              vallist = vx_core.vx_new(
+                vx_web_html.t_tdlist,
+                // [
+                  valdefault
+                // ]
+              )
             } else {
-              vallist = vx_core.vx_copy(vallist, valdefault)
+              vallist = vx_core.vx_copy(
+            vallist,
+            // [
+              valdefault
+            // ]
+          )
             }
             ischanged = true
             vx_p_nodes = vallist
@@ -8545,8 +11159,17 @@ object vx_web_html {
             } else {
               msgval = vx_core.vx_new_string(valsub.toString())
             }
-            msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidkeytype", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/tr",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           if (istestkey) {
             if (!testkey.startsWith(":")) {
@@ -8557,8 +11180,17 @@ object vx_web_html {
               key = testkey
             } else {
               msgval = vx_core.vx_new_string(testkey)
-              msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidkey", msgval)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           }
         } else {
@@ -8571,7 +11203,12 @@ object vx_web_html {
               vx_p_id = valid
             } else if (valsub is String) {
               ischanged = true
-              vx_p_id = vx_core.vx_new(vx_core.t_string, valsub)
+              vx_p_id = vx_core.vx_new(
+                vx_core.t_string,
+                // [
+                  valsub
+                // ]
+              )
             } else {
               if (false) {
               } else if (valsub is vx_core.Type_any) {
@@ -8583,9 +11220,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("id"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":eventmap")) {
             if (valsub == vx_p_eventmap) {
@@ -8604,9 +11252,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("eventmap"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style")) {
             if (valsub == vx_p_style) {
@@ -8625,9 +11284,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":style-unique")) {
             if (valsub == vx_p_style_unique) {
@@ -8646,9 +11316,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("style-unique"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":stylelist")) {
             if (valsub == vx_p_stylelist) {
@@ -8667,9 +11348,20 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("stylelist"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else if ((key == ":nodes")) {
             if (valsub == vx_p_nodes) {
@@ -8688,14 +11380,34 @@ object vx_web_html {
               var mapany : MutableMap<String, vx_core.Type_any> = LinkedHashMap<String, vx_core.Type_any>()
               mapany.put("key", vx_core.vx_new_string("nodes"))
               mapany.put("value", msgval)
-              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(vx_core.vx_mapimmutable(mapany))
-              msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidvalue", msgmap)
-              msgblock = vx_core.vx_copy(msgblock, msg)
+              val msgmap : vx_core.Type_map = vx_core.t_anymap.vx_new_from_map(
+                vx_core.vx_mapimmutable(mapany)
+              )
+              msg = vx_core.vx_msg_from_error(
+                "vx/web/html/tr",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = vx_core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              )
             }
           } else {
             msgval = vx_core.vx_new_string(key)
-            msg = vx_core.vx_msg_from_error("vx/web/html/tr", ":invalidkey", msgval)
-            msgblock = vx_core.vx_copy(msgblock, msg)
+            msg = vx_core.vx_msg_from_error(
+              "vx/web/html/tr",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = vx_core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            )
           }
           key = ""
         }
@@ -8728,17 +11440,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "tr", // name
-        ":struct", // extends
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node), // traits
-        vx_core.e_typelist, // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "tr",
+        ":struct",
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_node
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -8794,7 +11511,10 @@ object vx_web_html {
     }
 
     override fun vx_new(vararg vals : Any) : vx_core.Type_any {
-      var output : vx_web_html.Type_trlist = vx_core.vx_copy(vx_web_html.e_trlist, *vals)
+      var output : vx_web_html.Type_trlist = vx_core.vx_copy(
+        vx_web_html.e_trlist,
+        *vals
+      )
       return output
     }
 
@@ -8810,9 +11530,19 @@ object vx_web_html {
       var msg : vx_core.Type_msg
       for (valsub : Any in vals) {
         if (valsub is vx_core.Type_msgblock) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_core.Type_msg) {
-          msgblock = vx_core.vx_copy(msgblock, valsub)
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          )
         } else if (valsub is vx_web_html.Type_trlist) {
           var multi : vx_web_html.Type_trlist = valsub as vx_web_html.Type_trlist
           ischanged = true
@@ -8837,11 +11567,29 @@ object vx_web_html {
           }
         } else if (valsub is vx_core.Type_any) {
           var anyinvalid : vx_core.Type_any = valsub as vx_core.Type_any
-          msg = vx_core.vx_msg_from_error("vx/web/html/trlist", ":invalidtype", anyinvalid)
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/trlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         } else {
-          msg = vx_core.vx_msg_from_error("vx/web/html/trlist", ":invalidtype", vx_core.vx_new_string(valsub.toString()))
-          msgblock = vx_core.vx_copy(msgblock, msg)
+          msg = vx_core.vx_msg_from_error(
+            "vx/web/html/trlist",
+            ":invalidtype",
+            vx_core.vx_new_string(valsub.toString())
+          )
+          msgblock = vx_core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          )
         }
       }
       if (ischanged || (msgblock != vx_core.e_msgblock)) {
@@ -8867,17 +11615,22 @@ object vx_web_html {
 
     override fun vx_typedef() : vx_core.Type_typedef {
       var output : vx_core.Type_typedef = vx_core.typedef_new(
-        "vx/web/html", // pkgname
-        "trlist", // name
-        ":list", // extends
-        vx_core.e_typelist, // traits
-        vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_tr), // allowtypes
-        vx_core.e_typelist, // disallowtypes
-        vx_core.e_funclist, // allowfuncs
-        vx_core.e_funclist, // disallowfuncs
-        vx_core.e_anylist, // allowvalues
-        vx_core.e_anylist, // disallowvalues
-        vx_core.e_argmap // properties
+        "vx/web/html",
+        "trlist",
+        ":list",
+        vx_core.e_typelist,
+        vx_core.vx_new(
+          vx_core.t_typelist,
+          // [
+            vx_web_html.t_tr
+          // ]
+        ),
+        vx_core.e_typelist,
+        vx_core.e_funclist,
+        vx_core.e_funclist,
+        vx_core.e_anylist,
+        vx_core.e_anylist,
+        vx_core.e_argmap
       )
       return output
     }
@@ -8923,17 +11676,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -8957,13 +11710,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_web_html.f_htmlstring_from_string(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_htmlstring_from_string(text)
       return output
     }
@@ -9019,17 +11780,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -9053,13 +11814,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_int = value as vx_core.Type_int
       val outputval : vx_core.Type_any = vx_web_html.f_string_indent(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_string_indent(indent)
       return output
     }
@@ -9120,17 +11889,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -9148,8 +11917,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val body : vx_web_html.Type_body = vx_core.f_any_from_any(vx_web_html.t_body, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val body : vx_web_html.Type_body = vx_core.f_any_from_any(
+        vx_web_html.t_body,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_body_indent(body, indent)
       return output
     }
@@ -9168,16 +11947,18 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val nodes : vx_web_html.Type_divchildlist = body.nodes()
-        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          vx_core.vx_new_string("body"),
-          vx_core.vx_new_string(""),
-          indent
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val nodes : vx_web_html.Type_divchildlist = body.nodes()
+          val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            vx_core.vx_new_string("body"),
+            vx_core.vx_new_string(""),
+            indent
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -9219,17 +12000,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -9247,8 +12028,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val details : vx_web_html.Type_details = vx_core.f_any_from_any(vx_web_html.t_details, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val details : vx_web_html.Type_details = vx_core.f_any_from_any(
+        vx_web_html.t_details,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_details_indent(details, indent)
       return output
     }
@@ -9267,44 +12058,46 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val summary : vx_web_html.Type_divchildlist = details.summary()
-        val nodes : vx_web_html.Type_divchildlist = details.nodes()
-        val ssummary : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
-          summary,
-          vx_core.f_plus(
-            indent,
-            vx_core.vx_new_int(2)
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val summary : vx_web_html.Type_divchildlist = details.summary()
+          val nodes : vx_web_html.Type_divchildlist = details.nodes()
+          val ssummary : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
+            summary,
+            vx_core.f_plus(
+              indent,
+              vx_core.vx_new_int(2)
+            )
           )
-        )
-        val snodes : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
-          nodes,
-          vx_core.f_plus(
-            indent,
-            vx_core.vx_new_int(1)
+          val snodes : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
+            nodes,
+            vx_core.f_plus(
+              indent,
+              vx_core.vx_new_int(1)
+            )
           )
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<details>"),
-            sindent,
-            vx_core.vx_new_string("  <summary>"),
-            ssummary,
-            sindent,
-            vx_core.vx_new_string("  </summary>"),
-            snodes,
-            sindent,
-            vx_core.vx_new_string("</details>")
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<details>"),
+                sindent,
+                vx_core.vx_new_string("  <summary>"),
+                ssummary,
+                sindent,
+                vx_core.vx_new_string("  </summary>"),
+                snodes,
+                sindent,
+                vx_core.vx_new_string("</details>")
+              // ]
+            )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -9346,17 +12139,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -9374,8 +12167,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val div : vx_web_html.Type_div = vx_core.f_any_from_any(vx_web_html.t_div, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val div : vx_web_html.Type_div = vx_core.f_any_from_any(
+        vx_web_html.t_div,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_div_indent(div, indent)
       return output
     }
@@ -9394,35 +12197,37 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val nodes : vx_web_html.Type_divchildlist = div.nodes()
-        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
-          vx_core.vx_new_string("id"),
-          div.id()
-        )
-        val sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
-          div.style(),
-          div.stylelist()
-        )
-        val sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(
-          div.style_unique()
-        )
-        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          vx_core.vx_new_string("div"),
-          vx_core.f_new(
-            vx_core.t_string,
-            vx_core.vx_new(
-              vx_core.t_anylist,
-              sid,
-              sclass,
-              sstyle
-            )
-          ),
-          indent
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val nodes : vx_web_html.Type_divchildlist = div.nodes()
+          val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+            vx_core.vx_new_string("id"),
+            div.id()
+          )
+          val sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
+            div.style(),
+            div.stylelist()
+          )
+          val sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(div.style_unique())
+          val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            vx_core.vx_new_string("div"),
+            vx_core.f_new(
+              vx_core.t_string,
+              vx_core.vx_new(
+                vx_core.t_anylist,
+                // [
+                  sid,
+                  sclass,
+                  sstyle
+                // ]
+              )
+            ),
+            indent
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -9464,17 +12269,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -9492,8 +12297,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val footer : vx_web_html.Type_footer = vx_core.f_any_from_any(vx_web_html.t_footer, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val footer : vx_web_html.Type_footer = vx_core.f_any_from_any(
+        vx_web_html.t_footer,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_footer_indent(footer, indent)
       return output
     }
@@ -9512,16 +12327,18 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val nodes : vx_web_html.Type_divchildlist = footer.nodes()
-        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          vx_core.vx_new_string("footer"),
-          vx_core.vx_new_string(""),
-          indent
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val nodes : vx_web_html.Type_divchildlist = footer.nodes()
+          val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            vx_core.vx_new_string("footer"),
+            vx_core.vx_new_string(""),
+            indent
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -9563,17 +12380,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -9591,8 +12408,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val h1 : vx_web_html.Type_h1 = vx_core.f_any_from_any(vx_web_html.t_h1, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val h1 : vx_web_html.Type_h1 = vx_core.f_any_from_any(
+        vx_web_html.t_h1,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_h1_indent(h1, indent)
       return output
     }
@@ -9611,29 +12438,31 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val text : vx_core.Type_string = h1.text()
-        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
-          vx_core.vx_new_string("id"),
-          h1.id()
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<h1"),
-            sid,
-            vx_core.vx_new_string(">"),
-            text,
-            vx_core.vx_new_string("</h1>")
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val text : vx_core.Type_string = h1.text()
+          val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+            vx_core.vx_new_string("id"),
+            h1.id()
           )
-        )
-        output_1
-      })
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<h1"),
+                sid,
+                vx_core.vx_new_string(">"),
+                text,
+                vx_core.vx_new_string("</h1>")
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -9675,17 +12504,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -9703,8 +12532,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val h2 : vx_web_html.Type_h2 = vx_core.f_any_from_any(vx_web_html.t_h2, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val h2 : vx_web_html.Type_h2 = vx_core.f_any_from_any(
+        vx_web_html.t_h2,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_h2_indent(h2, indent)
       return output
     }
@@ -9723,29 +12562,31 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val text : vx_core.Type_string = h2.text()
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
-          vx_core.vx_new_string("id"),
-          h2.id()
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<h2"),
-            sid,
-            vx_core.vx_new_string(">"),
-            text,
-            vx_core.vx_new_string("</h2>")
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val text : vx_core.Type_string = h2.text()
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+            vx_core.vx_new_string("id"),
+            h2.id()
           )
-        )
-        output_1
-      })
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<h2"),
+                sid,
+                vx_core.vx_new_string(">"),
+                text,
+                vx_core.vx_new_string("</h2>")
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -9787,17 +12628,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -9815,8 +12656,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val h3 : vx_web_html.Type_h3 = vx_core.f_any_from_any(vx_web_html.t_h3, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val h3 : vx_web_html.Type_h3 = vx_core.f_any_from_any(
+        vx_web_html.t_h3,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_h3_indent(h3, indent)
       return output
     }
@@ -9835,29 +12686,31 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val text : vx_core.Type_string = h3.text()
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
-          vx_core.vx_new_string("id"),
-          h3.id()
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<h3"),
-            sid,
-            vx_core.vx_new_string(">"),
-            text,
-            vx_core.vx_new_string("</h3>")
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val text : vx_core.Type_string = h3.text()
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+            vx_core.vx_new_string("id"),
+            h3.id()
           )
-        )
-        output_1
-      })
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<h3"),
+                sid,
+                vx_core.vx_new_string(">"),
+                text,
+                vx_core.vx_new_string("</h3>")
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -9899,17 +12752,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -9927,8 +12780,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val head : vx_web_html.Type_head = vx_core.f_any_from_any(vx_web_html.t_head, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val head : vx_web_html.Type_head = vx_core.f_any_from_any(
+        vx_web_html.t_head,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_head_indent(head, indent)
       return output
     }
@@ -9947,16 +12810,18 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val nodes : vx_web_html.Type_headchildlist = head.nodes()
-        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          vx_core.vx_new_string("head"),
-          vx_core.vx_new_string(""),
-          indent
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val nodes : vx_web_html.Type_headchildlist = head.nodes()
+          val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            vx_core.vx_new_string("head"),
+            vx_core.vx_new_string(""),
+            indent
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -9997,17 +12862,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -10031,13 +12896,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_html = value as vx_web_html.Type_html
       val outputval : vx_core.Type_any = vx_web_html.f_string_from_html(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val html : vx_web_html.Type_html = vx_core.f_any_from_any(vx_web_html.t_html, arglist.vx_any(vx_core.vx_new_int(0)))
+      val html : vx_web_html.Type_html = vx_core.f_any_from_any(
+        vx_web_html.t_html,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_string_from_html(html)
       return output
     }
@@ -10056,44 +12929,48 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val lang : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
-          vx_core.vx_new_string("lang"),
-          html.lang()
-        )
-        val head : vx_web_html.Type_head = html.head()
-        val body : vx_web_html.Type_body = html.body()
-        val footer : vx_web_html.Type_footer = html.footer()
-        val shead : vx_core.Type_string = vx_web_html.f_string_from_head_indent(
-          head,
-          vx_core.vx_new_int(1)
-        )
-        val sbody : vx_core.Type_string = vx_web_html.f_string_from_body_indent(
-          body,
-          vx_core.vx_new_int(1)
-        )
-        val sfooter : vx_core.Type_string = vx_web_html.f_string_from_footer_indent(
-          footer,
-          vx_core.vx_new_int(1)
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            vx_core.vx_new_string("<!DOCTYPE html>"),
-            vx_core.c_newline,
-            vx_core.vx_new_string("<html"),
-            lang,
-            vx_core.vx_new_string(">"),
-            shead,
-            sbody,
-            sfooter,
-            vx_core.c_newline,
-            vx_core.vx_new_string("</html>")
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val lang : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+            vx_core.vx_new_string("lang"),
+            html.lang()
           )
-        )
-        output_1
-      })
+          val head : vx_web_html.Type_head = html.head()
+          val body : vx_web_html.Type_body = html.body()
+          val footer : vx_web_html.Type_footer = html.footer()
+          val shead : vx_core.Type_string = vx_web_html.f_string_from_head_indent(
+            head,
+            vx_core.vx_new_int(1)
+          )
+          val sbody : vx_core.Type_string = vx_web_html.f_string_from_body_indent(
+            body,
+            vx_core.vx_new_int(1)
+          )
+          val sfooter : vx_core.Type_string = vx_web_html.f_string_from_footer_indent(
+            footer,
+            vx_core.vx_new_int(1)
+          )
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                vx_core.vx_new_string("<!DOCTYPE html>"),
+                vx_core.c_newline,
+                vx_core.vx_new_string("<html"),
+                lang,
+                vx_core.vx_new_string(">"),
+                shead,
+                sbody,
+                sfooter,
+                vx_core.c_newline,
+                vx_core.vx_new_string("</html>")
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -10135,17 +13012,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -10163,8 +13040,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val img : vx_web_html.Type_img = vx_core.f_any_from_any(vx_web_html.t_img, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val img : vx_web_html.Type_img = vx_core.f_any_from_any(
+        vx_web_html.t_img,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_img_indent(img, indent)
       return output
     }
@@ -10183,40 +13070,40 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val ssrc : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
-          vx_core.vx_new_string("src"),
-          img.src()
-        )
-        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
-          vx_core.vx_new_string("id"),
-          img.id()
-        )
-        val sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
-          img.style(),
-          img.stylelist()
-        )
-        val sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(
-          img.style_unique()
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<img"),
-            sid,
-            sclass,
-            sstyle,
-            ssrc,
-            vx_core.vx_new_string(" />")
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val ssrc : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+            vx_core.vx_new_string("src"),
+            img.src()
           )
-        )
-        output_1
-      })
+          val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+            vx_core.vx_new_string("id"),
+            img.id()
+          )
+          val sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
+            img.style(),
+            img.stylelist()
+          )
+          val sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(img.style_unique())
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<img"),
+                sid,
+                sclass,
+                sstyle,
+                ssrc,
+                vx_core.vx_new_string(" />")
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -10257,17 +13144,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -10291,13 +13178,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_int = value as vx_core.Type_int
       val outputval : vx_core.Type_any = vx_web_html.f_string_from_indent(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(0)))
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_string_from_indent(indent)
       return output
     }
@@ -10325,10 +13220,10 @@ object vx_web_html {
         vx_core.t_string,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.c_newline,
-          vx_web_html.f_string_indent(
-            indent
-          )
+          // [
+            vx_core.c_newline,
+            vx_web_html.f_string_indent(indent)
+          // ]
         )
       )
     )
@@ -10372,17 +13267,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -10400,8 +13295,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val meta : vx_web_html.Type_meta = vx_core.f_any_from_any(vx_web_html.t_meta, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val meta : vx_web_html.Type_meta = vx_core.f_any_from_any(
+        vx_web_html.t_meta,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_meta_indent(meta, indent)
       return output
     }
@@ -10420,93 +13325,113 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val charset : vx_core.Type_string = meta.charset()
-        val name : vx_core.Type_string = meta.name()
-        val content : vx_core.Type_string = meta.content()
-        val scharset : vx_core.Type_string = vx_core.f_if_2(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_thenelselist,
-            vx_core.f_then(
-              vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_2 : vx_core.Type_any = vx_core.f_ne(
-                  vx_core.vx_new_string(""),
-                  charset
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val charset : vx_core.Type_string = meta.charset()
+          val name : vx_core.Type_string = meta.name()
+          val content : vx_core.Type_string = meta.content()
+          val scharset : vx_core.Type_string = vx_core.f_if_2(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_thenelselist,
+              // [
+                vx_core.f_then(
+                  vx_core.t_boolean_from_func.vx_fn_new(
+                    { ->
+                      var output_2 : vx_core.Type_any = vx_core.f_ne(
+                          vx_core.vx_new_string(""),
+                          charset
+                        )
+                        output_2
+                      }
+                  ),
+                  vx_core.t_any_from_func.vx_fn_new(
+                    { ->
+                      var output_3 : vx_core.Type_any = vx_web_html.f_string_from_propname_val(
+                          vx_core.vx_new_string("charset"),
+                          charset
+                        )
+                        output_3
+                      }
+                  )
                 )
-                output_2
-              }),
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_3 : vx_core.Type_any = vx_web_html.f_string_from_propname_val(
-                  vx_core.vx_new_string("charset"),
-                  charset
-                )
-                output_3
-              })
+              // ]
             )
           )
-        )
-        val sname : vx_core.Type_string = vx_core.f_if_2(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_thenelselist,
-            vx_core.f_then(
-              vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_4 : vx_core.Type_any = vx_core.f_ne(
-                  vx_core.vx_new_string(""),
-                  name
+          val sname : vx_core.Type_string = vx_core.f_if_2(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_thenelselist,
+              // [
+                vx_core.f_then(
+                  vx_core.t_boolean_from_func.vx_fn_new(
+                    { ->
+                      var output_4 : vx_core.Type_any = vx_core.f_ne(
+                          vx_core.vx_new_string(""),
+                          name
+                        )
+                        output_4
+                      }
+                  ),
+                  vx_core.t_any_from_func.vx_fn_new(
+                    { ->
+                      var output_5 : vx_core.Type_any = vx_web_html.f_string_from_propname_val(
+                          vx_core.vx_new_string("name"),
+                          name
+                        )
+                        output_5
+                      }
+                  )
                 )
-                output_4
-              }),
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_5 : vx_core.Type_any = vx_web_html.f_string_from_propname_val(
-                  vx_core.vx_new_string("name"),
-                  name
-                )
-                output_5
-              })
+              // ]
             )
           )
-        )
-        val scontext : vx_core.Type_string = vx_core.f_if_2(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_thenelselist,
-            vx_core.f_then(
-              vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_6 : vx_core.Type_any = vx_core.f_ne(
-                  vx_core.vx_new_string(""),
-                  content
+          val scontext : vx_core.Type_string = vx_core.f_if_2(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_thenelselist,
+              // [
+                vx_core.f_then(
+                  vx_core.t_boolean_from_func.vx_fn_new(
+                    { ->
+                      var output_6 : vx_core.Type_any = vx_core.f_ne(
+                          vx_core.vx_new_string(""),
+                          content
+                        )
+                        output_6
+                      }
+                  ),
+                  vx_core.t_any_from_func.vx_fn_new(
+                    { ->
+                      var output_7 : vx_core.Type_any = vx_web_html.f_string_from_propname_val(
+                          vx_core.vx_new_string("content"),
+                          content
+                        )
+                        output_7
+                      }
+                  )
                 )
-                output_6
-              }),
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_7 : vx_core.Type_any = vx_web_html.f_string_from_propname_val(
-                  vx_core.vx_new_string("content"),
-                  content
-                )
-                output_7
-              })
+              // ]
             )
           )
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<meta"),
-            scharset,
-            sname,
-            scontext,
-            vx_core.vx_new_string(" />")
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<meta"),
+                scharset,
+                sname,
+                scontext,
+                vx_core.vx_new_string(" />")
+              // ]
+            )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -10547,17 +13472,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -10581,13 +13506,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_any = value as vx_core.Type_any
       val outputval : vx_core.Type_any = vx_web_html.f_string_from_node(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val node : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
+      val node : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_string_from_node(node)
       return output
     }
@@ -10648,17 +13581,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -10676,8 +13609,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val node : vx_core.Type_any = vx_core.f_any_from_any(vx_core.t_any, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val node : vx_core.Type_any = vx_core.f_any_from_any(
+        vx_core.t_any,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_node_indent(node, indent)
       return output
     }
@@ -10696,245 +13639,281 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_switch(
       vx_core.t_string,
-      vx_core.f_type_from_any(
-        node
-      ),
+      vx_core.f_type_from_any(node),
       vx_core.vx_new(
         vx_core.t_thenelselist,
-        vx_core.f_case_1(
-          vx_web_html.t_body,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_1 : vx_core.Type_any = vx_web_html.f_string_from_body_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_body,
-                node
-              ),
-              indent
+        // [
+          vx_core.f_case_1(
+            vx_web_html.t_body,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_1 : vx_core.Type_any = vx_web_html.f_string_from_body_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_body,
+                      node
+                    ),
+                    indent
+                  )
+                  output_1
+                }
             )
-            output_1
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_details,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_2 : vx_core.Type_any = vx_web_html.f_string_from_details_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_details,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_details,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_2 : vx_core.Type_any = vx_web_html.f_string_from_details_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_details,
+                      node
+                    ),
+                    indent
+                  )
+                  output_2
+                }
             )
-            output_2
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_div,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_3 : vx_core.Type_any = vx_web_html.f_string_from_div_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_div,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_div,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_3 : vx_core.Type_any = vx_web_html.f_string_from_div_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_div,
+                      node
+                    ),
+                    indent
+                  )
+                  output_3
+                }
             )
-            output_3
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_h1,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_4 : vx_core.Type_any = vx_web_html.f_string_from_h1_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_h1,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_h1,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_4 : vx_core.Type_any = vx_web_html.f_string_from_h1_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_h1,
+                      node
+                    ),
+                    indent
+                  )
+                  output_4
+                }
             )
-            output_4
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_h2,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_5 : vx_core.Type_any = vx_web_html.f_string_from_h2_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_h2,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_h2,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_5 : vx_core.Type_any = vx_web_html.f_string_from_h2_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_h2,
+                      node
+                    ),
+                    indent
+                  )
+                  output_5
+                }
             )
-            output_5
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_h3,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_6 : vx_core.Type_any = vx_web_html.f_string_from_h3_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_h3,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_h3,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_6 : vx_core.Type_any = vx_web_html.f_string_from_h3_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_h3,
+                      node
+                    ),
+                    indent
+                  )
+                  output_6
+                }
             )
-            output_6
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_head,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_7 : vx_core.Type_any = vx_web_html.f_string_from_head_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_head,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_head,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_7 : vx_core.Type_any = vx_web_html.f_string_from_head_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_head,
+                      node
+                    ),
+                    indent
+                  )
+                  output_7
+                }
             )
-            output_7
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_footer,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_8 : vx_core.Type_any = vx_web_html.f_string_from_footer_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_footer,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_footer,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_8 : vx_core.Type_any = vx_web_html.f_string_from_footer_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_footer,
+                      node
+                    ),
+                    indent
+                  )
+                  output_8
+                }
             )
-            output_8
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_img,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_9 : vx_core.Type_any = vx_web_html.f_string_from_img_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_img,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_img,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_9 : vx_core.Type_any = vx_web_html.f_string_from_img_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_img,
+                      node
+                    ),
+                    indent
+                  )
+                  output_9
+                }
             )
-            output_9
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_meta,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_10 : vx_core.Type_any = vx_web_html.f_string_from_meta_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_meta,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_meta,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_10 : vx_core.Type_any = vx_web_html.f_string_from_meta_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_meta,
+                      node
+                    ),
+                    indent
+                  )
+                  output_10
+                }
             )
-            output_10
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_p,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_11 : vx_core.Type_any = vx_web_html.f_string_from_p_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_p,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_p,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_11 : vx_core.Type_any = vx_web_html.f_string_from_p_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_p,
+                      node
+                    ),
+                    indent
+                  )
+                  output_11
+                }
             )
-            output_11
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_stylesheet,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_12 : vx_core.Type_any = vx_web_html.f_string_from_stylesheet_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_stylesheet,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_stylesheet,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_12 : vx_core.Type_any = vx_web_html.f_string_from_stylesheet_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_stylesheet,
+                      node
+                    ),
+                    indent
+                  )
+                  output_12
+                }
             )
-            output_12
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_table,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_13 : vx_core.Type_any = vx_web_html.f_string_from_table_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_table,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_table,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_13 : vx_core.Type_any = vx_web_html.f_string_from_table_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_table,
+                      node
+                    ),
+                    indent
+                  )
+                  output_13
+                }
             )
-            output_13
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_title,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_14 : vx_core.Type_any = vx_web_html.f_string_from_title_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_title,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_title,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_14 : vx_core.Type_any = vx_web_html.f_string_from_title_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_title,
+                      node
+                    ),
+                    indent
+                  )
+                  output_14
+                }
             )
-            output_14
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_tbody,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_15 : vx_core.Type_any = vx_web_html.f_string_from_tbody_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_tbody,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_tbody,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_15 : vx_core.Type_any = vx_web_html.f_string_from_tbody_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_tbody,
+                      node
+                    ),
+                    indent
+                  )
+                  output_15
+                }
             )
-            output_15
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_thead,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_16 : vx_core.Type_any = vx_web_html.f_string_from_thead_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_thead,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_thead,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_16 : vx_core.Type_any = vx_web_html.f_string_from_thead_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_thead,
+                      node
+                    ),
+                    indent
+                  )
+                  output_16
+                }
             )
-            output_16
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_td,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_17 : vx_core.Type_any = vx_web_html.f_string_from_td_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_td,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_td,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_17 : vx_core.Type_any = vx_web_html.f_string_from_td_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_td,
+                      node
+                    ),
+                    indent
+                  )
+                  output_17
+                }
             )
-            output_17
-          })
-        ),
-        vx_core.f_case_1(
-          vx_web_html.t_tr,
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_18 : vx_core.Type_any = vx_web_html.f_string_from_tr_indent(
-              vx_core.f_any_from_any(
-                vx_web_html.t_tr,
-                node
-              ),
-              indent
+          ),
+          vx_core.f_case_1(
+            vx_web_html.t_tr,
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_18 : vx_core.Type_any = vx_web_html.f_string_from_tr_indent(
+                    vx_core.f_any_from_any(
+                      vx_web_html.t_tr,
+                      node
+                    ),
+                    indent
+                  )
+                  output_18
+                }
             )
-            output_18
-          })
-        )
+          )
+        // ]
       )
     )
     return output
@@ -10977,17 +13956,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -11005,8 +13984,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val nodelist : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val nodelist : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_nodelist_indent(nodelist, indent)
       return output
     }
@@ -11025,25 +14014,29 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val textlist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
-          vx_core.t_stringlist,
-          nodelist,
-          vx_core.t_any_from_any.vx_fn_new({node_any : vx_core.Type_any ->
-            val node : vx_web_html.Type_node = vx_core.f_any_from_any(vx_web_html.t_node, node_any)
-            var output_2 : vx_core.Type_any = vx_web_html.f_string_from_node_indent(
-              node,
-              indent
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val textlist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
+            vx_core.t_stringlist,
+            nodelist,
+            vx_core.t_any_from_any.vx_fn_new(
+              {node_any : vx_core.Type_any ->
+                val node : vx_web_html.Type_node = vx_core.f_any_from_any(
+                  vx_web_html.t_node,
+                  node_any
+                )
+                var output_2 : vx_core.Type_any = vx_web_html.f_string_from_node_indent(node, indent)
+                output_2
+              }
             )
-            output_2
-          })
-        )
-        val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
-          textlist,
-          vx_core.vx_new_string("")
-        )
-        output_1
-      })
+          )
+          val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
+            textlist,
+            vx_core.vx_new_string("")
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -11087,17 +14080,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -11115,10 +14108,30 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val nodes : vx_core.Type_list = vx_core.f_any_from_any(vx_core.t_list, arglist.vx_any(vx_core.vx_new_int(0)))
-      val tag : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
-      val prop : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(2)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(3)))
+      val nodes : vx_core.Type_list = vx_core.f_any_from_any(
+        vx_core.t_list,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val tag : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
+      val prop : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(2)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(3)
+        )
+      )
       output = vx_web_html.f_string_from_nodelist_tag_prop_indent(nodes, tag, prop, indent)
       return output
     }
@@ -11137,70 +14150,78 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val text : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
-          nodes,
-          vx_core.f_plus1(
-            indent
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val text : vx_core.Type_string = vx_web_html.f_string_from_nodelist_indent(
+            nodes,
+            vx_core.f_plus1(indent)
           )
-        )
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val eindent : vx_core.Type_string = vx_core.f_if_2(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_thenelselist,
-            vx_core.f_then(
-              vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_2 : vx_core.Type_any = vx_core.f_is_empty(
-                  text
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val eindent : vx_core.Type_string = vx_core.f_if_2(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_thenelselist,
+              // [
+                vx_core.f_then(
+                  vx_core.t_boolean_from_func.vx_fn_new(
+                    { ->
+                      var output_2 : vx_core.Type_any = vx_core.f_is_empty(text)
+                        output_2
+                      }
+                  ),
+                  vx_core.t_any_from_func.vx_fn_new(
+                    { ->
+                      var output_3 : vx_core.Type_any = vx_core.vx_new_string("")
+                        output_3
+                      }
+                  )
+                ),
+                vx_core.f_then(
+                  vx_core.t_boolean_from_func.vx_fn_new(
+                    { ->
+                      var output_4 : vx_core.Type_any = vx_core.f_is_empty(sindent)
+                        output_4
+                      }
+                  ),
+                  vx_core.t_any_from_func.vx_fn_new(
+                    { ->
+                      var output_5 : vx_core.Type_any = vx_core.c_newline
+                        output_5
+                      }
+                  )
+                ),
+                vx_core.f_else(
+                  vx_core.t_any_from_func.vx_fn_new(
+                    { ->
+      val output_6 : vx_core.Type_any = sindent
+                        output_6
+                      }
+                  )
                 )
-                output_2
-              }),
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_3 : vx_core.Type_any = vx_core.vx_new_string("")
-                output_3
-              })
-            ),
-            vx_core.f_then(
-              vx_core.t_boolean_from_func.vx_fn_new({ ->
-                var output_4 : vx_core.Type_any = vx_core.f_is_empty(
-                  sindent
-                )
-                output_4
-              }),
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                var output_5 : vx_core.Type_any = vx_core.c_newline
-                output_5
-              })
-            ),
-            vx_core.f_else(
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                val output_6 : vx_core.Type_any = sindent
-                output_6
-              })
+              // ]
             )
           )
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<"),
-            tag,
-            prop,
-            vx_core.vx_new_string(">"),
-            text,
-            eindent,
-            vx_core.vx_new_string("</"),
-            tag,
-            vx_core.vx_new_string(">")
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<"),
+                tag,
+                prop,
+                vx_core.vx_new_string(">"),
+                text,
+                eindent,
+                vx_core.vx_new_string("</"),
+                tag,
+                vx_core.vx_new_string(">")
+              // ]
+            )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -11242,17 +14263,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -11270,8 +14291,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val p : vx_web_html.Type_p = vx_core.f_any_from_any(vx_web_html.t_p, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val p : vx_web_html.Type_p = vx_core.f_any_from_any(
+        vx_web_html.t_p,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_p_indent(p, indent)
       return output
     }
@@ -11290,40 +14321,38 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val text : vx_core.Type_string = vx_web_html.f_htmlstring_from_string(
-          p.text()
-        )
-        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
-          vx_core.vx_new_string("id"),
-          p.id()
-        )
-        val sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
-          p.style(),
-          p.stylelist()
-        )
-        val sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(
-          p.style_unique()
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<p"),
-            sid,
-            sclass,
-            sstyle,
-            vx_core.vx_new_string(">"),
-            text,
-            vx_core.vx_new_string("</p>")
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val text : vx_core.Type_string = vx_web_html.f_htmlstring_from_string(p.text())
+          val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+            vx_core.vx_new_string("id"),
+            p.id()
           )
-        )
-        output_1
-      })
+          val sclass : vx_core.Type_string = vx_web_html.f_string_from_propstyle_stylelist(
+            p.style(),
+            p.stylelist()
+          )
+          val sstyle : vx_core.Type_string = vx_web_html.f_string_from_propstyleunique(p.style_unique())
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<p"),
+                sid,
+                sclass,
+                sstyle,
+                vx_core.vx_new_string(">"),
+                text,
+                vx_core.vx_new_string("</p>")
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -11365,17 +14394,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -11393,8 +14422,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
-      val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val key : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val value : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_propname_val(key, value)
       return output
     }
@@ -11413,19 +14452,19 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_if(
       vx_core.t_string,
-      vx_core.f_notempty(
-        value
-      ),
+      vx_core.f_notempty(value),
       vx_core.f_new(
         vx_core.t_string,
         vx_core.vx_new(
           vx_core.t_anylist,
-          vx_core.vx_new_string(" "),
-          key,
-          vx_core.vx_new_string("="),
-          vx_core.c_quote,
-          value,
-          vx_core.c_quote
+          // [
+            vx_core.vx_new_string(" "),
+            key,
+            vx_core.vx_new_string("="),
+            vx_core.c_quote,
+            value,
+            vx_core.c_quote
+          // ]
         )
       )
     )
@@ -11468,17 +14507,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -11502,13 +14541,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_style = value as vx_web_html.Type_style
       val outputval : vx_core.Type_any = vx_web_html.f_string_from_propstyle(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
+      val style : vx_web_html.Type_style = vx_core.f_any_from_any(
+        vx_web_html.t_style,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_string_from_propstyle(style)
       return output
     }
@@ -11529,30 +14576,36 @@ object vx_web_html {
       vx_core.t_string,
       vx_core.vx_new(
         vx_core.t_thenelselist,
-        vx_core.f_then(
-          vx_core.t_boolean_from_func.vx_fn_new({ ->
-            var output_1 : vx_core.Type_any = vx_core.f_notempty_1(
-              style
+        // [
+          vx_core.f_then(
+            vx_core.t_boolean_from_func.vx_fn_new(
+              { ->
+                var output_1 : vx_core.Type_any = vx_core.f_notempty_1(style)
+                  output_1
+                }
+            ),
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_2 : vx_core.Type_any = vx_core.f_new(
+                    vx_core.t_string,
+                    vx_core.vx_new(
+                      vx_core.t_anylist,
+                      // [
+                        vx_core.vx_new_string(" class="),
+                        vx_core.c_quote,
+                        vx_type.f_string_from_string_start(
+                          style.name(),
+                          vx_core.vx_new_int(2)
+                        ),
+                        vx_core.c_quote
+                      // ]
+                    )
+                  )
+                  output_2
+                }
             )
-            output_1
-          }),
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_2 : vx_core.Type_any = vx_core.f_new(
-              vx_core.t_string,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                vx_core.vx_new_string(" class="),
-                vx_core.c_quote,
-                vx_type.f_string_from_string_start(
-                  style.name(),
-                  vx_core.vx_new_int(2)
-                ),
-                vx_core.c_quote
-              )
-            )
-            output_2
-          })
-        )
+          )
+        // ]
       )
     )
     return output
@@ -11595,17 +14648,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -11623,8 +14676,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
-      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(1)))
+      val style : vx_web_html.Type_style = vx_core.f_any_from_any(
+        vx_web_html.t_style,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(
+        vx_web_html.t_stylelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_propstyle_stylelist(style, stylelist)
       return output
     }
@@ -11645,34 +14708,36 @@ object vx_web_html {
       vx_core.t_string,
       vx_core.vx_new(
         vx_core.t_thenelselist,
-        vx_core.f_then(
-          vx_core.t_boolean_from_func.vx_fn_new({ ->
-            var output_1 : vx_core.Type_any = vx_core.f_notempty_1(
-              style
+        // [
+          vx_core.f_then(
+            vx_core.t_boolean_from_func.vx_fn_new(
+              { ->
+                var output_1 : vx_core.Type_any = vx_core.f_notempty_1(style)
+                  output_1
+                }
+            ),
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_2 : vx_core.Type_any = vx_web_html.f_string_from_propstyle(style)
+                  output_2
+                }
             )
-            output_1
-          }),
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_2 : vx_core.Type_any = vx_web_html.f_string_from_propstyle(
-              style
+          ),
+          vx_core.f_then(
+            vx_core.t_boolean_from_func.vx_fn_new(
+              { ->
+                var output_3 : vx_core.Type_any = vx_core.f_notempty_1(stylelist)
+                  output_3
+                }
+            ),
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_4 : vx_core.Type_any = vx_web_html.f_string_from_propstylelist(stylelist)
+                  output_4
+                }
             )
-            output_2
-          })
-        ),
-        vx_core.f_then(
-          vx_core.t_boolean_from_func.vx_fn_new({ ->
-            var output_3 : vx_core.Type_any = vx_core.f_notempty_1(
-              stylelist
-            )
-            output_3
-          }),
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_4 : vx_core.Type_any = vx_web_html.f_string_from_propstylelist(
-              stylelist
-            )
-            output_4
-          })
-        )
+          )
+        // ]
       )
     )
     return output
@@ -11714,17 +14779,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -11748,13 +14813,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_stylelist = value as vx_web_html.Type_stylelist
       val outputval : vx_core.Type_any = vx_web_html.f_string_from_propstylelist(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(
+        vx_web_html.t_stylelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_string_from_propstylelist(stylelist)
       return output
     }
@@ -11775,43 +14848,49 @@ object vx_web_html {
       vx_core.t_string,
       vx_core.vx_new(
         vx_core.t_thenelselist,
-        vx_core.f_then(
-          vx_core.t_boolean_from_func.vx_fn_new({ ->
-            var output_1 : vx_core.Type_any = vx_core.f_notempty_1(
-              stylelist
-            )
-            output_1
-          }),
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_2 : vx_core.Type_any = vx_core.f_let(
-              vx_core.t_string,
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                val joined : vx_core.Type_string = vx_web_html.f_string_from_stylelist(
-                  stylelist
-                )
-                val output_3 : vx_core.Type_any = vx_core.f_if(
-                  vx_core.t_string,
-                  vx_core.f_ne(
-                    vx_core.vx_new_string(""),
-                    joined
-                  ),
-                  vx_core.f_new(
+        // [
+          vx_core.f_then(
+            vx_core.t_boolean_from_func.vx_fn_new(
+              { ->
+                var output_1 : vx_core.Type_any = vx_core.f_notempty_1(stylelist)
+                  output_1
+                }
+            ),
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_2 : vx_core.Type_any = vx_core.f_let(
                     vx_core.t_string,
-                    vx_core.vx_new(
-                      vx_core.t_anylist,
-                      vx_core.vx_new_string(" class="),
-                      vx_core.c_quote,
-                      joined,
-                      vx_core.c_quote
+                    vx_core.t_any_from_func.vx_fn_new(
+                      { ->
+                        val joined : vx_core.Type_string = vx_web_html.f_string_from_stylelist(stylelist)
+                        val output_3 : vx_core.Type_any = vx_core.f_if(
+                          vx_core.t_string,
+                          vx_core.f_ne(
+                            vx_core.vx_new_string(""),
+                            joined
+                          ),
+                          vx_core.f_new(
+                            vx_core.t_string,
+                            vx_core.vx_new(
+                              vx_core.t_anylist,
+                              // [
+                                vx_core.vx_new_string(" class="),
+                                vx_core.c_quote,
+                                joined,
+                                vx_core.c_quote
+                              // ]
+                            )
+                          )
+                        )
+                        output_3
+                      }
                     )
                   )
-                )
-                output_3
-              })
+                  output_2
+                }
             )
-            output_2
-          })
-        )
+          )
+        // ]
       )
     )
     return output
@@ -11853,17 +14932,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -11887,13 +14966,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_style = value as vx_web_html.Type_style
       val outputval : vx_core.Type_any = vx_web_html.f_string_from_propstyleunique(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
+      val style : vx_web_html.Type_style = vx_core.f_any_from_any(
+        vx_web_html.t_style,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_string_from_propstyleunique(style)
       return output
     }
@@ -11914,55 +15001,67 @@ object vx_web_html {
       vx_core.t_string,
       vx_core.vx_new(
         vx_core.t_thenelselist,
-        vx_core.f_then(
-          vx_core.t_boolean_from_func.vx_fn_new({ ->
-            var output_1 : vx_core.Type_any = vx_core.f_notempty_1(
-              style
-            )
-            output_1
-          }),
-          vx_core.t_any_from_func.vx_fn_new({ ->
-            var output_2 : vx_core.Type_any = vx_core.f_let(
-              vx_core.t_string,
-              vx_core.t_any_from_func.vx_fn_new({ ->
-                val props : vx_web_html.Type_propmap = style.props()
-                val text : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(
-                  props,
-                  vx_core.vx_new_int(0)
-                )
-                val output_3 : vx_core.Type_any = vx_core.f_if_2(
-                  vx_core.t_string,
-                  vx_core.vx_new(
-                    vx_core.t_thenelselist,
-                    vx_core.f_then(
-                      vx_core.t_boolean_from_func.vx_fn_new({ ->
-                        var output_4 : vx_core.Type_any = vx_core.f_notempty(
-                          text
+        // [
+          vx_core.f_then(
+            vx_core.t_boolean_from_func.vx_fn_new(
+              { ->
+                var output_1 : vx_core.Type_any = vx_core.f_notempty_1(style)
+                  output_1
+                }
+            ),
+            vx_core.t_any_from_func.vx_fn_new(
+              { ->
+                var output_2 : vx_core.Type_any = vx_core.f_let(
+                    vx_core.t_string,
+                    vx_core.t_any_from_func.vx_fn_new(
+                      { ->
+                        val props : vx_web_html.Type_propmap = style.props()
+                        val text : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(
+                          props,
+                          vx_core.vx_new_int(0)
                         )
-                        output_4
-                      }),
-                      vx_core.t_any_from_func.vx_fn_new({ ->
-                        var output_5 : vx_core.Type_any = vx_core.f_new(
+                        val output_3 : vx_core.Type_any = vx_core.f_if_2(
                           vx_core.t_string,
                           vx_core.vx_new(
-                            vx_core.t_anylist,
-                            vx_core.vx_new_string(" style="),
-                            vx_core.c_quote,
-                            text,
-                            vx_core.c_quote
+                            vx_core.t_thenelselist,
+                            // [
+                              vx_core.f_then(
+                                vx_core.t_boolean_from_func.vx_fn_new(
+                                  { ->
+                                    var output_4 : vx_core.Type_any = vx_core.f_notempty(text)
+                                      output_4
+                                    }
+                                ),
+                                vx_core.t_any_from_func.vx_fn_new(
+                                  { ->
+                                    var output_5 : vx_core.Type_any = vx_core.f_new(
+                                        vx_core.t_string,
+                                        vx_core.vx_new(
+                                          vx_core.t_anylist,
+                                          // [
+                                            vx_core.vx_new_string(" style="),
+                                            vx_core.c_quote,
+                                            text,
+                                            vx_core.c_quote
+                                          // ]
+                                        )
+                                      )
+                                      output_5
+                                    }
+                                )
+                              )
+                            // ]
                           )
                         )
-                        output_5
-                      })
+                        output_3
+                      }
                     )
                   )
-                )
-                output_3
-              })
+                  output_2
+                }
             )
-            output_2
-          })
-        )
+          )
+        // ]
       )
     )
     return output
@@ -12005,17 +15104,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -12033,8 +15132,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val style : vx_web_html.Type_style = vx_core.f_any_from_any(
+        vx_web_html.t_style,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_style_indent(style, indent)
       return output
     }
@@ -12053,40 +15162,38 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val name : vx_core.Type_string = style.name()
-        val propmap : vx_web_html.Type_propmap = style.props()
-        val sublist : vx_web_html.Type_stylelist = style.stylelist()
-        val stext : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(
-          propmap,
-          vx_core.f_plus1(
-            indent
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val name : vx_core.Type_string = style.name()
+          val propmap : vx_web_html.Type_propmap = style.props()
+          val sublist : vx_web_html.Type_stylelist = style.stylelist()
+          val stext : vx_core.Type_string = vx_web_html.f_string_from_stylepropmap_indent(
+            propmap,
+            vx_core.f_plus1(indent)
           )
-        )
-        val subtext : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
-          sublist,
-          vx_core.f_plus1(
-            indent
+          val subtext : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
+            sublist,
+            vx_core.f_plus1(indent)
           )
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            name,
-            vx_core.vx_new_string(" {"),
-            stext,
-            subtext,
-            sindent,
-            vx_core.vx_new_string("}")
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                name,
+                vx_core.vx_new_string(" {"),
+                stext,
+                subtext,
+                sindent,
+                vx_core.vx_new_string("}")
+              // ]
+            )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -12127,17 +15234,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -12161,13 +15268,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_stylelist = value as vx_web_html.Type_stylelist
       val outputval : vx_core.Type_any = vx_web_html.f_string_from_stylelist(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(
+        vx_web_html.t_stylelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_string_from_stylelist(stylelist)
       return output
     }
@@ -12186,25 +15301,32 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val namelist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
-          vx_core.t_stringlist,
-          stylelist,
-          vx_core.t_any_from_any.vx_fn_new({item_any : vx_core.Type_any ->
-            val item : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, item_any)
-            var output_2 : vx_core.Type_any = vx_type.f_string_from_string_start(
-              item.name(),
-              vx_core.vx_new_int(2)
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val namelist : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
+            vx_core.t_stringlist,
+            stylelist,
+            vx_core.t_any_from_any.vx_fn_new(
+              {item_any : vx_core.Type_any ->
+                val item : vx_web_html.Type_style = vx_core.f_any_from_any(
+                  vx_web_html.t_style,
+                  item_any
+                )
+                var output_2 : vx_core.Type_any = vx_type.f_string_from_string_start(
+                  item.name(),
+                  vx_core.vx_new_int(2)
+                )
+                output_2
+              }
             )
-            output_2
-          })
-        )
-        val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
-          namelist,
-          vx_core.vx_new_string(" ")
-        )
-        output_1
-      })
+          )
+          val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
+            namelist,
+            vx_core.vx_new_string(" ")
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -12246,17 +15368,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -12274,8 +15396,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(
+        vx_web_html.t_stylelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_stylelist_indent(stylelist, indent)
       return output
     }
@@ -12294,25 +15426,29 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sstyles : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
-          vx_core.t_stringlist,
-          stylelist,
-          vx_core.t_any_from_any.vx_fn_new({substyle_any : vx_core.Type_any ->
-            val substyle : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, substyle_any)
-            var output_2 : vx_core.Type_any = vx_web_html.f_string_from_style_indent(
-              substyle,
-              indent
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sstyles : vx_core.Type_stringlist = vx_core.f_list_from_list_1(
+            vx_core.t_stringlist,
+            stylelist,
+            vx_core.t_any_from_any.vx_fn_new(
+              {substyle_any : vx_core.Type_any ->
+                val substyle : vx_web_html.Type_style = vx_core.f_any_from_any(
+                  vx_web_html.t_style,
+                  substyle_any
+                )
+                var output_2 : vx_core.Type_any = vx_web_html.f_string_from_style_indent(substyle, indent)
+                output_2
+              }
             )
-            output_2
-          })
-        )
-        val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
-          sstyles,
-          vx_core.c_newline
-        )
-        output_1
-      })
+          )
+          val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
+            sstyles,
+            vx_core.c_newline
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -12354,17 +15490,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -12382,8 +15518,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val propmap : vx_web_html.Type_propmap = vx_core.f_any_from_any(vx_web_html.t_propmap, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val propmap : vx_web_html.Type_propmap = vx_core.f_any_from_any(
+        vx_web_html.t_propmap,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_stylepropmap_indent(propmap, indent)
       return output
     }
@@ -12402,40 +15548,50 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val sprops : vx_core.Type_stringlist = vx_core.f_list_from_map_1(
-          vx_core.t_stringlist,
-          propmap,
-          vx_core.t_any_from_key_value.vx_fn_new({key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
-            val key : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, key_any)
-            val value : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, value_any)
-            var output_2 : vx_core.Type_any = vx_core.f_new(
-              vx_core.t_string,
-              vx_core.vx_new(
-                vx_core.t_anylist,
-                sindent,
-                key,
-                vx_core.vx_new_string(": "),
-                vx_core.f_string_from_string_find_replace(
-                  value,
-                  vx_core.c_quote,
-                  vx_core.vx_new_string("'")
-                ),
-                vx_core.vx_new_string(";")
-              )
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val sprops : vx_core.Type_stringlist = vx_core.f_list_from_map_1(
+            vx_core.t_stringlist,
+            propmap,
+            vx_core.t_any_from_key_value.vx_fn_new(
+              {key_any : vx_core.Type_any, value_any : vx_core.Type_any ->
+                val key : vx_core.Type_string = vx_core.f_any_from_any(
+                  vx_core.t_string,
+                  key_any
+                )
+                val value : vx_core.Type_string = vx_core.f_any_from_any(
+                  vx_core.t_string,
+                  value_any
+                )
+                var output_2 : vx_core.Type_any = vx_core.f_new(
+                  vx_core.t_string,
+                  vx_core.vx_new(
+                    vx_core.t_anylist,
+                    // [
+                      sindent,
+                      key,
+                      vx_core.vx_new_string(": "),
+                      vx_core.f_string_from_string_find_replace(
+                        value,
+                        vx_core.c_quote,
+                        vx_core.vx_new_string("'")
+                      ),
+                      vx_core.vx_new_string(";")
+                    // ]
+                  )
+                )
+                output_2
+              }
             )
-            output_2
-          })
-        )
-        val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
-          sprops,
-          vx_core.vx_new_string("")
-        )
-        output_1
-      })
+          )
+          val output_1 : vx_core.Type_any = vx_type.f_string_from_stringlist_join(
+            sprops,
+            vx_core.vx_new_string("")
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -12477,17 +15633,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -12505,8 +15661,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(
+        vx_web_html.t_stylesheet,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_stylesheet_indent(stylesheet, indent)
       return output
     }
@@ -12525,37 +15691,35 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val styles : vx_web_html.Type_stylelist = stylesheet.styles()
-        val sstyles : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
-          styles,
-          vx_core.f_plus1(
-            indent
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val styles : vx_web_html.Type_stylelist = stylesheet.styles()
+          val sstyles : vx_core.Type_string = vx_web_html.f_string_from_stylelist_indent(
+            styles,
+            vx_core.f_plus1(indent)
           )
-        )
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val eindent : vx_core.Type_string = vx_core.f_if(
-          vx_core.t_string,
-          vx_core.f_notempty(
-            sstyles
-          ),
-          sindent
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<style>"),
-            sstyles,
-            eindent,
-            vx_core.vx_new_string("</style>")
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val eindent : vx_core.Type_string = vx_core.f_if(
+            vx_core.t_string,
+            vx_core.f_notempty(sstyles),
+            sindent
           )
-        )
-        output_1
-      })
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<style>"),
+                sstyles,
+                eindent,
+                vx_core.vx_new_string("</style>")
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -12597,17 +15761,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -12625,8 +15789,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val table : vx_web_html.Type_table = vx_core.f_any_from_any(vx_web_html.t_table, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val table : vx_web_html.Type_table = vx_core.f_any_from_any(
+        vx_web_html.t_table,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_table_indent(table, indent)
       return output
     }
@@ -12645,44 +15819,42 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
-          vx_core.vx_new_string("id"),
-          table.id()
-        )
-        val thead : vx_web_html.Type_thead = table.thead()
-        val tbody : vx_web_html.Type_tbody = table.tbody()
-        val shead : vx_core.Type_string = vx_web_html.f_string_from_thead_indent(
-          thead,
-          vx_core.f_plus1(
-            indent
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val sid : vx_core.Type_string = vx_web_html.f_string_from_propname_val(
+            vx_core.vx_new_string("id"),
+            table.id()
           )
-        )
-        val sbody : vx_core.Type_string = vx_web_html.f_string_from_tbody_indent(
-          tbody,
-          vx_core.f_plus1(
-            indent
+          val thead : vx_web_html.Type_thead = table.thead()
+          val tbody : vx_web_html.Type_tbody = table.tbody()
+          val shead : vx_core.Type_string = vx_web_html.f_string_from_thead_indent(
+            thead,
+            vx_core.f_plus1(indent)
           )
-        )
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<table"),
-            sid,
-            vx_core.vx_new_string(">"),
-            shead,
-            sbody,
-            sindent,
-            vx_core.vx_new_string("</table>")
+          val sbody : vx_core.Type_string = vx_web_html.f_string_from_tbody_indent(
+            tbody,
+            vx_core.f_plus1(indent)
           )
-        )
-        output_1
-      })
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<table"),
+                sid,
+                vx_core.vx_new_string(">"),
+                shead,
+                sbody,
+                sindent,
+                vx_core.vx_new_string("</table>")
+              // ]
+            )
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -12724,17 +15896,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -12752,8 +15924,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val tbody : vx_web_html.Type_tbody = vx_core.f_any_from_any(vx_web_html.t_tbody, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val tbody : vx_web_html.Type_tbody = vx_core.f_any_from_any(
+        vx_web_html.t_tbody,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_tbody_indent(tbody, indent)
       return output
     }
@@ -12772,16 +15954,18 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val nodes : vx_web_html.Type_trlist = tbody.nodes()
-        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          vx_core.vx_new_string("tbody"),
-          vx_core.vx_new_string(""),
-          indent
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val nodes : vx_web_html.Type_trlist = tbody.nodes()
+          val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            vx_core.vx_new_string("tbody"),
+            vx_core.vx_new_string(""),
+            indent
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -12823,17 +16007,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -12851,8 +16035,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val td : vx_web_html.Type_td = vx_core.f_any_from_any(vx_web_html.t_td, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val td : vx_web_html.Type_td = vx_core.f_any_from_any(
+        vx_web_html.t_td,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_td_indent(td, indent)
       return output
     }
@@ -12871,16 +16065,18 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val nodes : vx_web_html.Type_divchildlist = td.nodes()
-        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          vx_core.vx_new_string("td"),
-          vx_core.vx_new_string(""),
-          indent
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val nodes : vx_web_html.Type_divchildlist = td.nodes()
+          val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            vx_core.vx_new_string("td"),
+            vx_core.vx_new_string(""),
+            indent
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -12922,17 +16118,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -12950,8 +16146,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val thead : vx_web_html.Type_thead = vx_core.f_any_from_any(vx_web_html.t_thead, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val thead : vx_web_html.Type_thead = vx_core.f_any_from_any(
+        vx_web_html.t_thead,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_thead_indent(thead, indent)
       return output
     }
@@ -12970,16 +16176,18 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val nodes : vx_web_html.Type_trlist = thead.nodes()
-        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          vx_core.vx_new_string("thead"),
-          vx_core.vx_new_string(""),
-          indent
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val nodes : vx_web_html.Type_trlist = thead.nodes()
+          val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            vx_core.vx_new_string("thead"),
+            vx_core.vx_new_string(""),
+            indent
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -13021,17 +16229,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -13049,8 +16257,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val title : vx_web_html.Type_title = vx_core.f_any_from_any(vx_web_html.t_title, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val title : vx_web_html.Type_title = vx_core.f_any_from_any(
+        vx_web_html.t_title,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_title_indent(title, indent)
       return output
     }
@@ -13069,23 +16287,25 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(
-          indent
-        )
-        val text : vx_core.Type_string = title.text()
-        val output_1 : vx_core.Type_any = vx_core.f_new(
-          vx_core.t_string,
-          vx_core.vx_new(
-            vx_core.t_anylist,
-            sindent,
-            vx_core.vx_new_string("<title>"),
-            text,
-            vx_core.vx_new_string("</title>")
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val sindent : vx_core.Type_string = vx_web_html.f_string_from_indent(indent)
+          val text : vx_core.Type_string = title.text()
+          val output_1 : vx_core.Type_any = vx_core.f_new(
+            vx_core.t_string,
+            vx_core.vx_new(
+              vx_core.t_anylist,
+              // [
+                sindent,
+                vx_core.vx_new_string("<title>"),
+                text,
+                vx_core.vx_new_string("</title>")
+              // ]
+            )
           )
-        )
-        output_1
-      })
+          output_1
+        }
+      )
     )
     return output
   }
@@ -13127,17 +16347,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -13155,8 +16375,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val tr : vx_web_html.Type_tr = vx_core.f_any_from_any(vx_web_html.t_tr, arglist.vx_any(vx_core.vx_new_int(0)))
-      val indent : vx_core.Type_int = vx_core.f_any_from_any(vx_core.t_int, arglist.vx_any(vx_core.vx_new_int(1)))
+      val tr : vx_web_html.Type_tr = vx_core.f_any_from_any(
+        vx_web_html.t_tr,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val indent : vx_core.Type_int = vx_core.f_any_from_any(
+        vx_core.t_int,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_string_from_tr_indent(tr, indent)
       return output
     }
@@ -13175,16 +16405,18 @@ object vx_web_html {
     var output : vx_core.Type_string = vx_core.e_string
     output = vx_core.f_let(
       vx_core.t_string,
-      vx_core.t_any_from_func.vx_fn_new({ ->
-        val nodes : vx_web_html.Type_tdlist = tr.nodes()
-        val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
-          nodes,
-          vx_core.vx_new_string("tr"),
-          vx_core.vx_new_string(""),
-          indent
-        )
-        output_1
-      })
+      vx_core.t_any_from_func.vx_fn_new(
+        { ->
+          val nodes : vx_web_html.Type_tdlist = tr.nodes()
+          val output_1 : vx_core.Type_any = vx_web_html.f_string_from_nodelist_tag_prop_indent(
+            nodes,
+            vx_core.vx_new_string("tr"),
+            vx_core.vx_new_string(""),
+            indent
+          )
+          output_1
+        }
+      )
     )
     return output
   }
@@ -13225,17 +16457,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -13259,13 +16491,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_web_html.f_string_from_uri(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val uri : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val uri : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_string_from_uri(uri)
       return output
     }
@@ -13322,17 +16562,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "style", // name
-          ":struct", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "style",
+          ":struct",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -13350,8 +16590,18 @@ object vx_web_html {
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
-      val name : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(1)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(
+        vx_web_html.t_stylesheet,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
+      val name : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(1)
+        )
+      )
       output = vx_web_html.f_style_from_stylesheet_name(stylesheet, name)
       return output
     }
@@ -13370,9 +16620,7 @@ object vx_web_html {
     var output : vx_web_html.Type_style = vx_web_html.e_style
     output = vx_core.f_any_from_map(
       vx_web_html.t_style,
-      vx_web_html.f_stylemap_from_stylesheet(
-        stylesheet
-      ),
+      vx_web_html.f_stylemap_from_stylesheet(stylesheet),
       name
     )
     return output
@@ -13414,17 +16662,22 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylemap", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_style), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "stylemap",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_style
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -13448,13 +16701,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_stylelist = value as vx_web_html.Type_stylelist
       val outputval : vx_core.Type_any = vx_web_html.f_stylemap_from_stylelist(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(vx_web_html.t_stylelist, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylelist : vx_web_html.Type_stylelist = vx_core.f_any_from_any(
+        vx_web_html.t_stylelist,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_stylemap_from_stylelist(stylelist)
       return output
     }
@@ -13474,11 +16735,16 @@ object vx_web_html {
     output = vx_core.f_map_from_list(
       vx_web_html.t_stylemap,
       stylelist,
-      vx_core.t_any_from_any.vx_fn_new({style_any : vx_core.Type_any ->
-        val style : vx_web_html.Type_style = vx_core.f_any_from_any(vx_web_html.t_style, style_any)
-        var output_1 : vx_core.Type_any = style.name()
-        output_1
-      })
+      vx_core.t_any_from_any.vx_fn_new(
+        {style_any : vx_core.Type_any ->
+          val style : vx_web_html.Type_style = vx_core.f_any_from_any(
+            vx_web_html.t_style,
+            style_any
+          )
+          var output_1 : vx_core.Type_any = style.name()
+          output_1
+        }
+      )
     )
     return output
   }
@@ -13519,17 +16785,22 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylemap", // name
-          ":map", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_style), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "stylemap",
+          ":map",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_style
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -13553,13 +16824,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
       val outputval : vx_core.Type_any = vx_web_html.f_stylemap_from_stylesheet(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(
+        vx_web_html.t_stylesheet,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_stylemap_from_stylesheet(stylesheet)
       return output
     }
@@ -13616,17 +16895,22 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylelist", // name
-          ":list", // extends
-          vx_core.e_typelist, // traits
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_style), // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "stylelist",
+          ":list",
+          vx_core.e_typelist,
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_style
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -13650,13 +16934,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
       val outputval : vx_core.Type_any = vx_web_html.f_styles_from_stylesheet(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(
+        vx_web_html.t_stylesheet,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_styles_from_stylesheet(stylesheet)
       return output
     }
@@ -13713,17 +17005,23 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/web/html", // pkgname
-          "stylesheet", // name
-          ":struct", // extends
-          vx_core.vx_new(vx_core.t_typelist, vx_web_html.t_node, vx_web_html.t_headchild), // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/web/html",
+          "stylesheet",
+          ":struct",
+          vx_core.vx_new(
+            vx_core.t_typelist,
+            // [
+              vx_web_html.t_node,
+              vx_web_html.t_headchild
+            // ]
+          ),
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -13747,13 +17045,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_web_html.Type_stylesheet = value as vx_web_html.Type_stylesheet
       val outputval : vx_core.Type_any = vx_web_html.f_stylesheet_loadmap(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(vx_web_html.t_stylesheet, arglist.vx_any(vx_core.vx_new_int(0)))
+      val stylesheet : vx_web_html.Type_stylesheet = vx_core.f_any_from_any(
+        vx_web_html.t_stylesheet,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_stylesheet_loadmap(stylesheet)
       return output
     }
@@ -13774,10 +17080,10 @@ object vx_web_html {
       stylesheet,
       vx_core.vx_new(
         vx_core.t_anylist,
-        vx_core.vx_new_string(":stylemap"),
-        vx_web_html.f_stylemap_from_stylelist(
-          stylesheet.styles()
-        )
+        // [
+          vx_core.vx_new_string(":stylemap"),
+          vx_web_html.f_stylemap_from_stylelist(stylesheet.styles())
+        // ]
       )
     )
     return output
@@ -13819,17 +17125,17 @@ object vx_web_html {
         0, // idx
         false, // async
         vx_core.typedef_new(
-          "vx/core", // pkgname
-          "string", // name
-          ":string", // extends
-          vx_core.e_typelist, // traits
-          vx_core.e_typelist, // allowtypes
-          vx_core.e_typelist, // disallowtypes
-          vx_core.e_funclist, // allowfuncs
-          vx_core.e_funclist, // disallowfuncs
-          vx_core.e_anylist, // allowvalues
-          vx_core.e_anylist, // disallowvalues
-          vx_core.e_argmap // properties
+          "vx/core",
+          "string",
+          ":string",
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_typelist,
+          vx_core.e_funclist,
+          vx_core.e_funclist,
+          vx_core.e_anylist,
+          vx_core.e_anylist,
+          vx_core.e_argmap
         ) // typedef
       )
       return output
@@ -13853,13 +17159,21 @@ object vx_web_html {
       var output : T = vx_core.f_empty(generic_any_1)
       val inputval : vx_core.Type_string = value as vx_core.Type_string
       val outputval : vx_core.Type_any = vx_web_html.f_uri_from_string(inputval)
-      output = vx_core.f_any_from_any(generic_any_1, outputval)
+      output = vx_core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
     override fun vx_repl(arglist : vx_core.Type_anylist) : vx_core.Type_any {
       var output : vx_core.Type_any = vx_core.e_any
-      val text : vx_core.Type_string = vx_core.f_any_from_any(vx_core.t_string, arglist.vx_any(vx_core.vx_new_int(0)))
+      val text : vx_core.Type_string = vx_core.f_any_from_any(
+        vx_core.t_string,
+        arglist.vx_any(
+          vx_core.vx_new_int(0)
+        )
+      )
       output = vx_web_html.f_uri_from_string(text)
       return output
     }

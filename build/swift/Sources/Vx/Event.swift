@@ -112,7 +112,11 @@ public enum Vx_Event {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Event.Type_event = Vx_Core.vx_copy(Vx_Event.e_event, vals)
+      var output : any Vx_Event.Type_event = Vx_Core.vx_copy(
+        Vx_Event.t_event,
+        Vx_Event.e_event,
+        vals
+      )
       return output
     }
 
@@ -144,9 +148,21 @@ public enum Vx_Event {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           var istestkey : Bool = false
           var testkey : String = ""
@@ -162,10 +178,22 @@ public enum Vx_Event {
             } else if let valmsg = valsub as? any Vx_Core.Type_any {
               msgval = valmsg
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/event/event", ":invalidkeytype", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/event/event",
+              ":invalidkeytype",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if istestkey {
             if !testkey.hasPrefix(":") {
@@ -176,8 +204,18 @@ public enum Vx_Event {
               key = testkey
             } else {
               msgval = Vx_Core.vx_new_string(testkey)
-              msg = Vx_Core.vx_msg_from_error("vx/event/event", ":invalidkey", msgval)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidkey",
+                msgval
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           }
         } else {
@@ -189,7 +227,12 @@ public enum Vx_Event {
               vx_p_name = valname
             } else if valsub is String {
               ischanged = true
-              vx_p_name = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_name = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -200,9 +243,21 @@ public enum Vx_Event {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("name"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":from" {
             if Vx_Core.vx_issame(valsub, vx_p_from) {
@@ -211,7 +266,12 @@ public enum Vx_Event {
               vx_p_from = valfrom
             } else if valsub is String {
               ischanged = true
-              vx_p_from = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_from = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -222,9 +282,21 @@ public enum Vx_Event {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("from"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":to" {
             if Vx_Core.vx_issame(valsub, vx_p_to) {
@@ -233,7 +305,12 @@ public enum Vx_Event {
               vx_p_to = valto
             } else if valsub is String {
               ischanged = true
-              vx_p_to = Vx_Core.vx_new(Vx_Core.t_string, valsub)
+              vx_p_to = Vx_Core.vx_new(
+                Vx_Core.t_string,
+                [
+                  valsub
+                ]
+              )
             } else {
               if false {
               } else if let valinvalid = valsub as? any Vx_Core.Type_any {
@@ -244,9 +321,21 @@ public enum Vx_Event {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("to"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":datamap" {
             if Vx_Core.vx_issame(valsub, vx_p_datamap) {
@@ -263,9 +352,21 @@ public enum Vx_Event {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("datamap"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":event<-event" {
             if Vx_Core.vx_issame(valsub, vx_p_event_from_event) {
@@ -282,9 +383,21 @@ public enum Vx_Event {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("event<-event"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else if key == ":event<-event-async" {
             if Vx_Core.vx_issame(valsub, vx_p_event_from_event_async) {
@@ -301,14 +414,36 @@ public enum Vx_Event {
               var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
               mapany.put("key", Vx_Core.vx_new_string("event<-event-async"))
               mapany.put("value", msgval)
-              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-              msg = Vx_Core.vx_msg_from_error("vx/event/event", ":invalidvalue", msgmap)
-              msgblock = Vx_Core.vx_copy(msgblock, msg)
+              let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+                Vx_Core.vx_mapimmutable(mapany)
+              )
+              msg = Vx_Core.vx_msg_from_error(
+                "vx/event/event",
+                ":invalidvalue",
+                msgmap
+              )
+              msgblock = Vx_Core.vx_copy(
+                Vx_Core.t_msgblock,
+                msgblock,
+                [
+                  msg
+                ]
+              )
             }
           } else {
             msgval = Vx_Core.vx_new_string(key)
-            msg = Vx_Core.vx_msg_from_error("vx/event/event", ":invalidkey", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/event/event",
+              ":invalidkey",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           key = ""
         }
@@ -341,17 +476,17 @@ public enum Vx_Event {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/event", // pkgname
-        "event", // name
-        ":struct", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.e_typelist, // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/event",
+        "event",
+        ":struct",
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -408,7 +543,11 @@ public enum Vx_Event {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Event.Type_eventlist = Vx_Core.vx_copy(Vx_Event.e_eventlist, vals)
+      var output : any Vx_Event.Type_eventlist = Vx_Core.vx_copy(
+        Vx_Event.t_eventlist,
+        Vx_Event.e_eventlist,
+        vals
+      )
       return output
     }
 
@@ -426,9 +565,21 @@ public enum Vx_Event {
       var msg : any Vx_Core.Type_msg = Vx_Core.e_msg
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if let multi = valsub as? any Vx_Event.Type_eventlist {
           ischanged = true
           listval.append(contentsOf: multi.vx_listevent())
@@ -448,11 +599,33 @@ public enum Vx_Event {
             }
           }
         } else if let anyinvalid = valsub as? any Vx_Core.Type_any {
-          msg = Vx_Core.vx_msg_from_error("vx/event/eventlist", ":invalidtype", anyinvalid)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/event/eventlist",
+            ":invalidtype",
+            anyinvalid
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         } else {
-          msg = Vx_Core.vx_msg_from_error("vx/event/eventlist", ":invalidtype", Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub)))
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          msg = Vx_Core.vx_msg_from_error(
+            "vx/event/eventlist",
+            ":invalidtype",
+            Vx_Core.vx_new_string(
+              Vx_Core.vx_string_from_object(valsub)
+            )
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       if ischanged || !Vx_Core.vx_issame(msgblock, Vx_Core.e_msgblock) {
@@ -478,17 +651,22 @@ public enum Vx_Event {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/event", // pkgname
-        "eventlist", // name
-        ":list", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Event.t_event), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/event",
+        "eventlist",
+        ":list",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Event.t_event
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -508,7 +686,7 @@ public enum Vx_Event {
 
   public class Class_eventmap : Vx_Core.Class_base, Type_eventmap {
 
-    public var vx_p_map : Vx_Core.Map<any Vx_Event.Type_event> = Vx_Core.Map<any Vx_Event.Type_event>()
+    public var vx_p_map : Vx_Core.Map<any Vx_Event.Type_event> = Vx_Core.Map<any Vx_Event.Type_event>.()
 
     public func vx_map() -> Vx_Core.Map<any Vx_Core.Type_any> {
       let map : Vx_Core.Map<any Vx_Core.Type_any> = Vx_Core.vx_map_from_map(Vx_Core.t_any, self.vx_p_map)
@@ -579,8 +757,18 @@ public enum Vx_Event {
         } else if let castval = value as? any Vx_Event.Type_event {
           map.put(key, castval)
         } else {
-          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error("vx/event/eventmap", ":invalidvalue", value)
-          msgblock = Vx_Core.vx_copy(msgblock, msg)
+          var msg : any Vx_Core.Type_msg = Vx_Core.vx_msg_from_error(
+            "vx/event/eventmap",
+            ":invalidvalue",
+            value
+          )
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              msg
+            ]
+          )
         }
       }
       output.vx_p_map = Vx_Core.vx_mapimmutable(map)
@@ -593,7 +781,11 @@ public enum Vx_Event {
     override public func vx_new(
       _ vals : [Any]
     ) -> any Vx_Core.Type_any {
-      var output : any Vx_Event.Type_eventmap = Vx_Core.vx_copy(Vx_Event.e_eventmap, vals)
+      var output : any Vx_Event.Type_eventmap = Vx_Core.vx_copy(
+        Vx_Event.t_eventmap,
+        Vx_Event.e_eventmap,
+        vals
+      )
       return output
     }
 
@@ -613,9 +805,21 @@ public enum Vx_Event {
       var msgval : any Vx_Core.Type_any = Vx_Core.e_any
       for valsub in vals {
         if valsub is any Vx_Core.Type_msgblock {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if valsub is any Vx_Core.Type_msg {
-          msgblock = Vx_Core.vx_copy(msgblock, valsub)
+          msgblock = Vx_Core.vx_copy(
+            Vx_Core.t_msgblock,
+            msgblock,
+            [
+              valsub
+            ]
+          )
         } else if key == "" {
           if false {
           } else if let valstring = valsub as? any Vx_Core.Type_string {
@@ -627,10 +831,22 @@ public enum Vx_Event {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                Vx_Core.vx_string_from_object(valsub)
+              )
             }
-            msg = Vx_Core.vx_msg_from_error("vx/event/eventmap", ":keyexpected", msgval)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/event/eventmap",
+              ":keyexpected",
+              msgval
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
         } else {
           var valany : any Vx_Event.Type_event = Vx_Event.e_event
@@ -644,14 +860,28 @@ public enum Vx_Event {
             } else if let valinvalid = valsub as? any Vx_Core.Type_any {
               msgval = valinvalid
             } else {
-              msgval = Vx_Core.vx_new_string(Vx_Core.vx_string_from_object(valsub))
+              msgval = Vx_Core.vx_new_string(
+                  Vx_Core.vx_string_from_object(valsub)
+                )
             }
             var mapany : Vx_Core.MapMutable<any Vx_Core.Type_any> = Vx_Core.MapMutable<any Vx_Core.Type_any>()
             mapany.put("key", Vx_Core.vx_new_string(key))
             mapany.put("value", msgval)
-            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(Vx_Core.vx_mapimmutable(mapany))
-            msg = Vx_Core.vx_msg_from_error("vx/event/eventmap", ":invalidkeyvalue", msgmap)
-            msgblock = Vx_Core.vx_copy(msgblock, msg)
+            let msgmap : any Vx_Core.Type_map = Vx_Core.t_anymap.vx_new_from_map(
+              Vx_Core.vx_mapimmutable(mapany)
+            )
+            msg = Vx_Core.vx_msg_from_error(
+              "vx/event/eventmap",
+              ":invalidkeyvalue",
+              msgmap
+            )
+            msgblock = Vx_Core.vx_copy(
+              Vx_Core.t_msgblock,
+              msgblock,
+              [
+                msg
+              ]
+            )
           }
           if !Vx_Core.vx_issame(valany, Vx_Core.e_any) {
             ischanged = true
@@ -686,17 +916,22 @@ public enum Vx_Event {
 
     override public func vx_typedef() -> any Vx_Core.Type_typedef {
       var output : any Vx_Core.Type_typedef = Vx_Core.typedef_new(
-        "vx/event", // pkgname
-        "eventmap", // name
-        ":map", // extends
-        Vx_Core.e_typelist, // traits
-        Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Event.t_event), // allowtypes
-        Vx_Core.e_typelist, // disallowtypes
-        Vx_Core.e_funclist, // allowfuncs
-        Vx_Core.e_funclist, // disallowfuncs
-        Vx_Core.e_anylist, // allowvalues
-        Vx_Core.e_anylist, // disallowvalues
-        Vx_Core.e_argmap // properties
+        "vx/event",
+        "eventmap",
+        ":map",
+        Vx_Core.e_typelist,
+        Vx_Core.vx_new(
+          Vx_Core.t_typelist,
+          [
+            Vx_Event.t_event
+          ]
+        ),
+        Vx_Core.e_typelist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_funclist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_anylist,
+        Vx_Core.e_argmap
       )
       return output
     }
@@ -726,8 +961,10 @@ public enum Vx_Event {
         Vx_Event.t_event,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":name"),
-          Vx_Core.vx_new_string("change")
+          [
+            Vx_Core.vx_new_string(":name"),
+            Vx_Core.vx_new_string("change")
+          ]
         )
       )
       outval.vx_p_name = value.name()
@@ -762,8 +999,10 @@ public enum Vx_Event {
         Vx_Event.t_event,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":name"),
-          Vx_Core.vx_new_string("click")
+          [
+            Vx_Core.vx_new_string(":name"),
+            Vx_Core.vx_new_string("click")
+          ]
         )
       )
       outval.vx_p_name = value.name()
@@ -798,8 +1037,10 @@ public enum Vx_Event {
         Vx_Event.t_event,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":name"),
-          Vx_Core.vx_new_string("move")
+          [
+            Vx_Core.vx_new_string(":name"),
+            Vx_Core.vx_new_string("move")
+          ]
         )
       )
       outval.vx_p_name = value.name()
@@ -834,8 +1075,10 @@ public enum Vx_Event {
         Vx_Event.t_event,
         Vx_Core.vx_new(
           Vx_Core.t_anylist,
-          Vx_Core.vx_new_string(":name"),
-          Vx_Core.vx_new_string("move")
+          [
+            Vx_Core.vx_new_string(":name"),
+            Vx_Core.vx_new_string("move")
+          ]
         )
       )
       outval.vx_p_name = value.name()
@@ -886,17 +1129,17 @@ public enum Vx_Event {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/core", // pkgname
-          "any-1", // name
-          "", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/core",
+          "any-1",
+          "",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -922,8 +1165,14 @@ public enum Vx_Event {
     ) -> T {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Event.Type_event = value as! any Vx_Event.Type_event
-      let outputval : any Vx_Core.Type_any = Vx_Event.f_any_from_from_event(Vx_Core.t_any, inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      let outputval : any Vx_Core.Type_any = Vx_Event.f_any_from_from_event(
+        Vx_Core.t_any,
+        inputval
+      )
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -931,8 +1180,18 @@ public enum Vx_Event {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(Vx_Core.t_any, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let evt : any Vx_Event.Type_event = Vx_Core.f_any_from_any(Vx_Event.t_event, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let generic_any_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
+        Vx_Core.t_any,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let evt : any Vx_Event.Type_event = Vx_Core.f_any_from_any(
+        Vx_Event.t_event,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Event.f_any_from_from_event(generic_any_1, evt)
       return output
     }
@@ -957,14 +1216,13 @@ public enum Vx_Event {
     var output : T = Vx_Core.f_empty(generic_any_1)
     output = Vx_Core.f_let(
       generic_any_1,
-      Vx_Core.t_any_from_func.vx_fn_new({() in
-        let value : any Vx_Core.Type_any = evt.from()
-        let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(
-          generic_any_1,
-          value
-        )
-        return output_1
-      })
+      Vx_Core.t_any_from_func.vx_fn_new(
+        {() in
+          let value : any Vx_Core.Type_any = evt.from()
+          let output_1 : any Vx_Core.Type_any = Vx_Core.f_any_from_any(generic_any_1, value)
+          return output_1
+        }
+      )
     )
     return output
   }
@@ -1005,17 +1263,17 @@ public enum Vx_Event {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/event",
+          "event",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1043,7 +1301,10 @@ public enum Vx_Event {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Event.Type_event = value as! any Vx_Event.Type_event
       let outputval : any Vx_Core.Type_any = Vx_Event.f_event_from_event(context, inputval)
-      output = Vx_Core.f_any_from_any_context(generic_any_1, context, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1051,8 +1312,18 @@ public enum Vx_Event {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let evt : any Vx_Event.Type_event = Vx_Core.f_any_from_any(Vx_Event.t_event, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let evt : any Vx_Event.Type_event = Vx_Core.f_any_from_any(
+        Vx_Event.t_event,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       output = Vx_Event.f_event_from_event(context, evt)
       return output
     }
@@ -1115,17 +1386,17 @@ public enum Vx_Event {
         0, // idx
         true, // async
         Vx_Core.typedef_new(
-          "vx/event", // pkgname
-          "event", // name
-          ":struct", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.e_typelist, // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/event",
+          "event",
+          ":struct",
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1150,7 +1421,10 @@ public enum Vx_Event {
       _ context : any Vx_Core.Type_context,
       _ value : any Vx_Core.Type_any
     ) -> Vx_Core.Future {
-      let inputval : any Vx_Event.Type_event = Vx_Core.f_any_from_any(Vx_Event.t_event, value)
+      let inputval : any Vx_Event.Type_event = Vx_Core.f_any_from_any(
+        Vx_Event.t_event,
+        value
+      )
       let future : Vx_Core.Future = Vx_Event.f_event_from_event_async(context, inputval)
       let output : Vx_Core.Future = Vx_Core.vx_async_from_async(generic_any_1, future)
       return output
@@ -1160,10 +1434,23 @@ public enum Vx_Event {
       _ arglist : any Vx_Core.Type_anylist
     ) -> Vx_Core.Future {
       var output : Vx_Core.Future = Vx_Core.vx_async_new_from_value(Vx_Core.e_any)
-      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(Vx_Core.t_context, arglist.vx_any(Vx_Core.vx_new_int(0)))
-      let evt : any Vx_Event.Type_event = Vx_Core.f_any_from_any(Vx_Event.t_event, arglist.vx_any(Vx_Core.vx_new_int(1)))
+      let context : any Vx_Core.Type_context = Vx_Core.f_any_from_any(
+        Vx_Core.t_context,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
+      let evt : any Vx_Event.Type_event = Vx_Core.f_any_from_any(
+        Vx_Event.t_event,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(1)
+        )
+      )
       var future : Vx_Core.Future = Vx_Event.f_event_from_event_async(context, evt)
-      output = Vx_Core.vx_async_from_async(Vx_Core.t_any, future)
+      output = Vx_Core.vx_async_from_async(
+        Vx_Core.t_any,
+        future
+      )
       return output
     }
 
@@ -1223,17 +1510,22 @@ public enum Vx_Event {
         0, // idx
         false, // async
         Vx_Core.typedef_new(
-          "vx/event", // pkgname
-          "eventmap", // name
-          ":map", // extends
-          Vx_Core.e_typelist, // traits
-          Vx_Core.vx_new(Vx_Core.t_typelist, Vx_Event.t_event), // allowtypes
-          Vx_Core.e_typelist, // disallowtypes
-          Vx_Core.e_funclist, // allowfuncs
-          Vx_Core.e_funclist, // disallowfuncs
-          Vx_Core.e_anylist, // allowvalues
-          Vx_Core.e_anylist, // disallowvalues
-          Vx_Core.e_argmap // properties
+          "vx/event",
+          "eventmap",
+          ":map",
+          Vx_Core.e_typelist,
+          Vx_Core.vx_new(
+            Vx_Core.t_typelist,
+            [
+              Vx_Event.t_event
+            ]
+          ),
+          Vx_Core.e_typelist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_funclist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_anylist,
+          Vx_Core.e_argmap
         ) // typedef
       )
       return output
@@ -1260,7 +1552,10 @@ public enum Vx_Event {
       var output : T = Vx_Core.f_empty(generic_any_1)
       let inputval : any Vx_Event.Type_eventlist = value as! any Vx_Event.Type_eventlist
       let outputval : any Vx_Core.Type_any = Vx_Event.f_eventmap_from_eventlist(inputval)
-      output = Vx_Core.f_any_from_any(generic_any_1, outputval)
+      output = Vx_Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      )
       return output
     }
 
@@ -1268,7 +1563,12 @@ public enum Vx_Event {
       _ arglist : any Vx_Core.Type_anylist
     ) -> any Vx_Core.Type_any {
       var output : any Vx_Core.Type_any = Vx_Core.e_any
-      let eventlist : any Vx_Event.Type_eventlist = Vx_Core.f_any_from_any(Vx_Event.t_eventlist, arglist.vx_any(Vx_Core.vx_new_int(0)))
+      let eventlist : any Vx_Event.Type_eventlist = Vx_Core.f_any_from_any(
+        Vx_Event.t_eventlist,
+        arglist.vx_any(
+          Vx_Core.vx_new_int(0)
+        )
+      )
       output = Vx_Event.f_eventmap_from_eventlist(eventlist)
       return output
     }
@@ -1292,11 +1592,16 @@ public enum Vx_Event {
     output = Vx_Core.f_map_from_list(
       Vx_Event.t_eventmap,
       eventlist,
-      Vx_Core.t_any_from_any.vx_fn_new({(evt_any) in
-        let evt : any Vx_Event.Type_event = Vx_Core.f_any_from_any(Vx_Event.t_event, evt_any)
-        var output_1 : any Vx_Core.Type_any = evt.name()
-        return output_1
-      })
+      Vx_Core.t_any_from_any.vx_fn_new(
+        {(evt_any) in
+          let evt : any Vx_Event.Type_event = Vx_Core.f_any_from_any(
+            Vx_Event.t_event,
+            evt_any
+          )
+          var output_1 : any Vx_Core.Type_any = evt.name()
+          return output_1
+        }
+      )
     )
     return output
   }

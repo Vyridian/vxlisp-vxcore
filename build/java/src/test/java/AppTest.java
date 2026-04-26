@@ -44,8 +44,12 @@ public final class AppTest {
     TestLib.test_async_from_async_fn();
     TestLib.test_list_from_list_async();
     TestLib.test_pathfull_from_file();
-    TestLib.test_read_file();
-    TestLib.test_write_file();
+    TestLib.test_read_file(context);
+    TestLib.test_write_file(context);
+    TestLib.test_run_testresult(context);
+    TestLib.test_run_testdescribe(context);
+    TestLib.test_run_testdescribelist(context);
+    TestLib.test_run_testresult_async(context);
   }
 
   @Test
@@ -219,33 +223,38 @@ public final class AppTest {
   @Test
   @DisplayName("writetestsuite")
   void test_writetestsuite() {
-    com.vxlisp.vx.Test.Type_testpackagelist testpackagelist = Core.vx_new(
+    com.vxlisp.vx.Test.Type_testpackagelist testpackagelist = com.vxlisp.vx.Core.vx_new(
       com.vxlisp.vx.Test.t_testpackagelist,
-      CoreTest.test_package(context),
-      TableTest.test_package(context),
-      TreeTest.test_package(context),
-      EventTest.test_package(context),
-      SampleTest.test_package(context),
-      StateTest.test_package(context),
-      TypeTest.test_package(context),
-      HtmlTest.test_package(context),
-      CollectionTest.test_package(context),
-      TextblockTest.test_package(context),
-      ReplTest.test_package(context),
-      FileTest.test_package(context),
-      XmlTest.test_package(context),
-      TestTest.test_package(context),
-      UiTest.test_package(context),
-      HtmldocTest.test_package(context),
-      CsvTest.test_package(context),
-      TranslateTest.test_package(context),
-      EnTest.test_package(context),
-      EsTest.test_package(context),
-      UihtmlTest.test_package(context),
-      UisvgTest.test_package(context),
-      HttpTest.test_package(context),
-      AllTest.test_package(context)
+      // [
+        CoreTest.test_package(context),
+        TableTest.test_package(context),
+        TreeTest.test_package(context),
+        EventTest.test_package(context),
+        SampleTest.test_package(context),
+        StateTest.test_package(context),
+        TypeTest.test_package(context),
+        HtmlTest.test_package(context),
+        CollectionTest.test_package(context),
+        TextblockTest.test_package(context),
+        ReplTest.test_package(context),
+        FileTest.test_package(context),
+        XmlTest.test_package(context),
+        TestTest.test_package(context),
+        UiTest.test_package(context),
+        HtmldocTest.test_package(context),
+        CsvTest.test_package(context),
+        TranslateTest.test_package(context),
+        EnTest.test_package(context),
+        EsTest.test_package(context),
+        UihtmlTest.test_package(context),
+        UisvgTest.test_package(context),
+        HttpTest.test_package(context),
+        AllTest.test_package(context)
+      // ]
     );
-    TestLib.write_testpackagelist_async(context, testpackagelist);
+    TestLib.write_testpackagelist_async(
+      context,
+      testpackagelist
+    );
   }
 }

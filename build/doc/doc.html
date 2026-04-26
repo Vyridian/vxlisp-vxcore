@@ -4661,7 +4661,7 @@
    (and reduce (&lt; current next))))
  :alias &quot;lt&quot;
  :test (test-true
-        (&lt; 2 3))
+        (&lt; 2 3 5))
        (test-true
         (&lt; &quot;b&quot; &quot;d&quot; &quot;z&quot;))
  :doc &quot;Returns true if the first arg is less than all of the other args&quot;)
@@ -4793,12 +4793,6 @@
       output = vx_core::c_false;
     }&quot;
   :csharp
-   &quot;if (val1.vx_boolean() &amp;&amp; val2.vx_boolean()) {
-      output = Core.c_true;
-    } else {
-      output = Core.c_false;
-    }&quot;
-  :java
    &quot;if (val1.vx_boolean() &amp;&amp; val2.vx_boolean()) {
       output = Core.c_true;
     } else {
@@ -14794,7 +14788,7 @@
               </summary>
               <ul>
                 <li><div class="test">(test-true
- (&lt; 2 3))</div></li>
+ (&lt; 2 3 5))</div></li>
                 <li><div class="test">(test-true
  (&lt; &quot;b&quot; &quot;d&quot; &quot;z&quot;))</div></li>
               </ul>
@@ -14817,7 +14811,7 @@
    (and reduce (&lt; current next))))
  :alias &quot;lt&quot;
  :test (test-true
-        (&lt; 2 3))
+        (&lt; 2 3 5))
        (test-true
         (&lt; &quot;b&quot; &quot;d&quot; &quot;z&quot;))
  :doc &quot;Returns true if the first arg is less than all of the other args&quot;)</div>
@@ -15707,12 +15701,6 @@ improves readability.</div>
       output = vx_core::c_false;
     }&quot;
   :csharp
-   &quot;if (val1.vx_boolean() &amp;&amp; val2.vx_boolean()) {
-      output = Core.c_true;
-    } else {
-      output = Core.c_false;
-    }&quot;
-  :java
    &quot;if (val1.vx_boolean() &amp;&amp; val2.vx_boolean()) {
       output = Core.c_true;
     } else {
@@ -63552,14 +63540,6 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_boolean_write_from_file_string(file, text);&quot;
-  :java
-   &quot;Core.Type_string fullpath = File.f_pathfull_from_file(file);
-    String sfullpath = fullpath.vx_string();
-    Path path = Paths.get(sfullpath);
-    String stext = text.vx_string();
-    byte[] bytes = stext.getBytes();
-    java.nio.file.Files.write(path, bytes);
-    output = Core.c_true;&quot;
   :js &quot;&quot;)
  :context
  :messages
@@ -64181,14 +64161,6 @@ output : list-1 := (empty list-1)
  (native
   :cpp
    &quot;output = vx_data_file::vx_boolean_write_from_file_string(file, text);&quot;
-  :java
-   &quot;Core.Type_string fullpath = File.f_pathfull_from_file(file);
-    String sfullpath = fullpath.vx_string();
-    Path path = Paths.get(sfullpath);
-    String stext = text.vx_string();
-    byte[] bytes = stext.getBytes();
-    java.nio.file.Files.write(path, bytes);
-    output = Core.c_true;&quot;
   :js &quot;&quot;)
  :context
  :messages

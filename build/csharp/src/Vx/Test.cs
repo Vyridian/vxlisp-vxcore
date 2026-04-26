@@ -87,7 +87,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testcase output = Vx.Core.vx_copy(Vx.Test.e_testcase, vals);
+      Vx.Test.Type_testcase output = Vx.Core.vx_copy(
+        Vx.Test.e_testcase,
+        vals
+      );
       return output;
     }
 
@@ -113,9 +116,19 @@ public static class Test {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -131,10 +144,21 @@ public static class Test {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testcase",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -145,8 +169,17 @@ public static class Test {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -158,7 +191,12 @@ public static class Test {
               vx_p_passfail = valpassfail;
             } else if (valsub is bool) {
               ischanged = true;
-              vx_p_passfail = Vx.Core.vx_new(Vx.Core.t_boolean, valsub);
+              vx_p_passfail = Vx.Core.vx_new(
+                Vx.Core.t_boolean,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -169,9 +207,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("passfail"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -180,7 +229,12 @@ public static class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_testpkg = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_testpkg = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -191,9 +245,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":casename")) {
             if (valsub == vx_p_casename) {
@@ -202,7 +267,12 @@ public static class Test {
               vx_p_casename = valcasename;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_casename = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_casename = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -213,9 +283,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("casename"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":describelist")) {
             if (valsub == vx_p_describelist) {
@@ -232,14 +313,34 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("describelist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcase",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/test/testcase", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testcase",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -270,17 +371,17 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testcase", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testcase",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -335,7 +436,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testcaselist output = Vx.Core.vx_copy(Vx.Test.e_testcaselist, vals);
+      Vx.Test.Type_testcaselist output = Vx.Core.vx_copy(
+        Vx.Test.e_testcaselist,
+        vals
+      );
       return output;
     }
 
@@ -351,9 +455,19 @@ public static class Test {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Test.Type_testcaselist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listtestcase());
@@ -373,11 +487,31 @@ public static class Test {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/test/testcaselist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/test/testcaselist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/test/testcaselist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/test/testcaselist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -403,17 +537,22 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testcaselist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Test.t_testcase), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testcaselist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Test.t_testcase
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -508,7 +647,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testcoveragedetail output = Vx.Core.vx_copy(Vx.Test.e_testcoveragedetail, vals);
+      Vx.Test.Type_testcoveragedetail output = Vx.Core.vx_copy(
+        Vx.Test.e_testcoveragedetail,
+        vals
+      );
       return output;
     }
 
@@ -534,9 +676,19 @@ public static class Test {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -552,10 +704,21 @@ public static class Test {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testcoveragedetail",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -566,8 +729,17 @@ public static class Test {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -587,9 +759,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("constmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":funcmap")) {
             if (valsub == vx_p_funcmap) {
@@ -606,9 +789,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("funcmap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -617,7 +811,12 @@ public static class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_testpkg = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_testpkg = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -628,9 +827,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":typemap")) {
             if (valsub == vx_p_typemap) {
@@ -647,14 +857,34 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("typemap"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragedetail",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragedetail", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testcoveragedetail",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -685,17 +915,17 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragedetail", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testcoveragedetail",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -790,7 +1020,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testcoveragenums output = Vx.Core.vx_copy(Vx.Test.e_testcoveragenums, vals);
+      Vx.Test.Type_testcoveragenums output = Vx.Core.vx_copy(
+        Vx.Test.e_testcoveragenums,
+        vals
+      );
       return output;
     }
 
@@ -816,9 +1049,19 @@ public static class Test {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -834,10 +1077,21 @@ public static class Test {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testcoveragenums",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -848,8 +1102,17 @@ public static class Test {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -861,7 +1124,12 @@ public static class Test {
               vx_p_pct = valpct;
             } else if (valsub is int) {
               ischanged = true;
-              vx_p_pct = Vx.Core.vx_new(Vx.Core.t_int, valsub);
+              vx_p_pct = Vx.Core.vx_new(
+                Vx.Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -872,9 +1140,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("pct"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -883,7 +1162,12 @@ public static class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_testpkg = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_testpkg = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -894,9 +1178,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":tests")) {
             if (valsub == vx_p_tests) {
@@ -905,7 +1200,12 @@ public static class Test {
               vx_p_tests = valtests;
             } else if (valsub is int) {
               ischanged = true;
-              vx_p_tests = Vx.Core.vx_new(Vx.Core.t_int, valsub);
+              vx_p_tests = Vx.Core.vx_new(
+                Vx.Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -916,9 +1216,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("tests"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":total")) {
             if (valsub == vx_p_total) {
@@ -927,7 +1238,12 @@ public static class Test {
               vx_p_total = valtotal;
             } else if (valsub is int) {
               ischanged = true;
-              vx_p_total = Vx.Core.vx_new(Vx.Core.t_int, valsub);
+              vx_p_total = Vx.Core.vx_new(
+                Vx.Core.t_int,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -938,14 +1254,34 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("total"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragenums",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragenums", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testcoveragenums",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -976,17 +1312,17 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragenums", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testcoveragenums",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -1141,7 +1477,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testcoveragesummary output = Vx.Core.vx_copy(Vx.Test.e_testcoveragesummary, vals);
+      Vx.Test.Type_testcoveragesummary output = Vx.Core.vx_copy(
+        Vx.Test.e_testcoveragesummary,
+        vals
+      );
       return output;
     }
 
@@ -1175,9 +1514,19 @@ public static class Test {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -1193,10 +1542,21 @@ public static class Test {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testcoveragesummary",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -1207,8 +1567,17 @@ public static class Test {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1228,9 +1597,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("bigospacenums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":bigotimenums")) {
             if (valsub == vx_p_bigotimenums) {
@@ -1247,9 +1627,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("bigotimenums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":constnums")) {
             if (valsub == vx_p_constnums) {
@@ -1266,9 +1657,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("constnums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":docnums")) {
             if (valsub == vx_p_docnums) {
@@ -1285,9 +1687,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("docnums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":funcnums")) {
             if (valsub == vx_p_funcnums) {
@@ -1304,9 +1717,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("funcnums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -1315,7 +1739,12 @@ public static class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_testpkg = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_testpkg = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -1326,9 +1755,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":totalnums")) {
             if (valsub == vx_p_totalnums) {
@@ -1345,9 +1785,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("totalnums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":typenums")) {
             if (valsub == vx_p_typenums) {
@@ -1364,14 +1815,34 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("typenums"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testcoveragesummary",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/test/testcoveragesummary", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testcoveragesummary",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1406,17 +1877,17 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testcoveragesummary", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testcoveragesummary",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -1496,7 +1967,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testdescribe output = Vx.Core.vx_copy(Vx.Test.e_testdescribe, vals);
+      Vx.Test.Type_testdescribe output = Vx.Core.vx_copy(
+        Vx.Test.e_testdescribe,
+        vals
+      );
       return output;
     }
 
@@ -1520,9 +1994,19 @@ public static class Test {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -1538,10 +2022,21 @@ public static class Test {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/test/testdescribe", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testdescribe",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -1552,8 +2047,17 @@ public static class Test {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/test/testdescribe", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1565,7 +2069,12 @@ public static class Test {
               vx_p_describename = valdescribename;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_describename = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_describename = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -1576,9 +2085,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("describename"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -1587,7 +2107,12 @@ public static class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_testpkg = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_testpkg = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -1598,9 +2123,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":testresult")) {
             if (valsub == vx_p_testresult) {
@@ -1617,14 +2153,34 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testresult"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testdescribe", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testdescribe",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/test/testdescribe", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testdescribe",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -1654,17 +2210,17 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testdescribe", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testdescribe",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -1719,7 +2275,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testdescribelist output = Vx.Core.vx_copy(Vx.Test.e_testdescribelist, vals);
+      Vx.Test.Type_testdescribelist output = Vx.Core.vx_copy(
+        Vx.Test.e_testdescribelist,
+        vals
+      );
       return output;
     }
 
@@ -1735,9 +2294,19 @@ public static class Test {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Test.Type_testdescribelist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listtestdescribe());
@@ -1757,11 +2326,31 @@ public static class Test {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/test/testdescribelist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/test/testdescribelist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/test/testdescribelist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/test/testdescribelist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -1787,17 +2376,22 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testdescribelist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Test.t_testdescribe), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testdescribelist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Test.t_testdescribe
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -1907,7 +2501,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testpackage output = Vx.Core.vx_copy(Vx.Test.e_testpackage, vals);
+      Vx.Test.Type_testpackage output = Vx.Core.vx_copy(
+        Vx.Test.e_testpackage,
+        vals
+      );
       return output;
     }
 
@@ -1935,9 +2532,19 @@ public static class Test {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -1953,10 +2560,21 @@ public static class Test {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testpackage",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -1967,8 +2585,17 @@ public static class Test {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -1988,9 +2615,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("caselist"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":coveragedetail")) {
             if (valsub == vx_p_coveragedetail) {
@@ -2007,9 +2645,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("coveragedetail"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":coveragesummary")) {
             if (valsub == vx_p_coveragesummary) {
@@ -2026,9 +2675,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("coveragesummary"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":passfail")) {
             if (valsub == vx_p_passfail) {
@@ -2037,7 +2697,12 @@ public static class Test {
               vx_p_passfail = valpassfail;
             } else if (valsub is bool) {
               ischanged = true;
-              vx_p_passfail = Vx.Core.vx_new(Vx.Core.t_boolean, valsub);
+              vx_p_passfail = Vx.Core.vx_new(
+                Vx.Core.t_boolean,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -2048,9 +2713,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("passfail"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":testpkg")) {
             if (valsub == vx_p_testpkg) {
@@ -2059,7 +2735,12 @@ public static class Test {
               vx_p_testpkg = valtestpkg;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_testpkg = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_testpkg = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -2070,14 +2751,34 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("testpkg"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testpackage",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/test/testpackage", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testpackage",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2109,17 +2810,17 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testpackage", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testpackage",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -2174,7 +2875,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testpackagelist output = Vx.Core.vx_copy(Vx.Test.e_testpackagelist, vals);
+      Vx.Test.Type_testpackagelist output = Vx.Core.vx_copy(
+        Vx.Test.e_testpackagelist,
+        vals
+      );
       return output;
     }
 
@@ -2190,9 +2894,19 @@ public static class Test {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Test.Type_testpackagelist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listtestpackage());
@@ -2212,11 +2926,31 @@ public static class Test {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/test/testpackagelist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/test/testpackagelist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/test/testpackagelist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/test/testpackagelist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -2242,17 +2976,22 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testpackagelist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Test.t_testpackage), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testpackagelist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Test.t_testpackage
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -2362,7 +3101,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testresult output = Vx.Core.vx_copy(Vx.Test.e_testresult, vals);
+      Vx.Test.Type_testresult output = Vx.Core.vx_copy(
+        Vx.Test.e_testresult,
+        vals
+      );
       return output;
     }
 
@@ -2390,9 +3132,19 @@ public static class Test {
       Vx.Core.Type_any msgval = Vx.Core.e_any;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (key == "") {
           bool istestkey = false;
           string testkey = "";
@@ -2408,10 +3160,21 @@ public static class Test {
             } else if (valsub is Vx.Core.Type_any valmsg) {
               msgval = valmsg;
             } else {
-              msgval = Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub));
+              msgval = Vx.Core.vx_new_string(
+                Vx.Core.vx_string_from_object(valsub)
+              );
             }
-            msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidkeytype", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testresult",
+              ":invalidkeytype",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           if (istestkey) {
             if (!testkey.StartsWith(":")) {
@@ -2422,8 +3185,17 @@ public static class Test {
               key = testkey;
             } else {
               msgval = Vx.Core.vx_new_string(testkey);
-              msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidkey", msgval);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidkey",
+                msgval
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           }
         } else {
@@ -2435,7 +3207,12 @@ public static class Test {
               vx_p_code = valcode;
             } else if (valsub is string) {
               ischanged = true;
-              vx_p_code = Vx.Core.vx_new(Vx.Core.t_string, valsub);
+              vx_p_code = Vx.Core.vx_new(
+                Vx.Core.t_string,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -2446,9 +3223,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("code"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":passfail")) {
             if (valsub == vx_p_passfail) {
@@ -2457,7 +3245,12 @@ public static class Test {
               vx_p_passfail = valpassfail;
             } else if (valsub is bool) {
               ischanged = true;
-              vx_p_passfail = Vx.Core.vx_new(Vx.Core.t_boolean, valsub);
+              vx_p_passfail = Vx.Core.vx_new(
+                Vx.Core.t_boolean,
+                // [
+                  valsub
+                // ]
+              );
             } else {
               if (false) {
               } else if (valsub is Vx.Core.Type_any valinvalid) {
@@ -2468,9 +3261,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("passfail"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":expected")) {
             if (valsub == vx_p_expected) {
@@ -2487,9 +3291,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("expected"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":actual")) {
             if (valsub == vx_p_actual) {
@@ -2506,9 +3321,20 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("actual"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else if ((key == ":fn-actual")) {
             if (valsub == vx_p_fn_actual) {
@@ -2525,14 +3351,34 @@ public static class Test {
               Vx.Core.Map<string, Vx.Core.Type_any> mapany = new Vx.Core.LinkedHashMap<string, Vx.Core.Type_any>();
               mapany.put("key", Vx.Core.vx_new_string("fn-actual"));
               mapany.put("value", msgval);
-              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(Vx.Core.vx_mapimmutable(mapany));
-              msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidvalue", msgmap);
-              msgblock = Vx.Core.vx_copy(msgblock, msg);
+              Vx.Core.Type_map msgmap = Vx.Core.t_anymap.vx_new_from_map(
+                Vx.Core.vx_mapimmutable(mapany)
+              );
+              msg = Vx.Core.vx_msg_from_error(
+                "vx/test/testresult",
+                ":invalidvalue",
+                msgmap
+              );
+              msgblock = Vx.Core.vx_copy(
+                msgblock,
+                // [
+                  msg
+                // ]
+              );
             }
           } else {
             msgval = Vx.Core.vx_new_string(key);
-            msg = Vx.Core.vx_msg_from_error("vx/test/testresult", ":invalidkey", msgval);
-            msgblock = Vx.Core.vx_copy(msgblock, msg);
+            msg = Vx.Core.vx_msg_from_error(
+              "vx/test/testresult",
+              ":invalidkey",
+              msgval
+            );
+            msgblock = Vx.Core.vx_copy(
+              msgblock,
+              // [
+                msg
+              // ]
+            );
           }
           key = "";
         }
@@ -2564,17 +3410,17 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testresult", // name
-        ":struct", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.e_typelist, // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testresult",
+        ":struct",
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -2629,7 +3475,10 @@ public static class Test {
     }
 
     public override Vx.Core.Type_any vx_new(params object[] vals) {
-      Vx.Test.Type_testresultlist output = Vx.Core.vx_copy(Vx.Test.e_testresultlist, vals);
+      Vx.Test.Type_testresultlist output = Vx.Core.vx_copy(
+        Vx.Test.e_testresultlist,
+        vals
+      );
       return output;
     }
 
@@ -2645,9 +3494,19 @@ public static class Test {
       Vx.Core.Type_msg msg;
       foreach (object valsub in vals) {
         if (valsub is Vx.Core.Type_msgblock) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Core.Type_msg) {
-          msgblock = Vx.Core.vx_copy(msgblock, valsub);
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              valsub
+            // ]
+          );
         } else if (valsub is Vx.Test.Type_testresultlist multi) {
           ischanged = true;
           listval.AddRange(multi.vx_listtestresult());
@@ -2667,11 +3526,31 @@ public static class Test {
             }
           }
         } else if (valsub is Vx.Core.Type_any anyinvalid) {
-          msg = Vx.Core.vx_msg_from_error("vx/test/testresultlist", ":invalidtype", anyinvalid);
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/test/testresultlist",
+            ":invalidtype",
+            anyinvalid
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         } else {
-          msg = Vx.Core.vx_msg_from_error("vx/test/testresultlist", ":invalidtype", Vx.Core.vx_new_string(Vx.Core.vx_string_from_object(valsub)));
-          msgblock = Vx.Core.vx_copy(msgblock, msg);
+          msg = Vx.Core.vx_msg_from_error(
+            "vx/test/testresultlist",
+            ":invalidtype",
+            Vx.Core.vx_new_string(
+              Vx.Core.vx_string_from_object(valsub)
+            )
+          );
+          msgblock = Vx.Core.vx_copy(
+            msgblock,
+            // [
+              msg
+            // ]
+          );
         }
       }
       if (ischanged || (msgblock != Vx.Core.e_msgblock)) {
@@ -2697,17 +3576,22 @@ public static class Test {
 
     public override Vx.Core.Type_typedef vx_typedef() {
       Vx.Core.Type_typedef output = Vx.Core.typedef_new(
-        "vx/test", // pkgname
-        "testresultlist", // name
-        ":list", // extends
-        Vx.Core.e_typelist, // traits
-        Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Test.t_testresult), // allowtypes
-        Vx.Core.e_typelist, // disallowtypes
-        Vx.Core.e_funclist, // allowfuncs
-        Vx.Core.e_funclist, // disallowfuncs
-        Vx.Core.e_anylist, // allowvalues
-        Vx.Core.e_anylist, // disallowvalues
-        Vx.Core.e_argmap // properties
+        "vx/test",
+        "testresultlist",
+        ":list",
+        Vx.Core.e_typelist,
+        Vx.Core.vx_new(
+          Vx.Core.t_typelist,
+          // [
+            Vx.Test.t_testresult
+          // ]
+        ),
+        Vx.Core.e_typelist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_funclist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_anylist,
+        Vx.Core.e_argmap
       );
       return output;
     }
@@ -2740,381 +3624,457 @@ public static class Test {
           Vx.Web.Html.t_stylesheet,
           Vx.Core.vx_new(
             Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":name"),
-            Vx.Core.vx_new_string("Test Suite"),
-            Vx.Core.vx_new_string(":styles"),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_stylelist,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string("body"),
-                    Vx.Core.vx_new_string(":props"),
+            // [
+              Vx.Core.vx_new_string(":name"),
+              Vx.Core.vx_new_string("Test Suite"),
+              Vx.Core.vx_new_string(":styles"),
+              Vx.Core.f_new(
+                Vx.Web.Html.t_stylelist,
+                Vx.Core.vx_new(
+                  Vx.Core.t_anylist,
+                  // [
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("font-size"),
-                        Vx.Core.vx_new_string("0.9em"),
-                        Vx.Core.vx_new_string("font-family"),
-                        Vx.Core.vx_new_string("sans-serif")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string("body"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("font-size"),
+                                Vx.Core.vx_new_string("0.9em"),
+                                Vx.Core.vx_new_string("font-family"),
+                                Vx.Core.vx_new_string("sans-serif")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string("details summary"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("cursor"),
-                        Vx.Core.vx_new_string("pointer"),
-                        Vx.Core.vx_new_string("display"),
-                        Vx.Core.vx_new_string("inline-flex"),
-                        Vx.Core.vx_new_string("gap"),
-                        Vx.Core.vx_new_string("10px")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string("details summary"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("cursor"),
+                                Vx.Core.vx_new_string("pointer"),
+                                Vx.Core.vx_new_string("display"),
+                                Vx.Core.vx_new_string("inline-flex"),
+                                Vx.Core.vx_new_string("gap"),
+                                Vx.Core.vx_new_string("10px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string("table"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("vertical-align"),
-                        Vx.Core.vx_new_string("top"),
-                        Vx.Core.vx_new_string("border-collapse"),
-                        Vx.Core.vx_new_string("collapse"),
-                        Vx.Core.vx_new_string("margin"),
-                        Vx.Core.vx_new_string("25px 0"),
-                        Vx.Core.vx_new_string("min-width"),
-                        Vx.Core.vx_new_string("400px"),
-                        Vx.Core.vx_new_string("box-shadow"),
-                        Vx.Core.vx_new_string("0 0 20px rgba(0, 0, 0, 0.15)")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string("table"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("vertical-align"),
+                                Vx.Core.vx_new_string("top"),
+                                Vx.Core.vx_new_string("border-collapse"),
+                                Vx.Core.vx_new_string("collapse"),
+                                Vx.Core.vx_new_string("margin"),
+                                Vx.Core.vx_new_string("25px 0"),
+                                Vx.Core.vx_new_string("min-width"),
+                                Vx.Core.vx_new_string("400px"),
+                                Vx.Core.vx_new_string("box-shadow"),
+                                Vx.Core.vx_new_string("0 0 20px rgba(0, 0, 0, 0.15)")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string("thead tr"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("background-color"),
-                        Vx.Core.vx_new_string("#009879"),
-                        Vx.Core.vx_new_string("color"),
-                        Vx.Core.vx_new_string("#ffffff"),
-                        Vx.Core.vx_new_string("text-align"),
-                        Vx.Core.vx_new_string("left")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string("thead tr"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("background-color"),
+                                Vx.Core.vx_new_string("#009879"),
+                                Vx.Core.vx_new_string("color"),
+                                Vx.Core.vx_new_string("#ffffff"),
+                                Vx.Core.vx_new_string("text-align"),
+                                Vx.Core.vx_new_string("left")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string("td"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("padding"),
-                        Vx.Core.vx_new_string("10px 10px"),
-                        Vx.Core.vx_new_string("vertical-align"),
-                        Vx.Core.vx_new_string("top")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string("td"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("padding"),
+                                Vx.Core.vx_new_string("10px 10px"),
+                                Vx.Core.vx_new_string("vertical-align"),
+                                Vx.Core.vx_new_string("top")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string("tbody tr"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("border-bottom"),
-                        Vx.Core.vx_new_string("1px solid #dddddd")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string("tbody tr"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("border-bottom"),
+                                Vx.Core.vx_new_string("1px solid #dddddd")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string("tbody tr:nth-of-type(even)"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("background-color"),
-                        Vx.Core.vx_new_string("#f3f3f3")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string("tbody tr:nth-of-type(even)"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("background-color"),
+                                Vx.Core.vx_new_string("#f3f3f3")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string("tbody tr:last-of-type"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("border-bottom"),
-                        Vx.Core.vx_new_string("2px solid #009879")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string("tbody tr:last-of-type"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("border-bottom"),
+                                Vx.Core.vx_new_string("2px solid #009879")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string("tbody tr.active-row"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("font-weight"),
-                        Vx.Core.vx_new_string("bold"),
-                        Vx.Core.vx_new_string("color"),
-                        Vx.Core.vx_new_string("#009879")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string("tbody tr.active-row"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("font-weight"),
+                                Vx.Core.vx_new_string("bold"),
+                                Vx.Core.vx_new_string("color"),
+                                Vx.Core.vx_new_string("#009879")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string(".failflag"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("background-color"),
-                        Vx.Core.vx_new_string("red"),
-                        Vx.Core.vx_new_string("color"),
-                        Vx.Core.vx_new_string("white"),
-                        Vx.Core.vx_new_string("padding-left"),
-                        Vx.Core.vx_new_string("4px"),
-                        Vx.Core.vx_new_string("padding-right"),
-                        Vx.Core.vx_new_string("4px"),
-                        Vx.Core.vx_new_string("padding-top"),
-                        Vx.Core.vx_new_string("1px"),
-                        Vx.Core.vx_new_string("padding-bottom"),
-                        Vx.Core.vx_new_string("1px")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string(".failflag"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("background-color"),
+                                Vx.Core.vx_new_string("red"),
+                                Vx.Core.vx_new_string("color"),
+                                Vx.Core.vx_new_string("white"),
+                                Vx.Core.vx_new_string("padding-left"),
+                                Vx.Core.vx_new_string("4px"),
+                                Vx.Core.vx_new_string("padding-right"),
+                                Vx.Core.vx_new_string("4px"),
+                                Vx.Core.vx_new_string("padding-top"),
+                                Vx.Core.vx_new_string("1px"),
+                                Vx.Core.vx_new_string("padding-bottom"),
+                                Vx.Core.vx_new_string("1px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string(".passflag"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("background-color"),
-                        Vx.Core.vx_new_string("green"),
-                        Vx.Core.vx_new_string("color"),
-                        Vx.Core.vx_new_string("white"),
-                        Vx.Core.vx_new_string("padding-left"),
-                        Vx.Core.vx_new_string("4px"),
-                        Vx.Core.vx_new_string("padding-right"),
-                        Vx.Core.vx_new_string("4px"),
-                        Vx.Core.vx_new_string("padding-top"),
-                        Vx.Core.vx_new_string("1px"),
-                        Vx.Core.vx_new_string("padding-bottom"),
-                        Vx.Core.vx_new_string("1px")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string(".passflag"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("background-color"),
+                                Vx.Core.vx_new_string("green"),
+                                Vx.Core.vx_new_string("color"),
+                                Vx.Core.vx_new_string("white"),
+                                Vx.Core.vx_new_string("padding-left"),
+                                Vx.Core.vx_new_string("4px"),
+                                Vx.Core.vx_new_string("padding-right"),
+                                Vx.Core.vx_new_string("4px"),
+                                Vx.Core.vx_new_string("padding-top"),
+                                Vx.Core.vx_new_string("1px"),
+                                Vx.Core.vx_new_string("padding-bottom"),
+                                Vx.Core.vx_new_string("1px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string(".coveragenums"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("width"),
-                        Vx.Core.vx_new_string("90px")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string(".coveragenums"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("width"),
+                                Vx.Core.vx_new_string("90px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string(".coveragepct"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("text-align"),
-                        Vx.Core.vx_new_string("right")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string(".coveragepct"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("text-align"),
+                                Vx.Core.vx_new_string("right")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string(".coveragepctgreen"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("background-color"),
-                        Vx.Core.vx_new_string("green"),
-                        Vx.Core.vx_new_string("color"),
-                        Vx.Core.vx_new_string("white"),
-                        Vx.Core.vx_new_string("text-align"),
-                        Vx.Core.vx_new_string("right")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string(".coveragepctgreen"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("background-color"),
+                                Vx.Core.vx_new_string("green"),
+                                Vx.Core.vx_new_string("color"),
+                                Vx.Core.vx_new_string("white"),
+                                Vx.Core.vx_new_string("text-align"),
+                                Vx.Core.vx_new_string("right")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string(".coveragepctred"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("background-color"),
-                        Vx.Core.vx_new_string("red"),
-                        Vx.Core.vx_new_string("color"),
-                        Vx.Core.vx_new_string("white"),
-                        Vx.Core.vx_new_string("text-align"),
-                        Vx.Core.vx_new_string("right")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string(".coveragepctred"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("background-color"),
+                                Vx.Core.vx_new_string("red"),
+                                Vx.Core.vx_new_string("color"),
+                                Vx.Core.vx_new_string("white"),
+                                Vx.Core.vx_new_string("text-align"),
+                                Vx.Core.vx_new_string("right")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string(".pkgheader"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("display"),
-                        Vx.Core.vx_new_string("inline-flex"),
-                        Vx.Core.vx_new_string("gap"),
-                        Vx.Core.vx_new_string("10px")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string(".pkgheader"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("display"),
+                                Vx.Core.vx_new_string("inline-flex"),
+                                Vx.Core.vx_new_string("gap"),
+                                Vx.Core.vx_new_string("10px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string(".pkgname"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("font-weight"),
-                        Vx.Core.vx_new_string("bold"),
-                        Vx.Core.vx_new_string("width"),
-                        Vx.Core.vx_new_string("180px")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string(".pkgname"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("font-weight"),
+                                Vx.Core.vx_new_string("bold"),
+                                Vx.Core.vx_new_string("width"),
+                                Vx.Core.vx_new_string("180px")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
-                    )
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_style,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":name"),
-                    Vx.Core.vx_new_string(".preformatted"),
-                    Vx.Core.vx_new_string(":props"),
+                    ),
                     Vx.Core.f_new(
-                      Vx.Web.Html.t_propmap,
+                      Vx.Web.Html.t_style,
                       Vx.Core.vx_new(
                         Vx.Core.t_anylist,
-                        Vx.Core.vx_new_string("display"),
-                        Vx.Core.vx_new_string("block"),
-                        Vx.Core.vx_new_string("unicode-bidi"),
-                        Vx.Core.vx_new_string("embed"),
-                        Vx.Core.vx_new_string("font-family"),
-                        Vx.Core.vx_new_string("monospace"),
-                        Vx.Core.vx_new_string("white-space"),
-                        Vx.Core.vx_new_string("pre")
+                        // [
+                          Vx.Core.vx_new_string(":name"),
+                          Vx.Core.vx_new_string(".preformatted"),
+                          Vx.Core.vx_new_string(":props"),
+                          Vx.Core.f_new(
+                            Vx.Web.Html.t_propmap,
+                            Vx.Core.vx_new(
+                              Vx.Core.t_anylist,
+                              // [
+                                Vx.Core.vx_new_string("display"),
+                                Vx.Core.vx_new_string("block"),
+                                Vx.Core.vx_new_string("unicode-bidi"),
+                                Vx.Core.vx_new_string("embed"),
+                                Vx.Core.vx_new_string("font-family"),
+                                Vx.Core.vx_new_string("monospace"),
+                                Vx.Core.vx_new_string("white-space"),
+                                Vx.Core.vx_new_string("pre")
+                              // ]
+                            )
+                          )
+                        // ]
                       )
                     )
-                  )
+                  // ]
                 )
               )
-            )
+            // ]
           )
         )
       );
@@ -3167,17 +4127,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "context", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "context",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3201,13 +4161,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_anylist inputval = (Vx.Core.Type_anylist)value;
       Vx.Core.Type_any outputval = Vx.Test.f_context_test(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_anylist args = Vx.Core.f_any_from_any(Vx.Core.t_anylist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_anylist args = Vx.Core.f_any_from_any(
+        Vx.Core.t_anylist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_context_test(args);
       return output;
     }
@@ -3228,22 +4196,28 @@ public static class Test {
       Vx.Core.t_context,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":session"),
-        Vx.Core.f_new(
-          Vx.Core.t_session,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":user"),
-            Vx.Core.f_new(
-              Vx.Core.t_user,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":security"),
-                Vx.Test.f_security_test()
-              )
+        // [
+          Vx.Core.vx_new_string(":session"),
+          Vx.Core.f_new(
+            Vx.Core.t_session,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":user"),
+                Vx.Core.f_new(
+                  Vx.Core.t_user,
+                  Vx.Core.vx_new(
+                    Vx.Core.t_anylist,
+                    // [
+                      Vx.Core.vx_new_string(":security"),
+                      Vx.Test.f_security_test()
+                    // ]
+                  )
+                )
+              // ]
             )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -3283,17 +4257,23 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_node,
+              Vx.Web.Html.t_divchild
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3317,13 +4297,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Test.Type_testcaselist inputval = (Vx.Test.Type_testcaselist)value;
       Vx.Core.Type_any outputval = Vx.Test.f_div_from_testcaselist(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Test.Type_testcaselist testcaselist = Vx.Core.f_any_from_any(Vx.Test.t_testcaselist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testcaselist testcaselist = Vx.Core.f_any_from_any(
+        Vx.Test.t_testcaselist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_div_from_testcaselist(testcaselist);
       return output;
     }
@@ -3344,105 +4332,133 @@ public static class Test {
       Vx.Web.Html.t_div,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.f_new(
-          Vx.Web.Html.t_table,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":thead"),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_thead,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
+        // [
+          Vx.Core.f_new(
+            Vx.Web.Html.t_table,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":thead"),
                 Vx.Core.f_new(
-                  Vx.Web.Html.t_tr,
+                  Vx.Web.Html.t_thead,
                   Vx.Core.vx_new(
                     Vx.Core.t_anylist,
-                    Vx.Core.f_new(
-                      Vx.Web.Html.t_td,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.f_new(
-                          Vx.Web.Html.t_p,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":text"),
-                            Vx.Core.vx_new_string("Pass?")
-                          )
+                    // [
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_tr,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.f_new(
+                              Vx.Web.Html.t_td,
+                              Vx.Core.vx_new(
+                                Vx.Core.t_anylist,
+                                // [
+                                  Vx.Core.f_new(
+                                    Vx.Web.Html.t_p,
+                                    Vx.Core.vx_new(
+                                      Vx.Core.t_anylist,
+                                      // [
+                                        Vx.Core.vx_new_string(":text"),
+                                        Vx.Core.vx_new_string("Pass?")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            Vx.Core.f_new(
+                              Vx.Web.Html.t_td,
+                              Vx.Core.vx_new(
+                                Vx.Core.t_anylist,
+                                // [
+                                  Vx.Core.f_new(
+                                    Vx.Web.Html.t_p,
+                                    Vx.Core.vx_new(
+                                      Vx.Core.t_anylist,
+                                      // [
+                                        Vx.Core.vx_new_string(":text"),
+                                        Vx.Core.vx_new_string("Name")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            Vx.Core.f_new(
+                              Vx.Web.Html.t_td,
+                              Vx.Core.vx_new(
+                                Vx.Core.t_anylist,
+                                // [
+                                  Vx.Core.f_new(
+                                    Vx.Web.Html.t_p,
+                                    Vx.Core.vx_new(
+                                      Vx.Core.t_anylist,
+                                      // [
+                                        Vx.Core.vx_new_string(":text"),
+                                        Vx.Core.vx_new_string("Test")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            Vx.Core.f_new(
+                              Vx.Web.Html.t_td,
+                              Vx.Core.vx_new(
+                                Vx.Core.t_anylist,
+                                // [
+                                  Vx.Core.f_new(
+                                    Vx.Web.Html.t_p,
+                                    Vx.Core.vx_new(
+                                      Vx.Core.t_anylist,
+                                      // [
+                                        Vx.Core.vx_new_string(":text"),
+                                        Vx.Core.vx_new_string("Expected")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            ),
+                            Vx.Core.f_new(
+                              Vx.Web.Html.t_td,
+                              Vx.Core.vx_new(
+                                Vx.Core.t_anylist,
+                                // [
+                                  Vx.Core.f_new(
+                                    Vx.Web.Html.t_p,
+                                    Vx.Core.vx_new(
+                                      Vx.Core.t_anylist,
+                                      // [
+                                        Vx.Core.vx_new_string(":text"),
+                                        Vx.Core.vx_new_string("Actual")
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            )
+                          // ]
                         )
                       )
-                    ),
-                    Vx.Core.f_new(
-                      Vx.Web.Html.t_td,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.f_new(
-                          Vx.Web.Html.t_p,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":text"),
-                            Vx.Core.vx_new_string("Name")
-                          )
-                        )
-                      )
-                    ),
-                    Vx.Core.f_new(
-                      Vx.Web.Html.t_td,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.f_new(
-                          Vx.Web.Html.t_p,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":text"),
-                            Vx.Core.vx_new_string("Test")
-                          )
-                        )
-                      )
-                    ),
-                    Vx.Core.f_new(
-                      Vx.Web.Html.t_td,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.f_new(
-                          Vx.Web.Html.t_p,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":text"),
-                            Vx.Core.vx_new_string("Expected")
-                          )
-                        )
-                      )
-                    ),
-                    Vx.Core.f_new(
-                      Vx.Web.Html.t_td,
-                      Vx.Core.vx_new(
-                        Vx.Core.t_anylist,
-                        Vx.Core.f_new(
-                          Vx.Web.Html.t_p,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":text"),
-                            Vx.Core.vx_new_string("Actual")
-                          )
-                        )
-                      )
-                    )
+                    // ]
+                  )
+                ),
+                Vx.Core.vx_new_string(":tbody"),
+                Vx.Core.f_new(
+                  Vx.Web.Html.t_tbody,
+                  Vx.Core.vx_new(
+                    Vx.Core.t_anylist,
+                    // [
+                      Vx.Test.f_trlist_from_testcaselist(testcaselist)
+                    // ]
                   )
                 )
-              )
-            ),
-            Vx.Core.vx_new_string(":tbody"),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_tbody,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Test.f_trlist_from_testcaselist(
-                  testcaselist
-                )
-              )
+              // ]
             )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -3483,17 +4499,23 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_node,
+              Vx.Web.Html.t_divchild
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3517,13 +4539,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Test.Type_testpackage inputval = (Vx.Test.Type_testpackage)value;
       Vx.Core.Type_any outputval = Vx.Test.f_div_from_testpackage(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Test.Type_testpackage testpackage = Vx.Core.f_any_from_any(Vx.Test.t_testpackage, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testpackage testpackage = Vx.Core.f_any_from_any(
+        Vx.Test.t_testpackage,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_div_from_testpackage(testpackage);
       return output;
     }
@@ -3542,93 +4572,101 @@ public static class Test {
     Vx.Web.Html.Type_div output = Vx.Web.Html.e_div;
     output = Vx.Core.f_let(
       Vx.Web.Html.t_div,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Test.Type_testcoveragesummary testcoveragesummary = testpackage.coveragesummary();
-        Vx.Core.Type_string pkgname = testpackage.testpkg();
-        Vx.Test.Type_testcaselist caselist = testpackage.caselist();
-        Vx.Core.Type_boolean passfail = testpackage.passfail();
-        Vx.Web.Html.Type_style pkgnamestyle = Vx.Web.Html.f_style_from_stylesheet_name(
-          Vx.Test.c_stylesheet_test,
-          Vx.Core.vx_new_string(".pkgname")
-        );
-        Vx.Web.Html.Type_div node = Vx.Test.f_div_from_testcaselist(
-          caselist
-        );
-        Vx.Web.Html.Type_divchildlist nodes = Vx.Core.f_new(
-          Vx.Web.Html.t_divchildlist,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            node
-          )
-        );
-        Vx.Web.Html.Type_p p_passfail = Vx.Test.f_p_from_passfail(
-          passfail
-        );
-        Vx.Web.Html.Type_p p_pkgname = Vx.Core.f_new(
-          Vx.Web.Html.t_p,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":style"),
-            pkgnamestyle,
-            Vx.Core.vx_new_string(":text"),
-            pkgname
-          )
-        );
-        Vx.Web.Html.Type_p p_totalnums = Vx.Test.f_p_from_testcoveragenums(
-          testcoveragesummary.totalnums()
-        );
-        Vx.Web.Html.Type_p p_coveragenums = Vx.Test.f_p_from_testcoveragenums(
-          testcoveragesummary.typenums()
-        );
-        Vx.Web.Html.Type_p p_constnums = Vx.Test.f_p_from_testcoveragenums(
-          testcoveragesummary.constnums()
-        );
-        Vx.Web.Html.Type_p p_funcnums = Vx.Test.f_p_from_testcoveragenums(
-          testcoveragesummary.funcnums()
-        );
-        Vx.Web.Html.Type_p p_docnums = Vx.Test.f_p_from_testcoveragenums(
-          testcoveragesummary.docnums()
-        );
-        Vx.Web.Html.Type_p p_bigospacenums = Vx.Test.f_p_from_testcoveragenums(
-          testcoveragesummary.bigospacenums()
-        );
-        Vx.Web.Html.Type_p p_bigotimenums = Vx.Test.f_p_from_testcoveragenums(
-          testcoveragesummary.bigotimenums()
-        );
-        Vx.Web.Html.Type_divchildlist summary = Vx.Core.f_new(
-          Vx.Web.Html.t_divchildlist,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            p_passfail,
-            p_pkgname,
-            p_totalnums,
-            p_coveragenums,
-            p_constnums,
-            p_funcnums,
-            p_docnums,
-            p_bigospacenums,
-            p_bigotimenums
-          )
-        );
-        Vx.Web.Html.Type_details details = Vx.Core.f_new(
-          Vx.Web.Html.t_details,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":summary"),
-            summary,
-            Vx.Core.vx_new_string(":nodes"),
-            nodes
-          )
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Web.Html.t_div,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            details
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Test.Type_testcoveragesummary testcoveragesummary = testpackage.coveragesummary();
+          Vx.Core.Type_string pkgname = testpackage.testpkg();
+          Vx.Test.Type_testcaselist caselist = testpackage.caselist();
+          Vx.Core.Type_boolean passfail = testpackage.passfail();
+          Vx.Web.Html.Type_style pkgnamestyle = Vx.Web.Html.f_style_from_stylesheet_name(
+            Vx.Test.c_stylesheet_test,
+            Vx.Core.vx_new_string(".pkgname")
+          );
+          Vx.Web.Html.Type_div node = Vx.Test.f_div_from_testcaselist(caselist);
+          Vx.Web.Html.Type_divchildlist nodes = Vx.Core.f_new(
+            Vx.Web.Html.t_divchildlist,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                node
+              // ]
+            )
+          );
+          Vx.Web.Html.Type_p p_passfail = Vx.Test.f_p_from_passfail(passfail);
+          Vx.Web.Html.Type_p p_pkgname = Vx.Core.f_new(
+            Vx.Web.Html.t_p,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":style"),
+                pkgnamestyle,
+                Vx.Core.vx_new_string(":text"),
+                pkgname
+              // ]
+            )
+          );
+          Vx.Web.Html.Type_p p_totalnums = Vx.Test.f_p_from_testcoveragenums(
+            testcoveragesummary.totalnums()
+          );
+          Vx.Web.Html.Type_p p_coveragenums = Vx.Test.f_p_from_testcoveragenums(
+            testcoveragesummary.typenums()
+          );
+          Vx.Web.Html.Type_p p_constnums = Vx.Test.f_p_from_testcoveragenums(
+            testcoveragesummary.constnums()
+          );
+          Vx.Web.Html.Type_p p_funcnums = Vx.Test.f_p_from_testcoveragenums(
+            testcoveragesummary.funcnums()
+          );
+          Vx.Web.Html.Type_p p_docnums = Vx.Test.f_p_from_testcoveragenums(
+            testcoveragesummary.docnums()
+          );
+          Vx.Web.Html.Type_p p_bigospacenums = Vx.Test.f_p_from_testcoveragenums(
+            testcoveragesummary.bigospacenums()
+          );
+          Vx.Web.Html.Type_p p_bigotimenums = Vx.Test.f_p_from_testcoveragenums(
+            testcoveragesummary.bigotimenums()
+          );
+          Vx.Web.Html.Type_divchildlist summary = Vx.Core.f_new(
+            Vx.Web.Html.t_divchildlist,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                p_passfail,
+                p_pkgname,
+                p_totalnums,
+                p_coveragenums,
+                p_constnums,
+                p_funcnums,
+                p_docnums,
+                p_bigospacenums,
+                p_bigotimenums
+              // ]
+            )
+          );
+          Vx.Web.Html.Type_details details = Vx.Core.f_new(
+            Vx.Web.Html.t_details,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":summary"),
+                summary,
+                Vx.Core.vx_new_string(":nodes"),
+                nodes
+              // ]
+            )
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Web.Html.t_div,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                details
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -3667,17 +4705,23 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "div", // name
-          ":struct", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "div",
+          ":struct",
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_node,
+              Vx.Web.Html.t_divchild
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3701,13 +4745,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Test.Type_testpackagelist inputval = (Vx.Test.Type_testpackagelist)value;
       Vx.Core.Type_any outputval = Vx.Test.f_div_from_testpackagelist(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Test.Type_testpackagelist testpackagelist = Vx.Core.f_any_from_any(Vx.Test.t_testpackagelist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testpackagelist testpackagelist = Vx.Core.f_any_from_any(
+        Vx.Test.t_testpackagelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_div_from_testpackagelist(testpackagelist);
       return output;
     }
@@ -3726,138 +4778,162 @@ public static class Test {
     Vx.Web.Html.Type_div output = Vx.Web.Html.e_div;
     output = Vx.Core.f_let(
       Vx.Web.Html.t_div,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Web.Html.Type_style stylepassfail = Vx.Web.Html.f_style_from_stylesheet_name(
-          Vx.Test.c_stylesheet_test,
-          Vx.Core.vx_new_string(".passfail")
-        );
-        Vx.Web.Html.Type_style stylepkgname = Vx.Web.Html.f_style_from_stylesheet_name(
-          Vx.Test.c_stylesheet_test,
-          Vx.Core.vx_new_string(".pkgname")
-        );
-        Vx.Web.Html.Type_style stylepkgheader = Vx.Web.Html.f_style_from_stylesheet_name(
-          Vx.Test.c_stylesheet_test,
-          Vx.Core.vx_new_string(".pkgheader")
-        );
-        Vx.Web.Html.Type_style stylecoveragenum = Vx.Web.Html.f_style_from_stylesheet_name(
-          Vx.Test.c_stylesheet_test,
-          Vx.Core.vx_new_string(".coveragenums")
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Web.Html.t_div,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.f_new(
-              Vx.Web.Html.t_div,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":style"),
-                stylepkgheader,
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Web.Html.Type_style stylepassfail = Vx.Web.Html.f_style_from_stylesheet_name(
+            Vx.Test.c_stylesheet_test,
+            Vx.Core.vx_new_string(".passfail")
+          );
+          Vx.Web.Html.Type_style stylepkgname = Vx.Web.Html.f_style_from_stylesheet_name(
+            Vx.Test.c_stylesheet_test,
+            Vx.Core.vx_new_string(".pkgname")
+          );
+          Vx.Web.Html.Type_style stylepkgheader = Vx.Web.Html.f_style_from_stylesheet_name(
+            Vx.Test.c_stylesheet_test,
+            Vx.Core.vx_new_string(".pkgheader")
+          );
+          Vx.Web.Html.Type_style stylecoveragenum = Vx.Web.Html.f_style_from_stylesheet_name(
+            Vx.Test.c_stylesheet_test,
+            Vx.Core.vx_new_string(".coveragenums")
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Web.Html.t_div,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
                 Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
+                  Vx.Web.Html.t_div,
                   Vx.Core.vx_new(
                     Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    stylepassfail,
-                    Vx.Core.vx_new_string(":text"),
-                    Vx.Core.vx_new_string("Pass?")
+                    // [
+                      Vx.Core.vx_new_string(":style"),
+                      stylepkgheader,
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            stylepassfail,
+                            Vx.Core.vx_new_string(":text"),
+                            Vx.Core.vx_new_string("Pass?")
+                          // ]
+                        )
+                      ),
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            stylepkgname,
+                            Vx.Core.vx_new_string(":text"),
+                            Vx.Core.vx_new_string("Package Name")
+                          // ]
+                        )
+                      ),
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx.Core.vx_new_string(":text"),
+                            Vx.Core.vx_new_string("Coverage")
+                          // ]
+                        )
+                      ),
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx.Core.vx_new_string(":text"),
+                            Vx.Core.vx_new_string("(type)")
+                          // ]
+                        )
+                      ),
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx.Core.vx_new_string(":text"),
+                            Vx.Core.vx_new_string("(const)")
+                          // ]
+                        )
+                      ),
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx.Core.vx_new_string(":text"),
+                            Vx.Core.vx_new_string("(func)")
+                          // ]
+                        )
+                      ),
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx.Core.vx_new_string(":text"),
+                            Vx.Core.vx_new_string(":doc")
+                          // ]
+                        )
+                      ),
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx.Core.vx_new_string(":text"),
+                            Vx.Core.vx_new_string(":bigospace")
+                          // ]
+                        )
+                      ),
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            stylecoveragenum,
+                            Vx.Core.vx_new_string(":text"),
+                            Vx.Core.vx_new_string(":bigotime")
+                          // ]
+                        )
+                      )
+                    // ]
                   )
                 ),
                 Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
+                  Vx.Web.Html.t_div,
                   Vx.Core.vx_new(
                     Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    stylepkgname,
-                    Vx.Core.vx_new_string(":text"),
-                    Vx.Core.vx_new_string("Package Name")
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx.Core.vx_new_string(":text"),
-                    Vx.Core.vx_new_string("Coverage")
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx.Core.vx_new_string(":text"),
-                    Vx.Core.vx_new_string("(type)")
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx.Core.vx_new_string(":text"),
-                    Vx.Core.vx_new_string("(const)")
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx.Core.vx_new_string(":text"),
-                    Vx.Core.vx_new_string("(func)")
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx.Core.vx_new_string(":text"),
-                    Vx.Core.vx_new_string(":doc")
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx.Core.vx_new_string(":text"),
-                    Vx.Core.vx_new_string(":bigospace")
-                  )
-                ),
-                Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
-                  Vx.Core.vx_new(
-                    Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    stylecoveragenum,
-                    Vx.Core.vx_new_string(":text"),
-                    Vx.Core.vx_new_string(":bigotime")
+                    // [
+                      Vx.Test.f_divchildlist_from_testpackagelist(testpackagelist)
+                    // ]
                   )
                 )
-              )
-            ),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_div,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Test.f_divchildlist_from_testpackagelist(
-                  testpackagelist
-                )
-              )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -3897,17 +4973,22 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "divchildlist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_divchild), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "divchildlist",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_divchild
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -3931,13 +5012,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Test.Type_testpackagelist inputval = (Vx.Test.Type_testpackagelist)value;
       Vx.Core.Type_any outputval = Vx.Test.f_divchildlist_from_testpackagelist(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Test.Type_testpackagelist testpackagelist = Vx.Core.f_any_from_any(Vx.Test.t_testpackagelist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testpackagelist testpackagelist = Vx.Core.f_any_from_any(
+        Vx.Test.t_testpackagelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_divchildlist_from_testpackagelist(testpackagelist);
       return output;
     }
@@ -3996,17 +5085,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4044,10 +5133,12 @@ public static class Test {
       Vx.Data.File.t_file,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":name"),
-        Vx.Core.vx_new_string("testsuite.vxlisp"),
-        Vx.Core.vx_new_string(":path"),
-        Vx.Core.c_path_test_resources
+        // [
+          Vx.Core.vx_new_string(":name"),
+          Vx.Core.vx_new_string("testsuite.vxlisp"),
+          Vx.Core.vx_new_string(":path"),
+          Vx.Core.c_path_test_resources
+        // ]
       )
     );
     return output;
@@ -4087,17 +5178,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4135,10 +5226,12 @@ public static class Test {
       Vx.Data.File.t_file,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":name"),
-        Vx.Core.vx_new_string("testsuite.html"),
-        Vx.Core.vx_new_string(":path"),
-        Vx.Core.c_path_test_resources
+        // [
+          Vx.Core.vx_new_string(":name"),
+          Vx.Core.vx_new_string("testsuite.html"),
+          Vx.Core.vx_new_string(":path"),
+          Vx.Core.c_path_test_resources
+        // ]
       )
     );
     return output;
@@ -4178,17 +5271,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/data/file", // pkgname
-          "file", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/data/file",
+          "file",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4226,10 +5319,12 @@ public static class Test {
       Vx.Data.File.t_file,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":name"),
-        Vx.Core.vx_new_string("testsuitenode.vxlisp"),
-        Vx.Core.vx_new_string(":path"),
-        Vx.Core.c_path_test_resources
+        // [
+          Vx.Core.vx_new_string(":name"),
+          Vx.Core.vx_new_string("testsuitenode.vxlisp"),
+          Vx.Core.vx_new_string(":path"),
+          Vx.Core.c_path_test_resources
+        // ]
       )
     );
     return output;
@@ -4270,17 +5365,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "html", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "html",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4304,13 +5399,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Web.Html.Type_div inputval = (Vx.Web.Html.Type_div)value;
       Vx.Core.Type_any outputval = Vx.Test.f_html_from_divtest(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Web.Html.Type_div divtest = Vx.Core.f_any_from_any(Vx.Web.Html.t_div, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Web.Html.Type_div divtest = Vx.Core.f_any_from_any(
+        Vx.Web.Html.t_div,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_html_from_divtest(divtest);
       return output;
     }
@@ -4331,63 +5434,79 @@ public static class Test {
       Vx.Web.Html.t_html,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":lang"),
-        Vx.Core.vx_new_string("en"),
-        Vx.Core.vx_new_string(":head"),
-        Vx.Core.f_new(
-          Vx.Web.Html.t_head,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.f_new(
-              Vx.Web.Html.t_meta,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":charset"),
-                Vx.Core.vx_new_string("utf-8")
-              )
-            ),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_meta,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":name"),
-                Vx.Core.vx_new_string("viewport"),
-                Vx.Core.vx_new_string(":content"),
-                Vx.Core.vx_new_string("width=device-width, initial-scale=1.0")
-              )
-            ),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_title,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":text"),
-                Vx.Core.vx_new_string("Test Suite")
-              )
-            ),
-            Vx.Test.c_stylesheet_test
-          )
-        ),
-        Vx.Core.vx_new_string(":body"),
-        Vx.Core.f_new(
-          Vx.Web.Html.t_body,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.f_new(
-              Vx.Web.Html.t_div,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
+        // [
+          Vx.Core.vx_new_string(":lang"),
+          Vx.Core.vx_new_string("en"),
+          Vx.Core.vx_new_string(":head"),
+          Vx.Core.f_new(
+            Vx.Web.Html.t_head,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
                 Vx.Core.f_new(
-                  Vx.Web.Html.t_h1,
+                  Vx.Web.Html.t_meta,
                   Vx.Core.vx_new(
                     Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string("Test Suite")
+                    // [
+                      Vx.Core.vx_new_string(":charset"),
+                      Vx.Core.vx_new_string("utf-8")
+                    // ]
                   )
-                )
-              )
-            ),
-            divtest
+                ),
+                Vx.Core.f_new(
+                  Vx.Web.Html.t_meta,
+                  Vx.Core.vx_new(
+                    Vx.Core.t_anylist,
+                    // [
+                      Vx.Core.vx_new_string(":name"),
+                      Vx.Core.vx_new_string("viewport"),
+                      Vx.Core.vx_new_string(":content"),
+                      Vx.Core.vx_new_string("width=device-width, initial-scale=1.0")
+                    // ]
+                  )
+                ),
+                Vx.Core.f_new(
+                  Vx.Web.Html.t_title,
+                  Vx.Core.vx_new(
+                    Vx.Core.t_anylist,
+                    // [
+                      Vx.Core.vx_new_string(":text"),
+                      Vx.Core.vx_new_string("Test Suite")
+                    // ]
+                  )
+                ),
+                Vx.Test.c_stylesheet_test
+              // ]
+            )
+          ),
+          Vx.Core.vx_new_string(":body"),
+          Vx.Core.f_new(
+            Vx.Web.Html.t_body,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.f_new(
+                  Vx.Web.Html.t_div,
+                  Vx.Core.vx_new(
+                    Vx.Core.t_anylist,
+                    // [
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_h1,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string("Test Suite")
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                ),
+                divtest
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -4428,17 +5547,23 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "p", // name
-          ":struct", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "p",
+          ":struct",
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_node,
+              Vx.Web.Html.t_divchild
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4462,13 +5587,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_boolean inputval = (Vx.Core.Type_boolean)value;
       Vx.Core.Type_any outputval = Vx.Test.f_p_from_passfail(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_boolean passfail = Vx.Core.f_any_from_any(Vx.Core.t_boolean, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Core.Type_boolean passfail = Vx.Core.f_any_from_any(
+        Vx.Core.t_boolean,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_p_from_passfail(passfail);
       return output;
     }
@@ -4487,35 +5620,39 @@ public static class Test {
     Vx.Web.Html.Type_p output = Vx.Web.Html.e_p;
     output = Vx.Core.f_let(
       Vx.Web.Html.t_p,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string text = Vx.Core.f_if_1(
-          Vx.Core.t_string,
-          passfail,
-          Vx.Core.vx_new_string("Pass"),
-          Vx.Core.vx_new_string("Fail")
-        );
-        Vx.Core.Type_string stylename = Vx.Core.f_if_1(
-          Vx.Core.t_string,
-          passfail,
-          Vx.Core.vx_new_string(".passflag"),
-          Vx.Core.vx_new_string(".failflag")
-        );
-        Vx.Web.Html.Type_style style = Vx.Web.Html.f_style_from_stylesheet_name(
-          Vx.Test.c_stylesheet_test,
-          stylename
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Web.Html.t_p,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.vx_new_string(":style"),
-            style,
-            Vx.Core.vx_new_string(":text"),
-            text
-          )
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string text = Vx.Core.f_if_1(
+            Vx.Core.t_string,
+            passfail,
+            Vx.Core.vx_new_string("Pass"),
+            Vx.Core.vx_new_string("Fail")
+          );
+          Vx.Core.Type_string stylename = Vx.Core.f_if_1(
+            Vx.Core.t_string,
+            passfail,
+            Vx.Core.vx_new_string(".passflag"),
+            Vx.Core.vx_new_string(".failflag")
+          );
+          Vx.Web.Html.Type_style style = Vx.Web.Html.f_style_from_stylesheet_name(
+            Vx.Test.c_stylesheet_test,
+            stylename
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Web.Html.t_p,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Core.vx_new_string(":style"),
+                style,
+                Vx.Core.vx_new_string(":text"),
+                text
+              // ]
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -4555,17 +5692,23 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "p", // name
-          ":struct", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node, Vx.Web.Html.t_divchild), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "p",
+          ":struct",
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_node,
+              Vx.Web.Html.t_divchild
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4589,13 +5732,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Test.Type_testcoveragenums inputval = (Vx.Test.Type_testcoveragenums)value;
       Vx.Core.Type_any outputval = Vx.Test.f_p_from_testcoveragenums(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Test.Type_testcoveragenums nums = Vx.Core.f_any_from_any(Vx.Test.t_testcoveragenums, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testcoveragenums nums = Vx.Core.f_any_from_any(
+        Vx.Test.t_testcoveragenums,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_p_from_testcoveragenums(nums);
       return output;
     }
@@ -4616,23 +5767,27 @@ public static class Test {
       Vx.Web.Html.t_p,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":style"),
-        Vx.Web.Html.f_style_from_stylesheet_name(
-          Vx.Test.c_stylesheet_test,
-          Vx.Core.vx_new_string(".coveragenums")
-        ),
-        Vx.Core.vx_new_string(":text"),
-        Vx.Core.f_new(
-          Vx.Core.t_string,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            nums.pct(),
-            Vx.Core.vx_new_string("% "),
-            nums.tests(),
-            Vx.Core.vx_new_string("/"),
-            nums.total()
+        // [
+          Vx.Core.vx_new_string(":style"),
+          Vx.Web.Html.f_style_from_stylesheet_name(
+            Vx.Test.c_stylesheet_test,
+            Vx.Core.vx_new_string(".coveragenums")
+          ),
+          Vx.Core.vx_new_string(":text"),
+          Vx.Core.f_new(
+            Vx.Core.t_string,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                nums.pct(),
+                Vx.Core.vx_new_string("% "),
+                nums.tests(),
+                Vx.Core.vx_new_string("/"),
+                nums.total()
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -4675,17 +5830,17 @@ public static class Test {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testcase", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testcase",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4706,7 +5861,10 @@ public static class Test {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Test.Type_testcase inputval = Vx.Core.f_any_from_any(Vx.Test.t_testcase, value);
+      Vx.Test.Type_testcase inputval = Vx.Core.f_any_from_any(
+        Vx.Test.t_testcase,
+        value
+      );
       Task<Vx.Test.Type_testcase> future = Vx.Test.f_resolve_testcase(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -4714,9 +5872,17 @@ public static class Test {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Test.Type_testcase testcase = Vx.Core.f_any_from_any(Vx.Test.t_testcase, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testcase testcase = Vx.Core.f_any_from_any(
+        Vx.Test.t_testcase,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Test.Type_testcase> future = Vx.Test.f_resolve_testcase(testcase);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -4734,49 +5900,56 @@ public static class Test {
     Task<Vx.Test.Type_testcase> output = Vx.Core.vx_async_new_from_value(Vx.Test.e_testcase);
     output = Vx.Core.f_let_async(
       Vx.Test.t_testcase,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
-        Vx.Test.Type_testdescribelist describelist = testcase.describelist();
-        Task<Vx.Test.Type_testdescribelist> future_resolvedlist = Vx.Test.f_resolve_testdescribelist(
-          describelist
-        );
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
+          Vx.Test.Type_testdescribelist describelist = testcase.describelist();
+        Task<Vx.Test.Type_testdescribelist> future_resolvedlist = Vx.Test.f_resolve_testdescribelist(describelist);
         Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
           Vx.Core.t_any,
           future_resolvedlist,
           (resolvedlist) => {
-            Vx.Core.Type_booleanlist passfaillist = Vx.Core.f_list_from_list_1(
-              Vx.Core.t_booleanlist,
-              resolvedlist,
-              Vx.Core.t_any_from_any.vx_fn_new((testdescribe_any) => {
-                Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(Vx.Test.t_testdescribe, testdescribe_any);
-                Vx.Core.Type_any output_3 = Vx.Core.f_let(
-                  Vx.Core.t_boolean,
-                  Vx.Core.t_any_from_func.vx_fn_new(() => {
-                    Vx.Test.Type_testresult testresult = testdescribe.testresult();
-                    Vx.Core.Type_any output_4 = testresult.passfail();
-                    return output_4;
-                  })
-                );
-                return output_3;
-              })
-            );
-            Vx.Core.Type_boolean passfail = Vx.Core.f_and_1(
-              passfaillist
-            );
+              Vx.Core.Type_booleanlist passfaillist = Vx.Core.f_list_from_list_1(
+                Vx.Core.t_booleanlist,
+                resolvedlist,
+                Vx.Core.t_any_from_any.vx_fn_new(
+                  (testdescribe_any) => {
+                    Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(
+                      Vx.Test.t_testdescribe,
+                      testdescribe_any
+                    );
+                    Vx.Core.Type_any output_3 = Vx.Core.f_let(
+                      Vx.Core.t_boolean,
+                      Vx.Core.t_any_from_func.vx_fn_new(
+                        () => {
+                          Vx.Test.Type_testresult testresult = testdescribe.testresult();
+                          Vx.Core.Type_any output_4 = testresult.passfail();
+                          return output_4;
+                        }
+                      )
+                    );
+                    return output_3;
+                  }
+                )
+              );
+              Vx.Core.Type_boolean passfail = Vx.Core.f_and_1(passfaillist);
             Vx.Core.Type_any output_2 = Vx.Core.f_copy(
               testcase,
               Vx.Core.vx_new(
                 Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":passfail"),
-                passfail,
-                Vx.Core.vx_new_string(":describelist"),
-                resolvedlist
+                // [
+                  Vx.Core.vx_new_string(":passfail"),
+                  passfail,
+                  Vx.Core.vx_new_string(":describelist"),
+                  resolvedlist
+                // ]
               )
             );
-            return output_2;
-          }
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -4818,17 +5991,22 @@ public static class Test {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testcaselist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Test.t_testcase), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testcaselist",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Test.t_testcase
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4849,7 +6027,10 @@ public static class Test {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Test.Type_testcaselist inputval = Vx.Core.f_any_from_any(Vx.Test.t_testcaselist, value);
+      Vx.Test.Type_testcaselist inputval = Vx.Core.f_any_from_any(
+        Vx.Test.t_testcaselist,
+        value
+      );
       Task<Vx.Test.Type_testcaselist> future = Vx.Test.f_resolve_testcaselist(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -4857,9 +6038,17 @@ public static class Test {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Test.Type_testcaselist testcaselist = Vx.Core.f_any_from_any(Vx.Test.t_testcaselist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testcaselist testcaselist = Vx.Core.f_any_from_any(
+        Vx.Test.t_testcaselist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Test.Type_testcaselist> future = Vx.Test.f_resolve_testcaselist(testcaselist);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -4920,17 +6109,17 @@ public static class Test {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testdescribe", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testdescribe",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -4951,7 +6140,10 @@ public static class Test {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Test.Type_testdescribe inputval = Vx.Core.f_any_from_any(Vx.Test.t_testdescribe, value);
+      Vx.Test.Type_testdescribe inputval = Vx.Core.f_any_from_any(
+        Vx.Test.t_testdescribe,
+        value
+      );
       Task<Vx.Test.Type_testdescribe> future = Vx.Test.f_resolve_testdescribe(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -4959,9 +6151,17 @@ public static class Test {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(Vx.Test.t_testdescribe, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(
+        Vx.Test.t_testdescribe,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Test.Type_testdescribe> future = Vx.Test.f_resolve_testdescribe(testdescribe);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -4979,11 +6179,10 @@ public static class Test {
     Task<Vx.Test.Type_testdescribe> output = Vx.Core.vx_async_new_from_value(Vx.Test.e_testdescribe);
     output = Vx.Core.f_let_async(
       Vx.Test.t_testdescribe,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
-        Vx.Test.Type_testresult testresult = testdescribe.testresult();
-        Task<Vx.Test.Type_testresult> future_resolved = Vx.Test.f_resolve_testresult(
-          testresult
-        );
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
+          Vx.Test.Type_testresult testresult = testdescribe.testresult();
+        Task<Vx.Test.Type_testresult> future_resolved = Vx.Test.f_resolve_testresult(testresult);
         Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
           Vx.Core.t_any,
           future_resolved,
@@ -4992,15 +6191,18 @@ public static class Test {
               testdescribe,
               Vx.Core.vx_new(
                 Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":testresult"),
-                resolved
+                // [
+                  Vx.Core.vx_new_string(":testresult"),
+                  resolved
+                // ]
               )
             );
-            return output_2;
-          }
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5042,17 +6244,22 @@ public static class Test {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testdescribelist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Test.t_testdescribe), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testdescribelist",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Test.t_testdescribe
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5073,7 +6280,10 @@ public static class Test {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Test.Type_testdescribelist inputval = Vx.Core.f_any_from_any(Vx.Test.t_testdescribelist, value);
+      Vx.Test.Type_testdescribelist inputval = Vx.Core.f_any_from_any(
+        Vx.Test.t_testdescribelist,
+        value
+      );
       Task<Vx.Test.Type_testdescribelist> future = Vx.Test.f_resolve_testdescribelist(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -5081,9 +6291,17 @@ public static class Test {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Test.Type_testdescribelist testdescribelist = Vx.Core.f_any_from_any(Vx.Test.t_testdescribelist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testdescribelist testdescribelist = Vx.Core.f_any_from_any(
+        Vx.Test.t_testdescribelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Test.Type_testdescribelist> future = Vx.Test.f_resolve_testdescribelist(testdescribelist);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -5144,17 +6362,17 @@ public static class Test {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testpackage", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testpackage",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5175,7 +6393,10 @@ public static class Test {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Test.Type_testpackage inputval = Vx.Core.f_any_from_any(Vx.Test.t_testpackage, value);
+      Vx.Test.Type_testpackage inputval = Vx.Core.f_any_from_any(
+        Vx.Test.t_testpackage,
+        value
+      );
       Task<Vx.Test.Type_testpackage> future = Vx.Test.f_resolve_testpackage(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -5183,9 +6404,17 @@ public static class Test {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Test.Type_testpackage testpackage = Vx.Core.f_any_from_any(Vx.Test.t_testpackage, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testpackage testpackage = Vx.Core.f_any_from_any(
+        Vx.Test.t_testpackage,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Test.Type_testpackage> future = Vx.Test.f_resolve_testpackage(testpackage);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -5203,42 +6432,47 @@ public static class Test {
     Task<Vx.Test.Type_testpackage> output = Vx.Core.vx_async_new_from_value(Vx.Test.e_testpackage);
     output = Vx.Core.f_let_async(
       Vx.Test.t_testpackage,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
-        Vx.Test.Type_testcaselist testcaselist = testpackage.caselist();
-        Task<Vx.Test.Type_testcaselist> future_resolvedlist = Vx.Test.f_resolve_testcaselist(
-          testcaselist
-        );
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
+          Vx.Test.Type_testcaselist testcaselist = testpackage.caselist();
+        Task<Vx.Test.Type_testcaselist> future_resolvedlist = Vx.Test.f_resolve_testcaselist(testcaselist);
         Task<Vx.Core.Type_any> output_1 = Vx.Core.vx_async_from_async_fn(
           Vx.Core.t_any,
           future_resolvedlist,
           (resolvedlist) => {
-            Vx.Core.Type_booleanlist passfaillist = Vx.Core.f_list_from_list_1(
-              Vx.Core.t_booleanlist,
-              resolvedlist,
-              Vx.Core.t_any_from_any.vx_fn_new((testcase_any) => {
-                Vx.Test.Type_testcase testcase = Vx.Core.f_any_from_any(Vx.Test.t_testcase, testcase_any);
-                Vx.Core.Type_any output_3 = testcase.passfail();
-                return output_3;
-              })
-            );
-            Vx.Core.Type_boolean passfail = Vx.Core.f_and_1(
-              passfaillist
-            );
+              Vx.Core.Type_booleanlist passfaillist = Vx.Core.f_list_from_list_1(
+                Vx.Core.t_booleanlist,
+                resolvedlist,
+                Vx.Core.t_any_from_any.vx_fn_new(
+                  (testcase_any) => {
+                    Vx.Test.Type_testcase testcase = Vx.Core.f_any_from_any(
+                      Vx.Test.t_testcase,
+                      testcase_any
+                    );
+                    Vx.Core.Type_any output_3 = testcase.passfail();
+                    return output_3;
+                  }
+                )
+              );
+              Vx.Core.Type_boolean passfail = Vx.Core.f_and_1(passfaillist);
             Vx.Core.Type_any output_2 = Vx.Core.f_copy(
               testpackage,
               Vx.Core.vx_new(
                 Vx.Core.t_anylist,
-                Vx.Core.vx_new_string(":passfail"),
-                passfail,
-                Vx.Core.vx_new_string(":caselist"),
-                resolvedlist
+                // [
+                  Vx.Core.vx_new_string(":passfail"),
+                  passfail,
+                  Vx.Core.vx_new_string(":caselist"),
+                  resolvedlist
+                // ]
               )
             );
-            return output_2;
-          }
+              return output_2;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5280,17 +6514,22 @@ public static class Test {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testpackagelist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Test.t_testpackage), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testpackagelist",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Test.t_testpackage
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5311,7 +6550,10 @@ public static class Test {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Test.Type_testpackagelist inputval = Vx.Core.f_any_from_any(Vx.Test.t_testpackagelist, value);
+      Vx.Test.Type_testpackagelist inputval = Vx.Core.f_any_from_any(
+        Vx.Test.t_testpackagelist,
+        value
+      );
       Task<Vx.Test.Type_testpackagelist> future = Vx.Test.f_resolve_testpackagelist(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -5319,9 +6561,17 @@ public static class Test {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Test.Type_testpackagelist testpackagelist = Vx.Core.f_any_from_any(Vx.Test.t_testpackagelist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testpackagelist testpackagelist = Vx.Core.f_any_from_any(
+        Vx.Test.t_testpackagelist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Test.Type_testpackagelist> future = Vx.Test.f_resolve_testpackagelist(testpackagelist);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -5382,17 +6632,17 @@ public static class Test {
         0, // idx
         true, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5413,7 +6663,10 @@ public static class Test {
     }
 
     public Task<T> vx_any_from_any_async<T, U>(T generic_any_1, U value) where T : Vx.Core.Type_any where U : Vx.Core.Type_any {
-      Vx.Test.Type_testresult inputval = Vx.Core.f_any_from_any(Vx.Test.t_testresult, value);
+      Vx.Test.Type_testresult inputval = Vx.Core.f_any_from_any(
+        Vx.Test.t_testresult,
+        value
+      );
       Task<Vx.Test.Type_testresult> future = Vx.Test.f_resolve_testresult(inputval);
       Task<T> output = Vx.Core.vx_async_from_async(generic_any_1, future);
       return output;
@@ -5421,9 +6674,17 @@ public static class Test {
 
     public Task<Vx.Core.Type_any> vx_repl(Vx.Core.Type_anylist arglist) {
       Task<Vx.Core.Type_any> output = Vx.Core.vx_async_new_from_value(Vx.Core.e_any);
-      Vx.Test.Type_testresult testresult = Vx.Core.f_any_from_any(Vx.Test.t_testresult, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testresult testresult = Vx.Core.f_any_from_any(
+        Vx.Test.t_testresult,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       Task<Vx.Test.Type_testresult> future = Vx.Test.f_resolve_testresult(testresult);
-      output = Vx.Core.vx_async_from_async(Vx.Core.t_any, future);
+      output = Vx.Core.vx_async_from_async(
+        Vx.Core.t_any,
+        future
+      );
       return output;
     }
 
@@ -5441,9 +6702,10 @@ public static class Test {
     Task<Vx.Test.Type_testresult> output = Vx.Core.vx_async_new_from_value(Vx.Test.e_testresult);
     output = Vx.Core.f_let_async(
       Vx.Test.t_testresult,
-      Vx.Core.t_any_from_func_async.vx_fn_new(() => {
-        Vx.Core.Func_any_from_func_async fn_actual = testresult.fn_actual();
-        Vx.Core.Type_any expected = testresult.expected();
+      Vx.Core.t_any_from_func_async.vx_fn_new(
+        () => {
+          Vx.Core.Func_any_from_func_async fn_actual = testresult.fn_actual();
+          Vx.Core.Type_any expected = testresult.expected();
         Task<Vx.Core.Type_any> future_actual = Vx.Core.f_resolve_async(
           Vx.Core.t_any,
           fn_actual
@@ -5456,50 +6718,58 @@ public static class Test {
               Vx.Test.t_testresult,
               Vx.Core.vx_new(
                 Vx.Core.t_thenelselist,
-                Vx.Core.f_then(
-                  Vx.Core.t_boolean_from_func.vx_fn_new(() => {
-                    Vx.Core.Type_any output_2 = Vx.Core.f_is_empty_1(
-                      fn_actual
-                    );
-                    return output_2;
-                  }),
-                  Vx.Core.t_any_from_func.vx_fn_new(() => {
-                    Vx.Core.Type_any output_3 = testresult;
-                    return output_3;
-                  })
-                ),
-                Vx.Core.f_else(
-                  Vx.Core.t_any_from_func.vx_fn_new(() => {
-                    Vx.Core.Type_any output_4 = Vx.Core.f_let(
-                      Vx.Test.t_testresult,
-                      Vx.Core.t_any_from_func.vx_fn_new(() => {
-                        Vx.Core.Type_boolean passfail = Vx.Core.f_eq(
-                          expected,
-                          actual
-                        );
-                        Vx.Core.Type_any output_5 = Vx.Core.f_copy(
-                          testresult,
-                          Vx.Core.vx_new(
-                            Vx.Core.t_anylist,
-                            Vx.Core.vx_new_string(":passfail"),
-                            passfail,
-                            Vx.Core.vx_new_string(":actual"),
-                            actual
-                          )
-                        );
-                        return output_5;
-                      })
-                    );
-                    return output_4;
-                  })
-                )
+                // [
+                  Vx.Core.f_then(
+                    Vx.Core.t_boolean_from_func.vx_fn_new(
+                      () => {
+                        Vx.Core.Type_any output_2 = Vx.Core.f_is_empty_1(fn_actual);
+                          return output_2;
+                        }
+                    ),
+                    Vx.Core.t_any_from_func.vx_fn_new(
+                      () => {
+      Vx.Core.Type_any output_3 = testresult;
+                          return output_3;
+                        }
+                    )
+                  ),
+                  Vx.Core.f_else(
+                    Vx.Core.t_any_from_func.vx_fn_new(
+                      () => {
+                        Vx.Core.Type_any output_4 = Vx.Core.f_let(
+                            Vx.Test.t_testresult,
+                            Vx.Core.t_any_from_func.vx_fn_new(
+                              () => {
+                                Vx.Core.Type_boolean passfail = Vx.Core.f_eq(expected, actual);
+                                Vx.Core.Type_any output_5 = Vx.Core.f_copy(
+                                  testresult,
+                                  Vx.Core.vx_new(
+                                    Vx.Core.t_anylist,
+                                    // [
+                                      Vx.Core.vx_new_string(":passfail"),
+                                      passfail,
+                                      Vx.Core.vx_new_string(":actual"),
+                                      actual
+                                    // ]
+                                  )
+                                );
+                                return output_5;
+                              }
+                            )
+                          );
+                          return output_4;
+                        }
+                    )
+                  )
+                // ]
               )
             );
-            return output_6;
-          }
+              return output_6;
+            }
         );
-        return output_1;
-      })
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -5538,17 +6808,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/core", // pkgname
-          "security", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/core",
+          "security",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5586,17 +6856,21 @@ public static class Test {
       Vx.Core.t_security,
       Vx.Core.vx_new(
         Vx.Core.t_anylist,
-        Vx.Core.vx_new_string(":allowfuncs"),
-        Vx.Core.f_new(
-          Vx.Core.t_funclist,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Data.File.t_boolean_write_from_file_any,
-            Vx.Data.File.t_boolean_write_from_file_string,
-            Vx.Data.File.t_file_read_from_file,
-            Vx.Data.File.t_string_read_from_file
+        // [
+          Vx.Core.vx_new_string(":allowfuncs"),
+          Vx.Core.f_new(
+            Vx.Core.t_funclist,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
+                Vx.Data.File.t_boolean_write_from_file_any,
+                Vx.Data.File.t_boolean_write_from_file_string,
+                Vx.Data.File.t_file_read_from_file,
+                Vx.Data.File.t_string_read_from_file
+              // ]
+            )
           )
-        )
+        // ]
       )
     );
     return output;
@@ -5638,17 +6912,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5666,9 +6940,24 @@ public static class Test {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Test.f_test(context, expected, actual);
       return output;
     }
@@ -5690,22 +6979,26 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":eq"),
-          Vx.Core.vx_new_string(":passfail"),
-          Vx.Core.f_eq(
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":eq"),
+            Vx.Core.vx_new_string(":passfail"),
+            Vx.Core.f_eq(expected, actual),
+            Vx.Core.vx_new_string(":expected"),
             expected,
+            Vx.Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx.Core.vx_new_string(":expected"),
-          expected,
-          Vx.Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
       Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test", err);
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -5746,17 +7039,17 @@ public static class Test {
         1, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5774,9 +7067,24 @@ public static class Test {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(Vx.Core.t_any_from_func_async, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Test.f_test_1(context, expected, fn_actual);
       return output;
     }
@@ -5798,17 +7106,24 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":eq"),
-          Vx.Core.vx_new_string(":expected"),
-          expected,
-          Vx.Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":eq"),
+            Vx.Core.vx_new_string(":expected"),
+            expected,
+            Vx.Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
       Vx.Core.Type_msg msg = Vx.Core.vx_msg_from_exception("vx/test/test", err);
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -5848,17 +7163,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -5882,14 +7197,27 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
       Vx.Core.Type_any outputval = Vx.Test.f_test_false(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Test.f_test_false(context, actual);
       return output;
     }
@@ -5911,17 +7239,19 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":false"),
-          Vx.Core.vx_new_string(":passfail"),
-          Vx.Core.f_eq(
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":false"),
+            Vx.Core.vx_new_string(":passfail"),
+            Vx.Core.f_eq(
+              Vx.Core.vx_new_boolean(false),
+              actual
+            ),
+            Vx.Core.vx_new_string(":expected"),
             Vx.Core.vx_new_boolean(false),
+            Vx.Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx.Core.vx_new_string(":expected"),
-          Vx.Core.vx_new_boolean(false),
-          Vx.Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -5929,7 +7259,12 @@ public static class Test {
         "vx/test/test-false",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -5969,17 +7304,17 @@ public static class Test {
         1, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6003,14 +7338,27 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Func_any_from_func_async inputval = (Vx.Core.Func_any_from_func_async)value;
       Vx.Core.Type_any outputval = Vx.Test.f_test_false_1(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(Vx.Core.t_any_from_func_async, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Test.f_test_false_1(context, fn_actual);
       return output;
     }
@@ -6032,12 +7380,14 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":false"),
-          Vx.Core.vx_new_string(":expected"),
-          Vx.Core.vx_new_boolean(false),
-          Vx.Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":false"),
+            Vx.Core.vx_new_string(":expected"),
+            Vx.Core.vx_new_boolean(false),
+            Vx.Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6045,7 +7395,12 @@ public static class Test {
         "vx/test/test-false",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6086,17 +7441,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6114,9 +7469,24 @@ public static class Test {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Test.f_test_gt(context, expected, actual);
       return output;
     }
@@ -6138,17 +7508,16 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":gt"),
-          Vx.Core.vx_new_string(":passfail"),
-          Vx.Core.f_gt(
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":gt"),
+            Vx.Core.vx_new_string(":passfail"),
+            Vx.Core.f_gt(expected, actual),
+            Vx.Core.vx_new_string(":expected"),
             expected,
+            Vx.Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx.Core.vx_new_string(":expected"),
-          expected,
-          Vx.Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6156,7 +7525,12 @@ public static class Test {
         "vx/test/test-gt",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6197,17 +7571,17 @@ public static class Test {
         1, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6225,9 +7599,24 @@ public static class Test {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(Vx.Core.t_any_from_func_async, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Test.f_test_gt_1(context, expected, fn_actual);
       return output;
     }
@@ -6249,12 +7638,14 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":gt"),
-          Vx.Core.vx_new_string(":expected"),
-          expected,
-          Vx.Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":gt"),
+            Vx.Core.vx_new_string(":expected"),
+            expected,
+            Vx.Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6262,7 +7653,12 @@ public static class Test {
         "vx/test/test-gt",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6303,17 +7699,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6331,9 +7727,24 @@ public static class Test {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Test.f_test_ne(context, expected, actual);
       return output;
     }
@@ -6355,17 +7766,16 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":ne"),
-          Vx.Core.vx_new_string(":passfail"),
-          Vx.Core.f_ne(
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":ne"),
+            Vx.Core.vx_new_string(":passfail"),
+            Vx.Core.f_ne(expected, actual),
+            Vx.Core.vx_new_string(":expected"),
             expected,
+            Vx.Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx.Core.vx_new_string(":expected"),
-          expected,
-          Vx.Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6373,7 +7783,12 @@ public static class Test {
         "vx/test/test-ne",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6414,17 +7829,17 @@ public static class Test {
         1, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6442,9 +7857,24 @@ public static class Test {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(Vx.Core.t_any_from_func_async, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Test.f_test_ne_1(context, expected, fn_actual);
       return output;
     }
@@ -6466,12 +7896,14 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":ne"),
-          Vx.Core.vx_new_string(":expected"),
-          expected,
-          Vx.Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":ne"),
+            Vx.Core.vx_new_string(":expected"),
+            expected,
+            Vx.Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6479,7 +7911,12 @@ public static class Test {
         "vx/test/test-ne",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6520,17 +7957,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6548,9 +7985,24 @@ public static class Test {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Test.f_test_string(context, expected, actual);
       return output;
     }
@@ -6572,19 +8024,17 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":passfail"),
-          Vx.Core.f_eq(
-            Vx.Core.f_string_from_any(
-              expected
+          // [
+            Vx.Core.vx_new_string(":passfail"),
+            Vx.Core.f_eq(
+              Vx.Core.f_string_from_any(expected),
+              Vx.Core.f_string_from_any(actual)
             ),
-            Vx.Core.f_string_from_any(
-              actual
-            )
-          ),
-          Vx.Core.vx_new_string(":expected"),
-          expected,
-          Vx.Core.vx_new_string(":actual"),
-          actual
+            Vx.Core.vx_new_string(":expected"),
+            expected,
+            Vx.Core.vx_new_string(":actual"),
+            actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6592,7 +8042,12 @@ public static class Test {
         "vx/test/test-string",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6633,17 +8088,17 @@ public static class Test {
         1, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6661,9 +8116,24 @@ public static class Test {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
-      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(Vx.Core.t_any_from_func_async, arglist.vx_any(Vx.Core.vx_new_int(2)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any expected = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
+      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(2)
+        )
+      );
       output = Vx.Test.f_test_string_1(context, expected, fn_actual);
       return output;
     }
@@ -6685,12 +8155,14 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":string"),
-          Vx.Core.vx_new_string(":expected"),
-          expected,
-          Vx.Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":string"),
+            Vx.Core.vx_new_string(":expected"),
+            expected,
+            Vx.Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6698,7 +8170,12 @@ public static class Test {
         "vx/test/test-string",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6738,17 +8215,17 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6772,14 +8249,27 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Type_any inputval = (Vx.Core.Type_any)value;
       Vx.Core.Type_any outputval = Vx.Test.f_test_true(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(Vx.Core.t_any, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_any actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Test.f_test_true(context, actual);
       return output;
     }
@@ -6801,17 +8291,19 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":true"),
-          Vx.Core.vx_new_string(":passfail"),
-          Vx.Core.f_eq(
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":true"),
+            Vx.Core.vx_new_string(":passfail"),
+            Vx.Core.f_eq(
+              Vx.Core.vx_new_boolean(true),
+              actual
+            ),
+            Vx.Core.vx_new_string(":expected"),
             Vx.Core.vx_new_boolean(true),
+            Vx.Core.vx_new_string(":actual"),
             actual
-          ),
-          Vx.Core.vx_new_string(":expected"),
-          Vx.Core.vx_new_boolean(true),
-          Vx.Core.vx_new_string(":actual"),
-          actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6819,7 +8311,12 @@ public static class Test {
         "vx/test/test-true",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6859,17 +8356,17 @@ public static class Test {
         1, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/test", // pkgname
-          "testresult", // name
-          ":struct", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/test",
+          "testresult",
+          ":struct",
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -6893,14 +8390,27 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Core.Func_any_from_func_async inputval = (Vx.Core.Func_any_from_func_async)value;
       Vx.Core.Type_any outputval = Vx.Test.f_test_true_1(context, inputval);
-      output = Vx.Core.f_any_from_any_context(generic_any_1, context, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Core.Type_context context = Vx.Core.f_any_from_any(Vx.Core.t_context, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(Vx.Core.t_any_from_func_async, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Core.Type_context context = Vx.Core.f_any_from_any(
+        Vx.Core.t_context,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Func_any_from_func_async fn_actual = Vx.Core.f_any_from_any(
+        Vx.Core.t_any_from_func_async,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Test.f_test_true_1(context, fn_actual);
       return output;
     }
@@ -6922,12 +8432,14 @@ public static class Test {
         Vx.Test.t_testresult,
         Vx.Core.vx_new(
           Vx.Core.t_anylist,
-          Vx.Core.vx_new_string(":code"),
-          Vx.Core.vx_new_string(":true"),
-          Vx.Core.vx_new_string(":expected"),
-          Vx.Core.vx_new_boolean(true),
-          Vx.Core.vx_new_string(":fn-actual"),
-          fn_actual
+          // [
+            Vx.Core.vx_new_string(":code"),
+            Vx.Core.vx_new_string(":true"),
+            Vx.Core.vx_new_string(":expected"),
+            Vx.Core.vx_new_boolean(true),
+            Vx.Core.vx_new_string(":fn-actual"),
+            fn_actual
+          // ]
         )
       );
     } catch (Exception err) {
@@ -6935,7 +8447,12 @@ public static class Test {
         "vx/test/test-true",
         err
       );
-      output = Vx.Core.vx_copy(output, msg);
+      output = Vx.Core.vx_copy(
+        output,
+        // [
+          msg
+        // ]
+      );
     }
     return output;
   }
@@ -6976,17 +8493,22 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "tr", // name
-          ":struct", // extends
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_node), // traits
-          Vx.Core.e_typelist, // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "tr",
+          ":struct",
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_node
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7004,8 +8526,18 @@ public static class Test {
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(Vx.Test.t_testdescribe, arglist.vx_any(Vx.Core.vx_new_int(0)));
-      Vx.Core.Type_string casename = Vx.Core.f_any_from_any(Vx.Core.t_string, arglist.vx_any(Vx.Core.vx_new_int(1)));
+      Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(
+        Vx.Test.t_testdescribe,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
+      Vx.Core.Type_string casename = Vx.Core.f_any_from_any(
+        Vx.Core.t_string,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(1)
+        )
+      );
       output = Vx.Test.f_tr_from_testdescribe_casename(testdescribe, casename);
       return output;
     }
@@ -7024,101 +8556,117 @@ public static class Test {
     Vx.Web.Html.Type_tr output = Vx.Web.Html.e_tr;
     output = Vx.Core.f_let(
       Vx.Web.Html.t_tr,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Core.Type_string describename = testdescribe.describename();
-        Vx.Test.Type_testresult result = testdescribe.testresult();
-        Vx.Core.Type_boolean passfail = result.passfail();
-        Vx.Core.Type_string expected = Vx.Core.f_string_from_any(
-          result.expected()
-        );
-        Vx.Core.Type_string actual = Vx.Core.f_string_from_any(
-          result.actual()
-        );
-        Vx.Web.Html.Type_style prestyle = Vx.Web.Html.f_style_from_stylesheet_name(
-          Vx.Test.c_stylesheet_test,
-          Vx.Core.vx_new_string(".preformatted")
-        );
-        Vx.Core.Type_any output_1 = Vx.Core.f_new(
-          Vx.Web.Html.t_tr,
-          Vx.Core.vx_new(
-            Vx.Core.t_anylist,
-            Vx.Core.f_new(
-              Vx.Web.Html.t_td,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
-                Vx.Test.f_p_from_passfail(
-                  passfail
-                )
-              )
-            ),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_td,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Core.Type_string describename = testdescribe.describename();
+          Vx.Test.Type_testresult result = testdescribe.testresult();
+          Vx.Core.Type_boolean passfail = result.passfail();
+          Vx.Core.Type_string expected = Vx.Core.f_string_from_any(result.expected());
+          Vx.Core.Type_string actual = Vx.Core.f_string_from_any(result.actual());
+          Vx.Web.Html.Type_style prestyle = Vx.Web.Html.f_style_from_stylesheet_name(
+            Vx.Test.c_stylesheet_test,
+            Vx.Core.vx_new_string(".preformatted")
+          );
+          Vx.Core.Type_any output_1 = Vx.Core.f_new(
+            Vx.Web.Html.t_tr,
+            Vx.Core.vx_new(
+              Vx.Core.t_anylist,
+              // [
                 Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
+                  Vx.Web.Html.t_td,
                   Vx.Core.vx_new(
                     Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    prestyle,
-                    Vx.Core.vx_new_string(":text"),
-                    casename
+                    // [
+                      Vx.Test.f_p_from_passfail(passfail)
+                    // ]
                   )
-                )
-              )
-            ),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_td,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
+                ),
                 Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
+                  Vx.Web.Html.t_td,
                   Vx.Core.vx_new(
                     Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    prestyle,
-                    Vx.Core.vx_new_string(":text"),
-                    describename
+                    // [
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            prestyle,
+                            Vx.Core.vx_new_string(":text"),
+                            casename
+                          // ]
+                        )
+                      )
+                    // ]
                   )
-                )
-              )
-            ),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_td,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
+                ),
                 Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
+                  Vx.Web.Html.t_td,
                   Vx.Core.vx_new(
                     Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    prestyle,
-                    Vx.Core.vx_new_string(":text"),
-                    expected
+                    // [
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            prestyle,
+                            Vx.Core.vx_new_string(":text"),
+                            describename
+                          // ]
+                        )
+                      )
+                    // ]
                   )
-                )
-              )
-            ),
-            Vx.Core.f_new(
-              Vx.Web.Html.t_td,
-              Vx.Core.vx_new(
-                Vx.Core.t_anylist,
+                ),
                 Vx.Core.f_new(
-                  Vx.Web.Html.t_p,
+                  Vx.Web.Html.t_td,
                   Vx.Core.vx_new(
                     Vx.Core.t_anylist,
-                    Vx.Core.vx_new_string(":style"),
-                    prestyle,
-                    Vx.Core.vx_new_string(":text"),
-                    actual
+                    // [
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            prestyle,
+                            Vx.Core.vx_new_string(":text"),
+                            expected
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                ),
+                Vx.Core.f_new(
+                  Vx.Web.Html.t_td,
+                  Vx.Core.vx_new(
+                    Vx.Core.t_anylist,
+                    // [
+                      Vx.Core.f_new(
+                        Vx.Web.Html.t_p,
+                        Vx.Core.vx_new(
+                          Vx.Core.t_anylist,
+                          // [
+                            Vx.Core.vx_new_string(":style"),
+                            prestyle,
+                            Vx.Core.vx_new_string(":text"),
+                            actual
+                          // ]
+                        )
+                      )
+                    // ]
                   )
                 )
-              )
+              // ]
             )
-          )
-        );
-        return output_1;
-      })
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -7157,17 +8705,22 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "trlist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_tr), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "trlist",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_tr
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7191,13 +8744,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Test.Type_testcase inputval = (Vx.Test.Type_testcase)value;
       Vx.Core.Type_any outputval = Vx.Test.f_trlist_from_testcase(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Test.Type_testcase testcase = Vx.Core.f_any_from_any(Vx.Test.t_testcase, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testcase testcase = Vx.Core.f_any_from_any(
+        Vx.Test.t_testcase,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_trlist_from_testcase(testcase);
       return output;
     }
@@ -7216,23 +8777,30 @@ public static class Test {
     Vx.Web.Html.Type_trlist output = Vx.Web.Html.e_trlist;
     output = Vx.Core.f_let(
       Vx.Web.Html.t_trlist,
-      Vx.Core.t_any_from_func.vx_fn_new(() => {
-        Vx.Test.Type_testdescribelist describelist = testcase.describelist();
-        Vx.Core.Type_string casename = testcase.casename();
-        Vx.Core.Type_any output_1 = Vx.Core.f_list_from_list_1(
-          Vx.Web.Html.t_trlist,
-          describelist,
-          Vx.Core.t_any_from_any.vx_fn_new((testdescribe_any) => {
-            Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(Vx.Test.t_testdescribe, testdescribe_any);
-            Vx.Core.Type_any output_2 = Vx.Test.f_tr_from_testdescribe_casename(
-              testdescribe,
-              casename
-            );
-            return output_2;
-          })
-        );
-        return output_1;
-      })
+      Vx.Core.t_any_from_func.vx_fn_new(
+        () => {
+          Vx.Test.Type_testdescribelist describelist = testcase.describelist();
+          Vx.Core.Type_string casename = testcase.casename();
+          Vx.Core.Type_any output_1 = Vx.Core.f_list_from_list_1(
+            Vx.Web.Html.t_trlist,
+            describelist,
+            Vx.Core.t_any_from_any.vx_fn_new(
+              (testdescribe_any) => {
+                Vx.Test.Type_testdescribe testdescribe = Vx.Core.f_any_from_any(
+                  Vx.Test.t_testdescribe,
+                  testdescribe_any
+                );
+                Vx.Core.Type_any output_2 = Vx.Test.f_tr_from_testdescribe_casename(
+                  testdescribe,
+                  casename
+                );
+                return output_2;
+              }
+            )
+          );
+          return output_1;
+        }
+      )
     );
     return output;
   }
@@ -7272,17 +8840,22 @@ public static class Test {
         0, // idx
         false, // async
         Vx.Core.typedef_new(
-          "vx/web/html", // pkgname
-          "trlist", // name
-          ":list", // extends
-          Vx.Core.e_typelist, // traits
-          Vx.Core.vx_new(Vx.Core.t_typelist, Vx.Web.Html.t_tr), // allowtypes
-          Vx.Core.e_typelist, // disallowtypes
-          Vx.Core.e_funclist, // allowfuncs
-          Vx.Core.e_funclist, // disallowfuncs
-          Vx.Core.e_anylist, // allowvalues
-          Vx.Core.e_anylist, // disallowvalues
-          Vx.Core.e_argmap // properties
+          "vx/web/html",
+          "trlist",
+          ":list",
+          Vx.Core.e_typelist,
+          Vx.Core.vx_new(
+            Vx.Core.t_typelist,
+            // [
+              Vx.Web.Html.t_tr
+            // ]
+          ),
+          Vx.Core.e_typelist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_funclist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_anylist,
+          Vx.Core.e_argmap
         ) // typedef
       );
       return output;
@@ -7306,13 +8879,21 @@ public static class Test {
       T output = Vx.Core.f_empty(generic_any_1);
       Vx.Test.Type_testcaselist inputval = (Vx.Test.Type_testcaselist)value;
       Vx.Core.Type_any outputval = Vx.Test.f_trlist_from_testcaselist(inputval);
-      output = Vx.Core.f_any_from_any(generic_any_1, outputval);
+      output = Vx.Core.f_any_from_any(
+        generic_any_1,
+        outputval
+      );
       return output;
     }
 
     public Vx.Core.Type_any vx_repl(Vx.Core.Type_anylist arglist) {
       Vx.Core.Type_any output = Vx.Core.e_any;
-      Vx.Test.Type_testcaselist testcaselist = Vx.Core.f_any_from_any(Vx.Test.t_testcaselist, arglist.vx_any(Vx.Core.vx_new_int(0)));
+      Vx.Test.Type_testcaselist testcaselist = Vx.Core.f_any_from_any(
+        Vx.Test.t_testcaselist,
+        arglist.vx_any(
+          Vx.Core.vx_new_int(0)
+        )
+      );
       output = Vx.Test.f_trlist_from_testcaselist(testcaselist);
       return output;
     }

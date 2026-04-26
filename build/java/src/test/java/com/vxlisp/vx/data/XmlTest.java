@@ -9,14 +9,21 @@ public final class XmlTest {
   public static Test.Type_testcase f_string_first_from_xml(final Core.Type_context context) {
     final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "string-first<-xml",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_string_first_from_xml_testdescribe_1(context)
-      )
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "string-first<-xml",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_string_first_from_xml_testdescribe_1(context)
+          // ]
+        )
+      // ]
     );
     return output;
   }
@@ -24,34 +31,44 @@ public final class XmlTest {
   public static Test.Type_testdescribe f_string_first_from_xml_testdescribe_1(final Core.Type_context context) {
     final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      ":describename", "(test\n \"text\"\n (string-first<-xml\n  (xml\n   :children\n    (xmllist\n     (xml\n      :text \"text\")))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.vx_new_string("text"),
-        Xml.f_string_first_from_xml(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Xml.t_xmllist,
-                Core.vx_new(
-                  Core.t_anylist,
+      // [
+        ":describename",
+        "(test\n \"text\"\n (string-first<-xml\n  (xml\n   :children\n    (xmllist\n     (xml\n      :text \"text\")))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.vx_new_string("text"),
+          Xml.f_string_first_from_xml(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":children"),
                   Core.f_new(
-                    Xml.t_xml,
+                    Xml.t_xmllist,
                     Core.vx_new(
                       Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("text")
+                      // [
+                        Core.f_new(
+                          Xml.t_xml,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("text")
+                            // ]
+                          )
+                        )
+                      // ]
                     )
                   )
-                )
+                // ]
               )
             )
           )
         )
-      )
+      // ]
     );
     return output;
   }
@@ -59,14 +76,21 @@ public final class XmlTest {
   public static Test.Type_testcase f_textblock_xml_from_string(final Core.Type_context context) {
     final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "textblock-xml<-string",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_textblock_xml_from_string_testdescribe_1(context)
-      )
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "textblock-xml<-string",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_textblock_xml_from_string_testdescribe_1(context)
+          // ]
+        )
+      // ]
     );
     return output;
   }
@@ -74,235 +98,49 @@ public final class XmlTest {
   public static Test.Type_testdescribe f_textblock_xml_from_string_testdescribe_1(final Core.Type_context context) {
     final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      ":describename", "(test\n (tb/textblock\n  :text\n   \"<doc>\n      <tag1>\n        <tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\n      </tag1>\n    </doc>\"\n  :startpos 1\n  :endpos 70\n  :children\n   (tb/textblocklist\n    (tb/textblock\n     :text \"<doc>\"\n     :startpos 1\n     :endpos 5\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"doc\"\n        :startpos 2\n        :endpos 4)))\n    (tb/textblock\n     :text \"\n  \"\n     :startpos 6\n     :endpos 8)\n    (tb/textblock\n     :text \"<tag1>\"\n     :startpos 9\n     :endpos 14\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"tag1\"\n        :startpos 10\n        :endpos 13)))\n    (tb/textblock\n     :text \"\n    \"\n     :startpos 15\n     :endpos 19)\n    (tb/textblock\n     :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n     :startpos 20\n     :endpos 53\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"tag2\"\n        :startpos 21\n        :endpos 24)\n       (tb/textblock\n        :text \" \"\n        :startpos 25\n        :endpos 25\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (textblock\n        :text \"prop1\"\n        :startpos 26\n        :endpos 30)\n       (textblock\n        :text \"=\"\n        :startpos 31\n        :endpos 31\n        :delim\n         (copy delimxmlequal\n          :pos 0))\n       (tb/textblock\n        :text \"\\\"val1\\\"\"\n        :startpos 32\n        :endpos 37\n        :delim\n         (copy tb/delimquote\n          :pos 0)\n        :children\n         (tb/textblocklist\n          (tb/textblock\n           :text \"val1\"\n           :startpos 33\n           :endpos 36)))\n       (tb/textblock\n        :text \" \"\n        :startpos 38\n        :endpos 38\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (tb/textblock\n        :text \"prop2\"\n        :startpos 39\n        :endpos 43)\n       (textblock\n        :text \"=\"\n        :startpos 44\n        :endpos 44\n        :delim\n         (copy delimxmlequal\n          :pos 0))\n       (tb/textblock\n        :text \"\\\"val2\\\"\"\n        :startpos 45\n        :endpos 50\n        :delim\n         (copy tb/delimquote\n          :pos 0)\n        :children\n         (tb/textblocklist\n          (tb/textblock\n           :text \"val2\"\n           :startpos 46\n           :endpos 49)))\n        (tb/textblock\n         :text \" \"\n         :startpos 51\n         :endpos 51\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"/\"\n         :startpos 52\n         :endpos 52)))\n    (tb/textblock\n     :text \"\n  \"\n     :startpos 54\n     :endpos 56)\n    (tb/textblock\n     :text \"</tag1>\"\n     :startpos 57\n     :endpos 63\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"/tag1\"\n        :startpos 58\n        :endpos 62)))\n    (tb/textblock\n     :text \"\n\"\n     :startpos 64\n     :endpos 64)\n    (tb/textblock\n     :text \"</doc>\"\n     :startpos 65\n     :endpos 70\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"/doc\"\n        :startpos 66\n        :endpos 69)))))\n (textblock-xml<-string\n  \"<doc>\n     <tag1>\n       <tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\n     </tag1>\n   </doc>\"))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Textblock.t_textblock,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":text"),
-            Core.vx_new_string("<doc>\n  <tag1>\n    <tag2 prop1=\"val1\" prop2=\"val2\" />\n  </tag1>\n</doc>"),
-            Core.vx_new_string(":startpos"),
-            Core.vx_new_int(1),
-            Core.vx_new_string(":endpos"),
-            Core.vx_new_int(70),
-            Core.vx_new_string(":children"),
-            Core.f_new(
-              Textblock.t_textblocklist,
-              Core.vx_new(
-                Core.t_anylist,
+      // [
+        ":describename",
+        "(test\n (tb/textblock\n  :text\n   \"<doc>\n      <tag1>\n        <tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\n      </tag1>\n    </doc>\"\n  :startpos 1\n  :endpos 70\n  :children\n   (tb/textblocklist\n    (tb/textblock\n     :text \"<doc>\"\n     :startpos 1\n     :endpos 5\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"doc\"\n        :startpos 2\n        :endpos 4)))\n    (tb/textblock\n     :text \"\n  \"\n     :startpos 6\n     :endpos 8)\n    (tb/textblock\n     :text \"<tag1>\"\n     :startpos 9\n     :endpos 14\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"tag1\"\n        :startpos 10\n        :endpos 13)))\n    (tb/textblock\n     :text \"\n    \"\n     :startpos 15\n     :endpos 19)\n    (tb/textblock\n     :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n     :startpos 20\n     :endpos 53\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"tag2\"\n        :startpos 21\n        :endpos 24)\n       (tb/textblock\n        :text \" \"\n        :startpos 25\n        :endpos 25\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (textblock\n        :text \"prop1\"\n        :startpos 26\n        :endpos 30)\n       (textblock\n        :text \"=\"\n        :startpos 31\n        :endpos 31\n        :delim\n         (copy delimxmlequal\n          :pos 0))\n       (tb/textblock\n        :text \"\\\"val1\\\"\"\n        :startpos 32\n        :endpos 37\n        :delim\n         (copy tb/delimquote\n          :pos 0)\n        :children\n         (tb/textblocklist\n          (tb/textblock\n           :text \"val1\"\n           :startpos 33\n           :endpos 36)))\n       (tb/textblock\n        :text \" \"\n        :startpos 38\n        :endpos 38\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (tb/textblock\n        :text \"prop2\"\n        :startpos 39\n        :endpos 43)\n       (textblock\n        :text \"=\"\n        :startpos 44\n        :endpos 44\n        :delim\n         (copy delimxmlequal\n          :pos 0))\n       (tb/textblock\n        :text \"\\\"val2\\\"\"\n        :startpos 45\n        :endpos 50\n        :delim\n         (copy tb/delimquote\n          :pos 0)\n        :children\n         (tb/textblocklist\n          (tb/textblock\n           :text \"val2\"\n           :startpos 46\n           :endpos 49)))\n        (tb/textblock\n         :text \" \"\n         :startpos 51\n         :endpos 51\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"/\"\n         :startpos 52\n         :endpos 52)))\n    (tb/textblock\n     :text \"\n  \"\n     :startpos 54\n     :endpos 56)\n    (tb/textblock\n     :text \"</tag1>\"\n     :startpos 57\n     :endpos 63\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"/tag1\"\n        :startpos 58\n        :endpos 62)))\n    (tb/textblock\n     :text \"\n\"\n     :startpos 64\n     :endpos 64)\n    (tb/textblock\n     :text \"</doc>\"\n     :startpos 65\n     :endpos 70\n     :delim\n      (copy tb/delimbracketangle\n       :pos 0)\n     :children\n      (tb/textblocklist\n       (tb/textblock\n        :text \"/doc\"\n        :startpos 66\n        :endpos 69)))))\n (textblock-xml<-string\n  \"<doc>\n     <tag1>\n       <tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\n     </tag1>\n   </doc>\"))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Textblock.t_textblock,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":text"),
+                Core.vx_new_string("<doc>\n  <tag1>\n    <tag2 prop1=\"val1\" prop2=\"val2\" />\n  </tag1>\n</doc>"),
+                Core.vx_new_string(":startpos"),
+                Core.vx_new_int(1),
+                Core.vx_new_string(":endpos"),
+                Core.vx_new_int(70),
+                Core.vx_new_string(":children"),
                 Core.f_new(
-                  Textblock.t_textblock,
+                  Textblock.t_textblocklist,
                   Core.vx_new(
                     Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("<doc>"),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(1),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(5),
-                    Core.vx_new_string(":delim"),
-                    Core.f_copy(
-                      Textblock.c_delimbracketangle,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":pos"),
-                        Core.vx_new_int(0)
-                      )
-                    ),
-                    Core.vx_new_string(":children"),
-                    Core.f_new(
-                      Textblock.t_textblocklist,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Textblock.t_textblock,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
                             Core.vx_new_string(":text"),
-                            Core.vx_new_string("doc"),
+                            Core.vx_new_string("<doc>"),
                             Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(2),
+                            Core.vx_new_int(1),
                             Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(4)
-                          )
-                        )
-                      )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("\n  "),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(6),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(8)
-                  )
-                ),
-                Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("<tag1>"),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(9),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(14),
-                    Core.vx_new_string(":delim"),
-                    Core.f_copy(
-                      Textblock.c_delimbracketangle,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":pos"),
-                        Core.vx_new_int(0)
-                      )
-                    ),
-                    Core.vx_new_string(":children"),
-                    Core.f_new(
-                      Textblock.t_textblocklist,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("tag1"),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(10),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(13)
-                          )
-                        )
-                      )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("\n    "),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(15),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(19)
-                  )
-                ),
-                Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("<tag2 prop1=\"val1\" prop2=\"val2\" />"),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(20),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(53),
-                    Core.vx_new_string(":delim"),
-                    Core.f_copy(
-                      Textblock.c_delimbracketangle,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":pos"),
-                        Core.vx_new_int(0)
-                      )
-                    ),
-                    Core.vx_new_string(":children"),
-                    Core.f_new(
-                      Textblock.t_textblocklist,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("tag2"),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(21),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(24)
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string(" "),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(25),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(25),
+                            Core.vx_new_int(5),
                             Core.vx_new_string(":delim"),
                             Core.f_copy(
-                              Textblock.c_delimwhitespace,
+                              Textblock.c_delimbracketangle,
                               Core.vx_new(
                                 Core.t_anylist,
-                                Core.vx_new_string(":pos"),
-                                Core.vx_new_int(0)
-                              )
-                            )
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("prop1"),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(26),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(30)
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("="),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(31),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(31),
-                            Core.vx_new_string(":delim"),
-                            Core.f_copy(
-                              Xml.c_delimxmlequal,
-                              Core.vx_new(
-                                Core.t_anylist,
-                                Core.vx_new_string(":pos"),
-                                Core.vx_new_int(0)
-                              )
-                            )
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("\"val1\""),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(32),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(37),
-                            Core.vx_new_string(":delim"),
-                            Core.f_copy(
-                              Textblock.c_delimquote,
-                              Core.vx_new(
-                                Core.t_anylist,
-                                Core.vx_new_string(":pos"),
-                                Core.vx_new_int(0)
+                                // [
+                                  Core.vx_new_string(":pos"),
+                                  Core.vx_new_int(0)
+                                // ]
                               )
                             ),
                             Core.vx_new_string(":children"),
@@ -310,93 +148,61 @@ public final class XmlTest {
                               Textblock.t_textblocklist,
                               Core.vx_new(
                                 Core.t_anylist,
-                                Core.f_new(
-                                  Textblock.t_textblock,
-                                  Core.vx_new(
-                                    Core.t_anylist,
-                                    Core.vx_new_string(":text"),
-                                    Core.vx_new_string("val1"),
-                                    Core.vx_new_string(":startpos"),
-                                    Core.vx_new_int(33),
-                                    Core.vx_new_string(":endpos"),
-                                    Core.vx_new_int(36)
+                                // [
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("doc"),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(2),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(4)
+                                      // ]
+                                    )
                                   )
-                                )
+                                // ]
                               )
                             )
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Textblock.t_textblock,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
                             Core.vx_new_string(":text"),
-                            Core.vx_new_string(" "),
+                            Core.vx_new_string("\n  "),
                             Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(38),
+                            Core.vx_new_int(6),
                             Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(38),
+                            Core.vx_new_int(8)
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Textblock.t_textblock,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("<tag1>"),
+                            Core.vx_new_string(":startpos"),
+                            Core.vx_new_int(9),
+                            Core.vx_new_string(":endpos"),
+                            Core.vx_new_int(14),
                             Core.vx_new_string(":delim"),
                             Core.f_copy(
-                              Textblock.c_delimwhitespace,
+                              Textblock.c_delimbracketangle,
                               Core.vx_new(
                                 Core.t_anylist,
-                                Core.vx_new_string(":pos"),
-                                Core.vx_new_int(0)
-                              )
-                            )
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("prop2"),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(39),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(43)
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("="),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(44),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(44),
-                            Core.vx_new_string(":delim"),
-                            Core.f_copy(
-                              Xml.c_delimxmlequal,
-                              Core.vx_new(
-                                Core.t_anylist,
-                                Core.vx_new_string(":pos"),
-                                Core.vx_new_int(0)
-                              )
-                            )
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("\"val2\""),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(45),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(50),
-                            Core.vx_new_string(":delim"),
-                            Core.f_copy(
-                              Textblock.c_delimquote,
-                              Core.vx_new(
-                                Core.t_anylist,
-                                Core.vx_new_string(":pos"),
-                                Core.vx_new_int(0)
+                                // [
+                                  Core.vx_new_string(":pos"),
+                                  Core.vx_new_int(0)
+                                // ]
                               )
                             ),
                             Core.vx_new_string(":children"),
@@ -404,171 +210,487 @@ public final class XmlTest {
                               Textblock.t_textblocklist,
                               Core.vx_new(
                                 Core.t_anylist,
-                                Core.f_new(
-                                  Textblock.t_textblock,
-                                  Core.vx_new(
-                                    Core.t_anylist,
-                                    Core.vx_new_string(":text"),
-                                    Core.vx_new_string("val2"),
-                                    Core.vx_new_string(":startpos"),
-                                    Core.vx_new_int(46),
-                                    Core.vx_new_string(":endpos"),
-                                    Core.vx_new_int(49)
+                                // [
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("tag1"),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(10),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(13)
+                                      // ]
+                                    )
                                   )
-                                )
+                                // ]
                               )
                             )
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Textblock.t_textblock,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
                             Core.vx_new_string(":text"),
-                            Core.vx_new_string(" "),
+                            Core.vx_new_string("\n    "),
                             Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(51),
+                            Core.vx_new_int(15),
                             Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(51),
+                            Core.vx_new_int(19)
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Textblock.t_textblock,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("<tag2 prop1=\"val1\" prop2=\"val2\" />"),
+                            Core.vx_new_string(":startpos"),
+                            Core.vx_new_int(20),
+                            Core.vx_new_string(":endpos"),
+                            Core.vx_new_int(53),
                             Core.vx_new_string(":delim"),
                             Core.f_copy(
-                              Textblock.c_delimwhitespace,
+                              Textblock.c_delimbracketangle,
                               Core.vx_new(
                                 Core.t_anylist,
-                                Core.vx_new_string(":pos"),
-                                Core.vx_new_int(0)
+                                // [
+                                  Core.vx_new_string(":pos"),
+                                  Core.vx_new_int(0)
+                                // ]
+                              )
+                            ),
+                            Core.vx_new_string(":children"),
+                            Core.f_new(
+                              Textblock.t_textblocklist,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("tag2"),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(21),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(24)
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string(" "),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(25),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(25),
+                                        Core.vx_new_string(":delim"),
+                                        Core.f_copy(
+                                          Textblock.c_delimwhitespace,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":pos"),
+                                              Core.vx_new_int(0)
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("prop1"),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(26),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(30)
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("="),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(31),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(31),
+                                        Core.vx_new_string(":delim"),
+                                        Core.f_copy(
+                                          Xml.c_delimxmlequal,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":pos"),
+                                              Core.vx_new_int(0)
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("\"val1\""),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(32),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(37),
+                                        Core.vx_new_string(":delim"),
+                                        Core.f_copy(
+                                          Textblock.c_delimquote,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":pos"),
+                                              Core.vx_new_int(0)
+                                            // ]
+                                          )
+                                        ),
+                                        Core.vx_new_string(":children"),
+                                        Core.f_new(
+                                          Textblock.t_textblocklist,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.f_new(
+                                                Textblock.t_textblock,
+                                                Core.vx_new(
+                                                  Core.t_anylist,
+                                                  // [
+                                                    Core.vx_new_string(":text"),
+                                                    Core.vx_new_string("val1"),
+                                                    Core.vx_new_string(":startpos"),
+                                                    Core.vx_new_int(33),
+                                                    Core.vx_new_string(":endpos"),
+                                                    Core.vx_new_int(36)
+                                                  // ]
+                                                )
+                                              )
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string(" "),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(38),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(38),
+                                        Core.vx_new_string(":delim"),
+                                        Core.f_copy(
+                                          Textblock.c_delimwhitespace,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":pos"),
+                                              Core.vx_new_int(0)
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("prop2"),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(39),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(43)
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("="),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(44),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(44),
+                                        Core.vx_new_string(":delim"),
+                                        Core.f_copy(
+                                          Xml.c_delimxmlequal,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":pos"),
+                                              Core.vx_new_int(0)
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("\"val2\""),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(45),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(50),
+                                        Core.vx_new_string(":delim"),
+                                        Core.f_copy(
+                                          Textblock.c_delimquote,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":pos"),
+                                              Core.vx_new_int(0)
+                                            // ]
+                                          )
+                                        ),
+                                        Core.vx_new_string(":children"),
+                                        Core.f_new(
+                                          Textblock.t_textblocklist,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.f_new(
+                                                Textblock.t_textblock,
+                                                Core.vx_new(
+                                                  Core.t_anylist,
+                                                  // [
+                                                    Core.vx_new_string(":text"),
+                                                    Core.vx_new_string("val2"),
+                                                    Core.vx_new_string(":startpos"),
+                                                    Core.vx_new_int(46),
+                                                    Core.vx_new_string(":endpos"),
+                                                    Core.vx_new_int(49)
+                                                  // ]
+                                                )
+                                              )
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string(" "),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(51),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(51),
+                                        Core.vx_new_string(":delim"),
+                                        Core.f_copy(
+                                          Textblock.c_delimwhitespace,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":pos"),
+                                              Core.vx_new_int(0)
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  ),
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("/"),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(52),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(52)
+                                      // ]
+                                    )
+                                  )
+                                // ]
                               )
                             )
-                          )
-                        ),
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Textblock.t_textblock,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
                             Core.vx_new_string(":text"),
-                            Core.vx_new_string("/"),
+                            Core.vx_new_string("\n  "),
                             Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(52),
+                            Core.vx_new_int(54),
                             Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(52)
-                          )
+                            Core.vx_new_int(56)
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Textblock.t_textblock,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("</tag1>"),
+                            Core.vx_new_string(":startpos"),
+                            Core.vx_new_int(57),
+                            Core.vx_new_string(":endpos"),
+                            Core.vx_new_int(63),
+                            Core.vx_new_string(":delim"),
+                            Core.f_copy(
+                              Textblock.c_delimbracketangle,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.vx_new_string(":pos"),
+                                  Core.vx_new_int(0)
+                                // ]
+                              )
+                            ),
+                            Core.vx_new_string(":children"),
+                            Core.f_new(
+                              Textblock.t_textblocklist,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("/tag1"),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(58),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(62)
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            )
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Textblock.t_textblock,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("\n"),
+                            Core.vx_new_string(":startpos"),
+                            Core.vx_new_int(64),
+                            Core.vx_new_string(":endpos"),
+                            Core.vx_new_int(64)
+                          // ]
+                        )
+                      ),
+                      Core.f_new(
+                        Textblock.t_textblock,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("</doc>"),
+                            Core.vx_new_string(":startpos"),
+                            Core.vx_new_int(65),
+                            Core.vx_new_string(":endpos"),
+                            Core.vx_new_int(70),
+                            Core.vx_new_string(":delim"),
+                            Core.f_copy(
+                              Textblock.c_delimbracketangle,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.vx_new_string(":pos"),
+                                  Core.vx_new_int(0)
+                                // ]
+                              )
+                            ),
+                            Core.vx_new_string(":children"),
+                            Core.f_new(
+                              Textblock.t_textblocklist,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Textblock.t_textblock,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":text"),
+                                        Core.vx_new_string("/doc"),
+                                        Core.vx_new_string(":startpos"),
+                                        Core.vx_new_int(66),
+                                        Core.vx_new_string(":endpos"),
+                                        Core.vx_new_int(69)
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            )
+                          // ]
                         )
                       )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("\n  "),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(54),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(56)
-                  )
-                ),
-                Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("</tag1>"),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(57),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(63),
-                    Core.vx_new_string(":delim"),
-                    Core.f_copy(
-                      Textblock.c_delimbracketangle,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":pos"),
-                        Core.vx_new_int(0)
-                      )
-                    ),
-                    Core.vx_new_string(":children"),
-                    Core.f_new(
-                      Textblock.t_textblocklist,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("/tag1"),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(58),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(62)
-                          )
-                        )
-                      )
-                    )
-                  )
-                ),
-                Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("\n"),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(64),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(64)
-                  )
-                ),
-                Core.f_new(
-                  Textblock.t_textblock,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("</doc>"),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(65),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(70),
-                    Core.vx_new_string(":delim"),
-                    Core.f_copy(
-                      Textblock.c_delimbracketangle,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":pos"),
-                        Core.vx_new_int(0)
-                      )
-                    ),
-                    Core.vx_new_string(":children"),
-                    Core.f_new(
-                      Textblock.t_textblocklist,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Textblock.t_textblock,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":text"),
-                            Core.vx_new_string("/doc"),
-                            Core.vx_new_string(":startpos"),
-                            Core.vx_new_int(66),
-                            Core.vx_new_string(":endpos"),
-                            Core.vx_new_int(69)
-                          )
-                        )
-                      )
-                    )
+                    // ]
                   )
                 )
-              )
+              // ]
             )
+          ),
+          Xml.f_textblock_xml_from_string(
+            Core.vx_new_string("<doc>\n  <tag1>\n    <tag2 prop1=\"val1\" prop2=\"val2\" />\n  </tag1>\n</doc>")
           )
-        ),
-        Xml.f_textblock_xml_from_string(
-          Core.vx_new_string("<doc>\n  <tag1>\n    <tag2 prop1=\"val1\" prop2=\"val2\" />\n  </tag1>\n</doc>")
         )
-      )
+      // ]
     );
     return output;
   }
@@ -576,16 +698,23 @@ public final class XmlTest {
   public static Test.Type_testcase f_xml_angle_from_xml_textblock(final Core.Type_context context) {
     final Test.Type_testcase output = Core.vx_new(
       Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "xml-angle<-xml-textblock",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_xml_angle_from_xml_textblock_testdescribe_1(context),
-        f_xml_angle_from_xml_textblock_testdescribe_2(context),
-        f_xml_angle_from_xml_textblock_testdescribe_3(context)
-      )
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "xml-angle<-xml-textblock",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_xml_angle_from_xml_textblock_testdescribe_1(context),
+            XmlTest.f_xml_angle_from_xml_textblock_testdescribe_2(context),
+            XmlTest.f_xml_angle_from_xml_textblock_testdescribe_3(context)
+          // ]
+        )
+      // ]
     );
     return output;
   }
@@ -593,26 +722,30 @@ public final class XmlTest {
   public static Test.Type_testdescribe f_xml_angle_from_xml_textblock_testdescribe_1(final Core.Type_context context) {
     final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag :notag)\n (xml-angle<-xml-textblock\n  (empty xml)\n  (empty tb/textblock)))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string(":notag")
-          )
-        ),
-        Xml.f_xml_angle_from_xml_textblock(
-          Core.f_empty(
-            Xml.t_xml
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag :notag)\n (xml-angle<-xml-textblock\n  (empty xml)\n  (empty tb/textblock)))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string(":notag")
+              // ]
+            )
           ),
-          Core.f_empty(
-            Textblock.t_textblock
+          Xml.f_xml_angle_from_xml_textblock(
+            Core.f_empty(Xml.t_xml),
+            Core.f_empty(
+              Textblock.t_textblock
+            )
           )
         )
-      )
+      // ]
     );
     return output;
   }
@@ -620,1288 +753,29 @@ public final class XmlTest {
   public static Test.Type_testdescribe f_xml_angle_from_xml_textblock_testdescribe_2(final Core.Type_context context) {
     final Test.Type_testdescribe output = Core.vx_new(
       Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-angle<-xml-textblock\n  (empty xml)\n  (tb/textblock\n   :text \"<doc>\"\n   :startpos 1\n   :endpos 5\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"doc\"\n      :startpos 2\n      :endpos 4)))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc")
-          )
-        ),
-        Xml.f_xml_angle_from_xml_textblock(
-          Core.f_empty(
-            Xml.t_xml
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("<doc>"),
-              Core.vx_new_string(":startpos"),
-              Core.vx_new_int(1),
-              Core.vx_new_string(":endpos"),
-              Core.vx_new_int(5),
-              Core.vx_new_string(":delim"),
-              Core.f_copy(
-                Textblock.c_delimbracketangle,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":pos"),
-                  Core.vx_new_int(0)
-                )
-              ),
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Textblock.t_textblocklist,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("doc"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(2),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(4)
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_angle_from_xml_textblock_testdescribe_3(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag2\"\n     :propmap\n      (stringmap\n       :prop1 \"val1\"\n       :prop2 \"val2\"))))\n (xml-angle<-xml-textblock\n  (xml\n   :tag \"tag1\")\n  (tb/textblock\n   :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n   :startpos 20\n   :endpos 53\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"tag2\"\n      :startpos 21\n      :endpos 24)\n     (tb/textblock\n      :text \" \"\n      :startpos 25\n      :endpos 25\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop1\"\n      :startpos 26\n      :endpos 30)\n     (tb/textblock\n      :text \"=\"\n      :startpos 31\n      :endpos 31\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val1\\\"\"\n      :startpos 32\n      :endpos 37\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val1\"\n         :startpos 33\n         :endpos 36)))\n     (tb/textblock\n      :text \" \"\n      :startpos 38\n      :endpos 38\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop2\"\n      :startpos 39\n      :endpos 43)\n     (tb/textblock\n      :text \"=\"\n      :startpos 44\n      :endpos 44\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val2\\\"\"\n      :startpos 45\n      :endpos 50\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val2\"\n         :startpos 46\n         :endpos 49)))\n      (tb/textblock\n       :text \" \"\n       :startpos 51\n       :endpos 51\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"/\"\n       :startpos 52\n       :endpos 52)))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("tag1"),
-            Core.vx_new_string(":children"),
-            Core.f_new(
-              Xml.t_xmllist,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Xml.t_xml,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":tag"),
-                    Core.vx_new_string("tag2"),
-                    Core.vx_new_string(":propmap"),
-                    Core.f_new(
-                      Core.t_stringmap,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":prop1"),
-                        Core.vx_new_string("val1"),
-                        Core.vx_new_string(":prop2"),
-                        Core.vx_new_string("val2")
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        Xml.f_xml_angle_from_xml_textblock(
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\")\n (xml-angle<-xml-textblock\n  (empty xml)\n  (tb/textblock\n   :text \"<doc>\"\n   :startpos 1\n   :endpos 5\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"doc\"\n      :startpos 2\n      :endpos 4)))))",
+        ":testresult",
+        Test.f_test(
+          context,
           Core.f_new(
             Xml.t_xml,
             Core.vx_new(
               Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("tag1")
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("<tag2 prop1=\"val1\" prop2=\"val2\" />"),
-              Core.vx_new_string(":startpos"),
-              Core.vx_new_int(20),
-              Core.vx_new_string(":endpos"),
-              Core.vx_new_int(53),
-              Core.vx_new_string(":delim"),
-              Core.f_copy(
-                Textblock.c_delimbracketangle,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":pos"),
-                  Core.vx_new_int(0)
-                )
-              ),
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Textblock.t_textblocklist,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("tag2"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(21),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(24)
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string(" "),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(25),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(25),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("prop1"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(26),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(30)
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("="),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(31),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(31),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Xml.c_delimxmlequal,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("\"val1\""),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(32),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(37),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimquote,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      ),
-                      Core.vx_new_string(":children"),
-                      Core.f_new(
-                        Textblock.t_textblocklist,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":text"),
-                              Core.vx_new_string("val1"),
-                              Core.vx_new_string(":startpos"),
-                              Core.vx_new_int(33),
-                              Core.vx_new_string(":endpos"),
-                              Core.vx_new_int(36)
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string(" "),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(38),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(38),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("prop2"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(39),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(43)
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("="),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(44),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(44),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Xml.c_delimxmlequal,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("\"val2\""),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(45),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(50),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimquote,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      ),
-                      Core.vx_new_string(":children"),
-                      Core.f_new(
-                        Textblock.t_textblocklist,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":text"),
-                              Core.vx_new_string("val2"),
-                              Core.vx_new_string(":startpos"),
-                              Core.vx_new_int(46),
-                              Core.vx_new_string(":endpos"),
-                              Core.vx_new_int(49)
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string(" "),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(51),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(51),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("/"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(52),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(52)
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testcase f_xml_close_from_xml_textblock(final Core.Type_context context) {
-    final Test.Type_testcase output = Core.vx_new(
-      Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "xml-close<-xml-textblock",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_xml_close_from_xml_textblock_testdescribe_1(context),
-        f_xml_close_from_xml_textblock_testdescribe_2(context),
-        f_xml_close_from_xml_textblock_testdescribe_3(context),
-        f_xml_close_from_xml_textblock_testdescribe_4(context)
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_1(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/\")))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc")
-          )
-        ),
-        Xml.f_xml_close_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("doc")
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("/")
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_2(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"</doc>\")))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc")
-          )
-        ),
-        Xml.f_xml_close_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("doc")
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("</doc>")
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_3(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity msg-error))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc"),
-            Core.f_new(
-              Core.t_msg,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":code"),
-                Core.vx_new_string(":invalidxmlclosetag"),
-                Core.vx_new_string(":detail"),
-                Core.f_new(
-                  Core.t_anymap,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":tag"),
-                    Core.vx_new_string("/wrong"),
-                    Core.vx_new_string(":startpos"),
-                    Core.vx_new_int(0),
-                    Core.vx_new_string(":endpos"),
-                    Core.vx_new_int(0),
-                    Core.vx_new_string(":line"),
-                    Core.vx_new_int(0),
-                    Core.vx_new_string(":column"),
-                    Core.vx_new_int(0)
-                  )
-                ),
-                Core.vx_new_string(":severity"),
-                Core.c_msg_error
-              )
-            )
-          )
-        ),
-        Xml.f_xml_close_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("doc")
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("/wrong")
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_4(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"top\"\n  :children\n   (xmllist\n    (xml\n     :tag \"doc\")))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\"\n   :parent\n    (xml\n     :tag \"top\"))\n  (tb/textblock\n   :text \"/\")))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("top"),
-            Core.vx_new_string(":children"),
-            Core.f_new(
-              Xml.t_xmllist,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Xml.t_xml,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":tag"),
-                    Core.vx_new_string("doc")
-                  )
-                )
-              )
-            )
-          )
-        ),
-        Xml.f_xml_close_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("doc"),
-              Core.vx_new_string(":parent"),
-              Core.f_new(
-                Xml.t_xml,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":tag"),
-                  Core.vx_new_string("top")
-                )
-              )
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("/")
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testcase f_xml_parse_from_xml_textblock(final Core.Type_context context) {
-    final Test.Type_testcase output = Core.vx_new(
-      Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "xml-parse<-xml-textblock",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_xml_parse_from_xml_textblock_testdescribe_1(context),
-        f_xml_parse_from_xml_textblock_testdescribe_2(context),
-        f_xml_parse_from_xml_textblock_testdescribe_3(context),
-        f_xml_parse_from_xml_textblock_testdescribe_4(context),
-        f_xml_parse_from_xml_textblock_testdescribe_5(context)
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_1(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-parse<-xml-textblock\n  (empty xml)\n  (tb/textblock\n   :text \"<doc>\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"doc\")))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc")
-          )
-        ),
-        Xml.f_xml_parse_from_xml_textblock(
-          Core.f_empty(
-            Xml.t_xml
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("<doc>"),
-              Core.vx_new_string(":delim"),
-              Core.f_copy(
-                Textblock.c_delimbracketangle,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":pos"),
-                  Core.vx_new_int(0)
-                )
-              ),
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Textblock.t_textblocklist,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("doc")
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_2(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\")\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"\n  \"\n   :delim\n    (copy tb/delimwhitespace\n     :pos 0))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc")
-          )
-        ),
-        Xml.f_xml_parse_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("doc")
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("\n  "),
-              Core.vx_new_string(":delim"),
-              Core.f_copy(
-                Textblock.c_delimwhitespace,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":pos"),
-                  Core.vx_new_int(0)
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_3(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :parent\n   (xml\n    :tag \"doc\"))\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"<tag1>\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"tag1\")))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("tag1"),
-            Core.vx_new_string(":parent"),
-            Core.f_new(
-              Xml.t_xml,
-              Core.vx_new(
-                Core.t_anylist,
+              // [
                 Core.vx_new_string(":tag"),
                 Core.vx_new_string("doc")
-              )
-            )
-          )
-        ),
-        Xml.f_xml_parse_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("doc")
+              // ]
             )
           ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("<tag1>"),
-              Core.vx_new_string(":delim"),
-              Core.f_copy(
-                Textblock.c_delimbracketangle,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":pos"),
-                  Core.vx_new_int(0)
-                )
-              ),
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Textblock.t_textblocklist,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("tag1")
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_4(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag2\"\n     :propmap\n      (stringmap\n       :prop1 \"val1\"\n       :prop2 \"val2\")))\n  :parent\n   (xml\n    :tag \"doc\"))\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"tag1\"\n   :parent\n    (xml\n     :tag \"doc\"))\n  (tb/textblock\n   :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"tag2\")\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop1\")\n     (tb/textblock\n      :text \"=\"\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val1\\\"\"\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val1\")))\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop2\")\n     (tb/textblock\n      :text \"=\"\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val2\\\"\"\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val2\")))\n      (tb/textblock\n       :text \" \"\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"/\")))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("tag1"),
-            Core.vx_new_string(":children"),
+          Xml.f_xml_angle_from_xml_textblock(
+            Core.f_empty(Xml.t_xml),
             Core.f_new(
-              Xml.t_xmllist,
+              Textblock.t_textblock,
               Core.vx_new(
                 Core.t_anylist,
-                Core.f_new(
-                  Xml.t_xml,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":tag"),
-                    Core.vx_new_string("tag2"),
-                    Core.vx_new_string(":propmap"),
-                    Core.f_new(
-                      Core.t_stringmap,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":prop1"),
-                        Core.vx_new_string("val1"),
-                        Core.vx_new_string(":prop2"),
-                        Core.vx_new_string("val2")
-                      )
-                    )
-                  )
-                )
-              )
-            ),
-            Core.vx_new_string(":parent"),
-            Core.f_new(
-              Xml.t_xml,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":tag"),
-                Core.vx_new_string("doc")
-              )
-            )
-          )
-        ),
-        Xml.f_xml_parse_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("tag1"),
-              Core.vx_new_string(":parent"),
-              Core.f_new(
-                Xml.t_xml,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":tag"),
-                  Core.vx_new_string("doc")
-                )
-              )
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("<tag2 prop1=\"val1\" prop2=\"val2\" />"),
-              Core.vx_new_string(":delim"),
-              Core.f_copy(
-                Textblock.c_delimbracketangle,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":pos"),
-                  Core.vx_new_int(0)
-                )
-              ),
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Textblock.t_textblocklist,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("tag2")
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string(" "),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("prop1")
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("="),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Xml.c_delimxmlequal,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("\"val1\""),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimquote,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      ),
-                      Core.vx_new_string(":children"),
-                      Core.f_new(
-                        Textblock.t_textblocklist,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":text"),
-                              Core.vx_new_string("val1")
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string(" "),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("prop2")
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("="),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Xml.c_delimxmlequal,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("\"val2\""),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimquote,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      ),
-                      Core.vx_new_string(":children"),
-                      Core.f_new(
-                        Textblock.t_textblocklist,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":text"),
-                              Core.vx_new_string("val2")
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string(" "),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("/")
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_5(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n    :tag \"tag1\"\n    :children\n     (xmllist\n      (xml\n       :tag \"tag2\"\n       :propmap\n        (stringmap\n         :prop1 \"val1\"\n         :prop2 \"val2\"))))))\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"tag1\"\n   :children\n    (xmllist\n     (xml\n      :tag \"tag2\"\n      :propmap\n       (stringmap\n        :prop1 \"val1\"\n        :prop2 \"val2\")))\n   :parent\n    (xml\n     :tag \"doc\"))\n  (tb/textblock\n   :text \"</tag1>\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"/tag1\")))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc"),
-            Core.vx_new_string(":children"),
-            Core.f_new(
-              Xml.t_xmllist,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Xml.t_xml,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":tag"),
-                    Core.vx_new_string("tag1"),
-                    Core.vx_new_string(":children"),
-                    Core.f_new(
-                      Xml.t_xmllist,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Xml.t_xml,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":tag"),
-                            Core.vx_new_string("tag2"),
-                            Core.vx_new_string(":propmap"),
-                            Core.f_new(
-                              Core.t_stringmap,
-                              Core.vx_new(
-                                Core.t_anylist,
-                                Core.vx_new_string(":prop1"),
-                                Core.vx_new_string("val1"),
-                                Core.vx_new_string(":prop2"),
-                                Core.vx_new_string("val2")
-                              )
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        Xml.f_xml_parse_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("tag1"),
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Xml.t_xmllist,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.f_new(
-                    Xml.t_xml,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":tag"),
-                      Core.vx_new_string("tag2"),
-                      Core.vx_new_string(":propmap"),
-                      Core.f_new(
-                        Core.t_stringmap,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":prop1"),
-                          Core.vx_new_string("val1"),
-                          Core.vx_new_string(":prop2"),
-                          Core.vx_new_string("val2")
-                        )
-                      )
-                    )
-                  )
-                )
-              ),
-              Core.vx_new_string(":parent"),
-              Core.f_new(
-                Xml.t_xml,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":tag"),
-                  Core.vx_new_string("doc")
-                )
-              )
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("</tag1>"),
-              Core.vx_new_string(":delim"),
-              Core.f_copy(
-                Textblock.c_delimbracketangle,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":pos"),
-                  Core.vx_new_int(0)
-                )
-              ),
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Textblock.t_textblocklist,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("/tag1")
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testcase f_xml_parse_from_xml_textblocklist(final Core.Type_context context) {
-    final Test.Type_testcase output = Core.vx_new(
-      Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "xml-parse<-xml-textblocklist",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_xml_parse_from_xml_textblocklist_testdescribe_1(context)
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_parse_from_xml_textblocklist_testdescribe_1(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag1\"\n     :children\n      (xmllist\n       (xml\n        :tag \"tag2\"\n        :propmap\n         (stringmap\n          :prop1 \"val1\"\n          :prop2 \"val2\"))))))\n (xml-parse<-xml-textblocklist\n  (empty xml)\n  (tb/textblocklist\n   (tb/textblock\n    :text \"<doc>\"\n    :startpos 1\n    :endpos 5\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"doc\"\n       :startpos 2\n       :endpos 4)))\n   (tb/textblock\n    :text \"\n  \"\n    :startpos 6\n    :endpos 8\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"<tag1>\"\n    :startpos 9\n    :endpos 14\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"tag1\"\n       :startpos 10\n       :endpos 13)))\n   (tb/textblock\n    :text \"\n    \"\n    :startpos 15\n    :endpos 19\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n    :startpos 20\n    :endpos 53\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"tag2\"\n       :startpos 21\n       :endpos 24)\n      (tb/textblock\n       :text \" \"\n       :startpos 25\n       :endpos 25\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"prop1\"\n       :startpos 26\n       :endpos 30)\n      (tb/textblock\n       :text \"=\"\n       :startpos 31\n       :endpos 31\n       :delim\n        (copy delimxmlequal\n         :pos 0))\n      (tb/textblock\n       :text \"\\\"val1\\\"\"\n       :startpos 32\n       :endpos 37\n       :delim\n        (copy tb/delimquote\n         :pos 0)\n       :children\n        (tb/textblocklist\n         (tb/textblock\n          :text \"val1\"\n          :startpos 33\n          :endpos 36)))\n      (tb/textblock\n       :text \" \"\n       :startpos 38\n       :endpos 38\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"prop2\"\n       :startpos 39\n       :endpos 43)\n      (tb/textblock\n       :text \"=\"\n       :startpos 44\n       :endpos 44\n       :delim\n        (copy delimxmlequal\n         :pos 0))\n      (tb/textblock\n       :text \"\\\"val2\\\"\"\n       :startpos 45\n       :endpos 50\n       :delim\n        (copy tb/delimquote\n         :pos 0)\n       :children\n        (tb/textblocklist\n         (tb/textblock\n          :text \"val2\"\n          :startpos 46\n          :endpos 49)))\n       (tb/textblock\n        :text \" \"\n        :startpos 51\n        :endpos 51\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (tb/textblock\n        :text \"/\"\n        :startpos 52\n        :endpos 52)))\n   (tb/textblock\n    :text \"\n  \"\n    :startpos 54\n    :endpos 56\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"</tag1>\"\n    :startpos 57\n    :endpos 63\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"/tag1\"\n       :startpos 58\n       :endpos 62)))\n   (tb/textblock\n    :text \"\n\"\n    :startpos 64\n    :endpos 64\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"</doc>\"\n    :startpos 65\n    :endpos 70\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"/doc\"\n       :startpos 66\n       :endpos 69))))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc"),
-            Core.vx_new_string(":children"),
-            Core.f_new(
-              Xml.t_xmllist,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Xml.t_xml,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":tag"),
-                    Core.vx_new_string("tag1"),
-                    Core.vx_new_string(":children"),
-                    Core.f_new(
-                      Xml.t_xmllist,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.f_new(
-                          Xml.t_xml,
-                          Core.vx_new(
-                            Core.t_anylist,
-                            Core.vx_new_string(":tag"),
-                            Core.vx_new_string("tag2"),
-                            Core.vx_new_string(":propmap"),
-                            Core.f_new(
-                              Core.t_stringmap,
-                              Core.vx_new(
-                                Core.t_anylist,
-                                Core.vx_new_string(":prop1"),
-                                Core.vx_new_string("val1"),
-                                Core.vx_new_string(":prop2"),
-                                Core.vx_new_string("val2")
-                              )
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        Xml.f_xml_parse_from_xml_textblocklist(
-          Core.f_empty(
-            Xml.t_xml
-          ),
-          Core.f_new(
-            Textblock.t_textblocklist,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
+                // [
                   Core.vx_new_string(":text"),
                   Core.vx_new_string("<doc>"),
                   Core.vx_new_string(":startpos"),
@@ -1913,8 +787,10 @@ public final class XmlTest {
                     Textblock.c_delimbracketangle,
                     Core.vx_new(
                       Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
+                      // [
+                        Core.vx_new_string(":pos"),
+                        Core.vx_new_int(0)
+                      // ]
                     )
                   ),
                   Core.vx_new_string(":children"),
@@ -1922,108 +798,101 @@ public final class XmlTest {
                     Textblock.t_textblocklist,
                     Core.vx_new(
                       Core.t_anylist,
+                      // [
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("doc"),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(2),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(4)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_angle_from_xml_textblock_testdescribe_3(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"tag1\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag2\"\n     :propmap\n      (stringmap\n       :prop1 \"val1\"\n       :prop2 \"val2\"))))\n (xml-angle<-xml-textblock\n  (xml\n   :tag \"tag1\")\n  (tb/textblock\n   :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n   :startpos 20\n   :endpos 53\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"tag2\"\n      :startpos 21\n      :endpos 24)\n     (tb/textblock\n      :text \" \"\n      :startpos 25\n      :endpos 25\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop1\"\n      :startpos 26\n      :endpos 30)\n     (tb/textblock\n      :text \"=\"\n      :startpos 31\n      :endpos 31\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val1\\\"\"\n      :startpos 32\n      :endpos 37\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val1\"\n         :startpos 33\n         :endpos 36)))\n     (tb/textblock\n      :text \" \"\n      :startpos 38\n      :endpos 38\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop2\"\n      :startpos 39\n      :endpos 43)\n     (tb/textblock\n      :text \"=\"\n      :startpos 44\n      :endpos 44\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val2\\\"\"\n      :startpos 45\n      :endpos 50\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val2\"\n         :startpos 46\n         :endpos 49)))\n      (tb/textblock\n       :text \" \"\n       :startpos 51\n       :endpos 51\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"/\"\n       :startpos 52\n       :endpos 52)))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("tag1"),
+                Core.vx_new_string(":children"),
+                Core.f_new(
+                  Xml.t_xmllist,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
                       Core.f_new(
-                        Textblock.t_textblock,
+                        Xml.t_xml,
                         Core.vx_new(
                           Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("doc"),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(2),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(4)
+                          // [
+                            Core.vx_new_string(":tag"),
+                            Core.vx_new_string("tag2"),
+                            Core.vx_new_string(":propmap"),
+                            Core.f_new(
+                              Core.t_stringmap,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.vx_new_string(":prop1"),
+                                  Core.vx_new_string("val1"),
+                                  Core.vx_new_string(":prop2"),
+                                  Core.vx_new_string("val2")
+                                // ]
+                              )
+                            )
+                          // ]
                         )
                       )
-                    )
+                    // ]
                   )
                 )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("\n  "),
-                  Core.vx_new_string(":startpos"),
-                  Core.vx_new_int(6),
-                  Core.vx_new_string(":endpos"),
-                  Core.vx_new_int(8),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimwhitespace,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("<tag1>"),
-                  Core.vx_new_string(":startpos"),
-                  Core.vx_new_int(9),
-                  Core.vx_new_string(":endpos"),
-                  Core.vx_new_int(14),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimbracketangle,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  ),
-                  Core.vx_new_string(":children"),
-                  Core.f_new(
-                    Textblock.t_textblocklist,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("tag1"),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(10),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(13)
-                        )
-                      )
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("\n    "),
-                  Core.vx_new_string(":startpos"),
-                  Core.vx_new_int(15),
-                  Core.vx_new_string(":endpos"),
-                  Core.vx_new_int(19),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimwhitespace,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
+              // ]
+            )
+          ),
+          Xml.f_xml_angle_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("tag1")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
                   Core.vx_new_string(":text"),
                   Core.vx_new_string("<tag2 prop1=\"val1\" prop2=\"val2\" />"),
                   Core.vx_new_string(":startpos"),
@@ -2035,8 +904,10 @@ public final class XmlTest {
                     Textblock.c_delimbracketangle,
                     Core.vx_new(
                       Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
+                      // [
+                        Core.vx_new_string(":pos"),
+                        Core.vx_new_int(0)
+                      // ]
                     )
                   ),
                   Core.vx_new_string(":children"),
@@ -2044,1154 +915,26 @@ public final class XmlTest {
                     Textblock.t_textblocklist,
                     Core.vx_new(
                       Core.t_anylist,
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("tag2"),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(21),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(24)
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string(" "),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(25),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(25),
-                          Core.vx_new_string(":delim"),
-                          Core.f_copy(
-                            Textblock.c_delimwhitespace,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":pos"),
-                              Core.vx_new_int(0)
-                            )
-                          )
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("prop1"),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(26),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(30)
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("="),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(31),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(31),
-                          Core.vx_new_string(":delim"),
-                          Core.f_copy(
-                            Xml.c_delimxmlequal,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":pos"),
-                              Core.vx_new_int(0)
-                            )
-                          )
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("\"val1\""),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(32),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(37),
-                          Core.vx_new_string(":delim"),
-                          Core.f_copy(
-                            Textblock.c_delimquote,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":pos"),
-                              Core.vx_new_int(0)
-                            )
-                          ),
-                          Core.vx_new_string(":children"),
-                          Core.f_new(
-                            Textblock.t_textblocklist,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.f_new(
-                                Textblock.t_textblock,
-                                Core.vx_new(
-                                  Core.t_anylist,
-                                  Core.vx_new_string(":text"),
-                                  Core.vx_new_string("val1"),
-                                  Core.vx_new_string(":startpos"),
-                                  Core.vx_new_int(33),
-                                  Core.vx_new_string(":endpos"),
-                                  Core.vx_new_int(36)
-                                )
-                              )
-                            )
-                          )
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string(" "),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(38),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(38),
-                          Core.vx_new_string(":delim"),
-                          Core.f_copy(
-                            Textblock.c_delimwhitespace,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":pos"),
-                              Core.vx_new_int(0)
-                            )
-                          )
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("prop2"),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(39),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(43)
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("="),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(44),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(44),
-                          Core.vx_new_string(":delim"),
-                          Core.f_copy(
-                            Xml.c_delimxmlequal,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":pos"),
-                              Core.vx_new_int(0)
-                            )
-                          )
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("\"val2\""),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(45),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(50),
-                          Core.vx_new_string(":delim"),
-                          Core.f_copy(
-                            Textblock.c_delimquote,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":pos"),
-                              Core.vx_new_int(0)
-                            )
-                          ),
-                          Core.vx_new_string(":children"),
-                          Core.f_new(
-                            Textblock.t_textblocklist,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.f_new(
-                                Textblock.t_textblock,
-                                Core.vx_new(
-                                  Core.t_anylist,
-                                  Core.vx_new_string(":text"),
-                                  Core.vx_new_string("val2"),
-                                  Core.vx_new_string(":startpos"),
-                                  Core.vx_new_int(46),
-                                  Core.vx_new_string(":endpos"),
-                                  Core.vx_new_int(49)
-                                )
-                              )
-                            )
-                          )
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string(" "),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(51),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(51),
-                          Core.vx_new_string(":delim"),
-                          Core.f_copy(
-                            Textblock.c_delimwhitespace,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":pos"),
-                              Core.vx_new_int(0)
-                            )
-                          )
-                        )
-                      ),
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("/"),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(52),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(52)
-                        )
-                      )
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("\n  "),
-                  Core.vx_new_string(":startpos"),
-                  Core.vx_new_int(54),
-                  Core.vx_new_string(":endpos"),
-                  Core.vx_new_int(56),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimwhitespace,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("</tag1>"),
-                  Core.vx_new_string(":startpos"),
-                  Core.vx_new_int(57),
-                  Core.vx_new_string(":endpos"),
-                  Core.vx_new_int(63),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimbracketangle,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  ),
-                  Core.vx_new_string(":children"),
-                  Core.f_new(
-                    Textblock.t_textblocklist,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("/tag1"),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(58),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(62)
-                        )
-                      )
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("\n"),
-                  Core.vx_new_string(":startpos"),
-                  Core.vx_new_int(64),
-                  Core.vx_new_string(":endpos"),
-                  Core.vx_new_int(64),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimwhitespace,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("</doc>"),
-                  Core.vx_new_string(":startpos"),
-                  Core.vx_new_int(65),
-                  Core.vx_new_string(":endpos"),
-                  Core.vx_new_int(70),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimbracketangle,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  ),
-                  Core.vx_new_string(":children"),
-                  Core.f_new(
-                    Textblock.t_textblocklist,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("/doc"),
-                          Core.vx_new_string(":startpos"),
-                          Core.vx_new_int(66),
-                          Core.vx_new_string(":endpos"),
-                          Core.vx_new_int(69)
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testcase f_xml_properties_from_xml_textblocklist(final Core.Type_context context) {
-    final Test.Type_testcase output = Core.vx_new(
-      Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "xml-properties<-xml-textblocklist",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_xml_properties_from_xml_textblocklist_testdescribe_1(context)
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_properties_from_xml_textblocklist_testdescribe_1(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag2\"\n     :propmap\n      (stringmap\n       :prop1 \"val1\"\n       :prop2 \"val2\"))))\n (xml-properties<-xml-textblocklist\n  (xml\n   :tag :notag\n   :parent\n    (xml\n     :tag \"doc\"))\n  (tb/textblocklist\n   (tb/textblock\n    :text \"tag2\")\n   (tb/textblock\n    :text \" \"\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"prop1\")\n   (tb/textblock\n    :text \"=\"\n    :delim\n     (copy delimxmlequal\n      :pos 0))\n   (tb/textblock\n    :text \"\\\"val1\\\"\"\n    :startpos 32\n    :endpos 37\n    :delim\n     (copy tb/delimquote\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"val1\")))\n   (tb/textblock\n    :text \" \"\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"prop2\")\n   (tb/textblock\n    :text \"=\"\n    :delim\n     (copy delimxmlequal\n      :pos 0))\n   (tb/textblock\n    :text \"\\\"val2\\\"\"\n    :delim\n     (copy tb/delimquote\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"val2\")))\n   (tb/textblock\n    :text \" \"\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"/\"))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc"),
-            Core.vx_new_string(":children"),
-            Core.f_new(
-              Xml.t_xmllist,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Xml.t_xml,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":tag"),
-                    Core.vx_new_string("tag2"),
-                    Core.vx_new_string(":propmap"),
-                    Core.f_new(
-                      Core.t_stringmap,
-                      Core.vx_new(
-                        Core.t_anylist,
-                        Core.vx_new_string(":prop1"),
-                        Core.vx_new_string("val1"),
-                        Core.vx_new_string(":prop2"),
-                        Core.vx_new_string("val2")
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        Xml.f_xml_properties_from_xml_textblocklist(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string(":notag"),
-              Core.vx_new_string(":parent"),
-              Core.f_new(
-                Xml.t_xml,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":tag"),
-                  Core.vx_new_string("doc")
-                )
-              )
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblocklist,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("tag2")
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string(" "),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimwhitespace,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("prop1")
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("="),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Xml.c_delimxmlequal,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("\"val1\""),
-                  Core.vx_new_string(":startpos"),
-                  Core.vx_new_int(32),
-                  Core.vx_new_string(":endpos"),
-                  Core.vx_new_int(37),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimquote,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  ),
-                  Core.vx_new_string(":children"),
-                  Core.f_new(
-                    Textblock.t_textblocklist,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("val1")
-                        )
-                      )
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string(" "),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimwhitespace,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("prop2")
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("="),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Xml.c_delimxmlequal,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("\"val2\""),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimquote,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  ),
-                  Core.vx_new_string(":children"),
-                  Core.f_new(
-                    Textblock.t_textblocklist,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.f_new(
-                        Textblock.t_textblock,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":text"),
-                          Core.vx_new_string("val2")
-                        )
-                      )
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string(" "),
-                  Core.vx_new_string(":delim"),
-                  Core.f_copy(
-                    Textblock.c_delimwhitespace,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":pos"),
-                      Core.vx_new_int(0)
-                    )
-                  )
-                )
-              ),
-              Core.f_new(
-                Textblock.t_textblock,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":text"),
-                  Core.vx_new_string("/")
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testcase f_xml_property_from_xml_textblock(final Core.Type_context context) {
-    final Test.Type_testcase output = Core.vx_new(
-      Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "xml-property<-xml-textblock",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_xml_property_from_xml_textblock_testdescribe_1(context),
-        f_xml_property_from_xml_textblock_testdescribe_2(context),
-        f_xml_property_from_xml_textblock_testdescribe_3(context)
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_property_from_xml_textblock_testdescribe_1(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"tag1\")\n (xml-property<-xml-textblock\n  (xml\n   :tag \":notag\")\n  (tb/textblock\n   :text \"tag1\")))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("tag1")
-          )
-        ),
-        Xml.f_xml_property_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string(":notag")
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("tag1")
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_property_from_xml_textblock_testdescribe_2(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :prop \"prop1\")\n (xml-property<-xml-textblock\n  (xml\n   :tag \"tag1\")\n  (tb/textblock\n   :text \"prop1\")))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("tag1"),
-            Core.vx_new_string(":prop"),
-            Core.vx_new_string("prop1")
-          )
-        ),
-        Xml.f_xml_property_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("tag1")
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("prop1")
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_property_from_xml_textblock_testdescribe_3(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"tag1\"\n  :propmap\n   (stringmap\n    :prop1 \"val1\"))\n (xml-property<-xml-textblock\n  (xml\n   :tag \"tag1\"\n   :prop \"prop1\")\n  (tb/textblock\n   :delim\n    (copy tb/delimquote\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"val1\")))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("tag1"),
-            Core.vx_new_string(":propmap"),
-            Core.f_new(
-              Core.t_stringmap,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.vx_new_string(":prop1"),
-                Core.vx_new_string("val1")
-              )
-            )
-          )
-        ),
-        Xml.f_xml_property_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("tag1"),
-              Core.vx_new_string(":prop"),
-              Core.vx_new_string("prop1")
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":delim"),
-              Core.f_copy(
-                Textblock.c_delimquote,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.vx_new_string(":pos"),
-                  Core.vx_new_int(0)
-                )
-              ),
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Textblock.t_textblocklist,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("val1")
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testcase f_xml_text_from_xml_textblock(final Core.Type_context context) {
-    final Test.Type_testcase output = Core.vx_new(
-      Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "xml-text<-xml-textblock",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_xml_text_from_xml_textblock_testdescribe_1(context),
-        f_xml_text_from_xml_textblock_testdescribe_2(context)
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_text_from_xml_textblock_testdescribe_1(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :text \"text1\")\n (xml-text<-xml-textblock\n  (empty xml)\n  (tb/textblock\n   :text \"text1\")))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":text"),
-            Core.vx_new_string("text1")
-          )
-        ),
-        Xml.f_xml_text_from_xml_textblock(
-          Core.f_empty(
-            Xml.t_xml
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("text1")
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_text_from_xml_textblock_testdescribe_2(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :text \"text1\")))\n (xml-text<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"text1\")))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc"),
-            Core.vx_new_string(":children"),
-            Core.f_new(
-              Xml.t_xmllist,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Xml.t_xml,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":text"),
-                    Core.vx_new_string("text1")
-                  )
-                )
-              )
-            )
-          )
-        ),
-        Xml.f_xml_text_from_xml_textblock(
-          Core.f_new(
-            Xml.t_xml,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":tag"),
-              Core.vx_new_string("doc")
-            )
-          ),
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("text1")
-            )
-          )
-        )
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testcase f_xml_from_textblock(final Core.Type_context context) {
-    final Test.Type_testcase output = Core.vx_new(
-      Test.t_testcase,
-      ":passfail", false,
-      ":testpkg", "vx/data/xml",
-      ":casename", "xml<-textblock",
-      ":describelist",
-      Core.vx_new(
-        Test.t_testdescribelist,
-        f_xml_from_textblock_testdescribe_1(context)
-      )
-    );
-    return output;
-  }
-
-  public static Test.Type_testdescribe f_xml_from_textblock_testdescribe_1(final Core.Type_context context) {
-    final Test.Type_testdescribe output = Core.vx_new(
-      Test.t_testdescribe,
-      ":describename", "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag1\"\n     :children\n      (xmllist\n       (xml\n        :tag \"tag2\"\n        :propmap\n         (stringmap\n          :prop1 \"val1\"\n          :prop2 \"val2\"))))))\n (xml<-textblock\n  (tb/textblock\n   :text\n    \"<doc>\n       <tag1>\n         <tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\n       </tag1>\n     </doc>\"\n   :startpos 1\n   :endpos 70\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"<doc>\"\n      :startpos 1\n      :endpos 5\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"doc\"\n         :startpos 2\n         :endpos 4)))\n     (tb/textblock\n      :text \"\n  \"\n      :startpos 6\n      :endpos 8\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"<tag1>\"\n      :startpos 9\n      :endpos 14\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"tag1\"\n         :startpos 10\n         :endpos 13)))\n     (tb/textblock\n      :text \"\n    \"\n      :startpos 15\n      :endpos 19\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n      :startpos 20\n      :endpos 53\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"tag2\"\n         :startpos 21\n         :endpos 24)\n        (tb/textblock\n         :text \" \"\n         :startpos 25\n         :endpos 25\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"prop1\"\n         :startpos 26\n         :endpos 30)\n        (tb/textblock\n         :text \"=\"\n         :startpos 31\n         :endpos 31\n         :delim\n          (copy delimxmlequal\n           :pos 0))\n        (tb/textblock\n         :text \"\\\"val1\\\"\"\n         :startpos 32\n         :endpos 37\n         :delim\n          (copy tb/delimquote\n           :pos 0)\n         :children\n          (tb/textblocklist\n           (tb/textblock\n            :text \"val1\"\n            :startpos 33\n            :endpos 36)))\n        (tb/textblock\n         :text \" \"\n         :startpos 38\n         :endpos 38\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"prop2\"\n         :startpos 39\n         :endpos 43)\n        (tb/textblock\n         :text \"=\"\n         :startpos 44\n         :endpos 44\n         :delim\n          (copy delimxmlequal\n           :pos 0))\n        (tb/textblock\n         :text \"\\\"val2\\\"\"\n         :startpos 45\n         :endpos 50\n         :delim\n          (copy tb/delimquote\n           :pos 0)\n         :children\n          (tb/textblocklist\n           (tb/textblock\n            :text \"val2\"\n            :startpos 46\n            :endpos 49)))\n         (tb/textblock\n          :text \" \"\n          :startpos 51\n          :endpos 51\n          :delim\n           (copy tb/delimwhitespace\n            :pos 0))\n         (tb/textblock\n          :text \"/\"\n          :startpos 52\n          :endpos 52)))\n     (tb/textblock\n      :text \"\n  \"\n      :startpos 54\n      :endpos 56\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"</tag1>\"\n      :startpos 57\n      :endpos 63\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"/tag1\"\n         :startpos 58\n         :endpos 62)))\n     (tb/textblock\n      :text \"\n\"\n      :startpos 64\n      :endpos 64\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"</doc>\"\n      :startpos 65\n      :endpos 70\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"/doc\"\n         :startpos 66\n         :endpos 69)))))))",
-      ":testresult", Test.f_test(
-        context,
-        Core.f_new(
-          Xml.t_xml,
-          Core.vx_new(
-            Core.t_anylist,
-            Core.vx_new_string(":tag"),
-            Core.vx_new_string("doc"),
-            Core.vx_new_string(":children"),
-            Core.f_new(
-              Xml.t_xmllist,
-              Core.vx_new(
-                Core.t_anylist,
-                Core.f_new(
-                  Xml.t_xml,
-                  Core.vx_new(
-                    Core.t_anylist,
-                    Core.vx_new_string(":tag"),
-                    Core.vx_new_string("tag1"),
-                    Core.vx_new_string(":children"),
-                    Core.f_new(
-                      Xml.t_xmllist,
-                      Core.vx_new(
-                        Core.t_anylist,
+                      // [
                         Core.f_new(
-                          Xml.t_xml,
+                          Textblock.t_textblock,
                           Core.vx_new(
                             Core.t_anylist,
-                            Core.vx_new_string(":tag"),
-                            Core.vx_new_string("tag2"),
-                            Core.vx_new_string(":propmap"),
-                            Core.f_new(
-                              Core.t_stringmap,
-                              Core.vx_new(
-                                Core.t_anylist,
-                                Core.vx_new_string(":prop1"),
-                                Core.vx_new_string("val1"),
-                                Core.vx_new_string(":prop2"),
-                                Core.vx_new_string("val2")
-                              )
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        ),
-        Xml.f_xml_from_textblock(
-          Core.f_new(
-            Textblock.t_textblock,
-            Core.vx_new(
-              Core.t_anylist,
-              Core.vx_new_string(":text"),
-              Core.vx_new_string("<doc>\n  <tag1>\n    <tag2 prop1=\"val1\" prop2=\"val2\" />\n  </tag1>\n</doc>"),
-              Core.vx_new_string(":startpos"),
-              Core.vx_new_int(1),
-              Core.vx_new_string(":endpos"),
-              Core.vx_new_int(70),
-              Core.vx_new_string(":children"),
-              Core.f_new(
-                Textblock.t_textblocklist,
-                Core.vx_new(
-                  Core.t_anylist,
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("<doc>"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(1),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(5),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimbracketangle,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      ),
-                      Core.vx_new_string(":children"),
-                      Core.f_new(
-                        Textblock.t_textblocklist,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":text"),
-                              Core.vx_new_string("doc"),
-                              Core.vx_new_string(":startpos"),
-                              Core.vx_new_int(2),
-                              Core.vx_new_string(":endpos"),
-                              Core.vx_new_int(4)
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("\n  "),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(6),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(8),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("<tag1>"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(9),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(14),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimbracketangle,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      ),
-                      Core.vx_new_string(":children"),
-                      Core.f_new(
-                        Textblock.t_textblocklist,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":text"),
-                              Core.vx_new_string("tag1"),
-                              Core.vx_new_string(":startpos"),
-                              Core.vx_new_int(10),
-                              Core.vx_new_string(":endpos"),
-                              Core.vx_new_int(13)
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("\n    "),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(15),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(19),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("<tag2 prop1=\"val1\" prop2=\"val2\" />"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(20),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(53),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimbracketangle,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      ),
-                      Core.vx_new_string(":children"),
-                      Core.f_new(
-                        Textblock.t_textblocklist,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string("tag2"),
                               Core.vx_new_string(":startpos"),
                               Core.vx_new_int(21),
                               Core.vx_new_string(":endpos"),
                               Core.vx_new_int(24)
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string(" "),
                               Core.vx_new_string(":startpos"),
@@ -3203,28 +946,34 @@ public final class XmlTest {
                                 Textblock.c_delimwhitespace,
                                 Core.vx_new(
                                   Core.t_anylist,
-                                  Core.vx_new_string(":pos"),
-                                  Core.vx_new_int(0)
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
                                 )
                               )
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string("prop1"),
                               Core.vx_new_string(":startpos"),
                               Core.vx_new_int(26),
                               Core.vx_new_string(":endpos"),
                               Core.vx_new_int(30)
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string("="),
                               Core.vx_new_string(":startpos"),
@@ -3236,16 +985,20 @@ public final class XmlTest {
                                 Xml.c_delimxmlequal,
                                 Core.vx_new(
                                   Core.t_anylist,
-                                  Core.vx_new_string(":pos"),
-                                  Core.vx_new_int(0)
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
                                 )
                               )
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string("\"val1\""),
                               Core.vx_new_string(":startpos"),
@@ -3257,8 +1010,10 @@ public final class XmlTest {
                                 Textblock.c_delimquote,
                                 Core.vx_new(
                                   Core.t_anylist,
-                                  Core.vx_new_string(":pos"),
-                                  Core.vx_new_int(0)
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
                                 )
                               ),
                               Core.vx_new_string(":children"),
@@ -3266,26 +1021,32 @@ public final class XmlTest {
                                 Textblock.t_textblocklist,
                                 Core.vx_new(
                                   Core.t_anylist,
-                                  Core.f_new(
-                                    Textblock.t_textblock,
-                                    Core.vx_new(
-                                      Core.t_anylist,
-                                      Core.vx_new_string(":text"),
-                                      Core.vx_new_string("val1"),
-                                      Core.vx_new_string(":startpos"),
-                                      Core.vx_new_int(33),
-                                      Core.vx_new_string(":endpos"),
-                                      Core.vx_new_int(36)
+                                  // [
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("val1"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(33),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(36)
+                                        // ]
+                                      )
                                     )
-                                  )
+                                  // ]
                                 )
                               )
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string(" "),
                               Core.vx_new_string(":startpos"),
@@ -3297,28 +1058,34 @@ public final class XmlTest {
                                 Textblock.c_delimwhitespace,
                                 Core.vx_new(
                                   Core.t_anylist,
-                                  Core.vx_new_string(":pos"),
-                                  Core.vx_new_int(0)
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
                                 )
                               )
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string("prop2"),
                               Core.vx_new_string(":startpos"),
                               Core.vx_new_int(39),
                               Core.vx_new_string(":endpos"),
                               Core.vx_new_int(43)
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string("="),
                               Core.vx_new_string(":startpos"),
@@ -3330,16 +1097,20 @@ public final class XmlTest {
                                 Xml.c_delimxmlequal,
                                 Core.vx_new(
                                   Core.t_anylist,
-                                  Core.vx_new_string(":pos"),
-                                  Core.vx_new_int(0)
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
                                 )
                               )
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string("\"val2\""),
                               Core.vx_new_string(":startpos"),
@@ -3351,8 +1122,10 @@ public final class XmlTest {
                                 Textblock.c_delimquote,
                                 Core.vx_new(
                                   Core.t_anylist,
-                                  Core.vx_new_string(":pos"),
-                                  Core.vx_new_int(0)
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
                                 )
                               ),
                               Core.vx_new_string(":children"),
@@ -3360,26 +1133,32 @@ public final class XmlTest {
                                 Textblock.t_textblocklist,
                                 Core.vx_new(
                                   Core.t_anylist,
-                                  Core.f_new(
-                                    Textblock.t_textblock,
-                                    Core.vx_new(
-                                      Core.t_anylist,
-                                      Core.vx_new_string(":text"),
-                                      Core.vx_new_string("val2"),
-                                      Core.vx_new_string(":startpos"),
-                                      Core.vx_new_int(46),
-                                      Core.vx_new_string(":endpos"),
-                                      Core.vx_new_int(49)
+                                  // [
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("val2"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(46),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(49)
+                                        // ]
+                                      )
                                     )
-                                  )
+                                  // ]
                                 )
                               )
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string(" "),
                               Core.vx_new_string(":startpos"),
@@ -3391,176 +1170,3205 @@ public final class XmlTest {
                                 Textblock.c_delimwhitespace,
                                 Core.vx_new(
                                   Core.t_anylist,
-                                  Core.vx_new_string(":pos"),
-                                  Core.vx_new_int(0)
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
                                 )
                               )
-                            )
-                          ),
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
                               Core.vx_new_string(":text"),
                               Core.vx_new_string("/"),
                               Core.vx_new_string(":startpos"),
                               Core.vx_new_int(52),
                               Core.vx_new_string(":endpos"),
                               Core.vx_new_int(52)
-                            )
+                            // ]
                           )
                         )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("\n  "),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(54),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(56),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("</tag1>"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(57),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(63),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimbracketangle,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      ),
-                      Core.vx_new_string(":children"),
-                      Core.f_new(
-                        Textblock.t_textblocklist,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":text"),
-                              Core.vx_new_string("/tag1"),
-                              Core.vx_new_string(":startpos"),
-                              Core.vx_new_int(58),
-                              Core.vx_new_string(":endpos"),
-                              Core.vx_new_int(62)
-                            )
-                          )
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("\n"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(64),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(64),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimwhitespace,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      )
-                    )
-                  ),
-                  Core.f_new(
-                    Textblock.t_textblock,
-                    Core.vx_new(
-                      Core.t_anylist,
-                      Core.vx_new_string(":text"),
-                      Core.vx_new_string("</doc>"),
-                      Core.vx_new_string(":startpos"),
-                      Core.vx_new_int(65),
-                      Core.vx_new_string(":endpos"),
-                      Core.vx_new_int(70),
-                      Core.vx_new_string(":delim"),
-                      Core.f_copy(
-                        Textblock.c_delimbracketangle,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.vx_new_string(":pos"),
-                          Core.vx_new_int(0)
-                        )
-                      ),
-                      Core.vx_new_string(":children"),
-                      Core.f_new(
-                        Textblock.t_textblocklist,
-                        Core.vx_new(
-                          Core.t_anylist,
-                          Core.f_new(
-                            Textblock.t_textblock,
-                            Core.vx_new(
-                              Core.t_anylist,
-                              Core.vx_new_string(":text"),
-                              Core.vx_new_string("/doc"),
-                              Core.vx_new_string(":startpos"),
-                              Core.vx_new_int(66),
-                              Core.vx_new_string(":endpos"),
-                              Core.vx_new_int(69)
-                            )
-                          )
-                        )
-                      )
+                      // ]
                     )
                   )
-                )
+                // ]
               )
             )
           )
         )
-      )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_xml_close_from_xml_textblock(final Core.Type_context context) {
+    final Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "xml-close<-xml-textblock",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_xml_close_from_xml_textblock_testdescribe_1(context),
+            XmlTest.f_xml_close_from_xml_textblock_testdescribe_2(context),
+            XmlTest.f_xml_close_from_xml_textblock_testdescribe_3(context),
+            XmlTest.f_xml_close_from_xml_textblock_testdescribe_4(context)
+          // ]
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_1(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\")\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/\")))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc")
+              // ]
+            )
+          ),
+          Xml.f_xml_close_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("doc")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("/")
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_2(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\")\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"</doc>\")))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc")
+              // ]
+            )
+          ),
+          Xml.f_xml_close_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("doc")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("</doc>")
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_3(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\"\n  (msg\n   :code \":invalidxmlclosetag\"\n   :detail\n    (anymap\n     :tag \"/wrong\"\n     :startpos 0\n     :endpos 0\n     :line 0\n     :column 0)\n   :severity msg-error))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"/wrong\")))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc"),
+                Core.f_new(
+                  Core.t_msg,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":code"),
+                      Core.vx_new_string(":invalidxmlclosetag"),
+                      Core.vx_new_string(":detail"),
+                      Core.f_new(
+                        Core.t_anymap,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":tag"),
+                            Core.vx_new_string("/wrong"),
+                            Core.vx_new_string(":startpos"),
+                            Core.vx_new_int(0),
+                            Core.vx_new_string(":endpos"),
+                            Core.vx_new_int(0),
+                            Core.vx_new_string(":line"),
+                            Core.vx_new_int(0),
+                            Core.vx_new_string(":column"),
+                            Core.vx_new_int(0)
+                          // ]
+                        )
+                      ),
+                      Core.vx_new_string(":severity"),
+                      Core.c_msg_error
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_close_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("doc")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("/wrong")
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_close_from_xml_textblock_testdescribe_4(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"top\"\n  :children\n   (xmllist\n    (xml\n     :tag \"doc\")))\n (xml-close<-xml-textblock\n  (xml\n   :tag \"doc\"\n   :parent\n    (xml\n     :tag \"top\"))\n  (tb/textblock\n   :text \"/\")))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("top"),
+                Core.vx_new_string(":children"),
+                Core.f_new(
+                  Xml.t_xmllist,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Xml.t_xml,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":tag"),
+                            Core.vx_new_string("doc")
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_close_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("doc"),
+                  Core.vx_new_string(":parent"),
+                  Core.f_new(
+                    Xml.t_xml,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":tag"),
+                        Core.vx_new_string("top")
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("/")
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_xml_parse_from_xml_textblock(final Core.Type_context context) {
+    final Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "xml-parse<-xml-textblock",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_xml_parse_from_xml_textblock_testdescribe_1(context),
+            XmlTest.f_xml_parse_from_xml_textblock_testdescribe_2(context),
+            XmlTest.f_xml_parse_from_xml_textblock_testdescribe_3(context),
+            XmlTest.f_xml_parse_from_xml_textblock_testdescribe_4(context),
+            XmlTest.f_xml_parse_from_xml_textblock_testdescribe_5(context)
+          // ]
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_1(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\")\n (xml-parse<-xml-textblock\n  (empty xml)\n  (tb/textblock\n   :text \"<doc>\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"doc\")))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc")
+              // ]
+            )
+          ),
+          Xml.f_xml_parse_from_xml_textblock(
+            Core.f_empty(Xml.t_xml),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("<doc>"),
+                  Core.vx_new_string(":delim"),
+                  Core.f_copy(
+                    Textblock.c_delimbracketangle,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":pos"),
+                        Core.vx_new_int(0)
+                      // ]
+                    )
+                  ),
+                  Core.vx_new_string(":children"),
+                  Core.f_new(
+                    Textblock.t_textblocklist,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("doc")
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_2(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\")\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"\n  \"\n   :delim\n    (copy tb/delimwhitespace\n     :pos 0))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc")
+              // ]
+            )
+          ),
+          Xml.f_xml_parse_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("doc")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("\n  "),
+                  Core.vx_new_string(":delim"),
+                  Core.f_copy(
+                    Textblock.c_delimwhitespace,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":pos"),
+                        Core.vx_new_int(0)
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_3(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"tag1\"\n  :parent\n   (xml\n    :tag \"doc\"))\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"<tag1>\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"tag1\")))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("tag1"),
+                Core.vx_new_string(":parent"),
+                Core.f_new(
+                  Xml.t_xml,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":tag"),
+                      Core.vx_new_string("doc")
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_parse_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("doc")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("<tag1>"),
+                  Core.vx_new_string(":delim"),
+                  Core.f_copy(
+                    Textblock.c_delimbracketangle,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":pos"),
+                        Core.vx_new_int(0)
+                      // ]
+                    )
+                  ),
+                  Core.vx_new_string(":children"),
+                  Core.f_new(
+                    Textblock.t_textblocklist,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("tag1")
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_4(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"tag1\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag2\"\n     :propmap\n      (stringmap\n       :prop1 \"val1\"\n       :prop2 \"val2\")))\n  :parent\n   (xml\n    :tag \"doc\"))\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"tag1\"\n   :parent\n    (xml\n     :tag \"doc\"))\n  (tb/textblock\n   :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"tag2\")\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop1\")\n     (tb/textblock\n      :text \"=\"\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val1\\\"\"\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val1\")))\n     (tb/textblock\n      :text \" \"\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"prop2\")\n     (tb/textblock\n      :text \"=\"\n      :delim\n       (copy delimxmlequal\n        :pos 0))\n     (tb/textblock\n      :text \"\\\"val2\\\"\"\n      :delim\n       (copy tb/delimquote\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"val2\")))\n      (tb/textblock\n       :text \" \"\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"/\")))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("tag1"),
+                Core.vx_new_string(":children"),
+                Core.f_new(
+                  Xml.t_xmllist,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Xml.t_xml,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":tag"),
+                            Core.vx_new_string("tag2"),
+                            Core.vx_new_string(":propmap"),
+                            Core.f_new(
+                              Core.t_stringmap,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.vx_new_string(":prop1"),
+                                  Core.vx_new_string("val1"),
+                                  Core.vx_new_string(":prop2"),
+                                  Core.vx_new_string("val2")
+                                // ]
+                              )
+                            )
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                ),
+                Core.vx_new_string(":parent"),
+                Core.f_new(
+                  Xml.t_xml,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":tag"),
+                      Core.vx_new_string("doc")
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_parse_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("tag1"),
+                  Core.vx_new_string(":parent"),
+                  Core.f_new(
+                    Xml.t_xml,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":tag"),
+                        Core.vx_new_string("doc")
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("<tag2 prop1=\"val1\" prop2=\"val2\" />"),
+                  Core.vx_new_string(":delim"),
+                  Core.f_copy(
+                    Textblock.c_delimbracketangle,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":pos"),
+                        Core.vx_new_int(0)
+                      // ]
+                    )
+                  ),
+                  Core.vx_new_string(":children"),
+                  Core.f_new(
+                    Textblock.t_textblocklist,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("tag2")
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string(" "),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimwhitespace,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("prop1")
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("="),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Xml.c_delimxmlequal,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("\"val1\""),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimquote,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              ),
+                              Core.vx_new_string(":children"),
+                              Core.f_new(
+                                Textblock.t_textblocklist,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("val1")
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string(" "),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimwhitespace,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("prop2")
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("="),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Xml.c_delimxmlequal,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("\"val2\""),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimquote,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              ),
+                              Core.vx_new_string(":children"),
+                              Core.f_new(
+                                Textblock.t_textblocklist,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("val2")
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string(" "),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimwhitespace,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("/")
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_parse_from_xml_textblock_testdescribe_5(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n    :tag \"tag1\"\n    :children\n     (xmllist\n      (xml\n       :tag \"tag2\"\n       :propmap\n        (stringmap\n         :prop1 \"val1\"\n         :prop2 \"val2\"))))))\n (xml-parse<-xml-textblock\n  (xml\n   :tag \"tag1\"\n   :children\n    (xmllist\n     (xml\n      :tag \"tag2\"\n      :propmap\n       (stringmap\n        :prop1 \"val1\"\n        :prop2 \"val2\")))\n   :parent\n    (xml\n     :tag \"doc\"))\n  (tb/textblock\n   :text \"</tag1>\"\n   :delim\n    (copy tb/delimbracketangle\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"/tag1\")))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc"),
+                Core.vx_new_string(":children"),
+                Core.f_new(
+                  Xml.t_xmllist,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Xml.t_xml,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":tag"),
+                            Core.vx_new_string("tag1"),
+                            Core.vx_new_string(":children"),
+                            Core.f_new(
+                              Xml.t_xmllist,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Xml.t_xml,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":tag"),
+                                        Core.vx_new_string("tag2"),
+                                        Core.vx_new_string(":propmap"),
+                                        Core.f_new(
+                                          Core.t_stringmap,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":prop1"),
+                                              Core.vx_new_string("val1"),
+                                              Core.vx_new_string(":prop2"),
+                                              Core.vx_new_string("val2")
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            )
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_parse_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("tag1"),
+                  Core.vx_new_string(":children"),
+                  Core.f_new(
+                    Xml.t_xmllist,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.f_new(
+                          Xml.t_xml,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":tag"),
+                              Core.vx_new_string("tag2"),
+                              Core.vx_new_string(":propmap"),
+                              Core.f_new(
+                                Core.t_stringmap,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":prop1"),
+                                    Core.vx_new_string("val1"),
+                                    Core.vx_new_string(":prop2"),
+                                    Core.vx_new_string("val2")
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.vx_new_string(":parent"),
+                  Core.f_new(
+                    Xml.t_xml,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":tag"),
+                        Core.vx_new_string("doc")
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("</tag1>"),
+                  Core.vx_new_string(":delim"),
+                  Core.f_copy(
+                    Textblock.c_delimbracketangle,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":pos"),
+                        Core.vx_new_int(0)
+                      // ]
+                    )
+                  ),
+                  Core.vx_new_string(":children"),
+                  Core.f_new(
+                    Textblock.t_textblocklist,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("/tag1")
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_xml_parse_from_xml_textblocklist(final Core.Type_context context) {
+    final Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "xml-parse<-xml-textblocklist",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_xml_parse_from_xml_textblocklist_testdescribe_1(context)
+          // ]
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_parse_from_xml_textblocklist_testdescribe_1(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag1\"\n     :children\n      (xmllist\n       (xml\n        :tag \"tag2\"\n        :propmap\n         (stringmap\n          :prop1 \"val1\"\n          :prop2 \"val2\"))))))\n (xml-parse<-xml-textblocklist\n  (empty xml)\n  (tb/textblocklist\n   (tb/textblock\n    :text \"<doc>\"\n    :startpos 1\n    :endpos 5\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"doc\"\n       :startpos 2\n       :endpos 4)))\n   (tb/textblock\n    :text \"\n  \"\n    :startpos 6\n    :endpos 8\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"<tag1>\"\n    :startpos 9\n    :endpos 14\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"tag1\"\n       :startpos 10\n       :endpos 13)))\n   (tb/textblock\n    :text \"\n    \"\n    :startpos 15\n    :endpos 19\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n    :startpos 20\n    :endpos 53\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"tag2\"\n       :startpos 21\n       :endpos 24)\n      (tb/textblock\n       :text \" \"\n       :startpos 25\n       :endpos 25\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"prop1\"\n       :startpos 26\n       :endpos 30)\n      (tb/textblock\n       :text \"=\"\n       :startpos 31\n       :endpos 31\n       :delim\n        (copy delimxmlequal\n         :pos 0))\n      (tb/textblock\n       :text \"\\\"val1\\\"\"\n       :startpos 32\n       :endpos 37\n       :delim\n        (copy tb/delimquote\n         :pos 0)\n       :children\n        (tb/textblocklist\n         (tb/textblock\n          :text \"val1\"\n          :startpos 33\n          :endpos 36)))\n      (tb/textblock\n       :text \" \"\n       :startpos 38\n       :endpos 38\n       :delim\n        (copy tb/delimwhitespace\n         :pos 0))\n      (tb/textblock\n       :text \"prop2\"\n       :startpos 39\n       :endpos 43)\n      (tb/textblock\n       :text \"=\"\n       :startpos 44\n       :endpos 44\n       :delim\n        (copy delimxmlequal\n         :pos 0))\n      (tb/textblock\n       :text \"\\\"val2\\\"\"\n       :startpos 45\n       :endpos 50\n       :delim\n        (copy tb/delimquote\n         :pos 0)\n       :children\n        (tb/textblocklist\n         (tb/textblock\n          :text \"val2\"\n          :startpos 46\n          :endpos 49)))\n       (tb/textblock\n        :text \" \"\n        :startpos 51\n        :endpos 51\n        :delim\n         (copy tb/delimwhitespace\n          :pos 0))\n       (tb/textblock\n        :text \"/\"\n        :startpos 52\n        :endpos 52)))\n   (tb/textblock\n    :text \"\n  \"\n    :startpos 54\n    :endpos 56\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"</tag1>\"\n    :startpos 57\n    :endpos 63\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"/tag1\"\n       :startpos 58\n       :endpos 62)))\n   (tb/textblock\n    :text \"\n\"\n    :startpos 64\n    :endpos 64\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"</doc>\"\n    :startpos 65\n    :endpos 70\n    :delim\n     (copy tb/delimbracketangle\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"/doc\"\n       :startpos 66\n       :endpos 69))))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc"),
+                Core.vx_new_string(":children"),
+                Core.f_new(
+                  Xml.t_xmllist,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Xml.t_xml,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":tag"),
+                            Core.vx_new_string("tag1"),
+                            Core.vx_new_string(":children"),
+                            Core.f_new(
+                              Xml.t_xmllist,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Xml.t_xml,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":tag"),
+                                        Core.vx_new_string("tag2"),
+                                        Core.vx_new_string(":propmap"),
+                                        Core.f_new(
+                                          Core.t_stringmap,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":prop1"),
+                                              Core.vx_new_string("val1"),
+                                              Core.vx_new_string(":prop2"),
+                                              Core.vx_new_string("val2")
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            )
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_parse_from_xml_textblocklist(
+            Core.f_empty(Xml.t_xml),
+            Core.f_new(
+              Textblock.t_textblocklist,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("<doc>"),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(1),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(5),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimbracketangle,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        ),
+                        Core.vx_new_string(":children"),
+                        Core.f_new(
+                          Textblock.t_textblocklist,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("doc"),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(2),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(4)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("\n  "),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(6),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(8),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimwhitespace,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("<tag1>"),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(9),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(14),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimbracketangle,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        ),
+                        Core.vx_new_string(":children"),
+                        Core.f_new(
+                          Textblock.t_textblocklist,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("tag1"),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(10),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(13)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("\n    "),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(15),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(19),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimwhitespace,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("<tag2 prop1=\"val1\" prop2=\"val2\" />"),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(20),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(53),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimbracketangle,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        ),
+                        Core.vx_new_string(":children"),
+                        Core.f_new(
+                          Textblock.t_textblocklist,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("tag2"),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(21),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(24)
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string(" "),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(25),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(25),
+                                    Core.vx_new_string(":delim"),
+                                    Core.f_copy(
+                                      Textblock.c_delimwhitespace,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":pos"),
+                                          Core.vx_new_int(0)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("prop1"),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(26),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(30)
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("="),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(31),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(31),
+                                    Core.vx_new_string(":delim"),
+                                    Core.f_copy(
+                                      Xml.c_delimxmlequal,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":pos"),
+                                          Core.vx_new_int(0)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("\"val1\""),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(32),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(37),
+                                    Core.vx_new_string(":delim"),
+                                    Core.f_copy(
+                                      Textblock.c_delimquote,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":pos"),
+                                          Core.vx_new_int(0)
+                                        // ]
+                                      )
+                                    ),
+                                    Core.vx_new_string(":children"),
+                                    Core.f_new(
+                                      Textblock.t_textblocklist,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.f_new(
+                                            Textblock.t_textblock,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.vx_new_string(":text"),
+                                                Core.vx_new_string("val1"),
+                                                Core.vx_new_string(":startpos"),
+                                                Core.vx_new_int(33),
+                                                Core.vx_new_string(":endpos"),
+                                                Core.vx_new_int(36)
+                                              // ]
+                                            )
+                                          )
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string(" "),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(38),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(38),
+                                    Core.vx_new_string(":delim"),
+                                    Core.f_copy(
+                                      Textblock.c_delimwhitespace,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":pos"),
+                                          Core.vx_new_int(0)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("prop2"),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(39),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(43)
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("="),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(44),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(44),
+                                    Core.vx_new_string(":delim"),
+                                    Core.f_copy(
+                                      Xml.c_delimxmlequal,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":pos"),
+                                          Core.vx_new_int(0)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("\"val2\""),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(45),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(50),
+                                    Core.vx_new_string(":delim"),
+                                    Core.f_copy(
+                                      Textblock.c_delimquote,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":pos"),
+                                          Core.vx_new_int(0)
+                                        // ]
+                                      )
+                                    ),
+                                    Core.vx_new_string(":children"),
+                                    Core.f_new(
+                                      Textblock.t_textblocklist,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.f_new(
+                                            Textblock.t_textblock,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.vx_new_string(":text"),
+                                                Core.vx_new_string("val2"),
+                                                Core.vx_new_string(":startpos"),
+                                                Core.vx_new_int(46),
+                                                Core.vx_new_string(":endpos"),
+                                                Core.vx_new_int(49)
+                                              // ]
+                                            )
+                                          )
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string(" "),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(51),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(51),
+                                    Core.vx_new_string(":delim"),
+                                    Core.f_copy(
+                                      Textblock.c_delimwhitespace,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":pos"),
+                                          Core.vx_new_int(0)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              ),
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("/"),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(52),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(52)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("\n  "),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(54),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(56),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimwhitespace,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("</tag1>"),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(57),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(63),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimbracketangle,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        ),
+                        Core.vx_new_string(":children"),
+                        Core.f_new(
+                          Textblock.t_textblocklist,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("/tag1"),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(58),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(62)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("\n"),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(64),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(64),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimwhitespace,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("</doc>"),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(65),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(70),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimbracketangle,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        ),
+                        Core.vx_new_string(":children"),
+                        Core.f_new(
+                          Textblock.t_textblocklist,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("/doc"),
+                                    Core.vx_new_string(":startpos"),
+                                    Core.vx_new_int(66),
+                                    Core.vx_new_string(":endpos"),
+                                    Core.vx_new_int(69)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_xml_properties_from_xml_textblocklist(final Core.Type_context context) {
+    final Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "xml-properties<-xml-textblocklist",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_xml_properties_from_xml_textblocklist_testdescribe_1(context)
+          // ]
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_properties_from_xml_textblocklist_testdescribe_1(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag2\"\n     :propmap\n      (stringmap\n       :prop1 \"val1\"\n       :prop2 \"val2\"))))\n (xml-properties<-xml-textblocklist\n  (xml\n   :tag :notag\n   :parent\n    (xml\n     :tag \"doc\"))\n  (tb/textblocklist\n   (tb/textblock\n    :text \"tag2\")\n   (tb/textblock\n    :text \" \"\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"prop1\")\n   (tb/textblock\n    :text \"=\"\n    :delim\n     (copy delimxmlequal\n      :pos 0))\n   (tb/textblock\n    :text \"\\\"val1\\\"\"\n    :startpos 32\n    :endpos 37\n    :delim\n     (copy tb/delimquote\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"val1\")))\n   (tb/textblock\n    :text \" \"\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"prop2\")\n   (tb/textblock\n    :text \"=\"\n    :delim\n     (copy delimxmlequal\n      :pos 0))\n   (tb/textblock\n    :text \"\\\"val2\\\"\"\n    :delim\n     (copy tb/delimquote\n      :pos 0)\n    :children\n     (tb/textblocklist\n      (tb/textblock\n       :text \"val2\")))\n   (tb/textblock\n    :text \" \"\n    :delim\n     (copy tb/delimwhitespace\n      :pos 0))\n   (tb/textblock\n    :text \"/\"))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc"),
+                Core.vx_new_string(":children"),
+                Core.f_new(
+                  Xml.t_xmllist,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Xml.t_xml,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":tag"),
+                            Core.vx_new_string("tag2"),
+                            Core.vx_new_string(":propmap"),
+                            Core.f_new(
+                              Core.t_stringmap,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.vx_new_string(":prop1"),
+                                  Core.vx_new_string("val1"),
+                                  Core.vx_new_string(":prop2"),
+                                  Core.vx_new_string("val2")
+                                // ]
+                              )
+                            )
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_properties_from_xml_textblocklist(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string(":notag"),
+                  Core.vx_new_string(":parent"),
+                  Core.f_new(
+                    Xml.t_xml,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":tag"),
+                        Core.vx_new_string("doc")
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblocklist,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("tag2")
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string(" "),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimwhitespace,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("prop1")
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("="),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Xml.c_delimxmlequal,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("\"val1\""),
+                        Core.vx_new_string(":startpos"),
+                        Core.vx_new_int(32),
+                        Core.vx_new_string(":endpos"),
+                        Core.vx_new_int(37),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimquote,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        ),
+                        Core.vx_new_string(":children"),
+                        Core.f_new(
+                          Textblock.t_textblocklist,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("val1")
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string(" "),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimwhitespace,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("prop2")
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("="),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Xml.c_delimxmlequal,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("\"val2\""),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimquote,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        ),
+                        Core.vx_new_string(":children"),
+                        Core.f_new(
+                          Textblock.t_textblocklist,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.f_new(
+                                Textblock.t_textblock,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":text"),
+                                    Core.vx_new_string("val2")
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string(" "),
+                        Core.vx_new_string(":delim"),
+                        Core.f_copy(
+                          Textblock.c_delimwhitespace,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":pos"),
+                              Core.vx_new_int(0)
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  ),
+                  Core.f_new(
+                    Textblock.t_textblock,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":text"),
+                        Core.vx_new_string("/")
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_xml_property_from_xml_textblock(final Core.Type_context context) {
+    final Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "xml-property<-xml-textblock",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_xml_property_from_xml_textblock_testdescribe_1(context),
+            XmlTest.f_xml_property_from_xml_textblock_testdescribe_2(context),
+            XmlTest.f_xml_property_from_xml_textblock_testdescribe_3(context)
+          // ]
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_property_from_xml_textblock_testdescribe_1(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"tag1\")\n (xml-property<-xml-textblock\n  (xml\n   :tag \":notag\")\n  (tb/textblock\n   :text \"tag1\")))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("tag1")
+              // ]
+            )
+          ),
+          Xml.f_xml_property_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string(":notag")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("tag1")
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_property_from_xml_textblock_testdescribe_2(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"tag1\"\n  :prop \"prop1\")\n (xml-property<-xml-textblock\n  (xml\n   :tag \"tag1\")\n  (tb/textblock\n   :text \"prop1\")))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("tag1"),
+                Core.vx_new_string(":prop"),
+                Core.vx_new_string("prop1")
+              // ]
+            )
+          ),
+          Xml.f_xml_property_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("tag1")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("prop1")
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_property_from_xml_textblock_testdescribe_3(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"tag1\"\n  :propmap\n   (stringmap\n    :prop1 \"val1\"))\n (xml-property<-xml-textblock\n  (xml\n   :tag \"tag1\"\n   :prop \"prop1\")\n  (tb/textblock\n   :delim\n    (copy tb/delimquote\n     :pos 0)\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"val1\")))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("tag1"),
+                Core.vx_new_string(":propmap"),
+                Core.f_new(
+                  Core.t_stringmap,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.vx_new_string(":prop1"),
+                      Core.vx_new_string("val1")
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_property_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("tag1"),
+                  Core.vx_new_string(":prop"),
+                  Core.vx_new_string("prop1")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":delim"),
+                  Core.f_copy(
+                    Textblock.c_delimquote,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.vx_new_string(":pos"),
+                        Core.vx_new_int(0)
+                      // ]
+                    )
+                  ),
+                  Core.vx_new_string(":children"),
+                  Core.f_new(
+                    Textblock.t_textblocklist,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("val1")
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_xml_text_from_xml_textblock(final Core.Type_context context) {
+    final Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "xml-text<-xml-textblock",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_xml_text_from_xml_textblock_testdescribe_1(context),
+            XmlTest.f_xml_text_from_xml_textblock_testdescribe_2(context)
+          // ]
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_text_from_xml_textblock_testdescribe_1(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :text \"text1\")\n (xml-text<-xml-textblock\n  (empty xml)\n  (tb/textblock\n   :text \"text1\")))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":text"),
+                Core.vx_new_string("text1")
+              // ]
+            )
+          ),
+          Xml.f_xml_text_from_xml_textblock(
+            Core.f_empty(Xml.t_xml),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("text1")
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_text_from_xml_textblock_testdescribe_2(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :text \"text1\")))\n (xml-text<-xml-textblock\n  (xml\n   :tag \"doc\")\n  (tb/textblock\n   :text \"text1\")))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc"),
+                Core.vx_new_string(":children"),
+                Core.f_new(
+                  Xml.t_xmllist,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Xml.t_xml,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":text"),
+                            Core.vx_new_string("text1")
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_text_from_xml_textblock(
+            Core.f_new(
+              Xml.t_xml,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":tag"),
+                  Core.vx_new_string("doc")
+                // ]
+              )
+            ),
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("text1")
+                // ]
+              )
+            )
+          )
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testcase f_xml_from_textblock(final Core.Type_context context) {
+    final Test.Type_testcase output = Core.vx_new(
+      Test.t_testcase,
+      // [
+        ":passfail",
+        false,
+        ":testpkg",
+        "vx/data/xml",
+        ":casename",
+        "xml<-textblock",
+        ":describelist",
+        Core.vx_new(
+          Test.t_testdescribelist,
+          // [
+            XmlTest.f_xml_from_textblock_testdescribe_1(context)
+          // ]
+        )
+      // ]
+    );
+    return output;
+  }
+
+  public static Test.Type_testdescribe f_xml_from_textblock_testdescribe_1(final Core.Type_context context) {
+    final Test.Type_testdescribe output = Core.vx_new(
+      Test.t_testdescribe,
+      // [
+        ":describename",
+        "(test\n (xml\n  :tag \"doc\"\n  :children\n   (xmllist\n    (xml\n     :tag \"tag1\"\n     :children\n      (xmllist\n       (xml\n        :tag \"tag2\"\n        :propmap\n         (stringmap\n          :prop1 \"val1\"\n          :prop2 \"val2\"))))))\n (xml<-textblock\n  (tb/textblock\n   :text\n    \"<doc>\n       <tag1>\n         <tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\n       </tag1>\n     </doc>\"\n   :startpos 1\n   :endpos 70\n   :children\n    (tb/textblocklist\n     (tb/textblock\n      :text \"<doc>\"\n      :startpos 1\n      :endpos 5\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"doc\"\n         :startpos 2\n         :endpos 4)))\n     (tb/textblock\n      :text \"\n  \"\n      :startpos 6\n      :endpos 8\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"<tag1>\"\n      :startpos 9\n      :endpos 14\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"tag1\"\n         :startpos 10\n         :endpos 13)))\n     (tb/textblock\n      :text \"\n    \"\n      :startpos 15\n      :endpos 19\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"<tag2 prop1=\\\"val1\\\" prop2=\\\"val2\\\" />\"\n      :startpos 20\n      :endpos 53\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"tag2\"\n         :startpos 21\n         :endpos 24)\n        (tb/textblock\n         :text \" \"\n         :startpos 25\n         :endpos 25\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"prop1\"\n         :startpos 26\n         :endpos 30)\n        (tb/textblock\n         :text \"=\"\n         :startpos 31\n         :endpos 31\n         :delim\n          (copy delimxmlequal\n           :pos 0))\n        (tb/textblock\n         :text \"\\\"val1\\\"\"\n         :startpos 32\n         :endpos 37\n         :delim\n          (copy tb/delimquote\n           :pos 0)\n         :children\n          (tb/textblocklist\n           (tb/textblock\n            :text \"val1\"\n            :startpos 33\n            :endpos 36)))\n        (tb/textblock\n         :text \" \"\n         :startpos 38\n         :endpos 38\n         :delim\n          (copy tb/delimwhitespace\n           :pos 0))\n        (tb/textblock\n         :text \"prop2\"\n         :startpos 39\n         :endpos 43)\n        (tb/textblock\n         :text \"=\"\n         :startpos 44\n         :endpos 44\n         :delim\n          (copy delimxmlequal\n           :pos 0))\n        (tb/textblock\n         :text \"\\\"val2\\\"\"\n         :startpos 45\n         :endpos 50\n         :delim\n          (copy tb/delimquote\n           :pos 0)\n         :children\n          (tb/textblocklist\n           (tb/textblock\n            :text \"val2\"\n            :startpos 46\n            :endpos 49)))\n         (tb/textblock\n          :text \" \"\n          :startpos 51\n          :endpos 51\n          :delim\n           (copy tb/delimwhitespace\n            :pos 0))\n         (tb/textblock\n          :text \"/\"\n          :startpos 52\n          :endpos 52)))\n     (tb/textblock\n      :text \"\n  \"\n      :startpos 54\n      :endpos 56\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"</tag1>\"\n      :startpos 57\n      :endpos 63\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"/tag1\"\n         :startpos 58\n         :endpos 62)))\n     (tb/textblock\n      :text \"\n\"\n      :startpos 64\n      :endpos 64\n      :delim\n       (copy tb/delimwhitespace\n        :pos 0))\n     (tb/textblock\n      :text \"</doc>\"\n      :startpos 65\n      :endpos 70\n      :delim\n       (copy tb/delimbracketangle\n        :pos 0)\n      :children\n       (tb/textblocklist\n        (tb/textblock\n         :text \"/doc\"\n         :startpos 66\n         :endpos 69)))))))",
+        ":testresult",
+        Test.f_test(
+          context,
+          Core.f_new(
+            Xml.t_xml,
+            Core.vx_new(
+              Core.t_anylist,
+              // [
+                Core.vx_new_string(":tag"),
+                Core.vx_new_string("doc"),
+                Core.vx_new_string(":children"),
+                Core.f_new(
+                  Xml.t_xmllist,
+                  Core.vx_new(
+                    Core.t_anylist,
+                    // [
+                      Core.f_new(
+                        Xml.t_xml,
+                        Core.vx_new(
+                          Core.t_anylist,
+                          // [
+                            Core.vx_new_string(":tag"),
+                            Core.vx_new_string("tag1"),
+                            Core.vx_new_string(":children"),
+                            Core.f_new(
+                              Xml.t_xmllist,
+                              Core.vx_new(
+                                Core.t_anylist,
+                                // [
+                                  Core.f_new(
+                                    Xml.t_xml,
+                                    Core.vx_new(
+                                      Core.t_anylist,
+                                      // [
+                                        Core.vx_new_string(":tag"),
+                                        Core.vx_new_string("tag2"),
+                                        Core.vx_new_string(":propmap"),
+                                        Core.f_new(
+                                          Core.t_stringmap,
+                                          Core.vx_new(
+                                            Core.t_anylist,
+                                            // [
+                                              Core.vx_new_string(":prop1"),
+                                              Core.vx_new_string("val1"),
+                                              Core.vx_new_string(":prop2"),
+                                              Core.vx_new_string("val2")
+                                            // ]
+                                          )
+                                        )
+                                      // ]
+                                    )
+                                  )
+                                // ]
+                              )
+                            )
+                          // ]
+                        )
+                      )
+                    // ]
+                  )
+                )
+              // ]
+            )
+          ),
+          Xml.f_xml_from_textblock(
+            Core.f_new(
+              Textblock.t_textblock,
+              Core.vx_new(
+                Core.t_anylist,
+                // [
+                  Core.vx_new_string(":text"),
+                  Core.vx_new_string("<doc>\n  <tag1>\n    <tag2 prop1=\"val1\" prop2=\"val2\" />\n  </tag1>\n</doc>"),
+                  Core.vx_new_string(":startpos"),
+                  Core.vx_new_int(1),
+                  Core.vx_new_string(":endpos"),
+                  Core.vx_new_int(70),
+                  Core.vx_new_string(":children"),
+                  Core.f_new(
+                    Textblock.t_textblocklist,
+                    Core.vx_new(
+                      Core.t_anylist,
+                      // [
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("<doc>"),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(1),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(5),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimbracketangle,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              ),
+                              Core.vx_new_string(":children"),
+                              Core.f_new(
+                                Textblock.t_textblocklist,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("doc"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(2),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(4)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("\n  "),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(6),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(8),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimwhitespace,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("<tag1>"),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(9),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(14),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimbracketangle,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              ),
+                              Core.vx_new_string(":children"),
+                              Core.f_new(
+                                Textblock.t_textblocklist,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("tag1"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(10),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(13)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("\n    "),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(15),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(19),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimwhitespace,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("<tag2 prop1=\"val1\" prop2=\"val2\" />"),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(20),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(53),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimbracketangle,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              ),
+                              Core.vx_new_string(":children"),
+                              Core.f_new(
+                                Textblock.t_textblocklist,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("tag2"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(21),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(24)
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string(" "),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(25),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(25),
+                                          Core.vx_new_string(":delim"),
+                                          Core.f_copy(
+                                            Textblock.c_delimwhitespace,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.vx_new_string(":pos"),
+                                                Core.vx_new_int(0)
+                                              // ]
+                                            )
+                                          )
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("prop1"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(26),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(30)
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("="),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(31),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(31),
+                                          Core.vx_new_string(":delim"),
+                                          Core.f_copy(
+                                            Xml.c_delimxmlequal,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.vx_new_string(":pos"),
+                                                Core.vx_new_int(0)
+                                              // ]
+                                            )
+                                          )
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("\"val1\""),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(32),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(37),
+                                          Core.vx_new_string(":delim"),
+                                          Core.f_copy(
+                                            Textblock.c_delimquote,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.vx_new_string(":pos"),
+                                                Core.vx_new_int(0)
+                                              // ]
+                                            )
+                                          ),
+                                          Core.vx_new_string(":children"),
+                                          Core.f_new(
+                                            Textblock.t_textblocklist,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.f_new(
+                                                  Textblock.t_textblock,
+                                                  Core.vx_new(
+                                                    Core.t_anylist,
+                                                    // [
+                                                      Core.vx_new_string(":text"),
+                                                      Core.vx_new_string("val1"),
+                                                      Core.vx_new_string(":startpos"),
+                                                      Core.vx_new_int(33),
+                                                      Core.vx_new_string(":endpos"),
+                                                      Core.vx_new_int(36)
+                                                    // ]
+                                                  )
+                                                )
+                                              // ]
+                                            )
+                                          )
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string(" "),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(38),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(38),
+                                          Core.vx_new_string(":delim"),
+                                          Core.f_copy(
+                                            Textblock.c_delimwhitespace,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.vx_new_string(":pos"),
+                                                Core.vx_new_int(0)
+                                              // ]
+                                            )
+                                          )
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("prop2"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(39),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(43)
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("="),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(44),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(44),
+                                          Core.vx_new_string(":delim"),
+                                          Core.f_copy(
+                                            Xml.c_delimxmlequal,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.vx_new_string(":pos"),
+                                                Core.vx_new_int(0)
+                                              // ]
+                                            )
+                                          )
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("\"val2\""),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(45),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(50),
+                                          Core.vx_new_string(":delim"),
+                                          Core.f_copy(
+                                            Textblock.c_delimquote,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.vx_new_string(":pos"),
+                                                Core.vx_new_int(0)
+                                              // ]
+                                            )
+                                          ),
+                                          Core.vx_new_string(":children"),
+                                          Core.f_new(
+                                            Textblock.t_textblocklist,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.f_new(
+                                                  Textblock.t_textblock,
+                                                  Core.vx_new(
+                                                    Core.t_anylist,
+                                                    // [
+                                                      Core.vx_new_string(":text"),
+                                                      Core.vx_new_string("val2"),
+                                                      Core.vx_new_string(":startpos"),
+                                                      Core.vx_new_int(46),
+                                                      Core.vx_new_string(":endpos"),
+                                                      Core.vx_new_int(49)
+                                                    // ]
+                                                  )
+                                                )
+                                              // ]
+                                            )
+                                          )
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string(" "),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(51),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(51),
+                                          Core.vx_new_string(":delim"),
+                                          Core.f_copy(
+                                            Textblock.c_delimwhitespace,
+                                            Core.vx_new(
+                                              Core.t_anylist,
+                                              // [
+                                                Core.vx_new_string(":pos"),
+                                                Core.vx_new_int(0)
+                                              // ]
+                                            )
+                                          )
+                                        // ]
+                                      )
+                                    ),
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("/"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(52),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(52)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("\n  "),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(54),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(56),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimwhitespace,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("</tag1>"),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(57),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(63),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimbracketangle,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              ),
+                              Core.vx_new_string(":children"),
+                              Core.f_new(
+                                Textblock.t_textblocklist,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("/tag1"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(58),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(62)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("\n"),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(64),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(64),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimwhitespace,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        ),
+                        Core.f_new(
+                          Textblock.t_textblock,
+                          Core.vx_new(
+                            Core.t_anylist,
+                            // [
+                              Core.vx_new_string(":text"),
+                              Core.vx_new_string("</doc>"),
+                              Core.vx_new_string(":startpos"),
+                              Core.vx_new_int(65),
+                              Core.vx_new_string(":endpos"),
+                              Core.vx_new_int(70),
+                              Core.vx_new_string(":delim"),
+                              Core.f_copy(
+                                Textblock.c_delimbracketangle,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.vx_new_string(":pos"),
+                                    Core.vx_new_int(0)
+                                  // ]
+                                )
+                              ),
+                              Core.vx_new_string(":children"),
+                              Core.f_new(
+                                Textblock.t_textblocklist,
+                                Core.vx_new(
+                                  Core.t_anylist,
+                                  // [
+                                    Core.f_new(
+                                      Textblock.t_textblock,
+                                      Core.vx_new(
+                                        Core.t_anylist,
+                                        // [
+                                          Core.vx_new_string(":text"),
+                                          Core.vx_new_string("/doc"),
+                                          Core.vx_new_string(":startpos"),
+                                          Core.vx_new_int(66),
+                                          Core.vx_new_string(":endpos"),
+                                          Core.vx_new_int(69)
+                                        // ]
+                                      )
+                                    )
+                                  // ]
+                                )
+                              )
+                            // ]
+                          )
+                        )
+                      // ]
+                    )
+                  )
+                // ]
+              )
+            )
+          )
+        )
+      // ]
     );
     return output;
   }
 
   public static Test.Type_testcaselist test_cases(final Core.Type_context context) {
-    List<Core.Type_any> testcases = Core.arraylist_from_array(
-      XmlTest.f_string_first_from_xml(context),
-      XmlTest.f_textblock_xml_from_string(context),
-      XmlTest.f_xml_angle_from_xml_textblock(context),
-      XmlTest.f_xml_close_from_xml_textblock(context),
-      XmlTest.f_xml_parse_from_xml_textblock(context),
-      XmlTest.f_xml_parse_from_xml_textblocklist(context),
-      XmlTest.f_xml_properties_from_xml_textblocklist(context),
-      XmlTest.f_xml_property_from_xml_textblock(context),
-      XmlTest.f_xml_text_from_xml_textblock(context),
-      XmlTest.f_xml_from_textblock(context)
+    List<Core.Type_any> testcases = Core.vx_arraylist_from_array(
+      // [
+        XmlTest.f_string_first_from_xml(context),
+        XmlTest.f_textblock_xml_from_string(context),
+        XmlTest.f_xml_angle_from_xml_textblock(context),
+        XmlTest.f_xml_close_from_xml_textblock(context),
+        XmlTest.f_xml_parse_from_xml_textblock(context),
+        XmlTest.f_xml_parse_from_xml_textblocklist(context),
+        XmlTest.f_xml_properties_from_xml_textblocklist(context),
+        XmlTest.f_xml_property_from_xml_textblock(context),
+        XmlTest.f_xml_text_from_xml_textblock(context),
+        XmlTest.f_xml_from_textblock(context)
+      // ]
     );
     final Test.Type_testcaselist output = Core.vx_new(
       Test.t_testcaselist,
-      testcases
+      // [
+        testcases
+      // ]
     );
     return output;
   }
@@ -3568,14 +4376,94 @@ public final class XmlTest {
   public static Test.Type_testcoveragesummary test_coveragesummary() {
     final Test.Type_testcoveragesummary output = Core.vx_new(
       Test.t_testcoveragesummary,
-      ":testpkg", "vx/data/xml", 
-      ":constnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 4), 
-      ":docnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 66, ":tests", 14, ":total", 21), 
-      ":funcnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 71, ":tests", 10, ":total", 14), 
-      ":bigospacenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 14), 
-      ":bigotimenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 14), 
-      ":totalnums", Core.vx_new(Test.t_testcoveragenums, ":pct", 47, ":tests", 10, ":total", 21), 
-      ":typenums", Core.vx_new(Test.t_testcoveragenums, ":pct", 0, ":tests", 0, ":total", 3)
+      // [
+        ":testpkg",
+        "vx/data/xml",
+        ":constnums",
+        Core.vx_new(
+          Test.t_testcoveragenums,
+          // [
+            ":pct",
+            0,
+            ":tests",
+            0,
+            ":total",
+            4
+          // ]
+        ),
+        ":docnums",
+        Core.vx_new(
+          Test.t_testcoveragenums,
+          // [
+            ":pct",
+            66,
+            ":tests",
+            14,
+            ":total",
+            21
+          // ]
+        ),
+        ":funcnums",
+        Core.vx_new(
+          Test.t_testcoveragenums,
+          // [
+            ":pct",
+            71,
+            ":tests",
+            10,
+            ":total",
+            14
+          // ]
+        ),
+        ":bigospacenums",
+        Core.vx_new(
+          Test.t_testcoveragenums,
+          // [
+            ":pct",
+            0,
+            ":tests",
+            0,
+            ":total",
+            14
+          // ]
+        ),
+        ":bigotimenums",
+        Core.vx_new(
+          Test.t_testcoveragenums,
+          // [
+            ":pct",
+            0,
+            ":tests",
+            0,
+            ":total",
+            14
+          // ]
+        ),
+        ":totalnums",
+        Core.vx_new(
+          Test.t_testcoveragenums,
+          // [
+            ":pct",
+            47,
+            ":tests",
+            10,
+            ":total",
+            21
+          // ]
+        ),
+        ":typenums",
+        Core.vx_new(
+          Test.t_testcoveragenums,
+          // [
+            ":pct",
+            0,
+            ":tests",
+            0,
+            ":total",
+            3
+          // ]
+        )
+      // ]
     );
     return output;
   }
@@ -3583,37 +4471,49 @@ public final class XmlTest {
   public static Test.Type_testcoveragedetail test_coveragedetail() {
     final Test.Type_testcoveragedetail output = Core.vx_new(
       Test.t_testcoveragedetail,
-      ":testpkg", "vx/data/xml",
-      ":typemap", Core.vx_new(
-        Core.t_intmap,
-        ":xml", 0,
-        ":xmllist", 0,
-        ":xmlpropmap", 0
-      ), 
-      ":constmap", Core.vx_new(
-        Core.t_intmap,
-        ":delimxml", 0,
-        ":delimxmlcdata", 0,
-        ":delimxmlcomment", 0,
-        ":delimxmlequal", 0
-      ), 
-      ":funcmap", Core.vx_new(
-        Core.t_intmap,
-        ":string-decodexml<-string", 0,
-        ":string-first<-xml", 1,
-        ":textblock-xml<-string", 1,
-        ":xml-angle<-xml-textblock", 3,
-        ":xml-close<-xml-textblock", 4,
-        ":xml-parse<-xml-textblock", 5,
-        ":xml-parse<-xml-textblocklist", 1,
-        ":xml-properties<-xml-textblocklist", 1,
-        ":xml-property<-xml-textblock", 3,
-        ":xml-read<-file", 0,
-        ":xml-text<-xml-textblock", 2,
-        ":xml<-file", 0,
-        ":xml<-string", 0,
-        ":xml<-textblock", 1
-      )
+      // [
+        ":testpkg",
+        "vx/data/xml",
+        ":typemap",
+        Core.vx_new(
+          Core.t_intmap,
+          // [
+            ":xml", 0,
+            ":xmllist", 0,
+            ":xmlpropmap", 0
+          // ]
+        ),
+        ":constmap",
+        Core.vx_new(
+          Core.t_intmap,
+          // [
+            ":delimxml", 0,
+            ":delimxmlcdata", 0,
+            ":delimxmlcomment", 0,
+            ":delimxmlequal", 0
+          // ]
+        ),
+        ":funcmap",
+        Core.vx_new(
+          Core.t_intmap,
+          // [
+            ":string-decodexml<-string", 0,
+            ":string-first<-xml", 1,
+            ":textblock-xml<-string", 1,
+            ":xml-angle<-xml-textblock", 3,
+            ":xml-close<-xml-textblock", 4,
+            ":xml-parse<-xml-textblock", 5,
+            ":xml-parse<-xml-textblocklist", 1,
+            ":xml-properties<-xml-textblocklist", 1,
+            ":xml-property<-xml-textblock", 3,
+            ":xml-read<-file", 0,
+            ":xml-text<-xml-textblock", 2,
+            ":xml<-file", 0,
+            ":xml<-string", 0,
+            ":xml<-textblock", 1
+          // ]
+        )
+      // ]
     );
     return output;
   }
@@ -3622,10 +4522,16 @@ public final class XmlTest {
     final Test.Type_testcaselist testcaselist = test_cases(context);
     final Test.Type_testpackage output = Core.vx_new(
       Test.t_testpackage,
-      ":testpkg", "vx/data/xml", 
-      ":caselist", testcaselist,
-      ":coveragesummary", test_coveragesummary(),
-      ":coveragedetail", test_coveragedetail()
+      // [
+        ":testpkg",
+        "vx/data/xml",
+        ":caselist",
+        testcaselist,
+        ":coveragesummary",
+        test_coveragesummary(),
+        ":coveragedetail",
+        test_coveragedetail()
+      // ]
     );
     return output;
   }
